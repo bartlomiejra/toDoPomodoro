@@ -61,6 +61,7 @@ body {
 
 
 .addtask{
+  display: flex;
   width: 10%;
   background-color:#3c3e57;
   color: rgb(114, 113, 113);
@@ -68,5 +69,30 @@ body {
 }
 
 .addtask:hover{
+  
   color:white;
+}
+
+.todolist{
+  width: 55%;
+  background-color:black;
+  border-radius: 15px;
+}
+.task{
+display: flex;
+justify-content: center;
+}
+
+
+button{
+  flex: 1;
+}
+li{
+  flex: 6;
+  text-align: center;
+}
+
+i{
+  flex: 1;
+
 }

@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/a712e78954.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<script src="app.js"></script>  
     <div class="app">
 <div class="container">
     <div class="clock">25:00</div>
@@ -16,7 +17,7 @@
 
 
     <div class="addTaskdiv">
-        <button class="addtask"><i class="fas fa-plus"></i></button>
+        <button class="addtaskButton"><i class="fas fa-plus"></i></button>
 <input class=input type="text" placeholder=" Add a New Item Task">
 
 
@@ -25,13 +26,21 @@
 
 
 
-    <ul class="task">
+   
+        <ul class="todolist">
+            <!-- generate in js function -->
+            <div class="task">
+                <button>O</button>
+                <li>task1</li>
+                <i class="fas fa-play-circle"></i>
+            </div>
+            
+        </ul>
 
-        <!-- <div class="tasksToDo">   <i class="fas fa-trash"></i><i class="fas fa-play-circle"></i>
-            
-            
         
-        </div> -->
+
+
+   
      
 
     </div>
