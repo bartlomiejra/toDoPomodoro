@@ -1,5 +1,26 @@
 
 
+const todoInput = document.querySelector(".todoInput");
+const todoButton = document.querySelector(".addtaskButton");
+
+const todoList = document.querySelector("todolist");
+
+
+
+
+
+
+
+
+function addTodo(event){
+
+console.log("addtask");
+}
+
+
+
+
+todoButton.addEventListener('click', addTodo);
 
 
 
