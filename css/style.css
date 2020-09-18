@@ -1,6 +1,6 @@
 html {
   font-size: 100%;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 body {
@@ -54,6 +54,18 @@ body {
   text-align: center;
 }
 
+.todoInput {
+  background-color: #686a8f;
+  color: #c4c0c0;
+  letter-spacing: 1.2px;
+  font-size: 1.1rem;
+  border: 0;
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  text-align: center;
+}
+
 .addTaskdiv {
   width: 45%;
   display: -webkit-box;
@@ -62,7 +74,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid;
 }
 
 .input {
@@ -109,6 +120,8 @@ button {
 }
 
 li {
+  list-style-type: none;
+  padding: 0.3rem;
   -webkit-box-flex: 6;
       -ms-flex: 6;
           flex: 6;
@@ -131,5 +144,43 @@ div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+}
+
+.play-btn,
+.delete-btn,
+.complete-btn {
+  background-color: black;
+  font-size: 1.125rem;
+  padding: 0.3rem;
+}
+
+.play-btn {
+  color: #034e03;
+  margin-right: 10px;
+}
+
+.delete-btn {
+  color: #740606;
+}
+
+.complete-btn {
+  color: white;
+}
+
+.addtaskButton {
+  font-size: 1.1rem;
+  background-color: #686a8f;
+  color: #c4c0c0;
+}
+
+.fa-trash,
+.fa-check,
+.fa-play {
+  pointer-events: none;
 }
 /*# sourceMappingURL=style.css.map */

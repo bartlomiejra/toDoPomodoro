@@ -1,116 +1,164 @@
- html {
-   font-size: 100%;
-   font-family: 'Noto Sans JP', sans-serif;
- }
+html {
+  font-size: 100%;
+  font-family: "Noto Sans JP", sans-serif;
+}
 
- body {
-   background-color: black;
-   color: white;
+body {
+  background-color: black;
+  color: white;
 
- }
+}
 
- .app {
-   position: absolute;
-   top: 10%;
-   left: 50%;
-   transform: translateX(-50%);
- }
+.app {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
- .container {
-   background-color: #191a2d;
-   list-style: none;
-   display: flex;
-   align-items: center;
-   width: 800px;
-   height: 600px;
-   flex-direction: column;
- }
+.container {
+  background-color: #191a2d;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 600px;
+  flex-direction: column;
+}
 
- .clock,
- .addTask,
- .tasksToDo {
-   display: flex;
-   background: black;
-   padding: 5px;
-   margin: 10px;
-   color: white;
-   font-size: 2em;
- }
+.clock,
+.addTask,
+.tasksToDo {
+  display: flex;
+  background: black;
+  padding: 5px;
+  margin: 10px;
+  color: white;
+  font-size: 2em;
+}
 
- .clock {
-   width: 6em;
-   border-radius: 20px;
-   display: table-cell;
-   vertical-align: middle;
-   text-align: center;
- }
+.clock {
+  width: 6em;
+  border-radius: 20px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
 
- .addTaskdiv {
-
-   width: 45%;
-   display: flex;
-   justify-content: center;
-   border: 1px solid;
-
- }
-
- .input {
-   font-size: 1.2em;
-   width: 90%;
-   background-color: #3c3e57;
-   color: rgb(114, 113, 113);
-   border: 0;
- }
+.todoInput {
+  background-color: #686a8f;
+  color: rgb(196, 192, 192);
+  letter-spacing: 1.2px;
+  font-size: 1.1rem;
+  border: 0;
+  flex: 6;
+  text-align: center;
 
 
+}
 
- .addtask {
-   display: flex;
-   width: 10%;
-   background-color: #3c3e57;
-   color: rgb(114, 113, 113);
-   border: 0;
- }
+.addTaskdiv {
 
- .addtask:hover {
+  width: 45%;
+  display: flex;
+  justify-content: center;
 
-   color: white;
- }
+}
 
- .todolist {
-   width: 55%;
-   background-color: black;
-   border-radius: 15px;
- }
+.input {
 
- .task {
-   display: flex;
-   justify-content: center;
- }
+  font-size: 1.2em;
+  width: 90%;
+  background-color: #3c3e57;
+  color: rgb(114, 113, 113);
+  border: 0;
+}
+
+.addtask {
+  display: flex;
+  width: 10%;
+  background-color: #3c3e57;
+  color: rgb(114, 113, 113);
+  border: 0;
+}
+
+.addtask:hover {
+  color: white;
+}
+
+.todolist {
+  width: 55%;
+  background-color: black;
+  border-radius: 15px;
+}
+
+.task {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  flex: 1;
+}
+
+li {
+  list-style-type: none;
+  padding: 0.3rem;
+  flex: 6;
+  text-align: center;
+}
+
+i {
+  flex: 1;
+}
+
+task {
+  display: flex;
+}
+
+div {
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+
+  border: 0;
+}
+
+.play-btn,
+.delete-btn,
+.complete-btn {
+  background-color: black;
+  font-size: 1.125rem;
+  padding: 0.3rem;
+
+}
 
 
- button {
-   flex: 1;
- }
 
- li {
-   flex: 6;
-   text-align: center;
- }
+.play-btn {
+  color: rgb(3, 78, 3);
+  margin-right: 10px;
+}
 
- i {
-   flex: 1;
+.delete-btn {
+  color: rgb(116, 6, 6);
+}
 
- }
+.complete-btn {
+  color: white;
+}
+
+.addtaskButton {
+  font-size: 1.1rem;
+  background-color: #686a8f;
+  color: rgb(196, 192, 192);
+}
 
 
- task {
-   display: flex;
- }
-
-
- div {
-   display: flex;
- }
-
- button {}
+.fa-trash,
+.fa-check,
+.fa-play {
+  pointer-events: none;
+}
