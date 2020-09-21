@@ -90,6 +90,11 @@ body {
   width: 55%;
   background-color: black;
   border-radius: 15px;
+
+}
+
+.todolist>div {
+  transition: all 0.5s ease;
 }
 
 .task {
@@ -135,9 +140,13 @@ button {
 
 }
 
+fa-pause-btn {
+  color: rgb(3, 78, 3);
 
+}
 
-.play-btn {
+.play-btn,
+.fa-pause-btn {
   color: rgb(3, 78, 3);
   margin-right: 10px;
 }
@@ -157,8 +166,40 @@ button {
 }
 
 
-.fa-trash,
+// .fa-pause-btn,
+.fa-circle,
 .fa-check,
 .fa-play {
   pointer-events: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+
+}
+
+.red {
+  background-color: red;
+  color: red;
+}
+
+
+
+#taksCompleted {
+  position: absolute;
+  top: 50%;
+  top: 80%;
+
+}
+
+
+.fall {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+.timerstart {
+  background-color: rgb(197, 93, 93);
+  color: white;
 }

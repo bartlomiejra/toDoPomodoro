@@ -3,7 +3,7 @@ const todoButton = document.querySelector(".addtaskButton");
 const todoList = document.querySelector(".todolist");
 
 todoButton.addEventListener("click", addTodo);
-todoList.addEventListener("click", delatedTask);
+todoList.addEventListener("click", btnActtion);
 
 //* this function adding new item todo
 function addTodo(event) {
@@ -39,24 +39,57 @@ function addTodo(event) {
   //*Clear input lebel to
   todoInput.value = "";
 }
-
-function delatedTask(e) {
+//*function delating the task
+function btnActtion(e) {
   const item = e.target;
   //DELATE
   if (item.classList[0] === "delete-btn") {
-    item.remove();
+    const todo = item.parentElement;
+    todo.classList.add("fall");
+    // todo.remove();
+  }
+
+  //*complettet function
+  if (item.classList[0] === "complete-btn") {
+    const todo = item.parentElement;
+    todo.classList.toggle("completed");
+    item.innerHTML = '<i class="fas fa-check-circle"></i>';
+  }
+
+  //timer start function
+  if (item.classList[0] === "play-btn") {
+    item.innerHTML = '<i class="fas fa-pause-btn"></i>';
+
+    const todo = item.parentElement;
+    //* jak dodać klase do timera?
+    //* todo.classList.toggle("timerstart");
+    // console.log("timer start!");
+    const startingMinutes = 1;
+    let time = startingMinutes * 60;
+    const countdownTimer = document.getElementById("countdown");
+
+    setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+      // console.log("timer start!");
+      let seconds = time % 60;
+      const minutes = Math.floor(time / 60);
+      countdownTimer.innerHTML = ` ${minutes} :${seconds} `;
+      time--;
+      return;
+    }
   }
 }
 
 /*
-* Importand Information
-! Deprecated method, do not use
-? should this method be exposad in the public API
-TODO: zrobić to i tamto
-* @param myParam The parameter for this method
+  * Importand Information
+  ! Deprecated method, do not use
+  ? should this method be exposad in the public API
+  TODO: zrobić to i tamto
+  * @param myParam The parameter for this method
 
 
 
 
 
-*/
+  */

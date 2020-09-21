@@ -104,6 +104,11 @@ body {
   border-radius: 15px;
 }
 
+.todolist > div {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
 .task {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -159,7 +164,12 @@ button {
   padding: 0.3rem;
 }
 
-.play-btn {
+fa-pause-btn {
+  color: #034e03;
+}
+
+.play-btn,
+.fa-pause-btn {
   color: #034e03;
   margin-right: 10px;
 }
@@ -178,9 +188,36 @@ button {
   color: #c4c0c0;
 }
 
-.fa-trash,
+.fa-circle,
 .fa-check,
 .fa-play {
   pointer-events: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.red {
+  background-color: red;
+  color: red;
+}
+
+#taksCompleted {
+  position: absolute;
+  top: 50%;
+  top: 80%;
+}
+
+.fall {
+  -webkit-transform: translateY(8rem) rotateZ(20deg);
+          transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+.timerstart {
+  background-color: #c55d5d;
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */
