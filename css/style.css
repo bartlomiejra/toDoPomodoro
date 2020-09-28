@@ -216,8 +216,17 @@ fa-pause-btn {
   opacity: 0;
 }
 
-.timerstart {
+.timerStart {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   background-color: #c55d5d;
+  color: white;
+}
+
+.timerFinish {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-color: #313f7c;
   color: white;
 }
 /*# sourceMappingURL=style.css.map */

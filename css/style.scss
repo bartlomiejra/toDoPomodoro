@@ -199,7 +199,16 @@ fa-pause-btn {
   opacity: 0;
 }
 
-.timerstart {
+.timerStart {
+  transition: all 0.5s ease;
   background-color: rgb(197, 93, 93);
+  color: white;
+}
+
+
+
+.timerFinish {
+  transition: all 0.5s ease;
+  background-color: rgb(49, 63, 124);
   color: white;
 }

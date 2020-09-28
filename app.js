@@ -1,6 +1,7 @@
 const todoInput = document.querySelector(".todoInput");
 const todoButton = document.querySelector(".addtaskButton");
 const todoList = document.querySelector(".todolist");
+const clockTimer = document.querySelector(".clock");
 
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", btnActtion);
@@ -39,14 +40,15 @@ function addTodo(event) {
   //*Clear input lebel to
   todoInput.value = "";
 }
-//*function delating the task
+
+//*functions buttons action delate play and completted task
 function btnActtion(e) {
   const item = e.target;
   //DELATE
   if (item.classList[0] === "delete-btn") {
     const todo = item.parentElement;
     todo.classList.add("fall");
-    // todo.remove();
+    todo.remove();
   }
 
   //*complettet function
@@ -56,30 +58,50 @@ function btnActtion(e) {
     item.innerHTML = '<i class="fas fa-check-circle"></i>';
   }
 
-  //timer start function
-  if (item.classList[0] === "play-btn") {
-    item.innerHTML = '<i class="fas fa-pause-btn"></i>';
 
+
+
+
+
+  //*timer start function
+  if (item.classList[0] === "play-btn") {
+
+    item.innerHTML = '<i class="fas fa-pause"></i>';
     const todo = item.parentElement;
-    //* jak dodać klase do timera?
-    //* todo.classList.toggle("timerstart");
-    // console.log("timer start!");
-    const startingMinutes = 1;
+    clockTimer.classList.add("timerStart");
+
+
+    const startingMinutes = 0.1;
     let time = startingMinutes * 60;
     const countdownTimer = document.getElementById("countdown");
-
-    setInterval(updateCountdown, 1000);
+    const intervals = setInterval(updateCountdown, 1000);
 
     function updateCountdown() {
-      // console.log("timer start!");
-      let seconds = time % 60;
       const minutes = Math.floor(time / 60);
+      let seconds = time % 60;
+      seconds = seconds < 1 ? "0" + seconds : seconds;
       countdownTimer.innerHTML = ` ${minutes} :${seconds} `;
-      time--;
-      return;
+
+      if (minutes > 0 || seconds > 0) {
+        time--;
+      } else {
+        console.log("End countdown")
+        clearInterval(intervals);
+        clockTimer.classList.add("timerFinish");
+      }
+
+
+
+
+      // TODO 
+
+
     }
+
   }
+
 }
+
 
 /*
   * Importand Information
