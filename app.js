@@ -49,6 +49,8 @@ function btnActtion(e) {
     const todo = item.parentElement;
     todo.classList.add("fall");
     todo.remove();
+
+    // * fall doesent workr corectly
   }
 
   //*complettet function
@@ -56,52 +58,36 @@ function btnActtion(e) {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
     item.innerHTML = '<i class="fas fa-check-circle"></i>';
+
   }
-
-
-
-
 
 
   //*timer start function
   if (item.classList[0] === "play-btn") {
-
     item.innerHTML = '<i class="fas fa-pause"></i>';
     const todo = item.parentElement;
     clockTimer.classList.add("timerStart");
-
-
     const startingMinutes = 0.1;
     let time = startingMinutes * 60;
     const countdownTimer = document.getElementById("countdown");
     const intervals = setInterval(updateCountdown, 1000);
+
 
     function updateCountdown() {
       const minutes = Math.floor(time / 60);
       let seconds = time % 60;
       seconds = seconds < 1 ? "0" + seconds : seconds;
       countdownTimer.innerHTML = ` ${minutes} :${seconds} `;
-
       if (minutes > 0 || seconds > 0) {
         time--;
       } else {
-        console.log("End countdown")
+        console.log("End countdown");
         clearInterval(intervals);
         clockTimer.classList.add("timerFinish");
       }
-
-
-
-
-      // TODO 
-
-
     }
-
   }
-
 }
-
 
 /*
   * Importand Information
