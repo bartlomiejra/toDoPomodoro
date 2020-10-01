@@ -50,6 +50,8 @@ function btnActtion(e) {
     todo.classList.add("fall");
     todo.remove();
 
+
+
     // * fall doesent workr corectly
   }
 

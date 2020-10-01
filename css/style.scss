@@ -17,6 +17,7 @@ body {
 }
 
 .container {
+  border-radius: 10px;
   background-color: #191a2d;
   list-style: none;
   display: flex;
@@ -169,7 +170,8 @@ fa-pause-btn {
 // .fa-pause-btn,
 .fa-circle,
 .fa-check,
-.fa-play {
+.fa-play,
+.fa-trash {
   pointer-events: none;
 }
 
@@ -211,4 +213,26 @@ fa-pause-btn {
   transition: all 0.5s ease;
   background-color: rgb(49, 63, 124);
   color: white;
+}
+
+
+
+
+//* top table 
+.tasktable {
+  background-color: gray;
+  display: flex;
+  grid-gap: 1rem;
+  justify-content: center;
+
+
+  .stat {
+    background-color: white;
+    color: red;
+
+    p {
+      color: grey;
+
+    }
+  }
 }

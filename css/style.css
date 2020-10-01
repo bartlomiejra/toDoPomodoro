@@ -17,6 +17,7 @@ body {
 }
 
 .container {
+  border-radius: 10px;
   background-color: #191a2d;
   list-style: none;
   display: -webkit-box;
@@ -190,7 +191,8 @@ fa-pause-btn {
 
 .fa-circle,
 .fa-check,
-.fa-play {
+.fa-play,
+.fa-trash {
   pointer-events: none;
 }
 
@@ -228,5 +230,25 @@ fa-pause-btn {
   transition: all 0.5s ease;
   background-color: #313f7c;
   color: white;
+}
+
+.tasktable {
+  background-color: gray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.tasktable .stat {
+  background-color: white;
+  color: red;
+}
+
+.tasktable .stat p {
+  color: grey;
 }
 /*# sourceMappingURL=style.css.map */
