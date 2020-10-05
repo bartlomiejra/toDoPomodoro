@@ -18,7 +18,7 @@ body {
 
 .container {
   border-radius: 10px;
-  background-color: #191a2d;
+  background-color: #949494;
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -37,10 +37,7 @@ body {
 .clock,
 .addTask,
 .tasksToDo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background: black;
+  background: #141414;
   padding: 5px;
   margin: 10px;
   color: white;
@@ -56,8 +53,8 @@ body {
 }
 
 .todoInput {
-  background-color: #686a8f;
-  color: #c4c0c0;
+  background-color: #ffffff;
+  color: #b17676;
   letter-spacing: 1.2px;
   font-size: 1.1rem;
   border: 0;
@@ -90,7 +87,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 10%;
-  background-color: #3c3e57;
+  background-color: #ffffff;
   color: #727171;
   border: 0;
 }
@@ -101,13 +98,13 @@ body {
 
 .todolist {
   width: 55%;
-  background-color: black;
-  border-radius: 15px;
 }
 
 .todolist > div {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 }
 
 .task {
@@ -146,10 +143,15 @@ task {
   display: flex;
 }
 
-div {
+.divT {
+  margin-bottom: 2px;
+  border-radius: 15px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: #141414;
 }
 
 button {
@@ -160,7 +162,7 @@ button {
 .play-btn,
 .delete-btn,
 .complete-btn {
-  background-color: black;
+  background-color: #141414;
   font-size: 1.125rem;
   padding: 0.3rem;
 }
@@ -170,6 +172,7 @@ fa-pause-btn {
 }
 
 .play-btn,
+.fa-pause,
 .fa-pause-btn {
   color: #034e03;
   margin-right: 10px;
@@ -185,15 +188,8 @@ fa-pause-btn {
 
 .addtaskButton {
   font-size: 1.1rem;
-  background-color: #686a8f;
-  color: #c4c0c0;
-}
-
-.fa-circle,
-.fa-check,
-.fa-play,
-.fa-trash {
-  pointer-events: none;
+  background-color: #ffffff;
+  color: #b17676;
 }
 
 .completed {
@@ -213,9 +209,15 @@ fa-pause-btn {
 }
 
 .fall {
-  -webkit-transform: translateY(8rem) rotateZ(20deg);
-          transform: translateY(8rem) rotateZ(20deg);
+  -webkit-transform: translateX(17rem) rotateZ(1deg);
+          transform: translateX(17rem) rotateZ(1deg);
   opacity: 0;
+}
+
+.checking {
+  -webkit-transform: translateY(17rem);
+          transform: translateY(17rem);
+  opacity: 1;
 }
 
 .timerStart {
@@ -234,7 +236,7 @@ fa-pause-btn {
 
 .tasktable {
   width: 100%;
-  background-color: gray;
+  background-color: #0f0f0f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -245,8 +247,7 @@ fa-pause-btn {
 
 .tasktable .stat {
   width: 25%;
-  background-color: white;
-  color: red;
+  background-color: #0f0f0f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -257,8 +258,34 @@ fa-pause-btn {
   font-size: 20px;
 }
 
-.tasktable .stat p {
-  font-size: 16px;
-  color: grey;
+.tasktable .stat .number {
+  color: #441a1a;
+  -webkit-box-flex: 10;
+      -ms-flex: 10;
+          flex: 10;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.tasktable .stat .text {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  text-align: center;
+}
+
+.fa-circle,
+.fa-check,
+.fa-play,
+.fa-check-circle,
+.fa-trash,
+.fa-pause {
+  pointer-events: none;
+  border: 0;
+}
+
+.completTaks {
+  position: absolute;
+  top: 85%;
 }
 /*# sourceMappingURL=style.css.map */

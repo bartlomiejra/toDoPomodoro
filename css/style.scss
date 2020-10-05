@@ -6,7 +6,6 @@ html {
 body {
   background-color: black;
   color: white;
-
 }
 
 .app {
@@ -18,7 +17,7 @@ body {
 
 .container {
   border-radius: 10px;
-  background-color: #191a2d;
+  background-color: #949494;
   list-style: none;
   display: flex;
   align-items: center;
@@ -30,8 +29,7 @@ body {
 .clock,
 .addTask,
 .tasksToDo {
-  display: flex;
-  background: black;
+  background: rgb(20, 20, 20);
   padding: 5px;
   margin: 10px;
   color: white;
@@ -47,27 +45,22 @@ body {
 }
 
 .todoInput {
-  background-color: #686a8f;
-  color: rgb(196, 192, 192);
+  background-color: #ffffff;
+  color: rgb(177, 118, 118);
   letter-spacing: 1.2px;
   font-size: 1.1rem;
   border: 0;
   flex: 6;
   text-align: center;
-
-
 }
 
 .addTaskdiv {
-
   width: 45%;
   display: flex;
   justify-content: center;
-
 }
 
 .input {
-
   font-size: 1.2em;
   width: 90%;
   background-color: #3c3e57;
@@ -78,7 +71,7 @@ body {
 .addtask {
   display: flex;
   width: 10%;
-  background-color: #3c3e57;
+  background-color: #ffffff;
   color: rgb(114, 113, 113);
   border: 0;
 }
@@ -86,16 +79,13 @@ body {
 .addtask:hover {
   color: white;
 }
-
 .todolist {
   width: 55%;
-  background-color: black;
-  border-radius: 15px;
-
 }
 
-.todolist>div {
+.todolist > div {
   transition: all 0.5s ease;
+  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 }
 
 .task {
@@ -122,8 +112,12 @@ task {
   display: flex;
 }
 
-div {
+.divT {
+  margin-bottom: 2px;
+  border-radius: 15px;
+  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   display: flex;
+  background-color: #141414;
 }
 
 button {
@@ -135,18 +129,18 @@ button {
 .play-btn,
 .delete-btn,
 .complete-btn {
-  background-color: black;
+  background-color: #141414;
+
   font-size: 1.125rem;
   padding: 0.3rem;
-
 }
 
 fa-pause-btn {
   color: rgb(3, 78, 3);
-
 }
 
 .play-btn,
+.fa-pause,
 .fa-pause-btn {
   color: rgb(3, 78, 3);
   margin-right: 10px;
@@ -162,23 +156,15 @@ fa-pause-btn {
 
 .addtaskButton {
   font-size: 1.1rem;
-  background-color: #686a8f;
-  color: rgb(196, 192, 192);
+  background-color: #ffffff;
+  color: #b17676;
 }
-
 
 // .fa-pause-btn,
-.fa-circle,
-.fa-check,
-.fa-play,
-.fa-trash {
-  pointer-events: none;
-}
 
 .completed {
   text-decoration: line-through;
   opacity: 0.6;
-
 }
 
 .red {
@@ -186,19 +172,19 @@ fa-pause-btn {
   color: red;
 }
 
-
-
 #taksCompleted {
   position: absolute;
   top: 50%;
   top: 80%;
-
 }
-
-
+//animations
 .fall {
-  transform: translateY(8rem) rotateZ(20deg);
+  transform: translateX(17rem) rotateZ(1deg);
   opacity: 0;
+}
+.checking {
+  transform: translateY(17rem);
+  opacity: 1;
 }
 
 .timerStart {
@@ -207,41 +193,52 @@ fa-pause-btn {
   color: white;
 }
 
-
-
 .timerFinish {
   transition: all 0.5s ease;
   background-color: rgb(49, 63, 124);
   color: white;
 }
 
-
-
-
-//* top table 
+//* top table
 .tasktable {
   width: 100%;
-  background-color: gray;
+  background-color: rgb(15, 15, 15);
   display: flex;
   // grid-gap: 1rem;
   justify-content: center;
 
-
-
   .stat {
-
     width: 25%;
-    background-color: white;
-    color: red;
+    background-color: rgb(15, 15, 15);
     display: flex;
     flex-direction: column;
     font-size: 20px;
 
+    .number {
+      color: rgb(68, 26, 26);
+      flex: 10;
+      text-align: center;
+      font-size: 2rem;
+    }
 
-    p {
-      font-size: 16px;
-      color: grey;
-
+    .text {
+      flex: 2;
+      text-align: center;
     }
   }
+}
+
+.fa-circle,
+.fa-check,
+.fa-play,
+.fa-check-circle,
+.fa-trash,
+.fa-pause {
+  pointer-events: none;
+  border: 0;
+}
+
+.completTaks {
+  position: absolute;
+  top: 85%;
 }

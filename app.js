@@ -9,8 +9,8 @@ todoList.addEventListener("click", btnActtion);
 //* this function adding new item todo
 function addTodo(event) {
   event.preventDefault();
-  console.log("addtask");
   const task = document.createElement("div");
+  task.className = "divT";
   const newTodo = document.createElement("li");
   newTodo.innerText = todoInput.value;
   newTodo.classList.add("todo-item");
@@ -34,12 +34,26 @@ function addTodo(event) {
   startTimerButton.classList.add("play-btn");
   task.appendChild(startTimerButton);
 
+  // const EstimatedT = document.querySelector(".estimatedT")
+  // EstimatedT = ;
+
+
   //* Apend item to list ➕
   todoList.appendChild(task);
 
   //*Clear input lebel to
   todoInput.value = "";
 }
+
+
+
+
+
+
+
+
+
+
 
 //*functions buttons action delate play and completted task
 function btnActtion(e) {
@@ -48,7 +62,9 @@ function btnActtion(e) {
   if (item.classList[0] === "delete-btn") {
     const todo = item.parentElement;
     todo.classList.add("fall");
-    todo.remove();
+    todo.addEventListener('transitionend', function () {
+      todo.remove();
+    })
 
 
 
@@ -57,10 +73,20 @@ function btnActtion(e) {
 
   //*complettet function
   if (item.classList[0] === "complete-btn") {
-    const todo = item.parentElement;
-    todo.classList.toggle("completed");
-    item.innerHTML = '<i class="fas fa-check-circle"></i>';
+    const todoText = item.parentElement;
+    //if not contain class completed when: 1. add this class, and add icon complett, else delate class and add icon no-completed.
+    if (!todoText.classList.contains("completed")) {
+      console.log("dodano compleat");
+      todoText.classList.add('completed');
+      item.innerHTML = '<i class="fas fa-check-circle"></i>';
+      todoText.classList.add('animation');
 
+    } else {
+      todoText.classList.remove('completed');
+      item.innerHTML = '<i class="fas fa-circle"></i>';
+
+    }
+    return;
   }
 
 
@@ -82,13 +108,35 @@ function btnActtion(e) {
       countdownTimer.innerHTML = ` ${minutes} :${seconds} `;
       if (minutes > 0 || seconds > 0) {
         time--;
+        console.log(item);
+        if (item.classList.contains('fa-pause')) {
+          console.log("pause");
+          clearInterval(intervals);
+          intervals = -1;
+        }
       } else {
         console.log("End countdown");
         clearInterval(intervals);
         clockTimer.classList.add("timerFinish");
+        todo.classList.add("iconClock");
+        // item.innerHTML = '<i class="fas fa-clock"></i>';   - to będzie dodawać ikone zegarana koniec pomodore
       }
+
+
+
+
     }
+
+
+
+
   }
+
+
+
+
+
+
 }
 
 /*
@@ -101,5 +149,6 @@ function btnActtion(e) {
 
 
 
+  
 
   */
