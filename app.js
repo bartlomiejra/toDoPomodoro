@@ -14,7 +14,16 @@ function addTodo(event) {
   const newTodo = document.createElement("li");
   newTodo.innerText = todoInput.value;
   newTodo.classList.add("todo-item");
+  const item = {
+    text: todoInput.value,
+    done: false
+  };
   task.appendChild(newTodo);
+  console.log(item);
+  // populateList(items, itemsList);
+
+  // localStorage.setItem('items', items);
+  // this.reset();
 
   //* Adding Completed button to new item task
   const completedButton = document.createElement("button");
@@ -145,10 +154,4 @@ function btnActtion(e) {
   ? should this method be exposad in the public API
   TODO: zrobić to i tamto
   * @param myParam The parameter for this method
-
-
-
-
-  
-
-  */
+*/

@@ -1,3 +1,9 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
 html {
   font-size: 100%;
   font-family: "Noto Sans JP", sans-serif;
@@ -18,7 +24,7 @@ body {
 
 .container {
   border-radius: 10px;
-  background-color: #949494;
+  background-color: #7745458c;
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -284,8 +290,16 @@ fa-pause-btn {
   border: 0;
 }
 
-.completTaks {
+.completedTasks {
   position: absolute;
   top: 85%;
+  display: none;
+}
+
+.fa-clock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: left;
 }
 /*# sourceMappingURL=style.css.map */
