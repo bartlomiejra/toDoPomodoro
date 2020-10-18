@@ -5,7 +5,11 @@ const clockTimer = document.querySelector(".clock");
 
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", btnActtion);
+const todos = JSON.parse(localStorage.getItem('items')) || [];
 
+
+//*TODO Rebuind addToDO add new function to create structur of task element like button etc.
+//https://www.youtube.com/watch?v=YL1F4dCUlLc 
 //* this function adding new item todo
 function addTodo(event) {
   event.preventDefault();
@@ -18,6 +22,23 @@ function addTodo(event) {
     text: todoInput.value,
     done: false
   };
+  todos.push(item);
+  Lists(todos,todoList );
+
+
+function Lists(lines = [], objlines ){
+  lines.innerHTML = lines.map((todo, i) => {
+return `
+<li class="todo-items>ass<li>
+`;
+  });
+}
+
+
+
+  //* converting object to stringa after add it to a localstore 
+  localStorage.setItem('Items',JSON.stringify(todos));
+
   task.appendChild(newTodo);
   console.log(item);
   // populateList(items, itemsList);
