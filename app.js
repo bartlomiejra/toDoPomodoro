@@ -2,62 +2,48 @@ const todoInput = document.querySelector(".todoInput");
 const todoButton = document.querySelector(".addtaskButton");
 const todoList = document.querySelector(".todolist");
 const clockTimer = document.querySelector(".clock");
+const task = document.querySelector("divT");
+const newTodo = document.querySelector(".todo-item"); 
 
 todoList.addEventListener("click", btnActtion);
-const todos = JSON.parse(localStorage.getItem('items')) || [];
+const todos = JSON.parse(localStorage.getItem('Items')) || [];
 
 
 //*TODO Rebuind addToDO add new function to create structur of task element like button etc.
 //* this function adding new item todo
 function addTodo(event) {
   event.preventDefault();
-  const task = document.createElement("div");
-  task.className = "divT";
-  const newTodo = document.createElement("li"); 
-  newTodo.innerText = todoInput.value;
-  newTodo.classList.add("todo-item");
+  console.log(this);
+const text = this.querySelector('[class=todoInput]');
   const item = {
     text: todoInput.value,
     done: false
   };
   todos.push(item);
   lists(todos, todoList);
-  // this.reset();
-
-
-  //* converting object to stringa after add it to a localstore 
   localStorage.setItem('Items',JSON.stringify(todos));
-  task.appendChild(newTodo);
   console.log(item);
-
-
-  //* Adding Completed button to new item task
-  // const completedButton = document.createElement("complete-btn");
-  // completedButton.innerHTML = '<i class="fas fa-circle"></i>';
-  completedButton.classList.add("complete-btn");
-  task.appendChild(completedButton);
-  //* Add Delate button to new item task
-  const delatedButton = document.createElement("button");
-  // delatedButton.innerHTML = '<i class="fas fa-trash"></i>';
-  delatedButton.classList.add("delete-btn");
-  task.appendChild(delatedButton);
-  //* Add startTimer button
-  const startTimerButton = document.createElement("button");
-  // startTimerButton.innerHTML = '<i class="fas fa-play"><i>';
-  startTimerButton.classList.add("play-btn");
-  task.appendChild(startTimerButton);
-  //* Apend item to list ➕
-  todoList.appendChild(task);
-  //*Clear input lebel to
   todoInput.value = "";
 }
 
 function lists(todolist = [], objlines ){
   objlines.innerHTML = todolist.map((todo, i) => {
-return `<div class="divT">
-<li class="todo-item">${todo.text}</li>
-<button class="complete-btn"> <i class="fas fa-circle" aria-hidden="true"></i></button>
-<button class="delete-btn">   <i class="fas fa-trash" aria-hidden="true"></i>
+return `<div class="divT" >
+<li  class="todo-item" id="item${i}" 
+>${todo.text} 
+
+</li>
+<button class="complete-btn" data-index=${i} id="item${i}" >
+${todo.done  ?  
+  '<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>'
+  : 
+  '<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>'
+ } 
+
+ 
+ 
+</button>
+<button class="delete-btn">   <i class="fas fa-trash" aria-hidden="true"> </i>
 </button>
 <button class="play-btn"> <i class="fas fa-play" aria-hidden="true"></i></button>
 </div>
@@ -70,14 +56,6 @@ todoButton.addEventListener("click", addTodo);
  lists(todos, todoList);
 
 
-
-
-
-
-
-
-
-
 //*functions buttons action delate play and completted task
 function btnActtion(e) {
   const item = e.target;
@@ -87,28 +65,66 @@ function btnActtion(e) {
     todo.classList.add("fall");
     todo.addEventListener('transitionend', function () {
       todo.remove();
+     
+      localStorage.removeItem(item);
     })
-
-
-
+    // localStorage.setItem('items',JSON.stringify(items));
+    // populateList([], itemsList)
+  
+    
     // * fall doesent workr corectly
   }
 
-  //*complettet function
+  //*completed function
   if (item.classList[0] === "complete-btn") {
     const todoText = item.parentElement;
-    //if not contain class completed when: 1. add this class, and add icon complett, else delate class and add icon no-completed.
+    const el = e.target;
+    console.log(e.target);
+    const index = el.dataset.index;
+    
     if (!todoText.classList.contains("completed")) {
-      console.log("dodano compleat");
+      todos[index].done= true;
+      localStorage.setItem('Items',JSON.stringify(todos));
+      // lists(todos, todoList);
       todoText.classList.add('completed');
       item.innerHTML = '<i class="fas fa-check-circle"></i>';
-      todoText.classList.add('animation');
+      // todoText.classList.add('animation');
     } else {
       todoText.classList.remove('completed');
       item.innerHTML = '<i class="fas fa-circle"></i>';
+      todos[index].done= false;
+
+      localStorage.setItem('Items',JSON.stringify(todos));
+    
+
+      // jak zamienie na false to nie da się później wyłączyć
     }
+
     return;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   //*timer start function
@@ -159,6 +175,8 @@ function btnActtion(e) {
 
 
 }
+//* funkcja lists wczytująca taski z localstore
+lists(todos, todoList);
 
 
 
