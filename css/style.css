@@ -264,7 +264,7 @@ fa-pause-btn {
   font-size: 20px;
 }
 
-.tasktable .stat .number {
+.tasktable .stat number {
   color: #441a1a;
   -webkit-box-flex: 10;
       -ms-flex: 10;

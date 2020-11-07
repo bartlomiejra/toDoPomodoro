@@ -3,7 +3,10 @@ const todoButton = document.querySelector(".addtaskButton");
 const todoList = document.querySelector(".todolist");
 const clockTimer = document.querySelector(".clock");
 const task = document.querySelector("divT");
-const newTodo = document.querySelector(".todo-item"); 
+const newTodo = document.querySelector(".todo-item");
+const taksT = document.querySelector(".taksT");
+const elapseT = document.querySelector(".elapseT");
+const completeTasks = document.querySelector(".completeTasks");
 
 todoList.addEventListener("click", btnActtion);
 const todos = JSON.parse(localStorage.getItem('Items')) || [];
@@ -14,34 +17,26 @@ const todos = JSON.parse(localStorage.getItem('Items')) || [];
 function addTodo(event) {
   event.preventDefault();
   console.log(this);
-const text = this.querySelector('[class=todoInput]');
+  const text = this.querySelector('[class=todoInput]');
   const item = {
     text: todoInput.value,
     done: false
   };
   todos.push(item);
   lists(todos, todoList);
-  localStorage.setItem('Items',JSON.stringify(todos));
+  localStorage.setItem('Items', JSON.stringify(todos));
   console.log(item);
   todoInput.value = "";
 }
 
-function lists(todolist = [], objlines ){
-  objlines.innerHTML = todolist.map((todo, i) => {
-return `<div class="divT" >
-<li  class="todo-item" id="item${i}" 
->${todo.text} 
 
+function lists(todolist = [], objlines) {
+  objlines.innerHTML = todolist.map((todo, i) => {
+    return `<div class="divT" >
+<li  class="todo-item" id="item${i}" >${todo.text} 
 </li>
 <button class="complete-btn" data-index=${i} id="item${i}" >
-${todo.done  ?  
-  '<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>'
-  : 
-  '<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>'
- } 
-
- 
- 
+${todo.done  ?  '<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>': '<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>'} 
 </button>
 <button class="delete-btn">   <i class="fas fa-trash" aria-hidden="true"> </i>
 </button>
@@ -53,7 +48,7 @@ ${todo.done  ?
 
 
 todoButton.addEventListener("click", addTodo);
- lists(todos, todoList);
+lists(todos, todoList);
 
 
 //*functions buttons action delate play and completted task
@@ -65,13 +60,13 @@ function btnActtion(e) {
     todo.classList.add("fall");
     todo.addEventListener('transitionend', function () {
       todo.remove();
-     
+      //*tutaj powinno zachodzić usunięcie elementu
       localStorage.removeItem(item);
     })
     // localStorage.setItem('items',JSON.stringify(items));
     // populateList([], itemsList)
-  
-    
+
+
     // * fall doesent workr corectly
   }
 
@@ -81,10 +76,9 @@ function btnActtion(e) {
     const el = e.target;
     console.log(e.target);
     const index = el.dataset.index;
-    
     if (!todoText.classList.contains("completed")) {
-      todos[index].done= true;
-      localStorage.setItem('Items',JSON.stringify(todos));
+      todos[index].done = true;
+      localStorage.setItem('Items', JSON.stringify(todos));
       // lists(todos, todoList);
       todoText.classList.add('completed');
       item.innerHTML = '<i class="fas fa-check-circle"></i>';
@@ -92,14 +86,10 @@ function btnActtion(e) {
     } else {
       todoText.classList.remove('completed');
       item.innerHTML = '<i class="fas fa-circle"></i>';
-      todos[index].done= false;
+      todos[index].done = false;
 
-      localStorage.setItem('Items',JSON.stringify(todos));
-    
-
-      // jak zamienie na false to nie da się później wyłączyć
+      localStorage.setItem('Items', JSON.stringify(todos));
     }
-
     return;
   }
 
@@ -163,9 +153,6 @@ function btnActtion(e) {
 
 
     }
-
-
-
 
   }
 
