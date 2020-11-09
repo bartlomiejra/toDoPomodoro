@@ -44,7 +44,10 @@ ${todo.done  ?  '<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"
 </div>
 `;
   }).join('');
+  
 }
+
+
 
 
 todoButton.addEventListener("click", addTodo);
@@ -96,7 +99,7 @@ function btnActtion(e) {
 
 
 
-
+print"23";
 
 
 
