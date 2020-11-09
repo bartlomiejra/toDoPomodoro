@@ -4,12 +4,11 @@ const todoList = document.querySelector(".todolist");
 const clockTimer = document.querySelector(".clock");
 const task = document.querySelector("divT");
 const newTodo = document.querySelector(".todo-item");
-const taksT = document.querySelector(".taksT");
-const elapseT = document.querySelector(".elapseT");
-const completeTasks = document.querySelector(".completeTasks");
+
 
 todoList.addEventListener("click", btnActtion);
 const todos = JSON.parse(localStorage.getItem('Items')) || [];
+
 
 
 //*TODO Rebuind addToDO add new function to create structur of task element like button etc.
@@ -25,7 +24,7 @@ function addTodo(event) {
   todos.push(item);
   lists(todos, todoList);
   localStorage.setItem('Items', JSON.stringify(todos));
-  console.log(item);
+  // console.log(item);
   todoInput.value = "";
 }
 
@@ -44,8 +43,54 @@ ${todo.done  ?  '<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"
 </div>
 `;
   }).join('');
-  
+
 }
+
+
+
+//* Wyliczanie statystyk czasu i ukończonych tasków
+let toBeCompleted = 0;
+let countCompleted = 0;
+for (let i = 0; i < todos.length; ++i) {
+  if (todos[i]["done"] == true) {
+  
+    // todoText.classList.add('completed');
+
+    countCompleted++;
+  } else {
+    toBeCompleted++;
+  }
+}
+
+document.getElementById("completedTasks").innerHTML = countCompleted;
+document.getElementById("taskstobe").innerHTML = toBeCompleted;
+let estimated = (toBeCompleted * 25);
+var hours = Math.floor(estimated / 60);
+var minutes = estimated % 60;
+estimatedHM = hours + "." + minutes;
+// console.log(estimatedHM);
+document.getElementById("estimated").innerHTML = estimatedHM;
+let elapsed = (countCompleted * 25);
+var hours = Math.floor(elapsed / 60);
+var minutes = elapsed % 60;
+elapsedHM = hours + "." + minutes;
+// console.log('elapsed :>> ', elapsedHM);
+document.getElementById("elapse").innerHTML = elapsedHM;
+//* creating item class to store stats, i want to add this numbert to localstore. 
+const statistics = JSON.parse(localStorage.getItem('STat')) || [];
+
+const stat={
+  estimated: estimatedHM,
+  comp:  toBeCompleted,
+  elapsed: elapsed,
+  complete: countCompleted,
+}
+statistics.push(stat);
+localStorage.setItem('STat', JSON.stringify(statistics));
+
+
+
+
 
 
 
@@ -77,7 +122,7 @@ function btnActtion(e) {
   if (item.classList[0] === "complete-btn") {
     const todoText = item.parentElement;
     const el = e.target;
-    console.log(e.target);
+    // console.log(e.target);
     const index = el.dataset.index;
     if (!todoText.classList.contains("completed")) {
       todos[index].done = true;
@@ -99,7 +144,6 @@ function btnActtion(e) {
 
 
 
-print"23";
 
 
 
@@ -161,14 +205,14 @@ print"23";
 
 
 
-
+ 
 
 
 }
+
+
 //* funkcja lists wczytująca taski z localstore
 lists(todos, todoList);
-
-
 
 /*
   * Importand Information
