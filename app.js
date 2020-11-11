@@ -31,7 +31,7 @@ function addTodo(event) {
 
 function lists(todolist = [], objlines) {
   objlines.innerHTML = todolist.map((todo, i) => {
-    return `<div class="divT" >
+    return `${todo.done  ? '<div class="divT completed">' : '<div class="divT " >'}
 <li  class="todo-item" id="item${i}" >${todo.text} 
 </li>
 <button class="complete-btn" data-index=${i} id="item${i}" >
