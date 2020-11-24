@@ -1,2 +1,2 @@
 # toDoPomodoro
-This is a simple to do list app pomodoro implements pomodoro time management technique. 
+ This is a simple todolist app  implements pomodoro time management technique.  :tomato:

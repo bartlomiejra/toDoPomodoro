@@ -58,7 +58,7 @@ for (let i = 0; i < todos.length; ++i) {
 
     // todoText.classList.add('completed');
 
-    countCompleted++;
+ countCompleted++;  
   } else {
     toBeCompleted++;
   }
@@ -80,6 +80,9 @@ document.getElementById("elapse").innerHTML = elapsedHM;
 //* creating item class to store stats, i want to add this numbert to localstore. 
 const statistics = JSON.parse(localStorage.getItem('STat')) || [];
 console.log('statistics :>> ', statistics);
+
+
+
 const stat = {
   estimated: estimatedHM,
   comp: toBeCompleted,
