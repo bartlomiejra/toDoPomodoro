@@ -45,20 +45,19 @@ ${todo.done  ?  '<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"
 </div>
 `;
   }).join('');
-
+  statTask();
 }
 
 
 
+function statTask(){  
 //* Wyliczanie statystyk czasu i ukończonych tasków
 let toBeCompleted = 0;
 let countCompleted = 0;
 for (let i = 0; i < todos.length; ++i) {
   if (todos[i]["done"] == true) {
-
     // todoText.classList.add('completed');
-
- countCompleted++;  
+    countCompleted++;  
   } else {
     toBeCompleted++;
   }
@@ -79,7 +78,6 @@ elapsedHM = hours + "." + minutes;
 document.getElementById("elapse").innerHTML = elapsedHM;
 //* creating item class to store stats, i want to add this numbert to localstore. 
 const statistics = JSON.parse(localStorage.getItem('STat')) || [];
-console.log('statistics :>> ', statistics);
 
 
 
@@ -89,10 +87,38 @@ const stat = {
   elapsed: elapsed,
   complete: countCompleted,
 }
-statistics.push(stat);
 
-localStorage.setItem('STat', JSON.stringify(statistics));
 
+statistics.splice(0, 5 );
+  statistics.push(stat);
+  localStorage.setItem('STat', JSON.stringify(statistics));
+
+// }
+
+  
+//   localStorage.removeItem("STat");
+//   console.log("jest");
+// } else {
+//   console.log("nie ma");
+  
+  
+// }
+// if (localStorage.getItem("stat") == null) {
+//   console.log('brak :>> ');
+  
+//   // statistics.push(stat);
+// }else{
+
+  // localStorage.removeItem('STat');
+//   localStorage.key(STat);
+//   // localStorage.removeItem(stat );
+//   // console.log('statistics :>> ', stat);
+
+// }
+
+
+
+}
 
 
 
@@ -106,13 +132,14 @@ lists(todos, todoList);
 
 //*functions buttons action delate play and completted task
 function btnActtion(e) {
+  statTask();
   const item = e.target;
   //DELATE
   if (item.classList[0] === "delete-btn") {
     const todo = item.parentElement;
     todo.classList.add("fall");
     todo.addEventListener('transitionend', function () {
-      localStorage.removeItem(todo);
+      localStorage.removeItem("text");
       todo.remove();
       // console.log('item :>> ', item);
       console.log('todo :>> ', todo);
@@ -129,7 +156,7 @@ function btnActtion(e) {
 
   //*completed function
   if (item.classList[0] === "complete-btn") {
-    
+     
     const todoText = item.parentElement;
     const el = e.target;
     const index = el.dataset.index;
@@ -145,6 +172,7 @@ function btnActtion(e) {
       todos[index].done = false;
       localStorage.setItem('Items', JSON.stringify(todos));
     }
+    statTask();
     return;
   }
 
