@@ -32,8 +32,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-width: 300px;
-  min-height: 600px;
+  width: 600px;
+  height: 600px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -302,15 +302,31 @@ fa-pause-btn {
   position: left;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 450px) {
   body {
-    background-color: green;
+    background-color: #1a1c2e 179, 125, 125;
     display: -ms-grid;
     display: grid;
     place-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 4vw;
   }
   .app {
-    top: 50%;
+    background-color: black;
+  }
+  .container {
+    width: 100vw;
+    height: 100vh;
+  }
+  .todolist {
+    width: 90%;
+  }
+  .divT {
+    width: 90%;
+  }
+  .number {
+    font-size: 1.5rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
