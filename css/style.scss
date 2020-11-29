@@ -16,9 +16,10 @@ body {
 
 .app {
   position: absolute;
-  top: 10%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  // transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .container {
@@ -27,8 +28,8 @@ body {
   list-style: none;
   display: flex;
   align-items: center;
-  width: 800px;
-  height: 600px;
+  min-width: 300px;
+  min-height: 600px;
   flex-direction: column;
 }
 
@@ -223,7 +224,7 @@ fa-pause-btn {
     background-color: rgb(15, 15, 15);
     display: flex;
     flex-direction: column;
-    font-size: 20px;
+    // font-size: 20px;
 
     .number {
       color: rgb(68, 26, 26);
@@ -258,4 +259,19 @@ fa-pause-btn {
 .fa-clock {
   display: flex;
   position: left;
+}
+
+
+@media screen and (max-width: 350px){
+body{
+  background-color: green;
+  display: grid;
+  place-items: center;
+  
+}
+.app{
+  top: 50%;
+
+}
+
 }
