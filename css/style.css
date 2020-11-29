@@ -313,6 +313,9 @@ fa-pause-btn {
     font-size: 4vw;
   }
   .app {
+    margin-top: 50px;
+    width: 100vw;
+    height: 100vh;
     background-color: black;
   }
   .container {
