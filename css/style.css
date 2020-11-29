@@ -325,8 +325,11 @@ fa-pause-btn {
   .divT {
     width: 90%;
   }
-  .number {
-    font-size: 1.5rem;
+  .tasktable .stat .number {
+    font-size: 2rem;
+  }
+  .addTaskdiv {
+    height: 30px;
   }
 }
 /*# sourceMappingURL=style.css.map */
