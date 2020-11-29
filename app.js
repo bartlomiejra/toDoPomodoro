@@ -139,11 +139,18 @@ function btnActtion(e) {
     const todo = item.parentElement;
     todo.classList.add("fall");
     todo.addEventListener('transitionend', function () {
-      localStorage.removeItem('item');
-      todo.remove();
+      // localStorage.removeItem('item');
       
+      for (let i = 0; i < todos.length; ++i) {
+        if (todos[i]["done"] == true) {
+          console.log(todos[i] );
+        }}
+        localStorage.removeItem(todos[1]);               
+
+
       // console.log('item :>> ', item);
-      console.log('todo :>> ', todo);
+      // console.log('todo :>> ', todo);
+
       const statistics = JSON.parse(localStorage.getItem('STat')) || [];
       //*tutaj powinno zachodzić usunięcie elementu
     })
