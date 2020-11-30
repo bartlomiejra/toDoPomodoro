@@ -68,19 +68,17 @@ document.getElementById("taskstobe").innerHTML = toBeCompleted;
 let estimated = (toBeCompleted * 25);
 var hours = Math.floor(estimated / 60);
 var minutes = estimated % 60;
-estimatedHM = hours + "." + minutes;
+estimatedHM =  `${hours}.${minutes < 10 ? '0' : '' }${minutes}`;
 document.getElementById("estimated").innerHTML = estimatedHM;
 let elapsed = (countCompleted * 25);
 var hours = Math.floor(elapsed / 60);
 var minutes = elapsed % 60;
-elapsedHM = hours + "." + minutes;
+// elapsedHM = hours + "." + minutes;
+elapsedHM = `${hours}.${minutes < 10 ? '0' : '' }${minutes}`;
 // console.log('elapsed :>> ', elapsedHM);
 document.getElementById("elapse").innerHTML = elapsedHM;
 //* creating item class to store stats, i want to add this numbert to localstore. 
 const statistics = JSON.parse(localStorage.getItem('STat')) || [];
-
-
-
 const stat = {
   estimated: estimatedHM,
   comp: toBeCompleted,
@@ -88,36 +86,9 @@ const stat = {
   complete: countCompleted,
 }
 
-
 statistics.splice(0, 5 );
   statistics.push(stat);
   localStorage.setItem('STat', JSON.stringify(statistics));
-
-// }
-
-  
-//   localStorage.removeItem("STat");
-//   console.log("jest");
-// } else {
-//   console.log("nie ma");
-  
-  
-// }
-// if (localStorage.getItem("stat") == null) {
-//   console.log('brak :>> ');
-  
-//   // statistics.push(stat);
-// }else{
-
-  // localStorage.removeItem('STat');
-//   localStorage.key(STat);
-//   // localStorage.removeItem(stat );
-//   // console.log('statistics :>> ', stat);
-
-// }
-
-
-
 }
 
 
