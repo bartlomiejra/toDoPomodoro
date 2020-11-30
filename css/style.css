@@ -68,6 +68,7 @@ body {
       -ms-flex: 6;
           flex: 6;
   text-align: center;
+  border-radius: 0px 8px 8px 0px;
 }
 
 .addTaskdiv {
@@ -87,6 +88,10 @@ body {
   background-color: #3c3e57;
   color: #727171;
   border: 0;
+}
+
+.todo-item {
+  text-align: center;
 }
 
 .addtask {
@@ -151,12 +156,19 @@ task {
 }
 
 .divT {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 5px;
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background-color: #141414;
 }
@@ -198,6 +210,7 @@ fa-pause-btn {
   font-size: 1.1rem;
   background-color: #ffffff;
   color: #b17676;
+  border-radius: 8px 0px 0px 8px;
 }
 
 .completed {
@@ -337,7 +350,7 @@ fa-pause-btn {
     margin-left: 0px;
   }
   .divT {
-    height: 40px;
+    height: 50px;
   }
 }
 /*# sourceMappingURL=style.css.map */

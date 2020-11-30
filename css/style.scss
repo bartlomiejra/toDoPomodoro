@@ -59,6 +59,8 @@ body {
   border: 0;
   flex: 6;
   text-align: center;
+  border-radius: 0px 8px 8px 0px;
+
 }
 
 .addTaskdiv {
@@ -76,7 +78,10 @@ body {
   color: rgb(114, 113, 113);
   border: 0;
 }
+.todo-item {
+  text-align: center;
 
+}
 .addtask {
   display: flex;
   width: 10%;
@@ -122,6 +127,9 @@ task {
 }
 
 .divT {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 5px;
   border-radius: 8px;
 
@@ -169,6 +177,7 @@ fa-pause-btn {
   font-size: 1.1rem;
   background-color: #ffffff;
   color: #b17676;
+  border-radius: 8px 0px 0px 8px;
 }
 
 // .fa-pause-btn,
@@ -308,11 +317,12 @@ padding-inline-start: 0px;
 height: 40px;
 margin-left: 0px;
 
+
 }
 
 .divT{
-height: 40px;
-// width: 95%;
+height: 50px;
+
 }
 
 
