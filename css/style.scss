@@ -55,13 +55,15 @@ body {
   background-color: #ffffff;
   color: rgb(177, 118, 118);
   letter-spacing: 1.2px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   border: 0;
   flex: 6;
   text-align: center;
 }
 
 .addTaskdiv {
+  margin-left: 40px;
+
   width: 45%;
   display: flex;
   justify-content: center;
@@ -120,8 +122,9 @@ task {
 }
 
 .divT {
-  margin-bottom: 2px;
-  border-radius: 15px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+
   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   display: flex;
   background-color: #141414;
@@ -162,6 +165,7 @@ fa-pause-btn {
 }
 
 .addtaskButton {
+  padding: 5px 15px 5px 15px;
   font-size: 1.1rem;
   background-color: #ffffff;
   color: #b17676;
@@ -289,20 +293,28 @@ body{
 
 .todolist{
 width: 90%;
+padding-inline-start: 0px;
+
 }
 
 
-.divT{
-  width: 90%;
-}
+
 
 .tasktable .stat .number {
   font-size: 2rem;
 }
 
 .addTaskdiv{
-height: 30px;
+height: 40px;
+margin-left: 0px;
+
 }
+
+.divT{
+height: 40px;
+// width: 95%;
+}
+
 
 
 }
