@@ -191,11 +191,14 @@ function btnActtion(e) {
   // console.log(btnplay);
   console.log('item :>> ', item);
   console.log('item children :>> ', item.value);
+
+
+
+
+
+
   if (item.classList[0] === "play-btn") {
     // clearInterval(updateCountdown);
-  
-
-
     // if(item.listChildren == (aax)){
     //   console.log("ten element to gej :))");
     // }else{
