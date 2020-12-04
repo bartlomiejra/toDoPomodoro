@@ -10,19 +10,22 @@ html {
 }
 
 body {
-  background-color: black;
+  background-color: #7745458c;
   color: white;
 }
 
+header {
+  height: 50px;
+}
+
 .app {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
 }
 
 .container {
+  height: calc(100vh - 50px);
   border-radius: 10px;
   background-color: #7745458c;
   list-style: none;
@@ -32,8 +35,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 600px;
-  height: 600px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
