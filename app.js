@@ -103,6 +103,8 @@ lists(todos, todoList);
 
 //*functions buttons action delate play and completted task
 function btnActtion(e) {
+
+
   statTask();
   const item = e.target;
   //DELATE
@@ -111,31 +113,35 @@ function btnActtion(e) {
     todo.classList.add("fall");
     todo.addEventListener('transitionend', function () {
       // localStorage.removeItem('item');
-      
+      // todos[index].removeItem();
+
       for (let i = 0; i < todos.length; ++i) {
         if (todos[i]["done"] == true) {
           console.log(todos[i] );
         }}
+        localStorage.setItem('Items', JSON.stringify(todos));
         localStorage.removeItem(todos[1]);               
 
 
       // console.log('item :>> ', item);
       // console.log('todo :>> ', todo);
 
-      const statistics = JSON.parse(localStorage.getItem('STat')) || [];
+      // const statistics = JSON.parse(localStorage.getItem('STat')) || [];
       //*tutaj powinno zachodzić usunięcie elementu
     })
-  
-
     // * fall doesent workr corectly
   }
   // localStorage.setItem('items',JSON.stringify(items));
   // populateList([], itemsList)
 
 
+
+
+
+
+
   //*completed function
   if (item.classList[0] === "complete-btn") {
-     
     const todoText = item.parentElement;
     const el = e.target;
     const index = el.dataset.index;
@@ -229,7 +235,7 @@ function btnActtion(e) {
         clearInterval(intervals);
         clockTimer.classList.add("timerFinish");
         clockTimer.classList.remove("timerStart");
-        console.log('itemek :>> ', item);
+        // console.log('itemek :>> ', item);
         item.innerHTML = '<i class="fas fa-play"></i>';        
         
         // todo.classList.add("iconClock");

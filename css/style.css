@@ -20,12 +20,11 @@ header {
 
 .app {
   background-color: black;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 .container {
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
   border-radius: 10px;
   background-color: #7745458c;
   list-style: none;
@@ -157,6 +156,7 @@ task {
 }
 
 .divT {
+  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -225,9 +225,11 @@ fa-pause-btn {
 }
 
 #taksCompleted {
-  position: absolute;
-  top: 50%;
+  position: relative;
   top: 80%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
 }
 
 .fall {
@@ -318,40 +320,20 @@ fa-pause-btn {
   position: left;
 }
 
-@media screen and (max-width: 450px) {
-  body {
-    background-color: #1a1c2e 179, 125, 125;
-    display: -ms-grid;
-    display: grid;
-    place-items: center;
-    height: 100%;
-    width: 100%;
-    font-size: 4vw;
-  }
-  .app {
-    margin-top: 50px;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-  }
-  .container {
-    width: 100vw;
-    height: 100vh;
-  }
+@media screen and (max-width: 650px) {
   .todolist {
     width: 90%;
     -webkit-padding-start: 0px;
             padding-inline-start: 0px;
   }
-  .tasktable .stat .number {
-    font-size: 2rem;
+  .stat {
+    font-size: 3vw;
+  }
+  .stat .number {
+    font-size: 5vw;
   }
   .addTaskdiv {
-    height: 40px;
     margin-left: 0px;
-  }
-  .divT {
-    height: 50px;
   }
 }
 /*# sourceMappingURL=style.css.map */
