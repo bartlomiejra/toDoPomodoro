@@ -290,7 +290,10 @@ fa-pause-btn {
 
 @media screen and (max-width: 650px){
 
-  
+  header{
+    height: 25px;
+    font-size: 10px;
+  }
   .todolist{
     width: 90%;
     padding-inline-start: 0px; 
@@ -300,14 +303,12 @@ fa-pause-btn {
   font-size: 3vw;
 
 
-  .number{
-    font-size: 5vw;
-  
-  }
+ 
 
   
   
 }
+
 
 .addTaskdiv{
   margin-left: 0px; 

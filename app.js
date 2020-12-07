@@ -18,7 +18,7 @@ const todos = JSON.parse(localStorage.getItem('Items')) || [];
 //* this function adding new item todo
 function addTodo(event) {
   event.preventDefault();
-  // console.log(this);
+
   const text = this.querySelector('[class=todoInput]');
   const item = {
     text: todoInput.value,
@@ -39,7 +39,7 @@ function lists(todolist = [], objlines) {
 <button class="complete-btn" data-index=${i} id="item${i}" >
 ${todo.done  ?  '<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>': '<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>'} 
 </button>
-<button class="delete-btn">   <i class="fas fa-trash" aria-hidden="true"> </i>
+<button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-trash" aria-hidden="true"> </i>
 </button>
 <button class="play-btn"> <i class="fas fa-play" aria-hidden="true"></i></button>
 </div>
@@ -106,33 +106,27 @@ function btnActtion(e) {
 
 
   statTask();
-  const item = e.target;
   //DELATE
+  const item = e.target;
+ 
+
+ 
   if (item.classList[0] === "delete-btn") {
+ 
+    const index = e.target.dataset.index;
     const todo = item.parentElement;
     todo.classList.add("fall");
     todo.addEventListener('transitionend', function () {
-      // localStorage.removeItem('item');
-      // todos[index].removeItem();
+ 
+      todos.splice(index, 1);
+      todo.remove();
+      })
+      localStorage.setItem('Items', JSON.stringify(todos));
+      statTask();
+      return;
 
-      for (let i = 0; i < todos.length; ++i) {
-        if (todos[i]["done"] == true) {
-          console.log(todos[i] );
-        }}
-        localStorage.setItem('Items', JSON.stringify(todos));
-        localStorage.removeItem(todos[1]);               
+    }
 
-
-      // console.log('item :>> ', item);
-      // console.log('todo :>> ', todo);
-
-      // const statistics = JSON.parse(localStorage.getItem('STat')) || [];
-      //*tutaj powinno zachodzić usunięcie elementu
-    })
-    // * fall doesent workr corectly
-  }
-  // localStorage.setItem('items',JSON.stringify(items));
-  // populateList([], itemsList)
 
 
 
@@ -144,7 +138,9 @@ function btnActtion(e) {
   if (item.classList[0] === "complete-btn") {
     const todoText = item.parentElement;
     const el = e.target;
+   
     const index = el.dataset.index;
+  
     if (!todoText.classList.contains("completed")) {
       todos[index].done = true;
       localStorage.setItem('Items', JSON.stringify(todos));
@@ -204,19 +200,14 @@ function btnActtion(e) {
 
 
   if (item.classList[0] === "play-btn") {
-    // clearInterval(updateCountdown);
-    // if(item.listChildren == (aax)){
-    //   console.log("ten element to gej :))");
-    // }else{
-    //   console.log("nie gej jest to")
-    // };
     item.innerHTML = '<i class="fas fa-pause"></i>';
     clockTimer.classList.add("timerStart");
     const countdownTimer = document.getElementById("countdown");
     const intervals = setInterval(updateCountdown, 1000);
     
+
+
     function updateCountdown() {
-     
       clockTimer.classList.remove("timerFinish");
       const minutes = Math.floor(time / 60);
       let seconds = time % 60;

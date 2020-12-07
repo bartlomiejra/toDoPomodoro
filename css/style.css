@@ -321,6 +321,10 @@ fa-pause-btn {
 }
 
 @media screen and (max-width: 650px) {
+  header {
+    height: 25px;
+    font-size: 10px;
+  }
   .todolist {
     width: 90%;
     -webkit-padding-start: 0px;
@@ -328,9 +332,6 @@ fa-pause-btn {
   }
   .stat {
     font-size: 3vw;
-  }
-  .stat .number {
-    font-size: 5vw;
   }
   .addTaskdiv {
     margin-left: 0px;
