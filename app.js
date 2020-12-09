@@ -56,7 +56,7 @@ let toBeCompleted = 0;
 let countCompleted = 0;
 for (let i = 0; i < todos.length; ++i) {
   if (todos[i]["done"] == true) {
-    // todoText.classList.add('completed');
+  
     countCompleted++;  
   } else {
     toBeCompleted++;
@@ -65,17 +65,16 @@ for (let i = 0; i < todos.length; ++i) {
 
 document.getElementById("completedTasks").innerHTML = countCompleted;
 document.getElementById("taskstobe").innerHTML = toBeCompleted;
+
 let estimated = (toBeCompleted * 25);
-var hours = Math.floor(estimated / 60);
+const hours = Math.floor(estimated / 60);
 var minutes = estimated % 60;
 estimatedHM =  `${hours}.${minutes < 10 ? '0' : '' }${minutes}`;
 document.getElementById("estimated").innerHTML = estimatedHM;
 let elapsed = (countCompleted * 25);
-var hours = Math.floor(elapsed / 60);
+vconsthours = Math.floor(elapsed / 60);
 var minutes = elapsed % 60;
-// elapsedHM = hours + "." + minutes;
 elapsedHM = `${hours}.${minutes < 10 ? '0' : '' }${minutes}`;
-// console.log('elapsed :>> ', elapsedHM);
 document.getElementById("elapse").innerHTML = elapsedHM;
 //* creating item class to store stats, i want to add this numbert to localstore. 
 const statistics = JSON.parse(localStorage.getItem('STat')) || [];
@@ -85,6 +84,8 @@ const stat = {
   elapsed: elapsed,
   complete: countCompleted,
 }
+
+
 
 statistics.splice(0, 5 );
   statistics.push(stat);
@@ -116,19 +117,16 @@ function btnActtion(e) {
     const index = e.target.dataset.index;
     const todo = item.parentElement;
     todo.classList.add("fall");
+    todos.splice(index, 1);
+    localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', function () {
- 
-      todos.splice(index, 1);
       todo.remove();
       })
-      localStorage.setItem('Items', JSON.stringify(todos));
+     
       statTask();
       return;
 
     }
-
-
-
 
 
 
@@ -161,25 +159,6 @@ function btnActtion(e) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //*timer start function
   const todo = item.parentElement;
   const startingMinutes = 0.1;
@@ -197,56 +176,119 @@ function btnActtion(e) {
 
 
 
-
-
+  
   if (item.classList[0] === "play-btn") {
-    item.innerHTML = '<i class="fas fa-pause"></i>';
-    clockTimer.classList.add("timerStart");
+  
+    
+    
+    console.log("click ;)");
+ 
+  
+    
+    
     const countdownTimer = document.getElementById("countdown");
-    const intervals = setInterval(updateCountdown, 1000);
+    let countdownTime;
+    clearInterval(countdownTime);
+    const seconds = 10;
+    timer(seconds);
+    countdownAnimation();
+
+
+
+    function timer(seconds){
+      //after start timer clear any exsisting timers
+      clearInterval(countdownTime);
+    const now = Date.now();
+    const then = now + seconds * 1000;
+    displayTimeLeft(seconds);
+  countdownTime = setInterval(() =>{
+    const secondsLeft = Math.round((then-Date.now())/1000);
+    if(secondsLeft < 0){
+      clearInterval(countdownTime);
+      return;
+    }
+    displayTimeLeft(secondsLeft);
+  }, 1000);
+}
+
+
+function displayTimeLeft(seconds){
+  
+  const minutes = Math.floor(seconds /60);
+  const remainderSeconds = seconds % 60;
+  const display = `${minutes}:${remainderSeconds < 10 ? '0' : '' }${remainderSeconds}`;
+  countdownTimer.textContent = display;
+  document.title = display;
+console.log({minutes, remainderSeconds});
+}
+
+
+
     
 
-
-    function updateCountdown() {
-      clockTimer.classList.remove("timerFinish");
-      const minutes = Math.floor(time / 60);
-      let seconds = time % 60;
-      seconds = seconds < 1 ? "0" + seconds : seconds;
-      countdownTimer.innerHTML = ` ${minutes} :${seconds} `;
-      if (minutes > 0 || seconds > 0) {
-        time--;
-        console.log(item);
-        if (item.classList.contains('fa-pause')) {
-          console.log("pause");
-          clearInterval(intervals);
-          intervals = -1;
-        }
-      } else {
-        console.log("End countdown");
-        clearInterval(intervals);
-        clockTimer.classList.add("timerFinish");
-        clockTimer.classList.remove("timerStart");
-        // console.log('itemek :>> ', item);
-        item.innerHTML = '<i class="fas fa-play"></i>';        
-        
-        // todo.classList.add("iconClock");
-        // item.innerHTML = '<i class="fas fa-clock"></i>'; 
-          // - to będzie dodawać ikone zegarana koniec pomodore
-      }
-
-
-
-
-    }
-
+    
+    
+    
+    
+    
+    
+    // const intervals = setInterval(updateCountdown, 1000);
+    
+    
+    
+    // function updateCountdown() {
+      //   clockTimer.classList.remove("timerFinish");
+      //   item.classList.remove("play-btn");
+      
+      //   const minutes = Math.floor(time / 60);
+      //   let seconds = time % 60;
+      //   seconds = seconds < 1 ? "0" + seconds : seconds;
+      //   countdownTimer.innerHTML = ` ${minutes} :${seconds} `;
+      //   if (minutes > 0 || seconds > 0) {
+        //     // document.title=time;
+        //     time--;
+        //     console.log(item);
+        //     if (item.classList.contains('fas fa-pause')) {
+          //       console.log("pause");
+    //       clearInterval(intervals);
+    //       intervals = -1;
+    //     }
+    //   } else {
+      //     console.log("End countdown");
+    //     clearInterval(intervals);
+    //     clockTimer.classList.add("timerFinish");
+    //     clockTimer.classList.remove("timerStart");
+    //     // console.log('itemek :>> ', item);
+    //     item.innerHTML = '<i class="fas fa-play"></i>';        
+    
+    //     // todo.classList.add("iconClock");
+    //     // item.innerHTML = '<i class="fas fa-clock"></i>'; 
+    //       // - to będzie dodawać ikone zegarana koniec pomodore
+    //   }
+    
+    
+    
+    
+    // }
+    
   }
+  
+  function countdownAnimation(){
+  
+    item.classList.remove("play-btn");
+  clockTimer.classList.add("timerStart");
+  
+  }
+      
 
 
-
-
-
-
+  
+  
+  
+  
 }
+
+// const countdownTimer = document.getElementById("countdown");
 
 
 //* funkcja lists wczytująca taski z localstore

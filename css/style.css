@@ -2,25 +2,20 @@ html,
 body {
   padding: 0;
   margin: 0;
-}
-
-html {
-  font-size: 100%;
   font-family: "Noto Sans JP", sans-serif;
-}
-
-body {
   background-color: #7745458c;
   color: white;
+  height: 100%;
 }
 
-header {
+html header,
+body header {
   height: 50px;
 }
 
-.app {
+html .app,
+body .app {
   background-color: black;
-  height: 100%;
 }
 
 .container {

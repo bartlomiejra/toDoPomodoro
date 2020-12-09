@@ -2,23 +2,22 @@ html,
 body {
   padding: 0;
   margin: 0;
-}
-
-html {
-  font-size: 100%;
   font-family: "Noto Sans JP", sans-serif;
-}
-
-body {
   background-color: #7745458c;
-
   color: white;
-}
+
+
+
+
+
+
 header{
   height: 50px; 
 }
 .app {
   background-color: black;
+
+  }
 height: 100%;
   // margin-top: 50px;
   // width: 100vw;
@@ -54,6 +53,9 @@ height: 100%;
 }
 
 .clock {
+  // display:flex;
+  // flex-direction: column;
+  // flex-wrap: nowrap;
   width: 6em;
   border-radius: 20px;
   display: table-cell;
