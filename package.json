@@ -1,0 +1,22 @@
+{
+  "name": "todopomodoro",
+  "version": "1.0.0",
+  "description": "This is a simple todolist app  implements pomodoro time management technique.  :tomato:",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bartlomiejra/toDoPomodoro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bartlomiejra/toDoPomodoro/issues"
+  },
+  "homepage": "https://github.com/bartlomiejra/toDoPomodoro#readme",
+  "devDependencies": {
+    "eslint": "^7.15.0"
+  }
+}

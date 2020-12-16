@@ -1,149 +1,154 @@
-const todoInput = document.querySelector(".todoInput");
-const todoButton = document.querySelector(".addtaskButton");
-const todoList = document.querySelector(".todolist");
-const clockTimer = document.querySelector(".clock");
-const task = document.querySelector("divT");
-const newTodo = document.querySelector(".todo-item");
+const todoInput = document.querySelector('.todoInput');
+const todoButton = document.querySelector('.addtaskButton');
+const todoList = document.querySelector('.todolist');
+const clockTimer = document.querySelector('.clock');
+// const task = document.querySelector('divT');
+// const newTodo = document.querySelector('.todo-item');
 
-
-todoList.addEventListener("click", btnActtion);
 const todos = JSON.parse(localStorage.getItem('Items')) || [];
 
-
-
-//*TODO Rebuind addToDO add new function to create structur of task element like button etc.
-
-
+//* TODO Rebuind addToDO add new function to create structur of task element like button etc.
 
 //* this function adding new item todo
-function addTodo(event) {
-  event.preventDefault();
-
-  const text = this.querySelector('[class=todoInput]');
-  const item = {
-    text: todoInput.value,
-    done: false
-  };
-  todos.push(item);
-  lists(todos, todoList);
-  localStorage.setItem('Items', JSON.stringify(todos));
-  todoInput.value = "";
-}
-
 
 function lists(todolist = [], objlines) {
-  objlines.innerHTML = todolist.map((todo, i) => {
-    return `${todo.done  ? '<div class="divT completed">' : '<div class="divT " >'}
+  objlines.innerHTML = todolist
+    .map(
+      (todo, i) => `${
+        todo.done ? '<div class="divT completed">' : '<div class="divT " >'
+      }
 <li  class="todo-item" id="item${i}" >${todo.text} 
 </li>
 <button class="complete-btn" data-index=${i} id="item${i}" >
-${todo.done  ?  '<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>': '<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>'} 
+${
+  todo.done
+    ? `<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>`
+    : `<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>`
+} 
 </button>
 <button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-trash" aria-hidden="true"> </i>
 </button>
 <button class="play-btn"> <i class="fas fa-play" aria-hidden="true"></i></button>
 </div>
-`;
-  }).join('');
-  statTask();
+`,
+    )
+    .join('');
 }
 
-
+function addTodo(event) {
+  event.preventDefault();
+  // const text = this.querySelector('[class=todoInput]');
+  const item = {
+    text: todoInput.value,
+    done: false,
+  };
+  todos.push(item);
+  lists(todos, todoList);
+  localStorage.setItem('Items', JSON.stringify(todos));
+  todoInput.value = '';
+}
 
 function statTask() {
   //* Wyliczanie statystyk czasu i ukończonych tasków
   let toBeCompleted = 0;
   let countCompleted = 0;
-  for (let i = 0; i < todos.length; ++i) {
-    if (todos[i]["done"] == true) {
-
-      countCompleted++;
+  for (let i = 0; i < todos.length; i += 1) {
+    if (todos[i].done === true) {
+      countCompleted += 1;
     } else {
-      toBeCompleted++;
+      toBeCompleted += 1;
     }
   }
 
-  document.getElementById("completedTasks").innerHTML = countCompleted;
-  document.getElementById("taskstobe").innerHTML = toBeCompleted;
+  document.getElementById('completedTasks').innerHTML = countCompleted;
+  document.getElementById('taskstobe').innerHTML = toBeCompleted;
 
-  let estimated = (toBeCompleted * 25);
+  const estimated = toBeCompleted * 25;
+  const minutesEs = estimated % 60;
   const hours = Math.floor(estimated / 60);
-  var minutes = estimated % 60;
-  estimatedHM = `${hours}.${minutes < 10 ? '0' : '' }${minutes}`;
-  document.getElementById("estimated").innerHTML = estimatedHM;
-  let elapsed = (countCompleted * 25);
-  vconsthours = Math.floor(elapsed / 60);
-  var minutes = elapsed % 60;
-  elapsedHM = `${hours}.${minutes < 10 ? '0' : '' }${minutes}`;
-  document.getElementById("elapse").innerHTML = elapsedHM;
-  //* creating item class to store stats, i want to add this numbert to localstore. 
+  const estimatedHM = `${hours}.${minutesEs < 10 ? '0' : ''}${minutesEs}`;
+  document.getElementById('estimated').innerHTML = estimatedHM;
+  const elapsed = countCompleted * 25;
+  const hoursel = Math.floor(elapsed / 60);
+  const minutes = elapsed % 60;
+  const elapsedHM = `${hoursel}.${minutes < 10 ? '0' : ''}${minutes}`;
+  document.getElementById('elapse').innerHTML = elapsedHM;
+  //* creating item class to store stats, i want to add this numbert to localstore.
 
   const statistics = JSON.parse(localStorage.getItem('STat')) || [];
   const stat = {
     estimated: estimatedHM,
     comp: toBeCompleted,
-    elapsed: elapsed,
+    elapsed,
     complete: countCompleted,
-  }
+  };
 
   statistics.splice(0, 5);
   statistics.push(stat);
   localStorage.setItem('STat', JSON.stringify(statistics));
-
-
-
-
-
 }
-
-
-
-
-
-
-
-todoButton.addEventListener("click", addTodo);
+statTask();
+todoButton.addEventListener('click', addTodo);
 lists(todos, todoList);
 
+//* functions buttons action delate play and completted task
 
-//*functions buttons action delate play and completted task
+let countdownTime;
+const countdownTimer = document.getElementById('countdown');
+
+function displayTimeLeft(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainderSeconds = seconds % 60;
+  const display = `${minutes}:${
+    remainderSeconds < 10 ? '0' : ''
+  }${remainderSeconds}`;
+  countdownTimer.textContent = display;
+  document.title = display;
+  // console.log({
+  //   minutes,
+  //   remainderSeconds,
+  // });
+}
+
+function timer(seconds) {
+  // after start timer clear any exsisting timers
+  clearInterval(countdownTime);
+  const now = Date.now();
+  const then = now + seconds * 1000;
+  displayTimeLeft(seconds);
+  countdownTime = setInterval(() => {
+    const secondsLeft = Math.round((then - Date.now()) / 1000);
+    if (secondsLeft < 0) {
+      clearInterval(countdownTime);
+      return;
+    }
+
+    displayTimeLeft(secondsLeft);
+  }, 1000);
+}
+
 function btnActtion(e) {
-
-
   statTask();
-  //DELATE
   const item = e.target;
-
-
-
-  if (item.classList[0] === "delete-btn") {
-
-    const index = e.target.dataset.index;
+  if (item.classList[0] === 'delete-btn') {
+    const { index } = e.target.dataset;
     const todo = item.parentElement;
-    todo.classList.add("fall");
+    todo.classList.add('fall');
     todos.splice(index, 1);
     localStorage.setItem('Items', JSON.stringify(todos));
-    todo.addEventListener('transitionend', function () {
+    todo.addEventListener('transitionend', () => {
       todo.remove();
-    })
-
+    });
     statTask();
     return;
-
   }
 
-
-
-
-
-  //*completed function
-  if (item.classList[0] === "complete-btn") {
+  //* completed function
+  if (item.classList[0] === 'complete-btn') {
     const todoText = item.parentElement;
     const el = e.target;
-
-    const index = el.dataset.index;
-
-    if (!todoText.classList.contains("completed")) {
+    const { index } = el.dataset;
+    if (!todoText.classList.contains('completed')) {
       todos[index].done = true;
       localStorage.setItem('Items', JSON.stringify(todos));
       todoText.classList.add('completed');
@@ -159,93 +164,27 @@ function btnActtion(e) {
     return;
   }
 
+  //* timer start function
+  // const todo = item.parentElement;
+  // const startingMinutes = 0.1;
+  // const time = startingMinutes * 60;
 
-
-
-
-  //*timer start function
-  const todo = item.parentElement;
-  const startingMinutes = 0.1;
-  let time = startingMinutes * 60;
-
-
-  const play = document.querySelector(".fa-play");
-  const btnplay = document.querySelector(".play-btn");
+  // const play = document.querySelector('.fa-play');
+  // const btnplay = document.querySelector('.play-btn');
   // console.log(play);
   // clastList.value
   // console.log(btnplay);
-  console.log('item :>> ', item);
-  console.log('item children :>> ', item.value);
+  // console.log('item :>> ', item);
+  // console.log('item children :>> ', item.value);
 
+  if (item.classList[0] === 'play-btn') {
+    // console.log('click ;)');
 
-
-
-
-  if (item.classList[0] === "play-btn") {
-
-
-
-    console.log("click ;)");
-
-
-
-
-    const countdownTimer = document.getElementById("countdown");
-    let countdownTime;
     clearInterval(countdownTime);
     const seconds = 10;
+
     timer(seconds);
-
-
-
-    countdownAnimation();
-
-
-
-    function timer(seconds) {
-      //after start timer clear any exsisting timers
-      clearInterval(countdownTime);
-      const now = Date.now();
-      const then = now + seconds * 1000;
-      displayTimeLeft(seconds);
-      countdownTime = setInterval(() => {
-        const secondsLeft = Math.round((then - Date.now()) / 1000);
-        if (secondsLeft < 0) {
-          clearInterval(countdownTime);
-          return;
-        }
-
-        displayTimeLeft(secondsLeft);
-      }, 1000);
-    }
-
-
-    function displayTimeLeft(seconds) {
-
-      const minutes = Math.floor(seconds / 60);
-      const remainderSeconds = seconds % 60;
-      const display = `${minutes}:${remainderSeconds < 10 ? '0' : '' }${remainderSeconds}`;
-      countdownTimer.textContent = display;
-      document.title = display;
-      console.log({
-        minutes,
-        remainderSeconds
-      });
-    }
-
-
-
-
-
-
-
-
-
-
-
     // const intervals = setInterval(updateCountdown, 1000);
-
-
 
     // function updateCountdown() {
     //   clockTimer.classList.remove("timerFinish");
@@ -270,40 +209,28 @@ function btnActtion(e) {
     //     clockTimer.classList.add("timerFinish");
     //     clockTimer.classList.remove("timerStart");
     //     // console.log('itemek :>> ', item);
-    //     item.innerHTML = '<i class="fas fa-play"></i>';        
+    //     item.innerHTML = '<i class="fas fa-play"></i>';
 
     //     // todo.classList.add("iconClock");
-    //     // item.innerHTML = '<i class="fas fa-clock"></i>'; 
+    //     // item.innerHTML = '<i class="fas fa-clock"></i>';
     //       // - to będzie dodawać ikone zegarana koniec pomodore
     //   }
 
-
-
-
     // }
-
   }
 
   function countdownAnimation() {
+    item.classList.remove('play-btn');
 
-    item.classList.remove("play-btn");
-    clockTimer.classList.add("timerStart");
-
+    clockTimer.classList.add('timerStart');
   }
-
-
-
-
-
-
-
+  countdownAnimation();
 }
-
 // const countdownTimer = document.getElementById("countdown");
-
 
 //* funkcja lists wczytująca taski z localstore
 lists(todos, todoList);
+todoList.addEventListener('click', btnActtion);
 
 /*
   * Importand Information
