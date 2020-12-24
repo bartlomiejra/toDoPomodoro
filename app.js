@@ -104,10 +104,6 @@ function displayTimeLeft(seconds) {
   }${remainderSeconds}`;
   countdownTimer.textContent = display;
   document.title = display;
-  // console.log({
-  //   minutes,
-  //   remainderSeconds,
-  // });
 }
 
 function timer(seconds) {
@@ -165,17 +161,6 @@ function btnActtion(e) {
   }
 
   //* timer start function
-  // const todo = item.parentElement;
-  // const startingMinutes = 0.1;
-  // const time = startingMinutes * 60;
-
-  // const play = document.querySelector('.fa-play');
-  // const btnplay = document.querySelector('.play-btn');
-  // console.log(play);
-  // clastList.value
-  // console.log(btnplay);
-  // console.log('item :>> ', item);
-  // console.log('item children :>> ', item.value);
 
   if (item.classList[0] === 'play-btn') {
     // console.log('click ;)');
