@@ -178,7 +178,8 @@ button {
 .resetButton,
 .play-btn,
 .delete-btn,
-.complete-btn {
+.complete-btn,
+.fa-play {
   background-color: #141414;
   font-size: 1.3rem;
   padding: 0.3rem;
@@ -335,8 +336,16 @@ fa-pause-btn {
   }
 }
 
-.countdownButtons {
+.countdownButtonsNone {
   display: none;
   background-color: pink;
+}
+
+.countdownButtons {
+  background-color: #c55d5d;
+}
+
+.countdownButtons .pauseButton, .countdownButtons .resetButton {
+  background-color: #c55d5d;
 }
 /*# sourceMappingURL=style.css.map */

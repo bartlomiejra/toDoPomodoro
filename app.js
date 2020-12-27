@@ -2,6 +2,7 @@ const todoInput = document.querySelector('.todoInput');
 const todoButton = document.querySelector('.addtaskButton');
 const todoList = document.querySelector('.todolist');
 const clockTimer = document.querySelector('.clock');
+const buttonscountdown = document.querySelector('.countdownButtons');
 // const task = document.querySelector('divT');
 // const newTodo = document.querySelector('.todo-item');
 
@@ -206,7 +207,7 @@ function btnActtion(e) {
 
   function countdownAnimation() {
     item.classList.remove('play-btn');
-
+    buttonscountdown.classList.remove('countdownButtonsNone');
     clockTimer.classList.add('timerStart');
   }
   countdownAnimation();
