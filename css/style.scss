@@ -161,7 +161,8 @@ button {
 .play-btn,
 .delete-btn,
 .complete-btn,
-.fa-play {
+.fa-play,
+.pause-btn {
   background-color: #141414;
 
   font-size: 1.3rem;
@@ -171,6 +172,7 @@ button {
 fa-pause-btn {
   color: rgb(3, 78, 3);
 }
+
 
 .play-btn,
 .fa-pause,
@@ -183,6 +185,41 @@ fa-pause-btn {
 .delete-btn {
   color: rgb(116, 6, 6);
 }
+ .fa-clock {
+  color: rgb(116, 6, 6);
+
+    -webkit-animation: pulse 1s ease-in-out;
+    -moz-animation: pulse 1s ease-in-out;
+     animation: pulse 1s ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+ }
+ 25% {
+    -webkit-transform: scale(1.1);
+    opacity: 0.1;
+ }
+ 50% {
+    -webkit-transform: scale(1.2);
+    opacity: 0.2;
+ }
+ 75% {
+    -webkit-transform: scale(1.3);
+    opacity: 0.3;
+ }
+ 100% {
+    -webkit-transform: scale(1.4);
+    opacity: 0.4;
+ }
+}
+
 
 .complete-btn {
   color: white;
@@ -228,9 +265,9 @@ fa-pause-btn {
   // position: absolute;
   // top:65px;
   // z-index: 1;
-  // height: 520px;
   // width:794px;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
+  // height: 200px;
   background-color: rgb(197, 93, 93);
   color: white;
 }
