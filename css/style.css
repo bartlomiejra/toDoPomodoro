@@ -273,11 +273,13 @@ fa-pause-btn {
 }
 
 .red {
-  background-color: red;
-  color: red;
+  background-color: #740606;
+  color: #740606;
 }
 
 #taksCompleted {
+  background-color: grey;
+  color: white;
   position: relative;
   top: 80%;
   -webkit-box-flex: 0;
@@ -400,7 +402,8 @@ fa-pause-btn {
   background-color: #c55d5d;
 }
 
-.countdownButtons .pauseButton, .countdownButtons .resetButton {
+.countdownButtons .pauseButton,
+.countdownButtons .resetButton {
   background-color: #c55d5d;
 }
 /*# sourceMappingURL=style.css.map */

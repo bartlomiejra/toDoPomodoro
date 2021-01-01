@@ -207,9 +207,13 @@ function btnActtion(e) {
 
   function countdownAnimation() {
     item.classList.remove('play-btn');
+
+    // console.log(item);
     // item.classList.remove(' fa fa-play');
     // item.classList.add('<i class="fal fa-clock"></i>');
+
     item.innerHTML = '<i class="fa fa-clock"></i>';
+
     buttonscountdown.classList.remove('countdownButtonsNone');
     clockTimer.classList.add('timerStart');
   }
