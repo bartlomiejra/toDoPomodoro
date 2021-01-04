@@ -3,6 +3,7 @@ const todoButton = document.querySelector('.addtaskButton');
 const todoList = document.querySelector('.todolist');
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
+const pause = document.querySelector('.pauseButton');
 // const task = document.querySelector('divT');
 // const newTodo = document.querySelector('.todo-item');
 
@@ -119,7 +120,26 @@ function timer(seconds) {
       clearInterval(countdownTime);
       return;
     }
+    let paused = false; // is the clock paused?
 
+    function pausetimer() {
+      // console.log(setinterval);
+      // console.log(pause);
+      const secsave = secondsLeft;
+      // console.log('secsave :>> ', secsave);
+      if (!paused) {
+        paused = true;
+        clearInterval(countdownTime);
+      } else {
+        paused = false;
+        timer(secsave);
+      }
+      // https://codepen.io/yaphi1/pen/QbzrQP
+    }
+
+    pause.addEventListener('click', pausetimer);
+    // console.log('secondsLeft :>> ', secondsLeft);
+    // console.log('then :>> ', then);
     displayTimeLeft(secondsLeft);
   }, 1000);
 }
@@ -167,6 +187,7 @@ function btnActtion(e) {
     // console.log('click ;)');
 
     clearInterval(countdownTime);
+
     const seconds = 10;
 
     timer(seconds);
@@ -206,7 +227,7 @@ function btnActtion(e) {
   }
 
   function countdownAnimation() {
-    item.classList.remove('play-btn');
+    // item.classList.remove('play-btn');
 
     // console.log(item);
     // item.classList.remove(' fa fa-play');
