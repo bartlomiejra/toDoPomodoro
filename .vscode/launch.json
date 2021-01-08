@@ -8,8 +8,11 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
+            "url": "http://127.0.0.1:5500",
+            "webRoot": "${workspaceFolder}",
+            "runtimeExecutable": "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe"
+            
+            
         }
     ]
 }

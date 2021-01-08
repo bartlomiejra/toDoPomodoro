@@ -4,6 +4,7 @@ const todoList = document.querySelector('.todolist');
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.pauseButton');
+const reset = document.querySelector('.resetButton');
 // const task = document.querySelector('divT');
 // const newTodo = document.querySelector('.todo-item');
 
@@ -118,6 +119,9 @@ function timer(seconds) {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
     if (secondsLeft < 0) {
       clearInterval(countdownTime);
+      clockTimer.classList.add('timerFinish');
+      clockTimer.classList.remove('timerStart');
+      buttonscountdown.classList.add('countdownButtonsNone');
       return;
     }
     let paused = false; // is the clock paused?
@@ -137,7 +141,11 @@ function timer(seconds) {
       // https://codepen.io/yaphi1/pen/QbzrQP
     }
 
+    function resetTimer() {
+      clearInterval(countdownTime);
+    }
     pause.addEventListener('click', pausetimer);
+    reset.addEventListener('click', pausetimer);
     // console.log('secondsLeft :>> ', secondsLeft);
     // console.log('then :>> ', then);
     displayTimeLeft(secondsLeft);
