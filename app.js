@@ -145,7 +145,7 @@ function timer(seconds) {
       clearInterval(countdownTime);
     }
     pause.addEventListener('click', pausetimer);
-    reset.addEventListener('click', pausetimer);
+    reset.addEventListener('click', resetTimer);
     // console.log('secondsLeft :>> ', secondsLeft);
     // console.log('then :>> ', then);
     displayTimeLeft(secondsLeft);
