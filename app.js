@@ -113,7 +113,6 @@ function timer(seconds) {
   // after start timer clear any exsisting timers
   clearInterval(countdownTime);
   const now = Date.now();
-  const then = now + seconds * 1000;
   displayTimeLeft(seconds);
   countdownTime = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
@@ -199,7 +198,6 @@ function btnActtion(e) {
     const seconds = 10;
 
     timer(seconds);
-    // const intervals = setInterval(updateCountdown, 1000);
 
     // function updateCountdown() {
     //   clockTimer.classList.remove("timerFinish");
