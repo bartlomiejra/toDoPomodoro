@@ -37,10 +37,15 @@ ${
     )
     .join('');
 }
-
+function validate() {
+  if (todoInput == null) {
+    console.log('wpisz coś tam');
+  }
+}
 function addTodo(event) {
   event.preventDefault();
   // const text = this.querySelector('[class=todoInput]');
+
   const item = {
     text: todoInput.value,
     done: false,
@@ -113,6 +118,7 @@ function timer(seconds) {
   // after start timer clear any exsisting timers
   clearInterval(countdownTime);
   const now = Date.now();
+  const then = now + seconds * 1000;
   displayTimeLeft(seconds);
   countdownTime = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
@@ -250,6 +256,7 @@ function btnActtion(e) {
 
 //* funkcja lists wczytująca taski z localstore
 lists(todos, todoList);
+
 todoList.addEventListener('click', btnActtion);
 
 /*
