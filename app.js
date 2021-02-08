@@ -37,11 +37,13 @@ ${
     )
     .join('');
 }
+
 function validate() {
   if (todoInput == null) {
     console.log('wpisz coś tam');
   }
 }
+
 function addTodo(event) {
   event.preventDefault();
   // const text = this.querySelector('[class=todoInput]');
@@ -81,7 +83,7 @@ function statTask() {
   const minutes = elapsed % 60;
   const elapsedHM = `${hoursel}.${minutes < 10 ? '0' : ''}${minutes}`;
   document.getElementById('elapse').innerHTML = elapsedHM;
-  //* creating item class to store stats, i want to add this numbert to localstore.
+  //* creating item class to store stats, i want to add this number to localstore.
 
   const statistics = JSON.parse(localStorage.getItem('STat')) || [];
   const stat = {
@@ -113,7 +115,7 @@ function displayTimeLeft(seconds) {
   countdownTimer.textContent = display;
   document.title = display;
 }
-
+const plays = document.querySelectorAll('.play-btn');
 function timer(seconds) {
   // after start timer clear any exsisting timers
   clearInterval(countdownTime);
@@ -126,6 +128,7 @@ function timer(seconds) {
       clearInterval(countdownTime);
       clockTimer.classList.add('timerFinish');
       clockTimer.classList.remove('timerStart');
+      lists(todos, todoList);
       buttonscountdown.classList.add('countdownButtonsNone');
       return;
     }
@@ -138,16 +141,38 @@ function timer(seconds) {
       // console.log('secsave :>> ', secsave);
       if (!paused) {
         paused = true;
+        // console.log('zatrzymano timer');
+        // console.log();
+        this.firstElementChild.classList.remove('fa-pause');
+        this.firstElementChild.classList.add('fa-play');
+        // console.log('pausa');
+        // console.log('.pauseButton');
+        // this.firstElementChild.ClassList.add('fa-play');
+        // console.dir(buttonscountdown);
+        // this.firstElementChild.innerHTML = '';
+        // this.firstElementChild.innerHTML = '<i class="fa fa-play"></i>';
+
         clearInterval(countdownTime);
       } else {
+        this.firstElementChild.classList.remove('fa-play');
+        this.firstElementChild.classList.add('fa-pause');
+        // console.log('wznowiono timer');
         paused = false;
+        displayTimeLeft(secsave);
         timer(secsave);
+        // console.log(secsave);
+        // console.log(this);
+
+        // this.firstElementChild.ClassList.add('fa-play');
       }
       // https://codepen.io/yaphi1/pen/QbzrQP
     }
 
     function resetTimer() {
-      clearInterval(countdownTime);
+      // clearInterval(countdownTime);
+      console.log('reset timer');
+      const secsave = secondsLeft;
+      console.log(secsave);
     }
     pause.addEventListener('click', pausetimer);
     reset.addEventListener('click', resetTimer);
@@ -195,64 +220,20 @@ function btnActtion(e) {
   }
 
   //* timer start function
-
   if (item.classList[0] === 'play-btn') {
-    // console.log('click ;)');
-
     clearInterval(countdownTime);
-
     const seconds = 10;
-
     timer(seconds);
-
-    // function updateCountdown() {
-    //   clockTimer.classList.remove("timerFinish");
-    //   item.classList.remove("play-btn");
-
-    //   const minutes = Math.floor(time / 60);
-    //   let seconds = time % 60;
-    //   seconds = seconds < 1 ? "0" + seconds : seconds;
-    //   countdownTimer.innerHTML = ` ${minutes} :${seconds} `;
-    //   if (minutes > 0 || seconds > 0) {
-    //     // document.title=time;
-    //     time--;
-    //     console.log(item);
-    //     if (item.classList.contains('fas fa-pause')) {
-    //       console.log("pause");
-    //       clearInterval(intervals);
-    //       intervals = -1;
-    //     }
-    //   } else {
-    //     console.log("End countdown");
-    //     clearInterval(intervals);
-    //     clockTimer.classList.add("timerFinish");
-    //     clockTimer.classList.remove("timerStart");
-    //     // console.log('itemek :>> ', item);
-    //     item.innerHTML = '<i class="fas fa-play"></i>';
-
-    //     // todo.classList.add("iconClock");
-    //     // item.innerHTML = '<i class="fas fa-clock"></i>';
-    //       // - to będzie dodawać ikone zegarana koniec pomodore
-    //   }
-
-    // }
   }
 
   function countdownAnimation() {
-    // item.classList.remove('play-btn');
-
-    // console.log(item);
-    // item.classList.remove(' fa fa-play');
-    // item.classList.add('<i class="fal fa-clock"></i>');
-
     item.innerHTML = '<i class="fa fa-clock"></i>';
 
     buttonscountdown.classList.remove('countdownButtonsNone');
     clockTimer.classList.add('timerStart');
   }
-  countdownAnimation();
+  countdownAnimation(item);
 }
-// const countdownTimer = document.getElementById("countdown");
 
 //* funkcja lists wczytująca taski z localstore
 lists(todos, todoList);

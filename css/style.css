@@ -152,9 +152,6 @@ task {
 
 .divT {
   height: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -165,6 +162,8 @@ task {
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background-color: #141414;
 }
@@ -203,10 +202,6 @@ fa-pause-btn {
 
 .fa-clock {
   color: #740606;
-  -webkit-animation: pulse 1s ease-in-out;
-  animation: pulse 1s ease-in-out;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes pulse {
@@ -405,5 +400,10 @@ fa-pause-btn {
 .countdownButtons .pauseButton,
 .countdownButtons .resetButton {
   background-color: #c55d5d;
+}
+
+.countdownButtons .fa-play {
+  background-color: #c55d5d;
+  color: #034e03;
 }
 /*# sourceMappingURL=style.css.map */
