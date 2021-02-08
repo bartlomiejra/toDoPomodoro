@@ -97,6 +97,7 @@ function statTask() {
   statistics.push(stat);
   localStorage.setItem('STat', JSON.stringify(statistics));
 }
+
 statTask();
 todoButton.addEventListener('click', addTodo);
 lists(todos, todoList);
@@ -169,10 +170,15 @@ function timer(seconds) {
     }
 
     function resetTimer() {
-      // clearInterval(countdownTime);
-      console.log('reset timer');
-      const secsave = secondsLeft;
-      console.log(secsave);
+      const result = confirm('Are you realy like reset timer?');
+      if (result === true) {
+        clockTimer.classList.remove('timerFinish');
+        clockTimer.classList.remove('timerStart');
+        lists(todos, todoList);
+        buttonscountdown.classList.add('countdownButtonsNone');
+        clearInterval(countdownTime);
+        displayTimeLeft(0);
+      }
     }
     pause.addEventListener('click', pausetimer);
     reset.addEventListener('click', resetTimer);
@@ -224,6 +230,7 @@ function btnActtion(e) {
     clearInterval(countdownTime);
     const seconds = 10;
     timer(seconds);
+    clockTimer.classList.remove('timerFinish');
   }
 
   function countdownAnimation() {

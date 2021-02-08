@@ -130,6 +130,7 @@ li {
 
 i {
   flex: 1;
+  background:transparent;
 }
 
 task {
@@ -159,8 +160,9 @@ button {
 .delete-btn,
 .complete-btn,
 .fa-play,
-.pause-btn {
-  background-color: #141414;
+.pause-btn, .fa-pause , .fa-pause-circle, .fa-stop-circle  {
+
+  background:transparent;
 
   font-size: 1.3rem;
   padding: 0.3rem;
@@ -310,14 +312,24 @@ fa-pause-btn {
   }
 }
 
+
+
+//icon 
+
 .fa-circle,
 .fa-check,
 .fa-play,
 .fa-check-circle,
 .fa-trash,
-.fa-pause {
+.fa-pause,
+.fa-pause-circle
+ {
   pointer-events: none;
   border: 0;
+}
+.fa-clock {
+  display: flex;
+  position: left;
 }
 
 .completedTasks {
@@ -326,10 +338,6 @@ fa-pause-btn {
   display: none;
 }
 
-.fa-clock {
-  display: flex;
-  position: left;
-}
 
 
 @media screen and (max-width: 650px) {
@@ -354,7 +362,9 @@ fa-pause-btn {
 
   }
 
-
+  i::before{
+    background:transparent;
+}
   .addTaskdiv {
     margin-left: 0px;
 
@@ -362,21 +372,23 @@ fa-pause-btn {
 }
 
 .countdownButtonsNone {
+  // transition: all 0.5s ease;
   display: none;
   background-color: pink;
 }
 
 .countdownButtons {
-  background-color: #c55d5d;
+  // transition: all 0.5s ease;
 
   .pauseButton,
   .resetButton {
-    background-color: #c55d5d;
+  
   }
-  .fa-play{
-    background-color: #c55d5d;
+  .fa-play-circle, .fa-pause-circle{
+    // background-color: #c55d5d;
     color:rgb(3, 78, 3);
   }
+ 
 }
 
 
