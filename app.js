@@ -37,21 +37,15 @@ ${
     )
     .join('');
 }
-
-function validate() {
-  if (todoInput == null) {
-    console.log('wpisz coś tam');
-  }
-}
-
+const item = {
+  text: todoInput.value,
+  done: false,
+  focus: 0,
+};
 function addTodo(event) {
   event.preventDefault();
   // const text = this.querySelector('[class=todoInput]');
 
-  const item = {
-    text: todoInput.value,
-    done: false,
-  };
   todos.push(item);
   lists(todos, todoList);
   localStorage.setItem('Items', JSON.stringify(todos));
@@ -117,6 +111,7 @@ function displayTimeLeft(seconds) {
   document.title = display;
 }
 const plays = document.querySelectorAll('.play-btn');
+// const timeInFocus = 0;
 function timer(seconds) {
   // after start timer clear any exsisting timers
   clearInterval(countdownTime);
@@ -125,7 +120,16 @@ function timer(seconds) {
   displayTimeLeft(seconds);
   countdownTime = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
+    const timeInFocus = seconds - secondsLeft;
     if (secondsLeft < 0) {
+      let { focus } = item;
+      console.log(item);
+      focus = +timeInFocus;
+      console.log(focus);
+      // const itemS = JSON.parse(localStorage.getItem('Items[2]'));
+      const itemS = localStorage.getItem('Items[2]');
+      console.log(itemS);
+
       clearInterval(countdownTime);
       clockTimer.classList.add('timerFinish');
       clockTimer.classList.remove('timerStart');
