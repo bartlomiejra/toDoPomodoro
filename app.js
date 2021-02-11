@@ -31,21 +31,22 @@ ${
 </button>
 <button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-trash" aria-hidden="true"> </i>
 </button>
-<button class="play-btn"> <i class="fas fa-play" aria-hidden="true"></i></button>
+<button class="play-btn"  data-index=${i} id="item${i}"> <i class="fas fa-play" aria-hidden="true"></i></button>
 </div>
 `,
     )
     .join('');
 }
-const item = {
-  text: todoInput.value,
-  done: false,
-  focus: 0,
-};
+
 function addTodo(event) {
   event.preventDefault();
   // const text = this.querySelector('[class=todoInput]');
 
+  const item = {
+    text: todoInput.value,
+    done: false,
+    focus: 0,
+  };
   todos.push(item);
   lists(todos, todoList);
   localStorage.setItem('Items', JSON.stringify(todos));
@@ -110,7 +111,7 @@ function displayTimeLeft(seconds) {
   countdownTimer.textContent = display;
   document.title = display;
 }
-const plays = document.querySelectorAll('.play-btn');
+// const plays = document.querySelectorAll('.play-btn');
 // const timeInFocus = 0;
 function timer(seconds) {
   // after start timer clear any exsisting timers
@@ -120,15 +121,37 @@ function timer(seconds) {
   displayTimeLeft(seconds);
   countdownTime = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
-    const timeInFocus = seconds - secondsLeft;
-    if (secondsLeft < 0) {
-      let { focus } = item;
-      console.log(item);
-      focus = +timeInFocus;
-      console.log(focus);
-      // const itemS = JSON.parse(localStorage.getItem('Items[2]'));
-      const itemS = localStorage.getItem('Items[2]');
+    // btnActtion(itemT);
+    if (secondsLeft < 10) {
+      // let { focus } = item;
+      // console.log(item);
+      // focus = +timeInFocus;
+      // console.log(focus);
+      //* convert string to js object
+      const itemS = JSON.parse(localStorage.getItem('Items'));
       console.log(itemS);
+      // console.log(item);
+      // console.log(itemS[1]);
+      // const var1 = JSON.stringify(itemS[1]);
+      // const var2 = JSON.stringify(item);
+      // if (var1 === var2) {
+      //   console.log('to jest to samo');
+      // } else {
+      //   console.log('to nie jest to samo');
+      // }
+
+      // console.log(eq);
+      // const result = itemS.find((obj) => obj === var2);
+      // console.log(item);
+      // console.log(result);
+
+      // teraz mamy array z dwoma obiektami
+      // console.log(itemS[1]);
+
+      // console.log(itemS.entries(item));
+
+      // const itemS = localStorage.getItem('Items');
+      //* w tym miejscu trzeba dodawać czas ze zmiennej focus do pola focustime w tasku
 
       clearInterval(countdownTime);
       clockTimer.classList.add('timerFinish');
@@ -174,15 +197,15 @@ function timer(seconds) {
     }
 
     function resetTimer() {
-      const result = confirm('Are you realy like reset timer?');
-      if (result === true) {
-        clockTimer.classList.remove('timerFinish');
-        clockTimer.classList.remove('timerStart');
-        lists(todos, todoList);
-        buttonscountdown.classList.add('countdownButtonsNone');
-        clearInterval(countdownTime);
-        displayTimeLeft(0);
-      }
+      // const result = confirm('Are you realy like reset timer?');
+      // if (result === true) {
+      clockTimer.classList.remove('timerFinish');
+      clockTimer.classList.remove('timerStart');
+      lists(todos, todoList);
+      buttonscountdown.classList.add('countdownButtonsNone');
+      clearInterval(countdownTime);
+      displayTimeLeft(0);
+      // }
     }
     pause.addEventListener('click', pausetimer);
     reset.addEventListener('click', resetTimer);
@@ -195,11 +218,16 @@ function timer(seconds) {
 function btnActtion(e) {
   statTask();
   const item = e.target;
+  // console.log(item);
+
   if (item.classList[0] === 'delete-btn') {
     const { index } = e.target.dataset;
     const todo = item.parentElement;
+    console.log(todo);
     todo.classList.add('fall');
     todos.splice(index, 1);
+    console.log(e.target.dataset);
+
     localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', () => {
       todo.remove();
@@ -231,6 +259,10 @@ function btnActtion(e) {
 
   //* timer start function
   if (item.classList[0] === 'play-btn') {
+    const { index } = e.target.dataset;
+    const itemT = e.target.dataset;
+    console.log(itemT);
+
     clearInterval(countdownTime);
     const seconds = 10;
     timer(seconds);
