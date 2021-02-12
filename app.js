@@ -31,16 +31,21 @@ ${
 </button>
 <button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-trash" aria-hidden="true"> </i>
 </button>
-<button class="play-btn"  data-index=${i} id="item${i}"> <i class="fas fa-play" aria-hidden="true"></i></button>
+
+<button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play" aria-hidden="true"></i></button>
 </div>
 `,
     )
     .join('');
 }
-
+function play() {
+  var audio = new Audio(
+    'https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3',
+  );
+  audio.play();
+}
 function addTodo(event) {
   event.preventDefault();
-  // const text = this.querySelector('[class=todoInput]');
 
   const item = {
     text: todoInput.value,
@@ -52,7 +57,10 @@ function addTodo(event) {
   localStorage.setItem('Items', JSON.stringify(todos));
   todoInput.value = '';
 }
-
+// virable to audio file
+let audio;
+// virable to break time (5 minut defoult)
+const shortBreak = 10;
 function statTask() {
   //* Wyliczanie statystyk czasu i ukończonych tasków
   let toBeCompleted = 0;
@@ -64,16 +72,24 @@ function statTask() {
       toBeCompleted += 1;
     }
   }
-
+  const pomodoreDuration = 25;
   document.getElementById('completedTasks').innerHTML = countCompleted;
   document.getElementById('taskstobe').innerHTML = toBeCompleted;
 
-  const estimated = toBeCompleted * 25;
+  const totalfocustime = JSON.parse(localStorage.getItem('Items'));
+  let focuscount = 0;
+  totalfocustime.forEach((element) => {
+    const ast = element.focus;
+    focuscount += ast;
+  });
+  // console.log(Math.floor(focuscount / 60));
+
+  const estimated = toBeCompleted * pomodoreDuration;
   const minutesEs = estimated % 60;
   const hours = Math.floor(estimated / 60);
   const estimatedHM = `${hours}.${minutesEs < 10 ? '0' : ''}${minutesEs}`;
   document.getElementById('estimated').innerHTML = estimatedHM;
-  const elapsed = countCompleted * 25;
+  const elapsed = Math.floor(focuscount / 60);
   const hoursel = Math.floor(elapsed / 60);
   const minutes = elapsed % 60;
   const elapsedHM = `${hoursel}.${minutes < 10 ? '0' : ''}${minutes}`;
@@ -101,6 +117,75 @@ lists(todos, todoList);
 
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
+let taskId = 0;
+
+function btnActtion(e) {
+  statTask();
+  const item = e.target;
+  // console.log(item);
+
+  if (item.classList[0] === 'delete-btn') {
+    audio = new Audio('Alerts/deleteTask.mp3');
+    audio.play();
+    const { index } = e.target.dataset;
+    const todo = item.parentElement;
+    // console.log(todo);
+    todo.classList.add('fall');
+    todos.splice(index, 1);
+    console.log(e.target.dataset);
+
+    localStorage.setItem('Items', JSON.stringify(todos));
+    todo.addEventListener('transitionend', () => {
+      todo.remove();
+    });
+
+    statTask();
+    return;
+  }
+
+  //* completed function
+  if (item.classList[0] === 'complete-btn') {
+    const todoText = item.parentElement;
+    const el = e.target;
+    const { index } = el.dataset;
+    if (!todoText.classList.contains('completed')) {
+      todos[index].done = true;
+      localStorage.setItem('Items', JSON.stringify(todos));
+      todoText.classList.add('completed');
+      item.innerHTML = '<i class="fas fa-check-circle"></i>';
+      // todoText.classList.add('animation');
+    } else {
+      todoText.classList.remove('completed');
+      item.innerHTML = '<i class="fas fa-circle"></i>';
+      todos[index].done = false;
+      localStorage.setItem('Items', JSON.stringify(todos));
+    }
+    statTask();
+    return;
+  }
+
+  //* timer start function
+  if (item.classList[0] === 'play-btn') {
+    // myAudio.pause();
+    const { index } = e.target.id;
+    taskId = e.target.id;
+    timer();
+
+    clearInterval(countdownTime);
+    const seconds = 10;
+    timer(seconds);
+
+    clockTimer.classList.remove('timerFinish');
+  }
+
+  function countdownAnimation() {
+    item.innerHTML = '<i class="fa fa-clock"></i>';
+
+    buttonscountdown.classList.remove('countdownButtonsNone');
+    clockTimer.classList.add('timerStart');
+  }
+  countdownAnimation(item);
+}
 
 function displayTimeLeft(seconds) {
   const minutes = Math.floor(seconds / 60);
@@ -112,7 +197,7 @@ function displayTimeLeft(seconds) {
   document.title = display;
 }
 // const plays = document.querySelectorAll('.play-btn');
-// const timeInFocus = 0;
+
 function timer(seconds) {
   // after start timer clear any exsisting timers
   clearInterval(countdownTime);
@@ -121,43 +206,17 @@ function timer(seconds) {
   displayTimeLeft(seconds);
   countdownTime = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
-    // btnActtion(itemT);
-    if (secondsLeft < 10) {
-      // let { focus } = item;
-      // console.log(item);
-      // focus = +timeInFocus;
-      // console.log(focus);
+    const timeInFocus = seconds - secondsLeft;
+
+    if (secondsLeft < 0) {
+      audio = new Audio('Alerts/taskEnd.mp3');
+      audio.play();
       //* convert string to js object
       const itemS = JSON.parse(localStorage.getItem('Items'));
-      console.log(itemS);
-      // console.log(item);
-      // console.log(itemS[1]);
-      // const var1 = JSON.stringify(itemS[1]);
-      // const var2 = JSON.stringify(item);
-      // if (var1 === var2) {
-      //   console.log('to jest to samo');
-      // } else {
-      //   console.log('to nie jest to samo');
-      // }
+      itemS[taskId].focus += timeInFocus;
+      localStorage.setItem('Items', JSON.stringify(itemS));
 
-      // console.log(eq);
-      // const result = itemS.find((obj) => obj === var2);
-      // console.log(item);
-      // console.log(result);
-
-      // teraz mamy array z dwoma obiektami
-      // console.log(itemS[1]);
-
-      // console.log(itemS.entries(item));
-
-      // const itemS = localStorage.getItem('Items');
-      //* w tym miejscu trzeba dodawać czas ze zmiennej focus do pola focustime w tasku
-
-      clearInterval(countdownTime);
-      clockTimer.classList.add('timerFinish');
-      clockTimer.classList.remove('timerStart');
-      lists(todos, todoList);
-      buttonscountdown.classList.add('countdownButtonsNone');
+      breakTime();
       return;
     }
     let paused = false; // is the clock paused?
@@ -207,6 +266,7 @@ function timer(seconds) {
       displayTimeLeft(0);
       // }
     }
+
     pause.addEventListener('click', pausetimer);
     reset.addEventListener('click', resetTimer);
     // console.log('secondsLeft :>> ', secondsLeft);
@@ -215,73 +275,20 @@ function timer(seconds) {
   }, 1000);
 }
 
-function btnActtion(e) {
-  statTask();
-  const item = e.target;
-  // console.log(item);
-
-  if (item.classList[0] === 'delete-btn') {
-    const { index } = e.target.dataset;
-    const todo = item.parentElement;
-    console.log(todo);
-    todo.classList.add('fall');
-    todos.splice(index, 1);
-    console.log(e.target.dataset);
-
-    localStorage.setItem('Items', JSON.stringify(todos));
-    todo.addEventListener('transitionend', () => {
-      todo.remove();
-    });
-    statTask();
-    return;
-  }
-
-  //* completed function
-  if (item.classList[0] === 'complete-btn') {
-    const todoText = item.parentElement;
-    const el = e.target;
-    const { index } = el.dataset;
-    if (!todoText.classList.contains('completed')) {
-      todos[index].done = true;
-      localStorage.setItem('Items', JSON.stringify(todos));
-      todoText.classList.add('completed');
-      item.innerHTML = '<i class="fas fa-check-circle"></i>';
-      // todoText.classList.add('animation');
-    } else {
-      todoText.classList.remove('completed');
-      item.innerHTML = '<i class="fas fa-circle"></i>';
-      todos[index].done = false;
-      localStorage.setItem('Items', JSON.stringify(todos));
-    }
-    statTask();
-    return;
-  }
-
-  //* timer start function
-  if (item.classList[0] === 'play-btn') {
-    const { index } = e.target.dataset;
-    const itemT = e.target.dataset;
-    console.log(itemT);
-
-    clearInterval(countdownTime);
-    const seconds = 10;
-    timer(seconds);
-    clockTimer.classList.remove('timerFinish');
-  }
-
-  function countdownAnimation() {
-    item.innerHTML = '<i class="fa fa-clock"></i>';
-
-    buttonscountdown.classList.remove('countdownButtonsNone');
-    clockTimer.classList.add('timerStart');
-  }
-  countdownAnimation(item);
-}
-
 //* funkcja lists wczytująca taski z localstore
 lists(todos, todoList);
 
 todoList.addEventListener('click', btnActtion);
+
+function breakTime() {
+  clearInterval(countdownTime);
+  clockTimer.classList.add('timerFinish');
+  clockTimer.classList.remove('timerStart');
+  lists(todos, todoList);
+  buttonscountdown.classList.add('countdownButtonsNone');
+  displayTimeLeft(shortBreak);
+  timer(shortBreak);
+}
 
 /*
   * Importand Information
