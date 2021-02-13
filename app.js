@@ -10,6 +10,13 @@ const reset = document.querySelector('.resetButton');
 
 const todos = JSON.parse(localStorage.getItem('Items')) || [];
 
+// virable to audio file
+let audio;
+// virable to break time (5 minut defoult)
+const shortBreak = 10;
+
+let timeInFocus;
+
 //* TODO Rebuind addToDO add new function to create structur of task element like button etc.
 
 //* this function adding new item todo
@@ -38,15 +45,15 @@ ${
     )
     .join('');
 }
-function play() {
-  var audio = new Audio(
-    'https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3',
-  );
-  audio.play();
-}
+// function play() {
+//   var audio = new Audio(
+//     'https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3',
+//   );
+//   audio.play();
+// }
+
 function addTodo(event) {
   event.preventDefault();
-
   const item = {
     text: todoInput.value,
     done: false,
@@ -57,10 +64,7 @@ function addTodo(event) {
   localStorage.setItem('Items', JSON.stringify(todos));
   todoInput.value = '';
 }
-// virable to audio file
-let audio;
-// virable to break time (5 minut defoult)
-const shortBreak = 10;
+
 function statTask() {
   //* Wyliczanie statystyk czasu i ukończonych tasków
   let toBeCompleted = 0;
@@ -75,15 +79,12 @@ function statTask() {
   const pomodoreDuration = 25;
   document.getElementById('completedTasks').innerHTML = countCompleted;
   document.getElementById('taskstobe').innerHTML = toBeCompleted;
-
   const totalfocustime = JSON.parse(localStorage.getItem('Items'));
   let focuscount = 0;
   totalfocustime.forEach((element) => {
     const ast = element.focus;
     focuscount += ast;
   });
-  // console.log(Math.floor(focuscount / 60));
-
   const estimated = toBeCompleted * pomodoreDuration;
   const minutesEs = estimated % 60;
   const hours = Math.floor(estimated / 60);
@@ -132,7 +133,7 @@ function btnActtion(e) {
     // console.log(todo);
     todo.classList.add('fall');
     todos.splice(index, 1);
-    console.log(e.target.dataset);
+    // console.log(e.target.dataset);
 
     localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', () => {
@@ -166,6 +167,7 @@ function btnActtion(e) {
 
   //* timer start function
   if (item.classList[0] === 'play-btn') {
+    item.innerHTML = '<i class="fa fa-clock"></i>';
     // myAudio.pause();
     const { index } = e.target.id;
     taskId = e.target.id;
@@ -179,8 +181,6 @@ function btnActtion(e) {
   }
 
   function countdownAnimation() {
-    item.innerHTML = '<i class="fa fa-clock"></i>';
-
     buttonscountdown.classList.remove('countdownButtonsNone');
     clockTimer.classList.add('timerStart');
   }
@@ -196,7 +196,6 @@ function displayTimeLeft(seconds) {
   countdownTimer.textContent = display;
   document.title = display;
 }
-// const plays = document.querySelectorAll('.play-btn');
 
 function timer(seconds) {
   // after start timer clear any exsisting timers
@@ -206,60 +205,32 @@ function timer(seconds) {
   displayTimeLeft(seconds);
   countdownTime = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
-    const timeInFocus = seconds - secondsLeft;
-
+    timeInFocus = seconds - secondsLeft;
     if (secondsLeft < 0) {
-      audio = new Audio('Alerts/taskEnd.mp3');
-      audio.play();
-      //* convert string to js object
-      const itemS = JSON.parse(localStorage.getItem('Items'));
-      itemS[taskId].focus += timeInFocus;
-      localStorage.setItem('Items', JSON.stringify(itemS));
-
-      breakTime();
+      endpomodoro();
       return;
     }
+
     let paused = false; // is the clock paused?
 
     function pausetimer() {
-      // console.log(setinterval);
-      // console.log(pause);
       const secsave = secondsLeft;
-      // console.log('secsave :>> ', secsave);
       if (!paused) {
         paused = true;
-        // console.log('zatrzymano timer');
-        // console.log();
         this.firstElementChild.classList.remove('fa-pause');
         this.firstElementChild.classList.add('fa-play');
-        // console.log('pausa');
-        // console.log('.pauseButton');
-        // this.firstElementChild.ClassList.add('fa-play');
-        // console.dir(buttonscountdown);
-        // this.firstElementChild.innerHTML = '';
-        // this.firstElementChild.innerHTML = '<i class="fa fa-play"></i>';
-
         clearInterval(countdownTime);
       } else {
         this.firstElementChild.classList.remove('fa-play');
         this.firstElementChild.classList.add('fa-pause');
-        // console.log('wznowiono timer');
         paused = false;
         displayTimeLeft(secsave);
         timer(secsave);
-        // console.log(secsave);
-        // console.log(this);
-
-        // this.firstElementChild.ClassList.add('fa-play');
       }
-      // https://codepen.io/yaphi1/pen/QbzrQP
     }
 
     function resetTimer() {
-      // const result = confirm('Are you realy like reset timer?');
-      // if (result === true) {
-      clockTimer.classList.remove('timerFinish');
-      clockTimer.classList.remove('timerStart');
+      clockTimer.classList.remove('timerFinish', 'timerStart');
       lists(todos, todoList);
       buttonscountdown.classList.add('countdownButtonsNone');
       clearInterval(countdownTime);
@@ -269,8 +240,6 @@ function timer(seconds) {
 
     pause.addEventListener('click', pausetimer);
     reset.addEventListener('click', resetTimer);
-    // console.log('secondsLeft :>> ', secondsLeft);
-    // console.log('then :>> ', then);
     displayTimeLeft(secondsLeft);
   }, 1000);
 }
@@ -287,7 +256,22 @@ function breakTime() {
   lists(todos, todoList);
   buttonscountdown.classList.add('countdownButtonsNone');
   displayTimeLeft(shortBreak);
-  timer(shortBreak);
+
+  // timer(shortBreak);w
+  //   clearInterval(countdownTime);
+  //   audio = new Audio('Alerts/pauseEnd.mp3');
+  //   audio.play();
+}
+
+function endpomodoro() {
+  audio = new Audio('Alerts/taskEnd.mp3');
+  audio.play();
+  //* convert string to js object
+  const itemS = JSON.parse(localStorage.getItem('Items'));
+  itemS[taskId].focus += timeInFocus;
+  localStorage.setItem('Items', JSON.stringify(itemS));
+
+  breakTime();
 }
 
 /*
