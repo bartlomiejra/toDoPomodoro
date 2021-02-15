@@ -107,7 +107,6 @@ function statTask() {
   const elapsedHM = `${hoursel}.${minutes < 10 ? '0' : ''}${minutes}`;
   document.getElementById('elapse').innerHTML = elapsedHM;
   //* creating item class to store stats, i want to add this number to localstore.
-
   const statistics = JSON.parse(localStorage.getItem('STat')) || [];
   const stat = {
     estimated: estimatedHM,
@@ -115,38 +114,29 @@ function statTask() {
     elapsed,
     complete: countCompleted,
   };
-
   statistics.splice(0, 5);
   statistics.push(stat);
   localStorage.setItem('STat', JSON.stringify(statistics));
 }
-
 statTask();
 todoButton.addEventListener('click', addTodo);
 lists(todos, todoList);
 
 //* functions buttons action delate play and completted task
-
 function btnActtion(e) {
   statTask();
   const item = e.target;
-  // console.log(item);
-
   if (item.classList[0] === 'delete-btn') {
     audio = new Audio('Alerts/deleteTask.mp3');
     audio.play();
     const { index } = e.target.dataset;
     const todo = item.parentElement;
-    // console.log(todo);
     todo.classList.add('fall');
     todos.splice(index, 1);
-    // console.log(e.target.dataset);
-
     localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', () => {
       todo.remove();
     });
-
     statTask();
     return;
   }
@@ -174,20 +164,17 @@ function btnActtion(e) {
 
   //* timer start function
   if (item.classList[0] === 'play-btn') {
+    pause.removeEventListener('click', timerBreak);
     resetTimer();
     item.innerHTML = '<i class="fa fa-clock"></i>';
-    // myAudio.pause();
     const { index } = e.target.id;
     taskId = e.target.id;
     timer();
-
     clearInterval(countdownTime);
     const seconds = 4;
     timer(seconds);
-
     clockTimer.classList.remove('timerFinish');
   }
-
   function countdownAnimation() {
     buttonscountdown.classList.remove('countdownButtonsNone');
     clockTimer.classList.add('timerStart');
@@ -210,8 +197,6 @@ let paused = false; // is the clock paused?
 function timer(seconds) {
   pause.firstElementChild.classList.remove('fa-coffee');
   pause.firstElementChild.classList.add('fa-pause');
-  pause.addEventListener('click', pausetimer);
-  // after start timer clear any exsisting timers
   clearInterval(countdownTime);
   const now = Date.now();
   const then = now + seconds * 1000;
@@ -237,11 +222,7 @@ function timerBreak() {
     'fa-pause-circle',
     'fa-pause',
   );
-  // pause.firstElementChild.classList.add('');
-  console.log('timerbreakstart');
 
-  // pause.addEventListener('click', pausetimer);
-  // after start timer clear any exsisting timers
   clearInterval(countdownTime);
   const now = Date.now();
   const then = now + shortBreak * 1000;
@@ -253,52 +234,18 @@ function timerBreak() {
       audio.play();
       resetTimer();
       clearInterval(countdownTime);
-
       return;
     }
-
     displayTimeLeft(secondsLeft);
   }, 1000);
 }
 
-// function pausetimer() {
-//   console.log('pause funkcja');
-//   const secsave = secondsLeft;
-
-//   if (this.firstElementChild.classList.contains('fa-pause')) {
-//     console.log('było pause');
-//     this.firstElementChild.classList.remove('fa-pause');
-//     this.firstElementChild.classList.add('fa-play');
-//     clearInterval(countdownTime);
-//   } else {
-//     console.log('było play');
-//     this.firstElementChild.classList.remove('fa-play');
-//     this.firstElementChild.classList.add('fa-pause');
-//     paused = false;
-//   }
-
-//   displayTimeLeft(secsave);
-//   timer(secsave);
-// }
-
 function pausetimer() {
-  // console.log(setinterval);
-  // console.log(pause);
   const secsave = secondsLeft;
-  // console.log('secsave :>> ', secsave);
   if (!paused) {
     paused = true;
-    // console.log('zatrzymano timer');
-    // console.log();
     this.firstElementChild.classList.remove('fa-pause');
     this.firstElementChild.classList.add('fa-play');
-    // console.log('pausa');
-    // console.log('.pauseButton');
-    // this.firstElementChild.ClassList.add('fa-play');
-    // console.dir(buttonscountdown);
-    // this.firstElementChild.innerHTML = '';
-    // this.firstElementChild.innerHTML = '<i class="fa fa-play"></i>';
-
     clearInterval(countdownTime);
   } else {
     this.firstElementChild.classList.remove('fa-play');
@@ -307,10 +254,6 @@ function pausetimer() {
     paused = false;
     displayTimeLeft(secsave);
     timer(secsave);
-    // console.log(secsave);
-    // console.log(this);
-
-    // this.firstElementChild.ClassList.add('fa-play');
   }
   // https://codepen.io/yaphi1/pen/QbzrQP
 }
@@ -325,36 +268,18 @@ function resetTimer() {
 }
 
 //* funkcja lists wczytująca taski z localstore
-
 function breakTime() {
-  console.log('funkcjia pausa');
   clearInterval(countdownTime);
   clockTimer.classList.add('timerFinish');
-  console.log(pause);
+
   pause.firstElementChild.classList.remove(
     'fa-play',
     'fa-pause',
     'fa-pause-circle',
   );
-
   pause.firstElementChild.classList.add('fa-coffee');
-  // pause.classList.remove('fa-pause');
-  // pause.classList.add('fa-play');
-  // clockTimer.secondElementChild
-  // clockTimer.firstElementChild.classList.add('fa-play');
   clockTimer.classList.remove('timerStart');
   lists(todos, todoList);
-
-  // buttonscountdown.classList.add('countdownButtonsNone');
-  // displayTimeLeft(shortBreak);
-
-  // timerBreak();
-  // timerBreak();
-
-  // timer(shortBreak);
-  //   clearInterval(countdownTime);
-  //   audio = new Audio('Alerts/pauseEnd.mp3');
-  //   audio.play();
 }
 
 function endpomodoro() {
@@ -364,20 +289,16 @@ function endpomodoro() {
   const itemS = JSON.parse(localStorage.getItem('Items'));
   itemS[taskId].focus += timeInFocus;
   localStorage.setItem('Items', JSON.stringify(itemS));
-  // paused = true;
-  // this.firstElementChild.classList.remove('fa-pause');
-  // this.firstElementChild.classList.add('fa-play');
   lists(todos, todoList);
   pause.addEventListener('click', timerBreak);
-
   breakTime();
-
-  // timer();
 }
+
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
 lists(todos, todoList);
+
 /*
   * Importand Information
   ! Deprecated method, do not use

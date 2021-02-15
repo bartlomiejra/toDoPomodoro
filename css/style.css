@@ -178,10 +178,12 @@ button {
 .pauseButton,
 .resetButton,
 .play-btn,
+.fa-pause,
 .delete-btn,
 .complete-btn,
 .fa-play,
 .pause-btn, .fa-pause, .fa-pause-circle, .fa-stop-circle {
+  outline: 0;
   background: transparent;
   font-size: 1.3rem;
   padding: 0.3rem;
