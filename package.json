@@ -18,5 +18,6 @@
   "homepage": "https://github.com/bartlomiejra/toDoPomodoro#readme",
   "devDependencies": {
     "eslint": "^7.15.0"
-  }
+  },
+  "dependencies": {}
 }

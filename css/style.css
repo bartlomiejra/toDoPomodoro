@@ -1,9 +1,9 @@
 html,
 body {
+  background-size: 100% 100%;
   padding: 0;
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
-  background-color: #7745458c;
   color: white;
   height: 100%;
 }
@@ -20,8 +20,10 @@ body .app {
 
 .container {
   min-height: calc(100vh - 50px);
-  border-radius: 10px;
-  background-color: #7745458c;
+  -webkit-backdrop-filter: blur(500px);
+          backdrop-filter: blur(500px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 30px;
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -54,7 +56,6 @@ body .app {
 }
 
 .todoInput {
-  background-color: #ffffff;
   color: #b17676;
   letter-spacing: 1.2px;
   font-size: 1.2rem;

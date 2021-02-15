@@ -12,10 +12,13 @@ $red: rgb(116, 6, 6);
 
 html,
 body {
+  // background: url(background.svg);
+  background-size: 100% 100%;
+
   padding: 0;
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
-  background-color: $backgroundcolor;
+  // background-color: $backgroundcolor;
   color: white;
 
   header {
@@ -32,8 +35,13 @@ body {
 
 .container {
   min-height: calc(100vh - 50px);
-  border-radius: 10px;
-  background-color: $backgroundcolor;
+  // background: url(background.svg);
+  
+  // background: rgba(56, 55, 55, 0.22);
+  backdrop-filter: blur(500px);
+  /* Note: backdrop-filter has minimal browser support */
+  
+  border-radius: 30px;
   list-style: none;
   display: flex;
   align-items: center;
@@ -61,7 +69,7 @@ body {
 }
 
 .todoInput {
-  background-color: #ffffff;
+  // background-color: #ffffff;
   color: rgb(177, 118, 118);
   letter-spacing: 1.2px;
   font-size: 1.2rem;
