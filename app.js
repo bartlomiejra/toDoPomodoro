@@ -92,10 +92,12 @@ function statTask() {
   document.getElementById('taskstobe').innerHTML = toBeCompleted;
   const totalfocustime = JSON.parse(localStorage.getItem('Items'));
   let focuscount = 0;
-  totalfocustime.forEach((element) => {
-    const ast = element.focus;
-    focuscount += ast;
-  });
+  if (totalfocustime != null) {
+    totalfocustime.forEach((element) => {
+      const ast = element.focus;
+      focuscount += ast;
+    });
+  }
   const estimated = toBeCompleted * pomodoreDuration;
   const minutesEs = estimated % 60;
   const hours = Math.floor(estimated / 60);
@@ -121,6 +123,11 @@ function statTask() {
 statTask();
 todoButton.addEventListener('click', addTodo);
 lists(todos, todoList);
+
+function countdownAnimation() {
+  buttonscountdown.classList.remove('countdownButtonsNone');
+  clockTimer.classList.add('timerStart');
+}
 
 //* functions buttons action delate play and completted task
 function btnActtion(e) {
@@ -165,8 +172,8 @@ function btnActtion(e) {
   //* timer start function
   if (item.classList[0] === 'play-btn') {
     pause.removeEventListener('click', timerBreak);
-    resetTimer();
-    item.innerHTML = '<i class="fa fa-clock"></i>';
+    // resetTimer();
+    console.log(item);
     const { index } = e.target.id;
     taskId = e.target.id;
     timer();
@@ -174,12 +181,9 @@ function btnActtion(e) {
     const seconds = 4;
     timer(seconds);
     clockTimer.classList.remove('timerFinish');
+    countdownAnimation(item);
+    item.innerHTML = '<i class="fa fa-clock"></i>';
   }
-  function countdownAnimation() {
-    buttonscountdown.classList.remove('countdownButtonsNone');
-    clockTimer.classList.add('timerStart');
-  }
-  countdownAnimation(item);
 }
 
 function displayTimeLeft(seconds) {
@@ -229,7 +233,7 @@ function timerBreak() {
   displayTimeLeft(shortBreak);
   countdownTime = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
-    if (secondsLeft < 0) {
+    if ((secondsLeft = 0)) {
       audio = new Audio('Alerts/pauseEnd.mp3');
       audio.play();
       resetTimer();
