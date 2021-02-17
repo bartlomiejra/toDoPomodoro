@@ -32,8 +32,15 @@ function lists(todolist = [], objlines) {
       (todo, i) => `${
         todo.done ? '<div class="divT completed">' : '<div class="divT " >'
       }
-<li  class="todo-item" id="item${i}" >${todo.text} 
-</li>
+      
+<div  class="todo-item" id="item${i}" >${todo.text} 
+</div>
+<div  class="clocks"> 
+<i class="fas fa-clock" aria-hidden="true"> </i>
+</div>
+
+<div class=controlButtons>
+
 <button class="complete-btn" data-index=${i} id="item${i}" >
 ${
   todo.done
@@ -41,10 +48,12 @@ ${
     : `<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>`
 } 
 </button>
-<button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-trash" aria-hidden="true"> </i>
+<button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
 
-<button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play" aria-hidden="true"></i></button>
+<button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
+
+</div>
 </div>
 `,
     )
@@ -222,6 +231,7 @@ const shortBreak = 5;
 function timerBreak() {
   pause.firstElementChild.classList.remove(
     'fa-play',
+    'fa-play-circle',
     'fa-coffee',
     'fa-pause-circle',
     'fa-pause',
@@ -233,7 +243,7 @@ function timerBreak() {
   displayTimeLeft(shortBreak);
   countdownTime = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
-    if ((secondsLeft = 0)) {
+    if (secondsLeft < 1) {
       audio = new Audio('Alerts/pauseEnd.mp3');
       audio.play();
       resetTimer();
@@ -249,10 +259,10 @@ function pausetimer() {
   if (!paused) {
     paused = true;
     this.firstElementChild.classList.remove('fa-pause');
-    this.firstElementChild.classList.add('fa-play');
+    this.firstElementChild.classList.add('fa-play-circle');
     clearInterval(countdownTime);
   } else {
-    this.firstElementChild.classList.remove('fa-play');
+    this.firstElementChild.classList.remove('fa-play-circle');
     this.firstElementChild.classList.add('fa-pause');
     // console.log('wznowiono timer');
     paused = false;
@@ -277,7 +287,7 @@ function breakTime() {
   clockTimer.classList.add('timerFinish');
 
   pause.firstElementChild.classList.remove(
-    'fa-play',
+    'fa-play-circle',
     'fa-pause',
     'fa-pause-circle',
   );

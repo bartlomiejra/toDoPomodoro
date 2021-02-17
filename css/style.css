@@ -3,7 +3,7 @@ body {
   background-size: 100% 100%;
   padding: 0;
   margin: 0;
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
   height: 100%;
 }
@@ -171,7 +171,6 @@ task {
 }
 
 button {
-  cursor: pointer;
   border: 0;
 }
 
@@ -182,10 +181,11 @@ button {
 .delete-btn,
 .complete-btn,
 .fa-play,
-.pause-btn, .fa-pause, .fa-pause-circle, .fa-stop-circle {
+.fa-play-circle,
+.pause-btn, .fa-pause, .fa-pause-circle, .fa-stop-circle, .fa-minus-circle {
   outline: 0;
   background: transparent;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   padding: 0.3rem;
 }
 
@@ -193,6 +193,7 @@ fa-pause-btn {
   color: #034e03;
 }
 
+P
 .play-btn,
 .fa-pause,
 .fa-pause-btn {
@@ -354,10 +355,13 @@ fa-pause-btn {
 .fa-circle,
 .fa-check,
 .fa-play,
+.fa-play-circle,
 .fa-check-circle,
 .fa-trash,
+.fa-minus-circle,
 .fa-pause,
 .fa-pause-circle {
+  cursor: pointer;
   pointer-events: none;
   border: 0;
 }
@@ -401,7 +405,27 @@ fa-pause-btn {
   background-color: pink;
 }
 
-.countdownButtons .fa-play-circle, .countdownButtons .fa-pause-circle {
-  color: #034e03;
+li {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.controlButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 /*# sourceMappingURL=style.css.map */
