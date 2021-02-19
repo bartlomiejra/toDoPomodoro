@@ -53,6 +53,8 @@ ${
 
 <button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
 
+<button class="des-btn"  data-index=${i} id="${i}"> <i class="fas fa-list-alt" aria-hidden="true"></i></button>
+
 </div>
 </div>
 `,
