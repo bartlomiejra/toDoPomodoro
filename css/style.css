@@ -1,11 +1,16 @@
 html,
 body {
-  background-size: 100% 100%;
+  display: -ms-grid;
+  display: grid;
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  background: url(background.svg);
   color: white;
   height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 html header,
@@ -13,21 +18,26 @@ body header {
   height: 50px;
 }
 
-html .app,
-body .app {
-  background-color: black;
+html header,
+body header {
+  background-color: #636301;
+}
+
+.right {
+  background-color: #011b01;
+}
+
+.left {
+  background-color: #4d1b01;
 }
 
 .container {
-  min-height: calc(100vh - 50px);
-  -webkit-backdrop-filter: blur(500px);
-          backdrop-filter: blur(500px);
+  margin: auto;
+  width: 900px;
+  height: 700px;
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 30px;
   list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -35,6 +45,38 @@ body .app {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(46, 43, 43, 0.525);
+  z-index: 1;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
+  -ms-grid-rows: 1fr 10fr;
+      grid-template-rows: 1fr 10fr;
+  gap: 0px 0px;
+      grid-template-areas: "header header" "left right";
+}
+
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+}
+
+.left {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: left;
+}
+
+.right {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: right;
 }
 
 .clock,
@@ -154,20 +196,62 @@ task {
 
 .divT {
   height: 50px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin-bottom: 5px;
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   background-color: #141414;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1.5fr 1fr;
+      grid-template-rows: 1.5fr 1fr;
+  gap: 0px 0px;
+      grid-template-areas: "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn" "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
+}
+
+.complete-btn {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: complete-btn;
+}
+
+.todo-item {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 6;
+  grid-area: todo-item;
+  text-align: left;
+}
+
+.clocks {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 6;
+  grid-area: clocks;
+}
+
+.delete-btn {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 8;
+  grid-area: delete-btn;
+}
+
+.des-btn {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 10;
+  grid-area: des-btn;
+}
+
+.play-btn {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 9;
+  grid-area: play-btn;
 }
 
 button {
@@ -190,20 +274,10 @@ button {
   padding: 0.3rem;
 }
 
-fa-pause-btn {
-  color: #034e03;
-}
-
-P
 .play-btn,
 .fa-pause,
 .fa-pause-btn {
-  color: #034e03;
   margin-right: 10px;
-}
-
-.delete-btn {
-  color: #740606;
 }
 
 .fa-clock {

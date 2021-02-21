@@ -39,7 +39,7 @@ function lists(todolist = [], objlines) {
 <i class="fas fa-clock" aria-hidden="true"> </i>
 </div>
 
-<div class=controlButtons>
+
 
 <button class="complete-btn" data-index=${i} id="item${i}" >
 ${
@@ -55,7 +55,7 @@ ${
 
 <button class="des-btn"  data-index=${i} id="${i}"> <i class="fas fa-list-alt" aria-hidden="true"></i></button>
 
-</div>
+
 </div>
 `,
     )
