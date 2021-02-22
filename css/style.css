@@ -13,75 +13,155 @@ body {
   background-size: cover;
 }
 
-html header,
-body header {
-  height: 50px;
-}
-
-html header,
-body header {
-  background-color: #636301;
-}
-
-.right {
-  background-color: #011b01;
-}
-
-.left {
-  background-color: #4d1b01;
-}
-
-.container {
+html .container,
+body .container {
+  /* Note: backdrop-filter has minimal browser support */
   margin: auto;
   width: 900px;
   height: 700px;
-  /* Note: backdrop-filter has minimal browser support */
   border-radius: 30px;
   list-style: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(46, 43, 43, 0.525);
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+html .container > *,
+body .container > * {
+  padding: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 100%;
+          flex: 1 100%;
+}
+
+html header,
+body header {
+  background: linear-gradient(147.14deg, rgba(26, 25, 25, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  max-height: 25px;
+}
+
+html .right,
+body .right {
+  height: 100%;
+  background-color: #011b01;
+}
+
+@-webkit-keyframes reducing {
+  from {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  to {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+}
+
+@keyframes reducing {
+  from {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  to {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+}
+
+@-webkit-keyframes enlarging {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@keyframes enlarging {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+html .animationIn,
+body .animationIn {
+  -webkit-animation: enlarging;
+          animation: enlarging;
+  -webkit-animation-duration: .7s;
+          animation-duration: .7s;
+  -webkit-transition: 2;
+  transition: 2;
+}
+
+html .animationOut,
+body .animationOut {
+  -webkit-animation: reducing;
+          animation: reducing;
+  -webkit-transition: 2;
+  transition: 2;
+}
+
+html .none,
+body .none {
+  display: none;
+}
+
+html .left,
+body .left {
+  height: 100%;
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  -webkit-box-flex: 2;
+      -ms-flex: 2 20%;
+          flex: 2 20%;
+}
+
+html .center,
+body .center {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  background-color: rgba(46, 43, 43, 0.525);
-  z-index: 1;
-  overflow: hidden;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 3fr;
-      grid-template-columns: 1fr 3fr;
-  -ms-grid-rows: 1fr 10fr;
-      grid-template-rows: 1fr 10fr;
-  gap: 0px 0px;
-      grid-template-areas: "header header" "left right";
+  -webkit-box-flex: 3;
+      -ms-flex: 3 50%;
+          flex: 3 50%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: header;
+html .right,
+body .right {
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  -webkit-box-flex: 4;
+      -ms-flex: 4 20%;
+          flex: 4 20%;
 }
 
-.left {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: left;
-}
-
-.right {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: right;
-}
-
-.clock,
-.addTask,
-.tasksToDo {
+html .clock,
+html .addTask,
+html .tasksToDo,
+body .clock,
+body .addTask,
+body .tasksToDo {
   background: #141414;
   padding: 5px;
   margin: 10px;
@@ -89,7 +169,8 @@ header {
   font-size: 2em;
 }
 
-.clock {
+html .clock,
+body .clock {
   width: 6em;
   border-radius: 20px;
   display: table-cell;
@@ -97,7 +178,8 @@ header {
   text-align: center;
 }
 
-.todoInput {
+html .todoInput,
+body .todoInput {
   color: #b17676;
   letter-spacing: 1.2px;
   font-size: 1.2rem;
@@ -109,7 +191,8 @@ header {
   border-radius: 0px 8px 8px 0px;
 }
 
-.addTaskdiv {
+html .addTaskdiv,
+body .addTaskdiv {
   margin-left: 40px;
   width: 45%;
   display: -webkit-box;
@@ -120,7 +203,8 @@ header {
           justify-content: center;
 }
 
-.input {
+html .input,
+body .input {
   font-size: 1.2em;
   width: 90%;
   background-color: #3c3e57;
@@ -128,11 +212,13 @@ header {
   border: 0;
 }
 
-.todo-item {
+html .todo-item,
+body .todo-item {
   text-align: center;
 }
 
-.addtask {
+html .addtask,
+body .addtask {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -142,22 +228,21 @@ header {
   border: 0;
 }
 
-.addtask:hover {
+html .addtask:hover,
+body .addtask:hover {
   color: white;
 }
 
-.todolist {
-  width: 55%;
-}
-
-.todolist > div {
+html .todolist > div,
+body .todolist > div {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 }
 
-.task {
+html .task,
+body .task {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -166,13 +251,15 @@ header {
           justify-content: center;
 }
 
-button {
+html button,
+body button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-li {
+html li,
+body li {
   list-style-type: none;
   padding: 0.3rem;
   -webkit-box-flex: 6;
@@ -181,20 +268,23 @@ li {
   text-align: center;
 }
 
-i {
+html i,
+body i {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   background: transparent;
 }
 
-task {
+html task,
+body task {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.divT {
+html .divT,
+body .divT {
   height: 50px;
   margin-bottom: 5px;
   border-radius: 8px;
@@ -211,14 +301,16 @@ task {
       grid-template-areas: "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn" "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
 }
 
-.complete-btn {
+html .complete-btn,
+body .complete-btn {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: complete-btn;
 }
 
-.todo-item {
+html .todo-item,
+body .todo-item {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   -ms-grid-column-span: 6;
@@ -226,62 +318,99 @@ task {
   text-align: left;
 }
 
-.clocks {
+html .clocks,
+body .clocks {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   -ms-grid-column-span: 6;
   grid-area: clocks;
 }
 
-.delete-btn {
+html .delete-btn,
+body .delete-btn {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 8;
   grid-area: delete-btn;
 }
 
-.des-btn {
+html .des-btn,
+body .des-btn {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 10;
   grid-area: des-btn;
 }
 
-.play-btn {
+html .play-btn,
+body .play-btn {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 9;
   grid-area: play-btn;
 }
 
-button {
+html button,
+body button {
   border: 0;
 }
 
-.pauseButton,
-.resetButton,
-.play-btn,
-.fa-pause,
-.delete-btn,
-.complete-btn,
-.fa-play,
-.fa-play-circle,
-.des-btn,
-.pause-btn, .fa-pause, .fa-pause-circle, .fa-stop-circle, .fa-minus-circle {
+html .pauseButton,
+html .resetButton,
+html .play-btn,
+html .fa-pause,
+html .delete-btn,
+html .complete-btn,
+html .fa-play,
+html .fa-play-circle,
+html .des-btn,
+html .fa-circle,
+html .fa-check-circle,
+html .pause-btn, html .fa-pause, html .fa-pause-circle, html .fa-stop-circle, html .fa-minus-circle,
+body .pauseButton,
+body .resetButton,
+body .play-btn,
+body .fa-pause,
+body .delete-btn,
+body .complete-btn,
+body .fa-play,
+body .fa-play-circle,
+body .des-btn,
+body .fa-circle,
+body .fa-check-circle,
+body .pause-btn,
+body .fa-pause,
+body .fa-pause-circle,
+body .fa-stop-circle,
+body .fa-minus-circle {
   outline: 0;
   background: transparent;
+  color: #585858;
   font-size: 1.6rem;
   padding: 0.3rem;
 }
 
-.play-btn,
-.fa-pause,
-.fa-pause-btn {
+html .play-btn,
+html .fa-pause,
+html .fa-pause-btn
+.fa-check-circle,
+html .fa-circle,
+body .play-btn,
+body .fa-pause,
+body .fa-pause-btn
+.fa-check-circle,
+body .fa-circle {
   margin-right: 10px;
 }
 
-.fa-clock {
+html .fa-clock,
+body .fa-clock {
   color: #740606;
+}
+
+html ul,
+body ul {
+  padding: 0px;
 }
 
 @-webkit-keyframes pulse {
@@ -330,11 +459,8 @@ button {
   }
 }
 
-.complete-btn {
-  color: white;
-}
-
-.addtaskButton {
+html .addtaskButton,
+body .addtaskButton {
   padding: 5px 15px 5px 15px;
   font-size: 1.1rem;
   background-color: #ffffff;
@@ -342,17 +468,20 @@ button {
   border-radius: 8px 0px 0px 8px;
 }
 
-.completed {
+html .completed,
+body .completed {
   text-decoration: line-through;
   opacity: 0.6;
 }
 
-.red {
+html .red,
+body .red {
   background-color: #740606;
   color: #740606;
 }
 
-#taksCompleted {
+html #taksCompleted,
+body #taksCompleted {
   background-color: grey;
   color: white;
   position: relative;
@@ -362,33 +491,38 @@ button {
           flex: 0;
 }
 
-.fall {
+html .fall,
+body .fall {
   -webkit-transform: translateX(17rem) rotateZ(1deg);
           transform: translateX(17rem) rotateZ(1deg);
   opacity: 0;
 }
 
-.checking {
+html .checking,
+body .checking {
   -webkit-transform: translateY(17rem);
           transform: translateY(17rem);
   opacity: 1;
 }
 
-.timerStart {
+html .timerStart,
+body .timerStart {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
   background-color: #c55d5d;
   color: white;
 }
 
-.timerFinish {
+html .timerFinish,
+body .timerFinish {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   background-color: #313f7c;
   color: white;
 }
 
-.tasktable {
+html .tasktable,
+body .tasktable {
   width: 100%;
   background-color: #0f0f0f;
   display: -webkit-box;
@@ -399,7 +533,8 @@ button {
           justify-content: center;
 }
 
-.tasktable .stat {
+html .tasktable .stat,
+body .tasktable .stat {
   width: 25%;
   background-color: #0f0f0f;
   display: -webkit-box;
@@ -411,7 +546,8 @@ button {
           flex-direction: column;
 }
 
-.tasktable .stat .number {
+html .tasktable .stat .number,
+body .tasktable .stat .number {
   color: #441a1a;
   -webkit-box-flex: 10;
       -ms-flex: 10;
@@ -420,62 +556,80 @@ button {
   font-size: 2rem;
 }
 
-.tasktable .stat .text {
+html .tasktable .stat .text,
+body .tasktable .stat .text {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
   text-align: center;
 }
 
-.fa-circle,
-.fa-check,
-.fa-play,
-.fa-play-circle,
-.fa-check-circle,
-.fa-trash,
-.fa-minus-circle,
-.fa-pause,
-.fa-pause-circle {
+html .fa-circle,
+html .fa-check,
+html .fa-play,
+html .fa-play-circle,
+html .fa-check-circle,
+html .fa-trash,
+html .fa-minus-circle,
+html .fa-pause,
+html .fa-pause-circle,
+body .fa-circle,
+body .fa-check,
+body .fa-play,
+body .fa-play-circle,
+body .fa-check-circle,
+body .fa-trash,
+body .fa-minus-circle,
+body .fa-pause,
+body .fa-pause-circle {
   cursor: pointer;
   pointer-events: none;
   border: 0;
 }
 
-.fa-clock {
+html .fa-clock,
+body .fa-clock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: left;
 }
 
-.completedTasks {
+html .completedTasks,
+body .completedTasks {
   position: absolute;
   top: 85%;
   display: none;
 }
 
 @media screen and (max-width: 650px) {
-  header {
+  html header,
+  body header {
     height: 25px;
     font-size: 10px;
   }
-  .todolist {
+  html .todolist,
+  body .todolist {
     width: 90%;
     -webkit-padding-start: 0px;
             padding-inline-start: 0px;
   }
-  .stat {
+  html .stat,
+  body .stat {
     font-size: 3vw;
   }
-  i::before {
+  html i::before,
+  body i::before {
     background: transparent;
   }
-  .addTaskdiv {
+  html .addTaskdiv,
+  body .addTaskdiv {
     margin-left: 0px;
   }
 }
 
-.countdownButtonsNone {
+html .countdownButtonsNone,
+body .countdownButtonsNone {
   display: none;
   background-color: pink;
 }

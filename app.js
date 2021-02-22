@@ -5,6 +5,7 @@ const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.pauseButton');
 const reset = document.querySelector('.resetButton');
+const description = document.querySelector('.right');
 const breakdown = document.querySelector('.fa-coffee');
 
 // const task = document.querySelector('divT');
@@ -53,7 +54,9 @@ ${
 
 <button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
 
-<button class="des-btn"  data-index=${i} id="${i}"> <i class="fas fa-list-alt" aria-hidden="true"></i></button>
+<button class="des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"> <i class="fas fa-list-alt" 
+
+aria-hidden="true"></i></button>
 
 
 </div>
@@ -195,6 +198,9 @@ function btnActtion(e) {
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
+
+  if (item.classList[0] === 'des-btn') {
+  }
 }
 
 function displayTimeLeft(seconds) {
@@ -303,6 +309,7 @@ function endpomodoro() {
   audio.play();
   //* convert string to js object
   const itemS = JSON.parse(localStorage.getItem('Items'));
+  console.log(itemS);
   itemS[taskId].focus += timeInFocus;
   localStorage.setItem('Items', JSON.stringify(itemS));
   lists(todos, todoList);
@@ -310,9 +317,32 @@ function endpomodoro() {
   breakTime();
 }
 
+function showDiv(clicked_id) {
+  //! Poniżej id tasku
+  const itemS = JSON.parse(localStorage.getItem('Items'));
+  console.log(itemS[clicked_id]);
+
+  // const aax = document.getElementById('display');
+
+  if (description.classList.contains('none')) {
+    // description.classList.add('animationIn');
+    // setInterval(function () {
+    description.classList.remove('none');
+
+    // function showdetals(item);
+    // }, 2000);
+  } else {
+    // description.classList.add('animationOut');
+    // setInterval(function () {
+    description.classList.add('none');
+    // }, 2000);
+  }
+}
+
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
+// showDetals.addEventListener('click', showDiv);
 lists(todos, todoList);
 
 /*

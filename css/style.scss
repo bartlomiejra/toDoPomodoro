@@ -32,81 +32,125 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  header {
-    height: 50px;
-  }
 
-  header{
-    background-color: rgb(99, 99, 1);
+ 
 
-  }
-  
-}
-.right{
-  background-color: rgb(1, 27, 1);
-}
-
-.left{
-  background-color: rgb(77, 27, 1);
-}
-
+ 
 .container {
-  margin: auto;
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-
-  // width: 80%;
-  // height: 70%;
- 
-
-  width: 900px;
-  height: 700px;
- 
-  // top: 50%;
-  // left: 50%;
-  // min-height: calc(100vh - 50px);
   // background-color: #141414;
   // background: rgba(56, 55, 55, 0.22);
   /* Note: backdrop-filter has minimal browser support */
+  // align-items: stretch;
+  margin: auto;
+  width: 900px;
+  height: 700px;
   border-radius: 30px;
   list-style: none;
-  // display: flex;
-  align-items: center;
-  // width: 600px;
-  // height: 100%;
-  flex-direction: column;
-
-
-
+  flex-flow: row wrap;
   backdrop-filter: blur(5px);
   background-color: rgba(46, 43, 43, 0.525);  
-  // margin: -70px 0 0 -170px;
-
-
-  //////////////////////
-  
-  
-  z-index: 1;
-  // background: inherit;
+  // z-index: 1;
   overflow: hidden;
-
-////////////
-display: grid;
-grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 10fr;
- 
-  gap: 0px 0px;
-  grid-template-areas:
-    "header header"
-    "left right";
+display: flex;
 }
 
-header { grid-area: header; }
-.left { grid-area: left; }
-.right { grid-area: right; 
+.container > * {
+  padding: 10px;
+  flex: 1 100%;
 }
+
+header{
+  background: linear-gradient(147.14deg, rgba(26, 25, 25, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+
+  max-height: 25px;
+  // background-color: rgb(99, 99, 1);
+
+}
+
+// }
+.right{
+  height: 100%;
+  
+background-color: rgb(1, 27, 1);
+// height: 100%;
+}
+
+
+
+//! Animacja która miała wyświetlać diva ale średnio działa - do poprawienia albo usunięcia
+@keyframes reducing
+{
+  from {
+      transform: scaleX(1);
+    // transform:  scale(1);
+  }
+
+  to {
+    transform: scaleX(0);
+    // transform:  scale(0);
+  }
+}
+
+ @keyframes enlarging
+{
+  from {
+      transform: scaleX(0);
+    // transform:  scale(1);
+  }
+
+  to {
+    transform: scaleX(1);
+    // transform:  scale(0);
+  }
+}
+
+
+.animationIn{
+  animation: enlarging;
+  animation-duration: .7s;
+  transition: 2;
+}
+
+.animationOut{
+  
+  animation: reducing;
+  transition: 2;
+}
+
+.none{
+  // transition: 
+  // transform: scale(0.2);
+  // animation-name: enlarging;
+  // animation-duration: .7s;
+  // slidein: all 5.5s ease-in-out;
+  // animation: 3s in-out forwards;
+  // background-color: red;
+  display: none;
+  // transform-origin: left center;
+}
+
+
+.left{
+height: 100%;
+background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+// background-color: rgb(77, 27, 1);
+ flex: 2 20%;
+}
+
+.center{ 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 3 50%;
+  align-items: center;
+}
+.right{
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+ flex: 4 20%}
+
+
+
+
 
 
 .clock,
@@ -171,7 +215,7 @@ header { grid-area: header; }
 }
 
 .todolist {
-  width: 55%;
+  // width: 55%;
 }
 
 .todolist>div {
@@ -254,14 +298,15 @@ button {
 .fa-play,
 .fa-play-circle,
 .des-btn,
-
+.fa-circle,
+.fa-check-circle,
 .pause-btn, .fa-pause , .fa-pause-circle, .fa-stop-circle, .fa-minus-circle  {
  
   outline: 0 ;
   background:transparent;
   // outline: none !important;
   // box-shadow: none !important;
-
+color: rgb(88, 88, 88);
   font-size: 1.6rem;
   padding: 0.3rem;
 }
@@ -270,7 +315,9 @@ button {
 
 .play-btn,
 .fa-pause,
-.fa-pause-btn {
+.fa-pause-btn
+.fa-check-circle,
+.fa-circle {
 
   margin-right: 10px;
 }
@@ -286,6 +333,9 @@ button {
   // animation-iteration-count: infinite;
 }
 
+ul{
+  padding: 0px;
+}
 
 @keyframes pulse {
   0% {
@@ -315,9 +365,9 @@ button {
 }
 
 
-.complete-btn {
-  color: white;
-}
+// .complete-btn {
+//   color: white;
+// }
 
 .addtaskButton {
   padding: 5px 15px 5px 15px;
@@ -462,31 +512,24 @@ button {
 }
   .addTaskdiv {
     margin-left: 0px;
+    // text-align: center;
 
   }
 }
+
 
 .countdownButtonsNone {
   // transition: all 2s ease-in-out;
   display: none;
   background-color: pink;
+ 
+
 }
 
-// .countdownButtons {
-//   // transition: all 2s ease;
-
-//   .pauseButton,
-//   .resetButton {
-  
-//   }
-//   .fa-play-circle, .fa-pause-circle{
-//     background-color: #c55d5d;
-//     color:rgb(3, 78, 3);
-//   }
- 
-// }
 
 
+
+}
 
 
 li{
