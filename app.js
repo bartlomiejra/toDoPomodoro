@@ -2,11 +2,13 @@ const todoInput = document.querySelector('.todoInput');
 const todoButton = document.querySelector('.addtaskButton');
 const todoList = document.querySelector('.todolist');
 const clockTimer = document.querySelector('.clock');
+
 const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.pauseButton');
 const reset = document.querySelector('.resetButton');
 const description = document.querySelector('.right');
 const breakdown = document.querySelector('.fa-coffee');
+const resize = document.querySelector('.fa-window-restore');
 
 // const task = document.querySelector('divT');
 // const newTodo = document.querySelector('.todo-item');
@@ -185,6 +187,8 @@ function btnActtion(e) {
 
   //* timer start function
   if (item.classList[0] === 'play-btn') {
+    resizeClock();
+    resize.classList.remove('countdownButtonsNone');
     pause.removeEventListener('click', timerBreak);
     // resetTimer();
     console.log(item);
@@ -345,10 +349,19 @@ todoList.addEventListener('click', btnActtion);
 // showDetals.addEventListener('click', showDiv);
 lists(todos, todoList);
 
+function resizeClock() {
+  if (clockTimer.classList.contains('clock-fullscreen')) {
+    clockTimer.classList.remove('clock-fullscreen');
+  } else {
+    clockTimer.classList.add('clock-fullscreen');
+  }
+}
+// resize.classList.add('clock-fullscreen');
+
 /*
-  * Importand Information
-  ! Deprecated method, do not use
-  ? should this method be exposad in the public API
-  TODO: zrobić to i tamto
-  * @param myParam The parameter for this method
-*/
+      * Importand Information
+      ! Deprecated method, do not use
+      ? should this method be exposad in the public API
+      TODO: zrobić to i tamto
+      * @param myParam The parameter for this method
+    */

@@ -32,6 +32,7 @@ body .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
 }
 
 html .container > *,
@@ -171,11 +172,39 @@ body .tasksToDo {
 
 html .clock,
 body .clock {
+  position: relative;
   width: 6em;
   border-radius: 20px;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+}
+
+html .fa-window-restore,
+body .fa-window-restore {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+html .clock-fullscreen,
+body .clock-fullscreen {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: silver;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 html .todoInput,
@@ -365,6 +394,7 @@ html .fa-play,
 html .fa-play-circle,
 html .des-btn,
 html .fa-circle,
+html .fa-window-restore,
 html .fa-check-circle,
 html .pause-btn, html .fa-pause, html .fa-pause-circle, html .fa-stop-circle, html .fa-minus-circle,
 body .pauseButton,
@@ -377,6 +407,7 @@ body .fa-play,
 body .fa-play-circle,
 body .des-btn,
 body .fa-circle,
+body .fa-window-restore,
 body .fa-check-circle,
 body .pause-btn,
 body .fa-pause,
@@ -386,16 +417,18 @@ body .fa-minus-circle {
   outline: 0;
   background: transparent;
   color: #585858;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   padding: 0.3rem;
 }
 
 html .play-btn,
+html .fa-window-restore,
 html .fa-pause,
 html .fa-pause-btn
 .fa-check-circle,
 html .fa-circle,
 body .play-btn,
+body .fa-window-restore,
 body .fa-pause,
 body .fa-pause-btn
 .fa-check-circle,
@@ -507,8 +540,8 @@ body .checking {
 
 html .timerStart,
 body .timerStart {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
+  -webkit-transition: all 10s ease-in-out;
+  transition: all 10s ease-in-out;
   background-color: #c55d5d;
   color: white;
 }

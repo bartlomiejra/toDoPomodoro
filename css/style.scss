@@ -12,6 +12,9 @@ $red: rgb(116, 6, 6);
 html{
 }
 
+
+
+
 html,
 body {
 
@@ -52,6 +55,7 @@ body {
   // z-index: 1;
   overflow: hidden;
 display: flex;
+position: relative;
 }
 
 .container > * {
@@ -163,12 +167,43 @@ background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 
   font-size: 2em;
 }
 
-.clock {
+ .clock{
+  position: relative;
   width: 6em;
   border-radius: 20px;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+}
+
+.fa-window-restore{
+
+position: absolute;
+top: 5px;
+left: 5px;
+}
+
+
+.clock-fullscreen{
+  left: 0;
+  top: 0;
+  position: absolute;
+  // width: 300px;
+  // height: 500px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: silver;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  #countdown{
+    // background-color: red;
+    // display: flex;
+   
+
+  
+  }
 }
 
 .todoInput {
@@ -299,6 +334,7 @@ button {
 .fa-play-circle,
 .des-btn,
 .fa-circle,
+.fa-window-restore,
 .fa-check-circle,
 .pause-btn, .fa-pause , .fa-pause-circle, .fa-stop-circle, .fa-minus-circle  {
  
@@ -307,13 +343,14 @@ button {
   // outline: none !important;
   // box-shadow: none !important;
 color: rgb(88, 88, 88);
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   padding: 0.3rem;
 }
 
 
 
 .play-btn,
+.fa-window-restore,
 .fa-pause,
 .fa-pause-btn
 .fa-check-circle,
@@ -409,12 +446,15 @@ ul{
   opacity: 1;
 }
 
+
+
 .timerStart {
   // position: absolute;
   // top:65px;
   // z-index: 1;
   // width:794px;
-  transition: all 1s ease;
+
+  transition: all 10s ease-in-out;
   // height: 200px;
   background-color: rgb(197, 93, 93);
   color: white;
