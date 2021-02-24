@@ -7,38 +7,25 @@ $red: rgb(116, 6, 6);
 @mixin buttonstyle {
   background-color: grey;
   color: white;
+  
 }
-
-html{
-}
-
-
-
 
 html,
 body {
 
   display: grid;
-  // background: url(background.svg);
-  // background-size: auto;
+ 
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  // background-color: $backgroundcolor;
   background: url(background.svg);
-  // background: linear-gradient(116.29deg, rgba(17, 17, 17, 0.16) 0%, rgba(0, 0, 0, 0.72) 100.79%);
   color: white;
   height: 100%;
-  
-  // position: relative;
-  // background-size: 100% 100%;
+ 
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
- 
-
- 
 .container {
   // background-color: #141414;
   // background: rgba(56, 55, 55, 0.22);
@@ -65,18 +52,14 @@ position: relative;
 
 header{
   background: linear-gradient(147.14deg, rgba(26, 25, 25, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-
   max-height: 25px;
-  // background-color: rgb(99, 99, 1);
-
 }
 
-// }
+
 .right{
   height: 100%;
-  
 background-color: rgb(1, 27, 1);
-// height: 100%;
+
 }
 
 
@@ -122,22 +105,14 @@ background-color: rgb(1, 27, 1);
 }
 
 .none{
-  // transition: 
-  // transform: scale(0.2);
-  // animation-name: enlarging;
-  // animation-duration: .7s;
-  // slidein: all 5.5s ease-in-out;
-  // animation: 3s in-out forwards;
-  // background-color: red;
+
   display: none;
-  // transform-origin: left center;
 }
 
 
 .left{
 height: 100%;
 background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-// background-color: rgb(77, 27, 1);
  flex: 2 20%;
 }
 
@@ -159,7 +134,7 @@ background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 
 
 .clock,
 .addTask,
-.tasksToDo {
+.tasksToDo, .addTaskdiv {
   background: rgb(20, 20, 20);
   padding: 5px;
   margin: 10px;
@@ -168,12 +143,18 @@ background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 
 }
 
  .clock{
+   margin: 0px;
   position: relative;
   width: 6em;
   border-radius: 20px;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+  i{
+    // background-color: red;
+    color: rgba(255, 255, 255, 0.550);
+
+  }
 }
 
 .fa-window-restore{
@@ -181,6 +162,12 @@ background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 
 position: absolute;
 top: 5px;
 left: 5px;
+color: white;
+}
+
+.clock{
+  position: absolute;
+  bottom: 20px;
 }
 
 
@@ -188,8 +175,6 @@ left: 5px;
   left: 0;
   top: 0;
   position: absolute;
-  // width: 300px;
-  // height: 500px;
   width: 100%;
   height: 100%;
   z-index: 10;
@@ -198,11 +183,17 @@ left: 5px;
   align-items: center;
   justify-content: center;
   #countdown{
-    // background-color: red;
-    // display: flex;
-   
+    font-size: 4rem;
 
   
+  }
+  .countdownButtons{
+    position: absolute;
+    bottom: 30px;
+  
+  }
+  i{
+    font-size: 1.8rem
   }
 }
 
@@ -352,7 +343,7 @@ color: rgb(88, 88, 88);
 .play-btn,
 .fa-window-restore,
 .fa-pause,
-.fa-pause-btn
+.fa-pause-btn,
 .fa-check-circle,
 .fa-circle {
 
@@ -453,16 +444,23 @@ ul{
   // top:65px;
   // z-index: 1;
   // width:794px;
+  transform-origin: top right;
+  transition: all 0.3s ease-in-out;
 
-  transition: all 10s ease-in-out;
   // height: 200px;
-  background-color: rgb(197, 93, 93);
+  // background-color: rgba(197, 93, 93, 0.725);
+
+  background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+// opacity: 0.4;
+border-radius: 15px;
+  backdrop-filter: blur(5px);
   color: white;
 }
 
 .timerFinish {
   transition: all 0.5s ease;
-  background-color: rgb(49, 63, 124);
+  background-color: rgba(49, 63, 124, 0.725);
+  backdrop-filter: blur(5px);
   color: white;
 }
 
@@ -584,58 +582,7 @@ li{
   align-items: flex-end;
 }
 
-
-
-// body{
-//   background-color: rgb(26, 28, 46)(179, 125, 125);
-//   display: grid;
-//   place-items: center;
-//   height: 100%;
-//   width: 100%;
-//   font-size: 4vw;
-
-
-
-
-// }
-// .app{
-//   margin-top: 50px;
-//   width: 100vw;
-//   height: 100vh;
-//   background-color:black;
-// }
-// .container{
-
-//   width: 100vw;
-//   height: 100vh;
-// }
-
-// .todolist{
-// width: 90%;
-// padding-inline-start: 0px;
-
-// }
-
-
-
-
-// .tasktable .stat .number {
-//   font-size: 2rem;
-// }
-
-// .addTaskdiv{
-// height: 40px;
-// margin-left: 0px;
-
-
-// }
-
-// .divT{
-// height: 50px;
-
-// }
-
-
-
-// }
-
+.blur{
+  opacity: 0.2;
+ 
+}

@@ -39,9 +39,13 @@ function lists(todolist = [], objlines) {
 <div  class="todo-item" id="item${i}" >${todo.text} 
 </div>
 <div  class="clocks"> 
-<i class="fas fa-clock" aria-hidden="true"> </i>
-</div>
+${
+  todo.focus > [25]
+    ? '<i class="fas fa-clock " aria-hidden="true"> </i>'
+    : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
+}
 
+</div>
 
 
 <button class="complete-btn" data-index=${i} id="item${i}" >
@@ -51,6 +55,7 @@ ${
     : `<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>`
 } 
 </button>
+
 <button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
 
@@ -67,14 +72,10 @@ aria-hidden="true"></i></button>
     .join('');
 }
 
-// function play() {
-//   var audio = new Audio(
-//     'https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3',
-//   );
-//   audio.play();
-// }
+function printcoś() {
+  console.log('to');
+}
 
-//
 function addTodo(event) {
   event.preventDefault();
 
@@ -260,6 +261,8 @@ function timerBreak() {
       audio.play();
       resetTimer();
       clearInterval(countdownTime);
+      clockTimer.classList.remove('clock-fullscreen');
+
       return;
     }
     displayTimeLeft(secondsLeft);
@@ -276,12 +279,11 @@ function pausetimer() {
   } else {
     this.firstElementChild.classList.remove('fa-play-circle');
     this.firstElementChild.classList.add('fa-pause');
-    // console.log('wznowiono timer');
+
     paused = false;
     displayTimeLeft(secsave);
     timer(secsave);
   }
-  // https://codepen.io/yaphi1/pen/QbzrQP
 }
 
 function resetTimer() {
@@ -305,6 +307,7 @@ function breakTime() {
   );
   pause.firstElementChild.classList.add('fa-coffee');
   clockTimer.classList.remove('timerStart');
+
   lists(todos, todoList);
 }
 
@@ -326,20 +329,10 @@ function showDiv(clicked_id) {
   const itemS = JSON.parse(localStorage.getItem('Items'));
   console.log(itemS[clicked_id]);
 
-  // const aax = document.getElementById('display');
-
   if (description.classList.contains('none')) {
-    // description.classList.add('animationIn');
-    // setInterval(function () {
     description.classList.remove('none');
-
-    // function showdetals(item);
-    // }, 2000);
   } else {
-    // description.classList.add('animationOut');
-    // setInterval(function () {
     description.classList.add('none');
-    // }, 2000);
   }
 }
 
@@ -356,7 +349,6 @@ function resizeClock() {
     clockTimer.classList.add('clock-fullscreen');
   }
 }
-// resize.classList.add('clock-fullscreen');
 
 /*
       * Importand Information

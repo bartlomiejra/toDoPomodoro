@@ -159,10 +159,11 @@ body .right {
 
 html .clock,
 html .addTask,
-html .tasksToDo,
+html .tasksToDo, html .addTaskdiv,
 body .clock,
 body .addTask,
-body .tasksToDo {
+body .tasksToDo,
+body .addTaskdiv {
   background: #141414;
   padding: 5px;
   margin: 10px;
@@ -172,6 +173,7 @@ body .tasksToDo {
 
 html .clock,
 body .clock {
+  margin: 0px;
   position: relative;
   width: 6em;
   border-radius: 20px;
@@ -180,11 +182,23 @@ body .clock {
   text-align: center;
 }
 
+html .clock i,
+body .clock i {
+  color: rgba(255, 255, 255, 0.55);
+}
+
 html .fa-window-restore,
 body .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
+  color: white;
+}
+
+html .clock,
+body .clock {
+  position: absolute;
+  bottom: 20px;
 }
 
 html .clock-fullscreen,
@@ -205,6 +219,22 @@ body .clock-fullscreen {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+html .clock-fullscreen #countdown,
+body .clock-fullscreen #countdown {
+  font-size: 4rem;
+}
+
+html .clock-fullscreen .countdownButtons,
+body .clock-fullscreen .countdownButtons {
+  position: absolute;
+  bottom: 30px;
+}
+
+html .clock-fullscreen i,
+body .clock-fullscreen i {
+  font-size: 1.8rem;
 }
 
 html .todoInput,
@@ -424,14 +454,14 @@ body .fa-minus-circle {
 html .play-btn,
 html .fa-window-restore,
 html .fa-pause,
-html .fa-pause-btn
-.fa-check-circle,
+html .fa-pause-btn,
+html .fa-check-circle,
 html .fa-circle,
 body .play-btn,
 body .fa-window-restore,
 body .fa-pause,
-body .fa-pause-btn
-.fa-check-circle,
+body .fa-pause-btn,
+body .fa-check-circle,
 body .fa-circle {
   margin-right: 10px;
 }
@@ -540,9 +570,14 @@ body .checking {
 
 html .timerStart,
 body .timerStart {
-  -webkit-transition: all 10s ease-in-out;
-  transition: all 10s ease-in-out;
-  background-color: #c55d5d;
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+  border-radius: 15px;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   color: white;
 }
 
@@ -550,7 +585,9 @@ html .timerFinish,
 body .timerFinish {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  background-color: #313f7c;
+  background-color: rgba(49, 63, 124, 0.725);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   color: white;
 }
 
@@ -689,5 +726,9 @@ li {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+}
+
+.blur {
+  opacity: 0.2;
 }
 /*# sourceMappingURL=style.css.map */
