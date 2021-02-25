@@ -177,6 +177,7 @@ color: white;
   position: absolute;
   width: 100%;
   height: 100%;
+ 
   z-index: 10;
   background-color: silver;
   display: flex;
@@ -436,7 +437,21 @@ ul{
   transform: translateY(17rem);
   opacity: 1;
 }
-
+@keyframes scale {
+  0% {
+    opacity:0;
+      transform: scale(0);
+      transform-origin: 50% 50%;
+  }
+  50% {
+    opacity:2;
+      transform: scale(1);
+      transform-origin: 50% 50%;
+  }
+  100% {
+      opacity:3;
+  }
+  }
 
 
 .timerStart {
@@ -444,9 +459,9 @@ ul{
   // top:65px;
   // z-index: 1;
   // width:794px;
-  transform-origin: top right;
-  transition: all 0.3s ease-in-out;
-
+  // transform-origin: top right;
+  // transition: all 0.3s ease-in-out;
+  animation: scale .4s ease-in-out 1 backwards;
   // height: 200px;
   // background-color: rgba(197, 93, 93, 0.725);
 
@@ -459,6 +474,7 @@ border-radius: 15px;
 
 .timerFinish {
   transition: all 0.5s ease;
+  animation: scale .4s ease-in-out 1 backwards;
   background-color: rgba(49, 63, 124, 0.725);
   backdrop-filter: blur(5px);
   color: white;
