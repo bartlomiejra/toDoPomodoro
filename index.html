@@ -90,7 +90,36 @@
              </div>
     </div>   
     <div class="right none">
-        <p id="display"></p>
+
+       
+
+     <div class="divT " >
+                
+                
+          <div  class="todo-item" id="item${i}" >${todo.text} 
+          </div>
+          <div  class="clocks"> 
+          
+          
+          </div>
+          
+          
+          <button class="complete-btn" data-index=${i} id="item${i}" >
+          
+          </button>
+          
+          <button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
+          </button>
+          
+          <button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
+          
+          <button class="des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"> <i class="fas fa-list-alt" 
+          
+          aria-hidden="true"></i></button>
+          
+          
+          </div>
+        </div>
     </div>
    
    

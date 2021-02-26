@@ -20,7 +20,7 @@ let audio;
 // virable to break time (5 minut defoult)
 
 let timeInFocus;
-
+const pomodoreDuration = 25;
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
@@ -40,7 +40,7 @@ function lists(todolist = [], objlines) {
 </div>
 <div  class="clocks"> 
 ${
-  todo.focus > [25]
+  todo.focus > [pomodoreDuration]
     ? '<i class="fas fa-clock " aria-hidden="true"> </i>'
     : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
 }
@@ -72,9 +72,9 @@ aria-hidden="true"></i></button>
     .join('');
 }
 
-function printcoś() {
-  console.log('to');
-}
+// function printcoś() {
+//   console.log('to');
+// }
 
 function addTodo(event) {
   event.preventDefault();
@@ -104,7 +104,7 @@ function statTask() {
     }
   }
   // let totalfocustime = 0;
-  const pomodoreDuration = 25;
+
   document.getElementById('completedTasks').innerHTML = countCompleted;
   document.getElementById('taskstobe').innerHTML = toBeCompleted;
   const totalfocustime = JSON.parse(localStorage.getItem('Items'));
@@ -292,6 +292,7 @@ function resetTimer() {
   buttonscountdown.classList.add('countdownButtonsNone');
   clearInterval(countdownTime);
   displayTimeLeft(0);
+  clockTimer.classList.remove('clock-fullscreen');
   // }
 }
 
@@ -326,6 +327,7 @@ function endpomodoro() {
 
 function showDiv(clicked_id) {
   //! Poniżej id tasku
+
   const itemS = JSON.parse(localStorage.getItem('Items'));
   console.log(itemS[clicked_id]);
 
