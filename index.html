@@ -98,27 +98,50 @@
                 
           <div  class="todo-item" id="item${i}" >${todo.text} 
           </div>
-          <div  class="clocks"> 
+         
           
           
-          </div>
-          
-          
-          <button class="complete-btn" data-index=${i} id="item${i}" >
-          
-          </button>
+          <button class="complete-btn" data-index=${i} id="item${i}" >  </button>
           
           <button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
           </button>
           
           <button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
           
-          <button class="des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"> <i class="fas fa-list-alt" 
-          
-          aria-hidden="true"></i></button>
+         
           
           
           </div>
+<div class="detals">
+          <ul>
+              <li>Pomodoro:</li> 
+              <li>Due Data:</li> <input type="date" id="start" name="trip-start">
+              <li>Project:</li> Basic
+              <li></i>Repeat:</li> Every day
+            </ul>
+        </div>
+             
+              
+              <ul>
+<li><input type="checkbox" > Napisze notatke</li>
+<li><input type="checkbox" > Sprzwdź </li>
+<form action="" >
+    
+    <button  type="submit"><i class="fas fa-plus" aria-hidden="true"></i></button>
+<input  type="text" name="item" placeholder="Item Name" onfocus="this.placeholder = 'Item Name'">
+
+
+</form>
+
+              </ul>
+             
+              <textarea name="" id="" ></textarea>
+
+
+              
+
+
+        
         </div>
     </div>
    

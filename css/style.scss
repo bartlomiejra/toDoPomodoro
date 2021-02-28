@@ -104,10 +104,10 @@ background-color: rgb(1, 27, 1);
   transition: 2;
 }
 
-.none{
+// .none{
 
-  display: none;
-}
+//   display: none;
+// }
 
 
 .left{
@@ -328,7 +328,8 @@ button {
 .fa-circle,
 .fa-window-restore,
 .fa-check-circle,
-.pause-btn, .fa-pause , .fa-pause-circle, .fa-stop-circle, .fa-minus-circle  {
+.pause-btn, .fa-pause , .fa-pause-circle, .fa-stop-circle, .fa-minus-circle, 
+.fa-calendar-alt, .fa-list, .fa-repeat  {
  
   outline: 0 ;
   background:transparent;
@@ -361,10 +362,25 @@ color: rgb(88, 88, 88);
   // -moz-animation-iteration-count: infinite;
   // animation-iteration-count: infinite;
 }
-
-ul{
-  padding: 0px;
+ul {
+  list-style: none;
+  padding-left: 0;
+  float: left;
+  // margin-top: 15px;
+  // margin-right: 50px;
 }
+li{
+font-size: 0.9em;
+text-decoration: bold;
+}
+
+.detals{
+font-size: 0.7rem;
+}
+
+
+
+
 
 @keyframes pulse {
   0% {
@@ -602,3 +618,6 @@ li{
   opacity: 0.2;
  
 }
+
+// Styling desciption - right part of app
+// tymczasowi zmieniam right i usuwam dusplay: none;

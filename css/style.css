@@ -117,11 +117,6 @@ body .animationOut {
   transition: 2;
 }
 
-html .none,
-body .none {
-  display: none;
-}
-
 html .left,
 body .left {
   height: 100%;
@@ -427,6 +422,7 @@ html .fa-circle,
 html .fa-window-restore,
 html .fa-check-circle,
 html .pause-btn, html .fa-pause, html .fa-pause-circle, html .fa-stop-circle, html .fa-minus-circle,
+html .fa-calendar-alt, html .fa-list, html .fa-repeat,
 body .pauseButton,
 body .resetButton,
 body .play-btn,
@@ -443,7 +439,10 @@ body .pause-btn,
 body .fa-pause,
 body .fa-pause-circle,
 body .fa-stop-circle,
-body .fa-minus-circle {
+body .fa-minus-circle,
+body .fa-calendar-alt,
+body .fa-list,
+body .fa-repeat {
   outline: 0;
   background: transparent;
   color: #585858;
@@ -473,7 +472,21 @@ body .fa-clock {
 
 html ul,
 body ul {
-  padding: 0px;
+  list-style: none;
+  padding-left: 0;
+  float: left;
+}
+
+html li,
+body li {
+  font-size: 0.9em;
+  -webkit-text-decoration: bold;
+          text-decoration: bold;
+}
+
+html .detals,
+body .detals {
+  font-size: 0.7rem;
 }
 
 @-webkit-keyframes pulse {
