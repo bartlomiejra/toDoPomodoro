@@ -90,7 +90,16 @@ background-color: rgb(1, 27, 1);
     // transform:  scale(0);
   }
 }
+ol{
+  position: relative;
+}
+ol>i{
+ 
+  position:absolute;
+  left: 0;
+  top: 0;
 
+}
 
 .animationIn{
   animation: enlarging;
@@ -104,10 +113,10 @@ background-color: rgb(1, 27, 1);
   transition: 2;
 }
 
-// .none{
+.none{
 
-//   display: none;
-// }
+  display: none;
+}
 
 
 .left{
@@ -135,7 +144,7 @@ background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 
 .clock,
 .addTask,
 .tasksToDo, .addTaskdiv {
-  background: rgb(20, 20, 20);
+  background: rgba(20, 20, 20, 0.725);
   padding: 5px;
   margin: 10px;
   color: white;
@@ -143,6 +152,9 @@ background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 
 }
 
  .clock{
+  backdrop-filter: blur(5px);
+
+  transition: all .3s ease-in-out;
    margin: 0px;
   position: relative;
   width: 6em;
@@ -171,18 +183,25 @@ color: white;
 }
 
 
+
+
 .clock-fullscreen{
-  left: 0;
-  top: 0;
   position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
- 
+    animation: scale 0.3s ease-in-out 1 ;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 10;
-  background-color: silver;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
+
   #countdown{
     font-size: 4rem;
 
@@ -197,9 +216,13 @@ color: white;
     font-size: 1.8rem
   }
 }
+.minimal{
+background-color: red;
+  animation: scale .4s ease-in-out 1 reverse;
+}
+
 
 .todoInput {
-  // background-color: #ffffff;
   color: rgb(177, 118, 118);
   letter-spacing: 1.2px;
   font-size: 1.2rem;
@@ -246,7 +269,7 @@ color: white;
 }
 
 .todolist>div {
-  transition: all 0.5s ease;
+  transition: all 0.4s ease;
   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 }
 
@@ -436,12 +459,13 @@ font-size: 0.7rem;
 
 #taksCompleted {
   @include buttonstyle;
- 
   position: relative;
   // top: 50%;
   top: 80%;
   flex: 0;
 }
+
+
 
 //animations
 .fall {
@@ -449,10 +473,7 @@ font-size: 0.7rem;
   opacity: 0;
 }
 
-.checking {
-  transform: translateY(17rem);
-  opacity: 1;
-}
+
 @keyframes scale {
   0% {
     opacity:0;
@@ -471,15 +492,7 @@ font-size: 0.7rem;
 
 
 .timerStart {
-  // position: absolute;
-  // top:65px;
-  // z-index: 1;
-  // width:794px;
-  // transform-origin: top right;
-  // transition: all 0.3s ease-in-out;
-  animation: scale .4s ease-in-out 1 backwards;
-  // height: 200px;
-  // background-color: rgba(197, 93, 93, 0.725);
+
 
   background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
 // opacity: 0.4;
@@ -489,8 +502,7 @@ border-radius: 15px;
 }
 
 .timerFinish {
-  transition: all 0.5s ease;
-  animation: scale .4s ease-in-out 1 backwards;
+ 
   background-color: rgba(49, 63, 124, 0.725);
   backdrop-filter: blur(5px);
   color: white;
@@ -501,7 +513,6 @@ border-radius: 15px;
   width: 100%;
   background-color: rgb(15, 15, 15);
   display: flex;
-  // grid-gap: 1rem;
   justify-content: center;
 
   .stat {
@@ -509,7 +520,7 @@ border-radius: 15px;
     background-color: rgb(15, 15, 15);
     display: flex;
     flex-direction: column;
-    // font-size: 20px;
+
 
     .number {
       color: rgb(68, 26, 26);
@@ -589,7 +600,6 @@ border-radius: 15px;
 
 
 .countdownButtonsNone {
-  // transition: all 2s ease-in-out;
   display: none;
   background-color: pink;
  
