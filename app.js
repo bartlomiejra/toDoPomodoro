@@ -328,7 +328,7 @@ function endpomodoro() {
   pause.addEventListener('click', timerBreak);
   breakTime();
 }
-
+// let clicked_id = 3;
 function showDiv(clicked_id) {
   //! Poniżej id tasku
 
@@ -337,11 +337,16 @@ function showDiv(clicked_id) {
 
   if (description.classList.contains('none')) {
     description.classList.remove('none');
+    renderdetals(clicked_id);
   } else {
     description.classList.add('none');
   }
 }
-
+function renderdetals() {
+  // showDiv(clicked_id);
+  const todoss = JSON.parse(localStorage.getItem('Items')) || [];
+  console.log(todoss[clicked_id]);
+}
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
@@ -355,55 +360,6 @@ function resizeClock() {
     clockTimer.classList.add('clock-fullscreen');
   }
 }
-
-function renderdetals(todolist = [], objlines) {
-  objlines.innerHTML = todolist
-    .map(
-      (todo, i) => `${
-        todo.done ? '<div class="divT completed">' : '<div class="divT " >'
-      }
-      
-<div  class="todo-item" id="item${i}" >${todo.text} 
-</div>
-<div  class="clocks"> 
-${
-  todo.focus > [pomodoreDuration]
-    ? '<i class="fas fa-clock " aria-hidden="true"> </i>'
-    : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
-}
-  ${
-    todo.focus / pomodoreDuration > 2
-      ? ` x ${Math.floor(todo.focus / pomodoreDuration)}`
-      : ''
-  }
-</div>
-
-
-<button class="complete-btn" data-index=${i} id="item${i}" >
-${
-  todo.done
-    ? `<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>`
-    : `<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>`
-} 
-
-</button>
-
-<button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
-</button>
-
-<button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-
-<button class="des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"> <i class="fas fa-list-alt" 
-
-aria-hidden="true"></i></button>
-
-
-</div>
-`,
-    )
-    .join('');
-}
-renderdetals();
 
 /*
       * Importand Information
