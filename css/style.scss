@@ -27,6 +27,8 @@ body {
   background-size: cover;
 
 .container {
+ 
+  background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj48ZGVmcz48cGF0dGVybiBpZD0icGF0dGVybiIgd2lkdGg9IjI3IiBoZWlnaHQ9IjI3IiB2aWV3Qm94PSIwIDAgNDAsNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzNikgIj48cmVjdCBpZD0icGF0dGVybi1iYWNrZ3JvdW5kIiB3aWR0aD0iNDAwJSIgaGVpZ2h0PSI0MDAlIiBmaWxsPSJyZ2JhKDI0NywgMjUwLCAyNTIsMSkiPjwvcmVjdD4gPGNpcmNsZSBmaWxsPSJyZ2JhKDIzNywgMjQyLCAyNDcsMSkiIGN4PSIwIiBjeT0iMjAiIHI9IjQiPjwvY2lyY2xlPjxjaXJjbGUgZmlsbD0icmdiYSgyMzcsIDI0MiwgMjQ3LDEpIiBjeD0iNDAiIGN5PSIyMCIgcj0iNCI+PC9jaXJjbGU+PHBhdGggZmlsbD0icmdiYSgyMzcsIDI0MiwgMjQ3LDEpIiBkPSJtIDE1LjUgMTAgaDkgdjIwIGgtOXoiPjwvcGF0aD48L3BhdHRlcm4+ICA8L2RlZnM+IDxyZWN0IGZpbGw9InVybCgjcGF0dGVybikiIGhlaWdodD0iMTAwJSIgd2lkdGg9IjEwMCUiPjwvcmVjdD48L3N2Zz4=");
   // background-color: #141414;
   // background: rgba(56, 55, 55, 0.22);
   /* Note: backdrop-filter has minimal browser support */
@@ -38,7 +40,7 @@ body {
   list-style: none;
   flex-flow: row wrap;
   backdrop-filter: blur(5px);
-  background-color: rgba(46, 43, 43, 0.525);  
+  // background-color: rgba(46, 43, 43, 0.525);  
   // z-index: 1;
   overflow: hidden;
 display: flex;
