@@ -1,4 +1,6 @@
 const todoInput = document.querySelector('.todoInput');
+const addProjectbtn = document.querySelector('.addProjectBtn');
+const addPr = document.querySelector('.Projects');
 const todoButton = document.querySelector('.addtaskButton');
 const todoList = document.querySelector('.todolist');
 const clockTimer = document.querySelector('.clock');
@@ -421,7 +423,23 @@ function showDiv(clickedId) {
      `;
   }
 }
+const project = JSON.parse(localStorage.getItem('Project')) || [];
+function addProject(event) {
+  console.log('ok');
+  event.preventDefault();
 
+  const Project = {
+    name: addPr.value,
+    color: '',
+  };
+
+  project.push(Project);
+
+  localStorage.setItem('Project', JSON.stringify(project));
+  addPr.value = '';
+}
+
+addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);

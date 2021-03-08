@@ -822,7 +822,7 @@ textarea {
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
-select, input[type="number"], input[type="date"] {
+select, input[type="number"], input[type="date"], .Projects {
   border: none;
   color: rgba(255, 255, 255, 0.55);
   border-radius: 8px;
@@ -831,13 +831,20 @@ select, input[type="number"], input[type="date"] {
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
-.addProjectBtn {
+.addProject {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
-  left: 0;
+  left: 10;
   bottom: 62px;
   width: 100%;
-  height: 35px;
-  font-size: 20px;
+}
+
+.addProjectBtn, .Projects {
+  text-align: center;
+  height: 30px;
+  font-size: 15px;
   border: none;
   color: rgba(255, 255, 255, 0.55);
   border-radius: 8px;
@@ -846,7 +853,7 @@ select, input[type="number"], input[type="date"] {
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
-.addProjectBtn i {
+.addProjectBtn i, .Projects i {
   margin-left: 10px;
 }
 /*# sourceMappingURL=style.css.map */

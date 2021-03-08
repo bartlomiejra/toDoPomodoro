@@ -657,7 +657,7 @@ textarea {
 
 }
 
-select, input[type="number"], input[type="date"]{
+select, input[type="number"], input[type="date"],.Projects{
   // border: grey;
   border: none;
   color: rgba(255, 255, 255, 0.550);
@@ -668,18 +668,20 @@ select, input[type="number"], input[type="date"]{
     , rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
-
-
-.addProjectBtn{
- 
+.addProject{
+display:flex;
   position:absolute;
-  left: 0;
-
+  left: 10;
   bottom: 62px;
- 
   width: 100%;
-height: 35px;
-  font-size: 20px;
+  
+ 
+}
+
+.addProjectBtn,.Projects{
+ text-align: center;
+height: 30px;
+  font-size: 15px;
   border: none;
   color: rgba(255, 255, 255, 0.550);
   border-radius: 8px;
@@ -693,3 +695,6 @@ height: 35px;
       margin-left: 10px;
     }
 }
+
+
+
