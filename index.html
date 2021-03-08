@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+     
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a712e78954.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +27,23 @@
             
           
         </ol>
+        <hr>
+        <H4>Projects</H4>
+        <ul>
+            <li>Project 1</li>
+            <li>Project 2</li>
+            <li>Project 3</li>
+        </ul>
 
+     
+
+         <form action="" class="">
+    
+        <button class="addProjectBtn" placeholder=" Add a New Project" type="submit"><i class="fas fa-plus" ></i>Add a New Project</button>
+
+
+
+</form>
         </div>
         <div class="center">
 
@@ -119,7 +137,22 @@
               <li>Pomodoro:</li> 
               <li>Due Data:</li> <input type="date" id="start" name="trip-start">
               <li>Project:</li> Basic
-              <li></i>Repeat:</li> Every day
+              <li></i>Repeat:</li> Every <select name="days" id="days">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+              <select name="tartOfTime" id="tartOfTime">
+
+                <option value="day">Day</option>
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+              </select>
+
             </ul>
         </div>
              

@@ -15,7 +15,6 @@ body {
 
 html .container,
 body .container {
-  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj48ZGVmcz48cGF0dGVybiBpZD0icGF0dGVybiIgd2lkdGg9IjI3IiBoZWlnaHQ9IjI3IiB2aWV3Qm94PSIwIDAgNDAsNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzNikgIj48cmVjdCBpZD0icGF0dGVybi1iYWNrZ3JvdW5kIiB3aWR0aD0iNDAwJSIgaGVpZ2h0PSI0MDAlIiBmaWxsPSJyZ2JhKDI0NywgMjUwLCAyNTIsMSkiPjwvcmVjdD4gPGNpcmNsZSBmaWxsPSJyZ2JhKDIzNywgMjQyLCAyNDcsMSkiIGN4PSIwIiBjeT0iMjAiIHI9IjQiPjwvY2lyY2xlPjxjaXJjbGUgZmlsbD0icmdiYSgyMzcsIDI0MiwgMjQ3LDEpIiBjeD0iNDAiIGN5PSIyMCIgcj0iNCI+PC9jaXJjbGU+PHBhdGggZmlsbD0icmdiYSgyMzcsIDI0MiwgMjQ3LDEpIiBkPSJtIDE1LjUgMTAgaDkgdjIwIGgtOXoiPjwvcGF0aD48L3BhdHRlcm4+ICA8L2RlZnM+IDxyZWN0IGZpbGw9InVybCgjcGF0dGVybikiIGhlaWdodD0iMTAwJSIgd2lkdGg9IjEwMCUiPjwvcmVjdD48L3N2Zz4=");
   /* Note: backdrop-filter has minimal browser support */
   margin: auto;
   width: 900px;
@@ -136,6 +135,7 @@ body .none {
 
 html .left,
 body .left {
+  position: relative;
   height: 100%;
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
   -webkit-box-flex: 2;
@@ -503,25 +503,6 @@ body .fa-clock {
   color: #740606;
 }
 
-html ul,
-body ul {
-  list-style: none;
-  padding-left: 0;
-  float: left;
-}
-
-html li,
-body li {
-  font-size: 0.9em;
-  -webkit-text-decoration: bold;
-          text-decoration: bold;
-}
-
-html .detals,
-body .detals {
-  font-size: 0.7rem;
-}
-
 @-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(1);
@@ -803,5 +784,69 @@ li {
 
 .blur {
   opacity: 0.2;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  float: left;
+}
+
+li {
+  font-size: 0.9em;
+  -webkit-text-decoration: bold;
+          text-decoration: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.detals {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+textarea {
+  outline: none;
+  resize: none;
+  width: 100%;
+  height: 250px;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+}
+
+select, input[type="number"], input[type="date"] {
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+}
+
+.addProjectBtn {
+  position: absolute;
+  left: 0;
+  bottom: 62px;
+  width: 100%;
+  height: 35px;
+  font-size: 20px;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+}
+
+.addProjectBtn i {
+  margin-left: 10px;
 }
 /*# sourceMappingURL=style.css.map */

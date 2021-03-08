@@ -2,7 +2,6 @@ const todoInput = document.querySelector('.todoInput');
 const todoButton = document.querySelector('.addtaskButton');
 const todoList = document.querySelector('.todolist');
 const clockTimer = document.querySelector('.clock');
-
 const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.pauseButton');
 const reset = document.querySelector('.resetButton');
@@ -88,6 +87,10 @@ function addTodo(event) {
     text: todoInput.value,
     done: false,
     focus: 0,
+    project: '',
+    repeat: '',
+
+    note: '',
   };
   // push and add task to localstorage
   todos.push(item);
@@ -199,7 +202,7 @@ function btnActtion(e) {
     resize.classList.remove('countdownButtonsNone');
     pause.removeEventListener('click', timerBreak);
     // resetTimer();
-    console.log(item);
+    // console.log(item);
     const { index } = e.target.id;
     taskId = e.target.id;
     timer();
@@ -321,37 +324,13 @@ function endpomodoro() {
   audio.play();
   //* convert string to js object
   const itemS = JSON.parse(localStorage.getItem('Items'));
-  console.log(itemS);
+  // console.log(itemS);
   itemS[taskId].focus += timeInFocus;
   localStorage.setItem('Items', JSON.stringify(itemS));
   lists(todos, todoList);
   pause.addEventListener('click', timerBreak);
   breakTime();
 }
-// let clicked_id = 3;
-function showDiv(clicked_id) {
-  //! Poniżej id tasku
-
-  const itemS = JSON.parse(localStorage.getItem('Items'));
-  console.log(itemS[clicked_id]);
-
-  if (description.classList.contains('none')) {
-    description.classList.remove('none');
-    renderdetals(clicked_id);
-  } else {
-    description.classList.add('none');
-  }
-}
-function renderdetals() {
-  // showDiv(clicked_id);
-  const todoss = JSON.parse(localStorage.getItem('Items')) || [];
-  console.log(todoss[clicked_id]);
-}
-pause.addEventListener('click', pausetimer);
-reset.addEventListener('click', resetTimer);
-todoList.addEventListener('click', btnActtion);
-// showDetals.addEventListener('click', showDiv);
-lists(todos, todoList);
 
 function resizeClock() {
   if (clockTimer.classList.contains('clock-fullscreen')) {
@@ -361,6 +340,93 @@ function resizeClock() {
   }
 }
 
+function showDiv(clickedId) {
+  //! Poniżej id tasku
+
+  const itemS = JSON.parse(localStorage.getItem('Items'));
+  console.log(itemS[clickedId]);
+
+  if (description.classList.contains('none')) {
+    description.classList.remove('none');
+    renderdetals();
+  } else {
+    description.classList.add('none');
+  }
+
+  function renderdetals() {
+    // showDiv(clickedId);
+    const todoss = JSON.parse(localStorage.getItem('Items')) || [];
+
+    // console.log(.text);
+    const taskDetails = todoss[clickedId];
+
+    description.innerHTML = `
+    <button class="des-btn"  data-index=${clickedId} id="${clickedId}" onclick="showDiv(this.id)"> <i class="fas fa-list-alt" 
+
+    aria-hidden="true"></i></button>
+    <div class="divT ">
+  
+    <div  class="todo-item" id="item" >
+     ${taskDetails.text}</div>
+   
+     <button class="complete-btn" data-index=${clickedId} id="item${clickedId}" >  </button>
+          
+          <button class="delete-btn" data-index=${clickedId} id="item${clickedId}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
+          </button>
+          
+          <button class="play-btn"  data-index=${clickedId} id="${clickedId}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
+          
+         
+          
+          
+          </div>
+
+ <div class="detals">
+          <ul>
+              <li>Pomodoro:   ${
+                taskDetails.focus > pomodoreDuration
+                  ? '<i class="fas fa-clock " aria-hidden="true"> </i>'
+                  : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
+              }
+                ${
+                  taskDetails.focus / pomodoreDuration > 1
+                    ? ` x ${Math.floor(taskDetails.focus / pomodoreDuration)}`
+                    : ''
+                }</li> 
+              <li>Due Data: <input type="date"id="start" name="trip-start"></li>
+              <li>Project:   <select name="Projects" id="Projects" placeholder="Projects">
+
+              <option value="Basic">Basic</option>
+              <option value="Javascript">Javascript</option>
+              <option value="Reading">Reading</option>
+            </select></li> 
+              <li></i>Repeat: Every <input type="number" value="1" min="0" max="10" id="days">
+                
+              </input>
+              <select name="partOfTime" id="partOfTime">
+
+                <option value="day">Day</option>
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+              </select>
+            
+
+              </ul>
+              <textarea  placeholder="Note to your task" id=${clickedId} name="note" >${
+      taskDetails.note !== '' ? taskDetails.note : 'Notes to your task...'
+    }
+        </textarea>
+              </div>
+     
+     `;
+  }
+}
+
+pause.addEventListener('click', pausetimer);
+reset.addEventListener('click', resetTimer);
+todoList.addEventListener('click', btnActtion);
+// showDetals.addEventListener('click', showDiv);
+lists(todos, todoList);
 /*
       * Importand Information
       ! Deprecated method, do not use

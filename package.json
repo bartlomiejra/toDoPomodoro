@@ -19,5 +19,7 @@
   "devDependencies": {
     "eslint": "^7.15.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "js-datepicker": "^5.18.0"
+  }
 }
