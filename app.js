@@ -10,6 +10,9 @@ const reset = document.querySelector('.resetButton');
 const description = document.querySelector('.right');
 const breakdown = document.querySelector('.fa-coffee');
 const resize = document.querySelector('.fa-window-restore');
+const projectColor = document.getElementById('color');
+const date = document.getElementById('date');
+const pomodoreList = document.querySelector('.pomodoreProjects');
 
 // const task = document.querySelector('divT');
 // const newTodo = document.querySelector('.todo-item');
@@ -90,7 +93,9 @@ function addTodo(event) {
     done: false,
     focus: 0,
     project: '',
-    repeat: '',
+    repeatday: '0',
+    repeatpartoftime: '',
+    data: '2021-12-11',
 
     note: '',
   };
@@ -395,17 +400,27 @@ function showDiv(clickedId) {
                     ? ` x ${Math.floor(taskDetails.focus / pomodoreDuration)}`
                     : ''
                 }</li> 
-              <li>Due Data: <input type="date"id="start" name="trip-start"></li>
-              <li>Project:   <select name="Projects" id="Projects" placeholder="Projects">
-
+              <li>Due date: <input type="date"id="date" value="${
+                taskDetails.data
+              }" name="trip-start"></li>
+              <li>Project:   <select name="Projects" id="Projects" placeholder="${
+                taskDetails.project
+              }" value="${taskDetails.project}">
+               <option value="none" selected disabled hidden> 
+           Select an Option 
+       </option> 
               <option value="Basic">Basic</option>
               <option value="Javascript">Javascript</option>
               <option value="Reading">Reading</option>
             </select></li> 
-              <li></i>Repeat: Every <input type="number" value="1" min="0" max="10" id="days">
+              <li></i>Repeat: Every <input type="number" value="${
+                taskDetails.repeatday
+              }"  min="0" max="10" id="days">
                 
               </input>
-              <select name="partOfTime" id="partOfTime">
+              <select name="partOfTime" value="${
+                taskDetails.repeatpartoftime
+              }" id="partOfTime">
 
                 <option value="day">Day</option>
                 <option value="week">Week</option>
@@ -423,23 +438,51 @@ function showDiv(clickedId) {
      `;
   }
 }
+
 const project = JSON.parse(localStorage.getItem('Project')) || [];
 function addProject(event) {
   console.log('ok');
   event.preventDefault();
-
   const Project = {
     name: addPr.value,
-    color: '',
+    color: projectColor.value,
   };
-
   project.push(Project);
-
   localStorage.setItem('Project', JSON.stringify(project));
   addPr.value = '';
+  renderProjects();
 }
 
-addProjectbtn.addEventListener('click', addProject);
+function renderProjects() {
+  console.log('działam');
+  const proj = JSON.parse(localStorage.getItem('Project')) || [];
+  // console.log(proj);
+  // const pross = proj[1];
+  // console.log(pross);
+
+  pomodoreList.innerHTML = proj
+    .map(
+      (proje, i) => `
+<li><p> <div class="circle" style="background-color: ${proje.color};"></div>${proje.name}</p>
+      </li>
+`,
+    )
+    .join('');
+}
+renderProjects();
+
+function updateDetails() {
+  const proj = JSON.parse(localStorage.getItem('Project')) || [];
+
+  console.log(proj);
+  console.log(date);
+  proj.data = date.value;
+}
+updateDetails();
+const Pro = addProjectbtn.addEventListener('click', addProject);
+
+// date.addEventListener('input
+// ', pausetimer);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
