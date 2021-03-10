@@ -476,7 +476,7 @@ function updateDetails() {
 
   console.log(proj);
   console.log(date);
-  proj.data = date.value;
+  // proj.data = date.value;
 }
 updateDetails();
 const Pro = addProjectbtn.addEventListener('click', addProject);
