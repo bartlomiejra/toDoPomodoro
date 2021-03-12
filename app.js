@@ -10,8 +10,8 @@ const reset = document.querySelector('.resetButton');
 const description = document.querySelector('.right');
 const breakdown = document.querySelector('.fa-coffee');
 const resize = document.querySelector('.fa-window-restore');
+const detals = document.querySelectorAll('.detals');
 const projectColor = document.getElementById('color');
-const date = document.getElementById('date');
 const pomodoreList = document.querySelector('.pomodoreProjects');
 
 // const task = document.querySelector('divT');
@@ -92,9 +92,9 @@ function addTodo(event) {
     text: todoInput.value,
     done: false,
     focus: 0,
-    project: '',
+    project: 'No Project',
     repeatday: '0',
-    repeatpartoftime: '',
+    repeatpartoftime: 'day',
     data: '2021-12-11',
 
     note: '',
@@ -400,14 +400,16 @@ function showDiv(clickedId) {
                     ? ` x ${Math.floor(taskDetails.focus / pomodoreDuration)}`
                     : ''
                 }</li> 
-              <li>Due date: <input type="date"id="date" value="${
+              <li>Due date: <input type="date" id="date" value="${
                 taskDetails.data
               }" name="trip-start"></li>
-              <li>Project:   <select name="Projects" id="Projects" placeholder="${
+              <li>Project:   <select name="Project" class=""Project" placeholder="${
                 taskDetails.project
               }" value="${taskDetails.project}">
-               <option value="none" selected disabled hidden> 
-           Select an Option 
+               <option value="${
+                 taskDetails.project
+               }"  selected disabled hidden> 
+               ${taskDetails.project}
        </option> 
               <option value="Basic">Basic</option>
               <option value="Javascript">Javascript</option>
@@ -420,22 +422,53 @@ function showDiv(clickedId) {
               </input>
               <select name="partOfTime" value="${
                 taskDetails.repeatpartoftime
-              }" id="partOfTime">
+              }"  placeholder=${taskDetails.repeatpartoftime}"   id="${
+      taskDetails.repeatpartoftime
+    }" >
+    <option value="${taskDetails.repeatpartoftime}"  selected disabled hidden> 
+      ${taskDetails.repeatpartoftime}
+</option> 
 
-                <option value="day">Day</option>
-                <option value="week">Week</option>
-                <option value="month">Month</option>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Month</option>
               </select>
             
 
               </ul>
-              <textarea  placeholder="Note to your task" id=${clickedId} name="note" >${
+              <textarea  placeholder="Note to your task" class="note" id=${clickedId} name="note" >${
       taskDetails.note !== '' ? taskDetails.note : 'Notes to your task...'
     }
-        </textarea>
-              </div>
-     
-     `;
+    </textarea>
+    </div>
+    
+    `;
+    const date = document.getElementById('date');
+    const note = document.querySelector('.note');
+    const project = document.querySelector('.Project');
+
+    date.addEventListener('input', updateDetails);
+    note.addEventListener('input', updateDetails);
+    project.addEventListener('click', updateDetails);
+    detals.forEach((el) =>
+      el.addEventListener('input', (event) => {
+        console.log(event.target);
+      }),
+    );
+    function updateDetails() {
+      const proj = JSON.parse(localStorage.getItem('Items')) || [];
+      console.log('jest git');
+      console.log(proj[clickedId].data);
+
+      // console.log(date);
+      proj[clickedId].data = date.value;
+      proj[clickedId].project = project.value;
+      proj[clickedId].note = note.value;
+
+      console.log(proj);
+      // proj[clickedId].data = date.value;
+      localStorage.setItem('Items', JSON.stringify(proj));
+    }
   }
 }
 
@@ -454,7 +487,6 @@ function addProject(event) {
 }
 
 function renderProjects() {
-  console.log('działam');
   const proj = JSON.parse(localStorage.getItem('Project')) || [];
   // console.log(proj);
   // const pross = proj[1];
@@ -471,18 +503,11 @@ function renderProjects() {
 }
 renderProjects();
 
-function updateDetails() {
-  const proj = JSON.parse(localStorage.getItem('Project')) || [];
-
-  console.log(proj);
-  console.log(date);
-  // proj.data = date.value;
-}
-updateDetails();
 const Pro = addProjectbtn.addEventListener('click', addProject);
 
 // date.addEventListener('input
 // ', pausetimer);
+
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
