@@ -355,6 +355,7 @@ function showDiv(clickedId) {
 
   if (description.classList.contains('none')) {
     description.classList.remove('none');
+
     renderdetals();
   } else {
     description.classList.add('none');
@@ -403,7 +404,7 @@ function showDiv(clickedId) {
               <li>Due date: <input type="date" id="date" value="${
                 taskDetails.data
               }" name="trip-start"></li>
-              <li>Project:   <select name="Project" class=""Project" placeholder="${
+              <li>Project:   <select name="Project" id="Project" class="projectSelect" placeholder="${
                 taskDetails.project
               }" value="${taskDetails.project}">
                <option value="${
@@ -415,12 +416,12 @@ function showDiv(clickedId) {
               <option value="Javascript">Javascript</option>
               <option value="Reading">Reading</option>
             </select></li> 
-              <li></i>Repeat: Every <input type="number" value="${
+              <li></i>Repeat: Every <input type="number" class="repeatDay" value="${
                 taskDetails.repeatday
               }"  min="0" max="10" id="days">
                 
               </input>
-              <select name="partOfTime" value="${
+              <select name="partOfTime" class="partOfTime" id="partOfTime" value="${
                 taskDetails.repeatpartoftime
               }"  placeholder=${taskDetails.repeatpartoftime}"   id="${
       taskDetails.repeatpartoftime
@@ -437,7 +438,7 @@ function showDiv(clickedId) {
 
               </ul>
               <textarea  placeholder="Note to your task" class="note" id=${clickedId} name="note" >${
-      taskDetails.note !== '' ? taskDetails.note : 'Notes to your task...'
+      taskDetails.note !== '' ? taskDetails.note : ''
     }
     </textarea>
     </div>
@@ -445,16 +446,28 @@ function showDiv(clickedId) {
     `;
     const date = document.getElementById('date');
     const note = document.querySelector('.note');
-    const project = document.querySelector('.Project');
+    const project = document.querySelector('.projectSelect');
+    const timePart = document.querySelector('.partOfTime');
+    const repeatDay = document.querySelector('.repeatDay');
 
     date.addEventListener('input', updateDetails);
     note.addEventListener('input', updateDetails);
-    project.addEventListener('click', updateDetails);
-    detals.forEach((el) =>
-      el.addEventListener('input', (event) => {
-        console.log(event.target);
-      }),
-    );
+    repeatDay.addEventListener('input', updateDetails);
+
+    const projectSelect = document.getElementById('Project');
+    projectSelect.addEventListener('click', () => {
+      const options = projectSelect.querySelectorAll('option');
+      projectSelect.addEventListener('change', updateDetails);
+      //! console.log(options);
+    });
+
+    const partTimeSelect = document.getElementById('partOfTime');
+    partTimeSelect.addEventListener('click', () => {
+      const optionsTime = partTimeSelect.querySelectorAll('option');
+      partTimeSelect.addEventListener('change', updateDetails);
+      console.log(optionsTime);
+    });
+
     function updateDetails() {
       const proj = JSON.parse(localStorage.getItem('Items')) || [];
       console.log('jest git');
@@ -462,13 +475,20 @@ function showDiv(clickedId) {
 
       // console.log(date);
       proj[clickedId].data = date.value;
+      console.log(proj[clickedId].project);
+      console.log(proj[clickedId]);
       proj[clickedId].project = project.value;
       proj[clickedId].note = note.value;
+      proj[clickedId].repeatday = repeatDay.value;
+      proj[clickedId].repeatpartoftime = timePart.value;
 
       console.log(proj);
       // proj[clickedId].data = date.value;
       localStorage.setItem('Items', JSON.stringify(proj));
     }
+    const divT = document.querySelector('.divT');
+
+    divT.addEventListener('click', renderdetals);
   }
 }
 
@@ -481,6 +501,7 @@ function addProject(event) {
     color: projectColor.value,
   };
   project.push(Project);
+  console.log(Project);
   localStorage.setItem('Project', JSON.stringify(project));
   addPr.value = '';
   renderProjects();
@@ -503,7 +524,7 @@ function renderProjects() {
 }
 renderProjects();
 
-const Pro = addProjectbtn.addEventListener('click', addProject);
+addProjectbtn.addEventListener('click', addProject);
 
 // date.addEventListener('input
 // ', pausetimer);
