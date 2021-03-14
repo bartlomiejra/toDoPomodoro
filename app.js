@@ -351,7 +351,7 @@ function showDiv(clickedId) {
   //! Poniżej id tasku
 
   const itemS = JSON.parse(localStorage.getItem('Project'));
-  console.log(itemS[clickedId]);
+  // console.log(itemS[clickedId]);
 
   if (description.classList.contains('none')) {
     description.classList.remove('none');
@@ -412,27 +412,28 @@ function showDiv(clickedId) {
                }"  selected disabled hidden> 
                ${taskDetails.project}
        </option> 
-              <option value="Basic">Basic</option>
-              <option value="Javascript">Javascript</option>
-              <option value="Reading">Reading</option>
+              
             </select></li> 
               <li></i>Repeat: Every <input type="number" class="repeatDay" value="${
                 taskDetails.repeatday
               }"  min="0" max="10" id="days">
                 
               </input>
-              <select name="partOfTime" class="partOfTime" id="partOfTime" value="${
-                taskDetails.repeatpartoftime
-              }"  placeholder=${taskDetails.repeatpartoftime}"   id="${
-      taskDetails.repeatpartoftime
-    }" >
-    <option value="${taskDetails.repeatpartoftime}"  selected disabled hidden> 
-      ${taskDetails.repeatpartoftime}
-</option> 
-
-                <option value="days">Days</option>
-                <option value="weeks">Weeks</option>
-                <option value="months">Month</option>
+              <select name="partOfTime" 
+                class="partOfTime"
+                id="partOfTime" 
+                value="${taskDetails.repeatpartoftime}"    
+                placeholder=${taskDetails.repeatpartoftime}"   
+                id="${taskDetails.repeatpartoftime}" 
+                >
+                <option value="${
+                  taskDetails.repeatpartoftime
+                }"  selected disabled hidden> 
+                ${taskDetails.repeatpartoftime}
+                </option> 
+                // <option value="days">Days</option>
+                // <option value="weeks">Weeks</option>
+                // <option value="months">Month</option>
               </select>
             
 
@@ -475,14 +476,14 @@ function showDiv(clickedId) {
 
       // console.log(date);
       proj[clickedId].data = date.value;
-      console.log(proj[clickedId].project);
-      console.log(proj[clickedId]);
+      // console.log(proj[clickedId].project);
+      // console.log(proj[clickedId]);
       proj[clickedId].project = project.value;
       proj[clickedId].note = note.value;
       proj[clickedId].repeatday = repeatDay.value;
       proj[clickedId].repeatpartoftime = timePart.value;
 
-      console.log(proj);
+      // console.log(proj);
       // proj[clickedId].data = date.value;
       localStorage.setItem('Items', JSON.stringify(proj));
     }
@@ -501,10 +502,10 @@ function showDiv(clickedId) {
     projectList.forEach((item) => {
       // project.innerHTML = document.createElement('option');
       const option = projectt.createElement('option');
-      const name = projectt.createTextNode(item.name);
-      option.value = item.name;
-      option.appendChild(name);
-      document.querySelector('select').appendChild(option);
+      // const name = projectt.createTextNode(item.name);
+      // option.value = item.name;
+      // option.appendChild(name);
+      document.querySelector('projectList').appendChild(option);
     });
   }
 }
