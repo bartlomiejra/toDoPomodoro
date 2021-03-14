@@ -32,8 +32,8 @@ let taskId = 0;
 //* TODO Rebuind addToDO add new function to create structur of task element like button etc.
 
 //* this function adding new item todo
-
 function lists(todolist = [], objlines) {
+  console.log(todolist);
   objlines.innerHTML = todolist
     .map(
       (todo, i) => `${
@@ -350,7 +350,7 @@ function resizeClock() {
 function showDiv(clickedId) {
   //! Poniżej id tasku
 
-  const itemS = JSON.parse(localStorage.getItem('Items'));
+  const itemS = JSON.parse(localStorage.getItem('Project'));
   console.log(itemS[clickedId]);
 
   if (description.classList.contains('none')) {
@@ -489,6 +489,23 @@ function showDiv(clickedId) {
     const divT = document.querySelector('.divT');
 
     divT.addEventListener('click', renderdetals);
+    getSelectOptions();
+  }
+
+  function getSelectOptions() {
+    console.log('select value from localstorage...');
+    const projectList = JSON.parse(localStorage.getItem('Project')) || [];
+    console.log(projectList);
+    const projectt = document.querySelector('.projectSelect');
+
+    projectList.forEach((item) => {
+      // project.innerHTML = document.createElement('option');
+      const option = projectt.createElement('option');
+      const name = projectt.createTextNode(item.name);
+      option.value = item.name;
+      option.appendChild(name);
+      document.querySelector('select').appendChild(option);
+    });
   }
 }
 
@@ -500,8 +517,9 @@ function addProject(event) {
     name: addPr.value,
     color: projectColor.value,
   };
+
   project.push(Project);
-  console.log(Project);
+  // console.log(Project);
   localStorage.setItem('Project', JSON.stringify(project));
   addPr.value = '';
   renderProjects();
