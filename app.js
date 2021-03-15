@@ -404,9 +404,11 @@ function showDiv(clickedId) {
               <li>Due date: <input type="date" id="date" value="${
                 taskDetails.data
               }" name="trip-start"></li>
-              <li>Project:   <select name="Project" id="Project" class="projectSelect" placeholder="${
+              <li>Project:   <select name="Project" value="${
                 taskDetails.project
-              }" value="${taskDetails.project}">
+              }" id="Project"class="projectSelect" placeholder="${
+      taskDetails.project
+    }" value="${taskDetails.project}">
                <option value="${
                  taskDetails.project
                }"  selected disabled hidden> 
@@ -497,16 +499,14 @@ function showDiv(clickedId) {
     console.log('select value from localstorage...');
     const projectList = JSON.parse(localStorage.getItem('Project')) || [];
     console.log(projectList);
+    // console.log(projectList[1].name);
     const projectt = document.querySelector('.projectSelect');
-
-    projectList.forEach((item) => {
-      // project.innerHTML = document.createElement('option');
-      const option = projectt.createElement('option');
-      // const name = projectt.createTextNode(item.name);
-      // option.value = item.name;
-      // option.appendChild(name);
-      document.querySelector('projectList').appendChild(option);
-    });
+    for (var i = 0; i < projectList.length; i++) {
+      const option = document.createElement('option');
+      txt = document.createTextNode(projectList[i].name);
+      option.appendChild(txt);
+      projectt.insertBefore(option, projectt.lastChild);
+    }
   }
 }
 
@@ -535,13 +535,21 @@ function renderProjects() {
   pomodoreList.innerHTML = proj
     .map(
       (proje, i) => `
-<li><p> <div class="circle" style="background-color: ${proje.color};"></div>${proje.name}</p>
+<li class="projectList"> <div class="circle" style="background-color: ${proje.color};"></div>${proje.name}
       </li>
 `,
     )
     .join('');
 }
 renderProjects();
+
+const projectTasks = document.querySelectorAll('.projectList');
+
+function sortingProject() {
+  console.log(this);
+}
+sortingProject();
+// projectTasks.addEventListener('click', sortingProject);
 
 addProjectbtn.addEventListener('click', addProject);
 

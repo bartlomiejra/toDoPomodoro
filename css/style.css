@@ -5,7 +5,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background: url(background.svg);
+  background-color: #464646;
   color: white;
   height: 100%;
   background-repeat: no-repeat;
@@ -15,7 +15,6 @@ body {
 
 html .container,
 body .container {
-  /* Note: backdrop-filter has minimal browser support */
   margin: auto;
   width: 900px;
   height: 700px;
@@ -442,6 +441,12 @@ body button {
   border: 0;
 }
 
+html li:hover,
+body li:hover {
+  color: #fafafa;
+  cursor: pointer;
+}
+
 html .pauseButton,
 html .resetButton,
 html .play-btn,
@@ -476,6 +481,7 @@ body .fa-minus-circle,
 body .fa-calendar-alt,
 body .fa-list,
 body .fa-repeat {
+  cursor: pointer;
   outline: 0;
   background: transparent;
   color: #585858;
@@ -758,7 +764,7 @@ body .countdownButtonsNone {
   background-color: pink;
 }
 
-li {
+.detals > li {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -792,7 +798,7 @@ ul {
   float: left;
 }
 
-li {
+ul > li {
   font-size: 0.9em;
   -webkit-text-decoration: bold;
           text-decoration: bold;
@@ -804,9 +810,26 @@ li {
           justify-content: space-between;
 }
 
+ol > li, .pomodoreProjects > li {
+  text-align: left;
+  color: rgba(255, 255, 255, 0.55);
+  margin-left: 10px;
+}
+
+ol > li:hover, .pomodoreProjects > li:hover, input[type="date"]:hover,
+.projectSelect:hover, .editing-view-port:hover, .partOfTime:hover, textarea:hover, input[type="number"]:hover {
+  color: #fafafa;
+  cursor: pointer;
+}
+
 .detals {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.55);
+}
+
+.projectSelect {
+  margin-left: 3px;
+  width: 100%;
 }
 
 textarea {
@@ -854,25 +877,40 @@ input[type="color"] {
   border: none;
   color: rgba(255, 255, 255, 0.55);
   border-radius: 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
 }
 
 .addProjectBtn i, .Projects i {
   margin-left: 10px;
 }
 
+ol {
+  padding: 0;
+}
+
 .topka {
   height: 30px;
   z-index: 99;
-  background-color: red;
+}
+
+.projectList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 5px;
 }
 
 .circle {
   height: 10px;
   width: 10px;
   border-radius: 100%;
-  margin: 5px 0px 0px 0px;
+  margin: 0px 5px 0px 0px;
+  outline: 0;
+  background: transparent;
+  color: #585858;
+  font-size: 1rem;
+  padding: 0.3rem;
 }
 /*# sourceMappingURL=style.css.map */
