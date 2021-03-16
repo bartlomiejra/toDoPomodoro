@@ -30,7 +30,17 @@ const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
 
 //* TODO Rebuind addToDO add new function to create structur of task element like button etc.
-
+function sortingProject(e) {
+  // console.log(item);
+  const clicked = e.target.getAttribute('name');
+  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  let tasksProject = tasks.filter((items) => items.project === clicked);
+  console.log(tasksProject);
+  return tasksProject;
+  // lists(tasksProject);
+  // lists((tasksProject = []), objlines);
+  lists(tasksProject);
+}
 //* this function adding new item todo
 function lists(todolist = [], objlines) {
   console.log(todolist);
@@ -535,7 +545,7 @@ function renderProjects() {
   pomodoreList.innerHTML = proj
     .map(
       (proje, i) => `
-<li class="projectList"> <div class="circle" style="background-color: ${proje.color};"></div>${proje.name}
+<li class="projectList" value="${proje.name}" name="${proje.name}"> <div class="circle" style="background-color: ${proje.color};"></div>${proje.name}
       </li>
 `,
     )
@@ -543,15 +553,30 @@ function renderProjects() {
 }
 renderProjects();
 
-const projectTasks = document.querySelectorAll('.projectList');
+document.querySelectorAll('.projectList').forEach((e) => {
+  e.addEventListener('click', sortingProject);
+});
 
-function sortingProject() {
-  console.log(this);
-}
-sortingProject();
+// document.querySelectorAll('.projectList').forEach((item) => {
+//   item.addEventListener('click', (event) => {
+//     const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+//     console.log(tasks);
+//     console.log(item.name);
+//     const tasksProject = tasks.map((items) => {
+//       console.log(items.project);
+//       console.log(tasks.text);
+
+//        (items.project === tasks.text) {
+//         console.log('cool');
+//       }
+//     });
+//   });
+// });
+
+// sortingProject();
 // projectTasks.addEventListener('click', sortingProject);
 
-addProjectbtn.addEventListener('click', addProject);
+// addProjectbtn.addEventListener('click', addProject);
 
 // date.addEventListener('input
 // ', pausetimer);
