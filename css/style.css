@@ -854,6 +854,12 @@ select, input[type="number"], input[type="date"], .Projects {
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
+select option {
+  background: rgba(0, 0, 0, 0.9);
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
 .addProject {
   display: -webkit-box;
   display: -ms-flexbox;

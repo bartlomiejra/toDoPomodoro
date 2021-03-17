@@ -1,8 +1,0 @@
-{
-    "name": "PomodoroApp",
-    "short_name": "PomodoroApp",
-    "start_url": ".",
-    "display": "standalone",
-
-    "description": "App to inmrove your focus"
-}

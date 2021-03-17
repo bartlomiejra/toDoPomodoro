@@ -30,17 +30,7 @@ const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
 
 //* TODO Rebuind addToDO add new function to create structur of task element like button etc.
-function sortingProject(e) {
-  // console.log(item);
-  const clicked = e.target.getAttribute('name');
-  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-  let tasksProject = tasks.filter((items) => items.project === clicked);
-  console.log(tasksProject);
-  return tasksProject;
-  // lists(tasksProject);
-  // lists((tasksProject = []), objlines);
-  lists(tasksProject);
-}
+
 //* this function adding new item todo
 function lists(todolist = [], objlines) {
   console.log(todolist);
@@ -379,7 +369,7 @@ function showDiv(clickedId) {
     const taskDetails = todoss[clickedId];
 
     description.innerHTML = `
-    <button class="des-btn"  data-index=${clickedId} id="${clickedId}" onclick="showDiv(this.id)"> <i class="fas fa-list-alt" 
+    <button class="des-btn"  data-index=${clickedId} id="${clickedId}" onclick="showDiv(this.id)"> <i class="fas fa-times" 
 
     aria-hidden="true"></i></button>
     <div class="divT ">
@@ -387,21 +377,15 @@ function showDiv(clickedId) {
     <div  class="todo-item" id="item" >
      ${taskDetails.text}</div>
    
-     <button class="complete-btn" data-index=${clickedId} id="item${clickedId}" >  </button>
-          
-          <button class="delete-btn" data-index=${clickedId} id="item${clickedId}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
-          </button>
-          
-          <button class="play-btn"  data-index=${clickedId} id="${clickedId}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-          
+    
          
           
           
-          </div>
+        </div>
 
  <div class="detals">
           <ul>
-              <li>Pomodoro:   ${
+              <li>Pomodoro:     ${
                 taskDetails.focus > pomodoreDuration
                   ? '<i class="fas fa-clock " aria-hidden="true"> </i>'
                   : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
@@ -557,26 +541,18 @@ document.querySelectorAll('.projectList').forEach((e) => {
   e.addEventListener('click', sortingProject);
 });
 
-// document.querySelectorAll('.projectList').forEach((item) => {
-//   item.addEventListener('click', (event) => {
-//     const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-//     console.log(tasks);
-//     console.log(item.name);
-//     const tasksProject = tasks.map((items) => {
-//       console.log(items.project);
-//       console.log(tasks.text);
-
-//        (items.project === tasks.text) {
-//         console.log('cool');
-//       }
-//     });
-//   });
-// });
+function sortingProject(e) {
+  const clicked = e.target.getAttribute('name');
+  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  let tasksProject = tasks.filter((items) => items.project === clicked);
+  console.log(tasksProject);
+  return tasksProject;
+}
 
 // sortingProject();
 // projectTasks.addEventListener('click', sortingProject);
 
-// addProjectbtn.addEventListener('click', addProject);
+addProjectbtn.addEventListener('click', addProject);
 
 // date.addEventListener('input
 // ', pausetimer);

@@ -666,6 +666,7 @@ textarea {
 }
 
 select, input[type="number"], input[type="date"],.Projects{
+  
   // border: grey;
   border: none;
   color: rgba(255, 255, 255, 0.550);
@@ -677,6 +678,31 @@ select, input[type="number"], input[type="date"],.Projects{
 }
 
 
+select option  {
+  // margin: 20px;
+  background:  rgba(0, 0, 0, 0.9);
+  color: rgba(255, 255, 255, 0.550);
+
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+
+
+// input[type=number]::-webkit-inner-spin-button {
+//   // -webkit-appearance: none;
+//   color: green;
+// }
+
+//  {
+//   background-color: rgb(121, 59, 59);
+  
+//   border-radius: 8px;
+//   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+//   background: linear-gradient(
+//     147.14deg
+//     , rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+   
+// }
 
 .addProject{
 display:flex;
