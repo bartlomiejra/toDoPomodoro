@@ -141,13 +141,21 @@ background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 
  flex: 4 20%}
 .clock,
 .addTask,
-.tasksToDo, .addTaskdiv {
+.tasksToD {
   background: rgba(20, 20, 20, 0.725);
   padding: 5px;
   margin: 10px;
   color: white;
   font-size: 2em;
 }
+.addTaskdiv{
+  padding: 5px;
+  margin: 10px;
+  color: white;
+  font-size: 2em;
+}
+
+
 
  .clock{
   backdrop-filter: blur(5px);
@@ -763,6 +771,13 @@ color: rgb(88, 88, 88);
   padding: 0.3rem;
 }
 
+input{
+  select:focus, input:focus, textarea:focus {
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+  }
+}
 
 
 

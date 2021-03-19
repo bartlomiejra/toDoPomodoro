@@ -170,12 +170,19 @@ body .right {
 
 html .clock,
 html .addTask,
-html .tasksToDo, html .addTaskdiv,
+html .tasksToD,
 body .clock,
 body .addTask,
-body .tasksToDo,
-body .addTaskdiv {
+body .tasksToD {
   background: rgba(20, 20, 20, 0.725);
+  padding: 5px;
+  margin: 10px;
+  color: white;
+  font-size: 2em;
+}
+
+html .addTaskdiv,
+body .addTaskdiv {
   padding: 5px;
   margin: 10px;
   color: white;
@@ -918,5 +925,11 @@ ol {
   color: #585858;
   font-size: 1rem;
   padding: 0.3rem;
+}
+
+input select:focus, input input:focus, input textarea:focus {
+  outline: 0;
+  outline-color: transparent;
+  outline-style: none;
 }
 /*# sourceMappingURL=style.css.map */
