@@ -544,11 +544,26 @@ document.querySelectorAll('.projectList').forEach((e) => {
 function sortingProject(e) {
   const clicked = e.target.getAttribute('name');
   const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-  let tasksProject = tasks.filter((items) => items.project === clicked);
+  const tasksProject = tasks.filter((items) => items.project === clicked);
   console.log(tasksProject);
   return tasksProject;
 }
 
+document.querySelectorAll('.projectListDays').forEach((e) => {
+  e.addEventListener('click', sortingProjectDays);
+});
+
+const today = new Date();
+const date =
+  today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+console.log(date);
+function sortingProjectDays(e) {
+  const clicked = e.target.getAttribute('name');
+  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  const tasksProjectdays = tasks.filter((items) => items.data === date);
+  console.log(tasksProjectdays);
+  return tasksProjectdays;
+}
 // sortingProject();
 // projectTasks.addEventListener('click', sortingProject);
 

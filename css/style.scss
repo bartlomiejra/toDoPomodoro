@@ -557,37 +557,37 @@ border-radius: 15px;
 
 
 
-@media screen and (max-width: 650px) {
+// @media screen and (max-width: 650px) {
 
-  header {
-    height: 25px;
-    font-size: 10px;
-  }
+//   header {
+//     height: 25px;
+//     font-size: 10px;
+//   }
 
-  .todolist {
-    width: 90%;
-    padding-inline-start: 0px;
-  }
+//   .todolist {
+//     width: 90%;
+//     padding-inline-start: 0px;
+//   }
 
-  .stat {
-    font-size: 3vw;
-
-
+//   .stat {
+//     font-size: 3vw;
 
 
 
 
-  }
 
-  i::before{
-    background:transparent;
-}
-  .addTaskdiv {
-    margin-left: 0px;
-    // text-align: center;
 
-  }
-}
+//   }
+
+//   i::before{
+//     background:transparent;
+// }
+//   .addTaskdiv {
+//     margin-left: 0px;
+//     // text-align: center;
+
+//   }
+// }
 
 
 .countdownButtonsNone {
@@ -783,3 +783,20 @@ input{
 
 // font-size: 10px;
 
+// media quere
+
+// Medium devices (tablets, 768px and up)
+// @media (width: 768px) { 
+// .left{
+//   background-color: red;
+//   width: 100%;
+// }
+// .center,.right{
+//   display: none;
+// }
+// }
+
+
+
+
+ 

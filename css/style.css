@@ -739,32 +739,6 @@ body .completedTasks {
   display: none;
 }
 
-@media screen and (max-width: 650px) {
-  html header,
-  body header {
-    height: 25px;
-    font-size: 10px;
-  }
-  html .todolist,
-  body .todolist {
-    width: 90%;
-    -webkit-padding-start: 0px;
-            padding-inline-start: 0px;
-  }
-  html .stat,
-  body .stat {
-    font-size: 3vw;
-  }
-  html i::before,
-  body i::before {
-    background: transparent;
-  }
-  html .addTaskdiv,
-  body .addTaskdiv {
-    margin-left: 0px;
-  }
-}
-
 html .countdownButtonsNone,
 body .countdownButtonsNone {
   display: none;
