@@ -550,28 +550,45 @@ function sortingProject(e) {
 }
 
 document.querySelectorAll('.projectListDays').forEach((e) => {
-  e.addEventListener('click', sortingProjectDays);
+  e.addEventListener('click', findProjectsToday);
 });
+let dateToday = 0;
+let dateTomorrow = 0;
 
-const today = new Date();
-const date =
-  today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-console.log(date);
-function sortingProjectDays(e) {
+function actualDateTime() {
+  // month May has zero-based index 4
+  const date = new Date();
+
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0'); // month is zero-based
+  const dd = String(date.getDate()).padStart(2, '0');
+
+  dateToday = `${yyyy}-${mm}-${dd}`;
+  dateTomorrow = `${yyyy}-${mm}-${dd}`;
+}
+actualDateTime();
+
+function findProjectsToday(e) {
   const clicked = e.target.getAttribute('name');
   const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-  const tasksProjectdays = tasks.filter((items) => items.data === date);
-  console.log(tasksProjectdays);
-  return tasksProjectdays;
+  const taskToday = tasks.filter((items) => items.data === dateToday);
+  console.log(taskToday);
+  // taskToday.setDate(date.getDate() + 1);
+  console.log(taskToday);
+  console.log(dateToday);
+
+  return findProjectsToday;
 }
-// sortingProject();
-// projectTasks.addEventListener('click', sortingProject);
+function findProjectsTomorrow(e) {
+  const clicked = e.target.getAttribute('name');
+  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  const taskToday = tasks.filter((items) => items.data === dateToday);
+
+  console.log(dateTomorrow);
+  return findProjectTomorrow;
+}
 
 addProjectbtn.addEventListener('click', addProject);
-
-// date.addEventListener('input
-// ', pausetimer);
-
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
