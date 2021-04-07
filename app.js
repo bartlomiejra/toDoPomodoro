@@ -14,6 +14,10 @@ const detals = document.querySelectorAll('.detals');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.pomodoreProjects');
 
+const today = document.querySelector('.today');
+const tomorrow = document.querySelector('.tomorrow');
+const someday = document.querySelector('.someday');
+
 // const task = document.querySelector('divT');
 // const newTodo = document.querySelector('.todo-item');
 
@@ -95,7 +99,7 @@ function addTodo(event) {
     project: 'No Project',
     repeatday: '0',
     repeatpartoftime: 'day',
-    data: '2021-12-11',
+    data: dateToday,
 
     note: '',
   };
@@ -549,45 +553,50 @@ function sortingProject(e) {
   return tasksProject;
 }
 
-document.querySelectorAll('.projectListDays').forEach((e) => {
-  e.addEventListener('click', findProjectsToday);
-});
 let dateToday = 0;
 let dateTomorrow = 0;
 
 function actualDateTime() {
   // month May has zero-based index 4
   const date = new Date();
-
   const yyyy = date.getFullYear();
   const mm = String(date.getMonth() + 1).padStart(2, '0'); // month is zero-based
   const dd = String(date.getDate()).padStart(2, '0');
-
+  const ddTomorrow = String(date.getDate() + 1).padStart(2, '0');
   dateToday = `${yyyy}-${mm}-${dd}`;
-  dateTomorrow = `${yyyy}-${mm}-${dd}`;
+  dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
 }
 actualDateTime();
 
-function findProjectsToday(e) {
-  const clicked = e.target.getAttribute('name');
+function findProjectsToday() {
+  // const clicked = e.target.getAttribute('name');
   const tasks = JSON.parse(localStorage.getItem('Items')) || [];
   const taskToday = tasks.filter((items) => items.data === dateToday);
   console.log(taskToday);
   // taskToday.setDate(date.getDate() + 1);
-  console.log(taskToday);
   console.log(dateToday);
-
+  // console.log(dateTomorrow);
   return findProjectsToday;
 }
-function findProjectsTomorrow(e) {
-  const clicked = e.target.getAttribute('name');
+function findProjectsTomorrow() {
   const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-  const taskToday = tasks.filter((items) => items.data === dateToday);
-
+  const taskToday = tasks.filter((items) => items.data === dateTomorrow);
   console.log(dateTomorrow);
-  return findProjectTomorrow;
+  return findProjectsTomorrow;
 }
 
+function findProjectsSomeday() {
+  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  const taskSomeday = tasks.filter(
+    (items) => items.data !== dateTomorrow || dateToday,
+  );
+  console.log(taskSomeday);
+  return findProjectsSomeday;
+}
+
+today.addEventListener('click', findProjectsToday);
+tomorrow.addEventListener('click', findProjectsTomorrow);
+someday.addEventListener('click', findProjectsSomeday);
 addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
