@@ -85,10 +85,6 @@ aria-hidden="true"></i></button>
     .join('');
 }
 
-// function printcoś() {
-//   console.log('to');
-// }
-
 function addTodo(event) {
   event.preventDefault();
 
@@ -568,35 +564,39 @@ function actualDateTime() {
 }
 actualDateTime();
 
-function findProjectsToday() {
-  // const clicked = e.target.getAttribute('name');
-  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-  const taskToday = tasks.filter((items) => items.data === dateToday);
-  console.log(taskToday);
-  // taskToday.setDate(date.getDate() + 1);
-  console.log(dateToday);
-  // console.log(dateTomorrow);
-  return findProjectsToday;
-}
-function findProjectsTomorrow() {
-  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-  const taskToday = tasks.filter((items) => items.data === dateTomorrow);
-  console.log(dateTomorrow);
-  return findProjectsTomorrow;
-}
+document.querySelectorAll('.projectListDays').forEach((e) => {
+  e.addEventListener('click', sortingProjectDays);
+});
 
-function findProjectsSomeday() {
-  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-  const taskSomeday = tasks.filter(
-    (items) => items.data !== dateTomorrow || dateToday,
-  );
-  console.log(taskSomeday);
-  return findProjectsSomeday;
-}
+function sortingProjectDays(e) {
+  let taskToday = 0;
+  let taskTomorrow = 0;
+  let taskSomeday = 0;
+  const clicked = e.target.id;
+  console.log(clicked);
 
-today.addEventListener('click', findProjectsToday);
-tomorrow.addEventListener('click', findProjectsTomorrow);
-someday.addEventListener('click', findProjectsSomeday);
+  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  switch (clicked) {
+    case 'today':
+      taskToday = tasks.filter((items) => items.data === dateToday);
+      // console.log(`taskToday:  ${taskToday} `);
+      break;
+    case 'tomorrow':
+      taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
+
+      // console.log(`taskTomorrow:  ${taskTomorrow} `);
+      break;
+    case 'someday':
+      taskSomeday = tasks.filter(
+        (items) => items.data !== dateTomorrow || dateToday,
+      );
+      // console.log(`taskSomeday:  ${taskSomeday} `);
+
+      break;
+    default:
+      console.log('Brak tasków');
+  }
+}
 addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
