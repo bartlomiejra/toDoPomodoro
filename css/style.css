@@ -5,12 +5,12 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #464646;
   color: white;
   height: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
 }
 
 html .container,
@@ -72,6 +72,30 @@ body .right {
   to {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
+  }
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 

@@ -34,16 +34,16 @@ const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
 
 //* TODO Rebuind addToDO add new function to create structur of task element like button etc.
-
-//* this function adding new item todo
+let objlines = 0;
 function lists(todolist = [], objlines) {
+  console.log('funckja lists wykonała się');
   console.log(todolist);
+  console.log(objlines);
   objlines.innerHTML = todolist
     .map(
       (todo, i) => `${
         todo.done ? '<div class="divT completed">' : '<div class="divT " >'
-      }
-      
+      }    
 <div  class="todo-item" id="item${i}" >${todo.text} 
 </div>
 <div  class="clocks"> 
@@ -58,27 +58,18 @@ ${
       : ''
   }
 </div>
-
-
 <button class="complete-btn" data-index=${i} id="item${i}" >
 ${
   todo.done
     ? `<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>`
     : `<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>`
 } 
-
 </button>
-
 <button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
-
 <button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-
 <button class="des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"> <i class="fas fa-list-alt" 
-
 aria-hidden="true"></i></button>
-
-
 </div>
 `,
     )
@@ -87,7 +78,6 @@ aria-hidden="true"></i></button>
 
 function addTodo(event) {
   event.preventDefault();
-
   const item = {
     text: todoInput.value,
     done: false,
@@ -96,7 +86,6 @@ function addTodo(event) {
     repeatday: '0',
     repeatpartoftime: 'day',
     data: dateToday,
-
     note: '',
   };
   // push and add task to localstorage
@@ -109,7 +98,6 @@ function addTodo(event) {
 function statTask() {
   let toBeCompleted = 0;
   let countCompleted = 0;
-
   //* counting statiscics
   for (let i = 0; i < todos.length; i += 1) {
     if (todos[i].done === true) {
@@ -118,7 +106,6 @@ function statTask() {
       toBeCompleted += 1;
     }
   }
-  // let totalfocustime = 0;
 
   document.getElementById('completedTasks').innerHTML = countCompleted;
   document.getElementById('taskstobe').innerHTML = toBeCompleted;
@@ -470,17 +457,11 @@ function showDiv(clickedId) {
       console.log('jest git');
       console.log(proj[clickedId].data);
 
-      // console.log(date);
       proj[clickedId].data = date.value;
-      // console.log(proj[clickedId].project);
-      // console.log(proj[clickedId]);
       proj[clickedId].project = project.value;
       proj[clickedId].note = note.value;
       proj[clickedId].repeatday = repeatDay.value;
       proj[clickedId].repeatpartoftime = timePart.value;
-
-      // console.log(proj);
-      // proj[clickedId].data = date.value;
       localStorage.setItem('Items', JSON.stringify(proj));
     }
     const divT = document.querySelector('.divT');
@@ -505,6 +486,7 @@ function showDiv(clickedId) {
 }
 
 const project = JSON.parse(localStorage.getItem('Project')) || [];
+
 function addProject(event) {
   console.log('ok');
   event.preventDefault();
@@ -522,9 +504,6 @@ function addProject(event) {
 
 function renderProjects() {
   const proj = JSON.parse(localStorage.getItem('Project')) || [];
-  // console.log(proj);
-  // const pross = proj[1];
-  // console.log(pross);
 
   pomodoreList.innerHTML = proj
     .map(
@@ -553,7 +532,6 @@ let dateToday = 0;
 let dateTomorrow = 0;
 
 function actualDateTime() {
-  // month May has zero-based index 4
   const date = new Date();
   const yyyy = date.getFullYear();
   const mm = String(date.getMonth() + 1).padStart(2, '0'); // month is zero-based
@@ -579,19 +557,26 @@ function sortingProjectDays(e) {
   switch (clicked) {
     case 'today':
       taskToday = tasks.filter((items) => items.data === dateToday);
-      // console.log(`taskToday:  ${taskToday} `);
+      console.log(taskToday);
       break;
     case 'tomorrow':
       taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
+      console.log(taskTomorrow);
 
-      // console.log(`taskTomorrow:  ${taskTomorrow} `);
       break;
     case 'someday':
       taskSomeday = tasks.filter(
         (items) => items.data !== dateTomorrow || dateToday,
       );
-      // console.log(`taskSomeday:  ${taskSomeday} `);
 
+      console.log(taskSomeday);
+      console.log(dateTomorrow);
+
+      renderProjects(taskSomeday);
+      console.log('teraz się wykonaja funckje z sortowania');
+
+      lists((taskSomeday = []), objlines);
+      // lists((taskSomeday = []), objlines);
       break;
     default:
       console.log('Brak tasków');
@@ -602,7 +587,8 @@ pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
 // showDetals.addEventListener('click', showDiv);
-lists(todos, todoList);
+// lists(todos, todoList);
+
 /*
       * Importand Information
       ! Deprecated method, do not use
