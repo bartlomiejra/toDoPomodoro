@@ -18,14 +18,9 @@ const today = document.querySelector('.today');
 const tomorrow = document.querySelector('.tomorrow');
 const someday = document.querySelector('.someday');
 
-// const task = document.querySelector('divT');
-// const newTodo = document.querySelector('.todo-item');
-
 const todos = JSON.parse(localStorage.getItem('Items')) || [];
 
-// virable to audio file
 let audio;
-// virable to break time (5 minut defoult)
 
 let timeInFocus;
 const pomodoreDuration = 25;
@@ -33,13 +28,29 @@ let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
 
-//* TODO Rebuind addToDO add new function to create structur of task element like button etc.
+let dateToday;
+let taskToday = 0;
+let tasks = JSON.parse(localStorage.getItem('Items')) || [];
+
+taskToday = tasks.filter((items) => items.data === dateToday);
+
 let objlines = 0;
+let actualList = [];
+actualList = taskToday;
+// console.log(taskToday);
+
 function lists(todolist = [], objlines) {
-  console.log('funckja lists wykonała się');
-  console.log(todolist);
-  console.log(objlines);
-  objlines.innerHTML = todolist
+  // console.log('funckja lists wykonała się');
+  // console.log(todolist);
+  // console.log(objlines);
+  actualList = todolist;
+  // console.log(actualList);
+  if (actualList.length < 1) {
+    console.log('brak');
+    objlines.innerHTML = '<div class="divT completed">';
+  }
+
+  objlines.innerHTML = actualList
     .map(
       (todo, i) => `${
         todo.done ? '<div class="divT completed">' : '<div class="divT " >'
@@ -90,7 +101,7 @@ function addTodo(event) {
   };
   // push and add task to localstorage
   todos.push(item);
-  lists(todos, todoList);
+  lists(actualList, todoList);
   localStorage.setItem('Items', JSON.stringify(todos));
   todoInput.value = '';
 }
@@ -141,7 +152,7 @@ function statTask() {
 }
 statTask();
 todoButton.addEventListener('click', addTodo);
-lists(todos, todoList);
+lists(actualList, todoList);
 
 function countdownAnimation() {
   buttonscountdown.classList.remove('countdownButtonsNone');
@@ -166,6 +177,7 @@ function btnActtion(e) {
       resetTimer();
     });
     statTask();
+
     return;
   }
 
@@ -289,7 +301,7 @@ function pausetimer() {
 
 function resetTimer() {
   clockTimer.classList.remove('timerFinish', 'timerStart');
-  lists(todos, todoList);
+  lists(actualList, todoList);
   buttonscountdown.classList.add('countdownButtonsNone');
   clearInterval(countdownTime);
   displayTimeLeft(0);
@@ -336,10 +348,8 @@ function resizeClock() {
 
 function showDiv(clickedId) {
   //! Poniżej id tasku
-
   const itemS = JSON.parse(localStorage.getItem('Project'));
   // console.log(itemS[clickedId]);
-
   if (description.classList.contains('none')) {
     description.classList.remove('none');
 
@@ -356,7 +366,8 @@ function showDiv(clickedId) {
     const taskDetails = todoss[clickedId];
 
     description.innerHTML = `
-    <button class="des-btn"  data-index=${clickedId} id="${clickedId}" onclick="showDiv(this.id)"> <i class="fas fa-times" 
+    <button class="des-btn"  data-index=${clickedId} id="${clickedId}" onclick="showDiv(this.id)">
+     <i class="fas fa-times" 
 
     aria-hidden="true"></i></button>
     <div class="divT ">
@@ -508,8 +519,19 @@ function renderProjects() {
   pomodoreList.innerHTML = proj
     .map(
       (proje, i) => `
-<li class="projectList" value="${proje.name}" name="${proje.name}"> <div class="circle" style="background-color: ${proje.color};"></div>${proje.name}
-      </li>
+<li>
+ <div class="projectList" value="${proje.name}" name="${proje.name}">
+  <div class="circle" style="background-color: ${proje.color};">
+
+  </div>
+  ${proje.name} 
+ 
+
+  
+  </div>
+  <button class="projectDelete" id=${proje.name} > <i class="fas fa-minus-circle" 
+  aria-hidden="true" id=${proje.name} name=${proje.name}></i></button>
+  </li>
 `,
     )
     .join('');
@@ -521,14 +543,18 @@ document.querySelectorAll('.projectList').forEach((e) => {
 });
 
 function sortingProject(e) {
-  const clicked = e.target.getAttribute('name');
-  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  let clicked = e.target.getAttribute('name');
+  // console.log(e.target);
+  // console.log(clicked);
+  tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  // console.log(tasks);
   const tasksProject = tasks.filter((items) => items.project === clicked);
-  console.log(tasksProject);
+  // console.log(tasks);
+  // console.log(tasksProject);
+  lists(tasksProject, todoList);
   return tasksProject;
 }
 
-let dateToday = 0;
 let dateTomorrow = 0;
 
 function actualDateTime() {
@@ -546,42 +572,61 @@ document.querySelectorAll('.projectListDays').forEach((e) => {
   e.addEventListener('click', sortingProjectDays);
 });
 
+document.querySelectorAll('.projectList').forEach((e) => {
+  e.addEventListener('click', sortingProject);
+});
+
+document.querySelectorAll('.projectDelete').forEach((e) => {
+  e.addEventListener('click', deleteProject);
+});
+
+function deleteProject(e) {
+  const click = e.target.id;
+
+  console.log(click);
+}
+
 function sortingProjectDays(e) {
   let taskToday = 0;
   let taskTomorrow = 0;
   let taskSomeday = 0;
   const clicked = e.target.id;
-  console.log(clicked);
+  // console.log(clicked);
 
   const tasks = JSON.parse(localStorage.getItem('Items')) || [];
   switch (clicked) {
     case 'today':
       taskToday = tasks.filter((items) => items.data === dateToday);
-      console.log(taskToday);
+      // console.log(taskToday);
+      lists(taskToday, todoList);
       break;
     case 'tomorrow':
       taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
-      console.log(taskTomorrow);
+
+      // console.log(taskTomorrow);
+      lists(taskTomorrow, todoList);
 
       break;
     case 'someday':
       taskSomeday = tasks.filter(
         (items) => items.data !== dateTomorrow || dateToday,
+        // myArray.length
       );
+      // taskSomeday.length > 0 ? 'renderProjects(taskSomeday)' : console.log('less than 10');
 
-      console.log(taskSomeday);
-      console.log(dateTomorrow);
+      // console.log(taskSomeday);
+      // console.log(dateTomorrow);
 
-      renderProjects(taskSomeday);
-      console.log('teraz się wykonaja funckje z sortowania');
-
-      lists((taskSomeday = []), objlines);
+      // console.log('teraz się wykonaja funckje z sortowania');
+      lists(taskSomeday, todoList);
       // lists((taskSomeday = []), objlines);
       break;
     default:
-      console.log('Brak tasków');
+    // console.log('Brak tasków');
   }
 }
+
+// lists((taskToday = []), objlines);
 addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);

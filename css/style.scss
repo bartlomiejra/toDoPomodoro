@@ -24,7 +24,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   // background: url(background.svg);
-  // background-color: rgb(70, 70, 70);
+  background-color: rgb(70, 70, 70);
   color: white;
   height: 100%;
  
@@ -33,7 +33,7 @@ body {
   // background-size: cover;
 
   // background: linear-gradient(-45deg, #, #e73c7e, #23a6d5, #23d5ab);
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  // background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 
@@ -554,7 +554,9 @@ border-radius: 15px;
 .fa-trash,
 .fa-minus-circle,
 .fa-pause,
-.fa-pause-circle{
+.fa-pause-circle,
+.fa-minus-circle,
+.projectDelete{
   
   cursor: pointer;
   pointer-events: none;
@@ -663,10 +665,14 @@ ol>li, .pomodoreProjects>li{
 
 
 
-ol>li:hover, .pomodoreProjects>li:hover, input[type="date"]:hover, 
+ol>li:hover, .pomodoreProjects>.projectList:hover,.fa-minus-circle:hover,  input[type="date"]:hover, 
 .projectSelect:hover, .editing-view-port:hover, .partOfTime:hover, textarea:hover, input[type="number"]:hover  {
 @include hover;
  
+}
+.pomodoreProjects>li{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 }
 
 .detals{
@@ -791,6 +797,11 @@ color: rgb(88, 88, 88);
   padding: 0.3rem;
 }
 
+i{
+  text-align: right;
+
+}
+
 input{
   select:focus, input:focus, textarea:focus {
     outline: 0;
@@ -819,4 +830,11 @@ input{
 
 
 
- 
+.projectDelete{
+  text-align: right;
+  background: none;
+
+
+
+
+}
