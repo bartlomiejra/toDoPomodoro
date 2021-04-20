@@ -552,11 +552,11 @@ border-radius: 15px;
 .fa-play-circle,
 .fa-check-circle,
 .fa-trash,
-.fa-minus-circle,
+.delete-btn>.fa-minus-circle,
 .fa-pause,
-.fa-pause-circle,
-.fa-minus-circle,
-.projectDelete{
+.fa-pause-circle
+// .fa-minus-circle
+{
   
   cursor: pointer;
   pointer-events: none;

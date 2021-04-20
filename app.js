@@ -36,10 +36,11 @@ taskToday = tasks.filter((items) => items.data === dateToday);
 
 let objlines = 0;
 let actualList = [];
-actualList = taskToday;
+
 // console.log(taskToday);
 
 function lists(todolist = [], objlines) {
+  console.log(actualList);
   // console.log('funckja lists wykonała się');
   // console.log(todolist);
   // console.log(objlines);
@@ -47,7 +48,8 @@ function lists(todolist = [], objlines) {
   // console.log(actualList);
   if (actualList.length < 1) {
     console.log('brak');
-    objlines.innerHTML = '<div class="divT completed">';
+
+    // todoList.innerHTML = 'brak';
   }
 
   objlines.innerHTML = actualList
@@ -101,8 +103,11 @@ function addTodo(event) {
   };
   // push and add task to localstorage
   todos.push(item);
-  lists(actualList, todoList);
+  lists(todos, todoList);
+  // lists(actualList, todoList);
+
   localStorage.setItem('Items', JSON.stringify(todos));
+
   todoInput.value = '';
 }
 
@@ -219,6 +224,8 @@ function btnActtion(e) {
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
+  localStorage.setItem('Items', JSON.stringify(todos));
+  lists(actualList, todoList);
 }
 
 function displayTimeLeft(seconds) {
@@ -496,7 +503,7 @@ function showDiv(clickedId) {
   }
 }
 
-const project = JSON.parse(localStorage.getItem('Project')) || [];
+let project = JSON.parse(localStorage.getItem('Project')) || [];
 
 function addProject(event) {
   console.log('ok');
@@ -582,8 +589,16 @@ document.querySelectorAll('.projectDelete').forEach((e) => {
 
 function deleteProject(e) {
   const click = e.target.id;
-
+  project = JSON.parse(localStorage.getItem('Project')) || [];
+  console.log(project);
   console.log(click);
+
+  let deleteProj = project.filter((items) => items.name !== click);
+  console.log(deleteProj);
+  localStorage.setItem('Project', JSON.stringify(deleteProj));
+  // project = deleteProj;
+  renderProjects();
+  console.log(deleteProj);
 }
 
 function sortingProjectDays(e) {
@@ -597,32 +612,23 @@ function sortingProjectDays(e) {
   switch (clicked) {
     case 'today':
       taskToday = tasks.filter((items) => items.data === dateToday);
-      // console.log(taskToday);
       lists(taskToday, todoList);
       break;
     case 'tomorrow':
       taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
-
-      // console.log(taskTomorrow);
+      renderProjects();
       lists(taskTomorrow, todoList);
-
       break;
     case 'someday':
+      console.log(dateTomorrow);
       taskSomeday = tasks.filter(
         (items) => items.data !== dateTomorrow || dateToday,
-        // myArray.length
       );
-      // taskSomeday.length > 0 ? 'renderProjects(taskSomeday)' : console.log('less than 10');
 
-      // console.log(taskSomeday);
-      // console.log(dateTomorrow);
-
-      // console.log('teraz się wykonaja funckje z sortowania');
+      console.log(taskSomeday);
       lists(taskSomeday, todoList);
-      // lists((taskSomeday = []), objlines);
       break;
     default:
-    // console.log('Brak tasków');
   }
 }
 

@@ -731,22 +731,18 @@ html .fa-play,
 html .fa-play-circle,
 html .fa-check-circle,
 html .fa-trash,
-html .fa-minus-circle,
+html .delete-btn > .fa-minus-circle,
 html .fa-pause,
 html .fa-pause-circle,
-html .fa-minus-circle,
-html .projectDelete,
 body .fa-circle,
 body .fa-check,
 body .fa-play,
 body .fa-play-circle,
 body .fa-check-circle,
 body .fa-trash,
-body .fa-minus-circle,
+body .delete-btn > .fa-minus-circle,
 body .fa-pause,
-body .fa-pause-circle,
-body .fa-minus-circle,
-body .projectDelete {
+body .fa-pause-circle {
   cursor: pointer;
   pointer-events: none;
   border: 0;
