@@ -3,6 +3,8 @@ const addProjectbtn = document.querySelector('.addProjectBtn');
 const addPr = document.querySelector('.Projects');
 const todoButton = document.querySelector('.addtaskButton');
 const todoList = document.querySelector('.todolist');
+const closeBtn = document.querySelector('.close-btn');
+
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.pauseButton');
@@ -36,6 +38,7 @@ taskToday = tasks.filter((items) => items.data === dateToday);
 
 let objlines = 0;
 let actualList = [];
+let idCounter = 0;
 
 // console.log(taskToday);
 
@@ -311,6 +314,7 @@ function resetTimer() {
   lists(actualList, todoList);
   buttonscountdown.classList.add('countdownButtonsNone');
   clearInterval(countdownTime);
+
   displayTimeLeft(0);
   clockTimer.classList.remove('clock-fullscreen');
   // }
@@ -356,14 +360,21 @@ function resizeClock() {
 function showDiv(clickedId) {
   //! Poniżej id tasku
   const itemS = JSON.parse(localStorage.getItem('Project'));
-  // console.log(itemS[clickedId]);
   if (description.classList.contains('none')) {
     description.classList.remove('none');
+    console.log(itemS[clickedId]);
 
     renderdetals();
   } else {
-    description.classList.add('none');
+    console.log(itemS[clickedId]);
+    renderdetals();
+    // description.classList.add('none');
   }
+  function closeDiv() {
+    console.log('close');
+  }
+
+  closeBtn.addEventListener('click', closeDiv);
 
   function renderdetals() {
     // showDiv(clickedId);
@@ -373,7 +384,7 @@ function showDiv(clickedId) {
     const taskDetails = todoss[clickedId];
 
     description.innerHTML = `
-    <button class="des-btn"  data-index=${clickedId} id="${clickedId}" onclick="showDiv(this.id)">
+    <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
      <i class="fas fa-times" 
 
     aria-hidden="true"></i></button>
@@ -508,7 +519,9 @@ let project = JSON.parse(localStorage.getItem('Project')) || [];
 function addProject(event) {
   console.log('ok');
   event.preventDefault();
+  console.log(project);
   const Project = {
+    id: project.length,
     name: addPr.value,
     color: projectColor.value,
   };
@@ -537,7 +550,7 @@ function renderProjects() {
   
   </div>
   <button class="projectDelete" id=${proje.name} > <i class="fas fa-minus-circle" 
-  aria-hidden="true" id=${proje.name} name=${proje.name}></i></button>
+  aria-hidden="true" id=${proje.id} name=${proje.name}></i></button>
   </li>
 `,
     )
@@ -545,9 +558,9 @@ function renderProjects() {
 }
 renderProjects();
 
-document.querySelectorAll('.projectList').forEach((e) => {
-  e.addEventListener('click', sortingProject);
-});
+// document.querySelectorAll('.projectList').forEach((e) => {
+//   e.addEventListener('click', sortingProject);
+// });
 
 function sortingProject(e) {
   let clicked = e.target.getAttribute('name');
@@ -593,17 +606,22 @@ function deleteProject(e) {
   console.log(project);
   console.log(click);
 
-  let deleteProj = project.filter((items) => items.name !== click);
+  let deleteProj = project.filter((item) => item.id != click);
+
   console.log(deleteProj);
+
+  // console.log(project[1].id);
+  // console.log(project.index);
+  console.log(click);
+
   localStorage.setItem('Project', JSON.stringify(deleteProj));
   // project = deleteProj;
-  renderProjects();
   console.log(deleteProj);
+  renderProjects();
 }
 
 function sortingProjectDays(e) {
   let taskToday = 0;
-  let taskTomorrow = 0;
   let taskSomeday = 0;
   const clicked = e.target.id;
   // console.log(clicked);
@@ -614,11 +632,13 @@ function sortingProjectDays(e) {
       taskToday = tasks.filter((items) => items.data === dateToday);
       lists(taskToday, todoList);
       break;
+
     case 'tomorrow':
       taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
-      renderProjects();
+      // renderProjects();
       lists(taskTomorrow, todoList);
       break;
+
     case 'someday':
       console.log(dateTomorrow);
       taskSomeday = tasks.filter(
@@ -632,17 +652,14 @@ function sortingProjectDays(e) {
   }
 }
 
-// lists((taskToday = []), objlines);
 addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
-// showDetals.addEventListener('click', showDiv);
-// lists(todos, todoList);
 
 /*
       * Importand Information
-      ! Deprecated method, do not use
+      ! Deprecated method, do not user
       ? should this method be exposad in the public API
       TODO: zrobić to i tamto
       * @param myParam The parameter for this method

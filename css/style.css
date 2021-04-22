@@ -9,8 +9,8 @@ body {
   color: white;
   height: 100%;
   background-size: 400% 400%;
-  -webkit-animation: gradient 15s ease infinite;
-          animation: gradient 15s ease infinite;
+  -webkit-animation: gradient 60s ease infinite;
+          animation: gradient 60s ease infinite;
 }
 
 html .container,
