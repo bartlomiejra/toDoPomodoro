@@ -3,7 +3,6 @@ const addProjectbtn = document.querySelector('.addProjectBtn');
 const addPr = document.querySelector('.Projects');
 const todoButton = document.querySelector('.addtaskButton');
 const todoList = document.querySelector('.todolist');
-const closeBtn = document.querySelector('.close-btn');
 
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
@@ -39,8 +38,6 @@ taskToday = tasks.filter((items) => items.data === dateToday);
 let objlines = 0;
 let actualList = [];
 let idCounter = 0;
-
-// console.log(taskToday);
 
 function lists(todolist = [], objlines) {
   console.log(actualList);
@@ -112,6 +109,7 @@ function addTodo(event) {
   localStorage.setItem('Items', JSON.stringify(todos));
 
   todoInput.value = '';
+  statTask();
 }
 
 function statTask() {
@@ -340,8 +338,8 @@ function endpomodoro() {
   audio = new Audio('Alerts/taskEnd.mp3');
   audio.play();
   //* convert string to js object
-  const itemS = JSON.parse(localStorage.getItem('Items'));
   // console.log(itemS);
+  const itemS = JSON.parse(localStorage.getItem('Items'));
   itemS[taskId].focus += timeInFocus;
   localStorage.setItem('Items', JSON.stringify(itemS));
   lists(todos, todoList);
@@ -365,16 +363,11 @@ function showDiv(clickedId) {
     console.log(itemS[clickedId]);
 
     renderdetals();
-  } else {
-    console.log(itemS[clickedId]);
-    renderdetals();
-    // description.classList.add('none');
+    // close();
+    // const close = closeBtn.addEventListener('click', () => {
+    //   console.log('close');
+    // });
   }
-  function closeDiv() {
-    console.log('close');
-  }
-
-  closeBtn.addEventListener('click', closeDiv);
 
   function renderdetals() {
     // showDiv(clickedId);
@@ -457,6 +450,7 @@ function showDiv(clickedId) {
     </div>
     
     `;
+    const closeBtn = document.querySelector('.close-btn');
     const date = document.getElementById('date');
     const note = document.querySelector('.note');
     const project = document.querySelector('.projectSelect');
@@ -464,6 +458,8 @@ function showDiv(clickedId) {
     const repeatDay = document.querySelector('.repeatDay');
 
     date.addEventListener('input', updateDetails);
+    closeBtn.addEventListener('click', closeDiv);
+
     note.addEventListener('input', updateDetails);
     repeatDay.addEventListener('input', updateDetails);
 
@@ -481,6 +477,9 @@ function showDiv(clickedId) {
       console.log(optionsTime);
     });
 
+    function closeDiv() {
+      console.log('elo');
+    }
     function updateDetails() {
       const proj = JSON.parse(localStorage.getItem('Items')) || [];
       console.log('jest git');
@@ -517,6 +516,7 @@ function showDiv(clickedId) {
 let project = JSON.parse(localStorage.getItem('Project')) || [];
 
 function addProject(event) {
+  let project = JSON.parse(localStorage.getItem('Project')) || [];
   console.log('ok');
   event.preventDefault();
   console.log(project);
