@@ -9,15 +9,15 @@ const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.pauseButton');
 const reset = document.querySelector('.resetButton');
 const description = document.querySelector('.right');
-const breakdown = document.querySelector('.fa-coffee');
+// const breakdown = document.querySelector('.fa-coffee');
 const resize = document.querySelector('.fa-window-restore');
-const detals = document.querySelectorAll('.detals');
+// const detals = document.querySelectorAll('.detals');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.pomodoreProjects');
 
-const today = document.querySelector('.today');
-const tomorrow = document.querySelector('.tomorrow');
-const someday = document.querySelector('.someday');
+// const today = document.querySelector('.today');
+// const tomorrow = document.querySelector('.tomorrow');
+// const someday = document.querySelector('.someday');
 
 const todos = JSON.parse(localStorage.getItem('Items')) || [];
 
@@ -357,9 +357,11 @@ function resizeClock() {
 
 function showDiv(clickedId) {
   //! Poniżej id tasku
-  const itemS = JSON.parse(localStorage.getItem('Project'));
+  const itemS = JSON.parse(localStorage.getItem('Project') || []);
   if (description.classList.contains('none')) {
     description.classList.remove('none');
+
+    // console.log(itemS);
     console.log(itemS[clickedId]);
 
     renderdetals();
@@ -479,6 +481,7 @@ function showDiv(clickedId) {
 
     function closeDiv() {
       console.log('elo');
+      description.classList.add('none');
     }
     function updateDetails() {
       const proj = JSON.parse(localStorage.getItem('Items')) || [];
@@ -596,30 +599,6 @@ document.querySelectorAll('.projectList').forEach((e) => {
   e.addEventListener('click', sortingProject);
 });
 
-document.querySelectorAll('.projectDelete').forEach((e) => {
-  e.addEventListener('click', deleteProject);
-});
-
-function deleteProject(e) {
-  const click = e.target.id;
-  project = JSON.parse(localStorage.getItem('Project')) || [];
-  console.log(project);
-  console.log(click);
-
-  let deleteProj = project.filter((item) => item.id != click);
-
-  console.log(deleteProj);
-
-  // console.log(project[1].id);
-  // console.log(project.index);
-  console.log(click);
-
-  localStorage.setItem('Project', JSON.stringify(deleteProj));
-  // project = deleteProj;
-  console.log(deleteProj);
-  renderProjects();
-}
-
 function sortingProjectDays(e) {
   let taskToday = 0;
   let taskSomeday = 0;
@@ -664,3 +643,27 @@ todoList.addEventListener('click', btnActtion);
       TODO: zrobić to i tamto
       * @param myParam The parameter for this method
     */
+
+document.querySelectorAll('.projectDelete').forEach((e) => {
+  e.addEventListener('click', deleteProject);
+});
+
+function deleteProject(e) {
+  const click = e.target.id;
+  let project = JSON.parse(localStorage.getItem('Project')) || [];
+  console.log(project);
+  console.log(click);
+
+  const deleteProj = project.filter((item) => item.id != click);
+
+  console.log(deleteProj);
+
+  // console.log(project[1].id);
+  // console.log(project.index);
+  console.log(click);
+
+  // project = deleteProj;
+  console.log(deleteProj);
+  localStorage.setItem('Project', JSON.stringify(deleteProj));
+  renderProjects();
+}

@@ -151,6 +151,8 @@ background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 
   flex-direction: column;
   flex: 3 50%;
   align-items: center;
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
+//  flex: 2 10%;
 }
 
 
@@ -378,7 +380,7 @@ button {
 .fa-window-restore,
 .fa-check-circle,
 .pause-btn, .fa-pause , .fa-pause-circle, .fa-stop-circle, .fa-minus-circle, 
-.fa-calendar-alt, .fa-list, .fa-repeat  {
+.fa-calendar-alt, .fa-list, .fa-repeat,.close-btn  {
   cursor: pointer;
   outline: 0 ;
   background:transparent;
@@ -517,6 +519,7 @@ border-radius: 15px;
 //* top table
 .tasktable {
   width: 100%;
+  border-radius: 10px;
   background-color: rgb(15, 15, 15);
   display: flex;
   justify-content: center;
@@ -554,7 +557,8 @@ border-radius: 15px;
 .fa-trash,
 .delete-btn>.fa-minus-circle,
 .fa-pause,
-.fa-pause-circle
+.fa-pause-circle,
+
 // .fa-minus-circle
 {
   

@@ -182,6 +182,7 @@ body .center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
 }
 
 html .right,
@@ -491,7 +492,7 @@ html .fa-circle,
 html .fa-window-restore,
 html .fa-check-circle,
 html .pause-btn, html .fa-pause, html .fa-pause-circle, html .fa-stop-circle, html .fa-minus-circle,
-html .fa-calendar-alt, html .fa-list, html .fa-repeat,
+html .fa-calendar-alt, html .fa-list, html .fa-repeat, html .close-btn,
 body .pauseButton,
 body .resetButton,
 body .play-btn,
@@ -511,7 +512,8 @@ body .fa-stop-circle,
 body .fa-minus-circle,
 body .fa-calendar-alt,
 body .fa-list,
-body .fa-repeat {
+body .fa-repeat,
+body .close-btn {
   cursor: pointer;
   outline: 0;
   background: transparent;
@@ -685,6 +687,7 @@ body .timerFinish {
 html .tasktable,
 body .tasktable {
   width: 100%;
+  border-radius: 10px;
   background-color: #0f0f0f;
   display: -webkit-box;
   display: -ms-flexbox;
