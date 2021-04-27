@@ -9,6 +9,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "indent": "off"
+        "indent": "off",
+        "no-use-before-define": ["error", { "variables": false }]
     }
 }

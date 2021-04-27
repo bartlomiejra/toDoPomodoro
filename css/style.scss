@@ -23,8 +23,9 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  // background: url(background.svg);
-  background-color: rgb(70, 70, 70);
+  background: url(background5.png);
+  // background: no-repeat;
+  // background-color: rgb(70, 70, 70);
   color: white;
   height: 100%;
  
@@ -34,8 +35,8 @@ body {
 
   // background: linear-gradient(-45deg, rgb(155, 158, 182), #312c2e, #473a3a, #626463);
   // background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 60s ease infinite;
+  background-size: 150% 150%;
+  // animation: gradient 300s ease infinite;
 
 
   
@@ -288,9 +289,7 @@ background-color: red;
   color: white;
 }
 
-.todolist {
-  // width: 55%;
-}
+
 
 .todolist>div {
   transition: all 0.4s ease;
@@ -557,8 +556,7 @@ border-radius: 15px;
 .fa-trash,
 .delete-btn>.fa-minus-circle,
 .fa-pause,
-.fa-pause-circle,
-
+.fa-pause-circle
 // .fa-minus-circle
 {
   

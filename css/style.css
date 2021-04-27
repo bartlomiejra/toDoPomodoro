@@ -5,12 +5,10 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #464646;
+  background: url(background5.png);
   color: white;
   height: 100%;
-  background-size: 400% 400%;
-  -webkit-animation: gradient 60s ease infinite;
-          animation: gradient 60s ease infinite;
+  background-size: 150% 150%;
 }
 
 html .container,

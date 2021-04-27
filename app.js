@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 const todoInput = document.querySelector('.todoInput');
 const addProjectbtn = document.querySelector('.addProjectBtn');
 const addPr = document.querySelector('.Projects');
@@ -15,10 +16,6 @@ const resize = document.querySelector('.fa-window-restore');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.pomodoreProjects');
 
-// const today = document.querySelector('.today');
-// const tomorrow = document.querySelector('.tomorrow');
-// const someday = document.querySelector('.someday');
-
 const todos = JSON.parse(localStorage.getItem('Items')) || [];
 
 let audio;
@@ -30,22 +27,17 @@ const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
 
 let dateToday;
-let taskToday = 0;
+// let taskToday = 0;
 let tasks = JSON.parse(localStorage.getItem('Items')) || [];
 
-taskToday = tasks.filter((items) => items.data === dateToday);
-
-let objlines = 0;
+// const objlines = 0;
 let actualList = [];
-let idCounter = 0;
+// const idCounter = 0;
 
 function lists(todolist = [], objlines) {
   console.log(actualList);
-  // console.log('funckja lists wykonała się');
-  // console.log(todolist);
-  // console.log(objlines);
   actualList = todolist;
-  // console.log(actualList);
+
   if (actualList.length < 1) {
     console.log('brak');
 
@@ -81,7 +73,7 @@ ${
 <button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
 <button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-<button class="des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"> <i class="fas fa-list-alt" 
+<button class="des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"  > <i class="fas fa-list-alt" 
 aria-hidden="true"></i></button>
 </div>
 `,
@@ -106,7 +98,7 @@ function addTodo(event) {
   lists(todos, todoList);
   // lists(actualList, todoList);
 
-  localStorage.setItem('Items', JSON.stringify(todos));
+  // localStorage.setItem('Items', JSON.stringify(todos));
 
   todoInput.value = '';
   statTask();
@@ -356,45 +348,26 @@ function resizeClock() {
 }
 
 function showDiv(clickedId) {
-  //! Poniżej id tasku
   const itemS = JSON.parse(localStorage.getItem('Project') || []);
-  if (description.classList.contains('none')) {
-    description.classList.remove('none');
-
-    // console.log(itemS);
-    console.log(itemS[clickedId]);
-
-    renderdetals();
-    // close();
-    // const close = closeBtn.addEventListener('click', () => {
-    //   console.log('close');
-    // });
-  }
+  //! Poniżej id tasku
+  description.classList.remove('none');
+  console.log(itemS[clickedId]);
+  renderdetals();
 
   function renderdetals() {
-    // showDiv(clickedId);
+    console.log('coolest');
     const todoss = JSON.parse(localStorage.getItem('Items')) || [];
-
-    // console.log(.text);
     const taskDetails = todoss[clickedId];
-
     description.innerHTML = `
     <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
      <i class="fas fa-times" 
-
     aria-hidden="true"></i></button>
     <div class="divT ">
-  
     <div  class="todo-item" id="item" >
      ${taskDetails.text}</div>
-   
-    
-         
-          
-          
         </div>
-
  <div class="detals">
+ 
           <ul>
               <li>Pomodoro:     ${
                 taskDetails.focus > pomodoreDuration
@@ -452,6 +425,7 @@ function showDiv(clickedId) {
     </div>
     
     `;
+
     const closeBtn = document.querySelector('.close-btn');
     const date = document.getElementById('date');
     const note = document.querySelector('.note');
@@ -483,17 +457,19 @@ function showDiv(clickedId) {
       console.log('elo');
       description.classList.add('none');
     }
+
     function updateDetails() {
       const proj = JSON.parse(localStorage.getItem('Items')) || [];
-      console.log('jest git');
+      console.log(proj);
       console.log(proj[clickedId].data);
-
       proj[clickedId].data = date.value;
       proj[clickedId].project = project.value;
       proj[clickedId].note = note.value;
       proj[clickedId].repeatday = repeatDay.value;
       proj[clickedId].repeatpartoftime = timePart.value;
       localStorage.setItem('Items', JSON.stringify(proj));
+
+      console.log('oki działa');
     }
     const divT = document.querySelector('.divT');
 
@@ -502,12 +478,11 @@ function showDiv(clickedId) {
   }
 
   function getSelectOptions() {
-    console.log('select value from localstorage...');
     const projectList = JSON.parse(localStorage.getItem('Project')) || [];
     console.log(projectList);
     // console.log(projectList[1].name);
     const projectt = document.querySelector('.projectSelect');
-    for (var i = 0; i < projectList.length; i++) {
+    for (let i = 0; i < projectList.length; i++) {
       const option = document.createElement('option');
       txt = document.createTextNode(projectList[i].name);
       option.appendChild(txt);
@@ -516,10 +491,10 @@ function showDiv(clickedId) {
   }
 }
 
-let project = JSON.parse(localStorage.getItem('Project')) || [];
+// const project = JSON.parse(localStorage.getItem('Project')) || [];
 
 function addProject(event) {
-  let project = JSON.parse(localStorage.getItem('Project')) || [];
+  const project = JSON.parse(localStorage.getItem('Project')) || [];
   console.log('ok');
   event.preventDefault();
   console.log(project);
@@ -566,7 +541,7 @@ renderProjects();
 // });
 
 function sortingProject(e) {
-  let clicked = e.target.getAttribute('name');
+  const clicked = e.target.getAttribute('name');
   // console.log(e.target);
   // console.log(clicked);
   tasks = JSON.parse(localStorage.getItem('Items')) || [];
@@ -601,6 +576,7 @@ document.querySelectorAll('.projectList').forEach((e) => {
 
 function sortingProjectDays(e) {
   let taskToday = 0;
+  let taskTomorrow = 0;
   let taskSomeday = 0;
   const clicked = e.target.id;
   // console.log(clicked);
@@ -650,7 +626,7 @@ document.querySelectorAll('.projectDelete').forEach((e) => {
 
 function deleteProject(e) {
   const click = e.target.id;
-  let project = JSON.parse(localStorage.getItem('Project')) || [];
+  const project = JSON.parse(localStorage.getItem('Project')) || [];
   console.log(project);
   console.log(click);
 
