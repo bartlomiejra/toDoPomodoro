@@ -41,7 +41,7 @@ function lists(todolist = [], objlines) {
   if (actualList.length < 1) {
     console.log('brak');
 
-    // todoList.innerHTML = 'brak';
+    // .innerHTML = 'brak';
   }
 
   objlines.innerHTML = actualList
@@ -628,7 +628,7 @@ function deleteProject(e) {
   const click = e.target.id;
   const project = JSON.parse(localStorage.getItem('Project')) || [];
   console.log(project);
-  console.log(click);
+  // console.log(click);
 
   const deleteProj = project.filter((item) => item.id != click);
 
