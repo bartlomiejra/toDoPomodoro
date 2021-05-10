@@ -5,6 +5,14 @@ $red: rgb(116, 6, 6);
 $blue:  rgba(49, 63, 124, 0.725);
 $gradient_color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 
+
+
+//New Color Project
+$backgroundnew: #161621;
+$backgrounddarker: #14141C;
+$butColor: #A6DFD8;
+$fonts: #757678;
+$task: #23222D;
 // Mixins
 @mixin buttonstyle {
   background-color: grey;
@@ -45,7 +53,7 @@ body {
 
 .container {
   margin: auto;
-  width: 900px;
+  width: 90%;
   height: 700px;
   border-radius: 30px;
   list-style: none;
@@ -208,9 +216,17 @@ color: white;
 }
 
 .clock{
+  display: none;
+
   position: absolute;
   bottom: 20px;
 }
+.clockVisible{
+
+  display: inline;
+}
+
+
 
 .clock-fullscreen{
   position: absolute;
@@ -774,6 +790,65 @@ height: 30px;
     }
 }
 
+// .addProject {
+//   display: -ms-flexbox;
+//   display: -webkit-flex;
+//   display: flex;
+//   -webkit-flex-direction: row;
+//   -ms-flex-direction: row;
+//   flex-direction: row;
+//   -webkit-flex-wrap: nowrap;
+//   -ms-flex-wrap: nowrap;
+//   flex-wrap: nowrap;
+//   -webkit-justify-content: flex-start;
+//   -ms-flex-pack: start;
+//   justify-content: flex-start;
+//   -webkit-align-content: flex-start;
+//   -ms-flex-line-pack: start;
+//   align-content: flex-start;
+//   -webkit-align-items: flex-start;
+//   -ms-flex-align: start;
+//   align-items: flex-start;
+//   }
+
+//   .addProjectBtn {
+//   -webkit-order: 0;
+//   -ms-flex-order: 0;
+//   order: 0;
+//   -webkit-flex: 0 1 auto;
+//   -ms-flex: 0 1 auto;
+//   flex: 0 1 auto;
+//   -webkit-align-self: auto;
+//   -ms-flex-item-align: auto;
+//   align-self: auto;
+//   }
+
+//   .Projects {
+//   -webkit-order: 0;
+//   -ms-flex-order: 0;
+//   order: 0;
+//   -webkit-flex: 1 2 auto;
+//   -ms-flex: 1 2 auto;
+//   flex: 1 2 auto;
+//   -webkit-align-self: auto;
+//   -ms-flex-item-align: auto;
+//   align-self: auto;
+//   }
+
+// .color{
+//   -webkit-order: 0;
+//   -ms-flex-order: 0;
+//   order: 0;
+//   -webkit-flex: 0 1 auto;
+//   -ms-flex: 0 1 auto;
+//   flex: 0 1 auto;
+//   -webkit-align-self: auto;
+//   -ms-flex-item-align: auto;
+//   align-self: auto;
+//   }
+
+
+
 ol{
   padding: 0;
 }
@@ -842,3 +917,48 @@ input{
 
 
 }
+
+
+
+
+.clocks {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  }
+
+.time{
+  order: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  align-self: auto;
+  }
+
+.score {
+  margin-left: 5px;
+
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  }

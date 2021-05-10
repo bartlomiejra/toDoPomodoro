@@ -33,7 +33,7 @@
 
 //   project.push(Project);
 //   // console.log(Project);
-//   localStorage.setItem('Project', JSON.stringify(project));
+//   erage.setItem('Project', JSON.stringify(project));
 //   addPr.value = '';
 //   renderProjects();
 // }

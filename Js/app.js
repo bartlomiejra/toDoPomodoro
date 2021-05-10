@@ -58,14 +58,16 @@ function lists(todolist = [], objlines) {
 <div  class="clocks"> 
 ${
   todo.focus > [pomodoreDuration]
-    ? '<i class="fas fa-clock " aria-hidden="true"> </i>'
-    : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
+    ? '<i class="fas fa-clock  time" aria-hidden="true"> </i>'
+    : '<i class="fas fa-clock blur  time" aria-hidden="true"> </i>'
 }
+<div class="score"> 
   ${
     todo.focus / pomodoreDuration > 2
       ? ` x ${Math.floor(todo.focus / pomodoreDuration)}`
       : ''
   }
+  </div> 
 </div>
 <button class="complete-btn" data-index=${i} id="item${i}" >
 ${
@@ -102,7 +104,7 @@ function addTodo(event) {
   lists(todos, todoList);
   // lists(actualList, todoList);
 
-  // localStorage.setItem('Items', JSON.stringify(todos));
+  localStorage.setItem('Items', JSON.stringify(todos));
 
   todoInput.value = '';
   statTask();
@@ -304,13 +306,14 @@ function pausetimer() {
 }
 
 function resetTimer() {
-  clockTimer.classList.remove('timerFinish', 'timerStart');
+  clockTimer.classList.remove('timerFinish', 'timerStart', 'clockVisible');
   lists(actualList, todoList);
   buttonscountdown.classList.add('countdownButtonsNone');
   clearInterval(countdownTime);
 
   displayTimeLeft(0);
   clockTimer.classList.remove('clock-fullscreen');
+
   // }
 }
 
@@ -326,7 +329,6 @@ function breakTime() {
   );
   pause.firstElementChild.classList.add('fa-coffee');
   clockTimer.classList.remove('timerStart');
-
   lists(todos, todoList);
 }
 
@@ -344,6 +346,7 @@ function endpomodoro() {
 }
 
 function resizeClock() {
+  clockTimer.classList.add('clockVisible');
   if (clockTimer.classList.contains('clock-fullscreen')) {
     clockTimer.classList.remove('clock-fullscreen');
   } else {
@@ -382,16 +385,18 @@ function showDiv(clickedId) {
    <div class="detals">
 
             <ul>
-                <li>Pomodoro:     ${
+                <li class="clocks">Pomodoro:     ${
                   taskDetails.focus > pomodoreDuration
-                    ? '<i class="fas fa-clock " aria-hidden="true"> </i>'
+                    ? '<i class="fas fa-clock time " aria-hidden="true"> </i>'
                     : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
                 }
+               
                   ${
                     taskDetails.focus / pomodoreDuration > 1
                       ? ` x ${Math.floor(taskDetails.focus / pomodoreDuration)}`
                       : ''
-                  }</li>
+                  }
+                 </li>
                 <li>Due date: <input type="date" id="date" value="${
                   taskDetails.data
                 }" name="trip-start"></li>
@@ -481,28 +486,26 @@ function showDiv(clickedId) {
       proj[clickedId].repeatday = repeatDay.value;
       proj[clickedId].repeatpartoftime = timePart.value;
       localStorage.setItem('Items', JSON.stringify(proj));
-
       console.log('oki działa');
     }
 
     const divT = document.querySelector('.divT');
 
-    // divT.addEventListener('click', renderdetals);
-    // getSelectOptions();
+    divT.addEventListener('click', renderdetals);
+    getSelectOptions();
   }
-
-  // function getSelectOptions() {
-  //   const projectList = JSON.parse(localStorage.getItem('Project')) || [];
-  //   console.log(projectList);
-  //   // console.log(projectList[1].name);
-  //   const projectt = document.querySelector('.projectSelect');
-  //   for (let i = 0; i < projectList.length; i++) {
-  //     const option = document.createElement('option');
-  //     txt = document.createTextNode(projectList[i].name);
-  //     option.appendChild(txt);
-  //     projectt.insertBefore(option, projectt.lastChild);
-  //   }
-  // }
+  function getSelectOptions() {
+    const projectList = JSON.parse(localStorage.getItem('Project')) || [];
+    console.log(projectList);
+    // console.log(projectList[1].name);
+    const projectt = document.querySelector('.projectSelect');
+    for (let i = 0; i < projectList.length; i++) {
+      const option = document.createElement('option');
+      txt = document.createTextNode(projectList[i].name);
+      option.appendChild(txt);
+      projectt.insertBefore(option, projectt.lastChild);
+    }
+  }
 }
 
 // const project = JSON.parse(localStorage.getItem('Project')) || [];
@@ -535,12 +538,8 @@ function renderProjects() {
 <li>
  <div class="projectList" value="${proje.name}" name="${proje.name}">
   <div class="circle" style="background-color: ${proje.color};">
-
   </div>
   ${proje.name} 
- 
-
-  
   </div>
   <button class="projectDelete" id=${proje.name} > <i class="fas fa-minus-circle" 
   aria-hidden="true" id=${proje.id} name=${proje.name}></i></button>
@@ -617,7 +616,6 @@ function sortingProjectDays(e) {
     default:
   }
 }
-
 function deleteProject(e) {
   console.log(e);
   console.log('siema');
