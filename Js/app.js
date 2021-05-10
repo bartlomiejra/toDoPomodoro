@@ -491,72 +491,6 @@ function showDiv(clickedId) {
     // getSelectOptions();
   }
 
-  function sortingProject(e) {
-    const clicked = e.target.getAttribute('name');
-    // console.log(e.target);
-    // console.log(clicked);
-    tasks = JSON.parse(localStorage.getItem('Items')) || [];
-    // console.log(tasks);
-    const tasksProject = tasks.filter((items) => items.project === clicked);
-    // console.log(tasks);
-    // console.log(tasksProject);
-    lists(tasksProject, todoList);
-    return tasksProject;
-  }
-
-  let dateTomorrow = 0;
-
-  function actualDateTime() {
-    const date = new Date();
-    const yyyy = date.getFullYear();
-    const mm = String(date.getMonth() + 1).padStart(2, '0'); // month is zero-based
-    const dd = String(date.getDate()).padStart(2, '0');
-    const ddTomorrow = String(date.getDate() + 1).padStart(2, '0');
-    dateToday = `${yyyy}-${mm}-${dd}`;
-    dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
-  }
-  actualDateTime();
-
-  document.querySelectorAll('.projectListDays').forEach((e) => {
-    e.addEventListener('click', sortingProjectDays);
-  });
-
-  document.querySelectorAll('.projectList').forEach((e) => {
-    e.addEventListener('click', sortingProject);
-  });
-
-  function sortingProjectDays(e) {
-    let taskToday = 0;
-    let taskTomorrow = 0;
-    let taskSomeday = 0;
-    const clicked = e.target.id;
-    // console.log(clicked);
-
-    const tasks = JSON.parse(localStorage.getItem('Items')) || [];
-    switch (clicked) {
-      case 'today':
-        taskToday = tasks.filter((items) => items.data === dateToday);
-        lists(taskToday, todoList);
-        break;
-
-      case 'tomorrow':
-        taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
-        // renderProjects();
-        lists(taskTomorrow, todoList);
-        break;
-
-      case 'someday':
-        console.log(dateTomorrow);
-        taskSomeday = tasks.filter(
-          (items) => items.data !== dateTomorrow || dateToday,
-        );
-
-        console.log(taskSomeday);
-        lists(taskSomeday, todoList);
-        break;
-      default:
-    }
-  }
   // function getSelectOptions() {
   //   const projectList = JSON.parse(localStorage.getItem('Project')) || [];
   //   console.log(projectList);
@@ -588,7 +522,7 @@ function addProject(event) {
   // console.log(Project);
   localStorage.setItem('Project', JSON.stringify(project));
   addPr.value = '';
-  renderProjects();
+  // renderProjects();
 }
 
 function renderProjects() {
@@ -604,6 +538,9 @@ function renderProjects() {
 
   </div>
   ${proje.name} 
+ 
+
+  
   </div>
   <button class="projectDelete" id=${proje.name} > <i class="fas fa-minus-circle" 
   aria-hidden="true" id=${proje.id} name=${proje.name}></i></button>
@@ -614,18 +551,93 @@ function renderProjects() {
 }
 renderProjects();
 
+function sortingProject(e) {
+  const clicked = e.target.getAttribute('name');
+  // console.log(e.target);
+  // console.log(clicked);
+  tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  // console.log(tasks);
+  const tasksProject = tasks.filter((items) => items.project === clicked);
+  // console.log(tasks);
+  // console.log(tasksProject);
+  lists(tasksProject, todoList);
+  return tasksProject;
+}
+
+let dateTomorrow = 0;
+
+function actualDateTime() {
+  const date = new Date();
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0'); // month is zero-based
+  const dd = String(date.getDate()).padStart(2, '0');
+  const ddTomorrow = String(date.getDate() + 1).padStart(2, '0');
+  dateToday = `${yyyy}-${mm}-${dd}`;
+  dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
+}
+actualDateTime();
+
+document.querySelectorAll('.projectListDays').forEach((e) => {
+  e.addEventListener('click', sortingProjectDays);
+});
+
+document.querySelectorAll('.projectList').forEach((e) => {
+  e.addEventListener('click', sortingProject);
+});
+
+function sortingProjectDays(e) {
+  let taskToday = 0;
+  let taskTomorrow = 0;
+  let taskSomeday = 0;
+  const clicked = e.target.id;
+  // console.log(clicked);
+
+  const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+  switch (clicked) {
+    case 'today':
+      taskToday = tasks.filter((items) => items.data === dateToday);
+      lists(taskToday, todoList);
+      break;
+
+    case 'tomorrow':
+      taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
+      // renderProjects();
+      lists(taskTomorrow, todoList);
+      break;
+
+    case 'someday':
+      console.log(dateTomorrow);
+      taskSomeday = tasks.filter(
+        (items) => items.data !== dateTomorrow || dateToday,
+      );
+
+      console.log(taskSomeday);
+      lists(taskSomeday, todoList);
+      break;
+    default:
+  }
+}
+
 function deleteProject(e) {
   console.log(e);
   console.log('siema');
   const click = e.target.id;
   const project = JSON.parse(localStorage.getItem('Project')) || [];
   console.log(project);
+  // console.log(click);
+
   const deleteProj = project.filter((item) => item.id != click);
+
   console.log(deleteProj);
+
+  // console.log(project[1].id);
+  // console.log(project.index);
   console.log(click);
+
+  // project = deleteProj;
   console.log(deleteProj);
   localStorage.setItem('Project', JSON.stringify(deleteProj));
-  // renderProjects();
+  renderProjects();
 }
 
 document.querySelectorAll('.projectDelete').forEach((e) => {
