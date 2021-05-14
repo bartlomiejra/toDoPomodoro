@@ -1,56 +1,3 @@
-html,
-body {
-  display: -ms-grid;
-  display: grid;
-  padding: 0;
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background: url(background5.png);
-  color: white;
-  height: 100%;
-  background-size: 150% 150%;
-}
-
-html .container,
-body .container {
-  margin: auto;
-  width: 90%;
-  height: 700px;
-  border-radius: 30px;
-  list-style: none;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-}
-
-html .container > *,
-body .container > * {
-  padding: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 100%;
-          flex: 1 100%;
-}
-
-html header,
-body header {
-  background: linear-gradient(147.14deg, rgba(26, 25, 25, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-  max-height: 25px;
-}
-
-html .right,
-body .right {
-  height: 100%;
-  background-color: #011b01;
-}
-
 @-webkit-keyframes reducing {
   from {
     -webkit-transform: scaleX(1);
@@ -119,16 +66,133 @@ body .right {
   }
 }
 
-html ol,
-body ol {
+html,
+body {
+  display: -ms-grid;
+  display: grid;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: url(background5.png);
+  color: white;
+  height: 100%;
+  background-size: 150% 150%;
+}
+
+html .container,
+body .container {
+  margin: auto;
+  width: 90%;
+  height: 700px;
+  border-radius: 30px;
+  list-style: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
 }
 
-html ol > i,
-body ol > i {
-  position: absolute;
-  left: 0;
-  top: 0;
+html .container > *,
+body .container > * {
+  padding: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 100%;
+          flex: 1 100%;
+}
+
+html .container > *__header,
+body .container > *__header {
+  background: linear-gradient(147.14deg, rgba(26, 25, 25, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  max-height: 25px;
+}
+
+html .left,
+body .left {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  -webkit-box-flex: 2;
+      -ms-flex: 2 20%;
+          flex: 2 20%;
+}
+
+html .left_day,
+body .left_day {
+  position: relative;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.55);
+  margin-left: 10px;
+}
+
+html .left_projectItem,
+body .left_projectItem {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+}
+
+html .left_addProject,
+body .left_addProject {
+  display: -webkit-box;
+  display: flex;
+  left: 10;
+  bottom: 62px;
+  width: 100%;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+html .left_addProjectBtn,
+body .left_addProjectBtn {
+  width: 30px;
+  color: red;
+}
+
+html .left_color,
+body .left_color {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+html .left_addProjectBtn, html .left_Projects, html .left_color,
+body .left_addProjectBtn,
+body .left_Projects,
+body .left_color {
+  text-align: center;
+  height: 30px;
+  font-size: 15px;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+}
+
+html .right,
+body .right {
+  height: 100%;
+  background-color: #011b01;
 }
 
 html .animationIn,
@@ -152,16 +216,6 @@ body .animationOut {
 html .none,
 body .none {
   display: none;
-}
-
-html .left,
-body .left {
-  position: relative;
-  height: 100%;
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-  -webkit-box-flex: 2;
-      -ms-flex: 2 20%;
-          flex: 2 20%;
 }
 
 html .center,
@@ -495,8 +549,15 @@ html .des-btn,
 html .fa-circle,
 html .fa-window-restore,
 html .fa-check-circle,
-html .pause-btn, html .fa-pause, html .fa-pause-circle, html .fa-stop-circle, html .fa-minus-circle,
-html .fa-calendar-alt, html .fa-list, html .fa-repeat, html .close-btn,
+html .pause-btn,
+html .fa-pause,
+html .fa-pause-circle,
+html .fa-stop-circle,
+html .fa-minus-circle,
+html .fa-calendar-alt,
+html .fa-list,
+html .fa-repeat,
+html .close-btn,
 body .pauseButton,
 body .resetButton,
 body .play-btn,
@@ -822,23 +883,17 @@ ul > li {
           justify-content: space-between;
 }
 
-ol > li, .pomodoreProjects > li {
-  text-align: left;
-  color: rgba(255, 255, 255, 0.55);
-  margin-left: 10px;
-}
-
-ol > li:hover, .pomodoreProjects > .projectList:hover, .fa-minus-circle:hover, input[type="date"]:hover,
-.projectSelect:hover, .editing-view-port:hover, .partOfTime:hover, textarea:hover, input[type="number"]:hover {
+ol > li:hover,
+> .projectList:hover,
+.fa-minus-circle:hover,
+input[type="date"]:hover,
+.projectSelect:hover,
+.editing-view-port:hover,
+.partOfTime:hover,
+textarea:hover,
+input[type="number"]:hover {
   color: #fafafa;
   cursor: pointer;
-}
-
-.pomodoreProjects > li {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
 }
 
 .detals {
@@ -864,7 +919,10 @@ textarea {
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
-select, input[type="number"], input[type="date"], .Projects {
+select,
+input[type="number"],
+input[type="date"],
+.Projects {
   border: none;
   color: rgba(255, 255, 255, 0.55);
   border-radius: 8px;
@@ -877,38 +935,6 @@ select option {
   background: rgba(0, 0, 0, 0.9);
   color: rgba(255, 255, 255, 0.55);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-}
-
-.addProject {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  left: 10;
-  bottom: 62px;
-  width: 100%;
-}
-
-input[type="color"] {
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
-}
-
-.addProjectBtn, .Projects {
-  text-align: center;
-  height: 30px;
-  font-size: 15px;
-  border: none;
-  color: rgba(255, 255, 255, 0.55);
-  border-radius: 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-}
-
-.addProjectBtn i, .Projects i {
-  margin-left: 10px;
 }
 
 ol {
@@ -943,7 +969,9 @@ i {
   text-align: right;
 }
 
-input select:focus, input input:focus, input textarea:focus {
+input select:focus,
+input input:focus,
+input textarea:focus {
   outline: 0;
   outline-color: transparent;
   outline-style: none;

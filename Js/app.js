@@ -3,8 +3,8 @@
 // console.log(test);
 /* eslint-disable no-use-before-define */
 const todoInput = document.querySelector('.todoInput');
-const addProjectbtn = document.querySelector('.addProjectBtn');
-const addPr = document.querySelector('.Projects');
+const addProjectbtn = document.querySelector('.left_addProjectBtn');
+const addPr = document.querySelector('.left_Projects');
 const todoButton = document.querySelector('.addtaskButton');
 const todoList = document.querySelector('.todolist');
 
@@ -17,7 +17,7 @@ const description = document.querySelector('.right');
 const resize = document.querySelector('.fa-window-restore');
 // const detals = document.querySelectorAll('.detals');
 const projectColor = document.getElementById('color');
-const pomodoreList = document.querySelector('.pomodoreProjects');
+const pomodoreList = document.querySelector('.left_pomodoreProjects');
 
 const todos = JSON.parse(localStorage.getItem('Items')) || [];
 
@@ -535,7 +535,7 @@ function renderProjects() {
   pomodoreList.innerHTML = proj
     .map(
       (proje, i) => `
-<li>
+<li class="left_projectItem">
  <div class="projectList" value="${proje.name}" name="${proje.name}">
   <div class="circle" style="background-color: ${proje.color};">
   </div>
@@ -576,7 +576,7 @@ function actualDateTime() {
 }
 actualDateTime();
 
-document.querySelectorAll('.projectListDays').forEach((e) => {
+document.querySelectorAll('.left_day').forEach((e) => {
   e.addEventListener('click', sortingProjectDays);
 });
 
