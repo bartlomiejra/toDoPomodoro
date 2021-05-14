@@ -129,7 +129,7 @@ body {
       position: relative;
       text-align: left;
       color: rgba(255, 255, 255, 0.55);
-      margin-left: 10px;
+      // margin-left: 10px;
     }
 
     &_projectItem {
@@ -229,6 +229,34 @@ body {
     align-items: center;
     background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
     //  flex: 2 10%;
+
+    &_tasktable {
+      width: 100%;
+      border-radius: 10px;
+      background-color: rgb(15, 15, 15);
+      display: flex;
+      justify-content: center;
+    }
+      &_stat {
+        width: 25%;
+        background-color: rgb(15, 15, 15);
+        display: flex;
+        flex-direction: column;
+      }
+  
+        &__number {
+          color: rgb(68, 26, 26);
+          flex: 10;
+          text-align: center;
+          font-size: 2rem;
+        }
+  
+        &__text {
+          flex: 2;
+          text-align: center;
+        }
+      
+    
   }
 
 
@@ -634,33 +662,7 @@ body {
   }
 
   //* top table
-  .tasktable {
-    width: 100%;
-    border-radius: 10px;
-    background-color: rgb(15, 15, 15);
-    display: flex;
-    justify-content: center;
-
-    .stat {
-      width: 25%;
-      background-color: rgb(15, 15, 15);
-      display: flex;
-      flex-direction: column;
-
-
-      .number {
-        color: rgb(68, 26, 26);
-        flex: 10;
-        text-align: center;
-        font-size: 2rem;
-      }
-
-      .text {
-        flex: 2;
-        text-align: center;
-      }
-    }
-  }
+ 
 
 
 

@@ -137,7 +137,6 @@ body .left_day {
   position: relative;
   text-align: left;
   color: rgba(255, 255, 255, 0.55);
-  margin-left: 10px;
 }
 
 html .left_projectItem,
@@ -235,6 +234,50 @@ body .center {
       -ms-flex-align: center;
           align-items: center;
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
+}
+
+html .center_tasktable,
+body .center_tasktable {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #0f0f0f;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+html .center_stat,
+body .center_stat {
+  width: 25%;
+  background-color: #0f0f0f;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+html .center__number,
+body .center__number {
+  color: #441a1a;
+  -webkit-box-flex: 10;
+      -ms-flex: 10;
+          flex: 10;
+  text-align: center;
+  font-size: 2rem;
+}
+
+html .center__text,
+body .center__text {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  text-align: center;
 }
 
 html .right,
@@ -747,50 +790,6 @@ body .timerFinish {
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   color: white;
-}
-
-html .tasktable,
-body .tasktable {
-  width: 100%;
-  border-radius: 10px;
-  background-color: #0f0f0f;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-html .tasktable .stat,
-body .tasktable .stat {
-  width: 25%;
-  background-color: #0f0f0f;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-html .tasktable .stat .number,
-body .tasktable .stat .number {
-  color: #441a1a;
-  -webkit-box-flex: 10;
-      -ms-flex: 10;
-          flex: 10;
-  text-align: center;
-  font-size: 2rem;
-}
-
-html .tasktable .stat .text,
-body .tasktable .stat .text {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-  text-align: center;
 }
 
 html .fa-circle,
