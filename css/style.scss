@@ -55,6 +55,7 @@ $task: #23222D;
     opacity: 3;
   }
 }
+
 @keyframes pulse {
   0% {
     -webkit-transform: scale(1);
@@ -154,7 +155,7 @@ body {
     flex: 1 100%;
 
     &__header {
-      background: linear-gradient(147.14deg, rgba(26, 25, 25, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+      background: linear-gradient(147.14deg, rgba(24, 18, 18, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
       max-height: 25px;
     }
   }
@@ -205,7 +206,7 @@ body {
       // flex: 1 1 5px;
     }
 
-  
+
 
 
     &_color {
@@ -220,11 +221,15 @@ body {
     &_color {
       @include left_addproject;
     }
+
     &_Projects {
       // flex: 3 1 0;
       border-radius: 0px 0px 0px 0px;
 
     }
+    
+
+
     &_color {
       border-radius: 0px 8px 8px 0px;
 
@@ -237,37 +242,17 @@ body {
     display: none;
   }
 
-
-
-  
-
-  
-
-
-
-
-
-
-
-
-  
- 
-
- 
-
-
-
-
   .center {
+    position: relative;
+
     height: 100%;
     display: flex;
     flex-direction: column;
-    flex: 3 50%;
+    flex: 3 30%;
     align-items: center;
     background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
+
     //  flex: 2 10%;
-
-
     &_tasktable {
       width: 100%;
       border-radius: 10px;
@@ -314,10 +299,8 @@ body {
       border-radius: 8px 0px 0px 8px;
     }
 
-
     &_todoInput {
       padding: 5px;
-
       color: rgb(177, 118, 118);
       letter-spacing: 1.2px;
       font-size: 1.2rem;
@@ -325,13 +308,17 @@ body {
       flex: 6;
       text-align: center;
       border-radius: 0px 8px 8px 0px;
-
     }
 
     &_todolist>div {
+      
       transition: all 0.4s ease;
       filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+    } 
+    ul{
+padding:0px;
     }
+
     &_divT {
       height: 50px;
       margin-bottom: 5px;
@@ -347,23 +334,18 @@ body {
         "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
     }
 
-
-
     &_complete-btn {
       grid-area: complete-btn;
     }
-  
+
     &_todo-item {
       grid-area: todo-item;
       text-align: left;
     }
-  
-    
-  
-  &_delete-btn {
+
+    &_delete-btn {
       grid-area: delete-btn;
     }
-
   }
 
   .center_clocks {
@@ -377,6 +359,7 @@ body {
     align-items: flex-start;
     grid-area: clocks;
   }
+
   .center_des-btn {
     grid-area: des-btn;
   }
@@ -384,10 +367,6 @@ body {
   .center_play-btn {
     grid-area: play-btn;
   }
-
- 
-
- 
 
   .clock {
     background: rgba(20, 20, 20, 0.725);
@@ -398,7 +377,6 @@ body {
     backdrop-filter: blur(5px);
     transition: all .3s ease-in-out;
     // margin: 0px;
-    position: relative;
     width: 6em;
     border-radius: 20px;
     vertical-align: middle;
@@ -410,70 +388,82 @@ body {
     i {
       // background-color: red;
       color: rgba(255, 255, 255, 0.550);
-
     }
- 
 
-  &_clockVisible {
-
-    display: inline;
-  }
-
-
-
-  &_fullscreen {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    animation: scale 0.3s ease-in-out 1;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-
-    #countdown {
-      font-size: 4rem;
+    &_clockVisible {
+      display: inline;
     }
-.countdownButtons {
-  position: absolute;
-  bottom: 30px;
-}
-.countdownButtonsNone {
-  display: none;
-  background-color: pink;
-}
+
+    &_fullscreen {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      animation: scale 0.3s ease-in-out 1;
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+
+      #countdown {
+        font-size: 4rem;
+      }
+
+      .countdownButtons {
+        position: absolute;
+        bottom: 30px;
+      }
+
+      .countdownButtonsNone {
+        display: none;
+        background-color: pink;
+      }
+
+      .fa-window-restore {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: white;
+      }
+    }
+    &_timerStart {
+
+      background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+      // opacity: 0.4;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      color: white;
+    }
+  
+    &_timerFinish {
+  
+      background-color: $blue;
+      backdrop-filter: blur(5px);
+      color: white;
+  
+    }
+    
   }
-}
 
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
 
-
-
-  .fa-window-restore {
-
+  .completedTasks {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    color: white;
-  }
-
-  .minimal {
-    background-color: red;
-    animation: scale .4s ease-in-out 1 reverse;
+    top: 85%;
+    display: none;
   }
 
 
-  .right {
-    height: 100%;
-    background-color: rgb(1, 27, 1);
 
-  }
   .input {
     font-size: 1.2em;
     width: 90%;
@@ -482,16 +472,9 @@ body {
     border: 0;
   }
 
-  .right {
-    background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-    flex: 4 20%
-  }
-
-
-
-
   button {
     flex: 1;
+    border: 0;
   }
 
   li {
@@ -506,24 +489,13 @@ body {
     background: transparent;
   }
 
-  task {
-    display: flex;
-  }
-
-
-  button {
-    border: 0;
-  }
-
- 
   li:hover {
-
     @include hover;
   }
 
-
-  .pauseButton,
-  .resetButton,
+//! icons --
+  .center_pauseButton,
+  .center_resetButton,
   .center_play-btn,
   .fa-pause,
   .center_delete-btn,
@@ -550,43 +522,18 @@ body {
     font-size: 1.2rem;
     padding: 0.3rem;
   }
-
   .center_play-btn,
   .fa-window-restore,
   .fa-pause,
   .fa-pause-btn,
   .fa-check-circle,
   .fa-circle {
-
     margin-right: 10px;
   }
 
-
   .fa-clock {
     color: $red;
- 
   }
-
-
-  .completed {
-    text-decoration: line-through;
-    opacity: 0.6;
-  }
-
-  .red {
-    background-color: $red;
-    color: $red;
-  }
-
-  #taksCompleted {
-    @include buttonstyle;
-    position: relative;
-    // top: 50%;
-    top: 80%;
-    flex: 0;
-  }
-
-
 
   //animations
   .fall {
@@ -594,32 +541,7 @@ body {
     opacity: 0;
   }
 
-
- 
-
-
-  .timerStart {
-
-    background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
-    // opacity: 0.4;
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
-    color: white;
-  }
-
-  .timerFinish {
-
-    background-color: $blue;
-    backdrop-filter: blur(5px);
-    color: white;
-
-  }
-
-
-
-
   //icon 
-
   .fa-circle,
   .fa-check,
   .fa-play,
@@ -641,26 +563,53 @@ body {
     position: left;
   }
 
-  .completedTasks {
-    position: absolute;
-    top: 85%;
-    display: none;
+ 
+
+
+
+
+  .right {
+    height: 100%;
+    background-color: rgb(1, 27, 1);
+    background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+    flex: 4 20%;
+
+
+    &_detals {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.550);
+    }
+  
+    .detals>li {
+      flex-direction: row;
+      text-align: left;
+      display: flex;
+    }
+
+    &_list {
+      list-style: none;
+      padding-left: 0;
+      float: left;
+      font-size: 1vw;
+
+    
+    }
+    
+    ul>li {
+      font-size: 1vw;
+      text-decoration: bold;
+      display: flex;
+      justify-content: space-between;
+    }
+
+
   }
 
-
   
-
-
-
-
 }
 
 
-.detals>li {
-  flex-direction: row;
-  text-align: left;
-  display: flex;
-}
+
 
 .controlButtons {
   display: flex;
@@ -673,19 +622,7 @@ body {
 
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
-  float: left;
 
-}
-
-ul>li {
-  font-size: 0.9em;
-  text-decoration: bold;
-  display: flex;
-  justify-content: space-between;
-}
 
 
 
@@ -705,10 +642,7 @@ input[type="number"]:hover {
 
 
 
-.detals {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.550);
-}
+
 
 .projectSelect {
   margin-left: 3px;
@@ -815,9 +749,6 @@ input {
 
 }
 
-
-
-
 .time {
   order: 0;
   -ms-flex: 0 1 auto;
@@ -836,18 +767,48 @@ input {
 
 //mobile version
 
-@media (max-width: 1079px) {
+@media (max-width: 895px) {
   .container {
     display: block;
     width: 100%;
-    background-color: red;
+    // background-color: red;
 
+    .left {
+      display: none;
+    }
 
+    .right{
+      width: 100%;
+    }
 
   }
 
-  .left {
-    display: none;
-  }
+ 
 
+
+}
+
+
+
+//Navigation bottom
+.nav{
+  position: absolute;
+  bottom: 0;
+  // position: fixed;
+  // bottom: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  overflow-x: auto;
+  flex-direction: row;
+  background-color: #0a0c0c;
+
+
+  &_element{
+    text-align: center;
+    // display: flex;
+    flex-grow: 1;
+    min-width: 50px;
+  
+  }
 }

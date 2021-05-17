@@ -10,8 +10,8 @@ const todoList = document.querySelector('.center_todolist');
 
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
-const pause = document.querySelector('.pauseButton');
-const reset = document.querySelector('.resetButton');
+const pause = document.querySelector('.center_pauseButton');
+const reset = document.querySelector('.center_resetButton');
 const description = document.querySelector('.right');
 // const breakdown = document.querySelector('.fa-coffee');
 const resize = document.querySelector('.fa-window-restore');
@@ -45,7 +45,7 @@ function lists(todolist = [], objlines) {
 
   if (actualList.length < 1) {
     console.log('brak');
-    innerHTML = '<h1>Hi there and greetings!</h1>';
+    innerHTML = '<h1>Empty task list!</h1>';
   }
 
   objlines.innerHTML = actualList
@@ -162,7 +162,7 @@ lists(actualList, todoList);
 
 function countdownAnimation() {
   buttonscountdown.classList.remove('.countdownButtonsNone');
-  clockTimer.classList.add('timerStart');
+  clockTimer.classList.add('clock_timerStart');
 }
 
 // * functions buttons action delate play and completted task
@@ -221,7 +221,7 @@ function btnActtion(e) {
     clearInterval(countdownTime);
     const seconds = 4;
     timer(seconds);
-    clockTimer.classList.remove('timerFinish');
+    clockTimer.classList.remove('clock_timerFinish');
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
@@ -309,8 +309,8 @@ function pausetimer() {
 
 function resetTimer() {
   clockTimer.classList.remove(
-    'timerFinish',
-    'timerStart',
+    'clock_timerFinish',
+    'clock_timerStart',
     'clock_clockVisible',
   );
   lists(actualList, todoList);
@@ -326,7 +326,7 @@ function resetTimer() {
 //* funkcja lists wczytująca taski z localstore
 function breakTime() {
   clearInterval(countdownTime);
-  clockTimer.classList.add('timerFinish');
+  clockTimer.classList.add('clock_timerFinish');
 
   pause.firstElementChild.classList.remove(
     'fa-play-circle',
@@ -334,7 +334,7 @@ function breakTime() {
     'fa-pause-circle',
   );
   pause.firstElementChild.classList.add('fa-coffee');
-  clockTimer.classList.remove('timerStart');
+  clockTimer.classList.remove('clock_timerStart');
   lists(todos, todoList);
 }
 
@@ -388,10 +388,10 @@ function showDiv(clickedId) {
       <div  class="center_todo-item" id="item" >
        ${taskDetails.text}</div>
           </div>
-   <div class="detals">
+   <div class="right_detals">
 
-            <ul>
-                <li class="center_clocks">Pomodoro:     ${
+            <ul class="right_list">
+                <li class="right_list--item center_clocks">Pomodoro:     ${
                   taskDetails.focus > pomodoreDuration
                     ? '<i class="fas fa-clock time " aria-hidden="true"> </i>'
                     : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
@@ -403,10 +403,12 @@ function showDiv(clickedId) {
                       : ''
                   }
                  </li>
-                <li>Due date: <input type="date" id="date" value="${
+                <li>
+                Due date: <input type="date" id="date" value="${
                   taskDetails.data
                 }" name="trip-start"></li>
-                <li>Project:   <select name="Project" value="${
+                <li>
+                Project:   <select name="Project" value="${
                   taskDetails.project
                 }" id="Project"class="projectSelect" placeholder="${
       taskDetails.project
