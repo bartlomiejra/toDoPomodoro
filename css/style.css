@@ -162,13 +162,10 @@ body {
   background: url(background5.png);
   color: white;
   height: 100%;
-  background-size: 150% 150%;
 }
 
 html .container,
 body .container {
-  margin: auto;
-  height: 700px;
   border-radius: 30px;
   list-style: none;
   -webkit-box-orient: horizontal;
@@ -200,7 +197,6 @@ body .container > *__header {
 
 html .left,
 body .left {
-  max-width: 250px;
   -ms-flex-preferred-size: 100px;
       flex-basis: 100px;
   -webkit-box-align: stretch;
@@ -292,6 +288,9 @@ body .none {
 html .center,
 body .center {
   position: relative;
+  -webkit-box-flex: 4;
+      -ms-flex: 4 45%;
+          flex: 4 45%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -300,9 +299,6 @@ body .center {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 3;
-      -ms-flex: 3 30%;
-          flex: 3 30%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -408,6 +404,7 @@ body .center ul {
 html .center_divT,
 body .center_divT {
   height: 50px;
+  max-width: 500px;
   margin-bottom: 5px;
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -936,6 +933,7 @@ input textarea:focus {
 
 @media (max-width: 895px) {
   .container {
+    border-radius: none;
     margin: 0px 0px 0px 0px;
     width: 100%;
     display: block;
@@ -946,6 +944,9 @@ input textarea:focus {
   }
   .container .center__text {
     font-size: 0.8rem;
+  }
+  .container .leftnone {
+    display: none;
   }
   .container .right {
     width: 100%;

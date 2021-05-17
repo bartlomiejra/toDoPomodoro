@@ -653,7 +653,7 @@ function showProjectList() {
   console.log('tutaj jest lista projektów');
   centerDiv.classList.add('none');
   centerDiv.classList.remove('center');
-  leftDiv.classList.remove('none');
+  leftDiv.classList.remove('leftnone');
 }
 
 document.querySelectorAll('.projectDelete').forEach((e) => {
