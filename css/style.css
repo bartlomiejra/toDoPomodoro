@@ -168,7 +168,6 @@ body {
 html .container,
 body .container {
   margin: auto;
-  width: 90%;
   height: 700px;
   border-radius: 30px;
   list-style: none;
@@ -507,7 +506,7 @@ body .clock {
   text-align: center;
   display: none;
   position: absolute;
-  bottom: 20px;
+  bottom: 100px;
 }
 
 html .clock i,
@@ -937,8 +936,9 @@ input textarea:focus {
 
 @media (max-width: 895px) {
   .container {
-    display: block;
+    margin: 0px 0px 0px 0px;
     width: 100%;
+    display: block;
   }
   .container .center__number {
     font-size: 1.2rem;
@@ -946,9 +946,6 @@ input textarea:focus {
   }
   .container .center__text {
     font-size: 0.8rem;
-  }
-  .container .left {
-    display: none;
   }
   .container .right {
     width: 100%;

@@ -2,11 +2,14 @@
 
 // console.log(test);
 /* eslint-disable no-use-before-define */
+const centerDiv = document.querySelector('.center');
+const leftDiv = document.querySelector('.left');
 const todoInput = document.querySelector('.center_todoInput');
 const addProjectbtn = document.querySelector('.left_addProjectBtn');
 const addPr = document.querySelector('.left_Projects');
 const todoButton = document.querySelector('.center_addtaskButton');
 const todoList = document.querySelector('.center_todolist');
+const showProject = document.querySelector('.Project');
 
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
@@ -646,6 +649,13 @@ function deleteProject(e) {
   renderProjects();
 }
 
+function showProjectList() {
+  console.log('tutaj jest lista projektów');
+  centerDiv.classList.add('none');
+  centerDiv.classList.remove('center');
+  leftDiv.classList.remove('none');
+}
+
 document.querySelectorAll('.projectDelete').forEach((e) => {
   e.addEventListener('click', deleteProject);
 });
@@ -654,6 +664,8 @@ addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
+showProject.addEventListener('click', showProjectList);
+
 /*
       * Importand Information
       ! Deprecated method, do not user
