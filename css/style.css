@@ -940,6 +940,12 @@ input textarea:focus {
     display: block;
     width: 100%;
   }
+  .container .center__number {
+    font-size: 1.2rem;
+  }
+  .container .center__text {
+    font-size: 0.8rem;
+  }
   .container .left {
     display: none;
   }
@@ -966,9 +972,18 @@ input textarea:focus {
 
 .nav_element {
   text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   min-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */
