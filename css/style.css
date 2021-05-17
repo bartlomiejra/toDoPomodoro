@@ -166,7 +166,6 @@ body {
 
 html .container,
 body .container {
-  border-radius: 30px;
   list-style: none;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -944,6 +943,9 @@ input textarea:focus {
   }
   .container .center__text {
     font-size: 0.8rem;
+  }
+  .container .left {
+    width: 100% !important;
   }
   .container .leftnone {
     display: none;

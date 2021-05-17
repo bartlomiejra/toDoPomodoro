@@ -26,7 +26,8 @@ $task: #23222D;
 }
 
 @mixin left_addproject {
-
+  // position: absolute;
+  // bottom: 0;
   text-align: center;
   // height: 30px;
   font-size: 15px;
@@ -141,7 +142,7 @@ body {
     // width: 90%;
     // height: 100%;
     // height: 700px;
-    border-radius: 30px;
+    // border-radius: 30px;
     list-style: none;
     flex-flow: row wrap;
     backdrop-filter: blur(5px);
@@ -191,6 +192,7 @@ body {
 
 
     &_addProject {
+      
       display: flex;
       // position: absolute;
       left: 10;
@@ -785,10 +787,10 @@ input {
     }
     .center__text{
 font-size: 0.8rem;
-    }
+    } 
 
 .left{
-  // width: 100%!important;
+  width: 100%!important;
 }
     .leftnone {
      display: none;
