@@ -266,14 +266,23 @@ body .left_addProjectBtn,
 body .left_Projects,
 body .left_color {
   text-align: center;
-  height: 30px;
   font-size: 15px;
   border: none;
   color: rgba(255, 255, 255, 0.55);
-  border-radius: 8px;
+  border-radius: 8px 0px 0px 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+}
+
+html .left_Projects,
+body .left_Projects {
+  border-radius: 0px 0px 0px 0px;
+}
+
+html .left_color,
+body .left_color {
+  border-radius: 0px 8px 8px 0px;
 }
 
 html .none,
@@ -537,14 +546,14 @@ body .clock_fullscreen #countdown {
   font-size: 4rem;
 }
 
-html .countdownButtons,
-body .countdownButtons {
+html .clock_fullscreen .countdownButtons,
+body .clock_fullscreen .countdownButtons {
   position: absolute;
   bottom: 30px;
 }
 
-html .countdownButtonsNone,
-body .countdownButtonsNone {
+html .clock_fullscreen .countdownButtonsNone,
+body .clock_fullscreen .countdownButtonsNone {
   display: none;
   background-color: pink;
 }
