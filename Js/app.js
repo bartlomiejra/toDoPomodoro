@@ -2,11 +2,11 @@
 
 // console.log(test);
 /* eslint-disable no-use-before-define */
-const todoInput = document.querySelector('.todoInput');
+const todoInput = document.querySelector('.center_todoInput');
 const addProjectbtn = document.querySelector('.left_addProjectBtn');
 const addPr = document.querySelector('.left_Projects');
-const todoButton = document.querySelector('.addtaskButton');
-const todoList = document.querySelector('.todolist');
+const todoButton = document.querySelector('.center_addtaskButton');
+const todoList = document.querySelector('.center_todolist');
 
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
@@ -51,11 +51,13 @@ function lists(todolist = [], objlines) {
   objlines.innerHTML = actualList
     .map(
       (todo, i) => `${
-        todo.done ? '<div class="divT completed">' : '<div class="divT " >'
+        todo.done
+          ? '<div class="center_divT completed">'
+          : '<div class="center_divT " >'
       }    
-<div  class="todo-item" id="item${i}" >${todo.text} 
+<div  class="center_todo-item" id="item${i}" >${todo.text} 
 </div>
-<div  class="clocks"> 
+<div  class="center_clocks"> 
 ${
   todo.focus > [pomodoreDuration]
     ? '<i class="fas fa-clock  time" aria-hidden="true"> </i>'
@@ -69,17 +71,17 @@ ${
   }
   </div> 
 </div>
-<button class="complete-btn" data-index=${i} id="item${i}" >
+<button class="center_complete-btn" data-index=${i} id="item${i}" >
 ${
   todo.done
     ? `<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>`
     : `<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>`
 } 
 </button>
-<button class="delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
+<button class="center_delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
-<button class="play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-<button class="des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"  > <i class="fas fa-list-alt" 
+<button class="center_play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
+<button class="center_des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"  > <i class="fas fa-list-alt" 
 aria-hidden="true"></i></button>
 </div>
 `,
@@ -159,7 +161,7 @@ todoButton.addEventListener('click', addTodo);
 lists(actualList, todoList);
 
 function countdownAnimation() {
-  buttonscountdown.classList.remove('countdownButtonsNone');
+  buttonscountdown.classList.remove('.countdownButtonsNone');
   clockTimer.classList.add('timerStart');
 }
 
@@ -167,7 +169,7 @@ function countdownAnimation() {
 function btnActtion(e) {
   statTask();
   const item = e.target;
-  if (item.classList[0] === 'delete-btn') {
+  if (item.classList[0] === 'center_delete-btn') {
     audio = new Audio('Alerts/deleteTask.mp3');
     audio.play();
     const { index } = e.target.dataset;
@@ -186,7 +188,7 @@ function btnActtion(e) {
   }
 
   //* completed function
-  if (item.classList[0] === 'complete-btn') {
+  if (item.classList[0] === 'center_complete-btn') {
     const todoText = item.parentElement;
     const el = e.target;
     const { index } = el.dataset;
@@ -207,9 +209,9 @@ function btnActtion(e) {
   }
 
   //* timer start function
-  if (item.classList[0] === 'play-btn') {
+  if (item.classList[0] === 'center_play-btn') {
     resizeClock();
-    resize.classList.remove('countdownButtonsNone');
+    resize.classList.remove('.countdownButtonsNone');
     pause.removeEventListener('click', timerBreak);
     // resetTimer();
     // console.log(item);
@@ -280,7 +282,7 @@ function timerBreak() {
       audio.play();
       resetTimer();
       clearInterval(countdownTime);
-      clockTimer.classList.remove('clock-fullscreen');
+      clockTimer.classList.remove('clock_fullscreen');
 
       return;
     }
@@ -306,13 +308,17 @@ function pausetimer() {
 }
 
 function resetTimer() {
-  clockTimer.classList.remove('timerFinish', 'timerStart', 'clockVisible');
+  clockTimer.classList.remove(
+    'timerFinish',
+    'timerStart',
+    'clock_clockVisible',
+  );
   lists(actualList, todoList);
-  buttonscountdown.classList.add('countdownButtonsNone');
+  buttonscountdown.classList.add('.countdownButtonsNone');
   clearInterval(countdownTime);
 
   displayTimeLeft(0);
-  clockTimer.classList.remove('clock-fullscreen');
+  clockTimer.classList.remove('clock_fullscreen');
 
   // }
 }
@@ -346,11 +352,11 @@ function endpomodoro() {
 }
 
 function resizeClock() {
-  clockTimer.classList.add('clockVisible');
-  if (clockTimer.classList.contains('clock-fullscreen')) {
-    clockTimer.classList.remove('clock-fullscreen');
+  clockTimer.classList.add('clock_clockVisible');
+  if (clockTimer.classList.contains('clock_fullscreen')) {
+    clockTimer.classList.remove('clock_fullscreen');
   } else {
-    clockTimer.classList.add('clock-fullscreen');
+    clockTimer.classList.add('clock_fullscreen');
   }
 }
 
@@ -378,14 +384,14 @@ function showDiv(clickedId) {
       <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
        <i class="fas fa-times"
       aria-hidden="true"></i></button>
-      <div class="divT ">
-      <div  class="todo-item" id="item" >
+      <div class="center_divT ">
+      <div  class="center_todo-item" id="item" >
        ${taskDetails.text}</div>
           </div>
    <div class="detals">
 
             <ul>
-                <li class="clocks">Pomodoro:     ${
+                <li class="center_clocks">Pomodoro:     ${
                   taskDetails.focus > pomodoreDuration
                     ? '<i class="fas fa-clock time " aria-hidden="true"> </i>'
                     : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
@@ -489,7 +495,7 @@ function showDiv(clickedId) {
       console.log('oki działa');
     }
 
-    const divT = document.querySelector('.divT');
+    const divT = document.querySelector('.center_divT');
 
     divT.addEventListener('click', renderdetals);
     getSelectOptions();

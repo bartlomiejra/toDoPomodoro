@@ -24,18 +24,65 @@ $task: #23222D;
   color: rgb(250, 250, 250);
   cursor: pointer;
 }
+
 @mixin left_addproject {
-      
+
   text-align: center;
- height: 30px;
- font-size: 15px;
- border: none;
- color: rgba(255, 255, 255, 0.550);
- border-radius: 8px;
- filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
- background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
- }
+  height: 30px;
+  font-size: 15px;
+  border: none;
+  color: rgba(255, 255, 255, 0.550);
+  border-radius: 8px;
+  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+}
+
 //animation
+@keyframes scale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: 50% 50%;
+  }
+
+  50% {
+    opacity: 2;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+  }
+
+  100% {
+    opacity: 3;
+  }
+}
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+  }
+
+  25% {
+    -webkit-transform: scale(1.1);
+    opacity: 0.1;
+  }
+
+  50% {
+    -webkit-transform: scale(1.2);
+    opacity: 0.2;
+  }
+
+  75% {
+    -webkit-transform: scale(1.3);
+    opacity: 0.3;
+  }
+
+  100% {
+    -webkit-transform: scale(1.4);
+    opacity: 0.4;
+  }
+}
+
+
 @keyframes reducing {
   from {
     transform: scaleX(1);
@@ -99,6 +146,7 @@ body {
     overflow: hidden;
     display: flex;
     position: relative;
+
   }
 
   .container>* {
@@ -114,16 +162,18 @@ body {
 
 
   .left {
+    max-width: 250px;
+    flex-basis: 100px;
     // position: relative;
     align-items: stretch;
     // justify-content: space-between;
     display: flex;
     flex-direction: column;
 
-
+    flex-shrink: 2;
     height: 100%;
     background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-    flex: 2 20%;
+    // flex: 2 20%;
 
     &_day {
       position: relative;
@@ -137,7 +187,7 @@ body {
       grid-template-columns: 3fr 1fr;
     }
 
-    
+
     &_addProject {
 
       display: flex;
@@ -146,77 +196,57 @@ body {
       bottom: 62px;
       width: 100%;
       display: -ms-flexbox;
-    display: -webkit-flex;
-    flex-wrap: nowrap;
-  
-  
+      display: -webkit-flex;
+      flex-wrap: nowrap;
+    }
 
-  }
-  &_addProjectBtn{
-    width: 30px;
-    color: red;
-    // flex: 1 1 5px;
+    &_addProjectBtn {
+      width: 30px;
+      color: red;
+      // flex: 1 1 5px;
+    }
 
-      }
-    
-    &_Projects{
+    &_Projects {
       // flex: 3 1 0;
+    }
 
-        }
-   
 
-        &_color {
-          width: 20px;
-          height: 20px;
-          border-radius: 20px;
-          // flex: 1 1 0;
-    
-            
-        }
-
+    &_color {
+      width: 20px;
+      height: 20px;
+      border-radius: 20px;
+      // flex: 1 1 0;
+    }
 
     &_addProjectBtn,
-    &_Projects, &_color {
+    &_Projects,
+    &_color {
       @include left_addproject;
     }
 
-  
-
-  }
-
-
-
-  .right {
-    height: 100%;
-    background-color: rgb(1, 27, 1);
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-  .animationIn {
-    animation: enlarging;
-    animation-duration: .7s;
-    transition: 2;
-  }
-
-  .animationOut {
-
-    animation: reducing;
-    transition: 2;
   }
 
   .none {
     display: none;
   }
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+  
+ 
+
+ 
 
 
 
@@ -230,6 +260,7 @@ body {
     background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
     //  flex: 2 10%;
 
+
     &_tasktable {
       width: 100%;
       border-radius: 10px;
@@ -237,96 +268,153 @@ body {
       display: flex;
       justify-content: center;
     }
-      &_stat {
-        width: 25%;
-        background-color: rgb(15, 15, 15);
-        display: flex;
-        flex-direction: column;
-      }
+
+    &_stat {
+      width: 25%;
+      background-color: rgb(15, 15, 15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__number {
+      color: rgb(68, 26, 26);
+      flex: 10;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    &__text {
+      flex: 2;
+      text-align: center;
+    }
+
+    &_addTaskdiv {
+      padding: 5px;
+      margin: 10px;
+      color: white;
+      font-size: 2em;
+      margin-left: 40px;
+      width: 45%;
+      display: flex;
+      justify-content: center;
+    }
+
+    &_addtaskButton {
+      padding: 5px 15px 5px 15px;
+      font-size: 1.1rem;
+      background-color: #ffffff;
+      color: #b17676;
+      border-radius: 8px 0px 0px 8px;
+    }
+
+
+    &_todoInput {
+      padding: 5px;
+
+      color: rgb(177, 118, 118);
+      letter-spacing: 1.2px;
+      font-size: 1.2rem;
+      border: 0;
+      flex: 6;
+      text-align: center;
+      border-radius: 0px 8px 8px 0px;
+
+    }
+
+    &_todolist>div {
+      transition: all 0.4s ease;
+      filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+    }
+    &_divT {
+      height: 50px;
+      margin-bottom: 5px;
+      border-radius: 8px;
+      filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+      background-color: #141414;
+      display: grid;
+      grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
+      grid-template-rows: 1.5fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn"
+        "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
+    }
+
+
+
+    &_complete-btn {
+      grid-area: complete-btn;
+    }
   
-        &__number {
-          color: rgb(68, 26, 26);
-          flex: 10;
-          text-align: center;
-          font-size: 2rem;
-        }
+    &_todo-item {
+      grid-area: todo-item;
+      text-align: left;
+    }
   
-        &__text {
-          flex: 2;
-          text-align: center;
-        }
-      
     
+  
+  &_delete-btn {
+      grid-area: delete-btn;
+    }
+
   }
 
-
-
-
-  .right {
-    background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-    flex: 4 20%
+  .center_clocks {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+    grid-area: clocks;
+  }
+  .center_des-btn {
+    grid-area: des-btn;
   }
 
-  .clock,
-  .addTask,
-  .tasksToD {
+  .center_play-btn {
+    grid-area: play-btn;
+  }
+
+ 
+
+ 
+
+  .clock {
     background: rgba(20, 20, 20, 0.725);
     padding: 5px;
     margin: 10px;
     color: white;
     font-size: 2em;
-  }
-
-  .addTaskdiv {
-    padding: 5px;
-    margin: 10px;
-    color: white;
-    font-size: 2em;
-  }
-
-
-
-  .clock {
     backdrop-filter: blur(5px);
     transition: all .3s ease-in-out;
-    margin: 0px;
+    // margin: 0px;
     position: relative;
     width: 6em;
     border-radius: 20px;
-    display: table-cell;
     vertical-align: middle;
     text-align: center;
+    display: none;
+    position: absolute;
+    bottom: 20px;
 
     i {
       // background-color: red;
       color: rgba(255, 255, 255, 0.550);
 
     }
-  }
+ 
 
-  .fa-window-restore {
-
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    color: white;
-  }
-
-  .clock {
-    display: none;
-
-    position: absolute;
-    bottom: 20px;
-  }
-
-  .clockVisible {
+  &_clockVisible {
 
     display: inline;
   }
 
 
 
-  .clock-fullscreen {
+  &_fullscreen {
     position: absolute;
     left: 0;
     right: 0;
@@ -349,15 +437,31 @@ body {
 
     }
 
-    .countdownButtons {
-      position: absolute;
-      bottom: 30px;
 
-    }
+   
+  }
+}
 
-    i {
-      font-size: 1.8rem
-    }
+
+.countdownButtons {
+  position: absolute;
+  bottom: 30px;
+
+}
+
+.countdownButtonsNone {
+  display: none;
+  background-color: pink;
+
+
+}
+
+  .fa-window-restore {
+
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: white;
   }
 
   .minimal {
@@ -366,24 +470,11 @@ body {
   }
 
 
-  .todoInput {
-    color: rgb(177, 118, 118);
-    letter-spacing: 1.2px;
-    font-size: 1.2rem;
-    border: 0;
-    flex: 6;
-    text-align: center;
-    border-radius: 0px 8px 8px 0px;
+  .right {
+    height: 100%;
+    background-color: rgb(1, 27, 1);
 
   }
-
-  .addTaskdiv {
-    margin-left: 40px;
-    width: 45%;
-    display: flex;
-    justify-content: center;
-  }
-
   .input {
     font-size: 1.2em;
     width: 90%;
@@ -392,33 +483,13 @@ body {
     border: 0;
   }
 
-  .todo-item {
-    text-align: center;
-  }
-
-  .addtask {
-    display: flex;
-    width: 10%;
-    background-color: #ffffff;
-    color: rgb(114, 113, 113);
-    border: 0;
-  }
-
-  .addtask:hover {
-    color: white;
+  .right {
+    background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+    flex: 4 20%
   }
 
 
 
-  .todolist>div {
-    transition: all 0.4s ease;
-    filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  }
-
-  .task {
-    display: flex;
-    justify-content: center;
-  }
 
   button {
     flex: 1;
@@ -440,63 +511,12 @@ body {
     display: flex;
   }
 
-  .divT {
-
-    height: 50px;
-
-    // justify-content: center;
-    // align-items: center;
-    margin-bottom: 5px;
-    border-radius: 8px;
-    filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-    // display: flex;
-    background-color: #141414;
-    display: grid;
-    grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
-    grid-template-rows: 1.5fr 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn"
-      "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
-  }
-
-  .complete-btn {
-    grid-area: complete-btn;
-  }
-
-  .todo-item {
-    grid-area: todo-item;
-    text-align: left;
-  }
-
-  .clocks {
-    grid-area: clocks;
-  }
-
-  .delete-btn {
-    grid-area: delete-btn;
-  }
-
-  .des-btn {
-    grid-area: des-btn;
-  }
-
-  .play-btn {
-    grid-area: play-btn;
-  }
-
 
   button {
-    // cursor: pointer;
     border: 0;
   }
 
-  // .fas{
-  //   filter: brightness(500%);
-  // }
-  // .fas:hover{
-  //   filter: brightness(100%);
-  //   }
+ 
   li:hover {
 
     @include hover;
@@ -505,13 +525,13 @@ body {
 
   .pauseButton,
   .resetButton,
-  .play-btn,
+  .center_play-btn,
   .fa-pause,
-  .delete-btn,
-  .complete-btn,
+  .center_delete-btn,
+  .center_complete-btn,
   .fa-play,
   .fa-play-circle,
-  .des-btn,
+  .center_des-btn,
   .fa-circle,
   .fa-window-restore,
   .fa-check-circle,
@@ -532,7 +552,7 @@ body {
     padding: 0.3rem;
   }
 
-  .play-btn,
+  .center_play-btn,
   .fa-window-restore,
   .fa-pause,
   .fa-pause-btn,
@@ -545,58 +565,9 @@ body {
 
   .fa-clock {
     color: $red;
-    // -webkit-animation: pulse 1s ease-in-out;
-    // -moz-animation: pulse 1s ease-in-out;
-    // animation: pulse 1s ease-in-out;
-    // -webkit-animation-iteration-count: infinite;
-    // -moz-animation-iteration-count: infinite;
-    // animation-iteration-count: infinite;
+ 
   }
 
-
-
-
-  @keyframes pulse {
-    0% {
-      -webkit-transform: scale(1);
-      opacity: 0.0;
-    }
-
-    25% {
-      -webkit-transform: scale(1.1);
-      opacity: 0.1;
-    }
-
-    50% {
-      -webkit-transform: scale(1.2);
-      opacity: 0.2;
-    }
-
-    75% {
-      -webkit-transform: scale(1.3);
-      opacity: 0.3;
-    }
-
-    100% {
-      -webkit-transform: scale(1.4);
-      opacity: 0.4;
-    }
-  }
-
-
-  // .complete-btn {
-  //   color: white;
-  // }
-
-  .addtaskButton {
-    padding: 5px 15px 5px 15px;
-    font-size: 1.1rem;
-    background-color: #ffffff;
-    color: #b17676;
-    border-radius: 8px 0px 0px 8px;
-  }
-
-  // .fa-pause-btn,
 
   .completed {
     text-decoration: line-through;
@@ -625,27 +596,10 @@ body {
   }
 
 
-  @keyframes scale {
-    0% {
-      opacity: 0;
-      transform: scale(0);
-      transform-origin: 50% 50%;
-    }
-
-    50% {
-      opacity: 2;
-      transform: scale(1);
-      transform-origin: 50% 50%;
-    }
-
-    100% {
-      opacity: 3;
-    }
-  }
+ 
 
 
   .timerStart {
-
 
     background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
     // opacity: 0.4;
@@ -661,8 +615,6 @@ body {
     color: white;
   }
 
-  //* top table
- 
 
 
 
@@ -674,19 +626,15 @@ body {
   .fa-play-circle,
   .fa-check-circle,
   .fa-trash,
-  .delete-btn>.fa-minus-circle,
+  .center_delete-btn>.fa-minus-circle,
   .fa-pause,
   .fa-pause-circle // .fa-minus-circle
 
     {
-
     cursor: pointer;
     pointer-events: none;
     border: 0;
   }
-
-
-
 
   .fa-clock {
     display: flex;
@@ -700,46 +648,7 @@ body {
   }
 
 
-
-  // @media screen and (max-width: 650px) {
-
-  //   header {
-  //     height: 25px;
-  //     font-size: 10px;
-  //   }
-
-  //   .todolist {
-  //     width: 90%;
-  //     padding-inline-start: 0px;
-  //   }
-
-  //   .stat {
-  //     font-size: 3vw;
-
-
-
-
-
-
-  //   }
-
-  //   i::before{
-  //     background:transparent;
-  // }
-  //   .addTaskdiv {
-  //     margin-left: 0px;
-  //     // text-align: center;
-
-  //   }
-  // }
-
-
-  .countdownButtonsNone {
-    display: none;
-    background-color: pink;
-
-
-  }
+  
 
 
 
@@ -768,8 +677,7 @@ ul {
   list-style: none;
   padding-left: 0;
   float: left;
-  // margin-top: 15px;
-  // margin-right: 50px;
+
 }
 
 ul>li {
@@ -844,80 +752,9 @@ select option {
 
 
 
-// input[type=number]::-webkit-inner-spin-button {
-//   // -webkit-appearance: none;
-//   color: green;
-// }
-
-//  {
-//   background-color: rgb(121, 59, 59);
-
-//   border-radius: 8px;
-//   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-//   background: linear-gradient(
-//     147.14deg
-//     , rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-
-// }
 
 
 
-// .addProject {
-//   display: -ms-flexbox;
-//   display: -webkit-flex;
-//   display: flex;
-//   -webkit-flex-direction: row;
-//   -ms-flex-direction: row;
-//   flex-direction: row;
-//   -webkit-flex-wrap: nowrap;
-//   -ms-flex-wrap: nowrap;
-//   flex-wrap: nowrap;
-//   -webkit-justify-content: flex-start;
-//   -ms-flex-pack: start;
-//   justify-content: flex-start;
-//   -webkit-align-content: flex-start;
-//   -ms-flex-line-pack: start;
-//   align-content: flex-start;
-//   -webkit-align-items: flex-start;
-//   -ms-flex-align: start;
-//   align-items: flex-start;
-//   }
-
-//   .addProjectBtn {
-//   -webkit-order: 0;
-//   -ms-flex-order: 0;
-//   order: 0;
-//   -webkit-flex: 0 1 auto;
-//   -ms-flex: 0 1 auto;
-//   flex: 0 1 auto;
-//   -webkit-align-self: auto;
-//   -ms-flex-item-align: auto;
-//   align-self: auto;
-//   }
-
-//   .Projects {
-//   -webkit-order: 0;
-//   -ms-flex-order: 0;
-//   order: 0;
-//   -webkit-flex: 1 2 auto;
-//   -ms-flex: 1 2 auto;
-//   flex: 1 2 auto;
-//   -webkit-align-self: auto;
-//   -ms-flex-item-align: auto;
-//   align-self: auto;
-//   }
-
-// .color{
-//   -webkit-order: 0;
-//   -ms-flex-order: 0;
-//   order: 0;
-//   -webkit-flex: 0 1 auto;
-//   -ms-flex: 0 1 auto;
-//   flex: 0 1 auto;
-//   -webkit-align-self: auto;
-//   -ms-flex-item-align: auto;
-//   align-self: auto;
-//   }
 
 
 
@@ -966,21 +803,6 @@ input {
 
 
 
-// font-size: 10px;
-
-// media quere
-
-// Medium devices (tablets, 768px and up)
-// @media (width: 768px) { 
-// .left{
-//   background-color: red;
-//   width: 100%;
-// }
-// .center,.right{
-//   display: none;
-// }
-// }
-
 
 
 
@@ -996,27 +818,6 @@ input {
 
 
 
-.clocks {
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
-
 .time {
   order: 0;
   -ms-flex: 0 1 auto;
@@ -1026,14 +827,27 @@ input {
 
 .score {
   margin-left: 5px;
-
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
   flex: 0 1 auto;
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
+}
+
+
+
+//mobile version
+
+@media (max-width: 1079px) {
+  .container {
+    display: block;
+    width: 100%;
+    background-color: red;
+
+
+
+  }
+
+  .left {
+    display: none;
+  }
+
 }

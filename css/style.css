@@ -1,3 +1,89 @@
+@-webkit-keyframes scale {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  50% {
+    opacity: 2;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  100% {
+    opacity: 3;
+  }
+}
+
+@keyframes scale {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  50% {
+    opacity: 2;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  100% {
+    opacity: 3;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+  }
+  25% {
+    -webkit-transform: scale(1.1);
+    opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    opacity: 0.2;
+  }
+  75% {
+    -webkit-transform: scale(1.3);
+    opacity: 0.3;
+  }
+  100% {
+    -webkit-transform: scale(1.4);
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+  }
+  25% {
+    -webkit-transform: scale(1.1);
+    opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    opacity: 0.2;
+  }
+  75% {
+    -webkit-transform: scale(1.3);
+    opacity: 0.3;
+  }
+  100% {
+    -webkit-transform: scale(1.4);
+    opacity: 0.4;
+  }
+}
+
 @-webkit-keyframes reducing {
   from {
     -webkit-transform: scaleX(1);
@@ -115,6 +201,9 @@ body .container > *__header {
 
 html .left,
 body .left {
+  max-width: 250px;
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
@@ -125,11 +214,10 @@ body .left {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-negative: 2;
+      flex-shrink: 2;
   height: 100%;
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-  -webkit-box-flex: 2;
-      -ms-flex: 2 20%;
-          flex: 2 20%;
 }
 
 html .left_day,
@@ -186,30 +274,6 @@ body .left_color {
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-}
-
-html .right,
-body .right {
-  height: 100%;
-  background-color: #011b01;
-}
-
-html .animationIn,
-body .animationIn {
-  -webkit-animation: enlarging;
-          animation: enlarging;
-  -webkit-animation-duration: .7s;
-          animation-duration: .7s;
-  -webkit-transition: 2;
-  transition: 2;
-}
-
-html .animationOut,
-body .animationOut {
-  -webkit-animation: reducing;
-          animation: reducing;
-  -webkit-transition: 2;
-  transition: 2;
 }
 
 html .none,
@@ -280,48 +344,156 @@ body .center__text {
   text-align: center;
 }
 
-html .right,
-body .right {
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-  -webkit-box-flex: 4;
-      -ms-flex: 4 20%;
-          flex: 4 20%;
+html .center_addTaskdiv,
+body .center_addTaskdiv {
+  padding: 5px;
+  margin: 10px;
+  color: white;
+  font-size: 2em;
+  margin-left: 40px;
+  width: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+html .center_addtaskButton,
+body .center_addtaskButton {
+  padding: 5px 15px 5px 15px;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+  color: #b17676;
+  border-radius: 8px 0px 0px 8px;
+}
+
+html .center_todoInput,
+body .center_todoInput {
+  padding: 5px;
+  color: #b17676;
+  letter-spacing: 1.2px;
+  font-size: 1.2rem;
+  border: 0;
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  text-align: center;
+  border-radius: 0px 8px 8px 0px;
+}
+
+html .center_todolist > div,
+body .center_todolist > div {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+}
+
+html .center_divT,
+body .center_divT {
+  height: 50px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  background-color: #141414;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1.5fr 1fr;
+      grid-template-rows: 1.5fr 1fr;
+  gap: 0px 0px;
+      grid-template-areas: "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn" "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
+}
+
+html .center_complete-btn,
+body .center_complete-btn {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: complete-btn;
+}
+
+html .center_todo-item,
+body .center_todo-item {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 6;
+  grid-area: todo-item;
+  text-align: left;
+}
+
+html .center_delete-btn,
+body .center_delete-btn {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 8;
+  grid-area: delete-btn;
+}
+
+html .center_clocks,
+body .center_clocks {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 6;
+  grid-area: clocks;
+}
+
+html .center_des-btn,
+body .center_des-btn {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 10;
+  grid-area: des-btn;
+}
+
+html .center_play-btn,
+body .center_play-btn {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 9;
+  grid-area: play-btn;
 }
 
 html .clock,
-html .addTask,
-html .tasksToD,
-body .clock,
-body .addTask,
-body .tasksToD {
+body .clock {
   background: rgba(20, 20, 20, 0.725);
   padding: 5px;
   margin: 10px;
   color: white;
   font-size: 2em;
-}
-
-html .addTaskdiv,
-body .addTaskdiv {
-  padding: 5px;
-  margin: 10px;
-  color: white;
-  font-size: 2em;
-}
-
-html .clock,
-body .clock {
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
-  margin: 0px;
   position: relative;
   width: 6em;
   border-radius: 20px;
-  display: table-cell;
   vertical-align: middle;
   text-align: center;
+  display: none;
+  position: absolute;
+  bottom: 20px;
 }
 
 html .clock i,
@@ -329,28 +501,13 @@ body .clock i {
   color: rgba(255, 255, 255, 0.55);
 }
 
-html .fa-window-restore,
-body .fa-window-restore {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  color: white;
-}
-
-html .clock,
-body .clock {
-  display: none;
-  position: absolute;
-  bottom: 20px;
-}
-
-html .clockVisible,
-body .clockVisible {
+html .clock_clockVisible,
+body .clock_clockVisible {
   display: inline;
 }
 
-html .clock-fullscreen,
-body .clock-fullscreen {
+html .clock_fullscreen,
+body .clock_fullscreen {
   position: absolute;
   left: 0;
   right: 0;
@@ -375,20 +532,29 @@ body .clock-fullscreen {
   border-radius: 30px;
 }
 
-html .clock-fullscreen #countdown,
-body .clock-fullscreen #countdown {
+html .clock_fullscreen #countdown,
+body .clock_fullscreen #countdown {
   font-size: 4rem;
 }
 
-html .clock-fullscreen .countdownButtons,
-body .clock-fullscreen .countdownButtons {
+html .countdownButtons,
+body .countdownButtons {
   position: absolute;
   bottom: 30px;
 }
 
-html .clock-fullscreen i,
-body .clock-fullscreen i {
-  font-size: 1.8rem;
+html .countdownButtonsNone,
+body .countdownButtonsNone {
+  display: none;
+  background-color: pink;
+}
+
+html .fa-window-restore,
+body .fa-window-restore {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: white;
 }
 
 html .minimal,
@@ -397,29 +563,10 @@ body .minimal {
   animation: scale .4s ease-in-out 1 reverse;
 }
 
-html .todoInput,
-body .todoInput {
-  color: #b17676;
-  letter-spacing: 1.2px;
-  font-size: 1.2rem;
-  border: 0;
-  -webkit-box-flex: 6;
-      -ms-flex: 6;
-          flex: 6;
-  text-align: center;
-  border-radius: 0px 8px 8px 0px;
-}
-
-html .addTaskdiv,
-body .addTaskdiv {
-  margin-left: 40px;
-  width: 45%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+html .right,
+body .right {
+  height: 100%;
+  background-color: #011b01;
 }
 
 html .input,
@@ -431,43 +578,12 @@ body .input {
   border: 0;
 }
 
-html .todo-item,
-body .todo-item {
-  text-align: center;
-}
-
-html .addtask,
-body .addtask {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 10%;
-  background-color: #ffffff;
-  color: #727171;
-  border: 0;
-}
-
-html .addtask:hover,
-body .addtask:hover {
-  color: white;
-}
-
-html .todolist > div,
-body .todolist > div {
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-}
-
-html .task,
-body .task {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+html .right,
+body .right {
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  -webkit-box-flex: 4;
+      -ms-flex: 4 20%;
+          flex: 4 20%;
 }
 
 html button,
@@ -502,73 +618,6 @@ body task {
   display: flex;
 }
 
-html .divT,
-body .divT {
-  height: 50px;
-  margin-bottom: 5px;
-  border-radius: 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background-color: #141414;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1.5fr 1fr;
-      grid-template-rows: 1.5fr 1fr;
-  gap: 0px 0px;
-      grid-template-areas: "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn" "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
-}
-
-html .complete-btn,
-body .complete-btn {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
-  grid-area: complete-btn;
-}
-
-html .todo-item,
-body .todo-item {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 6;
-  grid-area: todo-item;
-  text-align: left;
-}
-
-html .clocks,
-body .clocks {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 6;
-  grid-area: clocks;
-}
-
-html .delete-btn,
-body .delete-btn {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 8;
-  grid-area: delete-btn;
-}
-
-html .des-btn,
-body .des-btn {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 10;
-  grid-area: des-btn;
-}
-
-html .play-btn,
-body .play-btn {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 9;
-  grid-area: play-btn;
-}
-
 html button,
 body button {
   border: 0;
@@ -582,13 +631,13 @@ body li:hover {
 
 html .pauseButton,
 html .resetButton,
-html .play-btn,
+html .center_play-btn,
 html .fa-pause,
-html .delete-btn,
-html .complete-btn,
+html .center_delete-btn,
+html .center_complete-btn,
 html .fa-play,
 html .fa-play-circle,
-html .des-btn,
+html .center_des-btn,
 html .fa-circle,
 html .fa-window-restore,
 html .fa-check-circle,
@@ -603,13 +652,13 @@ html .fa-repeat,
 html .close-btn,
 body .pauseButton,
 body .resetButton,
-body .play-btn,
+body .center_play-btn,
 body .fa-pause,
-body .delete-btn,
-body .complete-btn,
+body .center_delete-btn,
+body .center_complete-btn,
 body .fa-play,
 body .fa-play-circle,
-body .des-btn,
+body .center_des-btn,
 body .fa-circle,
 body .fa-window-restore,
 body .fa-check-circle,
@@ -630,13 +679,13 @@ body .close-btn {
   padding: 0.3rem;
 }
 
-html .play-btn,
+html .center_play-btn,
 html .fa-window-restore,
 html .fa-pause,
 html .fa-pause-btn,
 html .fa-check-circle,
 html .fa-circle,
-body .play-btn,
+body .center_play-btn,
 body .fa-window-restore,
 body .fa-pause,
 body .fa-pause-btn,
@@ -648,61 +697,6 @@ body .fa-circle {
 html .fa-clock,
 body .fa-clock {
   color: #740606;
-}
-
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-transform: scale(1);
-    opacity: 0.0;
-  }
-  25% {
-    -webkit-transform: scale(1.1);
-    opacity: 0.1;
-  }
-  50% {
-    -webkit-transform: scale(1.2);
-    opacity: 0.2;
-  }
-  75% {
-    -webkit-transform: scale(1.3);
-    opacity: 0.3;
-  }
-  100% {
-    -webkit-transform: scale(1.4);
-    opacity: 0.4;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    -webkit-transform: scale(1);
-    opacity: 0.0;
-  }
-  25% {
-    -webkit-transform: scale(1.1);
-    opacity: 0.1;
-  }
-  50% {
-    -webkit-transform: scale(1.2);
-    opacity: 0.2;
-  }
-  75% {
-    -webkit-transform: scale(1.3);
-    opacity: 0.3;
-  }
-  100% {
-    -webkit-transform: scale(1.4);
-    opacity: 0.4;
-  }
-}
-
-html .addtaskButton,
-body .addtaskButton {
-  padding: 5px 15px 5px 15px;
-  font-size: 1.1rem;
-  background-color: #ffffff;
-  color: #b17676;
-  border-radius: 8px 0px 0px 8px;
 }
 
 html .completed,
@@ -735,46 +729,6 @@ body .fall {
   opacity: 0;
 }
 
-@-webkit-keyframes scale {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-  }
-  50% {
-    opacity: 2;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-  }
-  100% {
-    opacity: 3;
-  }
-}
-
-@keyframes scale {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-  }
-  50% {
-    opacity: 2;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-  }
-  100% {
-    opacity: 3;
-  }
-}
-
 html .timerStart,
 body .timerStart {
   background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
@@ -798,7 +752,7 @@ html .fa-play,
 html .fa-play-circle,
 html .fa-check-circle,
 html .fa-trash,
-html .delete-btn > .fa-minus-circle,
+html .center_delete-btn > .fa-minus-circle,
 html .fa-pause,
 html .fa-pause-circle,
 body .fa-circle,
@@ -807,7 +761,7 @@ body .fa-play,
 body .fa-play-circle,
 body .fa-check-circle,
 body .fa-trash,
-body .delete-btn > .fa-minus-circle,
+body .center_delete-btn > .fa-minus-circle,
 body .fa-pause,
 body .fa-pause-circle {
   cursor: pointer;
@@ -828,12 +782,6 @@ body .completedTasks {
   position: absolute;
   top: 85%;
   display: none;
-}
-
-html .countdownButtonsNone,
-body .countdownButtonsNone {
-  display: none;
-  background-color: pink;
 }
 
 .detals > li {
@@ -981,26 +929,6 @@ input textarea:focus {
   background: none;
 }
 
-.clocks {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-direction: row;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -ms-flex-pack: start;
-  -webkit-box-pack: start;
-          justify-content: flex-start;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -ms-flex-align: start;
-  -webkit-box-align: start;
-          align-items: flex-start;
-}
-
 .time {
   -webkit-box-ordinal-group: 1;
       -ms-flex-order: 0;
@@ -1015,15 +943,25 @@ input textarea:focus {
 
 .score {
   margin-left: 5px;
-  -ms-flex-order: 0;
   -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
           order: 0;
-  -ms-flex: 0 1 auto;
   -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
           flex: 0 1 auto;
-  -webkit-align-self: auto;
   -ms-flex-item-align: auto;
-  -ms-grid-row-align: auto;
+      -ms-grid-row-align: auto;
       align-self: auto;
+}
+
+@media (max-width: 1079px) {
+  .container {
+    display: block;
+    width: 100%;
+    background-color: red;
+  }
+  .left {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
