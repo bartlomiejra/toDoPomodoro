@@ -942,6 +942,7 @@ input textarea:focus {
   }
   .container .center__number {
     font-size: 1.2rem;
+    color: blue;
   }
   .container .center__text {
     font-size: 0.8rem;
