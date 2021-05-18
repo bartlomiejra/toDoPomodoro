@@ -28,6 +28,7 @@ $task: #23222D;
 @mixin left_addproject {
   // position: absolute;
   // bottom: 0;
+
   text-align: center;
   // height: 30px;
   font-size: 15px;
@@ -146,7 +147,7 @@ body {
     list-style: none;
     flex-flow: row wrap;
     backdrop-filter: blur(5px);
-    overflow: hidden;
+    // overflow: hidden;
     display: flex;
     position: relative;
 
@@ -165,6 +166,8 @@ body {
 
 
   .left {
+	margin-top:auto;
+
     // max-width: 250px;
     flex-basis: 100px;
     // position: relative;
@@ -192,6 +195,8 @@ body {
 
 
     &_addProject {
+		margin-top:auto;
+
       
       display: flex;
       // position: absolute;
@@ -847,7 +852,7 @@ font-size: 0.8rem;
   // position: fixed;
   // bottom: 0;
   width: 100%;
-  height: 110px;
+//   height: 110px;
   display: flex;
   overflow-x: auto;
   flex-direction: row;
