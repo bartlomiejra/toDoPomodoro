@@ -945,7 +945,25 @@ input textarea:focus {
     font-size: 0.8rem;
   }
   .container .left {
+    font-size: 2rem;
     width: 100% !important;
+  }
+  .container .left_title {
+    font-size: 2.6rem;
+  }
+  .container .left_day > i {
+    font-size: 2.6rem;
+    padding: 0px 15px 0px 10px;
+  }
+  .container .left .circle {
+    height: 30px;
+    width: 30px;
+    padding: 10px 15px 0px 10px;
+    margin-right: 10px;
+  }
+  .container .left .projectDelete > i {
+    height: 30px;
+    width: 30px;
   }
   .container .leftnone {
     display: none;
@@ -959,7 +977,7 @@ input textarea:focus {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 110px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -986,5 +1004,9 @@ input textarea:focus {
   font-size: 13px;
   color: #ffffff;
   text-decoration: none;
+}
+
+.nav-inbuild {
+  background-color: #757678;
 }
 /*# sourceMappingURL=style.css.map */

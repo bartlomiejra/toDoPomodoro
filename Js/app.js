@@ -4,6 +4,7 @@
 /* eslint-disable no-use-before-define */
 const centerDiv = document.querySelector('.center');
 const leftDiv = document.querySelector('.left');
+const mobileWidth = window.matchMedia('(max-width: 895px)');
 const todoInput = document.querySelector('.center_todoInput');
 const addProjectbtn = document.querySelector('.left_addProjectBtn');
 const addPr = document.querySelector('.left_Projects');
@@ -90,6 +91,12 @@ aria-hidden="true"></i></button>
 `,
     )
     .join('');
+  if (mobileWidth.matches) {
+    centerDiv.classList.remove('none');
+    centerDiv.classList.add('center');
+    leftDiv.classList.add('leftnone');
+    console.log('To wersja mobilna więc trzeba pokazać takis!');
+  }
 }
 
 function addTodo(event) {
@@ -374,7 +381,7 @@ function showDiv(clickedId) {
   renderdetals();
 
   function renderdetals() {
-    let todoss = JSON.parse(localStorage.getItem('Items')) || [];
+    const todoss = JSON.parse(localStorage.getItem('Items')) || [];
     console.log('coolest');
 
     console.log(todoss);
@@ -393,7 +400,7 @@ function showDiv(clickedId) {
           </div>
    <div class="right_detals">
 
-            <ul class="right_list">
+  <ul class="right_list">
                 <li class="right_list--item center_clocks">Pomodoro:     ${
                   taskDetails.focus > pomodoreDuration
                     ? '<i class="fas fa-clock time " aria-hidden="true"> </i>'
@@ -570,6 +577,7 @@ function sortingProject(e) {
   const tasksProject = tasks.filter((items) => items.project === clicked);
   // console.log(tasks);
   // console.log(tasksProject);
+
   lists(tasksProject, todoList);
   return tasksProject;
 }
@@ -655,6 +663,14 @@ function showProjectList() {
   centerDiv.classList.remove('center');
   leftDiv.classList.remove('leftnone');
 }
+function ifmobile() {
+  if (mobileWidth.matches) {
+    console.log('to mibile version ^^');
+    showProjectList();
+  } else {
+    console.log('to nie wersja mobila');
+  }
+}
 
 document.querySelectorAll('.projectDelete').forEach((e) => {
   e.addEventListener('click', deleteProject);
@@ -664,7 +680,7 @@ addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
-showProject.addEventListener('click', showProjectList);
+showProject.addEventListener('click', ifmobile);
 
 /*
       * Importand Information
@@ -672,5 +688,5 @@ showProject.addEventListener('click', showProjectList);
       ? should this method be exposad in the public API
       TODO: zrobić to i tamto
       * @param myParam The parameter for this method
-      
+
     */
