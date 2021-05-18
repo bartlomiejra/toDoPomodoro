@@ -930,7 +930,7 @@ input textarea:focus {
       align-self: auto;
 }
 
-@media (max-width: 895px) {
+@media screen and (max-width: 895px) {
   .container {
     border-radius: none;
     margin: 0px 0px 0px 0px;
