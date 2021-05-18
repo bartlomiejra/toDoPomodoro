@@ -166,6 +166,8 @@ body {
 
 html .container,
 body .container {
+  padding: 0;
+  height: 100%;
   list-style: none;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -190,12 +192,11 @@ body .container > * {
 html .container > *__header,
 body .container > *__header {
   background: linear-gradient(147.14deg, rgba(24, 18, 18, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
-  max-height: 25px;
+  max-height: 10px;
 }
 
 html .left,
 body .left {
-  margin-top: auto;
   -ms-flex-preferred-size: 100px;
       flex-basis: 100px;
   -webkit-box-align: stretch;
@@ -210,7 +211,6 @@ body .left {
           flex-direction: column;
   -ms-flex-negative: 2;
       flex-shrink: 2;
-  height: 100%;
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
@@ -291,7 +291,6 @@ body .center {
   -webkit-box-flex: 4;
       -ms-flex: 4 45%;
           flex: 4 45%;
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -396,6 +395,11 @@ body .center_todolist > div {
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 }
 
+html .center_todolist,
+body .center_todolist {
+  overflow: auto;
+}
+
 html .center ul,
 body .center ul {
   padding: 0px;
@@ -435,6 +439,7 @@ body .center_todo-item {
   -ms-grid-column-span: 6;
   grid-area: todo-item;
   text-align: left;
+  overflow: auto;
 }
 
 html .center_delete-btn,
@@ -946,25 +951,33 @@ input textarea:focus {
     font-size: 0.8rem;
   }
   .container .left {
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 100% !important;
   }
   .container .left_title {
-    font-size: 2.6rem;
+    font-size: 1.5rem;
   }
   .container .left_day > i {
-    font-size: 2.6rem;
+    font-size: 2.0rem;
     padding: 0px 15px 0px 10px;
   }
   .container .left .circle {
-    height: 30px;
-    width: 30px;
-    padding: 10px 15px 0px 10px;
-    margin-right: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 15px;
+    width: 15px;
+    margin: 0px 10px 0px 10px;
   }
   .container .left .projectDelete > i {
-    height: 30px;
-    width: 30px;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.2);
   }
   .container .leftnone {
     display: none;

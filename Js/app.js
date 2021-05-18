@@ -555,8 +555,9 @@ function renderProjects() {
       (proje, i) => `
 <li class="left_projectItem">
  <div class="projectList" value="${proje.name}" name="${proje.name}">
-  <div class="circle" style="background-color: ${proje.color};">
-  </div>
+  <span class="circle" style="background-color: ${proje.color};">
+ 
+  </span>
   ${proje.name} 
   </div>
   <button class="projectDelete" id=${proje.name} > <i class="fas fa-minus-circle" 
