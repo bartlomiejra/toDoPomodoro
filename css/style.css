@@ -197,6 +197,7 @@ body .container > *__header {
 
 html .left,
 body .left {
+  height: calc(100% - 90px);
   -ms-flex-preferred-size: 100px;
       flex-basis: 100px;
   -webkit-box-align: stretch;
@@ -291,6 +292,7 @@ body .center {
   -webkit-box-flex: 4;
       -ms-flex: 4 45%;
           flex: 4 45%;
+  height: calc(100% - 85px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -494,8 +496,6 @@ body .center_play-btn {
 html .clock,
 body .clock {
   background: rgba(20, 20, 20, 0.725);
-  padding: 5px;
-  margin: 10px;
   color: white;
   font-size: 2em;
   -webkit-backdrop-filter: blur(5px);
@@ -753,7 +753,7 @@ body .fa-clock {
 
 html .right,
 body .right {
-  height: 100%;
+  height: calc(100% - 85px);
   background-color: #011b01;
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
   -webkit-box-flex: 4;
@@ -952,6 +952,7 @@ input textarea:focus {
   }
   .container .left {
     font-size: 1.5rem;
+    height: calc(100% - 85px);
     width: 100% !important;
   }
   .container .left_title {
@@ -988,7 +989,6 @@ input textarea:focus {
 }
 
 .nav {
-  position: absolute;
   bottom: 0;
   width: 100%;
   display: -webkit-box;
@@ -999,7 +999,9 @@ input textarea:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #0a0c0c;
+  background-color: #192222;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .nav_element {
