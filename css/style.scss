@@ -308,6 +308,8 @@ body {
       color: white;
       font-size: 2em;
       margin-left: 40px;
+	      overflow: hidden;
+
       width: 45%;
       display: flex;
       justify-content: center;
@@ -342,7 +344,7 @@ body {
       
 		// max-height: 300px;
 
-		overflow: auto;	  } 
+		overflow: hidden;	  } 
 
 
 
@@ -351,6 +353,7 @@ padding:0px;
     }
 
     &_divT {
+		overflow: hidden;
       height: 50px;
       max-width: 500px;
       margin-bottom: 5px;
@@ -427,6 +430,12 @@ padding:0px;
       display: inline;
     }
 
+	.fa-window-restore {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: white;
+      }
     &_fullscreen {
       position: absolute;
       left: 0;
@@ -799,6 +808,47 @@ input {
 }
 
 
+//Navigation bottom
+.nav{
+	//   position: absolute;
+	  bottom: 0;
+	
+	  // position: fixed;
+	  // bottom: 0;
+	  width: 100%;
+	//   height: 110px;
+	  display: flex;
+	  overflow-x: auto;
+	  flex-direction: row;
+	  background-color: #282b2b;
+	  align-self: flex-end;
+	
+	
+	
+	  &_element{
+		text-align: center;
+		justify-content: center;
+	
+		
+		flex-grow: 1;
+		min-width: 50px;
+		overflow: hidden;
+		white-space: nowrap;
+		font-family: sans-serif;
+		font-size: 13px;
+		color: #ffffff;
+		text-decoration: none;
+		// background-color: black;
+	  
+	  }
+	
+	  &-inbuild{
+		  
+		//   background-color: #757678;
+	  }
+	
+	
+	}
 
 //mobile version
 
@@ -860,9 +910,28 @@ font-size: 0.8rem;
     }
 
     .right{
-      width: 100%;
+	width: 300px;
+	right: 0;
+    //   right: -300px;
+	  position:absolute;
+	 
+	  transform: translateX(0px);
 
+	  transition: transform .9s .9s ease-in-out;
+	  
+	//   background-color: grey;
+
+	
     }
+	// .right--active{
+	// 	transition: transform .3s .9s ease-in-out;
+	// 	transform: translateX(-300px);
+
+	// }
+
+
+
+
 
    .left{
 	//    overflow: hidden;
@@ -879,42 +948,3 @@ font-size: 0.8rem;
 
 
 
-//Navigation bottom
-.nav{
-//   position: absolute;
-  bottom: 0;
-
-  // position: fixed;
-  // bottom: 0;
-  width: 100%;
-//   height: 110px;
-  display: flex;
-  overflow-x: auto;
-  flex-direction: row;
-  background-color: #282b2b;
-  align-self: flex-end;
-
-
-
-  &_element{
-    text-align: center;
-    justify-content: center;
-
-    
-    flex-grow: 1;
-    min-width: 50px;
-    overflow: hidden;
-    white-space: nowrap;
-    font-family: sans-serif;
-    font-size: 13px;
-    color: #ffffff;
-    text-decoration: none;
-	// background-color: black;
-  
-  }
-
-  &-inbuild{
-	  
-	//   background-color: #757678;
-  }
-}

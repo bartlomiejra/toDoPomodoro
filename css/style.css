@@ -357,6 +357,7 @@ body .center_addTaskdiv {
   color: white;
   font-size: 2em;
   margin-left: 40px;
+  overflow: hidden;
   width: 45%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -399,7 +400,7 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
-  overflow: auto;
+  overflow: hidden;
 }
 
 html .center ul,
@@ -409,6 +410,7 @@ body .center ul {
 
 html .center_divT,
 body .center_divT {
+  overflow: hidden;
   height: 50px;
   max-width: 500px;
   margin-bottom: 5px;
@@ -519,6 +521,14 @@ body .clock i {
 html .clock_clockVisible,
 body .clock_clockVisible {
   display: inline;
+}
+
+html .clock .fa-window-restore,
+body .clock .fa-window-restore {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: white;
 }
 
 html .clock_fullscreen,
@@ -936,6 +946,39 @@ input textarea:focus {
       align-self: auto;
 }
 
+.nav {
+  bottom: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #282b2b;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.nav_element {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 895px) {
   .container {
     border-radius: none;
@@ -984,40 +1027,15 @@ input textarea:focus {
     display: none;
   }
   .container .right {
-    width: 100%;
+    width: 300px;
+    right: 0;
+    position: absolute;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    -webkit-transition: -webkit-transform .9s .9s ease-in-out;
+    transition: -webkit-transform .9s .9s ease-in-out;
+    transition: transform .9s .9s ease-in-out;
+    transition: transform .9s .9s ease-in-out, -webkit-transform .9s .9s ease-in-out;
   }
-}
-
-.nav {
-  bottom: 0;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: auto;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  background-color: #282b2b;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-.nav_element {
-  text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  min-width: 50px;
-  overflow: hidden;
-  white-space: nowrap;
-  font-family: sans-serif;
-  font-size: 13px;
-  color: #ffffff;
-  text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */

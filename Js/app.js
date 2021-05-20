@@ -374,6 +374,8 @@ function showDiv(clickedId) {
   const itemS = JSON.parse(localStorage.getItem('Items') || []);
   //! Poniżej id tasku
   description.classList.remove('none');
+  description.classList.add('right--active');
+
   console.log(itemS[clickedId]);
   console.log(itemS);
 
