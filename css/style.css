@@ -197,7 +197,7 @@ body .container > *__header {
 
 html .left,
 body .left {
-  height: calc(100% - 90px);
+  height: calc(100% - 85px);
   -ms-flex-preferred-size: 100px;
       flex-basis: 100px;
   -webkit-box-align: stretch;
@@ -233,6 +233,7 @@ body .left_projectItem {
 html .left_addProject,
 body .left_addProject {
   margin-top: auto;
+  height: 28px;
   display: -webkit-box;
   display: flex;
   left: 10;
@@ -252,8 +253,8 @@ body .left_addProjectBtn {
 
 html .left_color,
 body .left_color {
-  width: 20px;
-  height: 20px;
+  height: 26px;
+  width: 28px;
   border-radius: 20px;
 }
 
@@ -288,7 +289,6 @@ body .none {
 
 html .center,
 body .center {
-  position: relative;
   -webkit-box-flex: 4;
       -ms-flex: 4 45%;
           flex: 4 45%;
@@ -999,7 +999,7 @@ input textarea:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #192222;
+  background-color: #282b2b;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -1019,9 +1019,5 @@ input textarea:focus {
   font-size: 13px;
   color: #ffffff;
   text-decoration: none;
-}
-
-.nav-inbuild {
-  background-color: #757678;
 }
 /*# sourceMappingURL=style.css.map */

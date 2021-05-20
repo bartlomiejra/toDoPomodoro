@@ -132,9 +132,10 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background: url(background5.png);
+//   background: black;
   color: white;
   height: 100%;
-  // background-size: 150% 150%;
+//   background-size: 150% 150%;
 
 
 
@@ -171,7 +172,7 @@ body {
 
   .left {
 	// margin-top:auto;
-	height: calc(100% - 90px);
+	height: calc(100% - 85px);
 
 
     // max-width: 250px;
@@ -202,6 +203,8 @@ body {
 
     &_addProject {
 		margin-top:auto;
+		height: 28px;
+
 
       
       display: flex;
@@ -224,8 +227,10 @@ body {
 
 
     &_color {
-      width: 20px;
-      height: 20px;
+		height: 26px;
+
+      width: 28px;
+    //   height: 20px;
       border-radius: 20px;
       // flex: 1 1 0;
     }
@@ -257,7 +262,7 @@ body {
   }
 
   .center {
-    position: relative;
+    // position: relative;
     flex: 4 45%;
 	height: calc(100% - 85px);
 
@@ -859,7 +864,10 @@ font-size: 0.8rem;
 
     }
 
-   
+   .left{
+	//    overflow: hidden;
+
+   }
 
   }
 
@@ -873,9 +881,9 @@ font-size: 0.8rem;
 
 //Navigation bottom
 .nav{
-
 //   position: absolute;
   bottom: 0;
+
   // position: fixed;
   // bottom: 0;
   width: 100%;
@@ -883,7 +891,7 @@ font-size: 0.8rem;
   display: flex;
   overflow-x: auto;
   flex-direction: row;
-  background-color: #192222;
+  background-color: #282b2b;
   align-self: flex-end;
 
 
@@ -901,11 +909,12 @@ font-size: 0.8rem;
     font-size: 13px;
     color: #ffffff;
     text-decoration: none;
+	// background-color: black;
   
   }
 
   &-inbuild{
 	  
-	  background-color: #757678;
+	//   background-color: #757678;
   }
 }

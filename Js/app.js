@@ -95,7 +95,6 @@ aria-hidden="true"></i></button>
     centerDiv.classList.remove('none');
     centerDiv.classList.add('center');
     leftDiv.classList.add('leftnone');
-    console.log('To wersja mobilna więc trzeba pokazać takis!');
   }
 }
 
@@ -236,7 +235,7 @@ function btnActtion(e) {
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
   // localStorage.setItem('Items', JSON.stringify(todos));
-  // lists(actualList, todoList);
+  lists(actualList, todoList);
 }
 
 function displayTimeLeft(seconds) {
