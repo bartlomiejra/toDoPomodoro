@@ -442,7 +442,6 @@ body .center_todo-item {
   -ms-grid-column: 2;
   -ms-grid-column-span: 6;
   grid-area: todo-item;
-  text-align: left;
   overflow: auto;
 }
 
@@ -771,6 +770,23 @@ body .right {
           flex: 4 20%;
 }
 
+html .right_divT,
+body .right_divT {
+  color: #a8a4a4;
+  display: block;
+  text-align: center;
+}
+
+html .right_todo-item,
+body .right_todo-item {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 6;
+  grid-area: todo-item;
+  text-align: center;
+  overflow: auto;
+}
+
 html .right_detals,
 body .right_detals {
   font-size: 1rem;
@@ -791,23 +807,20 @@ body .right .detals > li {
 
 html .right_list,
 body .right_list {
+  margin: 10px 10px 10px 10px;
   list-style: none;
   padding-left: 0;
-  float: left;
   font-size: 1vw;
 }
 
 html .right ul > li,
 body .right ul > li {
-  font-size: 1vw;
+  font-size: 1rem;
   -webkit-text-decoration: bold;
           text-decoration: bold;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .controlButtons {
@@ -841,8 +854,16 @@ input[type="number"]:hover {
 }
 
 .projectSelect {
-  margin-left: 3px;
+  padding: 10px;
   width: 100%;
+}
+
+.repeatDay {
+  display: right;
+}
+
+.right_list--item > i {
+  margin: 0px 10px 0px 10px;
 }
 
 textarea {
@@ -862,6 +883,7 @@ select,
 input[type="number"],
 input[type="date"],
 .Projects {
+  padding: 10px;
   border: none;
   color: rgba(255, 255, 255, 0.55);
   border-radius: 8px;
@@ -1029,6 +1051,9 @@ input textarea:focus {
   .container .right {
     width: 300px;
     right: 0;
+    -webkit-backdrop-filter: blur(9px);
+            backdrop-filter: blur(9px);
+    background: linear-gradient(147.14deg, rgba(133, 132, 132, 0.7) 18.33%, rgba(179, 176, 176, 0.2) 77.77%);
     position: absolute;
     -webkit-transform: translateX(0px);
             transform: translateX(0px);

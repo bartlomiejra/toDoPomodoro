@@ -192,7 +192,7 @@ function btnActtion(e) {
       resetTimer();
     });
     statTask();
-
+    actualList = todos;
     return;
   }
 
@@ -395,7 +395,7 @@ function showDiv(clickedId) {
       <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
        <i class="fas fa-times"
       aria-hidden="true"></i></button>
-      <div class="center_divT ">
+      <div class="right_divT ">
       <div  class="center_todo-item" id="item" >
        ${taskDetails.text}</div>
           </div>
@@ -415,13 +415,16 @@ function showDiv(clickedId) {
                   }
                  </li>
                 <li>
-                Due date: <input type="date" id="date" value="${
-                  taskDetails.data
-                }" name="trip-start"></li>
-                <li>
-                Project:   <select name="Project" value="${
-                  taskDetails.project
-                }" id="Project"class="projectSelect" placeholder="${
+                Due date: </li>
+                
+				<li> <input type="date" id="date" value="${
+          taskDetails.data
+        }" name="trip-start"></li>
+<li>   Project:</li>
+             <li>
+				   <select name="Project" value="${
+             taskDetails.project
+           }" id="Project"class="projectSelect" placeholder="${
       taskDetails.project
     }" value="${taskDetails.project}">
                  <option value="${
@@ -431,7 +434,7 @@ function showDiv(clickedId) {
          </option>
 
               </select></li>
-                <li></i>Repeat: Every <input type="number" class="repeatDay" value="${
+                <li>Repeat: Every</li> <li> <input type="number" class="repeatDay" value="${
                   taskDetails.repeatday
                 }"  min="0" max="10" id="days">
 
@@ -544,7 +547,7 @@ function addProject(event) {
   // console.log(Project);
   localStorage.setItem('Project', JSON.stringify(project));
   addPr.value = '';
-  // renderProjects();
+  renderProjects();
 }
 
 function renderProjects() {
