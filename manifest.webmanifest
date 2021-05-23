@@ -1,10 +1,12 @@
 {
-    "name": "Pomodore",
+    "name": "todoPomodore",
     "short_name": "PomodoroApp",
     "start_url": ".",
     "display": "standalone",
     "background-color": "rgba(0, 0, 0, 0.5)",
     "color": "rgb(68, 26, 26)",
 
-    "description": "App to improve your focus"
+    "description": "App to improve your focus",
+
+  "orientation": "portrait-primary"
 }

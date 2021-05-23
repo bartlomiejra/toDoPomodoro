@@ -33,15 +33,27 @@ const pomodoreDuration = 25;
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
-
+let taskToday;
 let dateToday;
 // let taskToday = 0;
 let tasks = JSON.parse(localStorage.getItem('Items')) || [];
 
 // const objlines = 0;
 let actualList = [];
-// const idCounter = 0;
-console.log(actualList);
+let dateTomorrow = 0;
+function actualDateTime() {
+  const date = new Date();
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0'); // month is zero-based
+  const dd = String(date.getDate()).padStart(2, '0');
+  const ddTomorrow = String(date.getDate() + 1).padStart(2, '0');
+  dateToday = `${yyyy}-${mm}-${dd}`;
+  dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
+}
+actualDateTime();
+tasks = JSON.parse(localStorage.getItem('Items')) || [];
+taskToday = tasks.filter((items) => items.data === dateToday);
+lists(taskToday, todoList);
 
 function lists(todolist = [], objlines) {
   console.log(actualList);
@@ -587,18 +599,7 @@ function sortingProject(e) {
   return tasksProject;
 }
 
-let dateTomorrow = 0;
-
-function actualDateTime() {
-  const date = new Date();
-  const yyyy = date.getFullYear();
-  const mm = String(date.getMonth() + 1).padStart(2, '0'); // month is zero-based
-  const dd = String(date.getDate()).padStart(2, '0');
-  const ddTomorrow = String(date.getDate() + 1).padStart(2, '0');
-  dateToday = `${yyyy}-${mm}-${dd}`;
-  dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
-}
-actualDateTime();
+// let dateTomorrow = 0;
 
 document.querySelectorAll('.left_day').forEach((e) => {
   e.addEventListener('click', sortingProjectDays);
@@ -667,13 +668,14 @@ function showProjectList() {
   centerDiv.classList.add('none');
   centerDiv.classList.remove('center');
   leftDiv.classList.remove('leftnone');
+  description.classList.add('none');
 }
 function ifmobile() {
   if (mobileWidth.matches) {
-    console.log('to mibile version ^^');
+    // console.log('to mibile version ^^');
     showProjectList();
   } else {
-    console.log('to nie wersja mobila');
+    // console.log('to nie wersja mobila');
   }
 }
 
