@@ -61,11 +61,12 @@ function lists(todolist = [], objlines) {
   actualList = todolist;
 
   if (actualList.length < 1) {
-    //
     emptyList.classList.remove('none');
-  } else {
+  }
+  if (actualList.length > 1) {
     emptyList.classList.add('none');
   }
+
   objlines.innerHTML = actualList
     .map(
       (todo, i) => `${
@@ -391,8 +392,8 @@ function showDiv(clickedId) {
   description.classList.remove('none');
   description.classList.add('right--active');
 
-  console.log(itemS[clickedId]);
-  console.log(itemS);
+  //   console.log(itemS[clickedId]);
+  //   console.log(itemS);
 
   renderdetals();
 
