@@ -287,6 +287,11 @@ body .none {
   display: none;
 }
 
+html .center > text,
+body .center > text {
+  color: green;
+}
+
 html .center,
 body .center {
   -webkit-box-flex: 4;
@@ -304,6 +309,7 @@ body .center {
       -ms-flex-align: center;
           align-items: center;
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
+  font-size: 1.2rem;
 }
 
 html .center_tasktable,
@@ -365,6 +371,19 @@ body .center_addTaskdiv {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+html .center_emptyList,
+body .center_emptyList {
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+html .center_foldericon,
+body .center_foldericon {
+  text-align: center;
+  color: red;
+  font-size: 2rem;
 }
 
 html .center_addtaskButton,
@@ -1017,7 +1036,6 @@ input textarea:focus {
   }
   .container .center__number {
     font-size: 1.2rem;
-    color: pink;
   }
   .container .center__text {
     font-size: 0.8rem;

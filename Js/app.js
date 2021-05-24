@@ -11,6 +11,7 @@ const addPr = document.querySelector('.left_Projects');
 const todoButton = document.querySelector('.center_addtaskButton');
 const todoList = document.querySelector('.center_todolist');
 const showProject = document.querySelector('.Project');
+const emptyList = document.querySelector('.center_emptyList');
 
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
@@ -60,10 +61,11 @@ function lists(todolist = [], objlines) {
   actualList = todolist;
 
   if (actualList.length < 1) {
-    console.log('brak');
-    innerHTML = '<h1>Empty task list!</h1>';
+    //
+    emptyList.classList.remove('none');
+  } else {
+    emptyList.classList.add('none');
   }
-
   objlines.innerHTML = actualList
     .map(
       (todo, i) => `${
@@ -103,6 +105,7 @@ aria-hidden="true"></i></button>
 `,
     )
     .join('');
+
   if (mobileWidth.matches) {
     centerDiv.classList.remove('none');
     centerDiv.classList.add('center');

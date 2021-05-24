@@ -260,6 +260,9 @@ body {
   .none {
     display: none;
   }
+  .center>text{
+	  color: green;
+  }
 
   .center {
     // position: relative;
@@ -275,6 +278,8 @@ body {
     background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
 
     //  flex: 2 10%;
+
+	
     &_tasktable {
       width: 100%;
       border-radius: 10px;
@@ -314,6 +319,22 @@ body {
       display: flex;
       justify-content: center;
     }
+	
+
+	&_emptyList{
+		margin-top: 30px;
+		color: rgba(255, 255, 255, 0.550);	}
+		font-size: 1.2rem;
+
+		&_foldericon{
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			font-size: 4rem;
+		}
+	
+		}
+	
 
     &_addtaskButton {
       padding: 5px 15px 5px 15px;
@@ -895,7 +916,7 @@ input {
 
     .center__number{
       font-size: 1.2rem;
-      color: pink;
+    
 
     }
     .center__text{
@@ -903,13 +924,13 @@ font-size: 0.8rem;
     } 
 
 .left{
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	height: calc(100% - 85px);
 
   width: 100%!important;
  
   &_title{
-	  font-size: 1.5rem;
+	  font-size: 1.2rem;
   }
   &_day>i{
 	font-size: 2.0rem;
@@ -944,6 +965,7 @@ font-size: 0.8rem;
 
     
     }
+	
 
     .right{
 	width: 300px;
@@ -971,9 +993,27 @@ font-size: 0.8rem;
   
 
   }
+  
+//! Czemu to nie działa?
+//   .center{
 
- 
- 
+// 	&_addTaskdiv{
+// 		width: 66%;
+
+// 	}
+// 	&_addtaskButton{
+// 		padding: 5px 5px 5px 5px;
+
+// 	}
+// 	&_todoInput{
+// 		font-size: 0.9rem;
+// 		letter-spacing: 0.2px;
+// 		color: red;
+
+
+
+// 	}
+//   }
 
 
 }
