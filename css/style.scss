@@ -322,16 +322,17 @@ body {
 	
 
 	&_emptyList{
-		margin-top: 30px;
+		margin-top: 20px;
 		color: rgba(255, 255, 255, 0.550);	}
 		font-size: 1.2rem;
 
 		&_foldericon{
-			text-align: center;
-			display: flex;
-			justify-content: center;
+			// color: red;
 			font-size: 4rem;
-		}
+			display: flex;
+			align-items: center;
+  justify-content: center;
+
 	
 		}
 	
@@ -881,9 +882,11 @@ input {
 	
 	  &_element{
 		text-align: center;
-		justify-content: center;
-	
-		
+	    flex-direction: column;
+			align-items: center;
+  justify-content: center;
+
+		display: flex;
 		flex-grow: 1;
 		min-width: 50px;
 		overflow: hidden;
@@ -895,6 +898,7 @@ input {
 		// background-color: black;
 	  
 	  }
+	  
 	
 	//   &-inbuild{
 		  
@@ -924,13 +928,13 @@ font-size: 0.8rem;
     } 
 
 .left{
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	height: calc(100% - 85px);
 
   width: 100%!important;
  
   &_title{
-	  font-size: 1.2rem;
+	  font-size: 1.5rem;
   }
   &_day>i{
 	font-size: 2.0rem;
