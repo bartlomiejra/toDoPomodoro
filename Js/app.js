@@ -569,12 +569,15 @@ function addProject(event) {
 function renderProjects() {
   const proj = JSON.parse(localStorage.getItem('Project')) || [];
   console.log(proj);
+  //! napisać funkcje która będzie zliczać ile razy nazwa danego projektu wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
 
   pomodoreList.innerHTML = proj
     .map(
       (proje, i) => `
 <li class="left_projectItem">
  <div class="projectList" value="${proje.name}" name="${proje.name}">
+  
+
   <span class="circle" style="background-color: ${proje.color};">
  
   </span>
@@ -596,6 +599,7 @@ function sortingProject(e) {
   tasks = JSON.parse(localStorage.getItem('Items')) || [];
   // console.log(tasks);
   const tasksProject = tasks.filter((items) => items.project === clicked);
+  console.log(tasksProject.length);
   // console.log(tasks);
   // console.log(tasksProject);
 
