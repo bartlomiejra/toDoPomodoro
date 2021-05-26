@@ -676,6 +676,8 @@ html li:hover,
 body li:hover {
   color: #fafafa;
   cursor: pointer;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 html .center_pauseButton,
@@ -877,6 +879,8 @@ textarea:hover,
 input[type="number"]:hover {
   color: #fafafa;
   cursor: pointer;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .projectSelect {
