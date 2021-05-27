@@ -58,6 +58,7 @@ lists(taskToday, todoList);
 
 function lists(todolist = [], objlines) {
   console.log(actualList);
+  console.log(todolist);
   actualList = todolist;
 
   if (actualList.length < 1) {
@@ -565,11 +566,11 @@ function addProject(event) {
   addPr.value = '';
   renderProjects();
 }
+//! napisać funkcje która będzie zliczać ile razy nazwa danego projektu wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
 
 function renderProjects() {
   const proj = JSON.parse(localStorage.getItem('Project')) || [];
   console.log(proj);
-  //! napisać funkcje która będzie zliczać ile razy nazwa danego projektu wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
 
   pomodoreList.innerHTML = proj
     .map(
@@ -593,12 +594,14 @@ function renderProjects() {
 renderProjects();
 
 function sortingProject(e) {
-  const clicked = e.target.getAttribute('name');
+  let clicked = e.target.getAttribute('name');
   // console.log(e.target);
-  // console.log(clicked);
+  console.log(clicked);
   tasks = JSON.parse(localStorage.getItem('Items')) || [];
-  // console.log(tasks);
-  const tasksProject = tasks.filter((items) => items.project === clicked);
+  console.log(tasks);
+  console.log(clicked);
+  //! błąd przy filtrowaniu
+  let tasksProject = tasks.filter((item) => item.project == clicked);
   console.log(tasksProject.length);
   // console.log(tasks);
   // console.log(tasksProject);

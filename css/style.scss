@@ -4,7 +4,15 @@ $green:rgb(3, 78, 3);
 $red: rgb(116, 6, 6);
 $blue: rgba(49, 63, 124, 0.725);
 $gradient_color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-
+$center-color: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
+$left_background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+$header_background: linear-gradient(147.14deg, rgba(24, 18, 18, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+$font-color:       rgba(255, 255, 255, 0.55);
+$black: black;
+$timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+$task_color: 	  #141414;
+$red:       #b17676;
+$number-color: rgb(68, 26, 26);
 
 //New Color Project
 $backgroundnew: #161621;
@@ -24,7 +32,6 @@ $task: #23222D;
   color: rgb(250, 250, 250);
 //   margin-left: 5px;
   cursor: pointer;
-  transform: scale(1.05);
 
 }
 
@@ -40,6 +47,8 @@ $task: #23222D;
   border-radius: 8px 0px 0px 8px;
   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+
+ 
 }
 
 //animation
@@ -165,8 +174,8 @@ body {
     flex: 1 100%;
 
     &__header {
-	
-      background: linear-gradient(147.14deg, rgba(24, 18, 18, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+	background: $header-background;
+     
       max-height: 10px;
     }
   }
@@ -188,14 +197,19 @@ body {
 
     flex-shrink: 2;
     // height: 100%;
-    background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+	
+    background: $left-background;
     // flex: 2 20%;
 
     &_day {
+		transition: all .1s ease-in-out;
+
       position: relative;
       text-align: left;
-      color: rgba(255, 255, 255, 0.55);
+	  color: $font-color
       // margin-left: 10px;
+	
+
     }
 
     &_projectItem {
@@ -278,7 +292,7 @@ body {
     flex-direction: column;
     // flex: 3 30%;
     align-items: center;
-    background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
+    background: $center-color;
 
     //  flex: 2 10%;
 
@@ -286,20 +300,20 @@ body {
     &_tasktable {
       width: 100%;
       border-radius: 10px;
-      background-color: rgb(15, 15, 15);
+	  background-color: $black;
       display: flex;
       justify-content: center;
     }
 
     &_stat {
       width: 25%;
-      background-color: rgb(15, 15, 15);
+	  color: $black;
       display: flex;
       flex-direction: column;
     }
 
     &__number {
-      color: rgb(68, 26, 26);
+      color: $number-color;
       flex: 10;
       text-align: center;
       font-size: 2rem;
@@ -343,15 +357,16 @@ body {
     &_addtaskButton {
       padding: 5px 15px 5px 15px;
       font-size: 1.1rem;
-      background-color: #ffffff;
-      color: #b17676;
-      border-radius: 8px 0px 0px 8px;
+      background-color: $fonts;
+
+	  color: $red;
+	  border-radius: 8px 0px 0px 8px;
     }
 
     &_todoInput {
 
       padding: 5px;
-      color: rgb(177, 118, 118);
+	  color: $red;
       letter-spacing: 1.2px;
       font-size: 1.2rem;
       border: 0;
@@ -384,7 +399,8 @@ padding:0px;
       margin-bottom: 5px;
       border-radius: 8px;
       filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-      background-color: #141414;
+      background-color: $task_color;
+	
       display: grid;
       grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
       grid-template-rows: 1.5fr 1fr;
@@ -502,7 +518,7 @@ padding:0px;
     }
     &_timerStart {
 
-      background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+      background: $timer;
       // opacity: 0.4;
       border-radius: 15px;
       backdrop-filter: blur(5px);
@@ -536,7 +552,7 @@ padding:0px;
     font-size: 1.2em;
     width: 90%;
     background-color: #3c3e57;
-    color: rgb(114, 113, 113);
+    color: $fonts;
     border: 0;
   }
 
@@ -645,7 +661,7 @@ padding:0px;
     flex: 4 20%;
 
 	&_divT{
-		color: rgb(168, 164, 164);
+		color: $fonts;
 
 		display:block;
 		text-align: center;
@@ -723,7 +739,12 @@ input[type="number"]:hover {
   @include hover;
 
 }
+.projectList:hover,.left_day:hover{
 
+	transform: scale(1.05);
+	background-position: 0 100%;
+
+}
 
 
 
@@ -750,7 +771,7 @@ textarea {
   width: 100%;
   height: 250px;
   border: none;
-  color: rgba(255, 255, 255, 0.550);
+  color: $fonts;
   border-radius: 8px;
   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
@@ -765,7 +786,7 @@ input[type="date"],
 
   // border: grey;
   border: none;
-  color: rgba(255, 255, 255, 0.550);
+  color: $fonts;
   border-radius: 8px;
   filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
@@ -775,7 +796,7 @@ input[type="date"],
 select option {
   // margin: 20px;
   background: rgba(0, 0, 0, 0.9);
-  color: rgba(255, 255, 255, 0.550);
+  color: $fonts;
 
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
@@ -802,6 +823,11 @@ ol {
   color: rgba(255, 255, 255, 0.55);
 //   margin-bottom: 5px;
   align-items: center;
+//   transition: scale(1.05) 2s;
+transition: all .1s ease-in-out;
+
+
+
 	// justify-content: center;
 }
 
@@ -928,6 +954,8 @@ input {
     }
     .center__text{
 font-size: 0.8rem;
+color: $font-color;
+
     } 
 
 .left{
@@ -940,6 +968,7 @@ font-size: 0.8rem;
 	  font-size: 1.5rem;
   }
   &_day>i{
+
 	font-size: 2.0rem;
 	padding: 0px 15px 0px 10px;
  

@@ -217,6 +217,8 @@ body .left {
 
 html .left_day,
 body .left_day {
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
   position: relative;
   text-align: left;
   color: rgba(255, 255, 255, 0.55);
@@ -316,7 +318,7 @@ html .center_tasktable,
 body .center_tasktable {
   width: 100%;
   border-radius: 10px;
-  background-color: #0f0f0f;
+  background-color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -328,7 +330,7 @@ body .center_tasktable {
 html .center_stat,
 body .center_stat {
   width: 25%;
-  background-color: #0f0f0f;
+  color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -397,7 +399,7 @@ html .center_addtaskButton,
 body .center_addtaskButton {
   padding: 5px 15px 5px 15px;
   font-size: 1.1rem;
-  background-color: #ffffff;
+  background-color: #757678;
   color: #b17676;
   border-radius: 8px 0px 0px 8px;
 }
@@ -642,7 +644,7 @@ body .input {
   font-size: 1.2em;
   width: 90%;
   background-color: #3c3e57;
-  color: #727171;
+  color: #757678;
   border: 0;
 }
 
@@ -676,8 +678,6 @@ html li:hover,
 body li:hover {
   color: #fafafa;
   cursor: pointer;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
 }
 
 html .center_pauseButton,
@@ -747,7 +747,7 @@ body .fa-circle {
 
 html .fa-clock,
 body .fa-clock {
-  color: #740606;
+  color: #b17676;
 }
 
 html .fall,
@@ -800,7 +800,7 @@ body .right {
 
 html .right_divT,
 body .right_divT {
-  color: #a8a4a4;
+  color: #757678;
   display: block;
   text-align: center;
 }
@@ -879,8 +879,12 @@ textarea:hover,
 input[type="number"]:hover {
   color: #fafafa;
   cursor: pointer;
+}
+
+.projectList:hover, .left_day:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
+  background-position: 0 100%;
 }
 
 .projectSelect {
@@ -902,7 +906,7 @@ textarea {
   width: 100%;
   height: 250px;
   border: none;
-  color: rgba(255, 255, 255, 0.55);
+  color: #757678;
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -915,7 +919,7 @@ input[type="date"],
 .Projects {
   padding: 10px;
   border: none;
-  color: rgba(255, 255, 255, 0.55);
+  color: #757678;
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -924,7 +928,7 @@ input[type="date"],
 
 select option {
   background: rgba(0, 0, 0, 0.9);
-  color: rgba(255, 255, 255, 0.55);
+  color: #757678;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -945,6 +949,8 @@ ol {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
 }
 
 .projectList:hover {
@@ -1060,6 +1066,7 @@ input textarea:focus {
   }
   .container .center__text {
     font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.55);
   }
   .container .left {
     font-size: 1.5rem;
