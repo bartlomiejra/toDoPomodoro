@@ -154,13 +154,14 @@
 
 html,
 body {
+  overflow: hidden;
   display: -ms-grid;
   display: grid;
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background: url(background5.png);
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
   height: 100%;
 }
 
@@ -191,7 +192,7 @@ body .container > * {
 
 html .container > *__header,
 body .container > *__header {
-  background: linear-gradient(147.14deg, rgba(24, 18, 18, 0.6) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  background: #22222C;
   max-height: 10px;
 }
 
@@ -212,7 +213,7 @@ body .left {
           flex-direction: column;
   -ms-flex-negative: 2;
       flex-shrink: 2;
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  background: #14141C;
 }
 
 html .left_day,
@@ -221,7 +222,7 @@ body .left_day {
   transition: all .1s ease-in-out;
   position: relative;
   text-align: left;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
 }
 
 html .left_projectItem,
@@ -267,15 +268,15 @@ body .left_color {
   text-align: center;
   font-size: 15px;
   border: none;
-  color: rgba(255, 255, 255, 0.55);
+  background: #A9DED8;
   border-radius: 8px 0px 0px 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
 }
 
 html .left_Projects,
 body .left_Projects {
+  outline: none;
   border-radius: 0px 0px 0px 0px;
 }
 
@@ -305,7 +306,7 @@ body .center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 57.77%);
+  background: #171721;
   font-size: 1.2rem;
 }
 
@@ -313,7 +314,7 @@ html .center_tasktable,
 body .center_tasktable {
   width: 100%;
   border-radius: 10px;
-  background-color: black;
+  background-color: #22222C;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -325,7 +326,7 @@ body .center_tasktable {
 html .center_stat,
 body .center_stat {
   width: 25%;
-  color: black;
+  color: #22222C;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -337,7 +338,7 @@ body .center_stat {
 
 html .center__number,
 body .center__number {
-  color: #441a1a;
+  color: #EE786C;
   -webkit-box-flex: 10;
       -ms-flex: 10;
           flex: 10;
@@ -347,7 +348,7 @@ body .center__number {
 
 html .center__text,
 body .center__text {
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
@@ -358,7 +359,7 @@ html .center_addTaskdiv,
 body .center_addTaskdiv {
   padding: 5px;
   margin: 10px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
   font-size: 2em;
   margin-left: 40px;
   overflow: hidden;
@@ -374,7 +375,7 @@ body .center_addTaskdiv {
 html .center_emptyList,
 body .center_emptyList {
   margin-top: 20px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
 }
 
 html .center_foldericon,
@@ -395,15 +396,17 @@ html .center_addtaskButton,
 body .center_addtaskButton {
   padding: 5px 15px 5px 15px;
   font-size: 1.1rem;
-  background-color: #757678;
-  color: #b17676;
+  color: #EE786C;
+  background-color: #A9DED8;
   border-radius: 8px 0px 0px 8px;
 }
 
 html .center_todoInput,
 body .center_todoInput {
+  outline: none;
   padding: 5px;
-  color: #b17676;
+  color: #1C2426;
+  background-color: #A9DED8;
   letter-spacing: 1.2px;
   font-size: 1.2rem;
   border: 0;
@@ -441,7 +444,7 @@ body .center_divT {
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background-color: #141414;
+  background-color: #22222C;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
@@ -520,7 +523,7 @@ body .center_play-btn {
 
 html .clock,
 body .clock {
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
   font-size: 2em;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
@@ -537,7 +540,7 @@ body .clock {
 
 html .clock i,
 body .clock i {
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
 }
 
 html .clock_clockVisible,
@@ -550,7 +553,7 @@ body .clock .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
 }
 
 html .clock_fullscreen,
@@ -600,7 +603,7 @@ body .clock_fullscreen .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
 }
 
 html .clock_timerStart,
@@ -609,7 +612,7 @@ body .clock_timerStart {
   border-radius: 15px;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
 }
 
 html .clock_timerFinish,
@@ -617,7 +620,7 @@ body .clock_timerFinish {
   background-color: rgba(49, 63, 124, 0.725);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
 }
 
 html .completed,
@@ -718,7 +721,7 @@ body .close-btn {
   cursor: pointer;
   outline: 0;
   background: transparent;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
   font-size: 1.2rem;
   padding: 0.3rem;
 }
@@ -784,8 +787,7 @@ body .fa-clock {
 html .right,
 body .right {
   height: calc(100% - 85px);
-  background-color: #011b01;
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  background: #14141C;
   -webkit-box-flex: 4;
       -ms-flex: 4 20%;
           flex: 4 20%;
@@ -811,7 +813,7 @@ body .right_todo-item {
 html .right_detals,
 body .right_detals {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
 }
 
 html .right .detals > li,
@@ -874,10 +876,18 @@ input[type="number"]:hover {
   cursor: pointer;
 }
 
-.projectList:hover, .left_day:hover {
+.fa-minus-circle {
+  -webkit-transition: scale(1.05) 2s;
+  transition: scale(1.05) 2s;
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+}
+
+.projectList:hover, .left_day:hover, .fa-minus-circle:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   background-position: 0 100%;
+  color: #fafafa;
 }
 
 .projectSelect {
@@ -938,7 +948,7 @@ ol {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -957,7 +967,7 @@ ol {
   margin: 0px 5px 0px 0px;
   outline: 0;
   background: transparent;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
   font-size: 1rem;
   padding: 0.3rem;
 }
@@ -1015,7 +1025,7 @@ input textarea:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #282b2b;
+  background-color: #14141C;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -1043,7 +1053,7 @@ input textarea:focus {
   white-space: nowrap;
   font-family: sans-serif;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #959595;
   text-decoration: none;
 }
 
@@ -1059,7 +1069,7 @@ input textarea:focus {
   }
   .container .center__text {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.55);
+    color: #959595;
   }
   .container .left {
     font-size: 1.5rem;
@@ -1067,14 +1077,15 @@ input textarea:focus {
     width: 100% !important;
   }
   .container .left_title {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
   }
   .container .left_day > i {
     font-size: 2.0rem;
     padding: 0px 15px 0px 10px;
   }
   .container .left_projectItem {
-    color: rgba(255, 255, 255, 0.55);
+    color: #959595;
   }
   .container .left .circle {
     display: -webkit-box;
@@ -1102,7 +1113,7 @@ input textarea:focus {
     right: 0;
     -webkit-backdrop-filter: blur(9px);
             backdrop-filter: blur(9px);
-    color: linear-gradient(147.14deg, rgba(133, 132, 132, 0.7) 18.33%, rgba(179, 176, 176, 0.2) 77.77%);
+    color: #14141C;
     position: absolute;
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
@@ -1111,5 +1122,10 @@ input textarea:focus {
     transition: transform .9s .9s ease-in-out;
     transition: transform .9s .9s ease-in-out, -webkit-transform .9s .9s ease-in-out;
   }
+}
+
+.dss:hover {
+  stroke-dasharray: 2;
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */
