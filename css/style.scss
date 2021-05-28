@@ -13,6 +13,11 @@ $timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 
 $task_color: 	  #141414;
 $red:       #b17676;
 $number-color: rgb(68, 26, 26);
+$addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+$right_background: linear-gradient(147.14deg, rgba(133, 132, 132, 0.7) 18.33%, rgba(179, 176, 176, 0.2) 77.77%);
+$shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+$hover_color: rgb(250, 250, 250);
+$nav_color: #282b2b;
 
 //New Color Project
 $backgroundnew: #161621;
@@ -29,8 +34,7 @@ $task: #23222D;
 }
 
 @mixin hover {
-  color: rgb(250, 250, 250);
-//   margin-left: 5px;
+  color: $hover_color;
   cursor: pointer;
 
 }
@@ -43,10 +47,11 @@ $task: #23222D;
   // height: 30px;
   font-size: 15px;
   border: none;
-  color: rgba(255, 255, 255, 0.550);
+  color: $font-color;
   border-radius: 8px 0px 0px 8px;
-  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.5));
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+  filter: $shadow;
+  background: $addProject
+ 
 
  
 }
@@ -145,7 +150,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background: url(background5.png);
 //   background: black;
-  color: white;
+  color: $font-color;
   height: 100%;
 //   background-size: 150% 150%;
 
@@ -236,7 +241,8 @@ body {
 
     &_addProjectBtn {
       width: 30px;
-      color: red;
+	
+      color:   $red;
       // flex: 1 1 5px;
     }
 
@@ -277,9 +283,7 @@ body {
   .none {
     display: none;
   }
-  .center>text{
-	  color: green;
-  }
+  
 
   .center {
     // position: relative;
@@ -320,6 +324,8 @@ body {
     }
 
     &__text {
+		color: $font-color;
+
       flex: 2;
       text-align: center;
     }
@@ -327,7 +333,7 @@ body {
     &_addTaskdiv {
       padding: 5px;
       margin: 10px;
-      color: white;
+      color: $font-color;
       font-size: 2em;
       margin-left: 40px;
 	      overflow: hidden;
@@ -340,7 +346,9 @@ body {
 
 	&_emptyList{
 		margin-top: 20px;
-		color: rgba(255, 255, 255, 0.550);	}
+		color: $font-color;
+	
+	}
 		font-size: 1.2rem;
 
 		&_foldericon{
@@ -377,7 +385,7 @@ body {
 
     &_todolist>div {
       transition: all 0.4s ease;
-      filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+      filter: $shadow;
     } 
 
 	&_todolist {
@@ -398,7 +406,8 @@ padding:0px;
       max-width: 500px;
       margin-bottom: 5px;
       border-radius: 8px;
-      filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+	  filter: $shadow;
+      
       background-color: $task_color;
 	
       display: grid;
@@ -447,10 +456,9 @@ padding:0px;
   }
 
   .clock {
-    background: rgba(20, 20, 20, 0.725);
     // padding: 5px;
     // margin: 10px;
-    color: white;
+    color: $font-color;
     font-size: 2em;
     backdrop-filter: blur(5px);
     transition: all .3s ease-in-out;
@@ -465,7 +473,7 @@ padding:0px;
 
     i {
       // background-color: red;
-      color: rgba(255, 255, 255, 0.550);
+      color: $font-color;
     }
 
     &_clockVisible {
@@ -476,7 +484,7 @@ padding:0px;
         position: absolute;
         top: 5px;
         left: 5px;
-        color: white;
+        color: $font-color;
       }
     &_fullscreen {
       position: absolute;
@@ -506,14 +514,14 @@ padding:0px;
 
       .countdownButtonsNone {
         display: none;
-        background-color: pink;
+        // background-color: pink;
       }
 
       .fa-window-restore {
         position: absolute;
         top: 5px;
         left: 5px;
-        color: white;
+        color: $font-color;
       }
     }
     &_timerStart {
@@ -522,14 +530,14 @@ padding:0px;
       // opacity: 0.4;
       border-radius: 15px;
       backdrop-filter: blur(5px);
-      color: white;
+      color: $font-color;
     }
   
     &_timerFinish {
   
       background-color: $blue;
       backdrop-filter: blur(5px);
-      color: white;
+      color: $font-color;
   
     }
     
@@ -551,7 +559,7 @@ padding:0px;
   .input {
     font-size: 1.2em;
     width: 90%;
-    background-color: #3c3e57;
+    // background-color: #3c3e57;
     color: $fonts;
     border: 0;
   }
@@ -602,7 +610,7 @@ padding:0px;
     cursor: pointer;
     outline: 0;
     background: transparent;
-    color: rgb(88, 88, 88);
+    color:   $font-color;
     font-size: 1.2rem;
     padding: 0.3rem;
   }
@@ -675,7 +683,7 @@ padding:0px;
 	  }
     &_detals {
       font-size: 1rem;
-      color: rgba(255, 255, 255, 0.550);
+      color: $font-color;
     }
   
     .detals>li {
@@ -784,7 +792,6 @@ input[type="date"],
 	padding: 10px;
 
 
-  // border: grey;
   border: none;
   color: $fonts;
   border-radius: 8px;
@@ -820,7 +827,7 @@ ol {
 
 .projectList {
   display: flex;
-  color: rgba(255, 255, 255, 0.55);
+  color: $font-color;
 //   margin-bottom: 5px;
   align-items: center;
 //   transition: scale(1.05) 2s;
@@ -832,7 +839,7 @@ transition: all .1s ease-in-out;
 }
 
 .projectList:hover{
-	color: white;
+	color: $hover_color;
 }
 
 .circle {
@@ -842,10 +849,12 @@ transition: all .1s ease-in-out;
   margin: 0px 5px 0px 0px;
   outline: 0;
   background: transparent;
-  color: rgb(88, 88, 88);
+  color: $font-color;
   font-size: 1rem;
   padding: 0.3rem;
 }
+
+
 
 i {
   text-align: right;
@@ -904,7 +913,7 @@ input {
 	  display: flex;
 	  overflow-x: auto;
 	  flex-direction: row;
-	  background-color: #282b2b;
+	  background-color: $nav_color;
 	  align-self: flex-end;
 	
 	
@@ -922,7 +931,7 @@ input {
 		white-space: nowrap;
 		font-family: sans-serif;
 		font-size: 13px;
-		color: #ffffff;
+		color: $font-color;
 		text-decoration: none;
 		// background-color: black;
 	  
@@ -974,7 +983,7 @@ color: $font-color;
  
   }
   &_projectItem{
-	color: rgba(255, 255, 255, 0.55);
+	color: $font-color;
 	
 
 
@@ -1007,7 +1016,8 @@ color: $font-color;
 	width: 300px;
 	right: 0;
 	backdrop-filter: blur(9px);
-	background: linear-gradient(147.14deg, rgba(133, 132, 132, 0.7) 18.33%, rgba(179, 176, 176, 0.2) 77.77%);
+	color: $right_background;
+
 
 
     //   right: -300px;
