@@ -1087,6 +1087,18 @@ input textarea:focus {
   .container .left_projectItem {
     color: #959595;
   }
+  .container .left_addProject {
+    width: 70%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
   .container .left .circle {
     display: -webkit-box;
     display: -ms-flexbox;
