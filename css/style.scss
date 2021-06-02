@@ -56,12 +56,14 @@ $task: #23222D;
 @mixin left_addproject {
   // position: absolute;
   // bottom: ;
+  height: 30px;
 
   text-align: center;
   // height: 30px;
   font-size: 15px;
   border: none;
-background:    #A9DED8;
+  background-color: $task;
+
 $dark-font: #1C2426;
   border-radius: 8px 0px 0px 8px;
   filter: $shadow;
@@ -241,7 +243,7 @@ body {
 
     &_addProject {
 		margin-top:auto;
-		height: 28px;
+		height: 32px;
 
 
       
@@ -255,12 +257,7 @@ body {
       flex-wrap: nowrap;
     }
 
-    &_addProjectBtn {
-      width: 30px;
-
-      color:   $red;
-      // flex: 1 1 5px;
-    }
+   
 
 
 
@@ -279,11 +276,20 @@ body {
     &_color {
       @include left_addproject;
     }
+	&_addProjectBtn {
+		width: 30px;
+		height: 32px;
+  
+		color:   $red;
+		// flex: 1 1 5px;
+		
+	  }
 
     &_Projects {
 		outline: none;
+		color: $font-color;
 
-      // flex: 3 1 0;
+
       border-radius: 0px 0px 0px 0px;
 
     }
@@ -351,7 +357,7 @@ body {
     &_addTaskdiv {
       padding: 5px;
       margin: 10px;
-      color: $font-color;
+      color:  $task;
       font-size: 2em;
       margin-left: 40px;
 	      overflow: hidden;
@@ -365,6 +371,8 @@ body {
 	&_emptyList{
 		margin-top: 20px;
 		color: $font-color;
+		text-align: center;
+
 	
 	}
 		font-size: 1.2rem;
@@ -386,7 +394,9 @@ body {
       
 
 	  color: $number-color;
-	  background-color: $light-color;
+	  background-color:$task;
+	  
+
 	  border-radius: 8px 0px 0px 8px;
     }
 
@@ -394,8 +404,8 @@ body {
         outline: none;
 
       padding: 5px;
-	  color: $dark-font;
-	  background-color: $light-color;
+	  color: $font-color;
+	  background-color: $task;
       letter-spacing: 1.2px;
       font-size: 1.2rem;
       border: 0;
@@ -1002,12 +1012,28 @@ color: $font-color;
 
     } 
 
+	.center_addTaskdiv{
+		     width: auto;
+			 margin: 5px;
+			     margin-left: 0;
+			 
+
+	}
+
+	.center_todoInput{
+		font-size: 0.8rem;
+
+	}
+
 .left{
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	height: calc(100% - 85px);
 
   width: 100%!important;
  
+  &_addProjectBtn{
+	  max-width:50px;
+  }
   &_title{
 	  font-size: 2rem;
 	  text-align: center;
@@ -1019,6 +1045,7 @@ color: $font-color;
  
   }
   &_projectItem{
+
 	color: $font-color;
 	
 
@@ -1027,10 +1054,11 @@ color: $font-color;
 
   
  &_addProject{
-  width: 70%;
+  width: 100%;
   justify-content: center;
   display: flex;
   align-items: center;
+  height: 30px;
 
 
  }
@@ -1046,7 +1074,7 @@ color: $font-color;
 }
 .projectDelete>i{
 	font-size: 1.5rem;
-	color:rgba(0, 0, 0, 0.2);
+	// color:rgba(0, 0, 0, 0.2);
 	
 }
 

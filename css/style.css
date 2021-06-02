@@ -236,7 +236,7 @@ body .left_projectItem {
 html .left_addProject,
 body .left_addProject {
   margin-top: auto;
-  height: 28px;
+  height: 32px;
   display: -webkit-box;
   display: flex;
   left: 10;
@@ -246,12 +246,6 @@ body .left_addProject {
   display: -webkit-flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-}
-
-html .left_addProjectBtn,
-body .left_addProjectBtn {
-  width: 30px;
-  color: #b17676;
 }
 
 html .left_color,
@@ -265,18 +259,27 @@ html .left_addProjectBtn, html .left_Projects, html .left_color,
 body .left_addProjectBtn,
 body .left_Projects,
 body .left_color {
+  height: 30px;
   text-align: center;
   font-size: 15px;
   border: none;
-  background: #A9DED8;
+  background-color: #23222D;
   border-radius: 8px 0px 0px 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 }
 
+html .left_addProjectBtn,
+body .left_addProjectBtn {
+  width: 30px;
+  height: 32px;
+  color: #b17676;
+}
+
 html .left_Projects,
 body .left_Projects {
   outline: none;
+  color: #959595;
   border-radius: 0px 0px 0px 0px;
 }
 
@@ -359,7 +362,7 @@ html .center_addTaskdiv,
 body .center_addTaskdiv {
   padding: 5px;
   margin: 10px;
-  color: #959595;
+  color: #23222D;
   font-size: 2em;
   margin-left: 40px;
   overflow: hidden;
@@ -376,6 +379,7 @@ html .center_emptyList,
 body .center_emptyList {
   margin-top: 20px;
   color: #959595;
+  text-align: center;
 }
 
 html .center_foldericon,
@@ -397,7 +401,7 @@ body .center_addtaskButton {
   padding: 5px 15px 5px 15px;
   font-size: 1.1rem;
   color: #EE786C;
-  background-color: #A9DED8;
+  background-color: #23222D;
   border-radius: 8px 0px 0px 8px;
 }
 
@@ -405,8 +409,8 @@ html .center_todoInput,
 body .center_todoInput {
   outline: none;
   padding: 5px;
-  color: #1C2426;
-  background-color: #A9DED8;
+  color: #959595;
+  background-color: #23222D;
   letter-spacing: 1.2px;
   font-size: 1.2rem;
   border: 0;
@@ -1071,10 +1075,21 @@ input textarea:focus {
     font-size: 0.8rem;
     color: #959595;
   }
+  .container .center_addTaskdiv {
+    width: auto;
+    margin: 5px;
+    margin-left: 0;
+  }
+  .container .center_todoInput {
+    font-size: 0.8rem;
+  }
   .container .left {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     height: calc(100% - 85px);
     width: 100% !important;
+  }
+  .container .left_addProjectBtn {
+    max-width: 50px;
   }
   .container .left_title {
     font-size: 2rem;
@@ -1088,7 +1103,7 @@ input textarea:focus {
     color: #959595;
   }
   .container .left_addProject {
-    width: 70%;
+    width: 100%;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -1098,6 +1113,7 @@ input textarea:focus {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    height: 30px;
   }
   .container .left .circle {
     display: -webkit-box;
@@ -1115,7 +1131,6 @@ input textarea:focus {
   }
   .container .left .projectDelete > i {
     font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.2);
   }
   .container .leftnone {
     display: none;

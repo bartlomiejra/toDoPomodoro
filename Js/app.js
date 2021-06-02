@@ -142,8 +142,9 @@ function statTask() {
   let toBeCompleted = 0;
   let countCompleted = 0;
   //* counting statiscics
-  for (let i = 0; i < todos.length; i += 1) {
-    if (todos[i].done === true) {
+  taskToday = todos.filter((items) => items.data === dateToday);
+  for (let i = 0; i < taskToday.length; i += 1) {
+    if (taskToday[i].done === true) {
       countCompleted += 1;
     } else {
       toBeCompleted += 1;
@@ -566,7 +567,8 @@ function addProject(event) {
   addPr.value = '';
   renderProjects();
 }
-//! napisać funkcje która będzie zliczać ile razy nazwa danego projektu wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
+//! napisać funkcje która będzie zliczać ile razy nazwa danego projektu
+//! wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
 
 function renderProjects() {
   const proj = JSON.parse(localStorage.getItem('Project')) || [];
@@ -584,6 +586,7 @@ function renderProjects() {
   </span>
   ${proje.name} 
   </div>
+  
   <button class="projectDelete" id=${proje.name} > <i class="fas fa-minus-circle" 
   aria-hidden="true" id=${proje.id} name=${proje.name}></i></button>
   </li>
@@ -646,7 +649,6 @@ function sortingProjectDays(e) {
         (items) => items.data !== dateTomorrow || dateToday,
       );
 
-      console.log(taskSomeday);
       lists(taskSomeday, todoList);
       break;
     default:
