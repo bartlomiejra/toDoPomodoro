@@ -78,10 +78,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
+This is a simple todolist app  implements pomodoro time management technique, przechowywania twoich notatek oraz tasków do zrobienia.   :tomato:
 `github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
 
 
@@ -97,14 +96,14 @@ Here's a blank template to get started:
 
 <!-- ROADMAP -->
 ## Roadmap
-I would like to develop my application by adding the following functionalities:
-- [ ] the ability to add repetitive tasks
+This is a simple application that will help you be productive. You will be able to create recurring pomodoro tasks broken down into projects, create notes and simple todolists.- [ ] the ability to add repetitive tasks
   - [ ] find lib for it
 - [ ]  divide the project into smaller js files modules
 - [ ] improve a Orthogonality
 - [ ] Animations
-- [ ] classic todo 
+- [ ] classic todo (cyclical ) 
 - [ ] bookmark with notes
+
 
 
 <!-- CONTRIBUTING -->
@@ -126,17 +125,9 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@bartlomiejra](https://twitter.com/bartlomiejra) - email
+Bart - [@bartlomiejra](https://twitter.com/bartlomiejra) 
 
 
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
 
 
 
