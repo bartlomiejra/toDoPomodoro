@@ -33,12 +33,11 @@
 
   <p align="center">
     This is a simple todolist app  implements pomodoro time management technique.  :tomato:
-Contributors Forks Stargazers Issues MIT License LinkedIn
     <br />
-    <!-- <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a> -->
+    <!-- <a href="https://bartlomiejra.github.io/toDoPomodoro/"><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/github_username/repo_name">View App</a>
     ·
     <a href="https://github.com/bartlomiejra/toDoPomodoro/issues">Report Bug</a>
     ·
@@ -88,9 +87,9 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [](HTML)
+* [](Scss)
+* [](Javascript)
 
 
 
@@ -98,9 +97,13 @@ Here's a blank template to get started:
 
 <!-- ROADMAP -->
 ## Roadmap
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
-
+I would like to develop my application by adding the following functionalities:
+[] the ability to add repetitive tasks
+[]  divide the project into smaller js files modules
+[] improve a Orthogonality
+[] Animations
+[] classic todo 
+[] bookmark with notes
 
 
 <!-- CONTRIBUTING -->
@@ -122,9 +125,8 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Your Name - [@bartlomiejra](https://twitter.com/bartlomiejra) - email
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
 
 
