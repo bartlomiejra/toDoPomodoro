@@ -87,9 +87,9 @@ Here's a blank template to get started:
 
 ### Built With
 
-* [](HTML)
-* [](Scss)
-* [](Javascript)
+* []()HTML
+* []()Scss
+* []()Javascript
 
 
 
