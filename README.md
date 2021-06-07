@@ -26,7 +26,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="/toDoPomodoro.png" alt="Logo" width="500" height="500">
+    <img src="/toDoPomodoro.png" alt="Logo" >
   </a>
 
   <h3 align="center">toDoPomodoro</h3>
