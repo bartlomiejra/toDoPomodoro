@@ -98,12 +98,13 @@ Here's a blank template to get started:
 <!-- ROADMAP -->
 ## Roadmap
 I would like to develop my application by adding the following functionalities:
-[] the ability to add repetitive tasks
-[]  divide the project into smaller js files modules
-[] improve a Orthogonality
-[] Animations
-[] classic todo 
-[] bookmark with notes
+- [ ] the ability to add repetitive tasks
+  - [ ] find lib for it
+- [ ]  divide the project into smaller js files modules
+- [ ] improve a Orthogonality
+- [ ] Animations
+- [ ] classic todo 
+- [ ] bookmark with notes
 
 
 <!-- CONTRIBUTING -->
