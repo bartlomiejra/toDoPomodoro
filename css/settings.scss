@@ -1,0 +1,83 @@
+@import 'style';
+
+*, *::After *::before {
+	box-sizing:  border-box;
+}
+
+.modal{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	border: 1px solid black;
+	transition: 200ms ease-in-out;
+	border-radius: 10px;
+	background-color: $task;
+	z-index: 100;
+	width: 1000px;
+	height: 1000px;
+
+max-width: 80%;
+max-height: 80%;
+
+
+
+
+&__header{
+	padding:10px 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid black;
+
+}
+
+&__header, &__tittle{
+	font-size: 1.25rem;
+	font-weight:  bold;
+}
+
+
+
+&__header, &__closebutton{
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 1.25rem;
+	font-weight: bold;
+
+
+}
+&__body{
+	padding: 10px 15px
+}
+
+
+
+}
+
+
+#overlay{
+	position: absolute;
+	opacity: 0;
+	top: 0; 
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.6);
+pointer-events: none;
+}
+
+#overlay.active{
+	opacity: 1;
+	pointer-events: all;
+	
+}
+.modal.active{
+	transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+

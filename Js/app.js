@@ -30,7 +30,7 @@ let audio;
 
 let timeInFocus;
 const pomodoreDuration = 25;
-
+// leftDiv.classList.remove('none');
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
@@ -55,11 +55,13 @@ actualDateTime();
 tasks = JSON.parse(localStorage.getItem('Items')) || [];
 taskToday = tasks.filter((items) => items.data === dateToday);
 lists(taskToday, todoList);
+console.log(taskToday);
 
 function lists(todolist = [], objlines) {
   console.log(actualList);
   console.log(todolist);
   actualList = todolist;
+  console.log(actualList);
 
   if (actualList.length < 1) {
     emptyList.classList.remove('none');
@@ -130,9 +132,10 @@ function addTodo(event) {
   // push and add task to localstorage
   todos.push(item);
   lists(todos, todoList);
-  // lists(actualList, todoList);
+  //   lists(actualList, todoList);
+  lists(actualList, todoList);
 
-  localStorage.setItem('Items', JSON.stringify(todos));
+  localStorage.setItem('Items', JSON.stringify(actualList));
 
   todoInput.value = '';
   statTask();
