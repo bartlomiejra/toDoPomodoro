@@ -1161,7 +1161,7 @@ input textarea:focus {
           box-sizing: border-box;
 }
 
-.modal {
+.modal, .noteCard {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1179,7 +1179,7 @@ input textarea:focus {
   max-height: 80%;
 }
 
-.modal__header {
+.modal__header, .noteCard__header {
   padding: 10px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1193,12 +1193,12 @@ input textarea:focus {
   border-bottom: 1px solid black;
 }
 
-.modal__header, .modal__tittle {
+.modal__header, .modal__tittle, .noteCard__header, .noteCard__tittle {
   font-size: 1.25rem;
   font-weight: bold;
 }
 
-.modal__header, .modal__closebutton {
+.modal__header, .modal__closebutton, .noteCard__header, .noteCard__closebutton {
   cursor: pointer;
   border: none;
   outline: none;
@@ -1207,7 +1207,7 @@ input textarea:focus {
   font-weight: bold;
 }
 
-.modal__body {
+.modal__body, .noteCard__body {
   padding: 10px 15px;
 }
 
