@@ -881,8 +881,6 @@ input[type="number"]:hover {
 }
 
 .fa-minus-circle {
-  -webkit-transition: scale(1.05) 2s;
-  transition: scale(1.05) 2s;
   -webkit-transition: all .1s ease-in-out;
   transition: all .1s ease-in-out;
 }

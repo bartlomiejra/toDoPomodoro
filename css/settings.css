@@ -881,8 +881,6 @@ input[type="number"]:hover {
 }
 
 .fa-minus-circle {
-  -webkit-transition: scale(1.05) 2s;
-  transition: scale(1.05) 2s;
   -webkit-transition: all .1s ease-in-out;
   transition: all .1s ease-in-out;
 }
@@ -1161,7 +1159,7 @@ input textarea:focus {
           box-sizing: border-box;
 }
 
-.modal, .noteCard {
+.modal, .noteCard, .todoCard {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1172,14 +1170,17 @@ input textarea:focus {
   transition: 200ms ease-in-out;
   border-radius: 10px;
   background-color: #23222D;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  opacity: 0.9;
   z-index: 100;
-  width: 1000px;
-  height: 1000px;
-  max-width: 80%;
-  max-height: 80%;
+  width: 95%;
+  height: 95%;
+  max-width: 95%;
+  max-height: 95%;
 }
 
-.modal__header, .noteCard__header {
+.modal__header, .noteCard__header, .todoCard__header {
   padding: 10px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1193,12 +1194,12 @@ input textarea:focus {
   border-bottom: 1px solid black;
 }
 
-.modal__header, .modal__tittle, .noteCard__header, .noteCard__tittle {
+.modal__header, .modal__tittle, .noteCard__header, .noteCard__tittle, .todoCard__header, .todoCard__tittle {
   font-size: 1.25rem;
   font-weight: bold;
 }
 
-.modal__header, .modal__closebutton, .noteCard__header, .noteCard__closebutton {
+.modal__header, .modal__closebutton, .noteCard__header, .noteCard__closebutton, .todoCard__header, .todoCard__closebutton {
   cursor: pointer;
   border: none;
   outline: none;
@@ -1207,7 +1208,7 @@ input textarea:focus {
   font-weight: bold;
 }
 
-.modal__body, .noteCard__body {
+.modal__body, .noteCard__body, .todoCard__body {
   padding: 10px 15px;
 }
 
@@ -1227,8 +1228,17 @@ input textarea:focus {
   pointer-events: all;
 }
 
-.modal.active, .noteCard.active {
+.modal.active, .noteCard.active, .todoCard.active {
   -webkit-transform: translate(-50%, -50%) scale(1);
           transform: translate(-50%, -50%) scale(1);
+}
+
+@media screen and (max-width: 895px) {
+  .modal {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 /*# sourceMappingURL=settings.css.map */
