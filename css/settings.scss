@@ -74,7 +74,7 @@ pointer-events: none;
 	pointer-events: all;
 	
 }
-.modal.active {
+.modal.active, .noteCard.active  {
 	transform: translate(-50%, -50%) scale(1);
 }
 

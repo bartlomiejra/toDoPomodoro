@@ -1,33 +1,15 @@
 const openNote = document.getElementById('noteButton');
 const closeNote = document.getElementById('closeNotebtn');
-// const noteCard = document.getElementsByClassName('noteCard');
-// const overlay = document.getElementById('overlay');
-
-// // const overlay = document.getElementById('overlay');
-
-// closeNote.forEach((span) => {
-//   span.addEventListener('click', () => {
-//     // const modal = button.closest('modal');
-//     const modal = span.closest('.modal');
-//     closeModal(modal);
-//   });
-// });
-
-// // function openModal(modal) {
-// //   if (modal == null) return;
-// // }
-
-// function closeModal(modal) {
-//   if (modal == null) return;
-
-//   modal.classList.remove('active');
-//   overlay.classList.remove('active');
-// }
+const noteCard = document.querySelector('.noteCard');
 
 function openNoteCard() {
-  console.log('działa note');
-  openNote.classList.add('noteCard');
+  noteCard.classList.add('active');
   overlay.classList.add('active');
 }
 
+function closeNoteCard() {
+  noteCard.classList.remove('active');
+  overlay.classList.remove('active');
+}
 openNote.addEventListener('click', openNoteCard);
+closeNote.addEventListener('click', closeNoteCard);
