@@ -1,0 +1,17 @@
+.tiles {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 33% 33% 33%;
+      grid-template-columns: 33% 33% 33%;
+  -ms-grid-rows: 50% 50px 80px;
+      grid-template-rows: 50% 50px 80px;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+  row-gap: 15px;
+  justify-items: stretch;
+}
+
+.tile {
+  background-color: red;
+}
+/*# sourceMappingURL=note.css.map */

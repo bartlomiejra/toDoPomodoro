@@ -1,0 +1,15 @@
+.tiles {
+	display: grid;
+	grid-template-columns: 33% 33% 33%;
+	grid-template-rows: 50% 50px 80px; 
+	column-gap: 10px;
+
+	row-gap: 15px;
+	justify-items: stretch;
+	
+}
+
+.tile{
+	  background-color: red;
+
+  }
