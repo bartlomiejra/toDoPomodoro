@@ -1194,11 +1194,11 @@ input textarea:focus {
 }
 
 .tiles__tile:nth-child(1) {
-  background: #003338
+  background: #003338;
 }
 
 .tiles__tile:nth-child(3) {
-  background: ##847655
+  background: ##847655;
 }
 .tiles__tile:nth-child(4) {
   background: #291110;
@@ -1210,7 +1210,7 @@ input textarea:focus {
 	background: #292A44;
   }
   .tiles__tile:nth-child(7) {
-	background:#292A44;
+	background:#3f0531;
   }
   .tiles__tile:nth-child(8) {
 	background: #342C17
