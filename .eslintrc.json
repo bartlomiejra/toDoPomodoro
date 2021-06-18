@@ -7,10 +7,14 @@
         "airbnb-base"
       
     ],
+	"plugins": ["prettier"],
     "parserOptions": {
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "rules": {
-    }
+  
+"rules": {
+   "indent": "off"
+
+}
 }

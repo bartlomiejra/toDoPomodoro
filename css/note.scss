@@ -2,6 +2,7 @@
 
 @mixin hoverlighter {
 	filter: brightness(150%);
+	cursor: pointer;
 
 	
 }
@@ -19,7 +20,7 @@
 		font-size: auto;
 		background-color:darkcyan;
 		  border-radius: 10px;
-		  background: tomato;
+		  background: #D57868;
 		  padding: 5px;
 		  width: 200px;
 		  height: 150px;
@@ -31,8 +32,17 @@
 		  h3{
 			  
 		  }
+		 
 	
-	
+	  }
+	  &__tile:nth-child(2) {
+		background: #4E344D;
+	  }
+	  &__tile:nth-child(1) {
+		background: #955165;
+	  }
+	  &__tile:nth-child(3) {
+		background: #FAB261;
 	  }
 	  &__date{
 		  color: rgb(192, 192, 192);
@@ -57,11 +67,86 @@
 
 
 	}
-}
-&__add:hover{
-	color: $gradient_color;
-  }
 
+	&__note{
+		color: rgb(32, 36, 32);
+		background-color: $backgroundnew;
+		height: 700px;
+		width: 700px;
+		max-height: 80%;
+		max-width: 90%;
+		z-index: 300;
+		position: absolute;
+		transform: translate(-50%, -50%) ;
+	top: 50%;
+	left: 50%;
+	
+		
+	}
+
+
+	&__savebtn, 	&__deletebtn{
+		position: absolute;
+		
+		top: 10px;
+		left: 10px;
+		border-radius: 5px;
+		background-color: $task;
+		color: $butColor;
+		font-size: 15px;
+		padding: 10px;
+
+
+	}
+
+	&__savebtn{
+		left: 115px;
+		
+	}
+	
+
+	&__savebtn:hover, &__deletebtn:hover{
+		@include hoverlighter;
+
+}
+	.tiles__add:hover{
+		color: rgb(185, 42, 42);
+		cursor: pointer;
+
+	}
+
+&__noteHeader{
+display: flex;
+margin-top: 50px;
+	outline: none;
+    padding: 5px;
+    color: #959595;
+    background-color: transparent;
+    letter-spacing: 1.2px;
+    font-size: 1.6rem;
+    border: 0;
+    
+   
+    border-radius: 0px 8px 8px 0px;
+}
+
+&__textarea{
+	display: flex;
+margin-top: 20px;
+	outline: none;
+	width: 100%;
+margin: 10px 10px 10px 10px;
+    color: #959595;
+    background-color: transparent;
+    letter-spacing: 1.2px;
+    font-size: 1rem;
+    border: 0;
+	height: 200px;
+    
+    text-align: center;
+    border-radius: 0px 8px 8px 0px;
+}
+}
 
   .modal_addNotebutton{
 	position: absolute;

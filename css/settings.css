@@ -1201,6 +1201,19 @@ input textarea:focus {
   font-weight: bold;
 }
 
+.modal__body, .noteCard__body, .todoCard__body {
+  height: 100%;
+  font-size: 20px;
+}
+
+.modal__body__options, .noteCard__body__options, .todoCard__body__options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 20px;
+  background-color: #22222C;
+}
+
 .modal__header, .modal__closebutton, .noteCard__header, .noteCard__closebutton, .todoCard__header, .todoCard__closebutton {
   cursor: pointer;
   border: none;
@@ -1212,6 +1225,14 @@ input textarea:focus {
 
 .modal__body, .noteCard__body, .todoCard__body {
   padding: 10px 15px;
+}
+
+.modal__savebtn, .noteCard__savebtn, .todoCard__savebtn {
+  border-radius: 5px;
+  background-color: #14141C;
+  color: #A6DFD8;
+  font-size: 15px;
+  padding: 10px;
 }
 
 #overlay {

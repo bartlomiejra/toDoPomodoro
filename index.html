@@ -182,15 +182,54 @@
 							
 						<div class="tiles__date">20 May 2021</div>
 						</div>
+					<div class="tiles__tile">
+						<h3>Numery Telefonów do znajomych 
+						</h3>
+							
+						<div class="tiles__date">20 May 2021</div>
+						</div>
+					<div class="tiles__tile">
+						<h3>Numery Telefonów do znajomych 
+						</h3>
+							
+						<div class="tiles__date">20 May 2021</div>
+						</div>
+					<div class="tiles__tile">
+						<h3>Numery Telefonów do znajomych 
+						</h3>
+							
+						<div class="tiles__date">20 May 2021</div>
+						</div>
+					<div class="tiles__tile">
+						<h3>Numery Telefonów do znajomych 
+						</h3>
+							
+						<div class="tiles__date">20 May 2021</div>
+						</div>
+					<div class="tiles__tile">
+						<h3>Numery Telefonów do znajomych 
+						</h3>
+							
+						<div class="tiles__date">20 May 2021</div>
+						</div>
+					
 				
 				</div>	 
-			
 				<button class="tiles__addNote" id="addNoteButton"><i class="fas fa-plus tiles__add" aria-hidden="true"></i></button>
+				<div class="tiles__note none">
+					<button class="tiles__savebtn">Save</button>
+					<button class="tiles__deletebtn">Delete Note</button>
+					<button  id="closethisNote" class="modal__closebutton"><i class="fas fa-times"></i></button>
+					<input class="tiles__noteHeader" placeholder="Title" type="text">
+					<input type="textarea" placeholder="Type something..." class="tiles__textarea">
+
+
+				</div>
 			</div>
 			
 		
 		  <div  class="nav_element  " id="todoButton">		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" dss feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-			<span>Todo</span><br>
+			<span>Todo</span>
 		  </div>
 		  <div class="modal todoCard">
 
@@ -208,7 +247,7 @@
 		  
 		
 
-			<span  > Settings</span><br>
+			<span  > Settings</span>
 			<div class="modal"  id="modal">
 
 				<div class="modal__header">
@@ -217,19 +256,22 @@
 					
 				</div>
 				<div class="modal__body">
-					<ol>
-						<hr>
+					<ol class="modal__options">
 						<li><input type="radio" id="Light" name="gender" value="Dark">
-							<label for="Light">Light Theme </label><br>
+							<label for="Light">Light Theme </label>
 							<input type="radio" id="Dark" name="gender" value="Dark">
-							<label for="Dark">Dark Theme</label><br></li>
-							<hr>
+							<label for="Dark">Dark Theme</label></li>
 							<li>
-
+								
 								<label for="quantity">Pomodore duration:</label>
 								<input type="number" id="quantity" name="quantity" min="5" max="100">
 							</li>
-							<li><button>Save Settings</button></li>
+							<li>
+
+								<button class="modal__savebtn">Save Settings</button>
+							</li>
+
+							
 					</ol>
 					
 				</div>

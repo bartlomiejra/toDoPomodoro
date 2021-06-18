@@ -39,6 +39,18 @@ max-height: 95%;
 	font-size: 1.25rem;
 	font-weight:  bold;
 }
+&__body{
+	height: 100%;
+	font-size: 20px;
+	&__options{
+		display: flex;
+		
+		border-radius: 20px;
+		background-color: $black;
+
+	}
+}
+
 
 
 
@@ -55,7 +67,15 @@ max-height: 95%;
 &__body{
 	padding: 10px 15px
 }
-
+&__savebtn  {
+	
+	border-radius: 5px;
+	background-color: $backgrounddarker;
+	color: #A6DFD8;
+	font-size: 15px;
+	padding: 10px;
+  }
+  
 
 
 }
