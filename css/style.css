@@ -700,7 +700,8 @@ html .fa-minus-circle,
 html .fa-calendar-alt,
 html .fa-list,
 html .fa-repeat,
-html .close-btn,
+html .fas fa-times
+.close-btn,
 body .center_pauseButton,
 body .center_resetButton,
 body .center_play-btn,
@@ -721,7 +722,8 @@ body .fa-minus-circle,
 body .fa-calendar-alt,
 body .fa-list,
 body .fa-repeat,
-body .close-btn {
+body .fas fa-times
+.close-btn {
   cursor: pointer;
   outline: 0;
   background: transparent;

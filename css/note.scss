@@ -1,15 +1,88 @@
-.tiles {
-	display: grid;
-	grid-template-columns: 33% 33% 33%;
-	grid-template-rows: 50% 50px 80px; 
-	column-gap: 10px;
+@import 'style';
 
-	row-gap: 15px;
-	justify-items: stretch;
+@mixin hoverlighter {
+	filter: brightness(150%);
+
 	
 }
 
-.tile{
-	  background-color: red;
+.tiles {
+	
+	row-gap: 15px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	padding: 0;
+	margin: 20px;
+	list-style: none;
+	&__tile{
+		font-size: auto;
+		background-color:darkcyan;
+		  border-radius: 10px;
+		  background: tomato;
+		  padding: 5px;
+		  width: 200px;
+		  height: 150px;
+		  margin-top: 10px;
+		  margin-left: 10px;
+		  color: white;
+		  font-weight: bold;
+		  text-align: center;
+		  h3{
+			  
+		  }
+	
+	
+	  }
+	  &__date{
+		  color: rgb(192, 192, 192);
+	  }
+	
+	  &__addNote{
+		  background: transparent;
+		 
+		  
+	  }
+	  &__add{
+		position: absolute;
+		bottom: 20px;
+		right: 20px;
 
+		padding: 20px;
+		border-radius: 30px;
+	  background: $backgrounddarker;
+	  color:  $red;
+	  font-size: 1.6rem;
+
+
+
+	}
+}
+&__add:hover{
+	color: $gradient_color;
   }
+
+
+  .modal_addNotebutton{
+	position: absolute;
+	right: 10px;
+	bottom:10px;
+  }
+
+
+  .fa-times
+ {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+    cursor: pointer;
+    outline: 0;
+    background: transparent;
+    color:  $red;
+    font-size: 1.8rem;
+    padding: 0.3rem;
+  }
+
+.fa-times:hover{
+	@include hoverlighter;
+}

@@ -160,37 +160,47 @@
 			<span>Note</span><br>
 		</div>
 		
-			<div class="modal noteCard">
-				<div class="tiles">
+		<div class="modal noteCard">
+			<h2>Notes</h2>	
 
-					<div class="tile">x</div>	
-					<div class="tile">s</div>	
-					<div class="tile">s</div>	
-					<div class="tile">f</div>	
-					<div class="tile">g</div>	
-					<div class="tile">gf</div>	
+			<button  id="closeNotebtn" class="modal__closebutton"><i class="fas fa-times"></i></button>
+		 <div class="tiles">
+
+				<div class="tiles__tile">
+				<h3>Lista Zakupów</h3>
+					
+				<div class="tiles__date">20 May 2021</div>
 				</div>
-				<button data-close-button id="closeNotebtn" class="modal__closebutton">&times;</button>
-				<h2>test</h2>	
+				<div class="tiles__tile">
+					<h3>Wiersze</h3>
+						
+					<div class="tiles__date">20 May 2021</div>
+					</div>
+					<div class="tiles__tile">
+						<h3>Numery Telefonów do znajomych 
+						</h3>
+							
+						<div class="tiles__date">20 May 2021</div>
+						</div>
+				
+				</div>	 
 			
-					</div> 
-
+				<button class="tiles__addNote" id="addNoteButton"><i class="fas fa-plus tiles__add" aria-hidden="true"></i></button>
+			</div>
+			
 		
 		  <div  class="nav_element  " id="todoButton">		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" dss feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
 			<span>Todo</span><br>
 		  </div>
 		  <div class="modal todoCard">
 
-			<button data-close-button id="closeTodobtn" >&times;</button>
-			<h2>Todo</h2>	
-			<!-- <div class="modal__header">
-						<div class="modal__title">Settings</div>
-						
+			  <div class="modal__header">
+				  <h2>Todo</h2>							
+				  <button  id="closeTodobtn" ><i class="fas fa-times"></i></button>
+				  
+				</div>
+				<div class="modal__body">
 					</div>
-					<div class="modal__body">
-				
-						
-					</div>-->
 				</div> 
 
 		  
@@ -203,7 +213,7 @@
 
 				<div class="modal__header">
 					<div class="modal__title">Settings</div>
-					<button data-close-button id="closeButton" class="modal__closebutton">&times;</button>
+					<button data-close-button id="closeButton" class="modal__closebutton"><i class="fas fa-times"></i></button>
 					
 				</div>
 				<div class="modal__body">

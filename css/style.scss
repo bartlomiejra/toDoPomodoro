@@ -29,7 +29,6 @@ $hover_color: rgb(250, 250, 250);
 
 
 
-
 //New Color Project
 $backgroundnew: #161621;
 $backgrounddarker: #14141C;
@@ -634,7 +633,9 @@ padding:0px;
   .fa-calendar-alt,
   .fa-list,
   .fa-repeat,
+  .fas fa-times
   .close-btn {
+	  
     cursor: pointer;
     outline: 0;
     background: transparent;
