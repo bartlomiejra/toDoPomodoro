@@ -42,19 +42,29 @@
 	  &__tile:nth-child(3) {
 		background: #FAB261;
 	  }
+
+	  &__tile:nth-child(4) {
+		background: #083513;
+	  }
+
+
+	  &__tile:nth-child(5) {
+		background: #0a053a;
+	  }
 	  &__date{
 		  color: rgb(192, 192, 192);
 	  }
 	
 	  &__addNote{
 		  background: transparent;
+		  position: absolute;
+		bottom: 20px;
+		right: 20px;
 		 
 		  
 	  }
 	  &__add{
-		position: absolute;
-		bottom: 20px;
-		right: 20px;
+		
 
 		padding: 20px;
 		border-radius: 30px;
@@ -67,6 +77,9 @@
 	}
 
 	&__note{
+		transition: 200ms ease-in-out;
+		transform: translate(-50%, -50%) scale(0);
+		border-radius: 10px;
 		color: rgb(32, 36, 32);
 		background-color: $backgroundnew;
 		height: 700px;
@@ -107,7 +120,7 @@
 		@include hoverlighter;
 
 }
-	.tiles__add:hover{
+	&__add:hover{
 		color: rgb(185, 42, 42);
 		cursor: pointer;
 
@@ -130,19 +143,24 @@ margin-top: 50px;
 
 &__textarea{
 	display: flex;
-margin-top: 20px;
+// margin-top: 20px;
 	outline: none;
 	width: 100%;
-margin: 10px 10px 10px 10px;
+// margin: 10px 10px 10px 10px;
     color: #959595;
     background-color: transparent;
-    letter-spacing: 1.2px;
+    // letter-spacing: 1.2px;
     font-size: 1rem;
     border: 0;
 	height: 200px;
-    
-    text-align: center;
+    text-align: top;
     border-radius: 0px 8px 8px 0px;
+	padding: 0 0 0 0;
+
+
+
+
+	
 }
 }
 
@@ -168,4 +186,21 @@ margin: 10px 10px 10px 10px;
 
 .fa-times:hover{
 	@include hoverlighter;
+}
+
+.overlayNote{
+	// position: absolute;
+	// opacity: 0;
+	// top: 0; 
+	// left: 0;
+	// right: 0;
+	// bottom: 0;
+	// background-color: rgba(0,0,0,0.6);
+pointer-events: none;
+opacity: 1;
+.tiles__note{
+	pointer-events: all;
+
+}
+
 }

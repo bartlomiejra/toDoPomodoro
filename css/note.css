@@ -456,8 +456,7 @@ body .center_divT {
   -ms-grid-rows: 1.5fr 1fr;
       grid-template-rows: 1.5fr 1fr;
   gap: 0px 0px;
-      grid-template-areas: "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn"
- "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
+      grid-template-areas: "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn" "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
 }
 
 html .center_complete-btn,
@@ -1194,27 +1193,20 @@ input textarea:focus {
 }
 
 .tiles__tile:nth-child(1) {
-  background: #003338;
+  background: #955165;
 }
 
 .tiles__tile:nth-child(3) {
-  background: ##847655;
+  background: #FAB261;
 }
+
 .tiles__tile:nth-child(4) {
-  background: #291110;
+  background: #083513;
 }
+
 .tiles__tile:nth-child(5) {
-	background: #583B3B;
-  }
-  .tiles__tile:nth-child(6) {
-	background: #292A44;
-  }
-  .tiles__tile:nth-child(7) {
-	background:#3f0531;
-  }
-  .tiles__tile:nth-child(8) {
-	background: #342C17
-  }
+  background: #0a053a;
+}
 
 .tiles__date {
   color: silver;
@@ -1222,12 +1214,12 @@ input textarea:focus {
 
 .tiles__addNote {
   background: transparent;
-}
-
-.tiles__add {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+.tiles__add {
   padding: 20px;
   border-radius: 30px;
   background: #14141C;
@@ -1236,6 +1228,11 @@ input textarea:focus {
 }
 
 .tiles__note {
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+  border-radius: 10px;
   color: #202420;
   background-color: #161621;
   height: 700px;
@@ -1271,7 +1268,7 @@ input textarea:focus {
   cursor: pointer;
 }
 
-.tiles .tiles__add:hover {
+.tiles__add:hover {
   color: #b92a2a;
   cursor: pointer;
 }
@@ -1295,18 +1292,16 @@ input textarea:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 20px;
   outline: none;
   width: 100%;
-  margin: 10px 10px 10px 10px;
   color: #959595;
   background-color: transparent;
-  letter-spacing: 1.2px;
   font-size: 1rem;
   border: 0;
   height: 200px;
-  text-align: center;
+  text-align: top;
   border-radius: 0px 8px 8px 0px;
+  padding: 0 0 0 0;
 }
 
 .modal_addNotebutton {
@@ -1331,5 +1326,14 @@ input textarea:focus {
   -webkit-filter: brightness(150%);
           filter: brightness(150%);
   cursor: pointer;
+}
+
+.overlayNote {
+  pointer-events: none;
+  opacity: 1;
+}
+
+.overlayNote .tiles__note {
+  pointer-events: all;
 }
 /*# sourceMappingURL=note.css.map */

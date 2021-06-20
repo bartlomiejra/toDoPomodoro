@@ -1251,7 +1251,7 @@ input textarea:focus {
   pointer-events: all;
 }
 
-.modal.active, .noteCard.active, .todoCard.active {
+.modal.active, .noteCard.active, .todoCard.active, .tiles__note.active {
   -webkit-transform: translate(-50%, -50%) scale(1);
           transform: translate(-50%, -50%) scale(1);
 }
