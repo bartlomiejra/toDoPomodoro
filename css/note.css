@@ -1287,6 +1287,11 @@ input textarea:focus {
 }
 
 .tiles__textarea {
+  margin-top: 20px;
+  outline: none;
+  width: 100%;
+  margin: 10px 10px 10px 10px;
+  letter-spacing: 1.2px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1294,7 +1299,7 @@ input textarea:focus {
   background-color: transparent;
   font-size: 1rem;
   border: 0;
-  height: auto;
+  height: 200px;
   text-align: top;
   border-radius: 0px 8px 8px 0px;
   padding: 0 0 0 0;

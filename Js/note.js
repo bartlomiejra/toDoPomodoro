@@ -2,6 +2,7 @@
 const openNote = document.getElementById('noteButton');
 const closeNote = document.getElementById('closeNotebtn');
 let closeoneNote = document.getElementById('closethisNote');
+let closebtn = document.querySelectorAll('closeNotebtn');
 const noteCard = document.querySelector('.noteCard');
 const tiles = document.querySelector('.tiles');
 const deleteNote = document.getElementById('deleteNote');
@@ -60,9 +61,24 @@ saveNote.addEventListener('click', (event) => {
       notesrender();
 });
 
-function deleteyourNote() {
+const deleteNotess = document.getElementById('deleteNotes');
+function deleteyourNotes() {
+      // notes.pop();
+      // window.localStorage.setItem('Notes', JSON.stringify(notes));
+
+      //   console.log(notes[clicked_id]);
       console.log('deleteNote');
-      console.log(noteslist);
+      //   console.log(noteslist);
+}
+// deleteNotes.addEventListener('click', deleteyourNotes);
+
+function deleteyourNote() {
+      notes.pop();
+      window.localStorage.setItem('Notes', JSON.stringify(notes));
+
+      //   console.log(notes[clicked_id]);
+      console.log('deleteNote');
+      //   console.log(noteslist);
 }
 
 deleteNote.addEventListener('click', deleteyourNote);
@@ -85,13 +101,13 @@ function notesrender() {
             .join('');
 }
 notesrender();
-function noteOpen(clicked_id) {
+function noteOpen() {
       closeoneNote.addEventListener('click', closeonenoteCard);
 
       addNote();
       onenoteCard.innerHTML = `
       <button class="tiles__savebtn" id="saveNote">Save</button>
-					<button class="tiles__deletebtn" id="deleteNote">Delete Note</button>
+					<button class="tiles__deletebtn closeNotebtn" id="deleteNotes">Delete Note</button>
 					<button  id="closethisNote" class="modal__closebutton"><i class="fas fa-times"></i></button>
 					<input class="tiles__noteHeader" id="noteHeader" placeholder=${notes[clicked_id].title} value=${notes[clicked_id].title} type="text">
 					<p class="date" value=${notes[clicked_id].date}></p>
@@ -102,3 +118,6 @@ function noteOpen(clicked_id) {
       console.log(clicked_id);
       console.log(notes[clicked_id].title);
 }
+// closebtn.addEventListener('click', deleteyourNotes);
+console.log(closebtn);
+console.log('git');
