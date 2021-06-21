@@ -1,13 +1,7 @@
-// import { btnActtion } from './buttons.js';
-
-// console.log(test);
-/* eslint-disable no-use-before-define */
 const centerDiv = document.querySelector('.center');
 const leftDiv = document.querySelector('.left');
 const projectIcon = document.querySelector('.Project');
-
 const mobileWidth = window.matchMedia('(max-width: 895px)');
-
 const todoInput = document.querySelector('.center_todoInput');
 const addProjectbtn = document.querySelector('.left_addProjectBtn');
 const addPr = document.querySelector('.left_Projects');
@@ -15,7 +9,6 @@ const todoButton = document.querySelector('.center_addtaskButton');
 const todoList = document.querySelector('.center_todolist');
 const showProject = document.querySelector('.Project');
 const emptyList = document.querySelector('.center_emptyList');
-
 const clockTimer = document.querySelector('.clock');
 const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.center_pauseButton');

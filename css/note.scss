@@ -78,7 +78,8 @@
 
 	&__note{
 		transition: 200ms ease-in-out;
-		transform: translate(-50%, -50%) scale(0);
+		transform: translate(-50%, -50%) scale(1
+		);
 		border-radius: 10px;
 		color: rgb(32, 36, 32);
 		background-color: $backgroundnew;
@@ -88,7 +89,7 @@
 		max-width: 90%;
 		z-index: 300;
 		position: absolute;
-		transform: translate(-50%, -50%) ;
+		// transform: translate(-50%, -50%) ;
 	top: 50%;
 	left: 50%;
 	
@@ -142,22 +143,28 @@ margin-top: 50px;
 }
 
 &__textarea{
+	// margin-top: 20px;
+	// outline: none;
+	// width: 100%;
+	// margin: 10px 10px 10px 10px;
+    // letter-spacing: 1.2px;
 	display: flex;
-// margin-top: 20px;
-	outline: none;
-	width: 100%;
-// margin: 10px 10px 10px 10px;
     color: #959595;
     background-color: transparent;
-    // letter-spacing: 1.2px;
     font-size: 1rem;
     border: 0;
-	height: 200px;
+	height: auto;
     text-align: top;
     border-radius: 0px 8px 8px 0px;
 	padding: 0 0 0 0;
+	// resize: none;
+	
 
 
+.date{
+font-size: 30px;
+color: red;
+}
 
 
 	
@@ -194,6 +201,8 @@ margin-top: 50px;
 	// top: 0; 
 	// left: 0;
 	// right: 0;
+	// transform: translate(-50%, -50%) scale(1);
+
 	// bottom: 0;
 	// background-color: rgba(0,0,0,0.6);
 pointer-events: none;
@@ -203,4 +212,15 @@ opacity: 1;
 
 }
 
+}
+
+
+.ttts{
+z-index: 300;
+color: red;
+position:absolute;
+top: 100px;
+left: 100px;
+height: 100px;
+width: 200px;
 }
