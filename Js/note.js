@@ -2,7 +2,7 @@
 const openNote = document.getElementById('noteButton');
 const closeNote = document.getElementById('closeNotebtn');
 let closeoneNote = document.getElementById('closethisNote');
-let closebtn = document.querySelectorAll('closeNotebtn');
+let closebtn = document.querySelectorAll('.closeNotebtn');
 const noteCard = document.querySelector('.noteCard');
 const tiles = document.querySelector('.tiles');
 const deleteNote = document.getElementById('deleteNote');
@@ -61,7 +61,7 @@ saveNote.addEventListener('click', (event) => {
       notesrender();
 });
 
-const deleteNotess = document.getElementById('deleteNotes');
+// const deleteNotess = document.getElementById('deleteNotes');
 function deleteyourNotes() {
       // notes.pop();
       // window.localStorage.setItem('Notes', JSON.stringify(notes));
@@ -70,7 +70,6 @@ function deleteyourNotes() {
       console.log('deleteNote');
       //   console.log(noteslist);
 }
-// deleteNotes.addEventListener('click', deleteyourNotes);
 
 function deleteyourNote() {
       notes.pop();
@@ -101,14 +100,14 @@ function notesrender() {
             .join('');
 }
 notesrender();
-function noteOpen() {
+function noteOpen(clicked_id) {
       closeoneNote.addEventListener('click', closeonenoteCard);
 
       addNote();
       onenoteCard.innerHTML = `
       <button class="tiles__savebtn" id="saveNote">Save</button>
 					<button class="tiles__deletebtn closeNotebtn" id="deleteNotes">Delete Note</button>
-					<button  id="closethisNote" class="modal__closebutton"><i class="fas fa-times"></i></button>
+					<button   onclick='closeNote()' class="modal__closebutton"><i class="fas fa-times"></i></button>
 					<input class="tiles__noteHeader" id="noteHeader" placeholder=${notes[clicked_id].title} value=${notes[clicked_id].title} type="text">
 					<p class="date" value=${notes[clicked_id].date}></p>
 					<input type="textarea" rows="2" cols="20" wrap="hard" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea" value=${notes[clicked_id].note} >
@@ -118,6 +117,5 @@ function noteOpen() {
       console.log(clicked_id);
       console.log(notes[clicked_id].title);
 }
-// closebtn.addEventListener('click', deleteyourNotes);
 console.log(closebtn);
 console.log('git');
