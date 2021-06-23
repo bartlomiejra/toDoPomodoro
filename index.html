@@ -161,7 +161,7 @@
 		</div>
 		
 		<div class="modal noteCard">
-			<h2>Notes</h2>	
+			<h2 class="modal__header">Notes</h2>	
 
 			<button  id="closeNotebtn" class="modal__closebutton"><i class="fas fa-times"></i></button>
 		 <div class="tiles">
@@ -218,12 +218,12 @@
 				</div>	 
 				<button class="tiles__addNote " id="addNoteButton"><i class="fas fa-plus tiles__add" aria-hidden="true"></i></button>
 				<div class="tiles__note none ">
-					<button class="tiles__savebtn" id="saveNote">Save</button>
-					<button class="tiles__deletebtn closeNotebtn" id="deleteNote">Delete Note</button>
+					<!-- <button class="tiles__savebtn" id="saveNote">Save</button>
+					<button class="tiles__deletebtn closeNotebtn" id="deleteNote">Delete Last Note</button>
 					<button  id="closethisNote" class="modal__closebutton"><i class="fas fa-times"></i></button>
 					<input class="tiles__noteHeader" id="noteHeader" placeholder="Title" type="text">
 					<p class="date" value="dateToday">x</p>
-					<input type="textarea" rows="2" cols="20" wrap="hard" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea">
+					<input type="textarea" rows="2" cols="20" wrap="hard" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea"> -->
 
 
 				</div>
@@ -261,12 +261,15 @@
 					<ol class="modal__options">
 						<li><input type="radio" id="Light" name="gender" value="Dark">
 							<label for="Light">Light Theme </label>
-							<input type="radio" id="Dark" name="gender" value="Dark">
-							<label for="Dark">Dark Theme</label></li>
 							<li>
+								<li>
+
+									<input type="radio" id="Dark" name="gender" checked="checked" value="Dark">
+									<label for="Dark">Dark Theme</label></li>
+								</li>
 								
 								<label for="quantity">Pomodore duration:</label>
-								<input type="number" id="quantity" name="quantity" min="5" max="100">
+								<input type="number" id="quantity" value="25" name="quantity" min="5" max="100">
 							</li>
 							<li>
 

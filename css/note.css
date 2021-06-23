@@ -1156,6 +1156,10 @@ input textarea:focus {
   color: white;
 }
 
+.modal__header {
+  margin-left: 10px;
+}
+
 .tiles {
   row-gap: 15px;
   display: -webkit-box;
@@ -1257,10 +1261,10 @@ input textarea:focus {
 }
 
 .tiles__savebtn {
-  left: 115px;
+  left: 150px;
 }
 
-.tiles__savebtn:hover, .tiles__deletebtn:hover {
+.tiles__savebtn:hover, .tiles__deletebtn:hover, .tiles .tiles__tile:hover {
   -webkit-filter: brightness(150%);
           filter: brightness(150%);
   cursor: pointer;

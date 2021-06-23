@@ -7,6 +7,11 @@
 	
 }
 
+.modal__header{
+	margin-left: 10px;
+
+}
+
 .tiles {
 	
 	row-gap: 15px;
@@ -33,6 +38,7 @@
 		 
 	
 	  }
+
 	  &__tile:nth-child(2) {
 		background: #4E344D;
 	  }
@@ -112,12 +118,14 @@
 	}
 
 	&__savebtn{
-		left: 115px;
+		left: 150px;
 		
 	}
 	
 
-	&__savebtn:hover, &__deletebtn:hover{
+	&__savebtn:hover, &__deletebtn:hover,.tiles__tile:hover{
+	
+	
 		@include hoverlighter;
 
 }
@@ -170,6 +178,7 @@ color: red;
 	
 }
 }
+
 
   .modal_addNotebutton{
 	position: absolute;

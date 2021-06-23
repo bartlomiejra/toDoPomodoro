@@ -1,4 +1,5 @@
 @import 'style';
+@import 'note';
 
 *, *::After *::before {
 	box-sizing:  border-box;
@@ -75,7 +76,10 @@ max-height: 95%;
 	font-size: 15px;
 	padding: 10px;
   }
-  
+  &__savebtn:hover
+{
+	@include hoverlighter;
+}  
 
 
 }
