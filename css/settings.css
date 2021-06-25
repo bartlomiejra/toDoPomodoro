@@ -192,7 +192,7 @@ body .container > * {
 
 html .container > *__header,
 body .container > *__header {
-  background: #22222C;
+  background: #e4e4e4;
   max-height: 10px;
 }
 
@@ -213,7 +213,7 @@ body .left {
           flex-direction: column;
   -ms-flex-negative: 2;
       flex-shrink: 2;
-  background: #14141C;
+  background: #b8b8ec;
 }
 
 html .left_day,
@@ -309,7 +309,7 @@ body .center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #171721;
+  background: #fafafa;
   font-size: 1.2rem;
 }
 
@@ -317,7 +317,7 @@ html .center_tasktable,
 body .center_tasktable {
   width: 100%;
   border-radius: 10px;
-  background-color: #22222C;
+  background-color: #77779c;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -329,7 +329,7 @@ body .center_tasktable {
 html .center_stat,
 body .center_stat {
   width: 25%;
-  color: #22222C;
+  color: #77779c;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -448,7 +448,7 @@ body .center_divT {
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background-color: #22222C;
+  background-color: #e6e6ff;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
@@ -621,7 +621,7 @@ body .clock_timerStart {
 
 html .clock_timerFinish,
 body .clock_timerFinish {
-  background-color: rgba(49, 63, 124, 0.725);
+  background-color: rgba(160, 20, 20, 0.725);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   color: #959595;
@@ -793,7 +793,7 @@ body .fa-clock {
 html .right,
 body .right {
   height: calc(100% - 85px);
-  background: #14141C;
+  background: #bdbdbd;
   -webkit-box-flex: 4;
       -ms-flex: 4 20%;
           flex: 4 20%;
@@ -1029,7 +1029,7 @@ input textarea:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #14141C;
+  background-color: #a2a2c5;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -1140,7 +1140,7 @@ input textarea:focus {
     right: 0;
     -webkit-backdrop-filter: blur(9px);
             backdrop-filter: blur(9px);
-    color: #14141C;
+    color: #bdbdbd;
     position: absolute;
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
@@ -1153,7 +1153,7 @@ input textarea:focus {
 
 .dss:hover {
   stroke-dasharray: 2;
-  color: white;
+  color: #fafafa;
 }
 
 @keyframes scale {
@@ -1273,7 +1273,7 @@ body .container > * {
 
 html .container > *__header,
 body .container > *__header {
-  background: #22222C;
+  background: #e4e4e4;
   max-height: 10px;
 }
 
@@ -1294,7 +1294,7 @@ body .left {
           flex-direction: column;
   -ms-flex-negative: 2;
       flex-shrink: 2;
-  background: #14141C;
+  background: #b8b8ec;
 }
 
 html .left_day,
@@ -1390,7 +1390,7 @@ body .center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #171721;
+  background: #fafafa;
   font-size: 1.2rem;
 }
 
@@ -1398,7 +1398,7 @@ html .center_tasktable,
 body .center_tasktable {
   width: 100%;
   border-radius: 10px;
-  background-color: #22222C;
+  background-color: #77779c;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1410,7 +1410,7 @@ body .center_tasktable {
 html .center_stat,
 body .center_stat {
   width: 25%;
-  color: #22222C;
+  color: #77779c;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1529,7 +1529,7 @@ body .center_divT {
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background-color: #22222C;
+  background-color: #e6e6ff;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
@@ -1702,7 +1702,7 @@ body .clock_timerStart {
 
 html .clock_timerFinish,
 body .clock_timerFinish {
-  background-color: rgba(49, 63, 124, 0.725);
+  background-color: rgba(160, 20, 20, 0.725);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   color: #959595;
@@ -1874,7 +1874,7 @@ body .fa-clock {
 html .right,
 body .right {
   height: calc(100% - 85px);
-  background: #14141C;
+  background: #bdbdbd;
   -webkit-box-flex: 4;
       -ms-flex: 4 20%;
           flex: 4 20%;
@@ -2110,7 +2110,7 @@ input textarea:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #14141C;
+  background-color: #a2a2c5;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -2221,7 +2221,7 @@ input textarea:focus {
     right: 0;
     -webkit-backdrop-filter: blur(9px);
             backdrop-filter: blur(9px);
-    color: #14141C;
+    color: #bdbdbd;
     position: absolute;
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
@@ -2234,7 +2234,7 @@ input textarea:focus {
 
 .dss:hover {
   stroke-dasharray: 2;
-  color: white;
+  color: #fafafa;
 }
 
 .modal__header {
@@ -2493,7 +2493,7 @@ input textarea:focus {
   display: -ms-flexbox;
   display: flex;
   border-radius: 20px;
-  background-color: #22222C;
+  background-color: #77779c;
 }
 
 .modal__header, .modal__closebutton, .noteCard__header, .noteCard__closebutton, .todoCard__header, .todoCard__closebutton {

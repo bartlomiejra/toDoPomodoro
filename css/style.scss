@@ -1,40 +1,62 @@
 
 
 
-//Virables
-// $backgroundcolor: #7745458c;
-// $green:rgb(3, 78, 3);
-// $red: rgb(116, 6, 6);
-$blue: rgba(49, 63, 124, 0.725);
-$gradient_color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-// $center-color: #161620;
-$center-color: #171721;
-$right_background: #14141C;
-$header_background: #22222C;
-$black: #22222C;
-// $left_background: #313139;
-$left_background: #14141C;
-$nav_color: #14141C;
-$task_color: 	  #22222C;
-$timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
-$addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-$number-color: #EE786C;
-$light-color:     #A9DED8;
-$dark-font: #1C2426;
-$font-color:     #959595;
-$red:       #b17676;
-$shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-$hover_color: rgb(250, 250, 250);
+
+
+	// $blue: rgba(49, 63, 124, 0.725);
+	// $gradient_color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	// $center-color: #171721;
+	// $right_background: #14141C;
+	// $header_background: #22222C;
+	// $black: #22222C;
+	// $left_background: #14141C;
+	// $nav_color: #14141C;
+	// $task_color: 	  #22222C;
+	// $timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+	// $addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+	// $number-color: #EE786C;
+	// $light-color:     #A9DED8;
+	// $dark-font: #1C2426;
+	// $font-color:     #959595;
+	// $red:       #b17676;
+	// $shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+	// $hover_color: rgb(250, 250, 250);
+	// $dark-font: #626d70;
+	
+
+	
+	
+
+
+	$blue: rgba(160, 20, 20, 0.725);
+	$gradient_color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	$center-color: #fafafa;
+	$right_background: #bdbdbd;
+	$header_background: #e4e4e4;
+	$black: #77779c;
+	$left_background: #b8b8ec;
+	$nav_color: #a2a2c5;
+	$task_color: 	  #e6e6ff;
+	$timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+	$addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+	$number-color: #ffffff;
+	$light-color:     #A9DED8;
+	$dark-font: #c9c9c9;
+	$font-color:     #959595;
+	$red:       #846686;
+	$shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+	$hover_color: rgb(250, 250, 250);
+	$dark-font: #f6fdff;
 
 
 
 
 //New Color Project
-$backgroundnew: #161621;
-$backgrounddarker: #14141C;
+$backgroundnew: #ffffff;
+$backgrounddarker: #d4d4eb;
 $butColor: #A6DFD8;
 $fonts: #757678;
-$task: #23222D;
+$task: #aeaeb6;
 
 // Mixins
 @mixin buttonstyle {
@@ -60,7 +82,6 @@ $task: #23222D;
   border: none;
   background-color: $task;
 
-$dark-font: #1C2426;
   border-radius: 8px 0px 0px 8px;
   filter: $shadow;
 //   
@@ -1145,5 +1166,5 @@ color: $font-color;
 
 .dss:hover{
 	stroke-dasharray: 2;
-	color: white;
+	color: $hover_color;
 }

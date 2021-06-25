@@ -25,8 +25,9 @@ const todos = JSON.parse(localStorage.getItem('Items')) || [];
 let audio;
 
 let timeInFocus;
-const pomodoreDuration = 25;
-// leftDiv.classList.remove('none');
+const settinglocal = JSON.parse(localStorage.getItem('settings'));
+const pomodoreDuration = settinglocal.pomodoreTime;
+
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;

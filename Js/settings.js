@@ -2,9 +2,27 @@ const openModalButtons = document.getElementById('settingsButton');
 const closeSettings = document.querySelectorAll('[data-close-button ]');
 const saveButton = document.getElementById('saveSettingUser');
 const pomodoreTime = document.getElementById('quantity');
-
+const theme = document.querySelector('.modal__themes');
+const setTheme = (theme) => (document.documentElement.className = theme);
 const overlay = document.getElementById('overlay');
 
+let settingUser = JSON.parse(localStorage.getItem('settings'));
+theme.innerHTML = `
+<li>
+<input type="radio" class="radio" id="Light"   name="theme" value="Light"
+
+${settingUser.Theme === 'Light' ? 'checked' : ''}
+	  >
+
+<label for="Light" >Light Theme </label>
+</li>
+<li>
+
+<input type="radio" class="radio" id="Dark" name="theme" value="Dark"
+${settingUser.Theme === 'Dark' ? 'checked' : ''}
+>
+<label for="Dark">Dark Theme</label></li>
+`;
 function closeModal(modal) {
       if (modal == null) return;
 
@@ -33,8 +51,6 @@ function openSettings() {
 openModalButtons.addEventListener('click', openSettings);
 const themes = document.getElementsByName('theme');
 console.log(themes);
-
-saveButton.addEventListener('click', save);
 function save() {
       for (i = 0; i < themes.length; i++) {
             if (themes[i].checked) {
@@ -50,8 +66,9 @@ function save() {
             Theme: themeselected,
             pomodoreTime: pomodoreTime.value,
       };
-      settingUser.push(settings);
 
-      window.localStorage.setItem('settings', JSON.stringify(settingUser));
+      window.localStorage.setItem('settings', JSON.stringify(settings));
       console.log(settings);
 }
+
+saveButton.addEventListener('click', save);
