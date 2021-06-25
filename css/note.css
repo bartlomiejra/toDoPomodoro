@@ -1,3 +1,11 @@
+:root {
+  --color-page-background: #171721;
+}
+
+.dark {
+  --color-page-background: #fafafa;
+}
+
 @-webkit-keyframes scale {
   0% {
     opacity: 0;
@@ -263,7 +271,7 @@ body .left_color {
   text-align: center;
   font-size: 15px;
   border: none;
-  background-color: #23222D;
+  background-color: #aeaeb6;
   border-radius: 8px 0px 0px 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -309,7 +317,7 @@ body .center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #171721;
+  background: var(--color-page-background);
   font-size: 1.2rem;
 }
 
@@ -362,7 +370,7 @@ html .center_addTaskdiv,
 body .center_addTaskdiv {
   padding: 5px;
   margin: 10px;
-  color: #23222D;
+  color: #aeaeb6;
   font-size: 2em;
   margin-left: 40px;
   overflow: hidden;
@@ -401,7 +409,7 @@ body .center_addtaskButton {
   padding: 5px 15px 5px 15px;
   font-size: 1.1rem;
   color: #EE786C;
-  background-color: #23222D;
+  background-color: #aeaeb6;
   border-radius: 8px 0px 0px 8px;
 }
 
@@ -410,7 +418,7 @@ body .center_todoInput {
   outline: none;
   padding: 5px;
   color: #959595;
-  background-color: #23222D;
+  background-color: #aeaeb6;
   letter-spacing: 1.2px;
   font-size: 1.2rem;
   border: 0;
@@ -1153,7 +1161,7 @@ input textarea:focus {
 
 .dss:hover {
   stroke-dasharray: 2;
-  color: white;
+  color: #fafafa;
 }
 
 .modal__header {
@@ -1254,7 +1262,7 @@ input textarea:focus {
   top: 10px;
   left: 10px;
   border-radius: 5px;
-  background-color: #23222D;
+  background-color: #aeaeb6;
   color: #A6DFD8;
   font-size: 15px;
   padding: 10px;

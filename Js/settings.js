@@ -5,6 +5,7 @@ const pomodoreTime = document.getElementById('quantity');
 const theme = document.querySelector('.modal__themes');
 const setTheme = (theme) => (document.documentElement.className = theme);
 const overlay = document.getElementById('overlay');
+const container = document.querySelector('.container');
 
 let settingUser = JSON.parse(localStorage.getItem('settings'));
 theme.innerHTML = `
@@ -69,6 +70,14 @@ function save() {
 
       window.localStorage.setItem('settings', JSON.stringify(settings));
       console.log(settings);
+      themesValue();
+}
+
+function themesValue() {
+      if (themeselected == 'light') {
+      } else {
+            container.classList.add('lightTheme');
+      }
 }
 
 saveButton.addEventListener('click', save);
