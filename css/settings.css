@@ -1,9 +1,63 @@
 :root {
-  --color-page-background: #171721;
+  --center-color: #171721;
+  --right_background: #14141C;
+  --timerFinishColor: rgba(49, 63, 124, 0.725);
+  --statColor: #22222C;
+  --backgrounddarker: #14141C;
+  --header_background: #22222C;
+  --left_background: #14141C;
+  --nav_color: #14141C;
+  --task_color: #22222C;
+  --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+  --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+  --number-color: #EE786C;
+  --light-color: #A9DED8;
+  --font-color: #959595;
+  --addProjectbtn: #b17676;
+  --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  --hover_color: #fafafa;
+  --dark-font: #626d70;
+  --fonts: #757678;
+  --task: #23222D;
+  --tiles1: #4E344D;
+  --tiles2: #955165;
+  --tiles3: #FAB261;
+  --tiles4: #083513;
+  --tiles5: #300d30;
+  --tiles6: #383b0f;
+  --tiles7: #3a0505;
+  --tiles8: #017514;
 }
 
-.dark {
-  --color-page-background: #fafafa;
+.lightTheme {
+  --center-color: #E6E7FB;
+  --right_background: #7C4FF4;
+  --timerFinishColor: rgba(99, 121, 218, 0.725);
+  --backgrounddarker: #584292;
+  --header_background: #F6F6FF;
+  --statColor: #55559c;
+  --left_background: #854CF1;
+  --nav_color: #6542E4;
+  --task_color: #ffffff;
+  --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+  --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+  --number-color: #6542E5;
+  --light-color: #000000;
+  --font-color: #292727;
+  --addProjectbtn: #6856F6;
+  --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  --hover_color: #fafafa;
+  --dark-font: #000000;
+  --fonts: #3c475c;
+  --task: #645d8f;
+  --tiles1: #db8dd9;
+  --tiles2: #e489a4;
+  --tiles3: #ecb06c;
+  --tiles4: #7178b8;
+  --tiles5: #995f99;
+  --tiles6: #9fa551;
+  --tiles7: #b16a6a;
+  --tiles8: #59aa66;
 }
 
 @-webkit-keyframes scale {
@@ -169,7 +223,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background: url(background5.png);
-  color: #959595;
+  color: var(--font-color);
   height: 100%;
 }
 
@@ -200,7 +254,7 @@ body .container > * {
 
 html .container > *__header,
 body .container > *__header {
-  background: #22222C;
+  background: var(--header-background);
   max-height: 10px;
 }
 
@@ -221,7 +275,7 @@ body .left {
           flex-direction: column;
   -ms-flex-negative: 2;
       flex-shrink: 2;
-  background: #14141C;
+  background: var(--left_background);
 }
 
 html .left_day,
@@ -230,7 +284,7 @@ body .left_day {
   transition: all .1s ease-in-out;
   position: relative;
   text-align: left;
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .left_projectItem,
@@ -271,23 +325,23 @@ body .left_color {
   text-align: center;
   font-size: 15px;
   border: none;
-  background-color: #aeaeb6;
+  background-color: var(--task);
   border-radius: 8px 0px 0px 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  -webkit-filter: var(--shadow);
+          filter: var(--shadow);
 }
 
 html .left_addProjectBtn,
 body .left_addProjectBtn {
   width: 30px;
   height: 32px;
-  color: #b17676;
+  color: var(--addProjectbtn);
 }
 
 html .left_Projects,
 body .left_Projects {
   outline: none;
-  color: #959595;
+  color: var(--font-color);
   border-radius: 0px 0px 0px 0px;
 }
 
@@ -317,7 +371,7 @@ body .center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: var(--color-page-background);
+  background: var(--center-color);
   font-size: 1.2rem;
 }
 
@@ -325,7 +379,7 @@ html .center_tasktable,
 body .center_tasktable {
   width: 100%;
   border-radius: 10px;
-  background-color: #22222C;
+  background-color: var(--statColor);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -337,7 +391,7 @@ body .center_tasktable {
 html .center_stat,
 body .center_stat {
   width: 25%;
-  color: #22222C;
+  color: var(--statColor);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -349,7 +403,7 @@ body .center_stat {
 
 html .center__number,
 body .center__number {
-  color: #EE786C;
+  color: var(--number-color);
   -webkit-box-flex: 10;
       -ms-flex: 10;
           flex: 10;
@@ -359,7 +413,7 @@ body .center__number {
 
 html .center__text,
 body .center__text {
-  color: #959595;
+  color: var(--font-color);
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
@@ -370,7 +424,7 @@ html .center_addTaskdiv,
 body .center_addTaskdiv {
   padding: 5px;
   margin: 10px;
-  color: #aeaeb6;
+  color: var(--task);
   font-size: 2em;
   margin-left: 40px;
   overflow: hidden;
@@ -386,7 +440,7 @@ body .center_addTaskdiv {
 html .center_emptyList,
 body .center_emptyList {
   margin-top: 20px;
-  color: #959595;
+  color: var(--font-color);
   text-align: center;
 }
 
@@ -408,8 +462,8 @@ html .center_addtaskButton,
 body .center_addtaskButton {
   padding: 5px 15px 5px 15px;
   font-size: 1.1rem;
-  color: #EE786C;
-  background-color: #aeaeb6;
+  color: var(--number-color);
+  background-color: var(--task);
   border-radius: 8px 0px 0px 8px;
 }
 
@@ -417,8 +471,8 @@ html .center_todoInput,
 body .center_todoInput {
   outline: none;
   padding: 5px;
-  color: #959595;
-  background-color: #aeaeb6;
+  color: var(--font-color);
+  background-color: var(--task);
   letter-spacing: 1.2px;
   font-size: 1.2rem;
   border: 0;
@@ -433,8 +487,8 @@ html .center_todolist > div,
 body .center_todolist > div {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  -webkit-filter: var(--shadow);
+          filter: var(--shadow);
 }
 
 html .center_todolist,
@@ -454,9 +508,9 @@ body .center_divT {
   max-width: 500px;
   margin-bottom: 5px;
   border-radius: 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background-color: #22222C;
+  -webkit-filter: var(--shadow);
+          filter: var(--shadow);
+  background-color: var(--task_color);
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
@@ -535,7 +589,7 @@ body .center_play-btn {
 
 html .clock,
 body .clock {
-  color: #959595;
+  color: var(--font-color);
   font-size: 2em;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
@@ -552,7 +606,7 @@ body .clock {
 
 html .clock i,
 body .clock i {
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .clock_clockVisible,
@@ -565,7 +619,7 @@ body .clock .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .clock_fullscreen,
@@ -615,24 +669,24 @@ body .clock_fullscreen .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .clock_timerStart,
 body .clock_timerStart {
-  background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+  background: var(--timer);
   border-radius: 15px;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .clock_timerFinish,
 body .clock_timerFinish {
-  background-color: rgba(49, 63, 124, 0.725);
+  background-color: var(--timerFinishColor);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .completed,
@@ -652,7 +706,7 @@ html .input,
 body .input {
   font-size: 1.2em;
   width: 90%;
-  color: #757678;
+  color: var(--fonts);
   border: 0;
 }
 
@@ -684,7 +738,7 @@ body i {
 
 html li:hover,
 body li:hover {
-  color: #fafafa;
+  color: var(--hover_color);
   cursor: pointer;
 }
 
@@ -708,8 +762,7 @@ html .fa-minus-circle,
 html .fa-calendar-alt,
 html .fa-list,
 html .fa-repeat,
-html .fas fa-times
-.close-btn,
+html .fas fa-times .close-btn,
 body .center_pauseButton,
 body .center_resetButton,
 body .center_play-btn,
@@ -730,12 +783,11 @@ body .fa-minus-circle,
 body .fa-calendar-alt,
 body .fa-list,
 body .fa-repeat,
-body .fas fa-times
-.close-btn {
+body .fas fa-times .close-btn {
   cursor: pointer;
   outline: 0;
   background: transparent;
-  color: #959595;
+  color: var(--font-color);
   font-size: 1.2rem;
   padding: 0.3rem;
 }
@@ -757,7 +809,7 @@ body .fa-circle {
 
 html .fa-clock,
 body .fa-clock {
-  color: #b17676;
+  color: var(--addProjectbtn);
 }
 
 html .fall,
@@ -801,7 +853,7 @@ body .fa-clock {
 html .right,
 body .right {
   height: calc(100% - 85px);
-  background: #14141C;
+  background: var(--right_background);
   -webkit-box-flex: 4;
       -ms-flex: 4 20%;
           flex: 4 20%;
@@ -809,7 +861,7 @@ body .right {
 
 html .right_divT,
 body .right_divT {
-  color: #757678;
+  color: var(--fonts);
   display: block;
   text-align: center;
 }
@@ -827,7 +879,7 @@ body .right_todo-item {
 html .right_detals,
 body .right_detals {
   font-size: 1rem;
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .right .detals > li,
@@ -886,7 +938,7 @@ input[type="date"]:hover,
 .partOfTime:hover,
 textarea:hover,
 input[type="number"]:hover {
-  color: #fafafa;
+  color: var(--hover_color);
   cursor: pointer;
 }
 
@@ -895,7 +947,9 @@ input[type="number"]:hover {
   transition: all .1s ease-in-out;
 }
 
-.projectList:hover, .left_day:hover, .fa-minus-circle:hover {
+.projectList:hover,
+.left_day:hover,
+.fa-minus-circle:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   background-position: 0 100%;
@@ -921,7 +975,7 @@ textarea {
   width: 100%;
   height: 250px;
   border: none;
-  color: #757678;
+  color: var(--fonts);
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -934,7 +988,7 @@ input[type="date"],
 .Projects {
   padding: 10px;
   border: none;
-  color: #757678;
+  color: var(--fonts);
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -943,7 +997,7 @@ input[type="date"],
 
 select option {
   background: rgba(0, 0, 0, 0.9);
-  color: #757678;
+  color: var(--fonts);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -960,7 +1014,7 @@ ol {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #959595;
+  color: var(--font-color);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -969,7 +1023,7 @@ ol {
 }
 
 .projectList:hover {
-  color: #fafafa;
+  color: var(--hover_color);
 }
 
 .circle {
@@ -979,7 +1033,7 @@ ol {
   margin: 0px 5px 0px 0px;
   outline: 0;
   background: transparent;
-  color: #959595;
+  color: var(--font-color);
   font-size: 1rem;
   padding: 0.3rem;
 }
@@ -1037,7 +1091,7 @@ input textarea:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #14141C;
+  background-color: var(--nav_color);
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -1065,7 +1119,7 @@ input textarea:focus {
   white-space: nowrap;
   font-family: sans-serif;
   font-size: 13px;
-  color: #959595;
+  color: var(--font-color);
   text-decoration: none;
 }
 
@@ -1108,7 +1162,7 @@ input textarea:focus {
     padding: 0px 15px 0px 10px;
   }
   .container .left_projectItem {
-    color: #959595;
+    color: var(--font-color);
   }
   .container .left_addProject {
     width: 100%;
@@ -1148,7 +1202,7 @@ input textarea:focus {
     right: 0;
     -webkit-backdrop-filter: blur(9px);
             backdrop-filter: blur(9px);
-    color: #14141C;
+    color: var(--right_background);
     position: absolute;
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
@@ -1161,15 +1215,69 @@ input textarea:focus {
 
 .dss:hover {
   stroke-dasharray: 2;
-  color: #fafafa;
+  color: var(--hover_color);
 }
 
 :root {
-  --color-page-background: #171721;
+  --center-color: #171721;
+  --right_background: #14141C;
+  --timerFinishColor: rgba(49, 63, 124, 0.725);
+  --statColor: #22222C;
+  --backgrounddarker: #14141C;
+  --header_background: #22222C;
+  --left_background: #14141C;
+  --nav_color: #14141C;
+  --task_color: #22222C;
+  --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+  --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+  --number-color: #EE786C;
+  --light-color: #A9DED8;
+  --font-color: #959595;
+  --addProjectbtn: #b17676;
+  --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  --hover_color: #fafafa;
+  --dark-font: #626d70;
+  --fonts: #757678;
+  --task: #23222D;
+  --tiles1: #4E344D;
+  --tiles2: #955165;
+  --tiles3: #FAB261;
+  --tiles4: #083513;
+  --tiles5: #300d30;
+  --tiles6: #383b0f;
+  --tiles7: #3a0505;
+  --tiles8: #017514;
 }
 
-.dark {
-  --color-page-background: #fafafa;
+.lightTheme {
+  --center-color: #E6E7FB;
+  --right_background: #7C4FF4;
+  --timerFinishColor: rgba(99, 121, 218, 0.725);
+  --backgrounddarker: #584292;
+  --header_background: #F6F6FF;
+  --statColor: #55559c;
+  --left_background: #854CF1;
+  --nav_color: #6542E4;
+  --task_color: #ffffff;
+  --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+  --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+  --number-color: #6542E5;
+  --light-color: #000000;
+  --font-color: #292727;
+  --addProjectbtn: #6856F6;
+  --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  --hover_color: #fafafa;
+  --dark-font: #000000;
+  --fonts: #3c475c;
+  --task: #645d8f;
+  --tiles1: #db8dd9;
+  --tiles2: #e489a4;
+  --tiles3: #ecb06c;
+  --tiles4: #7178b8;
+  --tiles5: #995f99;
+  --tiles6: #9fa551;
+  --tiles7: #b16a6a;
+  --tiles8: #59aa66;
 }
 
 @keyframes scale {
@@ -1258,7 +1366,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background: url(background5.png);
-  color: #959595;
+  color: var(--font-color);
   height: 100%;
 }
 
@@ -1289,7 +1397,7 @@ body .container > * {
 
 html .container > *__header,
 body .container > *__header {
-  background: #22222C;
+  background: var(--header-background);
   max-height: 10px;
 }
 
@@ -1310,7 +1418,7 @@ body .left {
           flex-direction: column;
   -ms-flex-negative: 2;
       flex-shrink: 2;
-  background: #14141C;
+  background: var(--left_background);
 }
 
 html .left_day,
@@ -1319,7 +1427,7 @@ body .left_day {
   transition: all .1s ease-in-out;
   position: relative;
   text-align: left;
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .left_projectItem,
@@ -1360,23 +1468,23 @@ body .left_color {
   text-align: center;
   font-size: 15px;
   border: none;
-  background-color: #aeaeb6;
+  background-color: var(--task);
   border-radius: 8px 0px 0px 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  -webkit-filter: var(--shadow);
+          filter: var(--shadow);
 }
 
 html .left_addProjectBtn,
 body .left_addProjectBtn {
   width: 30px;
   height: 32px;
-  color: #b17676;
+  color: var(--addProjectbtn);
 }
 
 html .left_Projects,
 body .left_Projects {
   outline: none;
-  color: #959595;
+  color: var(--font-color);
   border-radius: 0px 0px 0px 0px;
 }
 
@@ -1406,7 +1514,7 @@ body .center {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: var(--color-page-background);
+  background: var(--center-color);
   font-size: 1.2rem;
 }
 
@@ -1414,7 +1522,7 @@ html .center_tasktable,
 body .center_tasktable {
   width: 100%;
   border-radius: 10px;
-  background-color: #22222C;
+  background-color: var(--statColor);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1426,7 +1534,7 @@ body .center_tasktable {
 html .center_stat,
 body .center_stat {
   width: 25%;
-  color: #22222C;
+  color: var(--statColor);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1438,7 +1546,7 @@ body .center_stat {
 
 html .center__number,
 body .center__number {
-  color: #EE786C;
+  color: var(--number-color);
   -webkit-box-flex: 10;
       -ms-flex: 10;
           flex: 10;
@@ -1448,7 +1556,7 @@ body .center__number {
 
 html .center__text,
 body .center__text {
-  color: #959595;
+  color: var(--font-color);
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
@@ -1459,7 +1567,7 @@ html .center_addTaskdiv,
 body .center_addTaskdiv {
   padding: 5px;
   margin: 10px;
-  color: #aeaeb6;
+  color: var(--task);
   font-size: 2em;
   margin-left: 40px;
   overflow: hidden;
@@ -1475,7 +1583,7 @@ body .center_addTaskdiv {
 html .center_emptyList,
 body .center_emptyList {
   margin-top: 20px;
-  color: #959595;
+  color: var(--font-color);
   text-align: center;
 }
 
@@ -1497,8 +1605,8 @@ html .center_addtaskButton,
 body .center_addtaskButton {
   padding: 5px 15px 5px 15px;
   font-size: 1.1rem;
-  color: #EE786C;
-  background-color: #aeaeb6;
+  color: var(--number-color);
+  background-color: var(--task);
   border-radius: 8px 0px 0px 8px;
 }
 
@@ -1506,8 +1614,8 @@ html .center_todoInput,
 body .center_todoInput {
   outline: none;
   padding: 5px;
-  color: #959595;
-  background-color: #aeaeb6;
+  color: var(--font-color);
+  background-color: var(--task);
   letter-spacing: 1.2px;
   font-size: 1.2rem;
   border: 0;
@@ -1522,8 +1630,8 @@ html .center_todolist > div,
 body .center_todolist > div {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  -webkit-filter: var(--shadow);
+          filter: var(--shadow);
 }
 
 html .center_todolist,
@@ -1543,9 +1651,9 @@ body .center_divT {
   max-width: 500px;
   margin-bottom: 5px;
   border-radius: 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background-color: #22222C;
+  -webkit-filter: var(--shadow);
+          filter: var(--shadow);
+  background-color: var(--task_color);
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
@@ -1624,7 +1732,7 @@ body .center_play-btn {
 
 html .clock,
 body .clock {
-  color: #959595;
+  color: var(--font-color);
   font-size: 2em;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
@@ -1641,7 +1749,7 @@ body .clock {
 
 html .clock i,
 body .clock i {
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .clock_clockVisible,
@@ -1654,7 +1762,7 @@ body .clock .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .clock_fullscreen,
@@ -1704,24 +1812,24 @@ body .clock_fullscreen .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .clock_timerStart,
 body .clock_timerStart {
-  background: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
+  background: var(--timer);
   border-radius: 15px;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .clock_timerFinish,
 body .clock_timerFinish {
-  background-color: rgba(49, 63, 124, 0.725);
+  background-color: var(--timerFinishColor);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .completed,
@@ -1741,7 +1849,7 @@ html .input,
 body .input {
   font-size: 1.2em;
   width: 90%;
-  color: #757678;
+  color: var(--fonts);
   border: 0;
 }
 
@@ -1773,7 +1881,7 @@ body i {
 
 html li:hover,
 body li:hover {
-  color: #fafafa;
+  color: var(--hover_color);
   cursor: pointer;
 }
 
@@ -1797,8 +1905,7 @@ html .fa-minus-circle,
 html .fa-calendar-alt,
 html .fa-list,
 html .fa-repeat,
-html .fas fa-times
-.close-btn,
+html .fas fa-times .close-btn,
 body .center_pauseButton,
 body .center_resetButton,
 body .center_play-btn,
@@ -1819,12 +1926,11 @@ body .fa-minus-circle,
 body .fa-calendar-alt,
 body .fa-list,
 body .fa-repeat,
-body .fas fa-times
-.close-btn {
+body .fas fa-times .close-btn {
   cursor: pointer;
   outline: 0;
   background: transparent;
-  color: #959595;
+  color: var(--font-color);
   font-size: 1.2rem;
   padding: 0.3rem;
 }
@@ -1846,7 +1952,7 @@ body .fa-circle {
 
 html .fa-clock,
 body .fa-clock {
-  color: #b17676;
+  color: var(--addProjectbtn);
 }
 
 html .fall,
@@ -1890,7 +1996,7 @@ body .fa-clock {
 html .right,
 body .right {
   height: calc(100% - 85px);
-  background: #14141C;
+  background: var(--right_background);
   -webkit-box-flex: 4;
       -ms-flex: 4 20%;
           flex: 4 20%;
@@ -1898,7 +2004,7 @@ body .right {
 
 html .right_divT,
 body .right_divT {
-  color: #757678;
+  color: var(--fonts);
   display: block;
   text-align: center;
 }
@@ -1916,7 +2022,7 @@ body .right_todo-item {
 html .right_detals,
 body .right_detals {
   font-size: 1rem;
-  color: #959595;
+  color: var(--font-color);
 }
 
 html .right .detals > li,
@@ -1975,7 +2081,7 @@ input[type="date"]:hover,
 .partOfTime:hover,
 textarea:hover,
 input[type="number"]:hover {
-  color: #fafafa;
+  color: var(--hover_color);
   cursor: pointer;
 }
 
@@ -1984,7 +2090,9 @@ input[type="number"]:hover {
   transition: all .1s ease-in-out;
 }
 
-.projectList:hover, .left_day:hover, .fa-minus-circle:hover {
+.projectList:hover,
+.left_day:hover,
+.fa-minus-circle:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   background-position: 0 100%;
@@ -2010,7 +2118,7 @@ textarea {
   width: 100%;
   height: 250px;
   border: none;
-  color: #757678;
+  color: var(--fonts);
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -2023,7 +2131,7 @@ input[type="date"],
 .Projects {
   padding: 10px;
   border: none;
-  color: #757678;
+  color: var(--fonts);
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -2032,7 +2140,7 @@ input[type="date"],
 
 select option {
   background: rgba(0, 0, 0, 0.9);
-  color: #757678;
+  color: var(--fonts);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -2049,7 +2157,7 @@ ol {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #959595;
+  color: var(--font-color);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2058,7 +2166,7 @@ ol {
 }
 
 .projectList:hover {
-  color: #fafafa;
+  color: var(--hover_color);
 }
 
 .circle {
@@ -2068,7 +2176,7 @@ ol {
   margin: 0px 5px 0px 0px;
   outline: 0;
   background: transparent;
-  color: #959595;
+  color: var(--font-color);
   font-size: 1rem;
   padding: 0.3rem;
 }
@@ -2126,7 +2234,7 @@ input textarea:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #14141C;
+  background-color: var(--nav_color);
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -2154,7 +2262,7 @@ input textarea:focus {
   white-space: nowrap;
   font-family: sans-serif;
   font-size: 13px;
-  color: #959595;
+  color: var(--font-color);
   text-decoration: none;
 }
 
@@ -2197,7 +2305,7 @@ input textarea:focus {
     padding: 0px 15px 0px 10px;
   }
   .container .left_projectItem {
-    color: #959595;
+    color: var(--font-color);
   }
   .container .left_addProject {
     width: 100%;
@@ -2237,7 +2345,7 @@ input textarea:focus {
     right: 0;
     -webkit-backdrop-filter: blur(9px);
             backdrop-filter: blur(9px);
-    color: #14141C;
+    color: var(--right_background);
     position: absolute;
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
@@ -2250,7 +2358,7 @@ input textarea:focus {
 
 .dss:hover {
   stroke-dasharray: 2;
-  color: #fafafa;
+  color: var(--hover_color);
 }
 
 .modal__header {
@@ -2276,41 +2384,52 @@ input textarea:focus {
 
 .tiles__tile {
   font-size: auto;
-  background-color: darkcyan;
   border-radius: 10px;
-  background: #D57868;
+  background: var(--number-color);
   padding: 5px;
   width: 200px;
   height: 150px;
   margin-top: 10px;
   margin-left: 10px;
-  color: white;
+  color: var(--hover_color);
   font-weight: bold;
   text-align: center;
 }
 
 .tiles__tile:nth-child(2) {
-  background: #4E344D;
+  background: var(--tiles1);
 }
 
 .tiles__tile:nth-child(1) {
-  background: #955165;
+  background: var(--tiles2);
 }
 
 .tiles__tile:nth-child(3) {
-  background: #FAB261;
+  background: var(--tiles3);
 }
 
 .tiles__tile:nth-child(4) {
-  background: #083513;
+  background: var(--tiles4);
 }
 
 .tiles__tile:nth-child(5) {
-  background: #0a053a;
+  background: var(--tiles5);
+}
+
+.tiles__tile:nth-child(6) {
+  background: var(--tiles6);
+}
+
+.tiles__tile:nth-child(7) {
+  background: var(--tiles7);
+}
+
+.tiles__tile:nth-child(8) {
+  background: var(--tiles8);
 }
 
 .tiles__date {
-  color: silver;
+  color: var(--hover_color);
 }
 
 .tiles__addNote {
@@ -2323,8 +2442,8 @@ input textarea:focus {
 .tiles__add {
   padding: 20px;
   border-radius: 30px;
-  background: #14141C;
-  color: #b17676;
+  background: var(--backgrounddarker);
+  color: var(--number-color);
   font-size: 1.6rem;
 }
 
@@ -2334,8 +2453,8 @@ input textarea:focus {
   -webkit-transform: translate(-50%, -50%) scale(1);
           transform: translate(-50%, -50%) scale(1);
   border-radius: 10px;
-  color: #202420;
-  background-color: #161621;
+  color: var(--font-color);
+  background-color: var(--header_background);
   height: 700px;
   width: 700px;
   max-height: 80%;
@@ -2351,8 +2470,8 @@ input textarea:focus {
   top: 10px;
   left: 10px;
   border-radius: 5px;
-  background-color: #aeaeb6;
-  color: #A6DFD8;
+  background-color: var(--task);
+  color: var(--light-color);
   font-size: 15px;
   padding: 10px;
 }
@@ -2368,7 +2487,7 @@ input textarea:focus {
 }
 
 .tiles__add:hover {
-  color: #b92a2a;
+  color: var(--number-color);
   cursor: pointer;
 }
 
@@ -2379,7 +2498,7 @@ input textarea:focus {
   margin-top: 50px;
   outline: none;
   padding: 5px;
-  color: #959595;
+  color: var(--font-color);
   background-color: transparent;
   letter-spacing: 1.2px;
   font-size: 1.6rem;
@@ -2396,7 +2515,7 @@ input textarea:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #959595;
+  color: var(--font-color);
   background-color: transparent;
   font-size: 1rem;
   border: 0;
@@ -2408,7 +2527,7 @@ input textarea:focus {
 
 .tiles__textarea .date {
   font-size: 30px;
-  color: red;
+  color: var(--number-color);
 }
 
 .modal_addNotebutton {
@@ -2424,7 +2543,7 @@ input textarea:focus {
   cursor: pointer;
   outline: 0;
   background: transparent;
-  color: #b17676;
+  color: var(--number-color);
   font-size: 1.8rem;
   padding: 0.3rem;
 }
@@ -2444,16 +2563,6 @@ input textarea:focus {
   pointer-events: all;
 }
 
-.ttts {
-  z-index: 300;
-  color: red;
-  position: absolute;
-  top: 100px;
-  left: 100px;
-  height: 100px;
-  width: 200px;
-}
-
 *, *::After *::before {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2469,7 +2578,7 @@ input textarea:focus {
   -webkit-transition: 200ms ease-in-out;
   transition: 200ms ease-in-out;
   border-radius: 10px;
-  background-color: #aeaeb6;
+  background-color: var(--task);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   opacity: 0.9;
@@ -2491,7 +2600,7 @@ input textarea:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--task_color);
 }
 
 .modal__header, .modal__tittle, .noteCard__header, .noteCard__tittle, .todoCard__header, .todoCard__tittle {
@@ -2509,7 +2618,7 @@ input textarea:focus {
   display: -ms-flexbox;
   display: flex;
   border-radius: 20px;
-  background-color: #22222C;
+  background-color: var(--task_color);
 }
 
 .modal__header, .modal__closebutton, .noteCard__header, .noteCard__closebutton, .todoCard__header, .todoCard__closebutton {
@@ -2527,8 +2636,8 @@ input textarea:focus {
 
 .modal__savebtn, .noteCard__savebtn, .todoCard__savebtn {
   border-radius: 5px;
-  background-color: #14141C;
-  color: #A6DFD8;
+  background-color: var(--backgrounddarker);
+  color: var(--light-color);
   font-size: 15px;
   padding: 10px;
 }

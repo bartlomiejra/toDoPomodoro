@@ -13,7 +13,6 @@
 }
 
 .tiles {
-	
 	row-gap: 15px;
 	display: flex;
 	flex-flow: row wrap;
@@ -23,15 +22,14 @@
 	list-style: none;
 	&__tile{
 		font-size: auto;
-		background-color:darkcyan;
 		  border-radius: 10px;
-		  background: #D57868;
+		  background:  var(--number-color);
 		  padding: 5px;
 		  width: 200px;
 		  height: 150px;
 		  margin-top: 10px;
 		  margin-left: 10px;
-		  color: white;
+		  color:var(--hover_color);
 		  font-weight: bold;
 		  text-align: center;
 		  
@@ -40,25 +38,40 @@
 	  }
 
 	  &__tile:nth-child(2) {
-		background: #4E344D;
-	  }
+		background:  var(--tiles1)
+	}
+	  
 	  &__tile:nth-child(1) {
-		background: #955165;
+		background: var(--tiles2)
 	  }
+	  
 	  &__tile:nth-child(3) {
-		background: #FAB261;
+		background: var(--tiles3)
 	  }
 
 	  &__tile:nth-child(4) {
-		background: #083513;
-	  }
+		background:  var(--tiles4)
+	}
+	  
 
 
 	  &__tile:nth-child(5) {
-		background: #0a053a;
-	  }
+		background:  var(--tiles5)
+	}
+	  
+	  &__tile:nth-child(6) {
+		background:  var(--tiles6)
+	}
+	  
+	  &__tile:nth-child(7) {
+		background: var(--tiles7)
+	}
+	  
+	  &__tile:nth-child(8) {
+		background:  var(--tiles8)
+	}
 	  &__date{
-		  color: rgb(192, 192, 192);
+		  color: 	var(--hover_color);
 	  }
 	
 	  &__addNote{
@@ -74,12 +87,9 @@
 
 		padding: 20px;
 		border-radius: 30px;
-	  background: $backgrounddarker;
-	  color:  $red;
+	  background: var(--backgrounddarker);
+	  color:  var(--number-color);
 	  font-size: 1.6rem;
-
-
-
 	}
 
 	&__note{
@@ -87,30 +97,26 @@
 		transform: translate(-50%, -50%) scale(1
 		);
 		border-radius: 10px;
-		color: rgb(32, 36, 32);
-		background-color: $backgroundnew;
+		color: var(--font-color);
+		background-color: var(--header_background);
 		height: 700px;
 		width: 700px;
 		max-height: 80%;
 		max-width: 90%;
 		z-index: 300;
 		position: absolute;
-		// transform: translate(-50%, -50%) ;
 	top: 50%;
 	left: 50%;
-	
-		
 	}
 
 
 	&__savebtn, 	&__deletebtn{
 		position: absolute;
-		
 		top: 10px;
 		left: 10px;
 		border-radius: 5px;
-		background-color: $task;
-		color: $butColor;
+		background-color: var(--task);
+		color: var(--light-color);
 		font-size: 15px;
 		padding: 10px;
 
@@ -130,7 +136,7 @@
 
 }
 	&__add:hover{
-		color: rgb(185, 42, 42);
+		color: var(--number-color);
 		cursor: pointer;
 
 	}
@@ -140,13 +146,11 @@ display: flex;
 margin-top: 50px;
 	outline: none;
     padding: 5px;
-    color: #959595;
+    color: var(--font-color);
     background-color: transparent;
     letter-spacing: 1.2px;
     font-size: 1.6rem;
     border: 0;
-    
-   
     border-radius: 0px 8px 8px 0px;
 }
 
@@ -157,7 +161,7 @@ margin-top: 50px;
 	margin: 10px 10px 10px 10px;
     letter-spacing: 1.2px;
 	display: flex;
-    color: #959595;
+    color: var(--font-color);
     background-color: transparent;
     font-size: 1rem;
     border: 0;
@@ -165,17 +169,10 @@ margin-top: 50px;
     text-align: top;
     border-radius: 0px 8px 8px 0px;
 	padding: 0 0 0 0;
-	// resize: none;
-	
-
-
 .date{
 font-size: 30px;
-color: red;
+color:var(--number-color);
 }
-
-
-	
 }
 }
 
@@ -186,7 +183,6 @@ color: red;
 	bottom:10px;
   }
 
-
   .fa-times
  {
 	position: absolute;
@@ -195,7 +191,7 @@ color: red;
     cursor: pointer;
     outline: 0;
     background: transparent;
-    color:  $red;
+	color: var(--number-color);
     font-size: 1.8rem;
     padding: 0.3rem;
   }
@@ -205,31 +201,11 @@ color: red;
 }
 
 .overlayNote{
-	// position: absolute;
-	// opacity: 0;
-	// top: 0; 
-	// left: 0;
-	// right: 0;
-	// transform: translate(-50%, -50%) scale(1);
-
-	// bottom: 0;
-	// background-color: rgba(0,0,0,0.6);
 pointer-events: none;
 opacity: 1;
 .tiles__note{
 	pointer-events: all;
-
+}
 }
 
-}
 
-
-.ttts{
-z-index: 300;
-color: red;
-position:absolute;
-top: 100px;
-left: 100px;
-height: 100px;
-width: 200px;
-}

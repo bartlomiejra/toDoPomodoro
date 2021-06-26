@@ -13,7 +13,7 @@
 	border: 1px solid black;
 	transition: 200ms ease-in-out;
 	border-radius: 10px;
-	background-color: $task;
+	background-color: var(--task);
 	backdrop-filter: blur(10px);
 
 opacity: 0.9;
@@ -32,8 +32,7 @@ max-height: 95%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 1px solid black;
-
+	border-bottom: 1px solid var(--task_color);
 }
 
 &__header, &__tittle{
@@ -47,7 +46,7 @@ max-height: 95%;
 		display: flex;
 		
 		border-radius: 20px;
-		background-color: $black;
+		background-color: var(--task_color);
 
 	}
 }
@@ -71,8 +70,8 @@ max-height: 95%;
 &__savebtn  {
 	
 	border-radius: 5px;
-	background-color: $backgrounddarker;
-	color: #A6DFD8;
+	background-color: var(--backgrounddarker);
+	color: var(--light-color);
 	font-size: 15px;
 	padding: 10px;
   }

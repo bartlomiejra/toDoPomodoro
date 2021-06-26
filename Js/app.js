@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 const centerDiv = document.querySelector('.center');
 const leftDiv = document.querySelector('.left');
 const projectIcon = document.querySelector('.Project');
@@ -25,9 +26,17 @@ const todos = JSON.parse(localStorage.getItem('Items')) || [];
 let audio;
 
 let timeInFocus;
+let pomodoreDuration;
 const settinglocal = JSON.parse(localStorage.getItem('settings'));
-const pomodoreDuration = settinglocal.pomodoreTime;
+if (settinglocal == null) {
+      console.log('gówno');
+      const settings = { Theme: 'Dark', pomodoreTime: '25' };
 
+      window.localStorage.setItem('settings', JSON.stringify(settings));
+} else {
+      pomodoreDuration = settinglocal.pomodoreTime;
+}
+console.log(pomodoreDuration);
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
@@ -35,7 +44,6 @@ let taskToday;
 let dateToday;
 // let taskToday = 0;
 let tasks = JSON.parse(localStorage.getItem('Items')) || [];
-
 // const objlines = 0;
 let actualList = [];
 let dateTomorrow = 0;
@@ -48,6 +56,7 @@ function actualDateTime() {
       dateToday = `${yyyy}-${mm}-${dd}`;
       dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
 }
+
 actualDateTime();
 tasks = JSON.parse(localStorage.getItem('Items')) || [];
 taskToday = tasks.filter((items) => items.data === dateToday);
@@ -67,7 +76,7 @@ function lists(todolist = [], objlines) {
             emptyList.classList.add('none');
       }
 
-      objlines.innerHTML = actualList
+      todoList.innerHTML = actualList
             .map(
                   (todo, i) => `${
                         todo.done
@@ -546,7 +555,7 @@ function showDiv(clickedId) {
             const projectt = document.querySelector('.projectSelect');
             for (let i = 0; i < projectList.length; i++) {
                   const option = document.createElement('option');
-                  txt = document.createTextNode(projectList[i].name);
+                  const txt = document.createTextNode(projectList[i].name);
                   option.appendChild(txt);
                   projectt.insertBefore(option, projectt.lastChild);
             }
