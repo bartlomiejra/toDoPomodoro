@@ -30,7 +30,7 @@ let pomodoreDuration;
 const settinglocal = JSON.parse(localStorage.getItem('settings'));
 if (settinglocal == null) {
       console.log('gówno');
-      const settings = { Theme: 'Dark', pomodoreTime: '25' };
+      const settings = { Theme: 'Dark', pomodoreTime: 25 };
 
       window.localStorage.setItem('settings', JSON.stringify(settings));
 } else {
