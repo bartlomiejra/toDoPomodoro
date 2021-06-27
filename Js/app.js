@@ -617,7 +617,7 @@ function renderProjects() {
   ${proje.name} 
   </div>
   
-  <button class="projectDelete" id=${proje.name} > <i class="fas fa-minus-circle" 
+  <button class="projectDelete" aria-label="delete" id=${proje.name} >  <i class="fas fa-minus-circle" 
   aria-hidden="true" id=${proje.id} name=${proje.name}></i></button>
   </li>
 `,

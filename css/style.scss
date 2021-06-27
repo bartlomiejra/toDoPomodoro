@@ -6,7 +6,7 @@ $statColor: #22222C;
 $left_background: #14141C;
 $backgrounddarker: #14141C;
 $nav_color: #14141C;
-$task_color: #22222C;
+$task_color: #28222c;
 $timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
 $addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
 $number-color: #EE786C;
@@ -146,24 +146,14 @@ $tiles8Light:#59aa66;
 }
 
 @mixin left_addproject {
-    // position: absolute;
-    // bottom: ;
     height: 30px;
-
     text-align: center;
-    // height: 30px;
     font-size: 15px;
     border: none;
     background-color: var(--task);
-
     border-radius: 8px 0px 0px 8px;
     filter: var(--shadow);
-    //   
-
-
-
 }
-
 //animation
 @keyframes scale {
     0% {
@@ -171,13 +161,11 @@ $tiles8Light:#59aa66;
         transform: scale(0);
         transform-origin: 50% 50%;
     }
-
     50% {
         opacity: 2;
         transform: scale(1);
         transform-origin: 50% 50%;
     }
-
     100% {
         opacity: 3;
     }
@@ -257,44 +245,25 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    //   background: black;
     color: var(--font-color);
     height: 100%;
-    //   background-size: 150% 150%;
-
-
-
     .container {
-
-        // position: relative;
         padding: 0;
-        // margin: auto;
-        // width: 90%;
         height: 100%;
-        // height: 700px;
-        // border-radius: 30px;
         list-style: none;
         flex-flow: row wrap;
         backdrop-filter: blur(5px);
-        // overflow: hidden;
         display: flex;
         position: relative;
-
     }
-
     .container>* {
         padding: 10px;
         flex: 1 100%;
-
         &__header {
             background: var(--header-background);
-
             max-height: 10px;
         }
     }
-
-
-
     .left {
         height: calc(100% - 85px);
         flex-basis: 100px;
@@ -303,20 +272,16 @@ body {
         flex-direction: column;
         flex-shrink: 2;
         background: var(--left_background);
-
         &_day {
             transition: all .1s ease-in-out;
             position: relative;
             text-align: left;
             color: var(--font-color)
         }
-
         &_projectItem {
             display: grid;
             grid-template-columns: 3fr 1fr;
         }
-
-
         &_addProject {
             margin-top: auto;
             height: 32px;
@@ -328,48 +293,33 @@ body {
             display: -webkit-flex;
             flex-wrap: nowrap;
         }
-
-
         &_color {
             height: 26px;
             width: 28px;
             border-radius: 20px;
         }
-
         &_addProjectBtn,
         &_Projects,
         &_color {
             @include left_addproject;
         }
-
         &_addProjectBtn {
             width: 30px;
             height: 32px;
-
             color: var(--addProjectbtn);
         }
-
         &_Projects {
             outline: none;
             color: var(--font-color);
-
-
             border-radius: 0px 0px 0px 0px;
-
         }
-
         &_color {
             border-radius: 0px 8px 8px 0px;
         }
-
-
     }
-
     .none {
         display: none;
     }
-
-
     .center {
         flex: 4 45%;
         height: calc(100% - 85px);
@@ -377,7 +327,6 @@ body {
         flex-direction: column;
         align-items: center;
         background: var(--center-color);
-
         &_tasktable {
             width: 100%;
             border-radius: 10px;
@@ -385,28 +334,23 @@ body {
             display: flex;
             justify-content: center;
         }
-
         &_stat {
             width: 25%;
             color: var(--statColor);
             display: flex;
             flex-direction: column;
         }
-
         &__number {
             color: var(--number-color);
             flex: 10;
             text-align: center;
             font-size: 2rem;
         }
-
         &__text {
             color: var(--font-color);
-
             flex: 2;
             text-align: center;
         }
-
         &_addTaskdiv {
             padding: 5px;
             margin: 10px;
@@ -414,7 +358,6 @@ body {
             font-size: 2em;
             margin-left: 40px;
             overflow: hidden;
-
             width: 45%;
             display: flex;
             justify-content: center;

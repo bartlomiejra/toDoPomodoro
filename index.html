@@ -1,316 +1,189 @@
 <!DOCTYPE html>
 <html lang="pl">
-    
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="manifest" href="manifest.webmanifest">
+	<meta charset="UTF-8">
+	<link rel="manifest" href="manifest.webmanifest">
 	<meta name="viewport">
-    <title>TodoPomodoro</title>
-    <link rel="shortcut icon" href="#">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<title>TodoPomodoro</title>
+	<link rel="shortcut icon" href="#">
 	<meta name="viewport" content="width=device-width, user-scalable=false;">
 	<meta name="theme-color" content="#171721">
-
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/settings.css">
-    <link rel="stylesheet" type="text/css" href="css/note.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/settings.css">
+	<link rel="stylesheet" type="text/css" href="css/note.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700;1,900&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a712e78954.js" crossorigin="anonymous"></script>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a712e78954.js" crossorigin="anonymous"></script>
 </head>
-    <body>
-        
-        <div class="container">
-        <!-- <header>FocusTODo</header> -->
-        <div class="left leftnone">
-<p class="left__title">Calendary</p>
-        <ol class="left_listdays">
-            
-            <li class=" left_day" id="today"> <i class="far fa-calendar-alt"></i>Today</li>
-           
-            <li class=" left_day"id="tomorrow"> <i class="far fa-calendar-alt"></i>Tomorrow</li>
-           
-            <li class=" left_day"id="someday"> <i class="far fa-calendar-alt"></i>Someday</li>
-        
-        </ol>
-		<ol>
-
-			<div class="left_pomodoreProjects">
-				
-				
-			</div>
-		</ol>
-
-            
-     
-
-
-    <form action="" class="left_addProject">
-        
-        <button name="addProject" class="left_addProjectBtn" type="submit"><class class="fas fa-plus" ></class></button>
-        <input type="text" class="left_Projects"  placeholder = "Add  your project name">
-    <input type="color" class="left_color"  id="color" value=""> 
-</form>
-
-       
-
-
-</form>
-        </div>
-        <div class="center">
-		
-       
-    <div class="center_tasktable">
-        <div class=" center_stat">
-            
-            <div class="center__number" id="estimated">
-                </div>   
-            <div class="center__text">  Estimated time(h)</div> 
-        </div>
-        <div class="center_stat">
-            <div class=" center__number"  id="taskstobe"> </div>   
-            <div class="center__text"> Task to be complited</div> 
-        </div>
-        <div class="center_stat">
-            <div class=" center__number" id="elapse"> </div>   
-            <div class="center__text">Elapsed time(h)</div> 
-        </div>
-        <div class="center_stat">
-            <div class=" center__number" id="completedTasks" ></div>
-           <div class="center__text">Completed tasks</div> 
-
-           
-        </div>
-    
-    </div>
-   
-	
-
-<form action="" class="center_addTaskdiv">
-    
-        <button name="addTask" class="center_addtaskButton" type="submit"><i class="fas fa-plus"></i></button>
-<input class="center_todoInput" type="text" name="item" placeholder=" Add a New Item Task" onfocus="this.placeholder = 'Item Name'">
-
-
-
-</form>
-<div class="center_emptyList none">
-	<i class="center_foldericon far fa-folder-open"></i>
-	<p>No task, Tap the input box above to add</p>
-
-
-	</div>
-
-        <ul class="center_todolist">
-                
-         
-        <!-- controll  -->
-        </ul>
-
-   
-            <!-- <button id="taksCompleted" onclick="showCompleted()">Show Completed Task</button> -->
-            
-            <div class="completedTasks">
-                Tesk Pierwszy
-            </div>
-            <div class="clock ">
-                
-                <!-- <div class="screen"> -->
-                    <i class="fas fa-window-restore " onclick="resizeClock()"></i>
-                 <!-- </div> -->
-             
-                 <div class="clock_countdown" id="countdown">25:00</div>
-                 <div class=" countdownButtons ">
-                 
-                    <button class="center_pauseButton"  type="submit"><i class="fas fa-pause-circle"></i></button> 
-                 <button class="center_resetButton"  type="submit"><i class="fas fa-stop-circle"></i></button> 
-             </div>
-             </div>
-		
-			 
-           
-
-    </div>  
-	
-    <div class="right none">
-
-       
-
-
-        
-    </div>
-	<nav class="nav">
-               
-		<div class="nav_element  Project " data-link>
-			<svg xmlns="http://www.w3.org/2000/svg" 
-			width="24"
-			 height="24" 
-			viewBox="0 0 24 24" fill="none" 
-			stroke="currentColor"
-			 stroke-width="2"
-			  stroke-linecap="round"
-			   stroke-linejoin="round" 
-			   class=" dss  feather feather-book-open">
-			   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-			   <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-		
-		  <span>Project</span><br>
-		</div>
-		<div  class="nav_element    nav-inbuild" id="noteButton"  >
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" dss feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>		
-			
-			<span>Note</span><br>
-		</div>
-		
-		<div class="modal noteCard">
-			<h2 class="modal__header">Notes</h2>	
-
-			<button  id="closeNotebtn" class="modal__closebutton"><i class="fas fa-times"></i></button>
-		 <div class="tiles">
-
-				<!-- <div class="tiles__tile">
-				<h3>List of people indicted in the International Criminal Tribunal ⚡ </h3>
-					
-				<div class="tiles__date">20 May 2021</div>
+<body>
+	<div class="container">
+		<!-- <header>FocusTODo</header> -->
+		<div class="left leftnone">
+			<p class="left__title">Calendary</p>
+			<ol class="left_listdays">
+				<li class=" left_day" id="today"> <i class="far fa-calendar-alt"></i>Today</li>
+				<li class=" left_day" id="tomorrow"> <i class="far fa-calendar-alt"></i>Tomorrow</li>
+				<li class=" left_day" id="someday"> <i class="far fa-calendar-alt"></i>Someday</li>
+				<div class="left_pomodoreProjects">
 				</div>
-				<div class="tiles__tile">
-					<h3>Top 30 Essential Spanish Recipes to Make at Home  </h3>
-						
-					<div class="tiles__date">20 May 2021</div>
+			</ol>
+			<form action="" class="left_addProject">
+				<button aria-label="addProject" class="left_addProjectBtn" type="submit">
+					<class class="fas fa-plus"></class>
+				</button>
+				<input type="text" class="left_Projects" placeholder="Add  your project name">
+				<input type="color" class="left_color" id="color" value="">
+			</form>
+			</form>
+		</div>
+		<div class="center">
+			<div class="center_tasktable">
+				<div class=" center_stat">
+					<div class="center__number" id="estimated">
 					</div>
-					<div class="tiles__tile">
-						<h3>List of Bosnia and Herzegovina patriotic songs 💣
-						</h3>
-							
-						<div class="tiles__date">20 May 2021</div>
-						</div>
-					<div class="tiles__tile">
-						<h3> Jordan Peterson Quotes
-						</h3>
-							
-						<div class="tiles__date">20 May 2021</div>
-						</div>
-					<div class="tiles__tile">
-						<h3>
-							Shopping List
-						</h3>
-							
-						<div class="tiles__date">20 May 2021</div>
-						</div> -->
-					<!-- <div class="tiles__tile">
-						<h3>Numery Telefonów do znajomych 
-						</h3>
-							
-						<div class="tiles__date">20 May 2021</div>
-						</div>
-					<div class="tiles__tile">
-						<h3>Numery Telefonów do znajomych 
-						</h3>
-							
-						<div class="tiles__date">20 May 2021</div>
-						</div>
-					<div class="tiles__tile">
-						<h3>Numery Telefonów do znajomych 
-						</h3>
-							
-						<div class="tiles__date">20 May 2021</div>
-						</div>
-					 -->
-				
-				</div>	 
-				<button class="tiles__addNote " id="addNoteButton"><i class="fas fa-plus tiles__add" aria-hidden="true"></i></button>
+					<div class="center__text"> Estimated time(h)</div>
+				</div>
+				<div class="center_stat">
+					<div class=" center__number" id="taskstobe"> </div>
+					<div class="center__text"> Task to be complited</div>
+				</div>
+				<div class="center_stat">
+					<div class=" center__number" id="elapse"> </div>
+					<div class="center__text">Elapsed time(h)</div>
+				</div>
+				<div class="center_stat">
+					<div class=" center__number" id="completedTasks"></div>
+					<div class="center__text">Completed tasks</div>
+				</div>
+			</div>
+			<form action="" class="center_addTaskdiv">
+				<button aria-label="addtaskBtn" class="center_addtaskButton" type="submit"><i
+						class="fas fa-plus"></i></button>
+				<input class="center_todoInput" type="text" name="item" placeholder=" Add a New Item Task"
+					onfocus="this.placeholder = 'Item Name'">
+			</form>
+			<div class="center_emptyList none">
+				<i class="center_foldericon far fa-folder-open"></i>
+				<p>No task, Tap the input box above to add</p>
+			</div>
+			<ul class="center_todolist">
+				<!-- controll  -->
+			</ul>
+			<div class="completedTasks">
+				Tesk Pierwszy
+			</div>
+			<div class="clock ">
+				<i class="fas fa-window-restore " onclick="resizeClock()"></i>
+				<div class="clock_countdown" id="countdown">25:00</div>
+				<div class=" countdownButtons ">
+					<button class="center_pauseButton" type="submit"><i class="fas fa-pause-circle"></i></button>
+					<button class="center_resetButton" type="submit"><i class="fas fa-stop-circle"></i></button>
+				</div>
+			</div>
+		</div>
+		<div class="right none">
+		</div>
+		<nav class="nav">
+			<div class="nav_element  Project " data-link>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+					class=" dss  feather feather-book-open">
+					<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+					<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+				</svg>
+				<span>Project</span><br>
+			</div>
+			<div class="nav_element    nav-inbuild" id="noteButton">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+					class=" dss feather feather-calendar">
+					<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+					<line x1="16" y1="2" x2="16" y2="6"></line>
+					<line x1="8" y1="2" x2="8" y2="6"></line>
+					<line x1="3" y1="10" x2="21" y2="10"></line>
+				</svg>
+				<span>Note</span><br>
+			</div>
+			<div class="modal noteCard">
+				<h2 class="modal__header">Notes</h2>
+				<button id="closeNotebtn" aria-label="closeNote" class="modal__closebutton"><i
+						class="fas fa-times"></i></button>
+				<div class="tiles">
+				</div>
+				<button class="tiles__addNote " id="addNoteButton" aria-label="addNote"><i
+						class="fas fa-plus tiles__add" aria-hidden="true"></i></button>
 				<div class="tiles__note none ">
-					<!-- <button class="tiles__savebtn" id="saveNote">Save</button>
-					<button class="tiles__deletebtn closeNotebtn" id="deleteNote">Delete Last Note</button>
-					<button  id="closethisNote" class="modal__closebutton"><i class="fas fa-times"></i></button>
-					<input class="tiles__noteHeader" id="noteHeader" placeholder="Title" type="text">
-					<p class="date" value="dateToday">x</p>
-					<input type="textarea" rows="2" cols="20" wrap="hard" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea"> -->
-
-
 				</div>
 			</div>
-			
-		
-		  <div  class="nav_element  " id="todoButton">		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" dss feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-			<span>Todo</span>
-		  </div>
-		  <div class="modal todoCard">
-
-			  <div class="modal__header">
-				  <h2>Todo</h2>							
-				  <button  id="closeTodobtn" ><i class="fas fa-times"></i></button>
-				  
-				</div>
-				<div class="modal__body">
-					</div>
-				</div> 
-
-		  
-		  <div   class="nav_element    data-link ">			<svg id="settingsButton"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" dss feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-		  
-		
-
-			<span  > Settings</span>
-			<div class="modal"  id="modal">
-
+			<div class="nav_element  " id="todoButton"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+					viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+					stroke-linejoin="round" class=" dss feather feather-list">
+					<line x1="8" y1="6" x2="21" y2="6"></line>
+					<line x1="8" y1="12" x2="21" y2="12"></line>
+					<line x1="8" y1="18" x2="21" y2="18"></line>
+					<line x1="3" y1="6" x2="3.01" y2="6"></line>
+					<line x1="3" y1="12" x2="3.01" y2="12"></line>
+					<line x1="3" y1="18" x2="3.01" y2="18"></line>
+				</svg>
+				<span>Todo</span>
+			</div>
+			<div class="modal todoCard">
 				<div class="modal__header">
-					<div class="modal__title">Settings</div>
-					<button data-close-button id="closeButton" class="modal__closebutton"><i class="fas fa-times"></i></button>
-					
+					<h2>Todo</h2>
+					<button id="closeTodobtn" aria-label="closeTodoBtn"><i class="fas fa-times"></i></button>
 				</div>
 				<div class="modal__body">
-					<ol class="modal__options">
-						<div class="modal__themes">
-
-							<li>
-								<input type="radio" class="radio" id="Light" name="theme" value="Light">
-								
-								<label for="Light" >Light Theme </label>
-							</li>
-							<li>
-								
-								<input type="radio" class="radio" id="Dark" name="theme" value="Dark">
-								<label for="Dark">Dark Theme</label></li>
-							</div>
+				</div>
+			</div>
+			<div class="nav_element    data-link "> <svg id="settingsButton" xmlns="http://www.w3.org/2000/svg"
+					width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					stroke-linecap="round" stroke-linejoin="round" class=" dss feather feather-settings">
+					<circle cx="12" cy="12" r="3"></circle>
+					<path
+						d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+					</path>
+				</svg>
+				<span> Settings</span>
+				<div class="modal" id="modal">
+					<div class="modal__header">
+						<div class="modal__title">Settings</div>
+						<button data-close-button id="closeButton" aria-label="closeButton"
+							class="modal__closebutton"><i class="fas fa-times"></i></button>
+					</div>
+					<div class="modal__body">
+						<ol class="modal__options">
+							<div class="modal__themes">
 								<li>
-								
+									<input type="radio" class="radio" id="Light" name="theme" value="Light">
+									<label for="Light">Light Theme </label>
+								</li>
+								<li>
+									<input type="radio" class="radio" id="Dark" name="theme" value="Dark">
+									<label for="Dark">Dark Theme</label></li>
+							</div>
+							<li>
 								<label for="quantity">Pomodore duration:</label>
 								<input type="number" id="quantity" value="25" name="quantity" min="5" max="100">
 							</li>
 							<li>
-
-								<button class="modal__savebtn "
-								id="saveSettingUser">Save Settings</button>
+								<button class="modal__savebtn " id="saveSettingUser">Save Settings</button>
 							</li>
-
-							
-					</ol>
-					
+						</ol>
+					</div>
 				</div>
 			</div>
-				
-			
-
-		  </div>
-<div class='' id="overlay"></div>
-
-
- </nav> 
- 
-    </div>
-    
-    
-    
-</div>
-</div>
-
-<script src="./Js/app.js"></script>  
-<script src="./Js/settings.js"></script>  
-<script src="./Js/note.js"></script>  
-<script src="./Js/todo.js"></script>  
-
+			<div class='' id="overlay"></div>
+		</nav>
+	</div>
+	</div>
+	</div>
+	<script src="./Js/app.js"></script>
+	<script src="./Js/settings.js"></script>
+	<script src="./Js/note.js"></script>
+	<script src="./Js/todo.js"></script>
 </body>
 </html>
