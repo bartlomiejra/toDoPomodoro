@@ -21,7 +21,26 @@ const resize = document.querySelector('.fa-window-restore');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
 
-const todos = JSON.parse(localStorage.getItem('Items')) || [];
+let todos = JSON.parse(localStorage.getItem('Items'));
+console.log(todos);
+if (todos == null) {
+      todos = [
+            { id: 0, name: 'Studies', color: '#9ebb11' },
+            { id: 1, name: 'Running 🏃', color: '#11bb44' },
+            { id: 2, name: 'Reading 📚', color: '#bb1111' },
+            { id: 3, name: 'SocialLive ', color: '#989f65' },
+            { id: 4, name: 'Mindfulness', color: '#00459e' },
+            { id: 4, name: 'Mindfulness', color: '#00459e' },
+      ];
+
+      window.localStorage.setItem('Project', JSON.stringify(todos));
+
+      console.log('git');
+} else {
+      console.log('git');
+
+      let todos = JSON.parse(localStorage.getItem('Items'));
+}
 
 let audio;
 
@@ -29,7 +48,6 @@ let timeInFocus;
 let pomodoreDuration;
 const settinglocal = JSON.parse(localStorage.getItem('settings'));
 if (settinglocal == null) {
-      console.log('gówno');
       const settings = { Theme: 'Dark', pomodoreTime: 25 };
 
       window.localStorage.setItem('settings', JSON.stringify(settings));

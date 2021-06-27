@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const openModalButtons = document.getElementById('settingsButton');
 const closeSettings = document.querySelectorAll('[data-close-button ]');
 const saveButton = document.getElementById('saveSettingUser');
@@ -13,7 +12,8 @@ const settingUser = JSON.parse(
 theme.innerHTML = `
 <li>
 <input type="radio" class="radio" id="Light"   name="theme" value="Light"
-${settingUser.Theme === 'Light' ? 'checked' : ''}>
+${settingUser.Theme === 'Light' ? 'checked' : ''}
+>
 <label for="Light" >Light Theme </label>
 </li>
 <li>
