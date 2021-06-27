@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "rgba(0, 0, 0, 0.5)",
     "color": "rgb(68, 26, 26)",
-	"theme_color": "#295555",
+	"theme_color": "#ffffff",
     "description": "App to improve your focus",
   "orientation": "portrait-primary"
 }
