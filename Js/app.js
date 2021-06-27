@@ -25,12 +25,12 @@ let todos = JSON.parse(localStorage.getItem('Items'));
 console.log(todos);
 if (todos == null) {
       todos = [
-            { id: 0, name: 'Studies👨‍🎓', color: '#9ebb11' },
+            { id: 0, name: 'Studies 👨‍🎓', color: '#9ebb11' },
             { id: 1, name: 'Running 🏃', color: '#11bb44' },
             { id: 2, name: 'Reading 📚', color: '#bb1111' },
-            { id: 3, name: 'SocialLive🍹  ', color: '#989f65' },
-            { id: 4, name: 'Mindfulness🧘', color: '#00459e' },
-            { id: 4, name: 'Mindfulness', color: '#00459e' },
+            { id: 3, name: 'SocialLive 🍹  ', color: '#989f65' },
+            { id: 4, name: 'Mindfulness 🧘', color: '#00459e' },
+            { id: 4, name: 'Spanish Lesson 🇪🇸', color: '#00459e' },
       ];
 
       window.localStorage.setItem('Project', JSON.stringify(todos));
@@ -79,21 +79,15 @@ actualDateTime();
 tasks = JSON.parse(localStorage.getItem('Items')) || [];
 taskToday = tasks.filter((items) => items.data === dateToday);
 lists(taskToday, todoList);
-console.log(taskToday);
 
 function lists(todolist = [], objlines) {
-      console.log(actualList);
-      console.log(todolist);
       actualList = todolist;
-      console.log(actualList);
-
-      if (actualList.length < 1) {
+      if (actualList.length < 0) {
             emptyList.classList.remove('none');
       }
       if (actualList.length > 1) {
             emptyList.classList.add('none');
       }
-
       todoList.innerHTML = actualList
             .map(
                   (todo, i) => `${
@@ -143,7 +137,6 @@ aria-hidden="true"></i></button>
             projectIcon.classList.add('none');
       }
 }
-
 function addTodo(event) {
       event.preventDefault();
       const item = {
@@ -167,7 +160,6 @@ function addTodo(event) {
       todoInput.value = '';
       statTask();
 }
-
 function statTask() {
       let toBeCompleted = 0;
       let countCompleted = 0;
@@ -420,24 +412,15 @@ function resizeClock() {
 function showDiv(clickedId) {
       // ! czemu tutaj pobieram projetky a nie Itemy ????
       const itemS = JSON.parse(localStorage.getItem('Items') || []);
-      //! Poniżej id tasku
       description.classList.remove('none');
       description.classList.add('right--active');
-
-      //   console.log(itemS[clickedId]);
-      //   console.log(itemS);
-
       renderdetals();
-
       function renderdetals() {
             const todoss = JSON.parse(localStorage.getItem('Items')) || [];
             console.log('coolest');
-
             console.log(todoss);
-
             const taskDetails = todoss[clickedId];
             console.log(taskDetails);
-
             console.log(taskDetails.note);
             description.innerHTML = `
       <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
@@ -448,14 +431,12 @@ function showDiv(clickedId) {
        ${taskDetails.text}</div>
           </div>
    <div class="right_detals">
-
   <ul class="right_list">
                 <li class="right_list--item center_clocks">Pomodoro:     ${
                       taskDetails.focus > pomodoreDuration
                             ? '<i class="fas fa-clock time " aria-hidden="true"> </i>'
                             : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
                 }
-               
                   ${
                         taskDetails.focus / pomodoreDuration > 1
                               ? ` x ${Math.floor(
@@ -481,12 +462,10 @@ function showDiv(clickedId) {
                  }"  selected disabled hidden>
                  ${taskDetails.project}
          </option>
-
               </select></li>
                 <li>Repeat: Every</li> <li> <input type="number" class="repeatDay" value="${
                       taskDetails.repeatday
                 }"  min="0" max="10" id="days">
-
                 </input>
                 <select name="partOfTime"
                   class="partOfTime"
@@ -504,48 +483,38 @@ function showDiv(clickedId) {
                   // <option value="weeks">Weeks</option>
                   // <option value="months">Month</option>
                 </select>
-
                 </ul>
                 <textarea  placeholder="Note to your task" class="note" id=${clickedId} name="note" >${
                   taskDetails.note !== '' ? taskDetails.note : ''
             }
       </textarea>
       </div>
-
       `;
-
             const closeBtn = document.querySelector('.close-btn');
             const date = document.getElementById('date');
             const note = document.querySelector('.note');
             const project = document.querySelector('.projectSelect');
             const timePart = document.querySelector('.partOfTime');
             const repeatDay = document.querySelector('.repeatDay');
-
             date.addEventListener('input', updateDetails);
             closeBtn.addEventListener('click', closeDiv);
-
             note.addEventListener('input', updateDetails);
             repeatDay.addEventListener('input', updateDetails);
-
             const projectSelect = document.getElementById('Project');
             projectSelect.addEventListener('click', () => {
                   const options = projectSelect.querySelectorAll('option');
                   projectSelect.addEventListener('change', updateDetails);
-                  //! console.log(options);
             });
-
             const partTimeSelect = document.getElementById('partOfTime');
             partTimeSelect.addEventListener('click', () => {
                   const optionsTime = partTimeSelect.querySelectorAll('option');
                   partTimeSelect.addEventListener('change', updateDetails);
                   console.log(optionsTime);
             });
-
             function closeDiv() {
                   console.log('elo');
                   description.classList.add('none');
             }
-
             function updateDetails() {
                   const proj = JSON.parse(localStorage.getItem('Items')) || [];
                   console.log(proj);

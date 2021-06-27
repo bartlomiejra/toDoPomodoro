@@ -209,3 +209,33 @@ opacity: 1;
 }
 
 
+@media screen and (max-width: 895px) {
+
+	.tiles {
+		row-gap: 15px;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		padding: 0;
+		margin: 20px;
+		list-style: none;
+		&__tile{
+			font-size: auto;
+			  border-radius: 10px;
+			  background:  var(--number-color);
+			  padding: 5px;
+			  width: 150px;
+			  height: 100px;
+			//   margin-top: 10px;
+			//   margin-left: 10px;
+			  color:var(--hover_color);
+			//   font-weight: bold;
+			  text-align: center;
+			  
+			 
+		
+		  }
+		}
+	
+	}
+

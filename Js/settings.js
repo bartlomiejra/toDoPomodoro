@@ -58,16 +58,12 @@ function save() {
                   themeselected = themes[i].value;
             }
       }
-
-      //   const settingUser = JSON.parse(localStorage.getItem('settings')) || [];
       const settings = {
             Theme: themeselected,
             pomodoreTime: pomodoreTime.value,
       };
-
       window.localStorage.setItem('settings', JSON.stringify(settings));
       themesValue();
 }
-
 saveButton.addEventListener('click', save);
 themesValue();

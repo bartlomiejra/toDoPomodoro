@@ -33,7 +33,10 @@ function addNote() {
         	  <button class="tiles__deletebtn closeNotebtn" onClick="deleteyourNote()" id="deleteNote">Delete Last Note</button>
         	  <button  id="closethisNote" class="modal__closebutton onClick='closeonenoteCard()'"><i class="fas fa-times"></i></button>
         	  <input class="tiles__noteHeader" id="noteHeader" placeholder="Title" type="text">
-        	  <p class="date" value="dateToday">x</p>
+        	  <p class="date" value=dateToday>
+			  ${dateToday} 
+			 
+			  </p>
         	  <input type="textarea" rows="2" cols="20" wrap="hard" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea">
 
           `;
