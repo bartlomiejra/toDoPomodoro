@@ -464,7 +464,7 @@ function showDiv(clickedId) {
                               : ''
                   }
                  </li>
-                <li>
+                <li>e
                 Due date: </li>
                 <li> <input type="date" id="date" value="${
                       taskDetails.data
