@@ -25,11 +25,11 @@ let todos = JSON.parse(localStorage.getItem('Items'));
 console.log(todos);
 if (todos == null) {
       todos = [
-            { id: 0, name: 'Studies', color: '#9ebb11' },
+            { id: 0, name: 'Studies👨‍🎓', color: '#9ebb11' },
             { id: 1, name: 'Running 🏃', color: '#11bb44' },
             { id: 2, name: 'Reading 📚', color: '#bb1111' },
-            { id: 3, name: 'SocialLive ', color: '#989f65' },
-            { id: 4, name: 'Mindfulness', color: '#00459e' },
+            { id: 3, name: 'SocialLive🍹  ', color: '#989f65' },
+            { id: 4, name: 'Mindfulness🧘', color: '#00459e' },
             { id: 4, name: 'Mindfulness', color: '#00459e' },
       ];
 
@@ -39,7 +39,7 @@ if (todos == null) {
 } else {
       console.log('git');
 
-      let todos = JSON.parse(localStorage.getItem('Items'));
+      todos = JSON.parse(localStorage.getItem('Items'));
 }
 
 let audio;
@@ -612,9 +612,7 @@ function renderProjects() {
 <li class="left_projectItem">
  <div class="projectList" value="${proje.name}" name="${proje.name}">
   
-
   <span class="circle" style="background-color: ${proje.color};">
- 
   </span>
   ${proje.name} 
   </div>

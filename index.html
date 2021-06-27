@@ -3,12 +3,13 @@
     
 <head>
     <meta charset="UTF-8">
-    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="manifest.json">
 
     <title>TodoPomodoro</title>
     <link rel="shortcut icon" href="#">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<meta name="viewport" content="width=device-width, user-scalable=false;">
+	<meta name="theme-color" content="#171721">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/settings.css">
@@ -34,10 +35,13 @@
             <li class=" left_day"id="someday"> <i class="far fa-calendar-alt"></i>Someday</li>
         
         </ol>
-       <div class="left_pomodoreProjects">
-       
+		<ol>
 
-        </div>
+			<div class="left_pomodoreProjects">
+				
+				
+			</div>
+		</ol>
 
             
      
@@ -45,7 +49,7 @@
 
     <form action="" class="left_addProject">
         
-        <button class="left_addProjectBtn" type="submit"><class class="fas fa-plus" ></class></button>
+        <button name="addProject" class="left_addProjectBtn" type="submit"><class class="fas fa-plus" ></class></button>
         <input type="text" class="left_Projects"  placeholder = "Add  your project name">
     <input type="color" class="left_color"  id="color" value=""> 
 </form>
@@ -86,7 +90,7 @@
 
 <form action="" class="center_addTaskdiv">
     
-        <button class="center_addtaskButton" type="submit"><i class="fas fa-plus"></i></button>
+        <button name="addTask" class="center_addtaskButton" type="submit"><i class="fas fa-plus"></i></button>
 <input class="center_todoInput" type="text" name="item" placeholder=" Add a New Item Task" onfocus="this.placeholder = 'Item Name'">
 
 
