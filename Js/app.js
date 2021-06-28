@@ -457,6 +457,7 @@ function showDiv(clickedId) {
             console.log('coolest');
             console.log(todoss);
             const taskDetails = todoss[clickedId];
+            console.log(todoss);
             console.log(taskDetails);
             console.log(taskDetails.note);
             description.innerHTML = `
@@ -533,7 +534,7 @@ function showDiv(clickedId) {
             const project = document.querySelector('.projectSelect');
             const timePart = document.querySelector('.partOfTime');
             const repeatDay = document.querySelector('.repeatDay');
-            date.addEventListener('input', updateDetails);
+            date.addEventListener('change', updateDetails);
             closeBtn.addEventListener('click', closeDiv);
             note.addEventListener('input', updateDetails);
             repeatDay.addEventListener('input', updateDetails);
