@@ -30,14 +30,14 @@
 }
 
 .lightTheme {
-  --center-color: #E6E7FB;
-  --right_background: #7C4FF4;
-  --timerFinishColor: rgba(99, 121, 218, 0.725);
-  --backgrounddarker: #584292;
-  --header_background: #F6F6FF;
-  --statColor: #55559c;
-  --left_background: #854CF1;
-  --nav_color: #6542E4;
+  --center-color: #868791;
+  --right_background: #594f74;
+  --timerFinishColor: rgba(136, 143, 173, 0.725);
+  --backgrounddarker: #605480;
+  --header_background: #adadc2;
+  --statColor: #b8b8be;
+  --left_background: #e4e2e2;
+  --nav_color: #bfbdc9;
   --task_color: #ffffff;
   --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
   --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
@@ -46,7 +46,7 @@
   --font-color: #292727;
   --addProjectbtn: #6856F6;
   --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  --hover_color: #fafafa;
+  --hover_color: #030303;
   --dark-font: #000000;
   --fonts: #3c475c;
   --task: #645d8f;
@@ -618,7 +618,7 @@ body .clock .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
-  color: var(--font-color);
+  color: var(--hover_color);
 }
 
 html .clock_fullscreen,
@@ -656,6 +656,8 @@ html .clock_fullscreen .countdownButtons,
 body .clock_fullscreen .countdownButtons {
   position: absolute;
   bottom: 30px;
+  font-size: 40px;
+  color: var(--hover_color);
 }
 
 html .clock_fullscreen .countdownButtonsNone,
@@ -668,7 +670,7 @@ body .clock_fullscreen .fa-window-restore {
   position: absolute;
   top: 5px;
   left: 5px;
-  color: var(--font-color);
+  color: var(--hover_color);
 }
 
 html .clock_timerStart,
@@ -677,7 +679,7 @@ body .clock_timerStart {
   border-radius: 15px;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: var(--font-color);
+  color: var(--hover_color);
 }
 
 html .clock_timerFinish,
@@ -685,7 +687,7 @@ body .clock_timerFinish {
   background-color: var(--timerFinishColor);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: var(--font-color);
+  color: var(--hover_color);
 }
 
 html .completed,
@@ -1120,6 +1122,11 @@ input textarea:focus {
   font-size: 13px;
   color: var(--font-color);
   text-decoration: none;
+}
+
+.fa-coffee, .fa-stop-circle, fas {
+  color: var(--hover_color);
+  font-size: 30px;
 }
 
 @media screen and (max-width: 895px) {

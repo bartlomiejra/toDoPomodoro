@@ -20,38 +20,75 @@ const resize = document.querySelector('.fa-window-restore');
 // const detals = document.querySelectorAll('.detals');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
+let dateToday;
 
 let todos = JSON.parse(localStorage.getItem('Items'));
-console.log(todos);
 if (todos == null) {
       todos = [
+            {
+                  text: 'Meditate',
+                  done: false,
+                  focus: 21,
+                  project: 'Mindfulness🧘',
+                  repeatday: '0',
+                  repeatpartoftime: 'day',
+                  data: dateToday,
+                  note: ' 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ',
+            },
+            {
+                  text: 'Basic Spanish Words',
+                  done: false,
+                  focus: 21,
+                  project: 'Spanish Lesson 🇪🇸',
+                  repeatday: '0',
+                  repeatpartoftime: 'day',
+                  data: dateToday,
+                  note: ' Spanish Vocabulary Lists Organized by Topic\n Basic Spanish vocabulary: Greetings\n Basic Spanish vocabulary: Manners\n Basic Spanish vocabulary: Your first conversation\n Basic Spanish vocabulary: Family members\n Basic Spanish vocabulary: Food and drinks\n Intermediate Spanish vocabulary: Clothing\n Intermediate Spanish vocabulary: Dates and times\n',
+            },
+            {
+                  data: '2021-06-07',
+                  done: false,
+                  focus: 0,
+                  note: "don't forget your grandma!👵 ",
+                  project: 'SocialLive 🍹  ',
+                  repeatday: '0',
+                  repeatpartoftime: 'day',
+                  text: ' Call grandma',
+            },
+      ];
+      window.localStorage.setItem('Items', JSON.stringify(todos));
+} else {
+      console.log('Itemki sa ');
+}
+
+let project = JSON.parse(localStorage.getItem('Project'));
+console.log(project);
+if (project == null) {
+      project = [
             { id: 0, name: 'Studies 👨‍🎓', color: '#9ebb11' },
             { id: 1, name: 'Running 🏃', color: '#11bb44' },
             { id: 2, name: 'Reading 📚', color: '#bb1111' },
             { id: 3, name: 'SocialLive 🍹  ', color: '#989f65' },
             { id: 4, name: 'Mindfulness 🧘', color: '#00459e' },
-            { id: 4, name: 'Spanish Lesson 🇪🇸', color: '#00459e' },
+            { id: 4, name: 'Spanish Lesson 🇪🇸', color: '#ff459e' },
       ];
-
-      window.localStorage.setItem('Project', JSON.stringify(todos));
-
-      console.log('git');
+      window.localStorage.setItem('Project', JSON.stringify(project));
 } else {
-      console.log('git');
-
-      todos = JSON.parse(localStorage.getItem('Items'));
+      project = JSON.parse(localStorage.getItem('project'));
 }
 
 let audio;
 
 let timeInFocus;
 let pomodoreDuration;
+let settings;
 const settinglocal = JSON.parse(localStorage.getItem('settings'));
 if (settinglocal == null) {
-      const settings = { Theme: 'Dark', pomodoreTime: 25 };
+      settings = { Theme: 'Dark', pomodoreTime: 25 };
 
       window.localStorage.setItem('settings', JSON.stringify(settings));
 } else {
+      console.log(settings);
       pomodoreDuration = settinglocal.pomodoreTime;
 }
 console.log(pomodoreDuration);
@@ -59,7 +96,6 @@ let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
 let taskToday;
-let dateToday;
 // let taskToday = 0;
 let tasks = JSON.parse(localStorage.getItem('Items')) || [];
 // const objlines = 0;
@@ -82,10 +118,11 @@ lists(taskToday, todoList);
 
 function lists(todolist = [], objlines) {
       actualList = todolist;
-      if (actualList.length < 0) {
+      //   console.log(actualList.length);
+      if (actualList.length == 0) {
             emptyList.classList.remove('none');
       }
-      if (actualList.length > 1) {
+      if (actualList.length > 0) {
             emptyList.classList.add('none');
       }
       todoList.innerHTML = actualList
@@ -445,7 +482,7 @@ function showDiv(clickedId) {
                               : ''
                   }
                  </li>
-                <li>e
+                <li>
                 Due date: </li>
                 <li> <input type="date" id="date" value="${
                       taskDetails.data

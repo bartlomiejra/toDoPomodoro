@@ -30,14 +30,14 @@ $tiles8:#017514;
 
 
 //! Light theme colors
-$center-colorLight: #E6E7FB;
-$right_backgroundLight: #7C4FF4;
-$timerFinishColorLight: rgba(99, 121, 218, 0.725);
-$backgrounddarkerLight: #584292;
-$header_backgroundLight: #F6F6FF;
-$statColorLight: #55559c;
-$left_backgroundLight: #854CF1;
-$nav_colorLight: #6542E4;
+$center-colorLight: #868791;
+$right_backgroundLight: #594f74;
+$timerFinishColorLight: rgba(136, 143, 173, 0.725);
+$backgrounddarkerLight: #605480;
+$header_backgroundLight: #adadc2;
+$statColorLight: #b8b8be;
+$left_backgroundLight: #e4e2e2;
+$nav_colorLight: #bfbdc9;
 $task_colorLight: #ffffff;
 $timerLight: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
 $addProjectLight: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
@@ -47,7 +47,7 @@ $dark-fontLight: #1C2426;
 $font-colorLight: #292727;
 $addProjectbtnLight: #6856F6;
 $shadowLight: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-$hover_colorLight: rgb(250, 250, 250);
+$hover_colorLight: rgb(3, 3, 3);
 $dark-fontLight: #000000;
 $fontsLight: #3c475c;
 $taskLight: #645d8f;
@@ -495,7 +495,7 @@ body {
             position: absolute;
             top: 5px;
             left: 5px;
-            color: var(--font-color);
+            color: var(--hover_color);
         }
 
         &_fullscreen {
@@ -522,6 +522,8 @@ body {
             .countdownButtons {
                 position: absolute;
                 bottom: 30px;
+				font-size: 40px;
+				color: var(--hover_color);
             }
 
             .countdownButtonsNone {
@@ -532,7 +534,7 @@ body {
                 position: absolute;
                 top: 5px;
                 left: 5px;
-                color: var(--font-color);
+                color: var(--hover_color);
             }
         }
 
@@ -542,14 +544,14 @@ body {
             // opacity: 0.4;
             border-radius: 15px;
             backdrop-filter: blur(5px);
-            color: var(--font-color);
+            color: var(--hover_color);
         }
 
         &_timerFinish {
 
             background-color: var(--timerFinishColor);
             backdrop-filter: blur(5px);
-            color: var(--font-color);
+            color: var(--hover_color);
 
         }
 
@@ -640,6 +642,7 @@ body {
         color: var(--addProjectbtn);
     }
 
+
     //animations
     .fall {
         transform: translateX(17rem) rotateZ(1deg);
@@ -662,6 +665,7 @@ body {
         pointer-events: none;
         border: 0;
     }
+
 
     .fa-clock {
         display: flex;
@@ -803,6 +807,8 @@ ol {
     height: 30px;
     z-index: 99;
 }
+
+
 .projectList {
     display: flex;
     color: var(--font-color);
@@ -874,6 +880,11 @@ input {
         color: var(--font-color);
         text-decoration: none;
     }
+}
+.fa-coffee, .fa-stop-circle, fas{
+	color: var(--hover_color);
+	font-size: 30px;
+
 }
 
 //mobile version
@@ -955,3 +966,5 @@ input {
     stroke-dasharray: 2;
     color: var(--hover_color);
 }
+
+
