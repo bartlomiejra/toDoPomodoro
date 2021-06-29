@@ -30,7 +30,7 @@ if (todos == null) {
                   text: 'Meditate',
                   done: false,
                   focus: 21,
-                  project: 'Mindfulness🧘',
+                  project: 'Mindfulness 🧘',
                   repeatday: '0',
                   repeatpartoftime: 'day',
                   data: dateToday,
@@ -156,17 +156,23 @@ ${
   }
   </div> 
 </div>
-<button class="center_complete-btn" data-index=${i} id="item${i}" >
+<button class="center_complete-btn" data-index=${todo.id} id="item${todo.id}" >
 ${
       todo.done
-            ? `<i class="fas fa-check-circle" id="item${i}" aria-hidden="true"></i>`
-            : `<i class="fas fa-circle" id="item${i}" aria-hidden="true"></i>`
+            ? `<i class="fas fa-check-circle" id="item${todo.id}" aria-hidden="true"></i>`
+            : `<i class="fas fa-circle" id="item${todo.id}" aria-hidden="true"></i>`
 } 
 </button>
-<button class="center_delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
+<button class="center_delete-btn" data-index=${todo.id} id="item${
+                              todo.id
+                        }">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
-<button class="center_play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-<button class="center_des-btn"  data-index=${i} id="${i}" onclick="showDiv(${
+<button class="center_play-btn"  data-index=${todo.id} id="${
+                              todo.id
+                        }"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
+<button class="center_des-btn"  data-index=${todo.id} id="${
+                              todo.id
+                        }" onclick="showDiv(${
                               todo.id
                         })"  > <i class="fas fa-list-alt" 
 aria-hidden="true"></i></button>

@@ -493,9 +493,10 @@ body {
 
         .fa-window-restore {
             position: absolute;
-            top: 5px;
-            left: 5px;
+            top: 10px;
+            left: 10px;
             color: var(--hover_color);
+			font-size: 2rem;
         }
 
         &_fullscreen {
@@ -514,6 +515,8 @@ body {
             align-items: center;
             justify-content: center;
             border-radius: 30px;
+			color: var(--hover_color);
+
 
             #countdown {
                 font-size: 4rem;
@@ -524,7 +527,10 @@ body {
                 bottom: 30px;
 				font-size: 40px;
 				color: var(--hover_color);
+
+			
             }
+			
 
             .countdownButtonsNone {
                 display: none;
