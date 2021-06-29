@@ -26,6 +26,7 @@ let todos = JSON.parse(localStorage.getItem('Items'));
 if (todos == null) {
       todos = [
             {
+                  id: 0,
                   text: 'Meditate',
                   done: false,
                   focus: 21,
@@ -36,6 +37,7 @@ if (todos == null) {
                   note: ' 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ',
             },
             {
+                  id: 1,
                   text: 'Basic Spanish Words',
                   done: false,
                   focus: 21,
@@ -46,14 +48,15 @@ if (todos == null) {
                   note: ' Spanish Vocabulary Lists Organized by Topic\n Basic Spanish vocabulary: Greetings\n Basic Spanish vocabulary: Manners\n Basic Spanish vocabulary: Your first conversation\n Basic Spanish vocabulary: Family members\n Basic Spanish vocabulary: Food and drinks\n Intermediate Spanish vocabulary: Clothing\n Intermediate Spanish vocabulary: Dates and times\n',
             },
             {
-                  data: '2021-06-07',
+                  id: 2,
+                  text: ' Call grandma',
+                  data: dateToday,
                   done: false,
                   focus: 0,
                   note: "don't forget your grandma!👵 ",
                   project: 'SocialLive 🍹  ',
                   repeatday: '0',
                   repeatpartoftime: 'day',
-                  text: ' Call grandma',
             },
       ];
       window.localStorage.setItem('Items', JSON.stringify(todos));
@@ -117,7 +120,10 @@ taskToday = tasks.filter((items) => items.data === dateToday);
 lists(taskToday, todoList);
 
 function lists(todolist = [], objlines) {
+      console.log(tasks.length);
+
       actualList = todolist;
+      console.log(actualList);
       //   console.log(actualList.length);
       if (actualList.length == 0) {
             emptyList.classList.remove('none');
@@ -127,14 +133,16 @@ function lists(todolist = [], objlines) {
       }
       todoList.innerHTML = actualList
             .map(
-                  (todo, i) => `${
-                        todo.done
-                              ? '<div class="center_divT completed">'
-                              : '<div class="center_divT " >'
-                  }    
-<div  class="center_todo-item" id="item${i}" >${todo.text} 
+                  (todo, i) =>
+                        `${
+                              todo.done
+                                    ? '<div class="center_divT completed">'
+                                    : '<div class="center_divT " >'
+                        }    
+<div  class="center_todo-item" id="item${todo.id}" >${todo.text} 
 </div>
 <div  class="center_clocks"> 
+
 ${
       todo.focus > [pomodoreDuration]
             ? '<i class="fas fa-clock  time" aria-hidden="true"> </i>'
@@ -158,11 +166,14 @@ ${
 <button class="center_delete-btn" data-index=${i} id="item${i}">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
 <button class="center_play-btn"  data-index=${i} id="${i}"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-<button class="center_des-btn"  data-index=${i} id="${i}" onclick="showDiv(this.id)"  > <i class="fas fa-list-alt" 
+<button class="center_des-btn"  data-index=${i} id="${i}" onclick="showDiv(${
+                              todo.id
+                        })"  > <i class="fas fa-list-alt" 
 aria-hidden="true"></i></button>
 </div>
 `,
             )
+
             .join('');
 
       if (mobileWidth.matches) {
@@ -177,6 +188,7 @@ aria-hidden="true"></i></button>
 function addTodo(event) {
       event.preventDefault();
       const item = {
+            id: todos.length,
             text: todoInput.value,
             done: false,
             focus: 0,
@@ -566,9 +578,7 @@ function showDiv(clickedId) {
                   localStorage.setItem('Items', JSON.stringify(proj));
                   console.log('oki działa');
             }
-
             const divT = document.querySelector('.center_divT');
-
             divT.addEventListener('click', renderdetals);
             getSelectOptions();
       }
@@ -586,9 +596,7 @@ function showDiv(clickedId) {
             }
       }
 }
-
 // const project = JSON.parse(localStorage.getItem('Project')) || [];
-
 function addProject(event) {
       const project = JSON.parse(localStorage.getItem('Project')) || [];
       console.log('ok');
@@ -599,7 +607,6 @@ function addProject(event) {
             name: addPr.value,
             color: projectColor.value,
       };
-
       project.push(Project);
       // console.log(Project);
       localStorage.setItem('Project', JSON.stringify(project));
@@ -608,22 +615,18 @@ function addProject(event) {
 }
 //! napisać funkcje która będzie zliczać ile razy nazwa danego projektu
 //! wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
-
 function renderProjects() {
       const proj = JSON.parse(localStorage.getItem('Project')) || [];
       console.log(proj);
-
       pomodoreList.innerHTML = proj
             .map(
                   (proje, i) => `
 <li class="left_projectItem">
  <div class="projectList" value="${proje.name}" name="${proje.name}">
-  
   <span class="circle" style="background-color: ${proje.color};">
   </span>
   ${proje.name} 
   </div>
-  
   <button class="projectDelete" aria-label="delete" id=${proje.name} >  <i class="fas fa-minus-circle" 
   aria-hidden="true" id=${proje.id} name=${proje.name}></i></button>
   </li>
@@ -632,7 +635,6 @@ function renderProjects() {
             .join('');
 }
 renderProjects();
-
 function sortingProject(e) {
       const clicked = e.target.getAttribute('name');
       // console.log(e.target);
@@ -643,37 +645,26 @@ function sortingProject(e) {
       //! błąd przy filtrowaniu
       const tasksProject = tasks.filter((item) => item.project == clicked);
       console.log(tasksProject.length);
-      // console.log(tasks);
-      // console.log(tasksProject);
-
       lists(tasksProject, todoList);
       return tasksProject;
 }
-
-// let dateTomorrow = 0;
-
 document.querySelectorAll('.left_day').forEach((e) => {
       e.addEventListener('click', sortingProjectDays);
 });
-
 document.querySelectorAll('.projectList').forEach((e) => {
       e.addEventListener('click', sortingProject);
 });
-
 function sortingProjectDays(e) {
       let taskToday = 0;
       let taskTomorrow = 0;
       let taskSomeday = 0;
       const clicked = e.target.id;
-      // console.log(clicked);
-
       const tasks = JSON.parse(localStorage.getItem('Items')) || [];
       switch (clicked) {
             case 'today':
                   taskToday = tasks.filter((items) => items.data === dateToday);
                   lists(taskToday, todoList);
                   break;
-
             case 'tomorrow':
                   taskTomorrow = tasks.filter(
                         (items) => items.data === dateTomorrow,
@@ -681,13 +672,11 @@ function sortingProjectDays(e) {
                   // renderProjects();
                   lists(taskTomorrow, todoList);
                   break;
-
             case 'someday':
                   console.log(dateTomorrow);
                   taskSomeday = tasks.filter(
                         (items) => items.data !== dateTomorrow || dateToday,
                   );
-
                   lists(taskSomeday, todoList);
                   break;
             default:
