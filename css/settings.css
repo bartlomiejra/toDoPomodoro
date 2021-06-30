@@ -616,9 +616,10 @@ body .clock_clockVisible {
 html .clock .fa-window-restore,
 body .clock .fa-window-restore {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 10px;
+  left: 10px;
   color: var(--hover_color);
+  font-size: 2rem;
 }
 
 html .clock_fullscreen,
@@ -645,6 +646,7 @@ body .clock_fullscreen {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 30px;
+  color: var(--hover_color);
 }
 
 html .clock_fullscreen #countdown,
@@ -1765,9 +1767,10 @@ body .clock_clockVisible {
 html .clock .fa-window-restore,
 body .clock .fa-window-restore {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 10px;
+  left: 10px;
   color: var(--hover_color);
+  font-size: 2rem;
 }
 
 html .clock_fullscreen,
@@ -1794,6 +1797,7 @@ body .clock_fullscreen {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 30px;
+  color: var(--hover_color);
 }
 
 html .clock_fullscreen #countdown,
