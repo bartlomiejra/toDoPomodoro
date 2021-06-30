@@ -37,7 +37,7 @@ function addNote() {
 			  ${dateToday} 
 			 
 			  </p>
-        	  <input type="textarea" rows="2" cols="20" wrap="hard"  type="textarea" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea">
+        	  <textarea name="message" rows="10" cols="30" wrap="hard"  type="textarea" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea">
 
           `;
 
@@ -78,6 +78,7 @@ function deleteyourNote() {
       notes.pop();
       window.localStorage.setItem('Notes', JSON.stringify(notes));
       console.log('deleteNote');
+      notesrender();
 }
 
 function notesrender() {
@@ -110,7 +111,7 @@ function noteOpen(clicked_id) {
 					<button   onclick='closeSingleNote()' class="modal__closebutton "><i class="fas fa-times"></i></button>
 					<input class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text">
 					<p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
-					<input type="textarea" wrap="hard" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea notetext" value=${notes[clicked_id].note} >
+					<textarea name="message" rows="10" cols="30" wrap="hard" id="textarea" placeholder="Type something... &#13;" class="tiles__textarea notetext" value=${notes[clicked_id].note} >
 
       `;
       click = clicked_id;
