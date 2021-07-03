@@ -8,8 +8,26 @@ const tilesNote = document.querySelector('.tiles__note');
 const tiles = document.querySelector('.tiles');
 const deleteNote = document.getElementById('deleteNote');
 
-let notes = [];
-notes = JSON.parse(localStorage.getItem('Notes')) || [];
+let notes;
+if (notes == null) {
+      notes = [
+            {
+                  id: 0,
+                  title: 'Shopping List  🛒',
+                  date: '2021-07-02',
+                  note: '- Coconut oil \n- Nuts\n- Beets\n- Berries\n- Oats\n- Oranges\n- Pears\n- Potatoes',
+            },
+            {
+                  id: 1,
+                  title: 'Greek Pasta Salad',
+                  date: '2021-07-03',
+                  note: 'sd',
+            },
+      ];
+      window.localStorage.setItem('Notes', JSON.stringify(notes));
+} else {
+      notes = JSON.parse(localStorage.getItem('Notes'));
+}
 
 function openNoteCard() {
       noteCard.classList.add('active');
@@ -55,7 +73,9 @@ function saveNote() {
       console.log('saveNote');
       const person = {
             id: notes.length,
-            title: noteHeader.value,
+            title: `${(noteHeader.value = 'null'
+                  ? ` Note ${++notes.length} `
+                  : noteHeader.value)}`,
             date: dateToday,
             note: noteText.value,
       };

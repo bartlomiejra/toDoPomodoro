@@ -979,7 +979,6 @@ input[type="number"]:hover {
   height: 250px;
   border: none;
   color: var(--fonts);
-  color: white;
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
