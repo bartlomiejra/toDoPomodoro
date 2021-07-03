@@ -540,7 +540,7 @@ function showDiv(clickedId) {
                   // <option value="months">Month</option>
                 </select>
                 </ul>
-                <textarea  placeholder="Note to your task" class="note" id=${clickedId} name="note" >${
+                <textarea  placeholder="Note to your task" class="note textareaDetals" id=${clickedId} name="note" >${
                   taskDetails.note !== '' ? taskDetails.note : ''
             }
       </textarea>

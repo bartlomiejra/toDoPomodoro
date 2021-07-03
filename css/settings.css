@@ -972,12 +972,18 @@ input[type="number"]:hover {
   margin: 0px 10px 0px 10px;
 }
 
-textarea {
+.textareaDetals {
   outline: none;
   resize: none;
+  width: 100%;
+  height: 250px;
   border: none;
   color: var(--fonts);
+  color: white;
   border-radius: 8px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
 select,
@@ -2118,12 +2124,18 @@ input[type="number"]:hover {
   margin: 0px 10px 0px 10px;
 }
 
-textarea {
+.textareaDetals {
   outline: none;
   resize: none;
+  width: 100%;
+  height: 250px;
   border: none;
   color: var(--fonts);
+  color: white;
   border-radius: 8px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
 select,
@@ -2513,21 +2525,16 @@ input textarea:focus {
 }
 
 .tiles__textarea {
-  margin-top: 20px;
   outline: none;
-  letter-spacing: 1.2px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-filter: none;
-          filter: none;
-  background-color: transparent;
-  font-size: 1rem;
-  border: 0;
-  height: 200px;
-  text-align: top;
-  border-radius: 0px 8px 8px 0px;
-  padding: 0 0 0 0;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: var(--fonts);
+  border-radius: 8px;
+  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  background: transparent;
 }
 
 .tiles__textarea .date {
