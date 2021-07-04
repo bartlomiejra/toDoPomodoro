@@ -739,8 +739,9 @@ body i {
   background: transparent;
 }
 
-html li:hover,
-body li:hover {
+html li:hover, html li:active,
+body li:hover,
+body li:active {
   color: var(--hover_color);
   cursor: pointer;
 }
@@ -940,7 +941,15 @@ input[type="date"]:hover,
 .editing-view-port:hover,
 .partOfTime:hover,
 textarea:hover,
-input[type="number"]:hover {
+input[type="number"]:hover, ol > li:active,
+> .projectList:active,
+.fa-minus-circle:active,
+input[type="date"]:active,
+.projectSelect:active,
+.editing-view-port:active,
+.partOfTime:active,
+textarea:active,
+input[type="number"]:active {
   color: var(--hover_color);
   cursor: pointer;
 }
@@ -1890,8 +1899,9 @@ body i {
   background: transparent;
 }
 
-html li:hover,
-body li:hover {
+html li:hover, html li:active,
+body li:hover,
+body li:active {
   color: var(--hover_color);
   cursor: pointer;
 }
@@ -2091,7 +2101,15 @@ input[type="date"]:hover,
 .editing-view-port:hover,
 .partOfTime:hover,
 textarea:hover,
-input[type="number"]:hover {
+input[type="number"]:hover, ol > li:active,
+> .projectList:active,
+.fa-minus-circle:active,
+input[type="date"]:active,
+.projectSelect:active,
+.editing-view-port:active,
+.partOfTime:active,
+textarea:active,
+input[type="number"]:active {
   color: var(--hover_color);
   cursor: pointer;
 }

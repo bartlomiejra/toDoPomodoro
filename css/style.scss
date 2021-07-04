@@ -600,7 +600,7 @@ body {
         background: transparent;
     }
 
-    li:hover {
+    li:hover, li:active {
         @include hover;
     }
 
@@ -739,7 +739,15 @@ input[type="date"]:hover,
 .editing-view-port:hover,
 .partOfTime:hover,
 textarea:hover,
-input[type="number"]:hover {
+input[type="number"]:hover, ol>li:active,
+>.projectList:active,
+.fa-minus-circle:active,
+input[type="date"]:active,
+.projectSelect:active,
+.editing-view-port:active,
+.partOfTime:active,
+textarea:active,
+input[type="number"]:active {
     @include hover;
 
 }
