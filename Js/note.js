@@ -71,6 +71,7 @@ function saveNote() {
       const noteHeader = document.getElementById('noteHeader');
       const noteText = document.getElementById('textarea');
       console.log('saveNote');
+
       const person = {
             id: notes.length,
             title: `${(noteHeader.value = 'null'
@@ -79,6 +80,7 @@ function saveNote() {
             date: dateToday,
             note: noteText.value,
       };
+
       notes.push(person);
       window.localStorage.setItem('Notes', JSON.stringify(notes));
       notesrender();
@@ -107,7 +109,9 @@ function notesrender() {
                   (note, i) => `
 				  <div class="tiles__tile" value=${note.title}  id="${i}" onClick='noteOpen(this.id)'>
 				<h3>${note.title}</h3>
+					<div class="tiles__smallNote">${note.note}
 					
+					</div>
 				<div class="tiles__date">${note.date} </div>
 				</div>
 </div>

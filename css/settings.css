@@ -979,7 +979,6 @@ input[type="number"]:hover {
   height: 250px;
   border: none;
   color: var(--fonts);
-  color: white;
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -2131,7 +2130,6 @@ input[type="number"]:hover {
   height: 250px;
   border: none;
   color: var(--fonts);
-  color: white;
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
           filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -2401,6 +2399,7 @@ input textarea:focus {
 }
 
 .tiles__tile {
+  position: relative;
   font-size: auto;
   border-radius: 10px;
   background: var(--number-color);
@@ -2447,7 +2446,18 @@ input textarea:focus {
 }
 
 .tiles__date {
-  color: var(--hover_color);
+  opacity: 0.5;
+  font-size: 0.8rem;
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+}
+
+.tiles__smallNote {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tiles__addNote {

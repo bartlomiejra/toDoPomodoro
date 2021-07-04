@@ -182,14 +182,16 @@ aria-hidden="true"></i></button>
 
             .join('');
 
-      if (mobileWidth.matches) {
-            projectIcon.classList.remove('none');
-            centerDiv.classList.remove('none');
-            centerDiv.classList.add('center');
-            leftDiv.classList.add('leftnone');
-      } else {
-            projectIcon.classList.add('none');
-      }
+      window.onresize = function resizeFun() {
+            if (mobileWidth.matches) {
+                  projectIcon.classList.remove('none');
+                  centerDiv.classList.remove('none');
+                  centerDiv.classList.add('center');
+                  leftDiv.classList.add('leftnone');
+            } else {
+                  projectIcon.classList.add('none');
+            }
+      };
 }
 function addTodo(event) {
       event.preventDefault();

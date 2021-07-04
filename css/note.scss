@@ -21,6 +21,7 @@
 	margin: 20px;
 	list-style: none;
 	&__tile{
+		position:relative;
 		font-size: auto;
 		  border-radius: 10px;
 		  background:  var(--number-color);
@@ -62,7 +63,6 @@
 	  &__tile:nth-child(6) {
 		background:  var(--tiles6)
 	}
-	  
 	  &__tile:nth-child(7) {
 		background: var(--tiles7)
 	}
@@ -71,7 +71,18 @@
 		background:  var(--tiles8)
 	}
 	  &__date{
-		  color: 	var(--hover_color);
+		//   color: 	var(--font-color);
+		  opacity: 0.5;
+		  font-size: 0.8rem;
+		  position: absolute;
+		  right: 10px;
+		  bottom: 0px;
+	  }
+	  &__smallNote{
+		  font-size: 0.8rem;
+		  white-space: nowrap;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
 	  }
 	
 	  &__addNote{
