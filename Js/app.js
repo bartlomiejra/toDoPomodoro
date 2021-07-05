@@ -614,11 +614,16 @@ function showDiv(clickedId) {
 // const project = JSON.parse(localStorage.getItem('Project')) || [];
 function addProject(event) {
       const project = JSON.parse(localStorage.getItem('Project')) || [];
-      console.log('ok');
+
+      let lastId = 0;
+      project.forEach((ele) => {
+            if (ele.id > lastId) {
+                  lastId = ele.id;
+            }
+      });
       event.preventDefault();
-      console.log(project);
       const Project = {
-            id: project.length,
+            id: ++lastId,
             name: addPr.value,
             color: projectColor.value,
       };
@@ -632,7 +637,6 @@ function addProject(event) {
 //! wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
 function renderProjects() {
       const proj = JSON.parse(localStorage.getItem('Project')) || [];
-      console.log(proj);
       pomodoreList.innerHTML = proj
             .map(
                   (proje, i) => `
@@ -642,7 +646,7 @@ function renderProjects() {
   </span>
   ${proje.name} 
   </div>
-  <button class="projectDelete" aria-label="delete" id=${proje.name} >  <i class="fas fa-minus-circle" 
+  <button class="projectDelete" aria-label="delete"  onClick="deleteProject()" id=${proje.id} >  <i class="fas fa-minus-circle" 
   aria-hidden="true" id=${proje.id} name=${proje.name}></i></button>
   </li>
 `,
@@ -652,14 +656,8 @@ function renderProjects() {
 renderProjects();
 function sortingProject(e) {
       const clicked = e.target.getAttribute('name');
-      // console.log(e.target);
-      console.log(clicked);
       tasks = JSON.parse(localStorage.getItem('Items')) || [];
-      console.log(tasks);
-      console.log(clicked);
-      //! błąd przy filtrowaniu
       const tasksProject = tasks.filter((item) => item.project == clicked);
-      console.log(tasksProject.length);
       lists(tasksProject, todoList);
       return tasksProject;
 }
@@ -697,24 +695,12 @@ function sortingProjectDays(e) {
             default:
       }
 }
-function deleteProject(e) {
-      console.log(e);
-      console.log('siema');
-      const click = e.target.id;
+function deleteProject() {
+      //   console.log(e);
+      console.log(event.currentTarget.id);
+      const click = event.currentTarget.id;
       const project = JSON.parse(localStorage.getItem('Project')) || [];
-      console.log(project);
-      // console.log(click);
-
       const deleteProj = project.filter((item) => item.id != click);
-
-      console.log(deleteProj);
-
-      // console.log(project[1].id);
-      // console.log(project.index);
-      console.log(click);
-
-      // project = deleteProj;
-      console.log(deleteProj);
       localStorage.setItem('Project', JSON.stringify(deleteProj));
       renderProjects();
 }
@@ -727,19 +713,10 @@ function showProjectList() {
 }
 function ifmobile() {
       if (mobileWidth.matches) {
-            console.log('usuwanko');
-
-            // console.log('to mibile version ^^');
             showProjectList();
       } else {
-            // console.log('to nie wersja mobila');
       }
 }
-
-document.querySelectorAll('.projectDelete').forEach((e) => {
-      e.addEventListener('click', deleteProject);
-});
-
 addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
