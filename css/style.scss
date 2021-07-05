@@ -600,7 +600,7 @@ body {
         background: transparent;
     }
 
-    li:hover, li:active {
+    li:hover {
         @include hover;
     }
 

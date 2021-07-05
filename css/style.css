@@ -739,9 +739,8 @@ body i {
   background: transparent;
 }
 
-html li:hover, html li:active,
-body li:hover,
-body li:active {
+html li:hover,
+body li:hover {
   color: var(--hover_color);
   cursor: pointer;
 }
