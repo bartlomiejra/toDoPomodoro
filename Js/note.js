@@ -28,59 +28,55 @@ if (notes == null) {
 } else {
       notes = JSON.parse(localStorage.getItem('Notes'));
 }
-
 function openNoteCard() {
       noteCard.classList.add('active');
       overlay.classList.add('active');
 }
-
 function closeNoteCard() {
       noteCard.classList.remove('active');
       overlay.classList.remove('active');
 }
 openNote.addEventListener('click', openNoteCard);
 closeNote.addEventListener('click', closeNoteCard);
-
 const createNote = document.querySelector('.tiles__add');
 const onenoteCard = document.querySelector('.tiles__note');
-
 function addNote() {
       console.log(tilesNote);
       tilesNote.innerHTML = `
         	  <button class="tiles__savebtn" onClick="saveNote()"id="saveNote">Save</button>
         	  <button class="tiles__deletebtn closeNotebtn" onClick="deleteyourNote()" id="deleteNote">Delete Last Note</button>
         	  <button  id="closethisNote" class="modal__closebutton" onClick='closeonenoteCard()'><i class="fas fa-times"></i></button>
-        	  <input class="tiles__noteHeader" id="noteHeader" placeholder="Title" type="text">
+        	  <input class="tiles__noteHeader" id="noteHeader" placeholder="Title" type="text" value=""></input>
         	  <p class="date" value=dateToday>
 			  ${dateToday} 
 			 
 			  </p>
         	  <textarea name="message"  type="textarea" id="textarea" placeholder="Type something..." class="tiles__textarea">
-
           `;
-
       onenoteCard.classList.remove('none');
       noteCard.classList.add('overlayNote');
-
-      //   saveNote(noteText);
 }
 
 function saveNote() {
-      // event.preventDefault();
-
       const noteHeader = document.getElementById('noteHeader');
       const noteText = document.getElementById('textarea');
       console.log('saveNote');
-
+      let lastNoteId = 0;
+      console.log(noteHeader.value);
+      notes.forEach((ele) => {
+            if (ele.id > lastNoteId) {
+                  lastNoteId = ele.id;
+            }
+      });
+      console.log(lastNoteId);
       const person = {
-            id: notes.length,
-            title: `${(noteHeader.value = 'null'
-                  ? ` Note ${++notes.length} `
+            id: ++lastNoteId,
+            title: `${(noteHeader.value = null
+                  ? ` Note ${++lastNoteId} `
                   : noteHeader.value)}`,
             date: dateToday,
             note: noteText.value,
       };
-
       notes.push(person);
       window.localStorage.setItem('Notes', JSON.stringify(notes));
       notesrender();
@@ -89,7 +85,6 @@ function closeonenoteCard() {
       tilesNote.classList.add('none');
       noteCard.classList.remove('overlayNote');
 }
-
 function closeSingleNote() {
       onenoteCard.classList.add('none');
       noteCard.classList.remove('overlayNote');
@@ -102,7 +97,6 @@ function deleteyourNote() {
       console.log('deleteNote');
       notesrender();
 }
-
 function notesrender() {
       tiles.innerHTML = notes
             .map(
@@ -115,16 +109,12 @@ function notesrender() {
 				<div class="tiles__date">${note.date} </div>
 				</div>
 </div>
-
-
 `,
             )
             .join('');
 }
 notesrender();
-
 let click;
-
 function noteOpen(clicked_id) {
       console.log(clicked_id);
       notes = JSON.parse(localStorage.getItem('Notes')) || [];
@@ -133,7 +123,7 @@ function noteOpen(clicked_id) {
       <button class="tiles__savebtn" id="saveNote" onClick='saveEditNote()'>Save</button>
 					<button class="tiles__deletebtn closeNotebtn" id="deleteNotes" onClick='removeNote()'>Delete Note</button>
 					<button   onclick='closeSingleNote()' class="modal__closebutton "><i class="fas fa-times"></i></button>
-					<input class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text">
+					<input class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"></>
 					<p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
 					<textarea name="message"  id="textarea" placeholder="Type something..." class="tiles__textarea notetext" >${notes[clicked_id].note} </textarea>
 
@@ -149,7 +139,6 @@ function saveEditNote() {
       localStorage.setItem('Notes', JSON.stringify(notes));
       notesrender();
 }
-
 function removeNote() {
       notes = JSON.parse(localStorage.getItem('Notes')) || [];
       for (let i = 0; i < notes.length; i++) {

@@ -30,26 +30,26 @@ $tiles8:#017514;
 
 
 //! Light theme colors
-$center-colorLight: #868791;
-$right_backgroundLight: #594f74;
+$center-colorLight: #F7F6F0;
+$right_backgroundLight: #D3F36B;
 $timerFinishColorLight: rgba(136, 143, 173, 0.725);
-$backgrounddarkerLight: #605480;
-$header_backgroundLight: #adadc2;
-$statColorLight: #b8b8be;
-$left_backgroundLight: #e4e2e2;
-$nav_colorLight: #bfbdc9;
-$task_colorLight: #ffffff;
+$backgrounddarkerLight: #8d9dad;
+$header_backgroundLight: #24282C;
+$statColorLight: #F2F1EA;
+$left_backgroundLight: #D3F36B;
+$nav_colorLight: #24282C;
+$task_colorLight: #918a8a;
 $timerLight: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
 $addProjectLight: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
 $number-colorLight: #6542E5;
-$light-colorLight: #000000;
-$dark-fontLight: #1C2426;
-$font-colorLight: #292727;
+$light-colorLight: #aa9b9b;
+$dark-fontLight: #a89c9c;
+$font-colorLight: #000000;
 $addProjectbtnLight: #6856F6;
 $shadowLight: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 $hover_colorLight: rgb(3, 3, 3);
-$dark-fontLight: #000000;
-$fontsLight: #3c475c;
+$dark-fontLight: #ccbaba;
+$fontsLight: #7a7d83;
 $taskLight: #645d8f;
 $tiles1Light: #db8dd9;
 $tiles2Light: #e489a4;
@@ -176,22 +176,18 @@ $tiles8Light:#59aa66;
         -webkit-transform: scale(1);
         opacity: 0.0;
     }
-
     25% {
         -webkit-transform: scale(1.1);
         opacity: 0.1;
     }
-
     50% {
         -webkit-transform: scale(1.2);
         opacity: 0.2;
     }
-
     75% {
         -webkit-transform: scale(1.3);
         opacity: 0.3;
     }
-
     100% {
         -webkit-transform: scale(1.4);
         opacity: 0.4;
@@ -204,22 +200,18 @@ $tiles8Light:#59aa66;
         transform: scaleX(1);
         // transform:  scale(1);
     }
-
     to {
         transform: scaleX(0);
         // transform:  scale(0);
     }
 }
-
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
     }
-
     50% {
         background-position: 100% 50%;
     }
-
     100% {
         background-position: 0% 50%;
     }
@@ -230,7 +222,6 @@ $tiles8Light:#59aa66;
         transform: scaleX(0);
         // transform:  scale(1);
     }
-
     to {
         transform: scaleX(1);
         // transform:  scale(0);
@@ -362,25 +353,18 @@ body {
             display: flex;
             justify-content: center;
         }
-
         &_emptyList {
             margin-top: 20px;
             color: var(--font-color);
             text-align: center;
-
-
         }
-
         font-size: 1.2rem;
-
         &_foldericon {
             font-size: 4rem;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
-
         &_addtaskButton {
             padding: 5px 15px 5px 15px;
             font-size: 1.1rem;
@@ -388,7 +372,6 @@ body {
             background-color: var(--task);
             border-radius: 8px 0px 0px 8px;
         }
-
         &_todoInput {
             outline: none;
             padding: 5px;
@@ -401,22 +384,17 @@ body {
             text-align: center;
             border-radius: 0px 8px 8px 0px;
         }
-
         &_todolist>div {
             transition: all 0.4s ease;
             filter: var(--shadow);
         }
-
         &_todolist {
             overflow: hidden;
+			scroll-behavior: auto;
         }
-
-
-
         ul {
             padding: 0px;
         }
-
         &_divT {
             overflow: hidden;
             height: 50px;
@@ -433,21 +411,17 @@ body {
                 "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn"
                 "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
         }
-
         &_complete-btn {
             grid-area: complete-btn;
         }
-
         &_todo-item {
             grid-area: todo-item;
             overflow: auto;
         }
-
         &_delete-btn {
             grid-area: delete-btn;
         }
     }
-
     .center_clocks {
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -459,15 +433,12 @@ body {
         align-items: flex-start;
         grid-area: clocks;
     }
-
     .center_des-btn {
         grid-area: des-btn;
     }
-
     .center_play-btn {
         grid-area: play-btn;
     }
-
     .clock {
         color: var(--font-color);
         font-size: 2em;
@@ -481,7 +452,6 @@ body {
         display: none;
         position: absolute;
         bottom: 100px;
-
         i {
             // background-color: red;
             color: var(--font-color);
@@ -941,6 +911,8 @@ input {
             }
             &_projectItem {
                 color: var(--font-color);
+				font-weight: 700;
+
             }
             &_addProject {
                 width: 100%;

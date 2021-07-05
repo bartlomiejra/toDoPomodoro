@@ -30,25 +30,25 @@
 }
 
 .lightTheme {
-  --center-color: #868791;
-  --right_background: #594f74;
+  --center-color: #F7F6F0;
+  --right_background: #D3F36B;
   --timerFinishColor: rgba(136, 143, 173, 0.725);
-  --backgrounddarker: #605480;
-  --header_background: #adadc2;
-  --statColor: #b8b8be;
-  --left_background: #e4e2e2;
-  --nav_color: #bfbdc9;
-  --task_color: #ffffff;
+  --backgrounddarker: #8d9dad;
+  --header_background: #24282C;
+  --statColor: #F2F1EA;
+  --left_background: #D3F36B;
+  --nav_color: #24282C;
+  --task_color: #918a8a;
   --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
   --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
   --number-color: #6542E5;
-  --light-color: #000000;
-  --font-color: #292727;
+  --light-color: #aa9b9b;
+  --font-color: #000000;
   --addProjectbtn: #6856F6;
   --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   --hover_color: #030303;
-  --dark-font: #000000;
-  --fonts: #3c475c;
+  --dark-font: #ccbaba;
+  --fonts: #7a7d83;
   --task: #645d8f;
   --tiles1: #db8dd9;
   --tiles2: #e489a4;
@@ -493,6 +493,7 @@ body .center_todolist > div {
 html .center_todolist,
 body .center_todolist {
   overflow: hidden;
+  scroll-behavior: auto;
 }
 
 html .center ul,
@@ -1179,6 +1180,7 @@ input textarea:focus {
   }
   .container .left_projectItem {
     color: var(--font-color);
+    font-weight: 700;
   }
   .container .left_addProject {
     width: 100%;

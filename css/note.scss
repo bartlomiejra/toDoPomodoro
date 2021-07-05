@@ -9,7 +9,6 @@
 
 .modal__header{
 	margin-left: 10px;
-
 }
 
 .tiles {
@@ -28,34 +27,23 @@
 		  padding: 5px;
 		  width: 200px;
 		  height: 150px;
-		  margin-top: 10px;
-		  margin-left: 10px;
+		  margin: 10px 10px 10px 10px;
 		  color:var(--hover_color);
 		  font-weight: bold;
 		  text-align: center;
-		  
-		 
-	
 	  }
-
 	  &__tile:nth-child(2) {
 		background:  var(--tiles1)
 	}
-	  
 	  &__tile:nth-child(1) {
 		background: var(--tiles2)
 	  }
-	  
 	  &__tile:nth-child(3) {
 		background: var(--tiles3)
 	  }
-
 	  &__tile:nth-child(4) {
 		background:  var(--tiles4)
 	}
-	  
-
-
 	  &__tile:nth-child(5) {
 		background:  var(--tiles5)
 	}
@@ -84,18 +72,13 @@
 		  overflow: hidden;
 		  text-overflow: ellipsis;
 	  }
-	
 	  &__addNote{
 		  background: transparent;
 		  position: absolute;
 		bottom: 20px;
 		right: 20px;
-		 
-		  
 	  }
 	  &__add{
-		
-
 		padding: 20px;
 		border-radius: 30px;
 	  background: var(--backgrounddarker);
