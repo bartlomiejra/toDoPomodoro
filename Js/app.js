@@ -731,3 +731,36 @@ showProject.addEventListener('click', ifmobile);
       * @param myParam The parameter for this method
 
     */
+
+function repeatTasks() {
+      let Items = JSON.parse(localStorage.getItem('Items'));
+
+      for (let i = 0; i < Items.length; i += 1) {
+            const dateString = Items[i].data;
+            // console.log(dateToday);
+            // console.log(Items[i].data);
+            console.log(
+                  moment(dateString)
+                        .add(Items[i].repeatday, Items[i].repeatpartoftime)
+                        .format('YYYY-MM-DD'),
+            );
+
+            if (dateToday > Items[i].data) {
+                  //  && Items[0].data > dateToday)
+                  //   console.log(
+                  //         'ustawiamy repeat na kolejny wyznaczony dzien miesiąca',
+                  //   );
+
+                  Items[i].data = moment(dateString)
+                        .add(Items[i].repeatday, Items[i].repeatpartoftime)
+                        .format('YYYY-MM-DD');
+
+                  localStorage.setItem('Items', JSON.stringify(Items));
+            } else {
+                  //   console.log(
+                  //         'NIE ustawiamy repeat na kolejny wyznaczony dzien miesiąca',
+                  //   );
+            }
+      }
+}
+repeatTasks();

@@ -25,6 +25,7 @@
   "dependencies": {
     "eslint-config-prettier": "^8.3.0",
     "js-datepicker": "^5.18.0",
+    "moment": "^2.29.1",
     "node-sass": "^6.0.0"
   }
 }
