@@ -493,6 +493,7 @@ body .center_todolist > div {
 html .center_todolist,
 body .center_todolist {
   overflow: hidden;
+  scroll-behavior: auto;
 }
 
 html .center ul,
@@ -1653,6 +1654,7 @@ body .center_todolist > div {
 html .center_todolist,
 body .center_todolist {
   overflow: hidden;
+  scroll-behavior: auto;
 }
 
 html .center ul,
@@ -2424,7 +2426,7 @@ input textarea:focus {
   padding: 5px;
   width: 200px;
   height: 150px;
-  margin: 10px, 10px, 10px, 10px;
+  margin: 10px 10px 10px 10px;
   color: var(--hover_color);
   font-weight: bold;
   text-align: center;

@@ -493,6 +493,7 @@ body .center_todolist > div {
 html .center_todolist,
 body .center_todolist {
   overflow: hidden;
+  scroll-behavior: auto;
 }
 
 html .center ul,

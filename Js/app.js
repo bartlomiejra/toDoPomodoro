@@ -21,6 +21,26 @@ const resize = document.querySelector('.fa-window-restore');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
 let dateToday;
+let history = JSON.parse(localStorage.getItem('History'));
+if (history == null) {
+      console.log('history load ');
+      let historylist = [
+            {
+                  id: 0,
+                  text: 'Meditate',
+                  done: true,
+                  focus: 21,
+                  project: 'Mindfulness 🧘',
+                  repeatday: '0',
+                  repeatpartoftime: 'day',
+                  data: dateToday,
+                  note: ' 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ',
+            },
+      ];
+      window.localStorage.setItem('History', JSON.stringify(historylist));
+} else {
+      console.log('history null');
+}
 
 let todos = JSON.parse(localStorage.getItem('Items'));
 if (todos == null) {

@@ -56,7 +56,6 @@ function addNote() {
       onenoteCard.classList.remove('none');
       noteCard.classList.add('overlayNote');
 }
-
 function saveNote() {
       const noteHeader = document.getElementById('noteHeader');
       const noteText = document.getElementById('textarea');
@@ -150,3 +149,24 @@ function removeNote() {
       notesrender();
       onenoteCard.classList.add('none');
 }
+
+// if (!todoText.classList.contains('completed')) {
+// 	const History = JSON.parse(localStorage.getItem('History'));
+// 	console.log(History.length);
+// 	console.log(History);
+// 	console.log(todos[index]);
+// 	todos[index].done = true;
+// 	todos[index].id = History.length;
+
+// 	const historytask = todos[index];
+// 	console.log(historytask);
+// 	//   historytask.push(History);
+
+// 	//   History.push(historytask);
+
+// 	//   localStorage.setItem('History', JSON.stringify(historytask));
+
+// 	localStorage.setItem('Items', JSON.stringify(todos));
+// 	todoText.classList.add('completed');
+// 	item.innerHTML = '<i class="fas fa-check-circle"></i>';
+// 	// todoText.classList.add('animation');
