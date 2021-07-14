@@ -191,6 +191,14 @@ color:var(--number-color);
 	@include hoverlighter;
 }
 
+.fa-redo{
+	color: var(  --font-color);
+	opacity: 0.8;
+	font-size: 1rem;
+
+
+}
+
 .overlayNote{
 pointer-events: none;
 opacity: 1;

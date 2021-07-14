@@ -31,15 +31,15 @@ if (history == null) {
                   done: true,
                   focus: 21,
                   project: 'Mindfulness 🧘',
-                  repeatday: '0',
+                  repeatday: '1',
                   repeatpartoftime: 'day',
-                  data: dateToday,
+                  data: 4,
                   note: ' 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ',
             },
       ];
       window.localStorage.setItem('History', JSON.stringify(historylist));
 } else {
-      console.log('history null');
+      console.log('history load');
 }
 
 let todos = JSON.parse(localStorage.getItem('Items'));
@@ -51,9 +51,9 @@ if (todos == null) {
                   done: false,
                   focus: 21,
                   project: 'Mindfulness 🧘',
-                  repeatday: '0',
+                  repeatday: '1',
                   repeatpartoftime: 'day',
-                  data: dateToday,
+                  data: '2021-07-12',
                   note: ' 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ',
             },
             {
@@ -62,20 +62,20 @@ if (todos == null) {
                   done: false,
                   focus: 21,
                   project: 'Spanish Lesson 🇪🇸',
-                  repeatday: '0',
+                  repeatday: '1',
                   repeatpartoftime: 'day',
-                  data: dateToday,
+                  data: '2021-07-12',
                   note: ' Spanish Vocabulary Lists Organized by Topic\n Basic Spanish vocabulary: Greetings\n Basic Spanish vocabulary: Manners\n Basic Spanish vocabulary: Your first conversation\n Basic Spanish vocabulary: Family members\n Basic Spanish vocabulary: Food and drinks\n Intermediate Spanish vocabulary: Clothing\n Intermediate Spanish vocabulary: Dates and times\n',
             },
             {
                   id: 2,
                   text: ' Call grandma',
-                  data: dateToday,
+                  data: '2021-07-12',
                   done: false,
                   focus: 0,
                   note: "don't forget your grandma!👵 ",
                   project: 'SocialLive 🍹  ',
-                  repeatday: '0',
+                  repeatday: '1',
                   repeatpartoftime: 'day',
             },
       ];
@@ -159,7 +159,12 @@ function lists(todolist = [], objlines) {
                                     ? '<div class="center_divT completed">'
                                     : '<div class="center_divT " >'
                         }    
-<div  class="center_todo-item" id="item${todo.id}" >${todo.text} 
+<div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
+                              todo.repeatday != 0
+                                    ? `<i class='fas fa-redo'></i>`
+                                    : ''
+                        }
+
 </div>
 <div  class="center_clocks"> 
 
@@ -176,6 +181,7 @@ ${
   }
   </div> 
 </div>
+
 <button class="center_complete-btn" data-index=${todo.id} id="item${todo.id}" >
 ${
       todo.done
@@ -183,6 +189,10 @@ ${
             : `<i class="fas fa-circle" id="item${todo.id}" aria-hidden="true"></i>`
 } 
 </button>
+
+
+
+
 <button class="center_delete-btn" data-index=${todo.id} id="item${
                               todo.id
                         }">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
@@ -228,7 +238,7 @@ function addTodo(event) {
             done: false,
             focus: 0,
             project: 'No Project',
-            repeatday: '0',
+            repeatday: '1',
             repeatpartoftime: 'day',
             data: dateToday,
             note: '',
@@ -302,6 +312,7 @@ function countdownAnimation() {
 function btnActtion(e) {
       statTask();
       const item = e.target;
+      console.log(item);
       if (item.classList[0] === 'center_delete-btn') {
             audio = new Audio('Alerts/deleteTask.mp3');
             audio.play();
@@ -325,26 +336,87 @@ function btnActtion(e) {
             const todoText = item.parentElement;
             const el = e.target;
             const { index } = el.dataset;
+
             if (!todoText.classList.contains('completed')) {
+                  const History = JSON.parse(localStorage.getItem('History'));
+                  let todos = JSON.parse(localStorage.getItem('Items'));
+                  console.log(todos[index]);
+                  console.log(todos[index]);
                   todos[index].done = true;
+                  console.log(todos[index]);
+                  todos[index].id = History.length;
+                  const historytask = todos[index];
+                  History.push(historytask);
+                  localStorage.setItem('History', JSON.stringify(History));
                   localStorage.setItem('Items', JSON.stringify(todos));
                   todoText.classList.add('completed');
                   item.innerHTML = '<i class="fas fa-check-circle"></i>';
-                  // todoText.classList.add('animation');
-            } else {
-                  todoText.classList.remove('completed');
-                  item.innerHTML = '<i class="fas fa-circle"></i>';
-                  todos[index].done = false;
-                  localStorage.setItem('Items', JSON.stringify(todos));
+                  todoText.classList.add('animation');
+                  console.log(todos);
+
+                  //
+                  if (todos[index].repeatday == 0) {
+                        console.log('dousuniecia');
+                  } else {
+                        const narr = todos[index];
+                        let newtodos = [...todos];
+                        let newIndex = newtodos[index];
+                        console.table(newIndex);
+                        let lastId = 0;
+                        console.log(newIndex);
+                        todos.forEach((ele) => {
+                              if (ele.id > lastId) {
+                                    lastId = ele.id;
+                              }
+                        });
+                        newIndex.id = ++lastId;
+                        newIndex.done = false;
+                        const dateString = newIndex.data;
+                        console.log(newIndex);
+                        console.log(dateString);
+                        newIndex.data = moment(dateString)
+                              .add(
+                                    newIndex.repeatday,
+                                    newIndex.repeatpartoftime,
+                              )
+                              .format('YYYY-MM-DD');
+                        console.log(newIndex.data);
+
+                        todos.push(newIndex);
+
+                        localStorage.setItem('Items', JSON.stringify(todos));
+
+                        //   localStorage.setItem(
+                        //         'Items',
+                        //         JSON.stringify(Items),
+                        //   );
+                  }
+
+                  //   w tym miejscu przed usuwaniem trzeba dodać funkcje która doda do bazy danych task na kolejny dzien jesli posiad taką opcje
+                  //   audio = new Audio('Alerts/deleteTask.mp3');
+                  //   audio.play();
+                  //   //   const { index } = e.target.dataset;
+                  //   const todo = item.parentElement;
+                  //   todo.classList.add('fall');
+                  //   todos.splice(index, 1);
+
+                  //   localStorage.setItem('Items', JSON.stringify(todos));
+                  //   todo.addEventListener('transitionend', () => {
+                  //         todo.remove();
+                  //         resetTimer();
+                  //   });
+                  statTask();
+                  actualList = todos;
+
+                  return;
             }
-            statTask();
-            return;
       }
 
       //* timer start function
       if (item.classList[0] === 'center_play-btn') {
             resizeClock();
             resize.classList.remove('.countdownButtonsNone');
+
             pause.removeEventListener('click', timerBreak);
             // resetTimer();
             // console.log(item);
@@ -616,6 +688,8 @@ function showDiv(clickedId) {
             const divT = document.querySelector('.center_divT');
             divT.addEventListener('click', renderdetals);
             getSelectOptions();
+            lists(actualList, todoList);
+            lists(taskToday, todoList);
       }
       function getSelectOptions() {
             const projectList =
@@ -784,3 +858,35 @@ function repeatTasks() {
       }
 }
 repeatTasks();
+
+function repeatTask() {
+      let Items = JSON.parse(localStorage.getItem('Items'));
+
+      for (let i = 0; i < Items.length; i += 1) {
+            const dateString = Items[i].data;
+            // console.log(dateToday);
+            // console.log(Items[i].data);
+            console.log(
+                  moment(dateString)
+                        .add(Items[i].repeatday, Items[i].repeatpartoftime)
+                        .format('YYYY-MM-DD'),
+            );
+
+            if (dateToday > Items[i].data) {
+                  //  && Items[0].data > dateToday)
+                  //   console.log(
+                  //         'ustawiamy repeat na kolejny wyznaczony dzien miesiąca',
+                  //   );
+
+                  Items[i].data = moment(dateString)
+                        .add(Items[i].repeatday, Items[i].repeatpartoftime)
+                        .format('YYYY-MM-DD');
+
+                  localStorage.setItem('Items', JSON.stringify(Items));
+            } else {
+                  //   console.log(
+                  //         'NIE ustawiamy repeat na kolejny wyznaczony dzien miesiąca',
+                  //   );
+            }
+      }
+}
