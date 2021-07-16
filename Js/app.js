@@ -21,10 +21,10 @@ const resize = document.querySelector('.fa-window-restore');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
 let dateToday;
-let history = JSON.parse(localStorage.getItem('History'));
+const history = JSON.parse(localStorage.getItem('History'));
 if (history == null) {
       console.log('history load ');
-      let historylist = [
+      const historylist = [
             {
                   id: 0,
                   text: 'Meditate',
@@ -53,7 +53,7 @@ if (todos == null) {
                   project: 'Mindfulness 🧘',
                   repeatday: '1',
                   repeatpartoftime: 'day',
-                  data: '2021-07-12',
+                  data: '2021-07-16',
                   note: ' 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ',
             },
             {
@@ -64,13 +64,13 @@ if (todos == null) {
                   project: 'Spanish Lesson 🇪🇸',
                   repeatday: '1',
                   repeatpartoftime: 'day',
-                  data: '2021-07-12',
+                  data: '2021-07-16',
                   note: ' Spanish Vocabulary Lists Organized by Topic\n Basic Spanish vocabulary: Greetings\n Basic Spanish vocabulary: Manners\n Basic Spanish vocabulary: Your first conversation\n Basic Spanish vocabulary: Family members\n Basic Spanish vocabulary: Food and drinks\n Intermediate Spanish vocabulary: Clothing\n Intermediate Spanish vocabulary: Dates and times\n',
             },
             {
-                  id: 2,
+                  id: 4,
                   text: ' Call grandma',
-                  data: '2021-07-12',
+                  data: '2021-07-16',
                   done: false,
                   focus: 0,
                   note: "don't forget your grandma!👵 ",
@@ -153,17 +153,14 @@ function lists(todolist = [], objlines) {
       }
       todoList.innerHTML = actualList
             .map(
-                  (todo, i) =>
-                        `${
-                              todo.done
-                                    ? '<div class="center_divT completed">'
-                                    : '<div class="center_divT " >'
-                        }    
+                  (todo) => `${
+                        todo.done
+                              ? '<div class="center_divT completed">'
+                              : '<div class="center_divT " >'
+                  }    
 <div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
-                              todo.repeatday != 0
-                                    ? `<i class='fas fa-redo'></i>`
-                                    : ''
-                        }
+                        todo.repeatday != 0 ? "<i class='fas fa-redo'></i>" : ''
+                  }
 
 </div>
 <div  class="center_clocks"> 
@@ -194,17 +191,17 @@ ${
 
 
 <button class="center_delete-btn" data-index=${todo.id} id="item${
-                              todo.id
-                        }">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
+                        todo.id
+                  }">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
 <button class="center_play-btn"  data-index=${todo.id} id="${
-                              todo.id
-                        }"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
+                        todo.id
+                  }"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
 <button class="center_des-btn"  data-index=${todo.id} id="${
-                              todo.id
-                        }" onclick="showDiv(${
-                              todo.id
-                        })"  > <i class="fas fa-list-alt" 
+                        todo.id
+                  }" onclick="showDiv(${
+                        todo.id
+                  })"  > <i class="fas fa-list-alt" 
 aria-hidden="true"></i></button>
 </div>
 `,
@@ -243,14 +240,10 @@ function addTodo(event) {
             data: dateToday,
             note: '',
       };
-      // push and add task to localstorage
       todos.push(item);
       lists(todos, todoList);
-      //   lists(actualList, todoList);
       lists(actualList, todoList);
-
       localStorage.setItem('Items', JSON.stringify(actualList));
-
       todoInput.value = '';
       statTask();
 }
@@ -312,6 +305,7 @@ function countdownAnimation() {
 function btnActtion(e) {
       statTask();
       const item = e.target;
+      console.log(e.target.dataset);
       console.log(item);
       if (item.classList[0] === 'center_delete-btn') {
             audio = new Audio('Alerts/deleteTask.mp3');
@@ -339,7 +333,7 @@ function btnActtion(e) {
 
             if (!todoText.classList.contains('completed')) {
                   const History = JSON.parse(localStorage.getItem('History'));
-                  let todos = JSON.parse(localStorage.getItem('Items'));
+                  //   let todos = JSON.parse(localStorage.getItem('Items'));
                   console.log(todos[index]);
                   console.log(todos[index]);
                   todos[index].done = true;
@@ -384,29 +378,23 @@ function btnActtion(e) {
 
                         todos.push(newIndex);
 
-                        localStorage.setItem('Items', JSON.stringify(todos));
-
-                        //   localStorage.setItem(
-                        //         'Items',
-                        //         JSON.stringify(Items),
-                        //   );
+                        localStorage.setItem('Items', JSON.stringify(newtodos));
                   }
 
                   //   w tym miejscu przed usuwaniem trzeba dodać funkcje która doda do bazy danych task na kolejny dzien jesli posiad taką opcje
-                  //   audio = new Audio('Alerts/deleteTask.mp3');
-                  //   audio.play();
-                  //   //   const { index } = e.target.dataset;
-                  //   const todo = item.parentElement;
-                  //   todo.classList.add('fall');
-                  //   todos.splice(index, 1);
+                  audio = new Audio('Alerts/deleteTask.mp3');
+                  audio.play();
+                  const todo = item.parentElement;
+                  todo.classList.add('fall');
+                  todos.splice(index, 1);
 
-                  //   localStorage.setItem('Items', JSON.stringify(todos));
-                  //   todo.addEventListener('transitionend', () => {
-                  //         todo.remove();
-                  //         resetTimer();
-                  //   });
-                  statTask();
+                  localStorage.setItem('Items', JSON.stringify(todos));
+                  todo.addEventListener('transitionend', () => {
+                        todo.remove();
+                        resetTimer();
+                  });
                   actualList = todos;
+                  statTask();
 
                   return;
             }
@@ -567,15 +555,22 @@ function resizeClock() {
 
 function showDiv(clickedId) {
       // ! czemu tutaj pobieram projetky a nie Itemy ????
+      console.log(clickedId);
+
       const itemS = JSON.parse(localStorage.getItem('Items') || []);
       description.classList.remove('none');
       description.classList.add('right--active');
       renderdetals();
       function renderdetals() {
             const todoss = JSON.parse(localStorage.getItem('Items')) || [];
+
+            console.log(todoss);
             console.log('coolest');
             console.log(todoss);
-            const taskDetails = todoss[clickedId];
+
+            const filter = todoss.filter((p) => p.id == clickedId);
+            const taskDetails = filter[0];
+
             console.log(todoss);
             console.log(taskDetails);
             console.log(taskDetails.note);
@@ -786,6 +781,51 @@ function sortingProjectDays(e) {
                   );
                   lists(taskSomeday, todoList);
                   break;
+
+            case 'history':
+                  console.log('no elo');
+                  todoList.innerHTML = actualList
+                        .map(
+                              (todo, i) =>
+                                    `${
+                                          todo.done
+                                                ? '<div class="center_divT completed">'
+                                                : '<div class="center_divT " >'
+                                    }    
+	  <div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
+                                          todo.repeatday != 0
+                                                ? `<i class='fas fa-redo'></i>`
+                                                : ''
+                                    }
+	  
+	  </div>
+	  <div  class="center_clocks"> 
+	  
+	 
+	 
+	  </div>
+	  
+	  <button class="center_complete-btn" data-index=${todo.id} id="item${
+                                          todo.id
+                                    }" >
+	  ${
+              todo.done
+                    ? `<i class="fas fa-check-circle" id="item${todo.id}" aria-hidden="true"></i>`
+                    : `<i class="fas fa-circle" id="item${todo.id}" aria-hidden="true"></i>`
+        } 
+	  </button>
+	  
+	  
+	  
+	  
+	  
+	  </div>
+	  `,
+                        )
+
+                        .join('');
+                  break;
+
             default:
       }
 }
