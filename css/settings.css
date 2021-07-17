@@ -216,7 +216,7 @@
 
 html,
 body {
-  overflow: hidden;
+  overflow: none;
   display: -ms-grid;
   display: grid;
   padding: 0;
@@ -488,12 +488,14 @@ body .center_todolist > div {
   transition: all 0.4s ease;
   -webkit-filter: var(--shadow);
           filter: var(--shadow);
+  max-height: 300px;
 }
 
 html .center_todolist,
 body .center_todolist {
-  overflow: hidden;
-  scroll-behavior: auto;
+  max-height: 70vh;
+  overflow-y: auto;
+  scroll-behavior: hidden;
 }
 
 html .center ul,
@@ -503,7 +505,6 @@ body .center ul {
 
 html .center_divT,
 body .center_divT {
-  overflow: hidden;
   height: 50px;
   max-width: 500px;
   margin-bottom: 5px;
@@ -535,7 +536,6 @@ body .center_todo-item {
   -ms-grid-column: 2;
   -ms-grid-column-span: 6;
   grid-area: todo-item;
-  overflow: auto;
 }
 
 html .center_delete-btn,
@@ -695,8 +695,12 @@ body .clock_timerFinish {
 
 html .completed,
 body .completed {
-  text-decoration: line-through;
   opacity: 0.6;
+}
+
+html .completed .center_todo-item,
+body .completed .center_todo-item {
+  text-decoration: line-through;
 }
 
 html .completedTasks,
@@ -877,7 +881,6 @@ body .right_todo-item {
   -ms-grid-column-span: 6;
   grid-area: todo-item;
   text-align: center;
-  overflow: auto;
 }
 
 html .right_detals,
@@ -1054,14 +1057,6 @@ i {
   text-align: right;
 }
 
-input select:focus,
-input input:focus,
-input textarea:focus {
-  outline: 0;
-  outline-color: transparent;
-  outline-style: none;
-}
-
 .projectDelete {
   text-align: right;
   background: none;
@@ -1092,13 +1087,16 @@ input textarea:focus {
       align-self: auto;
 }
 
+.scores {
+  text-decoration: none;
+}
+
 .nav {
   bottom: 0;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  overflow-x: auto;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -1127,7 +1125,6 @@ input textarea:focus {
       -ms-flex-positive: 1;
           flex-grow: 1;
   min-width: 50px;
-  overflow: hidden;
   white-space: nowrap;
   font-family: sans-serif;
   font-size: 13px;
@@ -1234,6 +1231,27 @@ input textarea:focus {
 .dss:hover {
   stroke-dasharray: 2;
   color: var(--hover_color);
+}
+
+::-webkit-scrollbar {
+  background-color: #171721;
+  width: 12px;
+}
+
+::-webkit-scrollbar-button {
+  background-color: #171721;
+  color: yellow;
+}
+
+::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#2e2d2d));
+  background: linear-gradient(transparent, #2e2d2d);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
+  background: linear-gradient(transparent, black);
 }
 
 :root {
@@ -1377,7 +1395,7 @@ input textarea:focus {
 
 html,
 body {
-  overflow: hidden;
+  overflow: none;
   display: -ms-grid;
   display: grid;
   padding: 0;
@@ -1649,12 +1667,14 @@ body .center_todolist > div {
   transition: all 0.4s ease;
   -webkit-filter: var(--shadow);
           filter: var(--shadow);
+  max-height: 300px;
 }
 
 html .center_todolist,
 body .center_todolist {
-  overflow: hidden;
-  scroll-behavior: auto;
+  max-height: 70vh;
+  overflow-y: auto;
+  scroll-behavior: hidden;
 }
 
 html .center ul,
@@ -1664,7 +1684,6 @@ body .center ul {
 
 html .center_divT,
 body .center_divT {
-  overflow: hidden;
   height: 50px;
   max-width: 500px;
   margin-bottom: 5px;
@@ -1696,7 +1715,6 @@ body .center_todo-item {
   -ms-grid-column: 2;
   -ms-grid-column-span: 6;
   grid-area: todo-item;
-  overflow: auto;
 }
 
 html .center_delete-btn,
@@ -1856,8 +1874,12 @@ body .clock_timerFinish {
 
 html .completed,
 body .completed {
-  text-decoration: line-through;
   opacity: 0.6;
+}
+
+html .completed .center_todo-item,
+body .completed .center_todo-item {
+  text-decoration: line-through;
 }
 
 html .completedTasks,
@@ -2038,7 +2060,6 @@ body .right_todo-item {
   -ms-grid-column-span: 6;
   grid-area: todo-item;
   text-align: center;
-  overflow: auto;
 }
 
 html .right_detals,
@@ -2215,14 +2236,6 @@ i {
   text-align: right;
 }
 
-input select:focus,
-input input:focus,
-input textarea:focus {
-  outline: 0;
-  outline-color: transparent;
-  outline-style: none;
-}
-
 .projectDelete {
   text-align: right;
   background: none;
@@ -2253,13 +2266,16 @@ input textarea:focus {
       align-self: auto;
 }
 
+.scores {
+  text-decoration: none;
+}
+
 .nav {
   bottom: 0;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  overflow-x: auto;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -2288,7 +2304,6 @@ input textarea:focus {
       -ms-flex-positive: 1;
           flex-grow: 1;
   min-width: 50px;
-  overflow: hidden;
   white-space: nowrap;
   font-family: sans-serif;
   font-size: 13px;
@@ -2395,6 +2410,27 @@ input textarea:focus {
 .dss:hover {
   stroke-dasharray: 2;
   color: var(--hover_color);
+}
+
+::-webkit-scrollbar {
+  background-color: #171721;
+  width: 12px;
+}
+
+::-webkit-scrollbar-button {
+  background-color: #171721;
+  color: yellow;
+}
+
+::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#2e2d2d));
+  background: linear-gradient(transparent, #2e2d2d);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
+  background: linear-gradient(transparent, black);
 }
 
 .modal__header {

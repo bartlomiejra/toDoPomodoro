@@ -387,16 +387,21 @@ body {
         &_todolist>div {
             transition: all 0.4s ease;
             filter: var(--shadow);
+			max-height: 300px;
         }
         &_todolist {
+			max-height: 64vh;
             overflow: hidden;
-			scroll-behavior: auto;
+overflow-y:auto;
+			scroll-behavior: hidden;
+			margin-top: 0px;
+			margin-bottom: 0px;
         }
         ul {
             padding: 0px;
         }
         &_divT {
-            overflow: hidden;
+            // overflow: hidden;
             height: 50px;
             max-width: 500px;
             margin-bottom: 5px;
@@ -416,7 +421,7 @@ body {
         }
         &_todo-item {
             grid-area: todo-item;
-            overflow: auto;
+            // overflow: auto;
         }
         &_delete-btn {
             grid-area: delete-btn;
@@ -515,27 +520,24 @@ body {
         }
 
         &_timerStart {
-
             background: var(--timer);
-            // opacity: 0.4;
             border-radius: 15px;
             backdrop-filter: blur(5px);
             color: var(--hover_color);
         }
 
         &_timerFinish {
-
             background-color: var(--timerFinishColor);
             backdrop-filter: blur(5px);
             color: var(--hover_color);
-
         }
-
     }
 
     .completed {
-        text-decoration: line-through;
         opacity: 0.6;
+		.center_todo-item{
+			text-decoration: line-through;
+		}
     }
 
     .completedTasks {
@@ -544,32 +546,26 @@ body {
         display: none;
     }
 
-
-
     .input {
         font-size: 1.2em;
         width: 90%;
         color: var(--fonts);
         border: 0;
     }
-
     button {
         flex: 1;
         border: 0;
     }
-
     li {
         list-style-type: none;
         padding: 0.3rem;
         flex: 6;
         text-align: center;
     }
-
     i {
         flex: 1;
         background: transparent;
     }
-
     li:hover {
         @include hover;
     }
@@ -662,7 +658,7 @@ body {
         &_todo-item {
             grid-area: todo-item;
             text-align: center;
-            overflow: auto;
+            // overflow: auto;
         }
 
         &_detals {
@@ -821,9 +817,9 @@ input {
     select:focus,
     input:focus,
     textarea:focus {
-        outline: 0;
-        outline-color: transparent;
-        outline-style: none;
+        // outline: 0;
+        // outline-color: transparent;
+        // outline-style: none;
     }
 }
 .projectDelete {
@@ -842,11 +838,15 @@ input {
     flex: 0 1 auto;
     align-self: auto;
 }
+.scores{
+	text-decoration: none;
+
+}
 .nav {
     bottom: 0;
     width: 100%;
     display: flex;
-    overflow-x: auto;
+    // overflow-x: auto;
     flex-direction: row;
     background-color: var(--nav_color);
     align-self: flex-end;
@@ -952,6 +952,33 @@ input {
 .dss:hover {
     stroke-dasharray: 2;
     color: var(--hover_color);
+}	
+
+
+//Custom scrollbar
+::-webkit-scrollbar
+{
+	background-color: #171721;
+
+	width: 12px;
+}
+::-webkit-scrollbar-button
+{
+	background-color: #171721;
+	color: yellow;
+}
+::-webkit-scrollbar-thumb
+{
+	background: linear-gradient(transparent, rgb(46, 45, 45));
+	border-radius: 10px;
+
+	
 }
 
 
+::-webkit-scrollbar-thumb:hover
+{
+
+	background: linear-gradient(transparent, black);
+	
+}

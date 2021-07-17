@@ -20,6 +20,7 @@ const resize = document.querySelector('.fa-window-restore');
 // const detals = document.querySelectorAll('.detals');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
+const addBar = document.querySelector('.center_addTaskdiv');
 let dateToday;
 const history = JSON.parse(localStorage.getItem('History'));
 if (history == null) {
@@ -310,10 +311,12 @@ function btnActtion(e) {
       if (item.classList[0] === 'center_delete-btn') {
             audio = new Audio('Alerts/deleteTask.mp3');
             audio.play();
-            const { index } = e.target.dataset;
+            const { ...index } = e.target.dataset;
+            console.log(index);
             const todo = item.parentElement;
             todo.classList.add('fall');
             todos.splice(index, 1);
+            console.log(todos);
 
             localStorage.setItem('Items', JSON.stringify(todos));
             todo.addEventListener('transitionend', () => {
@@ -352,9 +355,8 @@ function btnActtion(e) {
                   if (todos[index].repeatday == 0) {
                         console.log('dousuniecia');
                   } else {
-                        const narr = todos[index];
-                        let newtodos = [...todos];
-                        let newIndex = newtodos[index];
+                        const newtodos = [...todos];
+                        const newIndex = newtodos[index];
                         console.table(newIndex);
                         let lastId = 0;
                         console.log(newIndex);
@@ -380,8 +382,6 @@ function btnActtion(e) {
 
                         localStorage.setItem('Items', JSON.stringify(newtodos));
                   }
-
-                  //   w tym miejscu przed usuwaniem trzeba dodać funkcje która doda do bazy danych task na kolejny dzien jesli posiad taką opcje
                   audio = new Audio('Alerts/deleteTask.mp3');
                   audio.play();
                   const todo = item.parentElement;
@@ -553,11 +553,12 @@ function resizeClock() {
       }
 }
 
+// eslint-disable-next-line no-unused-vars
 function showDiv(clickedId) {
       // ! czemu tutaj pobieram projetky a nie Itemy ????
       console.log(clickedId);
 
-      const itemS = JSON.parse(localStorage.getItem('Items') || []);
+      //   const itemS = JSON.parse(localStorage.getItem('Items') || []);
       description.classList.remove('none');
       description.classList.add('right--active');
       renderdetals();
@@ -781,64 +782,56 @@ function sortingProjectDays(e) {
                   );
                   lists(taskSomeday, todoList);
                   break;
-
             case 'history':
-                  console.log('no elo');
-                  todoList.innerHTML = actualList
+                  const history = JSON.parse(localStorage.getItem('History'));
+                  if (history.length == 0) {
+                        emptyList.classList.remove('none');
+                  }
+                  if (history.length > 0) {
+                        emptyList.classList.add('none');
+                  }
+                  todoList.innerHTML = history
                         .map(
-                              (todo, i) =>
-                                    `${
-                                          todo.done
-                                                ? '<div class="center_divT completed">'
-                                                : '<div class="center_divT " >'
-                                    }    
-	  <div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
-                                          todo.repeatday != 0
-                                                ? `<i class='fas fa-redo'></i>`
-                                                : ''
-                                    }
-	  
-	  </div>
-	  <div  class="center_clocks"> 
-	  
-	 
-	 
-	  </div>
-	  
-	  <button class="center_complete-btn" data-index=${todo.id} id="item${
-                                          todo.id
-                                    }" >
-	  ${
-              todo.done
-                    ? `<i class="fas fa-check-circle" id="item${todo.id}" aria-hidden="true"></i>`
-                    : `<i class="fas fa-circle" id="item${todo.id}" aria-hidden="true"></i>`
-        } 
-	  </button>
-	  
-	  
-	  
-	  
-	  
-	  </div>
-	  `,
+                              (todo) => `<div class="center_divT completed">
+						<div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
+                                    todo.repeatday != 0
+                                          ? "<i class='fas fa-redo'></i>"
+                                          : ''
+                              }
+	</div>
+	<div class="center_clocks">
+	 <i class="fas fa-clock time"> </i>  
+	<div class="scores"> 
+	  ${todo.focus > 0 ? ` = ${todo.focus} min` : 0}
+	  </div> 
+	</div>
+	
+	 <button class="center_complete-btn">
+	<i class="fas fa-check-circle" id="item${todo.id}" aria-hidden="true"></i>
+	</button>
+	</div>
+	
+	
+	
+	
+	`,
                         )
 
                         .join('');
                   break;
-
             default:
+                  break;
       }
 }
 function deleteProject() {
       //   console.log(e);
       console.log(event.currentTarget.id);
       const click = event.currentTarget.id;
-      const project = JSON.parse(localStorage.getItem('Project')) || [];
+      let project = JSON.parse(localStorage.getItem('Project')) || [];
       const deleteProj = project.filter((item) => item.id != click);
       localStorage.setItem('Project', JSON.stringify(deleteProj));
       renderProjects();
 }
-
 function showProjectList() {
       centerDiv.classList.add('none');
       centerDiv.classList.remove('center');
@@ -848,7 +841,6 @@ function showProjectList() {
 function ifmobile() {
       if (mobileWidth.matches) {
             showProjectList();
-      } else {
       }
 }
 addProjectbtn.addEventListener('click', addProject);
@@ -867,7 +859,7 @@ showProject.addEventListener('click', ifmobile);
     */
 
 function repeatTasks() {
-      let Items = JSON.parse(localStorage.getItem('Items'));
+      const Items = JSON.parse(localStorage.getItem('Items'));
 
       for (let i = 0; i < Items.length; i += 1) {
             const dateString = Items[i].data;
@@ -898,35 +890,3 @@ function repeatTasks() {
       }
 }
 repeatTasks();
-
-function repeatTask() {
-      let Items = JSON.parse(localStorage.getItem('Items'));
-
-      for (let i = 0; i < Items.length; i += 1) {
-            const dateString = Items[i].data;
-            // console.log(dateToday);
-            // console.log(Items[i].data);
-            console.log(
-                  moment(dateString)
-                        .add(Items[i].repeatday, Items[i].repeatpartoftime)
-                        .format('YYYY-MM-DD'),
-            );
-
-            if (dateToday > Items[i].data) {
-                  //  && Items[0].data > dateToday)
-                  //   console.log(
-                  //         'ustawiamy repeat na kolejny wyznaczony dzien miesiąca',
-                  //   );
-
-                  Items[i].data = moment(dateString)
-                        .add(Items[i].repeatday, Items[i].repeatpartoftime)
-                        .format('YYYY-MM-DD');
-
-                  localStorage.setItem('Items', JSON.stringify(Items));
-            } else {
-                  //   console.log(
-                  //         'NIE ustawiamy repeat na kolejny wyznaczony dzien miesiąca',
-                  //   );
-            }
-      }
-}
