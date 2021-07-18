@@ -426,6 +426,16 @@ function btnActtion(e) {
       lists(actualList, todoList);
 }
 
+// const History = JSON.parse(localStorage.getItem('History'));
+// console.log(todos[index]);
+//   const todosFiltr = todos.filter((p) => p.id == index);
+//   console.log(todosFiltr);
+//   let cs = todosFiltr[0];
+//   console.log(
+//         '🚀 ~ file: app.js ~ line 346 ~ btnActtion ~ ast',
+//         cs,
+//   );
+
 function displayTimeLeft(seconds) {
       const minutes = Math.floor(seconds / 60);
       const remainderSeconds = seconds % 60;
