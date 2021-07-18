@@ -538,11 +538,7 @@ function breakTime() {
 function endpomodoro() {
       audio = new Audio('Alerts/taskEnd.mp3');
       audio.play();
-      //* convert string to js object
       const itemS = JSON.parse(localStorage.getItem('Items'));
-      console.log(itemS);
-      console.log(taskId);
-      console.log(itemS[taskId]);
       const filtrr = itemS.filter((p) => p.id == taskId);
       const itemSelement = filtrr[0];
       itemSelement.focus += timeInFocus;
@@ -562,10 +558,6 @@ function resizeClock() {
 
 // eslint-disable-next-line no-unused-vars
 function showDiv(clickedId) {
-      // ! czemu tutaj pobieram projetky a nie Itemy ????
-      console.log(clickedId);
-
-      //   const itemS = JSON.parse(localStorage.getItem('Items') || []);
       description.classList.remove('none');
       description.classList.add('right--active');
       renderdetals();
