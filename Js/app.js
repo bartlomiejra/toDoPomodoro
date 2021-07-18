@@ -50,7 +50,7 @@ if (todos == null) {
             id: 0,
             text: 'Meditate',
             done: false,
-            focus: 21,
+            focus: 0,
             project: 'Mindfulness 🧘',
             repeatday: '1',
             repeatpartoftime: 'day',
@@ -61,7 +61,7 @@ if (todos == null) {
             id: 1,
             text: 'Basic Spanish Words',
             done: false,
-            focus: 21,
+            focus: 0,
             project: 'Spanish Lesson 🇪🇸',
             repeatday: '1',
             repeatpartoftime: 'day',
@@ -370,17 +370,28 @@ function btnActtion(e) {
             todoText.classList.add('animation');
             console.log(todos);
 
-            const ten = todos.find((element, x) => element == todosFiltr);
-            console.log(ten);
+            // const ten = todos.find((element, x) => element == todosFiltr);
+            // console.log(ten);
 
             //
             if (todosFiltr.repeatday == 0) {
                 console.log('dousuniecia');
             } else {
                 const isLargeNumber = (element) => element == todosFiltr;
+                const newtodos = [todos];
+
                 const idcurrent = todos.findIndex(isLargeNumber);
-                const newtodos = [...todos];
-                let newIndex = [todosFiltr.idcurrent];
+                let newIndex = todosFiltr;
+
+                // const newIndex = newtodos[idcurrent];
+                console.log(
+                    '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ idcurrent',
+                    idcurrent,
+                );
+                console.log(
+                    '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ todosFiltr',
+                    todosFiltr,
+                );
 
                 // // const newIndex =ewtodos[todosFiltr]
                 console.log(newtodos);
