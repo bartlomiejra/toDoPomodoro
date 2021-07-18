@@ -251,6 +251,7 @@ function addTodo(event) {
 function statTask() {
       let toBeCompleted = 0;
       let countCompleted = 0;
+      let estimated = 0;
       //* counting statiscics
       taskToday = todos.filter((items) => items.data === dateToday);
       for (let i = 0; i < taskToday.length; i += 1) {
@@ -271,9 +272,11 @@ function statTask() {
                   focuscount += ast;
             });
       }
-      const estimated = toBeCompleted * pomodoreDuration;
+
+      estimated = toBeCompleted * pomodoreDuration;
       const minutesEs = estimated % 60;
       const hours = Math.floor(estimated / 60);
+      console.log(minutesEs);
       const estimatedHM = `${hours}.${minutesEs < 10 ? '0' : ''}${minutesEs}`;
       document.getElementById('estimated').innerHTML = estimatedHM;
       const elapsed = Math.floor(focuscount / 60);
@@ -410,6 +413,7 @@ function btnActtion(e) {
             // console.log(item);
             const { index } = e.target.id;
             taskId = e.target.id;
+            console.log(taskId);
             timer();
             clearInterval(countdownTime);
             const seconds = 4;
@@ -535,15 +539,18 @@ function endpomodoro() {
       audio = new Audio('Alerts/taskEnd.mp3');
       audio.play();
       //* convert string to js object
-      // console.log(itemS);
       const itemS = JSON.parse(localStorage.getItem('Items'));
-      itemS[taskId].focus += timeInFocus;
+      console.log(itemS);
+      console.log(taskId);
+      console.log(itemS[taskId]);
+      const filtrr = itemS.filter((p) => p.id == taskId);
+      const itemSelement = filtrr[0];
+      itemSelement.focus += timeInFocus;
       localStorage.setItem('Items', JSON.stringify(itemS));
       lists(todos, todoList);
       pause.addEventListener('click', timerBreak);
       breakTime();
 }
-
 function resizeClock() {
       clockTimer.classList.add('clock_clockVisible');
       if (clockTimer.classList.contains('clock_fullscreen')) {
@@ -669,9 +676,10 @@ function showDiv(clickedId) {
                   description.classList.add('none');
             }
             function updateDetails() {
-                  const proj = JSON.parse(localStorage.getItem('Items')) || [];
+                  const proj = JSON.parse(localStorage.getItem('Items'));
                   console.log(proj);
                   console.log(proj);
+                  console.log(clickedId);
                   console.log(proj[clickedId].data);
                   proj[clickedId].data = date.value;
                   proj[clickedId].project = project.value;

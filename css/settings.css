@@ -216,7 +216,7 @@
 
 html,
 body {
-  overflow: none;
+  overflow: hidden;
   display: -ms-grid;
   display: grid;
   padding: 0;
@@ -493,9 +493,12 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
-  max-height: 70vh;
+  max-height: 64vh;
+  overflow: hidden;
   overflow-y: auto;
   scroll-behavior: hidden;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 html .center ul,
@@ -1125,6 +1128,7 @@ i {
       -ms-flex-positive: 1;
           flex-grow: 1;
   min-width: 50px;
+  overflow: hidden;
   white-space: nowrap;
   font-family: sans-serif;
   font-size: 13px;
@@ -1395,7 +1399,7 @@ i {
 
 html,
 body {
-  overflow: none;
+  overflow: hidden;
   display: -ms-grid;
   display: grid;
   padding: 0;
@@ -1672,9 +1676,12 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
-  max-height: 70vh;
+  max-height: 64vh;
+  overflow: hidden;
   overflow-y: auto;
   scroll-behavior: hidden;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 html .center ul,
@@ -2304,6 +2311,7 @@ i {
       -ms-flex-positive: 1;
           flex-grow: 1;
   min-width: 50px;
+  overflow: hidden;
   white-space: nowrap;
   font-family: sans-serif;
   font-size: 13px;
