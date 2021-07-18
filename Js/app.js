@@ -336,43 +336,57 @@ function btnActtion(e) {
         const { index } = el.dataset;
 
         if (!todoText.classList.contains('completed')) {
-            //   let todos = JSON.parse(localStorage.getItem('Items'));
+            let todos = JSON.parse(localStorage.getItem('Items'));
 
             const History = JSON.parse(localStorage.getItem('History'));
-            console.log(todos[index]);
 
             const filtr = todos.filter((p) => p.id == index);
-            console.log(filtr.id);
             let todosFiltr = filtr[0];
             console.log(todosFiltr.id);
+            let idtego = todosFiltr.id;
+            console.log(
+                '🚀 ~ file: app.js ~ line 347 ~ btnActtion ~ idtego',
+                idtego,
+            );
+
             console.log(
                 '🚀 ~ file: app.js ~ line 346 ~ btnActtion ~ ast',
                 todosFiltr,
             );
 
+            console.log(todos);
             console.log(todos[todosFiltr.id]);
             console.log(todos[todosFiltr.id]);
-            todos[todosFiltr.id].done = true;
-            console.log(todos[todosFiltr.id]);
-            todos[todosFiltr.id].id = History.length;
-            const historytask = todos[todosFiltr.id];
+            todosFiltr.done = true;
+            // console.log(todos[todosFiltr.id]);
+            todosFiltr.id = History.length;
+            const historytask = todosFiltr;
             History.push(historytask);
             localStorage.setItem('History', JSON.stringify(History));
+            console.log(todos);
             localStorage.setItem('Items', JSON.stringify(todos));
             todoText.classList.add('completed');
             item.innerHTML = '<i class="fas fa-check-circle"></i>';
             todoText.classList.add('animation');
             console.log(todos);
 
+            const ten = todos.find((element, x) => element == todosFiltr);
+            console.log(ten);
+
             //
-            if (todos[todosFiltr.id].repeatday == 0) {
+            if (todosFiltr.repeatday == 0) {
                 console.log('dousuniecia');
             } else {
+                const isLargeNumber = (element) => element == todosFiltr;
+                const idcurrent = todos.findIndex(isLargeNumber);
                 const newtodos = [...todos];
-                const newIndex = newtodos[todosFiltr.id];
+                let newIndex = [todosFiltr.idcurrent];
+
+                // // const newIndex =ewtodos[todosFiltr]
+                console.log(newtodos);
                 console.table(newIndex);
+
                 let lastId = 0;
-                console.log(newIndex);
                 todos.forEach((ele) => {
                     if (ele.id > lastId) {
                         lastId = ele.id;
@@ -396,7 +410,7 @@ function btnActtion(e) {
             audio.play();
             const todo = item.parentElement;
             todo.classList.add('fall');
-            todos.splice(index, 1);
+            todos.splice(todosFiltr, 1);
 
             localStorage.setItem('Items', JSON.stringify(todos));
             todo.addEventListener('transitionend', () => {
@@ -843,10 +857,10 @@ todoList.addEventListener('click', btnActtion);
 showProject.addEventListener('click', ifmobile);
 
 /*
-      * Importand Information
-      ! Deprecated method, do not user
-      ? should this method be exposad in the public API
-      TODO: zrobić to i tamto
+  * Importand Information
+    ! Deprecated method, do not user
+    ? should this method be exposad in the public API
+    TODO: zrobić to i tamto
       * @param myParam The parameter for this method
 
     */
