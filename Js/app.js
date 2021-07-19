@@ -23,6 +23,8 @@ const pomodoreList = document.querySelector('.left_pomodoreProjects');
 const addBar = document.querySelector('.center_addTaskdiv');
 let dateToday;
 const history = JSON.parse(localStorage.getItem('History'));
+
+let currentSelectetProject;
 if (history == null) {
     console.log('history load ');
     const historylist = [
@@ -123,7 +125,8 @@ let taskToday;
 // let taskToday = 0;
 let tasks = JSON.parse(localStorage.getItem('Items')) || [];
 // const objlines = 0;
-let actualList = [];
+// let actualList;
+// console.log(actualList);
 let dateTomorrow = 0;
 function actualDateTime() {
     const date = new Date();
@@ -138,14 +141,23 @@ function actualDateTime() {
 actualDateTime();
 tasks = JSON.parse(localStorage.getItem('Items')) || [];
 taskToday = tasks.filter((items) => items.data === dateToday);
-lists(taskToday, todoList);
+let actualSelect;
+let actualList;
+actualList = JSON.parse(localStorage.getItem('Actual')) || [];
 
+lists(actualList, todoList);
+console.log(actualList);
+if (actualList == 0) {
+    actualSelect = [{ id: 0, name: 'Studies 👨‍🎓' }];
+    window.localStorage.setItem('Actual', JSON.stringify(actualSelect));
+} else {
+    project = JSON.parse(localStorage.getItem('project'));
+}
+// todolist = JSON.parse(localStorage.getItem('Items')) || [];
 function lists(todolist = [], objlines) {
-    // todolist = JSON.parse(localStorage.getItem('Items')) || [];
-
-    console.log(tasks.length);
-
     actualList = todolist;
+    window.localStorage.setItem('Actual', JSON.stringify(actualList));
+    console.log(actualList);
     // console.log(actualList);
     //   console.log(actualList.length);
     if (actualList.length == 0) {
@@ -686,15 +698,8 @@ function showDiv(clickedId) {
 
             console.log(proj[clickedId]);
 
-            // let editedid = 0;
-            // proj.forEach((item) => {
-            //     if (proj.id == clickedId) {
-            //         editedid = proj.id;
-            //     }
-            // });
-            // console.log(editedid);
             const filtrPr = proj.filter((p) => p.id == clickedId);
-            let Idtoedit = filtrPr[0];
+            const Idtoedit = filtrPr[0];
             console.log(Idtoedit);
 
             Idtoedit.data = date.value;
@@ -708,7 +713,6 @@ function showDiv(clickedId) {
         divT.addEventListener('click', renderdetals);
         getSelectOptions();
         lists(actualList, todoList);
-        lists(taskToday, todoList);
     }
     function getSelectOptions() {
         const projectList = JSON.parse(localStorage.getItem('Project')) || [];
@@ -765,25 +769,16 @@ function renderProjects() {
         .join('');
 }
 renderProjects();
+
+// eslint-disable-next-line no-unused-vars
 function sortingProject(clicked_id) {
-    // console.log(this);
-    // console.log(this.id);
-    // console.log(clicked_id);
     const clicked = clicked_id.getAttribute('name');
     console.log(clicked);
-    // const clicked = e.target.getAttribute('name');
     tasks = JSON.parse(localStorage.getItem('Items')) || [];
     const tasksProject = tasks.filter((item) => item.project == clicked);
     lists(tasksProject, todoList);
     return tasksProject;
 }
-
-// document.querySelectorAll('.projectList').forEach((e) => {
-//     e.addEventListener('click', sortingProject);
-// });
-document.querySelectorAll('.left_day').forEach((e) => {
-    e.addEventListener('click', sortingProjectDays);
-});
 
 function sortingProjectDays(e) {
     let taskToday = 0;
@@ -842,6 +837,9 @@ function sortingProjectDays(e) {
             break;
     }
 }
+document.querySelectorAll('.left_day').forEach((e) => {
+    e.addEventListener('click', sortingProjectDays);
+});
 function deleteProject() {
     //   console.log(e);
     console.log(event.currentTarget.id);
