@@ -752,7 +752,7 @@ function renderProjects() {
         .map(
             (proje, i) => `
 <li class="left_projectItem">
- <div class="projectList" value="${proje.name}" name="${proje.name}">
+ <div class="projectList" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}">
   <span class="circle" style="background-color: ${proje.color};">
   </span>
   ${proje.name} 
@@ -765,19 +765,26 @@ function renderProjects() {
         .join('');
 }
 renderProjects();
-function sortingProject(e) {
-    const clicked = e.target.getAttribute('name');
+function sortingProject(clicked_id) {
+    // console.log(this);
+    // console.log(this.id);
+    // console.log(clicked_id);
+    const clicked = clicked_id.getAttribute('name');
+    console.log(clicked);
+    // const clicked = e.target.getAttribute('name');
     tasks = JSON.parse(localStorage.getItem('Items')) || [];
     const tasksProject = tasks.filter((item) => item.project == clicked);
     lists(tasksProject, todoList);
     return tasksProject;
 }
+
+// document.querySelectorAll('.projectList').forEach((e) => {
+//     e.addEventListener('click', sortingProject);
+// });
 document.querySelectorAll('.left_day').forEach((e) => {
     e.addEventListener('click', sortingProjectDays);
 });
-document.querySelectorAll('.projectList').forEach((e) => {
-    e.addEventListener('click', sortingProject);
-});
+
 function sortingProjectDays(e) {
     let taskToday = 0;
     let taskTomorrow = 0;
