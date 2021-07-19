@@ -362,15 +362,6 @@ function btnActtion(e) {
             let todosFiltr = filtr[0];
             // console.log(todosFiltr.id);
             let idtego = todosFiltr.id;
-            console.log(
-                '🚀 ~ file: app.js ~ line 347 ~ btnActtion ~ idtego',
-                idtego,
-            );
-
-            console.log(
-                '🚀 ~ file: app.js ~ line 346 ~ btnActtion ~ ast',
-                todosFiltr,
-            );
 
             // console.log(todos);
             // console.log(todos[todosFiltr.id]);
@@ -393,7 +384,6 @@ function btnActtion(e) {
 
             //
             if (todosFiltr.repeatday == 0) {
-                console.log('dousuniecia');
             } else {
                 const isLargeNumber = (element) => element == todosFiltr;
                 // const newtodos = [...todos];
@@ -401,24 +391,8 @@ function btnActtion(e) {
 
                 const idcurrent = todos.findIndex(isLargeNumber);
                 const idtesku = idcurrent;
-                console.log(idtesku);
-                // let newIndex = todosFiltr;
 
                 const newIndex = newtodos[idtesku];
-                // console.log(newIndex);
-
-                // console.log(
-                //     '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ idcurrent',
-                //     idcurrent,
-                // );
-                // console.log(
-                //     '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ todosFiltr',
-                //     todosFiltr,
-                // );
-
-                // // // const newIndex =ewtodos[todosFiltr]
-                // console.log(newtodos);
-                console.log(newIndex);
 
                 let lastId = 0;
                 todos.forEach((ele) => {
@@ -426,32 +400,16 @@ function btnActtion(e) {
                         lastId = ele.id;
                     }
                 });
-                // console.log(newIndex);
                 newIndex.id = ++lastId;
-                // console.log(newIndex);
-                // console.log(newtodos);
-                // console.log(todos);
                 newIndex.done = false;
                 const dateString = newIndex.data;
-                // console.log(newtodos);
-                // console.log(newIndex);
-                // console.log(dateString);
                 newIndex.data = moment(dateString)
                     .add(newIndex.repeatday, newIndex.repeatpartoftime)
                     .format('YYYY-MM-DD');
-                console.log(newIndex);
-                // console.log(newIndex.data);
-                // console.log(newtodos);
-                // console.log(todos);
                 todos.push(newIndex);
-                console.log(newtodos);
-                console.log(todos);
-
-                // localStorage.setItem('Items', JSON.stringify(newtodos));
             }
             const newtodos = JSON.parse(JSON.stringify(todos));
             const isLargeNumber = (element) => element == todosFiltr;
-
             const idcurrent = todos.findIndex(isLargeNumber);
             audio = new Audio('Alerts/deleteTask.mp3');
             audio.play();
@@ -477,11 +435,8 @@ function btnActtion(e) {
         resize.classList.remove('.countdownButtonsNone');
 
         pause.removeEventListener('click', timerBreak);
-        // resetTimer();
-        // console.log(item);
         const { index } = e.target.id;
         taskId = e.target.id;
-        console.log(taskId);
         timer();
         clearInterval(countdownTime);
         const seconds = 4;
@@ -635,17 +590,8 @@ function showDiv(clickedId) {
     renderdetals();
     function renderdetals() {
         const todoss = JSON.parse(localStorage.getItem('Items')) || [];
-
-        console.log(todoss);
-        console.log('coolest');
-        console.log(todoss);
-
         const filter = todoss.filter((p) => p.id == clickedId);
         const taskDetails = filter[0];
-
-        console.log(todoss);
-        console.log(taskDetails);
-        console.log(taskDetails.note);
         description.innerHTML = `
 <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
 <i class="fas fa-times"
@@ -732,22 +678,31 @@ function showDiv(clickedId) {
             console.log(optionsTime);
         });
         function closeDiv() {
-            console.log('elo');
             description.classList.add('none');
         }
         function updateDetails() {
             const proj = JSON.parse(localStorage.getItem('Items'));
             console.log(proj);
-            console.log(proj);
-            console.log(clickedId);
-            console.log(proj[clickedId].data);
-            proj[clickedId].data = date.value;
-            proj[clickedId].project = project.value;
-            proj[clickedId].note = note.value;
-            proj[clickedId].repeatday = repeatDay.value;
-            proj[clickedId].repeatpartoftime = timePart.value;
+
+            console.log(proj[clickedId]);
+
+            // let editedid = 0;
+            // proj.forEach((item) => {
+            //     if (proj.id == clickedId) {
+            //         editedid = proj.id;
+            //     }
+            // });
+            // console.log(editedid);
+            const filtrPr = proj.filter((p) => p.id == clickedId);
+            let Idtoedit = filtrPr[0];
+            console.log(Idtoedit);
+
+            Idtoedit.data = date.value;
+            Idtoedit.project = project.value;
+            Idtoedit.note = note.value;
+            Idtoedit.repeatday = repeatDay.value;
+            Idtoedit.repeatpartoftime = timePart.value;
             localStorage.setItem('Items', JSON.stringify(proj));
-            console.log('oki działa');
         }
         const divT = document.querySelector('.center_divT');
         divT.addEventListener('click', renderdetals);
@@ -768,7 +723,6 @@ function showDiv(clickedId) {
         }
     }
 }
-// const project = JSON.parse(localStorage.getItem('Project')) || [];
 function addProject(event) {
     const project = JSON.parse(localStorage.getItem('Project')) || [];
 
@@ -921,29 +875,14 @@ function repeatTasks() {
 
     for (let i = 0; i < Items.length; i += 1) {
         const dateString = Items[i].data;
-        // console.log(dateToday);
-        // console.log(Items[i].data);
-        console.log(
-            moment(dateString)
-                .add(Items[i].repeatday, Items[i].repeatpartoftime)
-                .format('YYYY-MM-DD'),
-        );
 
         if (dateToday > Items[i].data) {
-            //  && Items[0].data > dateToday)
-            //   console.log(
-            //         'ustawiamy repeat na kolejny wyznaczony dzien miesiąca',
-            //   );
-
             Items[i].data = moment(dateString)
                 .add(Items[i].repeatday, Items[i].repeatpartoftime)
                 .format('YYYY-MM-DD');
 
             localStorage.setItem('Items', JSON.stringify(Items));
         } else {
-            //   console.log(
-            //         'NIE ustawiamy repeat na kolejny wyznaczony dzien miesiąca',
-            //   );
         }
     }
 }
