@@ -112,10 +112,10 @@ if (settinglocal == null) {
 
     window.localStorage.setItem('settings', JSON.stringify(settings));
 } else {
-    console.log(settings);
+    // console.log(settings);
     pomodoreDuration = settinglocal.pomodoreTime;
 }
-console.log(pomodoreDuration);
+// console.log(pomodoreDuration);
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
@@ -146,7 +146,7 @@ function lists(todolist = [], objlines) {
     console.log(tasks.length);
 
     actualList = todolist;
-    console.log(actualList);
+    // console.log(actualList);
     //   console.log(actualList.length);
     if (actualList.length == 0) {
         emptyList.classList.remove('none');
@@ -360,7 +360,7 @@ function btnActtion(e) {
 
             const filtr = todos.filter((p) => p.id == index);
             let todosFiltr = filtr[0];
-            console.log(todosFiltr.id);
+            // console.log(todosFiltr.id);
             let idtego = todosFiltr.id;
             console.log(
                 '🚀 ~ file: app.js ~ line 347 ~ btnActtion ~ idtego',
@@ -372,9 +372,9 @@ function btnActtion(e) {
                 todosFiltr,
             );
 
-            console.log(todos);
-            console.log(todos[todosFiltr.id]);
-            console.log(todos[todosFiltr.id]);
+            // console.log(todos);
+            // console.log(todos[todosFiltr.id]);
+            // console.log(todos[todosFiltr.id]);
             todosFiltr.done = true;
             // console.log(todos[todosFiltr.id]);
             todosFiltr.id = History.length;
@@ -388,31 +388,36 @@ function btnActtion(e) {
             todoText.classList.add('animation');
             console.log(todos);
 
-            // const ten = todos.find((element, x) => element == todosFiltr);
-            // console.log(ten);
+            const ten = todos.find((element, x) => element == todosFiltr);
+            console.log(ten);
 
             //
             if (todosFiltr.repeatday == 0) {
                 console.log('dousuniecia');
             } else {
                 const isLargeNumber = (element) => element == todosFiltr;
-                const newtodos = [...todos];
-                console.log(newtodos);
+                // const newtodos = [...todos];
+                const newtodos = JSON.parse(JSON.stringify(todos));
 
                 const idcurrent = todos.findIndex(isLargeNumber);
-                let newIndex = todosFiltr;
+                const idtesku = idcurrent;
+                console.log(idtesku);
+                // let newIndex = todosFiltr;
 
-                console.log(
-                    '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ idcurrent',
-                    idcurrent,
-                );
-                console.log(
-                    '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ todosFiltr',
-                    todosFiltr,
-                );
+                const newIndex = newtodos[idtesku];
+                // console.log(newIndex);
 
-                // // const newIndex =ewtodos[todosFiltr]
-                console.log(newtodos);
+                // console.log(
+                //     '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ idcurrent',
+                //     idcurrent,
+                // );
+                // console.log(
+                //     '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ todosFiltr',
+                //     todosFiltr,
+                // );
+
+                // // // const newIndex =ewtodos[todosFiltr]
+                // console.log(newtodos);
                 console.log(newIndex);
 
                 let lastId = 0;
@@ -421,26 +426,38 @@ function btnActtion(e) {
                         lastId = ele.id;
                     }
                 });
+                // console.log(newIndex);
                 newIndex.id = ++lastId;
+                // console.log(newIndex);
+                // console.log(newtodos);
+                // console.log(todos);
                 newIndex.done = false;
                 const dateString = newIndex.data;
-                console.log(newtodos);
-                console.log(newIndex);
-                console.log(dateString);
+                // console.log(newtodos);
+                // console.log(newIndex);
+                // console.log(dateString);
                 newIndex.data = moment(dateString)
                     .add(newIndex.repeatday, newIndex.repeatpartoftime)
                     .format('YYYY-MM-DD');
-                console.log(newIndex.data);
+                console.log(newIndex);
+                // console.log(newIndex.data);
+                // console.log(newtodos);
+                // console.log(todos);
+                todos.push(newIndex);
+                console.log(newtodos);
+                console.log(todos);
 
-                // todos.push(newIndex);
-
-                localStorage.setItem('Items', JSON.stringify(newtodos));
+                // localStorage.setItem('Items', JSON.stringify(newtodos));
             }
+            const newtodos = JSON.parse(JSON.stringify(todos));
+            const isLargeNumber = (element) => element == todosFiltr;
+
+            const idcurrent = todos.findIndex(isLargeNumber);
             audio = new Audio('Alerts/deleteTask.mp3');
             audio.play();
             const todo = item.parentElement;
             todo.classList.add('fall');
-            todos.splice(todosFiltr, 1);
+            todos.splice(idcurrent, 1);
 
             localStorage.setItem('Items', JSON.stringify(todos));
             todo.addEventListener('transitionend', () => {
