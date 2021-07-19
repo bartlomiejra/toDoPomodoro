@@ -141,6 +141,8 @@ taskToday = tasks.filter((items) => items.data === dateToday);
 lists(taskToday, todoList);
 
 function lists(todolist = [], objlines) {
+    // todolist = JSON.parse(localStorage.getItem('Items')) || [];
+
     console.log(tasks.length);
 
     actualList = todolist;
@@ -226,10 +228,26 @@ aria-hidden="true"></i></button>
         }
     };
 }
+
 function addTodo(event) {
+    // let lastId = 0;
+    // newtodos.forEach((ele) => {
+    //     if (ele.id > lastId) {
+    //         lastId = ele.id;
+    //     }
+    // });
+    todos = JSON.parse(localStorage.getItem('Items'));
+
+    // find last id number
+    let last = 0;
+    todos.forEach((task) => {
+        if (task.id > last) {
+            last = task.id;
+        }
+    });
     event.preventDefault();
     const item = {
-        id: todos.length,
+        id: ++last,
         text: todoInput.value,
         done: false,
         focus: 0,
@@ -378,12 +396,12 @@ function btnActtion(e) {
                 console.log('dousuniecia');
             } else {
                 const isLargeNumber = (element) => element == todosFiltr;
-                const newtodos = [todos];
+                const newtodos = [...todos];
+                console.log(newtodos);
 
                 const idcurrent = todos.findIndex(isLargeNumber);
                 let newIndex = todosFiltr;
 
-                // const newIndex = newtodos[idcurrent];
                 console.log(
                     '🚀 ~ file: app.js ~ line 386 ~ btnActtion ~ idcurrent',
                     idcurrent,
@@ -395,7 +413,7 @@ function btnActtion(e) {
 
                 // // const newIndex =ewtodos[todosFiltr]
                 console.log(newtodos);
-                console.table(newIndex);
+                console.log(newIndex);
 
                 let lastId = 0;
                 todos.forEach((ele) => {
@@ -406,6 +424,7 @@ function btnActtion(e) {
                 newIndex.id = ++lastId;
                 newIndex.done = false;
                 const dateString = newIndex.data;
+                console.log(newtodos);
                 console.log(newIndex);
                 console.log(dateString);
                 newIndex.data = moment(dateString)
@@ -413,7 +432,7 @@ function btnActtion(e) {
                     .format('YYYY-MM-DD');
                 console.log(newIndex.data);
 
-                todos.push(newIndex);
+                // todos.push(newIndex);
 
                 localStorage.setItem('Items', JSON.stringify(newtodos));
             }
@@ -568,13 +587,17 @@ function breakTime() {
 }
 
 function endpomodoro() {
+    todos = JSON.parse(localStorage.getItem('Items'));
+
     audio = new Audio('Alerts/taskEnd.mp3');
+
     audio.play();
     const itemS = JSON.parse(localStorage.getItem('Items'));
     const filtrr = itemS.filter((p) => p.id == taskId);
     const itemSelement = filtrr[0];
     itemSelement.focus += timeInFocus;
     localStorage.setItem('Items', JSON.stringify(itemS));
+
     lists(todos, todoList);
     pause.addEventListener('click', timerBreak);
     breakTime();
