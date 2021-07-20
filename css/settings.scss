@@ -1,11 +1,15 @@
 @import 'style';
 @import 'note';
 
-*, *::After *::before {
-	box-sizing:  border-box;
+*,
+*::after *::before {
+	box-sizing: border-box;
 }
 
-.modal, .noteCard, .todoCard{
+.modal,
+.noteCard,
+.todoCard {
+
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -13,117 +17,100 @@
 	border: 1px solid black;
 	transition: 200ms ease-in-out;
 	border-radius: 10px;
+
 	background-color: var(--task);
 	backdrop-filter: blur(10px);
 
-opacity: 0.9;
+	opacity: 0.9;
 	z-index: 100;
 	width: 95%;
 	height: 95%;
 
-max-width: 95%;
-max-height: 95%;
+	max-width: 95%;
+	max-height: 95%;
 
-
-
-
-&__header{
-	padding:10px 15px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: 1px solid var(--task_color);
-}
-
-&__header, &__tittle{
-	font-size: 1.25rem;
-	font-weight:  bold;
-}
-&__body{
-	height: 100%;
-	font-size: 30px;
-	// color: red;
-	// display: flex;
-	// 	align-items: center;
-	// 	justify-content: center;
-	&__options{
+	&__header {
+		padding: 10px 15px;
 		display: flex;
-		// align-items: center;
-		// justify-content: center;
-		// margin-top: 100px;
-		border-radius: 20px;
-		background-color: var(--task_color);
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid var(--task_color);
+	}
 
+	&__header,
+	&__tittle {
+		font-size: 1.25rem;
+		font-weight: bold;
+	}
+
+	&__body {
+		height: 100%;
+		font-size: 30px;
+
+		&__options {
+			display: flex;
+			border-radius: 20px;
+			background-color: var(--task_color);
+		}
+	}
+
+	&__header,
+	&__closebutton {
+		cursor: pointer;
+		border: none;
+		outline: none;
+		background: none;
+		font-size: 1.25rem;
+		font-weight: bold;
+	}
+
+	&__body {
+		padding: 10px 15px;
+	}
+
+	&__savebtn {
+
+		border-radius: 5px;
+		background-color: var(--backgrounddarker);
+		color: var(--light-color);
+		font-size: 15px;
+		padding: 10px;
+	}
+
+	&__savebtn:hover {
+		@include hoverlighter;
 	}
 }
 
-
-
-
-&__header, &__closebutton{
-	cursor: pointer;
-	border: none;
-	outline: none;
-	background: none;
-	font-size: 1.25rem;
-	font-weight: bold;
-
-
-}
-&__body{
-	padding: 10px 15px
-}
-&__savebtn  {
-	
-	border-radius: 5px;
-	background-color: var(--backgrounddarker);
-	color: var(--light-color);
-	font-size: 15px;
-	padding: 10px;
-  }
-  &__savebtn:hover
-{
-	@include hoverlighter;
-}  
-
-
-}
-
-
-#overlay{
+#overlay {
 	position: absolute;
 	opacity: 0;
-	top: 0; 
+	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0,0,0,0.6);
-pointer-events: none;
+	background-color: rgba(0, 0, 0, 0.6);
+	pointer-events: none;
 }
 
-#overlay.active{
+#overlay.active {
 	opacity: 1;
 	pointer-events: all;
-	
 }
-.modal.active, .noteCard.active, .todoCard.active, .tiles__note.active  {
+
+.modal.active,
+.noteCard.active,
+.todoCard.active,
+.tiles__note.active {
 	transform: translate(-50%, -50%) scale(1);
 }
 
-
-
-
-
 @media screen and (max-width: 895px) {
-
-.modal{
-	// background-color: red;
-	width: 100vw;
-	height: 100vh;
-	max-width: 100%;
-max-height: 100%;
-	
-
-}
-
+	.modal {
+		// background-color: red;
+		width: 100vw;
+		height: 100vh;
+		max-width: 100%;
+		max-height: 100%;
+	}
 }

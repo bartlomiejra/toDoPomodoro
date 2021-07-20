@@ -336,6 +336,7 @@ function countdownAnimation() {
 // * functions buttons action delate play and completted task
 function btnActtion(e) {
     statTask();
+
     const item = e.target;
     console.log(e.target.dataset);
     console.log(item);
@@ -344,6 +345,7 @@ function btnActtion(e) {
         audio.play();
         const { ...index } = e.target.dataset;
         console.log(index);
+
         const todo = item.parentElement;
         todo.classList.add('fall');
         todos.splice(index, 1);
@@ -356,6 +358,8 @@ function btnActtion(e) {
         });
         statTask();
         actualList = todos;
+        // lists(actualList, todoList);
+
         return;
     }
 
@@ -366,14 +370,14 @@ function btnActtion(e) {
         const { index } = el.dataset;
 
         if (!todoText.classList.contains('completed')) {
-            let todos = JSON.parse(localStorage.getItem('Items'));
+            const todos = JSON.parse(localStorage.getItem('Items'));
 
             const History = JSON.parse(localStorage.getItem('History'));
 
             const filtr = todos.filter((p) => p.id == index);
-            let todosFiltr = filtr[0];
+            const todosFiltr = filtr[0];
             // console.log(todosFiltr.id);
-            let idtego = todosFiltr.id;
+            const idtego = todosFiltr.id;
 
             // console.log(todos);
             // console.log(todos[todosFiltr.id]);
@@ -844,7 +848,7 @@ function deleteProject() {
     //   console.log(e);
     console.log(event.currentTarget.id);
     const click = event.currentTarget.id;
-    let project = JSON.parse(localStorage.getItem('Project')) || [];
+    const project = JSON.parse(localStorage.getItem('Project')) || [];
     const deleteProj = project.filter((item) => item.id != click);
     localStorage.setItem('Project', JSON.stringify(deleteProj));
     renderProjects();

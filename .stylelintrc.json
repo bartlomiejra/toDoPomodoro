@@ -1,0 +1,60 @@
+{
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-sass-guidelines"
+    ],
+    "plugins": [
+        "stylelint-high-performance-animation",
+        "stylelint-order",
+		"stylelint-selector-bem-pattern"
+
+    ],
+    "rules": {
+		"selector-class-pattern": null,
+
+        "selector-no-qualifying-type": [
+            true,
+            {
+                "ignore": [
+                    "attribute"
+                ]
+            }
+        ],
+        "plugin/no-low-performance-animation-properties": [
+            true,
+            {
+                "ignoreProperties": [
+                    "color",
+                    "background-color",
+                    "box-shadow"
+                ]
+            }
+        ],
+		"plugin/selector-bem-pattern": {
+			"componentName": "[A-Z]+",
+			"componentSelectors": {
+			  "initial": "^\\.{componentName}(?:-[a-z]+)?$",
+			  "combined": "^\\.combined-{componentName}-[a-z]+$"
+			},
+			"utilitySelectors": "^\\.util-[a-z]+$"
+		  },
+        "indentation": "tab",
+        "order/order": [
+            "custom-properties",
+            "declarations"
+        ],
+        "order/properties-alphabetical-order": null,
+        "declaration-block-no-duplicate-custom-properties": true,
+        "declaration-empty-line-before": null,
+        "scale-unlimited/declaration-strict-value": [
+            [
+                "/color$/",
+                "z-index",
+                "font-size"
+            ]
+        ],
+        "scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9]+$",
+        "max-nesting-depth": 3,
+        "selector-pseudo-class-no-unknown": null
+    }
+}

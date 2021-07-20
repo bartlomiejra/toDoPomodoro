@@ -4,8 +4,7 @@
   "description": "This is a simple todolist app  implements pomodoro time management technique.  :tomato:",
   "main": "app.js",
   "scripts": {
-
-	"dev": "parcel <your entry file>",
+    "dev": "parcel <your entry file>",
     "build": "parcel build <your entry file>",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,12 +23,18 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-prettier": "^3.4.0",
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-high-performance-animation": "^1.5.2"
   },
   "dependencies": {
     "eslint-config-prettier": "^8.3.0",
     "js-datepicker": "^5.18.0",
     "moment": "^2.29.1",
-    "node-sass": "^6.0.0"
+    "node-sass": "^6.0.0",
+    "stylelint-config-primer": "^11.0.1",
+    "stylelint-scss": "^3.20.1",
+    "stylelint-selector-bem-pattern": "^2.1.0"
   }
 }

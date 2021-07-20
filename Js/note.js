@@ -74,6 +74,7 @@ function saveNote() {
             ? ` Note ${++lastNoteId} `
             : noteHeader.value)}`,
         date: dateToday,
+
         note: noteText.value,
     };
     notes.push(person);
