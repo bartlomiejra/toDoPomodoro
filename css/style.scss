@@ -279,11 +279,9 @@ body {
 		&_addProject {
 			margin-top: auto;
 			height: 32px;
-			display: flex;
 			left: 10;
 			bottom: 62px;
 			width: 100%;
-			display: flexbox;
 			display: flex;
 			flex-wrap: nowrap;
 		}
@@ -412,6 +410,7 @@ body {
 		}
 
 		&_todolist {
+			min-width: 500px;
 			max-height: 64vh;
 			overflow: hidden;
 			overflow-y: auto;
@@ -456,8 +455,6 @@ body {
 	}
 
 	.center_clocks {
-		display: flexbox;
-		display: flex;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
@@ -847,15 +844,15 @@ i {
 	text-align: right;
 }
 
-input {
-	select:focus,
-	input:focus,
-	textarea:focus {
-		// outline: 0;
-		// outline-color: transparent;
-		// outline-style: none;
-	}
-}
+// input {
+// 	select:focus,
+// 	input:focus,
+// 	textarea:focus {
+// 		// outline: 0;
+// 		// outline-color: transparent;
+// 		// outline-style: none;
+// 	}
+// }
 
 .projectDelete {
 	text-align: right;
@@ -864,7 +861,6 @@ input {
 
 .time {
 	order: 0;
-	flex: 0 1 auto;
 	flex: 0 1 auto;
 	align-self: auto;
 }

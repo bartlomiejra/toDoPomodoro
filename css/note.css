@@ -1,27 +1,27 @@
 :root {
   --center-color: #171721;
-  --right_background: #14141C;
+  --right_background: #14141c;
   --timerFinishColor: rgba(49, 63, 124, 0.725);
-  --statColor: #22222C;
-  --backgrounddarker: #14141C;
+  --statColor: #22222c;
+  --backgrounddarker: #14141c;
   --header_background: #161624;
-  --left_background: #14141C;
-  --nav_color: #14141C;
+  --left_background: #14141c;
+  --nav_color: #14141c;
   --task_color: #28222c;
   --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
   --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-  --number-color: #EE786C;
-  --light-color: #A9DED8;
-  --font-color: #ffffff;
+  --number-color: #ee786c;
+  --light-color: #a9ded8;
+  --font-color: #fff;
   --addProjectbtn: #b17676;
   --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   --hover_color: #fafafa;
-  --dark-font: #ffffff;
-  --fonts: #ffffff;
-  --task: #23222D;
-  --tiles1: #4E344D;
+  --dark-font: #fff;
+  --fonts: #fff;
+  --task: #23222d;
+  --tiles1: #4e344d;
   --tiles2: #955165;
-  --tiles3: #FAB261;
+  --tiles3: #fab261;
   --tiles4: #083513;
   --tiles5: #300d30;
   --tiles6: #383b0f;
@@ -30,21 +30,21 @@
 }
 
 .lightTheme {
-  --center-color: #F7F6F0;
-  --right_background: #D3F36B;
+  --center-color: #f7f6f0;
+  --right_background: #d3f36b;
   --timerFinishColor: rgba(136, 143, 173, 0.725);
   --backgrounddarker: #8d9dad;
-  --header_background: #24282C;
-  --statColor: #F2F1EA;
-  --left_background: #D3F36B;
-  --nav_color: #24282C;
+  --header_background: #24282c;
+  --statColor: #f2f1ea;
+  --left_background: #d3f36b;
+  --nav_color: #24282c;
   --task_color: #918a8a;
   --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
   --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-  --number-color: #6542E5;
+  --number-color: #6542e5;
   --light-color: #aa9b9b;
-  --font-color: #000000;
-  --addProjectbtn: #6856F6;
+  --font-color: #000;
+  --addProjectbtn: #6856f6;
   --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   --hover_color: #030303;
   --dark-font: #ccbaba;
@@ -103,22 +103,27 @@
 @-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(1);
-    opacity: 0.0;
+            transform: scale(1);
+    opacity: 0;
   }
   25% {
     -webkit-transform: scale(1.1);
+            transform: scale(1.1);
     opacity: 0.1;
   }
   50% {
     -webkit-transform: scale(1.2);
+            transform: scale(1.2);
     opacity: 0.2;
   }
   75% {
     -webkit-transform: scale(1.3);
+            transform: scale(1.3);
     opacity: 0.3;
   }
   100% {
     -webkit-transform: scale(1.4);
+            transform: scale(1.4);
     opacity: 0.4;
   }
 }
@@ -126,22 +131,27 @@
 @keyframes pulse {
   0% {
     -webkit-transform: scale(1);
-    opacity: 0.0;
+            transform: scale(1);
+    opacity: 0;
   }
   25% {
     -webkit-transform: scale(1.1);
+            transform: scale(1.1);
     opacity: 0.1;
   }
   50% {
     -webkit-transform: scale(1.2);
+            transform: scale(1.2);
     opacity: 0.2;
   }
   75% {
     -webkit-transform: scale(1.3);
+            transform: scale(1.3);
     opacity: 0.3;
   }
   100% {
     -webkit-transform: scale(1.4);
+            transform: scale(1.4);
     opacity: 0.4;
   }
 }
@@ -279,8 +289,8 @@ body .left {
 
 html .left_day,
 body .left_day {
-  -webkit-transition: all .1s ease-in-out;
-  transition: all .1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   position: relative;
   text-align: left;
   color: var(--font-color);
@@ -298,13 +308,12 @@ html .left_addProject,
 body .left_addProject {
   margin-top: auto;
   height: 32px;
-  display: -webkit-box;
-  display: flex;
   left: 10;
   bottom: 62px;
   width: 100%;
+  display: -webkit-box;
   display: -ms-flexbox;
-  display: -webkit-flex;
+  display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
 }
@@ -325,7 +334,7 @@ body .left_color {
   font-size: 15px;
   border: none;
   background-color: var(--task);
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 8px 0 0 8px;
   -webkit-filter: var(--shadow);
           filter: var(--shadow);
 }
@@ -341,12 +350,12 @@ html .left_Projects,
 body .left_Projects {
   outline: none;
   color: var(--font-color);
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 0;
 }
 
 html .left_color,
 body .left_color {
-  border-radius: 0px 8px 8px 0px;
+  border-radius: 0 8px 8px 0;
 }
 
 html .none,
@@ -459,11 +468,11 @@ body .center_foldericon {
 
 html .center_addtaskButton,
 body .center_addtaskButton {
-  padding: 5px 15px 5px 15px;
+  padding: 5px 15px;
   font-size: 1.1rem;
   color: var(--number-color);
   background-color: var(--task);
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 8px 0 0 8px;
 }
 
 html .center_todoInput,
@@ -479,7 +488,7 @@ body .center_todoInput {
       -ms-flex: 6;
           flex: 6;
   text-align: center;
-  border-radius: 0px 8px 8px 0px;
+  border-radius: 0 8px 8px 0;
 }
 
 html .center_todolist > div,
@@ -493,17 +502,18 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
+  min-height: 500px;
   max-height: 64vh;
   overflow: hidden;
   overflow-y: auto;
   scroll-behavior: hidden;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 html .center ul,
 body .center ul {
-  padding: 0px;
+  padding: 0;
 }
 
 html .center_divT,
@@ -521,8 +531,8 @@ body .center_divT {
       grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
   -ms-grid-rows: 1.5fr 1fr;
       grid-template-rows: 1.5fr 1fr;
-  gap: 0px 0px;
-      grid-template-areas: "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn" "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
+  gap: 0 0;
+      grid-template-areas: 'complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn' 'complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn';
 }
 
 html .center_complete-btn,
@@ -551,8 +561,8 @@ body .center_delete-btn {
 
 html .center_clocks,
 body .center_clocks {
-  display: -ms-flexbox;
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -596,8 +606,8 @@ body .clock {
   font-size: 2em;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   width: 6em;
   border-radius: 20px;
   vertical-align: middle;
@@ -906,7 +916,7 @@ body .right .detals > li {
 
 html .right_list,
 body .right_list {
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
   list-style: none;
   padding-left: 0;
   font-size: 1vw;
@@ -942,27 +952,28 @@ body .right ul > li {
 ol > li:hover,
 > .projectList:hover,
 .fa-minus-circle:hover,
-input[type="date"]:hover,
+input[type='date']:hover,
 .projectSelect:hover,
 .editing-view-port:hover,
 .partOfTime:hover,
 textarea:hover,
-input[type="number"]:hover, ol > li:active,
+input[type='number']:hover,
+ol > li:active,
 > .projectList:active,
 .fa-minus-circle:active,
-input[type="date"]:active,
+input[type='date']:active,
 .projectSelect:active,
 .editing-view-port:active,
 .partOfTime:active,
 textarea:active,
-input[type="number"]:hover {
+input[type='number']:hover {
   color: var(--hover_color);
   cursor: pointer;
 }
 
 .fa-minus-circle {
-  -webkit-transition: all .1s ease-in-out;
-  transition: all .1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .projectList:hover,
@@ -984,7 +995,7 @@ input[type="number"]:hover {
 }
 
 .right_list--item > i {
-  margin: 0px 10px 0px 10px;
+  margin: 0 10px;
 }
 
 .textareaDetals {
@@ -1001,8 +1012,8 @@ input[type="number"]:hover {
 }
 
 select,
-input[type="number"],
-input[type="date"],
+input[type='number'],
+input[type='date'],
 .Projects {
   padding: 10px;
   border: none;
@@ -1036,8 +1047,8 @@ ol {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: all .1s ease-in-out;
-  transition: all .1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .projectList:hover {
@@ -1048,7 +1059,7 @@ ol {
   height: 10px;
   width: 10px;
   border-radius: 100%;
-  margin: 0px 5px 0px 0px;
+  margin: 0 5px 0 0;
   outline: 0;
   background: transparent;
   color: var(--font-color);
@@ -1069,8 +1080,8 @@ i {
   -webkit-box-ordinal-group: 1;
       -ms-flex-order: 0;
           order: 0;
-  -ms-flex: 0 1 auto;
   -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
           flex: 0 1 auto;
   -ms-flex-item-align: auto;
       -ms-grid-row-align: auto;
@@ -1136,7 +1147,9 @@ i {
   text-decoration: none;
 }
 
-.fa-coffee, .fa-stop-circle, fas {
+.fa-coffee,
+.fa-stop-circle,
+fas {
   color: var(--hover_color);
   font-size: 30px;
 }
@@ -1144,7 +1157,7 @@ i {
 @media screen and (max-width: 895px) {
   .container {
     border-radius: none;
-    margin: 0px 0px 0px 0px;
+    margin: 0;
     width: 100%;
     display: block;
   }
@@ -1153,7 +1166,7 @@ i {
   }
   .container .center__text {
     font-size: 0.8rem;
-    color: #ffffff;
+    color: #fff;
   }
   .container .center_addTaskdiv {
     width: auto;
@@ -1176,8 +1189,8 @@ i {
     text-align: center;
   }
   .container .left_day > i {
-    font-size: 2.0rem;
-    padding: 0px 15px 0px 10px;
+    font-size: 2rem;
+    padding: 0 15px 0 10px;
   }
   .container .left_projectItem {
     color: var(--font-color);
@@ -1208,7 +1221,7 @@ i {
             justify-content: center;
     height: 15px;
     width: 15px;
-    margin: 0px 10px 0px 10px;
+    margin: 0 10px;
   }
   .container .left .projectDelete > i {
     font-size: 1.5rem;
@@ -1223,12 +1236,12 @@ i {
             backdrop-filter: blur(9px);
     color: var(--right_background);
     position: absolute;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
-    -webkit-transition: -webkit-transform .9s .9s ease-in-out;
-    transition: -webkit-transform .9s .9s ease-in-out;
-    transition: transform .9s .9s ease-in-out;
-    transition: transform .9s .9s ease-in-out, -webkit-transform .9s .9s ease-in-out;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    -webkit-transition: -webkit-transform 0.9s 0.9s ease-in-out;
+    transition: -webkit-transform 0.9s 0.9s ease-in-out;
+    transition: transform 0.9s 0.9s ease-in-out;
+    transition: transform 0.9s 0.9s ease-in-out, -webkit-transform 0.9s 0.9s ease-in-out;
   }
 }
 
@@ -1287,7 +1300,7 @@ i {
   padding: 5px;
   width: 200px;
   height: 150px;
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
   color: var(--hover_color);
   font-weight: bold;
   text-align: center;
@@ -1330,7 +1343,7 @@ i {
   font-size: 0.8rem;
   position: absolute;
   right: 10px;
-  bottom: 0px;
+  bottom: 0;
 }
 
 .tiles__smallNote {
@@ -1388,7 +1401,8 @@ i {
   left: 150px;
 }
 
-.tiles__savebtn:hover, .tiles__deletebtn:hover, .tiles .tiles__tile:hover {
+.tiles__savebtn:hover, .tiles__deletebtn:hover,
+.tiles .tiles__tile:hover {
   -webkit-filter: brightness(150%);
           filter: brightness(150%);
   cursor: pointer;
@@ -1411,7 +1425,7 @@ i {
   letter-spacing: 1.2px;
   font-size: 1.6rem;
   border: 0;
-  border-radius: 0px 8px 8px 0px;
+  border-radius: 0 8px 8px 0;
 }
 
 .tiles__textarea {
@@ -1419,7 +1433,6 @@ i {
   resize: none;
   width: 100%;
   height: 100%;
-  border: none;
   color: var(--fonts);
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -1462,12 +1475,12 @@ i {
   font-size: 1rem;
 }
 
-.overlayNote {
+.overlay_Note {
   pointer-events: none;
   opacity: 1;
 }
 
-.overlayNote .tiles__note {
+.overlay_Note .tiles__note {
   pointer-events: all;
 }
 

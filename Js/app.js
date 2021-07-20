@@ -15,9 +15,7 @@ const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.center_pauseButton');
 const reset = document.querySelector('.center_resetButton');
 const description = document.querySelector('.right');
-// const breakdown = document.querySelector('.fa-coffee');
 const resize = document.querySelector('.fa-window-restore');
-// const detals = document.querySelectorAll('.detals');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
 const addBar = document.querySelector('.center_addTaskdiv');
@@ -104,6 +102,7 @@ if (project == null) {
 }
 
 let audio;
+let clicked;
 
 let timeInFocus;
 let pomodoreDuration;
@@ -144,7 +143,6 @@ taskToday = tasks.filter((items) => items.data === dateToday);
 let actualSelect;
 let actualList;
 actualList = JSON.parse(localStorage.getItem('Actual')) || [];
-
 lists(actualList, todoList);
 console.log(actualList);
 if (actualList == 0) {
@@ -158,6 +156,7 @@ function lists(todolist = [], objlines) {
     actualList = todolist;
     window.localStorage.setItem('Actual', JSON.stringify(actualList));
     console.log(actualList);
+
     // console.log(actualList);
     //   console.log(actualList.length);
     if (actualList.length == 0) {
@@ -170,8 +169,8 @@ function lists(todolist = [], objlines) {
         .map(
             (todo) => `${
                 todo.done
-                    ? '<div class="center_divT completed">'
-                    : '<div class="center_divT " >'
+                    ? '<li class="center_divT completed">'
+                    : '<li class="center_divT " >'
             }    
 <div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
                 todo.repeatday != 0 ? "<i class='fas fa-redo'></i>" : ''
@@ -194,29 +193,33 @@ ${
 </div> 
 </div>
 
-<button class="center_complete-btn" data-index=${todo.id} id="item${todo.id}" >
+<button class="center_complete-btn" aria-label="Complete" data-index=${
+                todo.id
+            } id="item${todo.id}" >
 ${
     todo.done
-        ? `<i class="fas fa-check-circle" id="item${todo.id}" aria-hidden="true"></i>`
-        : `<i class="fas fa-circle" id="item${todo.id}" aria-hidden="true"></i>`
+        ? `<li class="fas fa-check-circle" id="item${todo.id}" aria-hidden="true">`
+        : `<li class="fas fa-circle" id="item${todo.id}" aria-hidden="true">`
 } 
 </button>
 
 
 
 
-<button class="center_delete-btn" data-index=${todo.id} id="item${
+<button class="center_delete-btn" aria-label="Delete" data-index=${
+                todo.id
+            } id="item${
                 todo.id
             }">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
-<button class="center_play-btn"  data-index=${todo.id} id="${
+<button class="center_play-btn" aria-label="Play" data-index=${todo.id} id="${
                 todo.id
             }"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-<button class="center_des-btn"  data-index=${todo.id} id="${
+<button class="center_des-btn" aria-label="Detals"  data-index=${todo.id} id="${
                 todo.id
             }" onclick="showDiv(${todo.id})"  > <i class="fas fa-list-alt" 
 aria-hidden="true"></i></button>
-</div>
+</li>
 `,
         )
 
@@ -248,6 +251,9 @@ function addTodo(event) {
     //         lastId = ele.id;
     //     }
     // });
+    let currentProject = JSON.parse(localStorage.getItem('Current')) || [];
+    let selectProject = currentProject[0].name;
+
     todos = JSON.parse(localStorage.getItem('Items'));
 
     // find last id number
@@ -257,13 +263,14 @@ function addTodo(event) {
             last = task.id;
         }
     });
+    console.log(clicked);
     event.preventDefault();
     const item = {
         id: ++last,
         text: todoInput.value,
         done: false,
         focus: 0,
-        project: 'No Project',
+        project: selectProject,
         repeatday: '1',
         repeatpartoftime: 'day',
         data: dateToday,
@@ -370,7 +377,7 @@ function btnActtion(e) {
         const { index } = el.dataset;
 
         if (!todoText.classList.contains('completed')) {
-            const todos = JSON.parse(localStorage.getItem('Items'));
+            todos = JSON.parse(localStorage.getItem('Items'));
 
             const History = JSON.parse(localStorage.getItem('History'));
 
@@ -732,7 +739,7 @@ function showDiv(clickedId) {
     }
 }
 function addProject(event) {
-    const project = JSON.parse(localStorage.getItem('Project')) || [];
+    project = JSON.parse(localStorage.getItem('Project')) || [];
 
     let lastId = 0;
     project.forEach((ele) => {
@@ -778,6 +785,20 @@ renderProjects();
 function sortingProject(clicked_id) {
     const clicked = clicked_id.getAttribute('name');
     console.log(clicked);
+
+    let currentProject;
+    currentProject = JSON.parse(localStorage.getItem('Current')) || [];
+    console.log(currentProject);
+    if ((currentProject = 0)) {
+        currentProject = [{ id: 0, name: clicked }];
+        window.localStorage.setItem('Current', JSON.stringify(currentProject));
+    } else {
+        project = JSON.parse(localStorage.getItem('Current'));
+    }
+
+    currentProject = [{ id: 0, name: clicked }];
+    window.localStorage.setItem('Current', JSON.stringify(currentProject));
+
     tasks = JSON.parse(localStorage.getItem('Items')) || [];
     const tasksProject = tasks.filter((item) => item.project == clicked);
     lists(tasksProject, todoList);
@@ -785,11 +806,11 @@ function sortingProject(clicked_id) {
 }
 
 function sortingProjectDays(e) {
-    let taskToday = 0;
+    taskToday = 0;
     let taskTomorrow = 0;
     let taskSomeday = 0;
     const clicked = e.target.id;
-    const tasks = JSON.parse(localStorage.getItem('Items')) || [];
+    tasks = JSON.parse(localStorage.getItem('Items')) || [];
     switch (clicked) {
         case 'today':
             taskToday = tasks.filter((items) => items.data === dateToday);
@@ -817,22 +838,25 @@ function sortingProjectDays(e) {
             }
             todoList.innerHTML = history
                 .map(
-                    (todo) => `<div class="center_divT completed">
-						<div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
+                    (
+                        todo,
+                    ) => `<li class="center_divT completed"><div  class="center_todo-item" id="item${
+                        todo.id
+                    }" >${todo.text} ${
                         todo.repeatday != 0 ? "<i class='fas fa-redo'></i>" : ''
                     }
-	</div>
-	<div class="center_clocks">
+</div>
+<div class="center_clocks">
 <i class="fas fa-clock time"> </i>  
-	<div class="scores"> 
-	${todo.focus > 0 ? ` = ${todo.focus} min` : 0}
-	</div> 
-	</div>
-	<button class="center_complete-btn">
-	<i class="fas fa-check-circle" id="item${todo.id}" aria-hidden="true"></i>
-	</button>
-	</div>
-	`,
+<div class="scores"> 
+${todo.focus > 0 ? ` = ${todo.focus} min` : 0}
+</div> 
+</div>
+<button class="center_complete-btn" aria-label="Complete>
+<i class="fas fa-check-circle" id="item${todo.id}" aria-hidden="true"></i>
+</button>
+</li>
+`,
                 )
 
                 .join('');
@@ -848,7 +872,7 @@ function deleteProject() {
     //   console.log(e);
     console.log(event.currentTarget.id);
     const click = event.currentTarget.id;
-    const project = JSON.parse(localStorage.getItem('Project')) || [];
+    project = JSON.parse(localStorage.getItem('Project')) || [];
     const deleteProj = project.filter((item) => item.id != click);
     localStorage.setItem('Project', JSON.stringify(deleteProj));
     renderProjects();

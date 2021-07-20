@@ -57,7 +57,7 @@
 	&__header,
 	&__closebutton {
 		cursor: pointer;
-		border: none;
+		// border: none;
 		outline: none;
 		background: none;
 		font-size: 1.25rem;
@@ -107,7 +107,6 @@
 
 @media screen and (max-width: 895px) {
 	.modal {
-		// background-color: red;
 		width: 100vw;
 		height: 100vh;
 		max-width: 100%;

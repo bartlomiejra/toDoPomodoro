@@ -7,7 +7,7 @@ const overlay = document.getElementById('overlay');
 const container = document.querySelector('.container');
 
 const settingUser = JSON.parse(
-      localStorage.getItem('settings') || { Theme: 'Dark', pomodoreTime: '25' },
+    localStorage.getItem('settings') || { Theme: 'Dark', pomodoreTime: '25' },
 );
 theme.innerHTML = `
 <li>
@@ -24,47 +24,49 @@ ${settingUser.Theme === 'Dark' ? 'checked' : ''}
 
 `;
 function closeModal(modal) {
-      if (modal == null) return;
-      modal.classList.remove('active');
-      overlay.classList.remove('active');
+    if (modal == null) return;
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
 }
 closeSettings.forEach((span) => {
-      span.addEventListener('click', () => {
-            const modal = span.closest('.modal');
-            closeModal(modal);
-      });
+    span.addEventListener('click', () => {
+        const modal = span.closest('.modal');
+        closeModal(modal);
+    });
 });
 
 let themeselected = settingUser.Theme;
 
 function openSettings() {
-      // eslint-disable-next-line no-undef
-      modal.classList.add('active');
-      overlay.classList.add('active');
+    // eslint-disable-next-line no-undef
+    modal.classList.add('active');
+    overlay.classList.add('active');
 }
 openModalButtons.addEventListener('click', openSettings);
 const themes = document.getElementsByName('theme');
 
 function themesValue() {
-      if (themeselected === 'Light') {
-            container.classList.add('lightTheme');
-      } else {
-            container.classList.remove('lightTheme');
-      }
+    if (themeselected === 'Light') {
+        container.classList.add('lightTheme');
+    } else {
+        container.classList.remove('lightTheme');
+    }
 }
 
 function save() {
-      for (i = 0; i < themes.length; i += 1) {
-            if (themes[i].checked) {
-                  themeselected = themes[i].value;
-            }
-      }
-      const settings = {
-            Theme: themeselected,
-            pomodoreTime: pomodoreTime.value,
-      };
-      window.localStorage.setItem('settings', JSON.stringify(settings));
-      themesValue();
+    let i;
+
+    for (i = 0; i < themes.length; i += 1) {
+        if (themes[i].checked) {
+            themeselected = themes[i].value;
+        }
+    }
+    const settings = {
+        Theme: themeselected,
+        pomodoreTime: pomodoreTime.value,
+    };
+    window.localStorage.setItem('settings', JSON.stringify(settings));
+    themesValue();
 }
 saveButton.addEventListener('click', save);
 themesValue();

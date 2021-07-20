@@ -7,15 +7,16 @@
 	<meta name="viewport">
 	<title>TodoPomodoro</title>
 	<link rel="shortcut icon" href="#">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	
-	<meta name="viewport" content="width=device-width" user-scalable=false>
+	<meta name="viewport" content="width=device-width" user-scalable=false >
 	<meta name="theme-color" content="#171721">
-	<script src="lib/moment.min.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/settings.css">
-	<link rel="stylesheet" type="text/css" href="css/note.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<meta name="description" 
+content="Pomodoro, Notes and Tasks in one app.">
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="css/settings.css" >
+	<link rel="stylesheet" type="text/css" href="css/note.css" >
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700;1,900&display=swap"
 		rel="stylesheet">
@@ -32,16 +33,16 @@
 				<li class=" left_day" id="someday"> <i class="far fa-calendar-alt"></i>Someday</li>
 				<li class=" left_day" id="history"> <i class="far fa-check-circle"></i>Completed tasks
 				</li>
+			</ol>
 				<div class="left_pomodoreProjects">
 				</div>
-			</ol>
 			<form action="" class="left_addProject">
 				<button aria-label="addProject" class="left_addProjectBtn" type="submit">
 					<class class="fas fa-plus"></class>
 				</button>
 				<input type="text" class="left_Projects" placeholder="Add  your project name">
-				<input type="color" class="left_color" id="color" value="#000000">
-			</form>
+				<input type="color" class="left_color" arial-label="Color" id="color" value="#000000">
+				
 			</form>
 		</div>
 		<div class="center">
@@ -74,9 +75,9 @@
 				<i class="center_foldericon far fa-folder-open"></i>
 				<p>No task, Tap the input box above to add</p>
 			</div>
-			<ul class="center_todolist">
+			<ol class="center_todolist">
 				<!-- controll  -->
-			</ul>
+			</ol>
 			<div class="completedTasks">
 				Tesk Pierwszy
 			</div>
@@ -159,8 +160,8 @@
 							class="modal__closebutton"><i class="fas fa-times"></i></button>
 					</div>
 					<div class="modal__body">
-						<ol class="modal__options">
-							<div class="modal__themes">
+						<div class="modal__options">
+							<ol class="modal__themes">
 								<li>
 									<input type="radio" class="radio" id="Light" name="theme" value="Light">
 									<label for="Light">Light Theme </label>
@@ -168,15 +169,18 @@
 								<li>
 									<input type="radio" class="radio" id="Dark" name="theme" value="Dark">
 									<label for="Dark">Dark Theme</label></li>
-							</div>
-							<li>
-								<label for="quantity">Pomodore duration:</label>
-								<input type="number" id="quantity" value="25" name="quantity" min="5" max="100">
+							</ol>
+							<ol>
+
+								<li>
+									<label for="quantity">Pomodore duration:</label>
+									<input type="number" id="quantity" value="25" name="quantity" min="5" max="100">
+								</li>
+								<li>
+									<button class="modal__savebtn " id="saveSettingUser">Save Settings</button>
+								</ol>
 							</li>
-							<li>
-								<button class="modal__savebtn " id="saveSettingUser">Save Settings</button>
-							</li>
-						</ol>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -189,5 +193,7 @@
 	<script src="./Js/settings.js"></script>
 	<script src="./Js/note.js"></script>
 	<script src="./Js/todo.js"></script>
+	<script src="lib/moment.min.js"></script>
+
 </body>
 </html>
