@@ -20,6 +20,7 @@ const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
 const addBar = document.querySelector('.center_addTaskdiv');
 let dateToday;
+
 let dateTomorrow = 0;
 
 actualDateTime();
@@ -250,7 +251,7 @@ aria-hidden="true"></i></button>
 
 function addTodo(event) {
     let currentProject = JSON.parse(localStorage.getItem('Current')) || [];
-    if (currentProject == null) {
+    if (currentProject == 0) {
         currentProject = 'No Project';
     } else {
         currentProject = currentProject[0].name;
@@ -278,11 +279,11 @@ function addTodo(event) {
         data: dateToday,
         note: '',
     };
+    todoInput.value = '';
     todos.push(item);
+    localStorage.setItem('Items', JSON.stringify(actualList));
     lists(todos, todoList);
     lists(actualList, todoList);
-    localStorage.setItem('Items', JSON.stringify(actualList));
-    todoInput.value = '';
     statTask();
 }
 function statTask() {
@@ -290,7 +291,9 @@ function statTask() {
     let countCompleted = 0;
     let estimated = 0;
     //* counting statiscics
-    taskToday = todos.filter((items) => items.data === dateToday);
+    const history = JSON.parse(localStorage.getItem('History'));
+
+    taskToday = history.filter((items) => items.data === dateToday);
     for (let i = 0; i < taskToday.length; i += 1) {
         if (taskToday[i].done === true) {
             countCompleted += 1;
@@ -427,6 +430,8 @@ function btnActtion(e) {
                 });
                 newIndex.id = ++lastId;
                 newIndex.done = false;
+                // newIndex.completiondate = dateToday;
+
                 const dateString = newIndex.data;
                 newIndex.data = moment(dateString)
                     .add(newIndex.repeatday, newIndex.repeatpartoftime)
