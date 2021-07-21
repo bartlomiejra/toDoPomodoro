@@ -502,7 +502,7 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
-  min-height: 500px;
+  min-width: 500px;
   max-height: 64vh;
   overflow: hidden;
   overflow-y: auto;
@@ -1693,7 +1693,7 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
-  min-height: 500px;
+  min-width: 500px;
   max-height: 64vh;
   overflow: hidden;
   overflow-y: auto;

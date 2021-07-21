@@ -20,6 +20,11 @@ const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
 const addBar = document.querySelector('.center_addTaskdiv');
 let dateToday;
+let dateTomorrow = 0;
+
+actualDateTime();
+
+console.log(dateToday);
 const history = JSON.parse(localStorage.getItem('History'));
 
 let currentSelectetProject;
@@ -54,7 +59,7 @@ if (todos == null) {
             project: 'Mindfulness 🧘',
             repeatday: '1',
             repeatpartoftime: 'day',
-            data: '2021-07-16',
+            data: dateToday,
             note: ' 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ',
         },
         {
@@ -65,13 +70,13 @@ if (todos == null) {
             project: 'Spanish Lesson 🇪🇸',
             repeatday: '1',
             repeatpartoftime: 'day',
-            data: '2021-07-16',
+            data: dateToday,
             note: ' Spanish Vocabulary Lists Organized by Topic\n Basic Spanish vocabulary: Greetings\n Basic Spanish vocabulary: Manners\n Basic Spanish vocabulary: Your first conversation\n Basic Spanish vocabulary: Family members\n Basic Spanish vocabulary: Food and drinks\n Intermediate Spanish vocabulary: Clothing\n Intermediate Spanish vocabulary: Dates and times\n',
         },
         {
             id: 4,
             text: ' Call grandma',
-            data: '2021-07-16',
+            data: dateToday,
             done: false,
             focus: 0,
             note: "don't forget your grandma!👵 ",
@@ -126,7 +131,6 @@ let tasks = JSON.parse(localStorage.getItem('Items')) || [];
 // const objlines = 0;
 // let actualList;
 // console.log(actualList);
-let dateTomorrow = 0;
 function actualDateTime() {
     const date = new Date();
     const yyyy = date.getFullYear();
@@ -245,14 +249,12 @@ aria-hidden="true"></i></button>
 }
 
 function addTodo(event) {
-    // let lastId = 0;
-    // newtodos.forEach((ele) => {
-    //     if (ele.id > lastId) {
-    //         lastId = ele.id;
-    //     }
-    // });
     let currentProject = JSON.parse(localStorage.getItem('Current')) || [];
-    let selectProject = currentProject[0].name;
+    if (currentProject == null) {
+        currentProject = 'No Project';
+    } else {
+        currentProject = currentProject[0].name;
+    }
 
     todos = JSON.parse(localStorage.getItem('Items'));
 
@@ -270,7 +272,7 @@ function addTodo(event) {
         text: todoInput.value,
         done: false,
         focus: 0,
-        project: selectProject,
+        project: currentProject,
         repeatday: '1',
         repeatpartoftime: 'day',
         data: dateToday,
@@ -365,7 +367,7 @@ function btnActtion(e) {
         });
         statTask();
         actualList = todos;
-        // lists(actualList, todoList);
+        lists(actualList, todoList);
 
         return;
     }
