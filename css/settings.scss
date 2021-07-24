@@ -1,5 +1,5 @@
-@import 'style';
 @import 'note';
+@import 'style';
 
 *,
 *::after *::before {
@@ -14,7 +14,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%) scale(0);
-	border: 1px solid black;
+	border: 1px solid var(--hover_color);
 	transition: 200ms ease-in-out;
 	border-radius: 10px;
 

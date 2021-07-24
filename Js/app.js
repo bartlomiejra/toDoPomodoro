@@ -18,17 +18,13 @@ const description = document.querySelector('.right');
 const resize = document.querySelector('.fa-window-restore');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
-const addBar = document.querySelector('.center_addTaskdiv');
 let dateToday;
 
 let dateTomorrow = 0;
 
-actualDateTime();
-
 console.log(dateToday);
 const history = JSON.parse(localStorage.getItem('History'));
 
-let currentSelectetProject;
 if (history == null) {
     console.log('history load ');
     const historylist = [
@@ -157,7 +153,7 @@ if (actualList == 0) {
     project = JSON.parse(localStorage.getItem('project'));
 }
 // todolist = JSON.parse(localStorage.getItem('Items')) || [];
-function lists(todolist = [], objlines) {
+function lists(todolist = []) {
     actualList = todolist;
     window.localStorage.setItem('Actual', JSON.stringify(actualList));
     console.log(actualList);

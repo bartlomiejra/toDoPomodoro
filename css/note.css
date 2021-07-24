@@ -1,3 +1,23 @@
+::-webkit-scrollbar {
+  background-color: #171721;
+  width: 12px;
+}
+
+::-webkit-scrollbar-button {
+  background-color: #171721;
+}
+
+::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#2e2d2d));
+  background: linear-gradient(transparent, #2e2d2d);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
+  background: linear-gradient(transparent, black);
+}
+
 :root {
   --center-color: #171721;
   --right_background: #14141c;
@@ -224,6 +244,10 @@
   }
 }
 
+i {
+  text-align: right;
+}
+
 html,
 body {
   overflow: hidden;
@@ -332,7 +356,6 @@ body .left_color {
   height: 30px;
   text-align: center;
   font-size: 15px;
-  border: none;
   background-color: var(--task);
   border-radius: 8px 0 0 8px;
   -webkit-filter: var(--shadow);
@@ -763,6 +786,12 @@ body li:hover {
   cursor: pointer;
 }
 
+html .fa-minus-circle,
+body .fa-minus-circle {
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
 html .center_pauseButton,
 html .center_resetButton,
 html .center_play-btn,
@@ -871,6 +900,11 @@ body .fa-clock {
   position: left;
 }
 
+html .right_list--item > i,
+body .right_list--item > i {
+  margin: 0 10px;
+}
+
 html .right,
 body .right {
   height: calc(100% - 85px);
@@ -949,29 +983,14 @@ body .right ul > li {
   opacity: 0.2;
 }
 
-ol > li:hover,
-> .projectList:hover,
-.fa-minus-circle:hover,
-input[type='date']:hover,
-.projectSelect:hover,
-.editing-view-port:hover,
-.partOfTime:hover,
-textarea:hover,
-input[type='number']:hover,
-ol > li:active,
-> .projectList:active,
-.fa-minus-circle:active,
-input[type='date']:active,
-.projectSelect:active,
-.editing-view-port:active,
-.partOfTime:active,
-textarea:active,
-input[type='number']:hover {
-  color: var(--hover_color);
-  cursor: pointer;
-}
-
-.fa-minus-circle {
+.projectList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--font-color);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
@@ -982,7 +1001,7 @@ input[type='number']:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   background-position: 0 100%;
-  color: #fafafa;
+  color: var(--hovercolor);
 }
 
 .projectSelect {
@@ -994,16 +1013,11 @@ input[type='number']:hover {
   display: right;
 }
 
-.right_list--item > i {
-  margin: 0 10px;
-}
-
 .textareaDetals {
   outline: none;
   resize: none;
   width: 100%;
   height: 250px;
-  border: none;
   color: var(--fonts);
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -1012,11 +1026,10 @@ input[type='number']:hover {
 }
 
 select,
-input[type='number'],
-input[type='date'],
+input [type='number'],
+input [type='date'],
 .Projects {
   padding: 10px;
-  border: none;
   color: var(--fonts);
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -1039,18 +1052,6 @@ ol {
   z-index: 99;
 }
 
-.projectList {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--font-color);
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-}
-
 .projectList:hover {
   color: var(--hover_color);
 }
@@ -1065,10 +1066,6 @@ ol {
   color: var(--font-color);
   font-size: 1rem;
   padding: 0.3rem;
-}
-
-i {
-  text-align: right;
 }
 
 .projectDelete {
@@ -1148,8 +1145,7 @@ i {
 }
 
 .fa-coffee,
-.fa-stop-circle,
-fas {
+.fas {
   color: var(--hover_color);
   font-size: 30px;
 }
@@ -1166,7 +1162,7 @@ fas {
   }
   .container .center__text {
     font-size: 0.8rem;
-    color: #fff;
+    color: var(--font-color);
   }
   .container .center_addTaskdiv {
     width: auto;
@@ -1250,25 +1246,26 @@ fas {
   color: var(--hover_color);
 }
 
-::-webkit-scrollbar {
-  background-color: #171721;
-  width: 12px;
-}
-
-::-webkit-scrollbar-button {
-  background-color: #171721;
-  color: yellow;
-}
-
-::-webkit-scrollbar-thumb {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#2e2d2d));
-  background: linear-gradient(transparent, #2e2d2d);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
-  background: linear-gradient(transparent, black);
+ol > li:hover,
+> .projectList:hover,
+.fa-minus-circle:hover,
+input[type='date']:hover,
+.projectSelect:hover,
+.editing-view-port:hover,
+.partOfTime:hover,
+textarea:hover,
+input[type='number']:hover,
+ol > li:active,
+> .projectList:active,
+.fa-minus-circle:active,
+input[type='date']:active,
+.projectSelect:active,
+.editing-view-port:active,
+.partOfTime:active,
+textarea:active,
+input[type='number']:hover {
+  color: var(--hover_color);
+  cursor: pointer;
 }
 
 .modal__header {

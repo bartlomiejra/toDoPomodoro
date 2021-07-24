@@ -1,22 +1,22 @@
-$center-color: #171721;
-$right_background: #14141c;
+$centercolor: #171721;
+$rightbackground: #14141c;
 $timerFinishColor: rgba(49, 63, 124, 0.725);
-$header_background: #161624;
+$headerbackground: #161624;
 $statColor: #22222c;
-$left_background: #14141c;
+$leftbackground: #14141c;
 $backgrounddarker: #14141c;
-$nav_color: #14141c;
-$task_color: #28222c;
+$navcolor: #14141c;
+$taskcolor: #28222c;
 $timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
 $addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-$number-color: #ee786c;
-$light-color: #a9ded8;
-$dark-font: #1c2426;
-$font-color: #fff;
+$numbercolor: #ee786c;
+$lightcolor: #a9ded8;
+$darkfont: #1c2426;
+$fontcolor: #fff;
 $addProjectbtn: #b17676;
 $shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-$hover_color: rgb(250, 250, 250);
-$dark-font: #fff;
+$hovercolor: rgb(250, 250, 250);
+$darkfont: #fff;
 $fonts: #fff;
 $task: #23222d;
 $tiles1: #4e344d;
@@ -29,25 +29,25 @@ $tiles7: #3a0505;
 $tiles8: #017514;
 
 //! Light theme colors
-$center-colorLight: #f7f6f0;
-$right_backgroundLight: #d3f36b;
+$centercolorLight: #f7f6f0;
+$rightbackgroundLight: #d3f36b;
 $timerFinishColorLight: rgba(136, 143, 173, 0.725);
 $backgrounddarkerLight: #8d9dad;
-$header_backgroundLight: #24282c;
+$headerbackgroundLight: #24282c;
 $statColorLight: #f2f1ea;
-$left_backgroundLight: #d3f36b;
-$nav_colorLight: #24282c;
-$task_colorLight: #918a8a;
+$leftbackgroundLight: #d3f36b;
+$navcolorLight: #24282c;
+$taskcolorLight: #918a8a;
 $timerLight: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
 $addProjectLight: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-$number-colorLight: #6542e5;
-$light-colorLight: #aa9b9b;
-$dark-fontLight: #a89c9c;
-$font-colorLight: #000;
+$numbercolorLight: #6542e5;
+$lightcolorLight: #aa9b9b;
+$darkfontLight: #a89c9c;
+$fontcolorLight: #000;
 $addProjectbtnLight: #6856f6;
 $shadowLight: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-$hover_colorLight: rgb(3, 3, 3);
-$dark-fontLight: #ccbaba;
+$hovercolorLight: rgb(3, 3, 3);
+$darkfontLight: #ccbaba;
 $fontsLight: #7a7d83;
 $taskLight: #645d8f;
 $tiles1Light: #db8dd9;
@@ -59,25 +59,46 @@ $tiles6Light: #9fa551;
 $tiles7Light: #b16a6a;
 $tiles8Light: #59aa66;
 
+//Custom scrollbar
+::-webkit-scrollbar {
+	background-color: #171721;
+
+	width: 12px;
+}
+
+::-webkit-scrollbar-button {
+	background-color: #171721;
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(transparent, rgb(46, 45, 45));
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+	background: linear-gradient(transparent, black);
+}
+
 :root {
-	--center-color: #{$center-color};
-	--right_background: #{$right_background};
+	--center-color: #{$centercolor};
+	--right_background: #{$rightbackground};
 	--timerFinishColor: #{$timerFinishColor};
 	--statColor: #{$statColor};
 	--backgrounddarker: #{$backgrounddarker};
-	--header_background: #{$header_background};
-	--left_background: #{$left_background};
-	--nav_color: #{$nav_color};
-	--task_color: #{$task_color};
+	--header_background: #{$headerbackground};
+	--left_background: #{$leftbackground};
+	--nav_color: #{$navcolor};
+	--task_color: #{$taskcolor};
 	--timer: #{$timer};
 	--addProject: #{$addProject};
-	--number-color: #{$number-color};
-	--light-color: #{$light-color};
-	--font-color: #{$font-color};
+	--number-color: #{$numbercolor};
+	--light-color: #{$lightcolor};
+	--font-color: #{$fontcolor};
 	--addProjectbtn: #{$addProjectbtn};
 	--shadow: #{$shadow};
-	--hover_color: #{$hover_color};
-	--dark-font: #{$dark-font};
+	--hover_color: #{$hovercolor};
+	--dark-font: #{$darkfont};
 	--fonts: #{$fonts};
 	--task: #{$task};
 	--tiles1: #{$tiles1};
@@ -91,24 +112,24 @@ $tiles8Light: #59aa66;
 }
 
 .lightTheme {
-	--center-color: #{$center-colorLight};
-	--right_background: #{$right_backgroundLight};
+	--center-color: #{$centercolorLight};
+	--right_background: #{$rightbackgroundLight};
 	--timerFinishColor: #{$timerFinishColorLight};
 	--backgrounddarker: #{$backgrounddarkerLight};
-	--header_background: #{$header_backgroundLight};
+	--header_background: #{$headerbackgroundLight};
 	--statColor: #{$statColorLight};
-	--left_background: #{$left_backgroundLight};
-	--nav_color: #{$nav_colorLight};
-	--task_color: #{$task_colorLight};
+	--left_background: #{$leftbackgroundLight};
+	--nav_color: #{$navcolorLight};
+	--task_color: #{$taskcolorLight};
 	--timer: #{$timerLight};
 	--addProject: #{$addProjectLight};
-	--number-color: #{$number-colorLight};
-	--light-color: #{$light-colorLight};
-	--font-color: #{$font-colorLight};
+	--number-color: #{$numbercolorLight};
+	--light-color: #{$lightcolorLight};
+	--font-color: #{$fontcolorLight};
 	--addProjectbtn: #{$addProjectbtnLight};
 	--shadow: #{$shadowLight};
-	--hover_color: #{$hover_colorLight};
-	--dark-font: #{$dark-fontLight};
+	--hover_color: #{$hovercolorLight};
+	--dark-font: #{$darkfontLight};
 	--fonts: #{$fontsLight};
 	--task: #{$taskLight};
 	--tiles1: #{$tiles1Light};
@@ -136,7 +157,6 @@ $tiles8Light: #59aa66;
 	height: 30px;
 	text-align: center;
 	font-size: 15px;
-	border: none;
 	background-color: var(--task);
 	border-radius: 8px 0 0 8px;
 	filter: var(--shadow);
@@ -224,6 +244,10 @@ $tiles8Light: #59aa66;
 		// transform:  scale(0);
 	}
 }
+
+i {
+	text-align: right;
+} 
 
 html,
 body {
@@ -563,11 +587,8 @@ body {
 
 		.center_todo-item {
 			text-decoration: line-through;
-
 		}
 	}
-	
-
 
 	.completedTasks {
 		position: absolute;
@@ -604,6 +625,13 @@ body {
 	}
 
 	//! icons --
+
+	.fa-minus-circle {
+
+		// transition: scale(1.05) 2s;
+		transition: all 0.1s ease-in-out;
+	}
+
 	.center_pauseButton,
 	.center_resetButton,
 	.center_play-btn,
@@ -672,6 +700,9 @@ body {
 		display: flex;
 		position: left;
 	}
+	.right_list--item > i {
+		margin: 0 10px;
+	}
 
 	.right {
 		height: calc(100% - 85px);
@@ -726,40 +757,19 @@ body {
 	opacity: 0.2;
 }
 
-ol > li:hover,
->.projectList:hover,
-.fa-minus-circle:hover,
-input[type='date']:hover,
-.projectSelect:hover,
-.editing-view-port:hover,
-.partOfTime:hover,
-textarea:hover,
-input[type='number']:hover,
-ol > li:active,
->.projectList:active,
-.fa-minus-circle:active,
-input[type='date']:active,
-.projectSelect:active,
-.editing-view-port:active,
-.partOfTime:active,
-textarea:active,
-input[type='number']:hover {
-	@include hover;
-}
-
-.fa-minus-circle {
-
-	// transition: scale(1.05) 2s;
+.projectList {
+	display: flex;
+	color: var(--font-color);
+	align-items: center;
 	transition: all 0.1s ease-in-out;
 }
-
 .projectList:hover,
 .left_day:hover,
 .fa-minus-circle:hover {
 
 	transform: scale(1.05);
 	background-position: 0 100%;
-	color: $hover_color;
+	color: var(--hovercolor);
 }
 
 .projectSelect {
@@ -771,16 +781,11 @@ input[type='number']:hover {
 	display: right;
 }
 
-.right_list--item > i {
-	margin: 0 10px;
-}
-
 .textareaDetals {
 	outline: none;
 	resize: none;
 	width: 100%;
 	height: 250px;
-	border: none;
 	color: var(--fonts);
 	// color: white;
 	border-radius: 8px;
@@ -789,12 +794,11 @@ input[type='number']:hover {
 }
 
 select,
-input[type='number'],
-input[type='date'],
+input [type='number'],
+input [type='date'],
 .Projects {
 	padding: 10px;
 
-	border: none;
 	color: var(--fonts);
 	border-radius: 8px;
 	filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -817,13 +821,6 @@ ol {
 	z-index: 99;
 }
 
-.projectList {
-	display: flex;
-	color: var(--font-color);
-	align-items: center;
-	transition: all 0.1s ease-in-out;
-}
-
 .projectList:hover {
 	color: var(--hover_color);
 }
@@ -839,20 +836,6 @@ ol {
 	font-size: 1rem;
 	padding: 0.3rem;
 }
-
-i {
-	text-align: right;
-}
-
-// input {
-// 	select:focus,
-// 	input:focus,
-// 	textarea:focus {
-// 		// outline: 0;
-// 		// outline-color: transparent;
-// 		// outline-style: none;
-// 	}
-// }
 
 .projectDelete {
 	text-align: right;
@@ -903,8 +886,7 @@ i {
 }
 
 .fa-coffee,
-.fa-stop-circle,
-fas {
+.fas {
 	color: var(--hover_color);
 	font-size: 30px;
 }
@@ -923,7 +905,7 @@ fas {
 
 		.center__text {
 			font-size: 0.8rem;
-			color: $font-color;
+			color: var(--font-color);
 		}
 
 		.center_addTaskdiv {
@@ -1003,24 +985,23 @@ fas {
 	color: var(--hover_color);
 }
 
-//Custom scrollbar
-::-webkit-scrollbar {
-	background-color: #171721;
-
-	width: 12px;
-}
-
-::-webkit-scrollbar-button {
-	background-color: #171721;
-	color: yellow;
-}
-
-::-webkit-scrollbar-thumb {
-	background: linear-gradient(transparent, rgb(46, 45, 45));
-	border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-
-	background: linear-gradient(transparent, black);
+ol > li:hover,
+>.projectList:hover,
+.fa-minus-circle:hover,
+input[type='date']:hover,
+.projectSelect:hover,
+.editing-view-port:hover,
+.partOfTime:hover,
+textarea:hover,
+input[type='number']:hover,
+ol > li:active,
+>.projectList:active,
+.fa-minus-circle:active,
+input[type='date']:active,
+.projectSelect:active,
+.editing-view-port:active,
+.partOfTime:active,
+textarea:active,
+input[type='number']:hover {
+	@include hover;
 }
