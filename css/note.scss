@@ -7,9 +7,7 @@
 
 .modal__header {
 
-	margin-left: 10px;
-}
-
+	margin-left: 10px}
 .tiles {
 	row-gap: 15px;
 	display: flex;
@@ -21,7 +19,7 @@
 
 	&__tile {
 		position: relative;
-		font-size: auto;
+		font-size: auto;e
 		border-radius: 10px;
 		background: var(--number-color);
 		padding: 5px;
