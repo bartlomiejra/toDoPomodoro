@@ -1,21 +1,21 @@
 ::-webkit-scrollbar {
-  background-color: #171721;
+  background-color: var(--backgrounddarker);
   width: 12px;
 }
 
 ::-webkit-scrollbar-button {
-  background-color: #171721;
+  background-color: var(--backgrounddarker);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#2e2d2d));
-  background: linear-gradient(transparent, #2e2d2d);
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--backgrounddarker)));
+  background: linear-gradient(transparent, var(--backgrounddarker));
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
-  background: linear-gradient(transparent, black);
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--backgrounddarker)));
+  background: linear-gradient(transparent, var(--backgrounddarker));
 }
 
 :root {
@@ -371,7 +371,6 @@ body .left_addProjectBtn {
 
 html .left_Projects,
 body .left_Projects {
-  outline: none;
   color: var(--font-color);
   border-radius: 0;
 }

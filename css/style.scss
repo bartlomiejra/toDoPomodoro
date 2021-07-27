@@ -1,3 +1,4 @@
+
 $centercolor: #171721;
 $rightbackground: #14141c;
 $timerFinishColor: rgba(49, 63, 124, 0.725);
@@ -61,23 +62,23 @@ $tiles8Light: #59aa66;
 
 //Custom scrollbar
 ::-webkit-scrollbar {
-	background-color: #171721;
+	background-color: var(--backgrounddarker);
 
 	width: 12px;
 }
 
 ::-webkit-scrollbar-button {
-	background-color: #171721;
+	background-color: var(--backgrounddarker);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(transparent, rgb(46, 45, 45));
+	background: linear-gradient(transparent, var(--backgrounddarker));
 	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
 
-	background: linear-gradient(transparent, black);
+	background: linear-gradient(transparent, var(--backgrounddarker));
 }
 
 :root {
@@ -330,7 +331,7 @@ body {
 		}
 
 		&_Projects {
-			outline: none;
+			// outline: none;
 			color: var(--font-color);
 			border-radius: 0;
 		}

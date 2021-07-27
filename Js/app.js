@@ -153,7 +153,7 @@ if (actualList == 0) {
     project = JSON.parse(localStorage.getItem('project'));
 }
 // todolist = JSON.parse(localStorage.getItem('Items')) || [];
-function lists(todolist = []) {
+function lists(todolist = [], objlines) {
     actualList = todolist;
     window.localStorage.setItem('Actual', JSON.stringify(actualList));
     console.log(actualList);
@@ -277,7 +277,7 @@ function addTodo(event) {
     };
     todoInput.value = '';
     todos.push(item);
-    localStorage.setItem('Items', JSON.stringify(actualList));
+    localStorage.setItem('Items', JSON.stringify(todos));
     lists(todos, todoList);
     lists(actualList, todoList);
     statTask();

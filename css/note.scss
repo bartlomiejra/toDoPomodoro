@@ -1,3 +1,4 @@
+
 @import 'style';
 
 @mixin hoverlighter {
@@ -7,7 +8,9 @@
 
 .modal__header {
 
-	margin-left: 10px}
+	margin-left: 10px;
+}
+
 .tiles {
 	row-gap: 15px;
 	display: flex;
