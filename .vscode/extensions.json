@@ -1,6 +1,7 @@
 {
 	"recommendations": [
 		"bajdzis.vscode-database",
-		"vscodevim.vim"
+		"vscodevim.vim",
+		"dart-code.dart-code"
 	]
 }
