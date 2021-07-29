@@ -33,11 +33,11 @@
 		"plugin/selector-bem-pattern": {
 			"componentName": "[A-Z]+",
 			"componentSelectors": {
-			  "initial": "^\\.{componentName}(?:-[a-z]+)?$",
-			  "combined": "^\\.combined-{componentName}-[a-z]+$"
+			"initial": "^\\.{componentName}(?:-[a-z]+)?$",
+			"combined": "^\\.combined-{componentName}-[a-z]+$"
 			},
 			"utilitySelectors": "^\\.util-[a-z]+$"
-		  },
+		},
         "indentation": "tab",
         "order/order": [
             "custom-properties",
