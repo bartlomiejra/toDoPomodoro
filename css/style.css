@@ -8,8 +8,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--tiles1)));
-  background: linear-gradient(transparent, var(--tiles1));
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--tiles1)), to(var(--tiles1)));
+  background: linear-gradient(var(--tiles1), var(--tiles1));
   border-radius: 10px;
 }
 
@@ -333,26 +333,16 @@ body .left_addProject {
 
 html .left_color,
 body .left_color {
-  height: 26px;
-  border-radius: 8px 8px 8px 0;
-  width: 28px;
-}
-
-html .left_addProjectBtn, html .left_Projects, html .left_color,
-body .left_addProjectBtn,
-body .left_Projects,
-body .left_color {
   height: 30px;
-  text-align: center;
-  font-size: 15px;
+  border-radius: 0 8px 8px 0;
+  width: 28px;
   background-color: var(--task);
-  border-radius: 8px 0 0 8px;
-  -webkit-filter: var(--shadow);
-          filter: var(--shadow);
 }
 
 html .left_addProjectBtn,
 body .left_addProjectBtn {
+  background-color: var(--task);
+  border-radius: 8px 0 0 8px;
   width: 30px;
   height: 32px;
   color: var(--addProjectbtn);
@@ -362,6 +352,10 @@ html .left_Projects,
 body .left_Projects {
   color: var(--font-color);
   border-radius: 0;
+  border: non;
+  height: 30px;
+  text-align: center;
+  background-color: var(--task);
 }
 
 html .none,
@@ -983,6 +977,7 @@ body .right_list {
 select,
 input [type='number'],
 input [type='date'],
+.numberOfTime,
 .Projects {
   padding: 10px;
   color: var(--fonts);

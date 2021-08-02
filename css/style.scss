@@ -71,7 +71,7 @@ $tiles8Light: #59aa66;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(transparent, var(--tiles1));
+	background: linear-gradient(var(--tiles1), var(--tiles1));
 	border-radius: 10px;
 }
 
@@ -153,15 +153,8 @@ $tiles8Light: #59aa66;
 	cursor: pointer;
 }
 
-@mixin left-addproject {
-	height: 30px;
-	text-align: center;
-	font-size: 15px;
-	background-color: var(--task);
-	border-radius: 8px 0 0 8px;
-	filter: var(--shadow);
-}
 //animation
+
 @keyframes scale {
 	0% {
 
@@ -247,6 +240,7 @@ $tiles8Light: #59aa66;
 }
 
 li {
+
 	list-style-type: none;
 	padding: 0.3rem;
 	flex: 6;
@@ -320,19 +314,34 @@ body {
 			flex-wrap: nowrap;
 		}
 
-		&_color {
-			height: 26px;
-			border-radius: 8px 8px 8px 0;
-			width: 28px;
+		@mixin left-addproject {
+			max-height: 30px;
+			text-align: center;
+			font-size: 15px;
+			background-color: var(--task);
+			border-radius: 8px 0 0 8px;
+			filter: var(--shadow);
 		}
 
-		&_addProjectBtn,
-		&_Projects,
+		// &_addProjectBtn,
+		// &_Projects
+		// &_color
+		// {
+		// 	@include left-addproject;
+		// }
+
 		&_color {
-			@include left-addproject;
+			height: 30px;
+			border-radius: 0 8px 8px 0;
+			width: 28px;
+
+			background-color: var(--task);
 		}
 
 		&_addProjectBtn {
+			background-color: var(--task);
+			border-radius: 8px 0 0 8px;
+
 			width: 30px;
 			height: 32px;
 			color: var(--addProjectbtn);
@@ -341,6 +350,13 @@ body {
 		&_Projects {
 			color: var(--font-color);
 			border-radius: 0;
+			border: non;
+			height: 30px;
+			text-align: center;
+			// font-size: 15px;
+			background-color: var(--task);
+			// border-radius: 8px 0 0 8px;
+			// filter: var(--shadow);
 		}
 	}
 
@@ -788,6 +804,7 @@ body {
 select,
 input [type='number'],
 input [type='date'],
+.numberOfTime,
 .Projects {
 	padding: 10px;
 	color: var(--fonts);

@@ -103,15 +103,18 @@ let clicked;
 
 let timeInFocus;
 let pomodoreDuration;
+let pomodorebreakTime;
 let settings;
 const settinglocal = JSON.parse(localStorage.getItem('settings'));
 if (settinglocal == null) {
-    settings = { Theme: 'Dark', pomodoreTime: 25 };
+    settings = { Theme: 'Dark', pomodoreTime: 25, breakTime: 5 };
 
     window.localStorage.setItem('settings', JSON.stringify(settings));
 } else {
     pomodoreDuration = settinglocal.pomodoreTime;
+    pomodorebreakTime = settinglocal.breakTime;
 }
+console.log(pomodoreDuration);
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
@@ -420,7 +423,6 @@ function btnActtion(e) {
             return;
         }
     }
-
     //* timer start function
     if (item.classList[0] === 'center_play-btn') {
         resizeClock();
@@ -431,7 +433,7 @@ function btnActtion(e) {
         taskId = e.target.id;
         timer();
         clearInterval(countdownTime);
-        const seconds = 4;
+        const seconds = pomodoreDuration * 60;
         timer(seconds);
         clockTimer.classList.remove('clock_timerFinish');
         countdownAnimation(item);
@@ -440,7 +442,7 @@ function btnActtion(e) {
     // localStorage.setItem('Items', JSON.stringify(todos));
     lists(actualList, todoList);
 }
-
+// pomodoreDuration;
 function displayTimeLeft(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainderSeconds = seconds % 60;
@@ -472,7 +474,7 @@ function timer(seconds) {
         displayTimeLeft(secondsLeft);
     }, 1000);
 }
-const shortBreak = 5;
+const shortBreak = pomodorebreakTime * 60;
 
 function timerBreak() {
     pause.firstElementChild.classList.remove(
@@ -623,7 +625,7 @@ function showDiv(clickedId) {
             ${taskDetails.project}
 </option>
         </select></li>
-                <li>Repeat: Every</li> <li> <input type="number" class="repeatDay" value="${
+                <li>Repeat: Every</li> <li> <input type="number" class="repeatDay numberOfTime" value="${
                     taskDetails.repeatday
                 }"  min="0" max="10" id="days">
                 </input>

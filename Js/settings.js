@@ -2,11 +2,16 @@ const openModalButtons = document.getElementById('settingsButton');
 const closeSettings = document.querySelectorAll('[data-close-button ]');
 const saveButton = document.getElementById('saveSettingUser');
 const pomodoreTime = document.getElementById('quantity');
+const breakTimeValue = document.getElementById('quantitybreak');
 const theme = document.querySelector('.modal__themes');
 const overlay = document.getElementById('overlay');
 const container = document.querySelector('.container');
 const settingUser = JSON.parse(
-    localStorage.getItem('settings') || { Theme: 'Dark', pomodoreTime: '25' },
+    localStorage.getItem('settings') || {
+        Theme: 'Dark',
+        pomodoreTime: '25',
+        breakTime: '5',
+    },
 );
 
 theme.innerHTML = `
@@ -64,6 +69,7 @@ function save() {
     const settings = {
         Theme: themeselected,
         pomodoreTime: pomodoreTime.value,
+        breakTime: breakTimeValue.value,
     };
     window.localStorage.setItem('settings', JSON.stringify(settings));
     themesValue();
