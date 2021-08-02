@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
 const centerDiv = document.querySelector('.center');
 const leftDiv = document.querySelector('.left');
@@ -22,11 +24,9 @@ let dateToday;
 
 let dateTomorrow = 0;
 
-console.log(dateToday);
 const history = JSON.parse(localStorage.getItem('History'));
 
 if (history == null) {
-    console.log('history load ');
     const historylist = [
         {
             id: 0,
@@ -41,8 +41,6 @@ if (history == null) {
         },
     ];
     window.localStorage.setItem('History', JSON.stringify(historylist));
-} else {
-    console.log('history load');
 }
 
 let todos = JSON.parse(localStorage.getItem('Items'));
@@ -83,12 +81,9 @@ if (todos == null) {
         },
     ];
     window.localStorage.setItem('Items', JSON.stringify(todos));
-} else {
-    console.log('Itemki sa ');
 }
 
 let project = JSON.parse(localStorage.getItem('Project'));
-console.log(project);
 if (project == null) {
     project = [
         { id: 0, name: 'Studies 👨‍🎓', color: '#9ebb11' },
@@ -115,10 +110,8 @@ if (settinglocal == null) {
 
     window.localStorage.setItem('settings', JSON.stringify(settings));
 } else {
-    // console.log(settings);
     pomodoreDuration = settinglocal.pomodoreTime;
 }
-// console.log(pomodoreDuration);
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
@@ -127,7 +120,6 @@ let taskToday;
 let tasks = JSON.parse(localStorage.getItem('Items')) || [];
 // const objlines = 0;
 // let actualList;
-// console.log(actualList);
 function actualDateTime() {
     const date = new Date();
     const yyyy = date.getFullYear();
@@ -144,8 +136,6 @@ taskToday = tasks.filter((items) => items.data === dateToday);
 let actualSelect;
 let actualList;
 actualList = JSON.parse(localStorage.getItem('Actual')) || [];
-lists(actualList, todoList);
-console.log(actualList);
 if (actualList == 0) {
     actualSelect = [{ id: 0, name: 'Studies 👨‍🎓' }];
     window.localStorage.setItem('Actual', JSON.stringify(actualSelect));
@@ -153,13 +143,10 @@ if (actualList == 0) {
     project = JSON.parse(localStorage.getItem('project'));
 }
 // todolist = JSON.parse(localStorage.getItem('Items')) || [];
-function lists(todolist = [], objlines) {
+function lists(todolist = []) {
     actualList = todolist;
     window.localStorage.setItem('Actual', JSON.stringify(actualList));
-    console.log(actualList);
 
-    // console.log(actualList);
-    //   console.log(actualList.length);
     if (actualList.length == 0) {
         emptyList.classList.remove('none');
     }
@@ -244,6 +231,7 @@ aria-hidden="true"></i></button>
         }
     };
 }
+lists(actualList, todoList);
 
 function addTodo(event) {
     let currentProject = JSON.parse(localStorage.getItem('Current')) || [];
@@ -262,10 +250,9 @@ function addTodo(event) {
             last = task.id;
         }
     });
-    console.log(clicked);
     event.preventDefault();
     const item = {
-        id: ++last,
+        id: (last += 1),
         text: todoInput.value,
         done: false,
         focus: 0,
@@ -273,6 +260,7 @@ function addTodo(event) {
         repeatday: '1',
         repeatpartoftime: 'day',
         data: dateToday,
+
         note: '',
     };
     todoInput.value = '';
@@ -287,7 +275,7 @@ function statTask() {
     let countCompleted = 0;
     let estimated = 0;
     //* counting statiscics
-    const history = JSON.parse(localStorage.getItem('History'));
+    // const history = JSON.parse(localStorage.getItem('History'));
 
     taskToday = history.filter((items) => items.data === dateToday);
     for (let i = 0; i < taskToday.length; i += 1) {
@@ -312,7 +300,6 @@ function statTask() {
     estimated = toBeCompleted * pomodoreDuration;
     const minutesEs = estimated % 60;
     const hours = Math.floor(estimated / 60);
-    console.log(minutesEs);
     const estimatedHM = `${hours}.${minutesEs < 10 ? '0' : ''}${minutesEs}`;
     document.getElementById('estimated').innerHTML = estimatedHM;
     const elapsed = Math.floor(focuscount / 60);
@@ -346,19 +333,13 @@ function btnActtion(e) {
     statTask();
 
     const item = e.target;
-    console.log(e.target.dataset);
-    console.log(item);
     if (item.classList[0] === 'center_delete-btn') {
         audio = new Audio('Alerts/deleteTask.mp3');
         audio.play();
         const { ...index } = e.target.dataset;
-        console.log(index);
-
         const todo = item.parentElement;
         todo.classList.add('fall');
         todos.splice(index, 1);
-        console.log(todos);
-
         localStorage.setItem('Items', JSON.stringify(todos));
         todo.addEventListener('transitionend', () => {
             todo.remove();
@@ -381,54 +362,39 @@ function btnActtion(e) {
             todos = JSON.parse(localStorage.getItem('Items'));
 
             const History = JSON.parse(localStorage.getItem('History'));
-
             const filtr = todos.filter((p) => p.id == index);
             const todosFiltr = filtr[0];
-            // console.log(todosFiltr.id);
             const idtego = todosFiltr.id;
-
-            // console.log(todos);
-            // console.log(todos[todosFiltr.id]);
-            // console.log(todos[todosFiltr.id]);
             todosFiltr.done = true;
-            // console.log(todos[todosFiltr.id]);
             todosFiltr.id = History.length;
             const historytask = todosFiltr;
             History.push(historytask);
             localStorage.setItem('History', JSON.stringify(History));
-            console.log(todos);
             localStorage.setItem('Items', JSON.stringify(todos));
             todoText.classList.add('completed');
             item.innerHTML = '<i class="fas fa-check-circle"></i>';
             todoText.classList.add('animation');
-            console.log(todos);
-
-            const ten = todos.find((element, x) => element == todosFiltr);
-            console.log(ten);
-
-            //
-            if (todosFiltr.repeatday == 0) {
-            } else {
+            const ten = todos.find((element) => element == todosFiltr);
+            if (todosFiltr.repeatday != 0) {
                 const isLargeNumber = (element) => element == todosFiltr;
                 // const newtodos = [...todos];
                 const newtodos = JSON.parse(JSON.stringify(todos));
-
                 const idcurrent = todos.findIndex(isLargeNumber);
                 const idtesku = idcurrent;
-
                 const newIndex = newtodos[idtesku];
-
                 let lastId = 0;
                 todos.forEach((ele) => {
                     if (ele.id > lastId) {
                         lastId = ele.id;
                     }
                 });
+                // eslint-disable-next-line no-plusplus
                 newIndex.id = ++lastId;
                 newIndex.done = false;
                 // newIndex.completiondate = dateToday;
 
                 const dateString = newIndex.data;
+                // eslint-disable-next-line no-undef
                 newIndex.data = moment(dateString)
                     .add(newIndex.repeatday, newIndex.repeatpartoftime)
                     .format('YYYY-MM-DD');
@@ -646,9 +612,9 @@ function showDiv(clickedId) {
                 }" name="trip-start"></li>
 <li>   Project:</li>
              <li>
-				<select name="Project" value="${
-                    taskDetails.project
-                }" id="Project"class="projectSelect" placeholder="${
+<select name="Project" value="${
+            taskDetails.project
+        }" id="Project"class="projectSelect" placeholder="${
             taskDetails.project
         }" value="${taskDetails.project}">
                 <option value="${
@@ -685,37 +651,30 @@ function showDiv(clickedId) {
         const closeBtn = document.querySelector('.close-btn');
         const date = document.getElementById('date');
         const note = document.querySelector('.note');
-        const project = document.querySelector('.projectSelect');
         const timePart = document.querySelector('.partOfTime');
         const repeatDay = document.querySelector('.repeatDay');
+        project = document.querySelector('.projectSelect');
         date.addEventListener('change', updateDetails);
         closeBtn.addEventListener('click', closeDiv);
         note.addEventListener('input', updateDetails);
         repeatDay.addEventListener('input', updateDetails);
         const projectSelect = document.getElementById('Project');
         projectSelect.addEventListener('click', () => {
-            const options = projectSelect.querySelectorAll('option');
+            // const options = projectSelect.querySelectorAll('option');
             projectSelect.addEventListener('change', updateDetails);
         });
         const partTimeSelect = document.getElementById('partOfTime');
         partTimeSelect.addEventListener('click', () => {
-            const optionsTime = partTimeSelect.querySelectorAll('option');
+            // const optionsTime = partTimeSelect.querySelectorAll('option');
             partTimeSelect.addEventListener('change', updateDetails);
-            console.log(optionsTime);
         });
         function closeDiv() {
             description.classList.add('none');
         }
         function updateDetails() {
             const proj = JSON.parse(localStorage.getItem('Items'));
-            console.log(proj);
-
-            console.log(proj[clickedId]);
-
             const filtrPr = proj.filter((p) => p.id == clickedId);
             const Idtoedit = filtrPr[0];
-            console.log(Idtoedit);
-
             Idtoedit.data = date.value;
             Idtoedit.project = project.value;
             Idtoedit.note = note.value;
@@ -730,8 +689,6 @@ function showDiv(clickedId) {
     }
     function getSelectOptions() {
         const projectList = JSON.parse(localStorage.getItem('Project')) || [];
-        console.log(projectList);
-        // console.log(projectList[1].name);
         const projectt = document.querySelector('.projectSelect');
         for (let i = 0; i < projectList.length; i++) {
             const option = document.createElement('option');
@@ -757,7 +714,6 @@ function addProject(event) {
         color: projectColor.value,
     };
     project.push(Project);
-    // console.log(Project);
     localStorage.setItem('Project', JSON.stringify(project));
     addPr.value = '';
     renderProjects();
@@ -768,7 +724,7 @@ function renderProjects() {
     const proj = JSON.parse(localStorage.getItem('Project')) || [];
     pomodoreList.innerHTML = proj
         .map(
-            (proje, i) => `
+            (proje) => `
 <li class="left_projectItem">
  <div class="projectList" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}">
   <span class="circle" style="background-color: ${proje.color};">
@@ -786,13 +742,10 @@ renderProjects();
 
 // eslint-disable-next-line no-unused-vars
 function sortingProject(clicked_id) {
-    const clicked = clicked_id.getAttribute('name');
-    console.log(clicked);
-
+    clicked = clicked_id.getAttribute('name');
     let currentProject;
     currentProject = JSON.parse(localStorage.getItem('Current')) || [];
-    console.log(currentProject);
-    if ((currentProject = 0)) {
+    if (currentProject == 0) {
         currentProject = [{ id: 0, name: clicked }];
         window.localStorage.setItem('Current', JSON.stringify(currentProject));
     } else {
@@ -812,7 +765,7 @@ function sortingProjectDays(e) {
     taskToday = 0;
     let taskTomorrow = 0;
     let taskSomeday = 0;
-    const clicked = e.target.id;
+    clicked = e.target.id;
     tasks = JSON.parse(localStorage.getItem('Items')) || [];
     switch (clicked) {
         case 'today':
@@ -825,14 +778,13 @@ function sortingProjectDays(e) {
             lists(taskTomorrow, todoList);
             break;
         case 'someday':
-            console.log(dateTomorrow);
             taskSomeday = tasks.filter(
                 (items) => items.data !== dateTomorrow || dateToday,
             );
             lists(taskSomeday, todoList);
             break;
         case 'history':
-            const history = JSON.parse(localStorage.getItem('History'));
+            // const history = JSON.parse(localStorage.getItem('History'));
             if (history.length == 0) {
                 emptyList.classList.remove('none');
             }
@@ -872,8 +824,6 @@ document.querySelectorAll('.left_day').forEach((e) => {
     e.addEventListener('click', sortingProjectDays);
 });
 function deleteProject() {
-    //   console.log(e);
-    console.log(event.currentTarget.id);
     const click = event.currentTarget.id;
     project = JSON.parse(localStorage.getItem('Project')) || [];
     const deleteProj = project.filter((item) => item.id != click);
@@ -918,7 +868,6 @@ function repeatTasks() {
                 .format('YYYY-MM-DD');
 
             localStorage.setItem('Items', JSON.stringify(Items));
-        } else {
         }
     }
 }

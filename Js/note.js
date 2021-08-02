@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
 const openNote = document.getElementById('noteButton');
 const closeNote = document.getElementById('closeNotebtn');
-let closeoneNote = document.getElementById('closethisNote');
-let closebtn = document.querySelectorAll('.closeNotebtn');
+const closeoneNote = document.getElementById('closethisNote');
+const closebtn = document.querySelectorAll('.closeNotebtn');
 const noteCard = document.querySelector('.noteCard');
 const tilesNote = document.querySelector('.tiles__note');
 const tiles = document.querySelector('.tiles');
@@ -41,7 +43,6 @@ closeNote.addEventListener('click', closeNoteCard);
 const createNote = document.querySelector('.tiles__add');
 const onenoteCard = document.querySelector('.tiles__note');
 function addNote() {
-    console.log(tilesNote);
     tilesNote.innerHTML = `  
 <button class="tiles__savebtn" onClick="saveNote()"id="saveNote">Save</button>
 <button class="tiles__deletebtn closeNotebtn" onClick="deleteyourNote()" id="deleteNote">Delete Last Note</button>
@@ -56,22 +57,20 @@ ${dateToday}
     onenoteCard.classList.remove('none');
     noteCard.classList.add('overlayNote');
 }
+
 function saveNote() {
     const noteHeader = document.getElementById('noteHeader');
     const noteText = document.getElementById('textarea');
-    console.log('saveNote');
     let lastNoteId = 0;
-    console.log(noteHeader.value);
     notes.forEach((ele) => {
         if (ele.id > lastNoteId) {
             lastNoteId = ele.id;
         }
     });
-    console.log(lastNoteId);
     const person = {
-        id: ++lastNoteId,
+        id: (lastNoteId += 1),
         title: `${(noteHeader.value = null
-            ? ` Note ${++lastNoteId} `
+            ? ` Note ${(lastNoteId += 1)} `
             : noteHeader.value)}`,
         date: dateToday,
 
@@ -97,15 +96,15 @@ function deleteyourNote() {
 }
 function notesrender() {
     tiles.innerHTML = notes
+
         .map(
             (note, i) => `
-				  <div class="tiles__tile" value=${note.title}  id="${i}" onClick='noteOpen(this.id)'>
-				<h3>${note.title}</h3>
-					<div class="tiles__smallNote">${note.note}
-					
-					</div>
-				<div class="tiles__date">${note.date} </div>
-				</div>
+ <div class="tiles__tile" value=${note.title}  id="${i}" onClick='noteOpen(this.id)'>
+<h3>${note.title}</h3>
+<div class="tiles__smallNote">${note.note}
+</div>
+<div class="tiles__date">${note.date} </div>
+</div>
 </div>
 `,
         )
@@ -118,11 +117,11 @@ function noteOpen(clicked_id) {
     onenoteCard.classList.remove('none');
     onenoteCard.innerHTML = `
       <button class="tiles__savebtn" id="saveNote" onClick='saveEditNote()'>Save</button>
-					<button class="tiles__deletebtn closeNotebtn" id="deleteNotes" onClick='removeNote()'>Delete Note</button>
-					<button   onclick='closeSingleNote()' class="modal__closebutton "><i class="fas fa-times"></i></button>
-					<input class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"></>
-					<p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
-					<textarea name="message"  id="textarea" placeholder="Type something..." class="tiles__textarea notetext" >${notes[clicked_id].note} </textarea>
+<button class="tiles__deletebtn closeNotebtn" id="deleteNotes" onClick='removeNote()'>Delete Note</button>
+<button   onclick='closeSingleNote()' class="modal__closebutton "><i class="fas fa-times"></i></button>
+<input class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"></>
+<p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
+<textarea name="message"  id="textarea" placeholder="Type something..." class="tiles__textarea notetext" >${notes[clicked_id].note} </textarea>
 
       `;
     click = clicked_id;

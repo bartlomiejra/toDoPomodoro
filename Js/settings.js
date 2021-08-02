@@ -5,24 +5,23 @@ const pomodoreTime = document.getElementById('quantity');
 const theme = document.querySelector('.modal__themes');
 const overlay = document.getElementById('overlay');
 const container = document.querySelector('.container');
-
 const settingUser = JSON.parse(
     localStorage.getItem('settings') || { Theme: 'Dark', pomodoreTime: '25' },
 );
+
 theme.innerHTML = `
 <li>
 <input type="radio" class="radio" id="Light"   name="theme" value="Light"
 ${settingUser.Theme === 'Light' ? 'checked' : ''}
 >
 <label for="Light" >Light Theme </label>
-
-
 </li>
 <li>
 <input type="radio" class="radio" id="Dark" name="theme" value="Dark"
 ${settingUser.Theme === 'Dark' ? 'checked' : ''}
 >
 <label for="Dark">Dark Theme</label></li>
+
 
 `;
 function closeModal(modal) {
@@ -38,7 +37,6 @@ closeSettings.forEach((span) => {
 });
 
 let themeselected = settingUser.Theme;
-
 function openSettings() {
     // eslint-disable-next-line no-undef
     modal.classList.add('active');

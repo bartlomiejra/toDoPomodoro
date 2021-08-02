@@ -4,18 +4,13 @@
 }
 
 ::-webkit-scrollbar-button {
-  background-color: var(--backgrounddarker);
+  background-color: var(--selector-max-compound-selectors);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--backgrounddarker)));
-  background: linear-gradient(transparent, var(--backgrounddarker));
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--tiles1)));
+  background: linear-gradient(transparent, var(--tiles1));
   border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--backgrounddarker)));
-  background: linear-gradient(transparent, var(--backgrounddarker));
 }
 
 :root {
@@ -47,6 +42,11 @@
   --tiles6: #383b0f;
   --tiles7: #3a0505;
   --tiles8: #017514;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--tiles2)));
+  background: linear-gradient(transparent, var(--tiles2));
 }
 
 .lightTheme {
@@ -198,30 +198,6 @@
   }
 }
 
-@-webkit-keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 @-webkit-keyframes enlarging {
   from {
     -webkit-transform: scaleX(0);
@@ -244,7 +220,20 @@
   }
 }
 
+li {
+  list-style-type: none;
+  padding: 0.3rem;
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  text-align: center;
+}
+
 i {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: transparent;
   text-align: right;
 }
 
@@ -313,8 +302,8 @@ body .left {
 
 html .left_day,
 body .left_day {
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+  -webkit-transform: 0.1s ease-in-out;
+          transform: 0.1s ease-in-out;
   position: relative;
   text-align: left;
   color: var(--font-color);
@@ -345,8 +334,8 @@ body .left_addProject {
 html .left_color,
 body .left_color {
   height: 26px;
+  border-radius: 8px 8px 8px 0;
   width: 28px;
-  border-radius: 20px;
 }
 
 html .left_addProjectBtn, html .left_Projects, html .left_color,
@@ -373,11 +362,6 @@ html .left_Projects,
 body .left_Projects {
   color: var(--font-color);
   border-radius: 0;
-}
-
-html .left_color,
-body .left_color {
-  border-radius: 0 8px 8px 0;
 }
 
 html .none,
@@ -455,7 +439,6 @@ body .center_addTaskdiv {
   padding: 5px;
   margin: 10px;
   color: var(--task);
-  font-size: 2em;
   margin-left: 40px;
   overflow: hidden;
   width: 45%;
@@ -491,7 +474,6 @@ body .center_foldericon {
 html .center_addtaskButton,
 body .center_addtaskButton {
   padding: 5px 15px;
-  font-size: 1.1rem;
   color: var(--number-color);
   background-color: var(--task);
   border-radius: 8px 0 0 8px;
@@ -515,8 +497,8 @@ body .center_todoInput {
 
 html .center_todolist > div,
 body .center_todolist > div {
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  -webkit-transform: 0.4s ease;
+          transform: 0.4s ease;
   -webkit-filter: var(--shadow);
           filter: var(--shadow);
   max-height: 300px;
@@ -628,8 +610,8 @@ body .clock {
   font-size: 2em;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transform: 0.3s ease-in-out;
+          transform: 0.3s ease-in-out;
   width: 6em;
   border-radius: 20px;
   vertical-align: middle;
@@ -658,6 +640,11 @@ body .clock .fa-window-restore {
   font-size: 2rem;
 }
 
+html .clock_countdown,
+body .clock_countdown {
+  font-size: 4rem;
+}
+
 html .clock_fullscreen,
 body .clock_fullscreen {
   position: absolute;
@@ -683,11 +670,6 @@ body .clock_fullscreen {
           justify-content: center;
   border-radius: 30px;
   color: var(--hover_color);
-}
-
-html .clock_fullscreen #countdown,
-body .clock_fullscreen #countdown {
-  font-size: 4rem;
 }
 
 html .clock_fullscreen .countdownButtons,
@@ -761,24 +743,6 @@ body button {
   border: 0;
 }
 
-html li,
-body li {
-  list-style-type: none;
-  padding: 0.3rem;
-  -webkit-box-flex: 6;
-      -ms-flex: 6;
-          flex: 6;
-  text-align: center;
-}
-
-html i,
-body i {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  background: transparent;
-}
-
 html li:hover,
 body li:hover {
   color: var(--hover_color);
@@ -787,21 +751,19 @@ body li:hover {
 
 html .fa-minus-circle,
 body .fa-minus-circle {
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+  -webkit-transform: 0.1s ease-in-out;
+          transform: 0.1s ease-in-out;
 }
 
 html .center_pauseButton,
 html .center_resetButton,
 html .center_play-btn,
-html .fa-pause,
 html .center_delete-btn,
 html .center_complete-btn,
 html .fa-play,
 html .fa-play-circle,
 html .center_des-btn,
 html .fa-circle,
-html .fa-window-restore,
 html .fa-check-circle,
 html .pause-btn,
 html .fa-pause,
@@ -811,18 +773,18 @@ html .fa-minus-circle,
 html .fa-calendar-alt,
 html .fa-list,
 html .fa-repeat,
-html .fas fa-times .close-btn,
+html .fas,
+html .fa-times,
+html .close-btn,
 body .center_pauseButton,
 body .center_resetButton,
 body .center_play-btn,
-body .fa-pause,
 body .center_delete-btn,
 body .center_complete-btn,
 body .fa-play,
 body .fa-play-circle,
 body .center_des-btn,
 body .fa-circle,
-body .fa-window-restore,
 body .fa-check-circle,
 body .pause-btn,
 body .fa-pause,
@@ -832,7 +794,9 @@ body .fa-minus-circle,
 body .fa-calendar-alt,
 body .fa-list,
 body .fa-repeat,
-body .fas fa-times .close-btn {
+body .fas,
+body .fa-times,
+body .close-btn {
   cursor: pointer;
   outline: 0;
   background: transparent;
@@ -842,23 +806,16 @@ body .fas fa-times .close-btn {
 }
 
 html .center_play-btn,
-html .fa-window-restore,
 html .fa-pause,
 html .fa-pause-btn,
 html .fa-check-circle,
 html .fa-circle,
 body .center_play-btn,
-body .fa-window-restore,
 body .fa-pause,
 body .fa-pause-btn,
 body .fa-check-circle,
 body .fa-circle {
   margin-right: 10px;
-}
-
-html .fa-clock,
-body .fa-clock {
-  color: var(--addProjectbtn);
 }
 
 html .fall,
@@ -874,7 +831,6 @@ html .fa-play,
 html .fa-play-circle,
 html .fa-check-circle,
 html .fa-trash,
-html .center_delete-btn > .fa-minus-circle,
 html .fa-pause,
 html .fa-pause-circle,
 body .fa-circle,
@@ -883,7 +839,6 @@ body .fa-play,
 body .fa-play-circle,
 body .fa-check-circle,
 body .fa-trash,
-body .center_delete-btn > .fa-minus-circle,
 body .fa-pause,
 body .fa-pause-circle {
   cursor: pointer;
@@ -893,6 +848,7 @@ body .fa-pause-circle {
 
 html .fa-clock,
 body .fa-clock {
+  color: var(--addProjectbtn);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -911,6 +867,16 @@ body .right {
   -webkit-box-flex: 4;
       -ms-flex: 4 20%;
           flex: 4 20%;
+}
+
+html .right_list > li,
+body .right_list > li {
+  font-size: 1rem;
+  -webkit-text-decoration: bold;
+          text-decoration: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 html .right_divT,
@@ -935,8 +901,8 @@ body .right_detals {
   color: var(--font-color);
 }
 
-html .right .detals > li,
-body .right .detals > li {
+html .right_detals > li,
+body .right_detals > li {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -953,16 +919,6 @@ body .right_list {
   list-style: none;
   padding-left: 0;
   font-size: 1vw;
-}
-
-html .right ul > li,
-body .right ul > li {
-  font-size: 1rem;
-  -webkit-text-decoration: bold;
-          text-decoration: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .controlButtons {
@@ -990,8 +946,8 @@ body .right ul > li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+  -webkit-transform: 0.1s ease-in-out;
+          transform: 0.1s ease-in-out;
 }
 
 .projectList:hover,
@@ -1143,8 +1099,7 @@ ol {
   text-decoration: none;
 }
 
-.fa-coffee,
-.fas {
+.fa-coffee {
   color: var(--hover_color);
   font-size: 30px;
 }
@@ -1218,9 +1173,6 @@ ol {
     width: 15px;
     margin: 0 10px;
   }
-  .container .left .projectDelete > i {
-    font-size: 1.5rem;
-  }
   .container .leftnone {
     display: none;
   }
@@ -1246,14 +1198,13 @@ ol {
 }
 
 ol > li:hover,
-> .projectList:hover,
+.projectList:hover,
 .fa-minus-circle:hover,
 input[type='date']:hover,
 .projectSelect:hover,
 .editing-view-port:hover,
 .partOfTime:hover,
 textarea:hover,
-input[type='number']:hover,
 ol > li:active,
 > .projectList:active,
 .fa-minus-circle:active,
@@ -1515,18 +1466,13 @@ input[type='number']:hover {
 }
 
 ::-webkit-scrollbar-button {
-  background-color: var(--backgrounddarker);
+  background-color: var(--selector-max-compound-selectors);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--backgrounddarker)));
-  background: linear-gradient(transparent, var(--backgrounddarker));
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--tiles1)));
+  background: linear-gradient(transparent, var(--tiles1));
   border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--backgrounddarker)));
-  background: linear-gradient(transparent, var(--backgrounddarker));
 }
 
 :root {
@@ -1558,6 +1504,11 @@ input[type='number']:hover {
   --tiles6: #383b0f;
   --tiles7: #3a0505;
   --tiles8: #017514;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--tiles2)));
+  background: linear-gradient(transparent, var(--tiles2));
 }
 
 .lightTheme {
@@ -1650,18 +1601,6 @@ input[type='number']:hover {
   }
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 @keyframes enlarging {
   from {
     -webkit-transform: scaleX(0);
@@ -1673,7 +1612,20 @@ input[type='number']:hover {
   }
 }
 
+li {
+  list-style-type: none;
+  padding: 0.3rem;
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  text-align: center;
+}
+
 i {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: transparent;
   text-align: right;
 }
 
@@ -1742,8 +1694,8 @@ body .left {
 
 html .left_day,
 body .left_day {
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+  -webkit-transform: 0.1s ease-in-out;
+          transform: 0.1s ease-in-out;
   position: relative;
   text-align: left;
   color: var(--font-color);
@@ -1774,8 +1726,8 @@ body .left_addProject {
 html .left_color,
 body .left_color {
   height: 26px;
+  border-radius: 8px 8px 8px 0;
   width: 28px;
-  border-radius: 20px;
 }
 
 html .left_addProjectBtn, html .left_Projects, html .left_color,
@@ -1802,11 +1754,6 @@ html .left_Projects,
 body .left_Projects {
   color: var(--font-color);
   border-radius: 0;
-}
-
-html .left_color,
-body .left_color {
-  border-radius: 0 8px 8px 0;
 }
 
 html .none,
@@ -1884,7 +1831,6 @@ body .center_addTaskdiv {
   padding: 5px;
   margin: 10px;
   color: var(--task);
-  font-size: 2em;
   margin-left: 40px;
   overflow: hidden;
   width: 45%;
@@ -1920,7 +1866,6 @@ body .center_foldericon {
 html .center_addtaskButton,
 body .center_addtaskButton {
   padding: 5px 15px;
-  font-size: 1.1rem;
   color: var(--number-color);
   background-color: var(--task);
   border-radius: 8px 0 0 8px;
@@ -1944,8 +1889,8 @@ body .center_todoInput {
 
 html .center_todolist > div,
 body .center_todolist > div {
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  -webkit-transform: 0.4s ease;
+          transform: 0.4s ease;
   -webkit-filter: var(--shadow);
           filter: var(--shadow);
   max-height: 300px;
@@ -2057,8 +2002,8 @@ body .clock {
   font-size: 2em;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transform: 0.3s ease-in-out;
+          transform: 0.3s ease-in-out;
   width: 6em;
   border-radius: 20px;
   vertical-align: middle;
@@ -2087,6 +2032,11 @@ body .clock .fa-window-restore {
   font-size: 2rem;
 }
 
+html .clock_countdown,
+body .clock_countdown {
+  font-size: 4rem;
+}
+
 html .clock_fullscreen,
 body .clock_fullscreen {
   position: absolute;
@@ -2112,11 +2062,6 @@ body .clock_fullscreen {
           justify-content: center;
   border-radius: 30px;
   color: var(--hover_color);
-}
-
-html .clock_fullscreen #countdown,
-body .clock_fullscreen #countdown {
-  font-size: 4rem;
 }
 
 html .clock_fullscreen .countdownButtons,
@@ -2190,24 +2135,6 @@ body button {
   border: 0;
 }
 
-html li,
-body li {
-  list-style-type: none;
-  padding: 0.3rem;
-  -webkit-box-flex: 6;
-      -ms-flex: 6;
-          flex: 6;
-  text-align: center;
-}
-
-html i,
-body i {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  background: transparent;
-}
-
 html li:hover,
 body li:hover {
   color: var(--hover_color);
@@ -2216,21 +2143,19 @@ body li:hover {
 
 html .fa-minus-circle,
 body .fa-minus-circle {
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+  -webkit-transform: 0.1s ease-in-out;
+          transform: 0.1s ease-in-out;
 }
 
 html .center_pauseButton,
 html .center_resetButton,
 html .center_play-btn,
-html .fa-pause,
 html .center_delete-btn,
 html .center_complete-btn,
 html .fa-play,
 html .fa-play-circle,
 html .center_des-btn,
 html .fa-circle,
-html .fa-window-restore,
 html .fa-check-circle,
 html .pause-btn,
 html .fa-pause,
@@ -2240,18 +2165,18 @@ html .fa-minus-circle,
 html .fa-calendar-alt,
 html .fa-list,
 html .fa-repeat,
-html .fas fa-times .close-btn,
+html .fas,
+html .fa-times,
+html .close-btn,
 body .center_pauseButton,
 body .center_resetButton,
 body .center_play-btn,
-body .fa-pause,
 body .center_delete-btn,
 body .center_complete-btn,
 body .fa-play,
 body .fa-play-circle,
 body .center_des-btn,
 body .fa-circle,
-body .fa-window-restore,
 body .fa-check-circle,
 body .pause-btn,
 body .fa-pause,
@@ -2261,7 +2186,9 @@ body .fa-minus-circle,
 body .fa-calendar-alt,
 body .fa-list,
 body .fa-repeat,
-body .fas fa-times .close-btn {
+body .fas,
+body .fa-times,
+body .close-btn {
   cursor: pointer;
   outline: 0;
   background: transparent;
@@ -2271,23 +2198,16 @@ body .fas fa-times .close-btn {
 }
 
 html .center_play-btn,
-html .fa-window-restore,
 html .fa-pause,
 html .fa-pause-btn,
 html .fa-check-circle,
 html .fa-circle,
 body .center_play-btn,
-body .fa-window-restore,
 body .fa-pause,
 body .fa-pause-btn,
 body .fa-check-circle,
 body .fa-circle {
   margin-right: 10px;
-}
-
-html .fa-clock,
-body .fa-clock {
-  color: var(--addProjectbtn);
 }
 
 html .fall,
@@ -2303,7 +2223,6 @@ html .fa-play,
 html .fa-play-circle,
 html .fa-check-circle,
 html .fa-trash,
-html .center_delete-btn > .fa-minus-circle,
 html .fa-pause,
 html .fa-pause-circle,
 body .fa-circle,
@@ -2312,7 +2231,6 @@ body .fa-play,
 body .fa-play-circle,
 body .fa-check-circle,
 body .fa-trash,
-body .center_delete-btn > .fa-minus-circle,
 body .fa-pause,
 body .fa-pause-circle {
   cursor: pointer;
@@ -2322,6 +2240,7 @@ body .fa-pause-circle {
 
 html .fa-clock,
 body .fa-clock {
+  color: var(--addProjectbtn);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2340,6 +2259,16 @@ body .right {
   -webkit-box-flex: 4;
       -ms-flex: 4 20%;
           flex: 4 20%;
+}
+
+html .right_list > li,
+body .right_list > li {
+  font-size: 1rem;
+  -webkit-text-decoration: bold;
+          text-decoration: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 html .right_divT,
@@ -2364,8 +2293,8 @@ body .right_detals {
   color: var(--font-color);
 }
 
-html .right .detals > li,
-body .right .detals > li {
+html .right_detals > li,
+body .right_detals > li {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -2382,16 +2311,6 @@ body .right_list {
   list-style: none;
   padding-left: 0;
   font-size: 1vw;
-}
-
-html .right ul > li,
-body .right ul > li {
-  font-size: 1rem;
-  -webkit-text-decoration: bold;
-          text-decoration: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .controlButtons {
@@ -2419,8 +2338,8 @@ body .right ul > li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+  -webkit-transform: 0.1s ease-in-out;
+          transform: 0.1s ease-in-out;
 }
 
 .projectList:hover,
@@ -2572,8 +2491,7 @@ ol {
   text-decoration: none;
 }
 
-.fa-coffee,
-.fas {
+.fa-coffee {
   color: var(--hover_color);
   font-size: 30px;
 }
@@ -2647,9 +2565,6 @@ ol {
     width: 15px;
     margin: 0 10px;
   }
-  .container .left .projectDelete > i {
-    font-size: 1.5rem;
-  }
   .container .leftnone {
     display: none;
   }
@@ -2675,14 +2590,13 @@ ol {
 }
 
 ol > li:hover,
-> .projectList:hover,
+.projectList:hover,
 .fa-minus-circle:hover,
 input[type='date']:hover,
 .projectSelect:hover,
 .editing-view-port:hover,
 .partOfTime:hover,
 textarea:hover,
-input[type='number']:hover,
 ol > li:active,
 > .projectList:active,
 .fa-minus-circle:active,
@@ -2756,7 +2670,7 @@ input[type='number']:hover {
 .noteCard__body,
 .todoCard__body {
   height: 100%;
-  font-size: 30px;
+  padding: 10px 15px;
 }
 
 .modal__body__options,
@@ -2779,12 +2693,6 @@ input[type='number']:hover {
   background: none;
   font-size: 1.25rem;
   font-weight: bold;
-}
-
-.modal__body,
-.noteCard__body,
-.todoCard__body {
-  padding: 10px 15px;
 }
 
 .modal__savebtn,
@@ -2812,7 +2720,7 @@ input[type='number']:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   pointer-events: none;
 }
 

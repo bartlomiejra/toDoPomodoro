@@ -46,7 +46,7 @@
 
 	&__body {
 		height: 100%;
-		font-size: 30px;
+		padding: 10px 15px;
 
 		&__options {
 			display: flex;
@@ -63,10 +63,6 @@
 		background: none;
 		font-size: 1.25rem;
 		font-weight: bold;
-	}
-
-	&__body {
-		padding: 10px 15px;
 	}
 
 	&__savebtn {
@@ -90,7 +86,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.8);
 	pointer-events: none;
 }
 

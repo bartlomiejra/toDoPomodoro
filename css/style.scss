@@ -1,4 +1,3 @@
-
 $centercolor: #171721;
 $rightbackground: #14141c;
 $timerFinishColor: rgba(49, 63, 124, 0.725);
@@ -68,17 +67,12 @@ $tiles8Light: #59aa66;
 }
 
 ::-webkit-scrollbar-button {
-	background-color: var(--backgrounddarker);
+	background-color: var(--selector-max-compound-selectors);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(transparent, var(--backgrounddarker));
+	background: linear-gradient(transparent, var(--tiles1));
 	border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-
-	background: linear-gradient(transparent, var(--backgrounddarker));
 }
 
 :root {
@@ -110,6 +104,11 @@ $tiles8Light: #59aa66;
 	--tiles6: #{$tiles6};
 	--tiles7: #{$tiles7};
 	--tiles8: #{$tiles8};
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+	background: linear-gradient(transparent, var(--tiles2));
 }
 
 .lightTheme {
@@ -154,7 +153,7 @@ $tiles8Light: #59aa66;
 	cursor: pointer;
 }
 
-@mixin left_addproject {
+@mixin left-addproject {
 	height: 30px;
 	text-align: center;
 	font-size: 15px;
@@ -165,6 +164,7 @@ $tiles8Light: #59aa66;
 //animation
 @keyframes scale {
 	0% {
+
 		opacity: 0;
 		transform: scale(0);
 		transform-origin: 50% 50%;
@@ -220,19 +220,19 @@ $tiles8Light: #59aa66;
 	}
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
+// @keyframes gradient {
+// 	0% {
+// 		background-position: 0% 50%;
+// 	}
 
-	50% {
-		background-position: 100% 50%;
-	}
+// 	50% {
+// 		background-position: 100% 50%;
+// 	}
 
-	100% {
-		background-position: 0% 50%;
-	}
-}
+// 	100% {
+// 		background-position: 0% 50%;
+// 	}
+// }
 
 @keyframes enlarging {
 	from {
@@ -246,9 +246,18 @@ $tiles8Light: #59aa66;
 	}
 }
 
+li {
+	list-style-type: none;
+	padding: 0.3rem;
+	flex: 6;
+	text-align: center;
+}
+
 i {
+	flex: 1;
+	background: transparent;
 	text-align: right;
-} 
+}
 
 html,
 body {
@@ -290,7 +299,7 @@ body {
 		background: var(--left_background);
 
 		&_day {
-			transition: all 0.1s ease-in-out;
+			transform: 0.1s ease-in-out;
 			position: relative;
 			text-align: left;
 			color: var(--font-color);
@@ -313,15 +322,14 @@ body {
 
 		&_color {
 			height: 26px;
-
+			border-radius: 8px 8px 8px 0;
 			width: 28px;
-			border-radius: 20px;
 		}
 
 		&_addProjectBtn,
 		&_Projects,
 		&_color {
-			@include left_addproject;
+			@include left-addproject;
 		}
 
 		&_addProjectBtn {
@@ -331,13 +339,8 @@ body {
 		}
 
 		&_Projects {
-			// outline: none;
 			color: var(--font-color);
 			border-radius: 0;
-		}
-
-		&_color {
-			border-radius: 0 8px 8px 0;
 		}
 	}
 
@@ -385,7 +388,7 @@ body {
 			padding: 5px;
 			margin: 10px;
 			color: var(--task);
-			font-size: 2em;
+			// font-size: 2em;
 			margin-left: 40px;
 			overflow: hidden;
 			width: 45%;
@@ -409,7 +412,7 @@ body {
 
 		&_addtaskButton {
 			padding: 5px 15px;
-			font-size: 1.1rem;
+			// font-size: 1.1rem;
 			color: var(--number-color);
 			background-color: var(--task);
 			border-radius: 8px 0 0 8px;
@@ -429,7 +432,7 @@ body {
 		}
 
 		&_todolist > div {
-			transition: all 0.4s ease;
+			transform: 0.4s ease;
 			filter: var(--shadow);
 			max-height: 300px;
 		}
@@ -501,7 +504,7 @@ body {
 		color: var(--font-color);
 		font-size: 2em;
 		backdrop-filter: blur(5px);
-		transition: all 0.3s ease-in-out;
+		transform: 0.3s ease-in-out;
 		// margin: 0px;
 		width: 6em;
 		border-radius: 20px;
@@ -528,6 +531,10 @@ body {
 			font-size: 2rem;
 		}
 
+		&_countdown {
+			font-size: 4rem;
+		}
+
 		&_fullscreen {
 			position: absolute;
 			left: 0;
@@ -546,9 +553,9 @@ body {
 			border-radius: 30px;
 			color: var(--hover_color);
 
-			#countdown {
-				font-size: 4rem;
-			}
+			// #countdown {
+			// 	font-size: 4rem;
+			// }
 
 			.countdownButtons {
 				position: absolute;
@@ -609,18 +616,6 @@ body {
 		border: 0;
 	}
 
-	li {
-		list-style-type: none;
-		padding: 0.3rem;
-		flex: 6;
-		text-align: center;
-	}
-
-	i {
-		flex: 1;
-		background: transparent;
-	}
-
 	li:hover {
 		@include hover;
 	}
@@ -630,20 +625,18 @@ body {
 	.fa-minus-circle {
 
 		// transition: scale(1.05) 2s;
-		transition: all 0.1s ease-in-out;
+		transform: 0.1s ease-in-out;
 	}
 
 	.center_pauseButton,
 	.center_resetButton,
 	.center_play-btn,
-	.fa-pause,
 	.center_delete-btn,
 	.center_complete-btn,
 	.fa-play,
 	.fa-play-circle,
 	.center_des-btn,
 	.fa-circle,
-	.fa-window-restore,
 	.fa-check-circle,
 	.pause-btn,
 	.fa-pause,
@@ -653,8 +646,9 @@ body {
 	.fa-calendar-alt,
 	.fa-list,
 	.fa-repeat,
-	.fas fa-times .close-btn {
-
+	.fas,
+	.fa-times,
+	.close-btn {
 		cursor: pointer;
 		outline: 0;
 		background: transparent;
@@ -664,16 +658,11 @@ body {
 	}
 
 	.center_play-btn,
-	.fa-window-restore,
 	.fa-pause,
 	.fa-pause-btn,
 	.fa-check-circle,
 	.fa-circle {
 		margin-right: 10px;
-	}
-
-	.fa-clock {
-		color: var(--addProjectbtn);
 	}
 
 	//animations
@@ -689,7 +678,6 @@ body {
 	.fa-play-circle,
 	.fa-check-circle,
 	.fa-trash,
-	.center_delete-btn > .fa-minus-circle,
 	.fa-pause,
 	.fa-pause-circle {
 		cursor: pointer;
@@ -698,9 +686,11 @@ body {
 	}
 
 	.fa-clock {
+		color: var(--addProjectbtn);
 		display: flex;
 		position: left;
 	}
+
 	.right_list--item > i {
 		margin: 0 10px;
 	}
@@ -709,6 +699,12 @@ body {
 		height: calc(100% - 85px);
 		background: var(--right_background);
 		flex: 4 20%;
+
+		&_list > li {
+			font-size: 1rem;
+			text-decoration: bold;
+			display: flex;
+		}
 
 		&_divT {
 			color: var(--fonts);
@@ -727,7 +723,7 @@ body {
 			color: var(--font-color);
 		}
 
-		.detals > li {
+		&_detals > li {
 			flex-direction: row;
 			text-align: left;
 			display: flex;
@@ -738,12 +734,6 @@ body {
 			list-style: none;
 			padding-left: 0;
 			font-size: 1vw;
-		}
-
-		ul > li {
-			font-size: 1rem;
-			text-decoration: bold;
-			display: flex;
 		}
 	}
 }
@@ -762,8 +752,9 @@ body {
 	display: flex;
 	color: var(--font-color);
 	align-items: center;
-	transition: all 0.1s ease-in-out;
+	transform: 0.1s ease-in-out;
 }
+
 .projectList:hover,
 .left_day:hover,
 .fa-minus-circle:hover {
@@ -799,7 +790,6 @@ input [type='number'],
 input [type='date'],
 .Projects {
 	padding: 10px;
-
 	color: var(--fonts);
 	border-radius: 8px;
 	filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -886,8 +876,7 @@ ol {
 	}
 }
 
-.fa-coffee,
-.fas {
+.fa-coffee {
 	color: var(--hover_color);
 	font-size: 30px;
 }
@@ -959,10 +948,6 @@ ol {
 				width: 15px;
 				margin: 0 10px;
 			}
-
-			.projectDelete > i {
-				font-size: 1.5rem;
-			}
 		}
 
 		.leftnone {
@@ -987,14 +972,13 @@ ol {
 }
 
 ol > li:hover,
->.projectList:hover,
+.projectList:hover,
 .fa-minus-circle:hover,
 input[type='date']:hover,
 .projectSelect:hover,
 .editing-view-port:hover,
 .partOfTime:hover,
 textarea:hover,
-input[type='number']:hover,
 ol > li:active,
 >.projectList:active,
 .fa-minus-circle:active,
