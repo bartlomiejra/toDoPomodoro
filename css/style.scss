@@ -930,6 +930,7 @@ ol {
 	font-size: 30px;
 }
 
+
 //mobile version
 @media screen and (max-width: 895px) {
 	.container {
@@ -958,7 +959,7 @@ ol {
 		}
 
 		.left {
-			padding: 0 70px;
+			// padding: 0 70px;
 			font-size: 1.2rem;
 			height: calc(100% - 85px);
 			width: 100% !important;
@@ -1015,12 +1016,18 @@ ol {
 		}
 	}
 }
-
 @media screen and (max-width: 480px) {
+	.container {
 	.left {
-		padding: 0;
+		font-size: 1rem;
+		padding: 10px 10px 10px 10px;
+		&_pomodoreProjects{
+			max-height: 40vh;
+		}
 	}
 }
+}
+
 
 .dss:hover {
 	stroke-dasharray: 2;

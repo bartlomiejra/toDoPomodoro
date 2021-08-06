@@ -1156,7 +1156,6 @@ ol {
     font-size: 0.8rem;
   }
   .container .left {
-    padding: 0px 70px 0px 70px;
     font-size: 1.2rem;
     height: calc(100% - 85px);
     width: 100% !important;
@@ -1223,9 +1222,12 @@ ol {
 }
 
 @media screen and (max-width: 480px) {
-  .left {
-    padding: 0px;
-    background-color: red;
+  .container .left {
+    font-size: 1rem;
+    padding: 10px 10px 10px 10px;
+  }
+  .container .left_pomodoreProjects {
+    max-height: 40vh;
   }
 }
 
