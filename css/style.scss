@@ -304,7 +304,8 @@ body {
 		background: var(--left_background);
 
 		&_pomodoreProjects {
-			max-height: 320px;
+			max-height: 50vh;
+
 			overflow-y: auto;
 			overflow-x: hidden;
 		}
@@ -957,6 +958,7 @@ ol {
 		}
 
 		.left {
+			padding: 0 70px;
 			font-size: 1.2rem;
 			height: calc(100% - 85px);
 			width: 100% !important;
@@ -1014,6 +1016,12 @@ ol {
 	}
 }
 
+@media screen and (max-width: 480px) {
+	.left {
+		padding: 0;
+	}
+}
+
 .dss:hover {
 	stroke-dasharray: 2;
 	color: var(--hover_color);
@@ -1044,5 +1052,5 @@ input:focus,
 select:focus,
 textarea:focus {
 	border: 0;
-	background-color: rgb(95, 105, 107);
+	// background-color: rgb(95, 105, 107);
 }

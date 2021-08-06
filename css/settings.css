@@ -13,15 +13,15 @@
   border-radius: 10px;
 }
 
-input::-webkit-color-swatch {
-  border: 0;
-  border-radius: 6px;
-}
-
 input,
 select,
 textarea {
   border: 0;
+}
+
+input::-webkit-color-swatch {
+  border: 0;
+  border-radius: 6px;
 }
 
 :root {
@@ -311,6 +311,13 @@ body .left {
   background: var(--left_background);
 }
 
+html .left_pomodoreProjects,
+body .left_pomodoreProjects {
+  max-height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 html .left_day,
 body .left_day {
   -webkit-transform: 0.1s ease-in-out;
@@ -1149,6 +1156,7 @@ ol {
     font-size: 0.8rem;
   }
   .container .left {
+    padding: 0px 70px 0px 70px;
     font-size: 1.2rem;
     height: calc(100% - 85px);
     width: 100% !important;
@@ -1214,6 +1222,13 @@ ol {
   }
 }
 
+@media screen and (max-width: 480px) {
+  .left {
+    padding: 0px;
+    background-color: red;
+  }
+}
+
 .dss:hover {
   stroke-dasharray: 2;
   color: var(--hover_color);
@@ -1245,7 +1260,6 @@ input:focus,
 select:focus,
 textarea:focus {
   border: 0;
-  background-color: #5f696b;
 }
 
 .modal__header {
@@ -1505,15 +1519,15 @@ textarea:focus {
   border-radius: 10px;
 }
 
-input::-webkit-color-swatch {
-  border: 0;
-  border-radius: 6px;
-}
-
 input,
 select,
 textarea {
   border: 0;
+}
+
+input::-webkit-color-swatch {
+  border: 0;
+  border-radius: 6px;
 }
 
 :root {
@@ -1731,6 +1745,13 @@ body .left {
   -ms-flex-negative: 2;
       flex-shrink: 2;
   background: var(--left_background);
+}
+
+html .left_pomodoreProjects,
+body .left_pomodoreProjects {
+  max-height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 html .left_day,
@@ -2571,6 +2592,7 @@ ol {
     font-size: 0.8rem;
   }
   .container .left {
+    padding: 0px 70px 0px 70px;
     font-size: 1.2rem;
     height: calc(100% - 85px);
     width: 100% !important;
@@ -2636,6 +2658,13 @@ ol {
   }
 }
 
+@media screen and (max-width: 480px) {
+  .left {
+    padding: 0px;
+    background-color: red;
+  }
+}
+
 .dss:hover {
   stroke-dasharray: 2;
   color: var(--hover_color);
@@ -2667,7 +2696,6 @@ input:focus,
 select:focus,
 textarea:focus {
   border: 0;
-  background-color: #5f696b;
 }
 
 *,
