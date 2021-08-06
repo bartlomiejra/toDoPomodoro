@@ -609,7 +609,7 @@ function showDiv(clickedId) {
     </li>
                 <li>
                 Due date: </li>
-                <li> <input type="date" id="date" value="${
+                <li> <input type="date" class="numberOfTime" id="date" value="${
                     taskDetails.data
                 }" name="trip-start"></li>
 <li>   Project:</li>
@@ -874,3 +874,4 @@ function repeatTasks() {
     }
 }
 repeatTasks();
+// console.log('elo'.pomodoreDuration);

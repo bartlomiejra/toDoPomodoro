@@ -63,7 +63,7 @@ $tiles8Light: #59aa66;
 ::-webkit-scrollbar {
 	background-color: var(--backgrounddarker);
 
-	width: 12px;
+	width: 8px;
 }
 
 ::-webkit-scrollbar-button {
@@ -73,6 +73,17 @@ $tiles8Light: #59aa66;
 ::-webkit-scrollbar-thumb {
 	background: linear-gradient(var(--tiles1), var(--tiles1));
 	border-radius: 10px;
+}
+
+input,
+select,
+textarea {
+	border: 0;
+}
+
+input::-webkit-color-swatch {
+	border: 0;
+	border-radius: 6px;
 }
 
 :root {
@@ -292,16 +303,30 @@ body {
 		flex-shrink: 2;
 		background: var(--left_background);
 
+		&_pomodoreProjects {
+			max-height: 320px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
 		&_day {
 			transform: 0.1s ease-in-out;
 			position: relative;
 			text-align: left;
 			color: var(--font-color);
+			background-color: var(--statColor);
+			margin: 5px 0;
+			padding: 5px;
+			border-radius: 5px;
 		}
 
 		&_projectItem {
 			display: grid;
 			grid-template-columns: 3fr 1fr;
+			background-color: var(--statColor);
+			margin: 5px 0;
+			padding: 5px;
+			border-radius: 5px;
 		}
 
 		&_addProject {
@@ -334,7 +359,7 @@ body {
 			height: 30px;
 			border-radius: 0 8px 8px 0;
 			width: 28px;
-
+			border: 0;
 			background-color: var(--task);
 		}
 
@@ -350,7 +375,7 @@ body {
 		&_Projects {
 			color: var(--font-color);
 			border-radius: 0;
-			border: non;
+			border: 0;
 			height: 30px;
 			text-align: center;
 			// font-size: 15px;
@@ -468,6 +493,8 @@ body {
 		}
 
 		&_divT {
+			animation-duration: 3s;
+
 			// overflow: hidden;
 			height: 50px;
 			max-width: 500px;
@@ -639,8 +666,7 @@ body {
 	//! icons --
 
 	.fa-minus-circle {
-
-		// transition: scale(1.05) 2s;
+		pointer-events: none;
 		transform: 0.1s ease-in-out;
 	}
 
@@ -771,7 +797,8 @@ body {
 	transform: 0.1s ease-in-out;
 }
 
-.projectList:hover,
+.left_projectItem:hover,
+// .projectList:hover,
 .left_day:hover,
 .fa-minus-circle:hover {
 
@@ -891,6 +918,10 @@ ol {
 		color: var(--font-color);
 		text-decoration: none;
 	}
+
+	&_element:hover {
+		cursor: pointer;
+	}
 }
 
 .fa-coffee {
@@ -1006,4 +1037,12 @@ input[type='date']:active,
 textarea:active,
 input[type='number']:hover {
 	@include hover;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	border: 0;
+	background-color: rgb(95, 105, 107);
 }

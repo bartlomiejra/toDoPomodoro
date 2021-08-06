@@ -1,6 +1,6 @@
 ::-webkit-scrollbar {
   background-color: var(--backgrounddarker);
-  width: 12px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-button {
@@ -11,6 +11,17 @@
   background: -webkit-gradient(linear, left top, left bottom, from(var(--tiles1)), to(var(--tiles1)));
   background: linear-gradient(var(--tiles1), var(--tiles1));
   border-radius: 10px;
+}
+
+input::-webkit-color-swatch {
+  border: 0;
+  border-radius: 6px;
+}
+
+input,
+select,
+textarea {
+  border: 0;
 }
 
 :root {
@@ -307,6 +318,10 @@ body .left_day {
   position: relative;
   text-align: left;
   color: var(--font-color);
+  background-color: var(--statColor);
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 html .left_projectItem,
@@ -315,6 +330,10 @@ body .left_projectItem {
   display: grid;
   -ms-grid-columns: 3fr 1fr;
       grid-template-columns: 3fr 1fr;
+  background-color: var(--statColor);
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 html .left_addProject,
@@ -336,6 +355,7 @@ body .left_color {
   height: 30px;
   border-radius: 0 8px 8px 0;
   width: 28px;
+  border: 0;
   background-color: var(--task);
 }
 
@@ -352,7 +372,7 @@ html .left_Projects,
 body .left_Projects {
   color: var(--font-color);
   border-radius: 0;
-  border: non;
+  border: 0;
   height: 30px;
   text-align: center;
   background-color: var(--task);
@@ -516,6 +536,8 @@ body .center ul {
 
 html .center_divT,
 body .center_divT {
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
   height: 50px;
   max-width: 500px;
   margin-bottom: 5px;
@@ -745,6 +767,7 @@ body li:hover {
 
 html .fa-minus-circle,
 body .fa-minus-circle {
+  pointer-events: none;
   -webkit-transform: 0.1s ease-in-out;
           transform: 0.1s ease-in-out;
 }
@@ -944,7 +967,7 @@ body .right_list {
           transform: 0.1s ease-in-out;
 }
 
-.projectList:hover,
+.left_projectItem:hover,
 .left_day:hover,
 .fa-minus-circle:hover {
   -webkit-transform: scale(1.05);
@@ -977,6 +1000,7 @@ body .right_list {
 select,
 input [type='number'],
 input [type='date'],
+.numberOfTime,
 .Projects {
   padding: 10px;
   color: var(--fonts);
@@ -1091,6 +1115,10 @@ ol {
   font-size: 13px;
   color: var(--font-color);
   text-decoration: none;
+}
+
+.nav_element:hover {
+  cursor: pointer;
 }
 
 .fa-coffee {
@@ -1210,6 +1238,14 @@ textarea:active,
 input[type='number']:hover {
   color: var(--hover_color);
   cursor: pointer;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border: 0;
+  background-color: #5f696b;
 }
 
 .modal__header {
@@ -1456,7 +1492,7 @@ input[type='number']:hover {
 
 ::-webkit-scrollbar {
   background-color: var(--backgrounddarker);
-  width: 12px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-button {
@@ -1467,6 +1503,17 @@ input[type='number']:hover {
   background: -webkit-gradient(linear, left top, left bottom, from(var(--tiles1)), to(var(--tiles1)));
   background: linear-gradient(var(--tiles1), var(--tiles1));
   border-radius: 10px;
+}
+
+input::-webkit-color-swatch {
+  border: 0;
+  border-radius: 6px;
+}
+
+input,
+select,
+textarea {
+  border: 0;
 }
 
 :root {
@@ -1693,6 +1740,10 @@ body .left_day {
   position: relative;
   text-align: left;
   color: var(--font-color);
+  background-color: var(--statColor);
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 html .left_projectItem,
@@ -1701,6 +1752,10 @@ body .left_projectItem {
   display: grid;
   -ms-grid-columns: 3fr 1fr;
       grid-template-columns: 3fr 1fr;
+  background-color: var(--statColor);
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 html .left_addProject,
@@ -1722,6 +1777,7 @@ body .left_color {
   height: 30px;
   border-radius: 0 8px 8px 0;
   width: 28px;
+  border: 0;
   background-color: var(--task);
 }
 
@@ -1738,7 +1794,7 @@ html .left_Projects,
 body .left_Projects {
   color: var(--font-color);
   border-radius: 0;
-  border: non;
+  border: 0;
   height: 30px;
   text-align: center;
   background-color: var(--task);
@@ -1902,6 +1958,8 @@ body .center ul {
 
 html .center_divT,
 body .center_divT {
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
   height: 50px;
   max-width: 500px;
   margin-bottom: 5px;
@@ -2131,6 +2189,7 @@ body li:hover {
 
 html .fa-minus-circle,
 body .fa-minus-circle {
+  pointer-events: none;
   -webkit-transform: 0.1s ease-in-out;
           transform: 0.1s ease-in-out;
 }
@@ -2330,7 +2389,7 @@ body .right_list {
           transform: 0.1s ease-in-out;
 }
 
-.projectList:hover,
+.left_projectItem:hover,
 .left_day:hover,
 .fa-minus-circle:hover {
   -webkit-transform: scale(1.05);
@@ -2363,6 +2422,7 @@ body .right_list {
 select,
 input [type='number'],
 input [type='date'],
+.numberOfTime,
 .Projects {
   padding: 10px;
   color: var(--fonts);
@@ -2477,6 +2537,10 @@ ol {
   font-size: 13px;
   color: var(--font-color);
   text-decoration: none;
+}
+
+.nav_element:hover {
+  cursor: pointer;
 }
 
 .fa-coffee {
@@ -2596,6 +2660,14 @@ textarea:active,
 input[type='number']:hover {
   color: var(--hover_color);
   cursor: pointer;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border: 0;
+  background-color: #5f696b;
 }
 
 *,
