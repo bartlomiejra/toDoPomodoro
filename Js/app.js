@@ -160,31 +160,31 @@ function lists(todolist = []) {
         .map(
             (todo) => `${
                 todo.done
-                    ? '<li class="center_divT completed">'
+                    ? '<li   class="center_divT completed">'
                     : '<li class="center_divT " >'
             }    
-<div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
+				<div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
                 todo.repeatday != 0 ? "<i class='fas fa-redo'></i>" : ''
             }
 
-</div>
-<div  class="center_clocks"> 
-
-${
-    todo.focus > [pomodoreDuration]
-        ? '<i class="fas fa-clock  time" aria-hidden="true"> </i>'
-        : '<i class="fas fa-clock blur  time" aria-hidden="true"> </i>'
-}
-<div class="score"> 
-${
-    todo.focus / pomodoreDuration > 2
-        ? ` x ${Math.floor(todo.focus / pomodoreDuration)}`
-        : ''
-}
+				</div>
+				<div  class="center_clocks"> 
+				
+				${
+                    todo.focus > [pomodoreDuration]
+                        ? '<i class="fas fa-clock  time" aria-hidden="true"> </i>'
+                        : '<i class="fas fa-clock blur  time" aria-hidden="true"> </i>'
+                }
+				<div class="score"> 
+				${
+                    todo.focus / pomodoreDuration > 2
+                        ? ` x ${Math.floor(todo.focus / pomodoreDuration)}`
+                        : ''
+                }
 </div> 
 </div>
 
-<button class="center_complete-btn" aria-label="Complete" data-index=${
+<button tabindex="0" class="center_complete-btn" aria-label="Complete" data-index=${
                 todo.id
             } id="item${todo.id}" >
 ${
@@ -197,18 +197,22 @@ ${
 
 
 
-<button class="center_delete-btn" aria-label="Delete" data-index=${
+<button autofocus tabindex="0" class="center_delete-btn" aria-label="Delete" data-index=${
                 todo.id
             } id="item${
                 todo.id
             }">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
-<button class="center_play-btn" aria-label="Play" data-index=${todo.id} id="${
+<button  tabindex="0"class="center_play-btn" aria-label="Play" data-index=${
+                todo.id
+            } id="${
                 todo.id
             }"> <i class="fas fa-play-circle" aria-hidden="true"></i></button>
-<button class="center_des-btn" aria-label="Detals"  data-index=${todo.id} id="${
+<button tabindex="0" class="center_des-btn" aria-label="Detals"  data-index=${
                 todo.id
-            }" onclick="showDiv(${todo.id})"  > <i class="fas fa-list-alt" 
+            } id="${todo.id}" onclick="showDiv(${
+                todo.id
+            })"  > <i class="fas fa-list-alt" 
 aria-hidden="true"></i></button>
 </li>
 `,
@@ -739,8 +743,8 @@ function renderProjects() {
     pomodoreList.innerHTML = proj
         .map(
             (proje) => `
-<li class="left_projectItem">
- <div class="projectList" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}">
+<li class="left_projectItem" >
+ <div class="projectList" tabindex="0" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}">
   <span class="circle" style="background-color: ${proje.color};">
   </span>
   ${proje.name} 
