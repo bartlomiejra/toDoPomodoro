@@ -338,6 +338,7 @@ body {
 		}
 
 		&_day {
+			// background: #53536938;
 			transform: 0.1s ease-in-out;
 			position: relative;
 			text-align: left;
@@ -1012,7 +1013,7 @@ ol {
 			}
 
 			&_day {
-
+	// background: #53536938;
 				background-color: var(--header_background);
 				min-height: 40px;
 			}
@@ -1024,6 +1025,8 @@ ol {
 			&_projectItem {
 				min-height: 40px;
 				color: var(--font-color);
+					// background: #53536938;
+
 				background-color: var(--header_background);
 			}
 

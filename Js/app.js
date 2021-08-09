@@ -42,6 +42,18 @@ if (history == null) {
     ];
     window.localStorage.setItem('History', JSON.stringify(historylist));
 }
+let statistics = JSON.parse(localStorage.getItem('STat'));
+if (statistics == null) {
+    statistics = [
+        {
+            estimated: '0.00',
+            comp: 1,
+            elapsed: '0.00',
+            complete: 0,
+        },
+    ];
+    window.localStorage.setItem('STat', JSON.stringify(statistics));
+}
 
 let todos = JSON.parse(localStorage.getItem('Items'));
 if (todos == null) {

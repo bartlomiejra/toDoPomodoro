@@ -1193,7 +1193,7 @@ ol {
     text-align: center;
   }
   .container .left_day {
-    background-color: var(--header_background);
+    background: #53536938;
     min-height: 40px;
   }
   .container .left_day > i {
@@ -1202,7 +1202,7 @@ ol {
   .container .left_projectItem {
     min-height: 40px;
     color: var(--font-color);
-    background-color: var(--header_background);
+    background: #53536938;
   }
   .container .left_addProject {
     position: absolute;
