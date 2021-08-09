@@ -278,9 +278,17 @@ function statTask() {
     let countCompleted = 0;
     let estimated = 0;
     //* counting statiscics
-    // const history = JSON.parse(localStorage.getItem('History'));
+    let historytaskToday;
+    historytaskToday = history.filter((items) => items.data === dateToday);
+    for (let i = 0; i < historytaskToday.length; i += 1) {
+        if (historytaskToday[i].done === true) {
+            countCompleted += 1;
+        } else {
+            toBeCompleted += 1;
+        }
+    }
 
-    taskToday = history.filter((items) => items.data === dateToday);
+    taskToday = todos.filter((items) => items.data === dateToday);
     for (let i = 0; i < taskToday.length; i += 1) {
         if (taskToday[i].done === true) {
             countCompleted += 1;
@@ -288,6 +296,10 @@ function statTask() {
             toBeCompleted += 1;
         }
     }
+
+    console.log(taskToday);
+    console.log(toBeCompleted);
+    console.log(countCompleted);
 
     document.getElementById('completedTasks').innerHTML = countCompleted;
     document.getElementById('taskstobe').innerHTML = toBeCompleted;

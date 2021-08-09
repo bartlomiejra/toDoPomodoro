@@ -36,7 +36,7 @@ input::-webkit-color-swatch {
   --task_color: #28222c;
   --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
   --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-  --number-color: #ee786c;
+  --number-color: #f1998f;
   --light-color: #a9ded8;
   --font-color: #fff;
   --addProjectbtn: #b17676;
@@ -62,25 +62,25 @@ input::-webkit-color-swatch {
 
 .lightTheme {
   --center-color: #f7f6f0;
-  --right_background: #d3f36b;
-  --timerFinishColor: rgba(136, 143, 173, 0.725);
-  --backgrounddarker: #8d9dad;
+  --right_background: #abada2;
+  --timerFinishColor: rgba(255, 255, 255, 0.725);
+  --backgrounddarker: #b2b8be;
   --header_background: #24282c;
   --statColor: #f2f1ea;
-  --left_background: #d3f36b;
+  --left_background: #fff;
   --nav_color: #24282c;
-  --task_color: #918a8a;
+  --task_color: #000;
   --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
   --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-  --number-color: #6542e5;
+  --number-color: #c3c0cf;
   --light-color: #aa9b9b;
-  --font-color: #000;
-  --addProjectbtn: #6856f6;
+  --font-color: #505050;
+  --addProjectbtn: #e0e0e0;
   --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  --hover_color: #030303;
+  --hover_color: #363333;
   --dark-font: #ccbaba;
   --fonts: #7a7d83;
-  --task: #645d8f;
+  --task: #f8f8f8;
   --tiles1: #db8dd9;
   --tiles2: #e489a4;
   --tiles3: #ecb06c;
@@ -251,6 +251,7 @@ i {
 html,
 body {
   overflow: hidden;
+  font-size: 16px;
   display: -ms-grid;
   display: grid;
   padding: 0;
@@ -262,6 +263,7 @@ body {
 
 html .container,
 body .container {
+  background: var(--left_background);
   padding: 0;
   height: 100%;
   list-style: none;
@@ -293,7 +295,9 @@ body .container > *__header {
 
 html .left,
 body .left {
-  height: calc(100% - 85px);
+  min-width: 268px;
+  overflow-y: auto;
+  max-height: calc(100vh - 85px);
   -ms-flex-preferred-size: 100px;
       flex-basis: 100px;
   -webkit-box-align: stretch;
@@ -311,11 +315,24 @@ body .left {
   background: var(--left_background);
 }
 
-html .left_pomodoreProjects,
-body .left_pomodoreProjects {
-  max-height: 50vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+html .left_listdays,
+body .left_listdays {
+  margin: 0;
+  padding: 0;
+}
+
+html .left_listdays i,
+body .left_listdays i {
+  margin: 0;
+}
+
+html .left_loginbtn,
+body .left_loginbtn {
+  background-color: var(--statColor);
+  color: var(--font-color);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
 }
 
 html .left_day,
@@ -325,7 +342,6 @@ body .left_day {
   position: relative;
   text-align: left;
   color: var(--font-color);
-  background-color: var(--statColor);
   margin: 5px 0;
   padding: 5px;
   border-radius: 5px;
@@ -337,7 +353,6 @@ body .left_projectItem {
   display: grid;
   -ms-grid-columns: 3fr 1fr;
       grid-template-columns: 3fr 1fr;
-  background-color: var(--statColor);
   margin: 5px 0;
   padding: 5px;
   border-radius: 5px;
@@ -443,7 +458,7 @@ body .center__number {
       -ms-flex: 10;
           flex: 10;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 html .center__text,
@@ -527,7 +542,6 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
-  min-width: 500px;
   max-height: 64vh;
   overflow: hidden;
   overflow-y: auto;
@@ -665,7 +679,7 @@ body .clock .fa-window-restore {
 
 html .clock_countdown,
 body .clock_countdown {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 html .clock_fullscreen,
@@ -695,6 +709,11 @@ body .clock_fullscreen {
   color: var(--hover_color);
 }
 
+html .clock_fullscreen .clock_countdown,
+body .clock_fullscreen .clock_countdown {
+  font-size: 4rem;
+}
+
 html .clock_fullscreen .countdownButtons,
 body .clock_fullscreen .countdownButtons {
   position: absolute;
@@ -719,7 +738,7 @@ body .clock_fullscreen .fa-window-restore {
 html .clock_timerStart,
 body .clock_timerStart {
   background: var(--timer);
-  border-radius: 15px;
+  border-radius: 20px;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   color: var(--hover_color);
@@ -736,6 +755,7 @@ body .clock_timerFinish {
 html .completed,
 body .completed {
   opacity: 0.6;
+  min-width: 300px;
 }
 
 html .completed .center_todo-item,
@@ -977,8 +997,10 @@ body .right_list {
 .left_projectItem:hover,
 .left_day:hover,
 .fa-minus-circle:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  background-color: var(--statColor);
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
   background-position: 0 100%;
   color: var(--hovercolor);
 }
@@ -1118,7 +1140,6 @@ ol {
   min-width: 50px;
   overflow: hidden;
   white-space: nowrap;
-  font-family: sans-serif;
   font-size: 13px;
   color: var(--font-color);
   text-decoration: none;
@@ -1134,6 +1155,9 @@ ol {
 }
 
 @media screen and (max-width: 895px) {
+  body {
+    font-size: 16px;
+  }
   .container {
     border-radius: none;
     margin: 0;
@@ -1164,18 +1188,24 @@ ol {
     max-width: 50px;
   }
   .container .left_title {
+    margin: 1px;
     font-size: 2rem;
     text-align: center;
   }
+  .container .left_day {
+    background-color: var(--header_background);
+    min-height: 40px;
+  }
   .container .left_day > i {
-    font-size: 2rem;
     padding: 0 15px 0 10px;
   }
   .container .left_projectItem {
+    min-height: 40px;
     color: var(--font-color);
-    font-weight: 700;
+    background-color: var(--header_background);
   }
   .container .left_addProject {
+    position: absolute;
     width: 100%;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -1224,7 +1254,7 @@ ol {
 @media screen and (max-width: 480px) {
   .container .left {
     font-size: 1rem;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
   }
   .container .left_pomodoreProjects {
     max-height: 40vh;

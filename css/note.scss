@@ -6,7 +6,6 @@
 }
 
 .modal__header {
-
 	margin-left: 10px;
 }
 
@@ -75,14 +74,17 @@
 	}
 
 	&__smallNote {
-		font-size: 0.8rem;
+		font-size: 0.6rem;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
 
 	&__addNote {
-		background: transparent;
+		background: var(--backgrounddarker);
+		padding: 15px;
+		border-radius: 50px;
+		
 		position: absolute;
 		bottom: 20px;
 		right: 20px;
@@ -140,16 +142,28 @@
 	}
 
 	&__noteHeader {
+		resize: none;
+		margin-top: 35px;
+		display: box;
+		display: flexbox;
 		display: flex;
-		margin-top: 50px;
+
+		/* margin-top: 50px; */
 		outline: none;
-		padding: 5px;
+
+		/* padding: 5px; */
+		width: 80%;
 		color: var(--font-color);
 		background-color: transparent;
 		letter-spacing: 1.2px;
-		font-size: 1.6rem;
+		font-size: 1.2rem;
 		border: 0;
 		border-radius: 0 8px 8px 0;
+	}
+
+	.date {
+		font-size: 30px;
+		color: var(--number-color);
 	}
 
 	&__textarea {
@@ -157,12 +171,11 @@
 		resize: none;
 		width: 100%;
 		height: 100%;
-		// border: none;
 		color: var(--fonts);
 		border-radius: 8px;
 		filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 		background: transparent;
-		// background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);// margin-top: 20px;
+
 		.date {
 			font-size: 30px;
 			color: var(--number-color);
@@ -182,7 +195,7 @@
 	right: 20px;
 	cursor: pointer;
 	outline: 0;
-	background: transparent;
+	// background: transparent;
 	color: var(--number-color);
 	font-size: 1.8rem;
 	padding: 0.3rem;
@@ -210,23 +223,43 @@
 @media screen and (max-width: 895px) {
 	.tiles {
 		row-gap: 15px;
+		
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
 		padding: 0;
 		margin: 20px;
 		list-style: none;
+		font-size: .7rem;
 
 		&__tile {
 			font-size: auto;
 			border-radius: 10px;
 			background: var(--number-color);
 			padding: 5px;
-			width: 150px;
-			height: 100px;
+			width: 125px;
+			height: 75px;
 			color: var(--hover_color);
 			//   font-weight: bold;
 			text-align: center;
 		}
+	}
+
+
+	&__addNote {
+		background: var(--backgrounddarker);
+		padding: 15px;
+		border-radius: 50px;
+		
+		bottom: 10px;
+		right: 10px;
+	}
+
+	&__add {
+		padding: 20px;
+		border-radius: 30px;
+		background: var(--backgrounddarker);
+		color: var(--number-color);
+		font-size: 1.6rem;
 	}
 }
