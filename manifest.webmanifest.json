@@ -1,11 +1,33 @@
 {
-    "name": "todoPomodore",
-    "short_name": "PomodoroApp",
-    "start_url": ".",
+    "theme_color": "#14141c",
+    "background_color": "#14141c",
     "display": "standalone",
-    "background_color": "rgba(0, 0, 0, 0.5)",
-    "color": "rgb(68, 26, 26)",
-	"theme_color": "#ffffff",
-    "description": "App to improve your productivity",
-  "orientation": "portrait-primary"
+    "scope": "/",
+    "start_url": "/index.html",
+    "name": "focustodo",
+    "short_name": "focustodo",
+	"description": "App to improve your productivity",
+
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
 }
