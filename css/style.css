@@ -53,6 +53,7 @@ input::-webkit-color-swatch {
   --tiles6: #383b0f;
   --tiles7: #3a0505;
   --tiles8: #017514;
+  --inputbackground: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -64,23 +65,23 @@ input::-webkit-color-swatch {
   --center-color: #f7f6f0;
   --right_background: #abada2;
   --timerFinishColor: rgba(255, 255, 255, 0.725);
-  --backgrounddarker: #b2b8be;
+  --backgrounddarker: #000000;
   --header_background: #24282c;
   --statColor: #f2f1ea;
   --left_background: #fff;
-  --nav_color: #24282c;
-  --task_color: #000;
+  --nav_color: #ccc;
+  --task_color: #242323;
   --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
   --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-  --number-color: #c3c0cf;
+  --number-color: #642727;
   --light-color: #aa9b9b;
-  --font-color: #505050;
+  --font-color: #572525;
   --addProjectbtn: #e0e0e0;
   --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   --hover_color: #363333;
   --dark-font: #ccbaba;
-  --fonts: #7a7d83;
-  --task: #f8f8f8;
+  --fonts: #080808;
+  --task: #fff;
   --tiles1: #db8dd9;
   --tiles2: #e489a4;
   --tiles3: #ecb06c;
@@ -89,6 +90,7 @@ input::-webkit-color-swatch {
   --tiles6: #9fa551;
   --tiles7: #b16a6a;
   --tiles8: #59aa66;
+  --inputbackground: linear-gradient(147.14deg, rgba(226, 180, 180, 0.7) 18.33%, rgba(255, 255, 255, 0.2) 77.77%);
 }
 
 @-webkit-keyframes scale {
@@ -229,6 +231,10 @@ input::-webkit-color-swatch {
     -webkit-transform: scaleX(1);
             transform: scaleX(1);
   }
+}
+
+h2 {
+  color: var(--font-color);
 }
 
 li {
@@ -1021,9 +1027,7 @@ body .right_list {
   height: 250px;
   color: var(--fonts);
   border-radius: 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  background: var(--inputbackground);
 }
 
 select,
@@ -1034,9 +1038,7 @@ input [type='date'],
   padding: 10px;
   color: var(--fonts);
   border-radius: 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  background: var(--inputbackground);
 }
 
 select option {

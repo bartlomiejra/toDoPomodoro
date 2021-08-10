@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
+
 const centerDiv = document.querySelector('.center');
 const leftDiv = document.querySelector('.left');
 const projectIcon = document.querySelector('.Project');

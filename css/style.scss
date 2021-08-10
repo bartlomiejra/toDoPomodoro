@@ -27,29 +27,31 @@ $tiles5: #300d30;
 $tiles6: #383b0f;
 $tiles7: #3a0505;
 $tiles8: #017514;
+$inputbackground: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 
 //! Light theme colors
 $centercolorLight: #f7f6f0;
 $rightbackgroundLight: #abada2;
 $timerFinishColorLight: rgba(255, 255, 255, 0.725);
-$backgrounddarkerLight: #b2b8be;
+$backgrounddarkerLight: #000000;
 $headerbackgroundLight: #24282c;
 $statColorLight: #f2f1ea;
 $leftbackgroundLight: #fff;
-$navcolorLight: #24282c;
-$taskcolorLight: #000;
+$navcolorLight: #ccc;
+$taskcolorLight: rgb(36, 35, 35);
 $timerLight: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
 $addProjectLight: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-$numbercolorLight: #c3c0cf;
+$numbercolorLight: #642727;
 $lightcolorLight: #aa9b9b;
-$darkfontLight: #000;
-$fontcolorLight: rgb(80, 80, 80);
+$darkfontLight: rgb(133, 58, 58);
+$fontcolorLight: rgb(87, 37, 37);
 $addProjectbtnLight: #e0e0e0;
 $shadowLight: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 $hovercolorLight: rgb(54, 51, 51);
 $darkfontLight: #ccbaba;
-$fontsLight: #7a7d83;
-$taskLight: #f8f8f8;
+$fontsLight: rgb(8, 8, 8);
+$taskLight: #fff;
+
 $tiles1Light: #db8dd9;
 $tiles2Light: #e489a4;
 $tiles3Light: #ecb06c;
@@ -58,6 +60,7 @@ $tiles5Light: #995f99;
 $tiles6Light: #9fa551;
 $tiles7Light: #b16a6a;
 $tiles8Light: #59aa66;
+$inputbackgroundLight: linear-gradient(147.14deg, rgba(226, 180, 180, 0.7) 18.33%, rgba(255, 255, 255, 0.2) 77.77%);
 
 //Custom scrollbar
 ::-webkit-scrollbar {
@@ -115,6 +118,7 @@ input::-webkit-color-swatch {
 	--tiles6: #{$tiles6};
 	--tiles7: #{$tiles7};
 	--tiles8: #{$tiles8};
+	--inputbackground: #{$inputbackground};
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -151,6 +155,7 @@ input::-webkit-color-swatch {
 	--tiles6: #{$tiles6Light};
 	--tiles7: #{$tiles7Light};
 	--tiles8: #{$tiles8Light};
+	--inputbackground: #{$inputbackgroundLight};
 }
 
 // Mixins
@@ -248,6 +253,10 @@ input::-webkit-color-swatch {
 		transform: scaleX(1);
 		// transform:  scale(0);
 	}
+}
+
+h2 {
+	color: var(--font-color);
 }
 
 li {
@@ -860,8 +869,9 @@ body {
 	color: var(--fonts);
 	// color: white;
 	border-radius: 8px;
-	filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-	background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+	// filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+	// background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+	background: var(--inputbackground);
 }
 
 select,
@@ -872,8 +882,10 @@ input [type='date'],
 	padding: 10px;
 	color: var(--fonts);
 	border-radius: 8px;
-	filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-	background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+	// filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+	background: var(--inputbackground);
+
+	// background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 }
 
 select option {
@@ -1013,7 +1025,7 @@ ol {
 			}
 
 			&_day {
-	// background: #53536938;
+				// background: #53536938;
 				background-color: var(--header_background);
 				min-height: 40px;
 			}
@@ -1025,7 +1037,7 @@ ol {
 			&_projectItem {
 				min-height: 40px;
 				color: var(--font-color);
-					// background: #53536938;
+				// background: #53536938;
 
 				background-color: var(--header_background);
 			}

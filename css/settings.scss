@@ -44,10 +44,14 @@
 	}
 
 	&__body {
+		font-size: 1.5rem;
+
 		height: 100%;
 		padding: 10px 15px;
 
 		&__options {
+			font-size: 1.5rem;
+
 			display: flex;
 			border-radius: 20px;
 			background-color: var(--task_color);
@@ -60,7 +64,7 @@
 		// border: none;
 		outline: none;
 		background: none;
-		font-size: 1.25rem;
+		font-size: 1.5rem;
 		font-weight: bold;
 	}
 
@@ -69,7 +73,7 @@
 		border-radius: 5px;
 		background-color: var(--backgrounddarker);
 		color: var(--light-color);
-		font-size: 15px;
+		font-size: 1.5rem;
 		padding: 10px;
 	}
 
