@@ -862,36 +862,36 @@ function deleteProject() {
     renderProjects();
 }
 
-function showToDocard() {
+function showToDoCard() {
     noteCard.classList.remove('active');
-    // overlay.classList.add('active');
     leftDiv.classList.add('active');
     leftDiv.classList.remove('none');
     centerDiv.classList.remove('none');
-    // centerDiv.classList.add('active');
     settingsDiv.classList.add('none');
     todoCard.classList.add('none');
-
     settingsDiv.classList.remove('active');
     todoCard.classList.remove('active');
+    ifmobile();
 }
 function showProjectList() {
     centerDiv.classList.add('none');
     centerDiv.classList.remove('center');
     leftDiv.classList.remove('leftnone');
     description.classList.add('none');
+    centerDiv.classList.add('none');
 }
 function ifmobile() {
     if (mobileWidth.matches) {
         showProjectList();
     }
 }
+
 addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
 showProject.addEventListener('click', ifmobile);
-showProject.addEventListener('click', showToDocard);
+showProject.addEventListener('click', showToDoCard);
 
 /*
   * Importand Information

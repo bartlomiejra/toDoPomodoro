@@ -46,7 +46,7 @@ function closeNoteCard() {
     // overlay.classList.remove('active');
 }
 openNote.addEventListener('click', openNoteCard);
-closeNote.addEventListener('click', closeNoteCard);
+// closeNote.addEventListener('click', closeNoteCard);
 const createNote = document.querySelector('.tiles__add');
 const onenoteCard = document.querySelector('.tiles__note');
 function addNote() {

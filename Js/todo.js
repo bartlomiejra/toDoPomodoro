@@ -13,15 +13,7 @@ function openTodoCard() {
     leftDiv.classList.add('none');
     centerDiv.classList.add('none');
     settingsDiv.classList.add('none');
-    // todoCard.classList.add('none');
-
     settingsDiv.classList.remove('active');
-    // todoCard.classList.remove('active');
-    // overlay.classList.add('active');
 }
-function closeTodoCard() {
-    todoCard.classList.remove('active');
-    // overlay.classList.remove('active');
-}
+
 openTodo.addEventListener('click', openTodoCard);
-closeTodo.addEventListener('click', closeTodoCard);
