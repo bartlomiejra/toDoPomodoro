@@ -243,7 +243,7 @@ aria-hidden="true"></i></button>
     window.onresize = function resizeFun() {
         if (mobileWidth.matches) {
             // projectIcon.classList.remove('none');
-            // centerDiv.classList.remove('none');
+            centerDiv.classList.remove('none');
             centerDiv.classList.add('center');
             leftDiv.classList.add('leftnone');
         } else {
