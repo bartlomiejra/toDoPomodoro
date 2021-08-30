@@ -270,6 +270,7 @@ body {
 
 html .container,
 body .container {
+  min-height: 100%;
   background: var(--left_background);
   padding: 0;
   height: 100%;
@@ -302,6 +303,7 @@ body .container > *__header {
 html .left,
 body .left {
   min-width: 268px;
+  margin-bottom: 10px;
   overflow-y: auto;
   max-height: calc(100vh - 85px);
   -ms-flex-preferred-size: 100px;
@@ -1239,7 +1241,7 @@ ol {
     display: none;
   }
   .container .right {
-    width: 300px;
+    width: 100vw;
     right: 0;
     -webkit-backdrop-filter: blur(9px);
             backdrop-filter: blur(9px);
@@ -1380,12 +1382,16 @@ textarea:focus {
 }
 
 .tiles__addNote {
+  display: inline;
   background: var(--task_color);
   padding: 15px;
   border-radius: 50px;
   position: absolute;
-  bottom: 20px;
   right: 20px;
+  background: var(--task_color);
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
 }
 
 .tiles__add {
@@ -1767,6 +1773,7 @@ body {
 
 html .container,
 body .container {
+  min-height: 100%;
   background: var(--left_background);
   padding: 0;
   height: 100%;
@@ -1799,6 +1806,7 @@ body .container > *__header {
 html .left,
 body .left {
   min-width: 268px;
+  margin-bottom: 10px;
   overflow-y: auto;
   max-height: calc(100vh - 85px);
   -ms-flex-preferred-size: 100px;
@@ -2736,7 +2744,7 @@ ol {
     display: none;
   }
   .container .right {
-    width: 300px;
+    width: 100vw;
     right: 0;
     -webkit-backdrop-filter: blur(9px);
             backdrop-filter: blur(9px);
@@ -2804,6 +2812,7 @@ textarea:focus {
 .noteCard,
 .todoCard {
   border: 0;
+  max-height: calc(100vh - 54px);
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -2915,11 +2924,14 @@ textarea:focus {
 .noteCard.active,
 .todoCard.active,
 .tiles__note.active {
+  overflow: auto;
   -webkit-transform: translate(0%, 0%) scale(1);
           transform: translate(0%, 0%) scale(1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: calc(100vh - 54px);
+  max-height: calc(100vh - 54px);
 }
 
 @media screen and (max-width: 895px) {

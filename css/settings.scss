@@ -10,6 +10,8 @@
 .noteCard,
 .todoCard {
 	border: 0;
+	max-height: calc(100vh - 54px);
+
 	// position: absolute;
 	display: none;
 	// min-height: 89.5vh;
@@ -28,7 +30,6 @@
 	opacity: 0.9;
 	// z-index: 100;
 	// width: 95%;
-	// height: 95%;
 
 	// max-width: 95%;
 	// max-height: 95%;
@@ -106,8 +107,11 @@
 .noteCard.active,
 .todoCard.active,
 .tiles__note.active {
+overflow: auto;
 	transform: translate(0%, 0%) scale(1);
 	display: flex;
+	height: calc(100vh - 54px);
+	max-height: calc(100vh - 54px);
 	// margin: 190px 0px 0px 300px;
 }
 

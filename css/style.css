@@ -303,6 +303,7 @@ body .container > *__header {
 html .left,
 body .left {
   min-width: 268px;
+  margin-bottom: 10px;
   overflow-y: auto;
   max-height: calc(100vh - 85px);
   -ms-flex-preferred-size: 100px;
@@ -1088,6 +1089,7 @@ ol {
   -ms-flex-item-align: auto;
       -ms-grid-row-align: auto;
       align-self: auto;
+  height: 2vw;
 }
 
 .score {
@@ -1183,6 +1185,15 @@ ol {
   .container .center_todoInput {
     font-size: 0.8rem;
   }
+  .container .center_todo-item {
+    font-size: 4vw;
+  }
+  .container .center_todo-item i {
+    font-size: 4vw;
+  }
+  .container .time {
+    font-size: 4vw;
+  }
   .container .left {
     font-size: 1.2rem;
     height: calc(100% - 85px);
@@ -1240,7 +1251,7 @@ ol {
     display: none;
   }
   .container .right {
-    width: 300px;
+    width: 100vw;
     right: 0;
     -webkit-backdrop-filter: blur(9px);
             backdrop-filter: blur(9px);
