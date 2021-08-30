@@ -9,6 +9,7 @@ const noteCard = document.querySelector('.noteCard');
 const tilesNote = document.querySelector('.tiles__note');
 const tiles = document.querySelector('.tiles');
 const deleteNote = document.getElementById('deleteNote');
+// const noteButton = document.getElementById('noteButton');
 
 let notes;
 if (notes == null) {
@@ -31,6 +32,7 @@ if (notes == null) {
     notes = JSON.parse(localStorage.getItem('Notes'));
 }
 function openNoteCard() {
+    openNote.classList.add('buttonOn');
     noteCard.classList.add('active');
     // overlay.classList.add('active');
     leftDiv.classList.add('none');

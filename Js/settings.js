@@ -7,6 +7,7 @@ const theme = document.querySelector('.modal__themes');
 const settingsDiv = document.querySelector('.settings');
 // const noteCard = document.querySelector('.noteCard');
 // const leftDiv = document.querySelector('.left');
+const settingButton = document.getElementById('settingButton');
 
 const overlay = document.getElementById('overlay');
 const container = document.querySelector('.container');
@@ -48,6 +49,9 @@ closeSettings.forEach((span) => {
 
 let themeselected = settingUser.Theme;
 function openSettings() {
+    noteButton.classList.remove('buttonOn');
+    settingButton.classList.add('buttonOn');
+
     // eslint-disable-next-line no-undef
     settingsDiv.classList.add('active');
     noteCard.classList.remove('active');
