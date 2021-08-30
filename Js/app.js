@@ -868,7 +868,7 @@ function showToDocard() {
     leftDiv.classList.add('active');
     leftDiv.classList.remove('none');
     centerDiv.classList.remove('none');
-    centerDiv.classList.add('actove');
+    // centerDiv.classList.add('active');
     settingsDiv.classList.add('none');
     todoCard.classList.add('none');
 
