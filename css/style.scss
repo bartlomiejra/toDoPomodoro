@@ -787,6 +787,7 @@ body {
 
 	.right {
 		height: calc(100% - 85px);
+		min-height: calc(100% - 120px);
 		background: var(--right_background);
 		flex: 4 20%;
 
@@ -871,7 +872,7 @@ body {
 	outline: none;
 	resize: none;
 	width: 100%;
-	height: 250px;
+	height: 200px;
 	color: var(--fonts);
 	// color: white;
 	border-radius: 8px;
