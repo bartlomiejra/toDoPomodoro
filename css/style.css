@@ -270,7 +270,6 @@ body {
 
 html .container,
 body .container {
-  min-height: 100%;
   background: var(--left_background);
   padding: 0;
   height: 100%;
