@@ -2949,7 +2949,7 @@ textarea:focus {
   display: -ms-flexbox;
   display: flex;
   height: calc(100vh - 54px);
-  max-height: calc(100vh - 54px);
+  max-height: calc(100vh - 70px);
 }
 
 @media screen and (max-width: 895px) {
