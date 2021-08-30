@@ -56,13 +56,13 @@
 
 		&__options {
 			font-size: 1.5rem;
-
+			
 			display: flex;
 			border-radius: 20px;
 			background-color: var(--task_color);
 		}
 	}
-
+	
 	&__header,
 	&__closebutton {
 		cursor: pointer;
@@ -72,7 +72,7 @@
 		font-size: 1.5rem;
 		font-weight: bold;
 	}
-
+	
 	&__savebtn {
 		
 		border-radius: 5px;
@@ -81,11 +81,12 @@
 		font-size: 1.5rem;
 		padding: 10px;
 	}
-
+	
 	&__savebtn:hover {
 		@include hoverlighter;
 	}
 }
+
 
 #overlay {
 	position: absolute;
