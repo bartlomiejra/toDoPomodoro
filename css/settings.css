@@ -270,7 +270,6 @@ body {
 
 html .container,
 body .container {
-  min-height: 100%;
   background: var(--left_background);
   padding: 0;
   height: 100%;
@@ -1381,7 +1380,7 @@ textarea:focus {
 }
 
 .tiles__addNote {
-  background: var(--backgrounddarker);
+  background: var(--task_color);
   padding: 15px;
   border-radius: 50px;
   position: absolute;
@@ -1768,7 +1767,6 @@ body {
 
 html .container,
 body .container {
-  min-height: 100%;
   background: var(--left_background);
   padding: 0;
   height: 100%;
@@ -2883,7 +2881,7 @@ textarea:focus {
 .noteCard__savebtn,
 .todoCard__savebtn {
   border-radius: 5px;
-  background-color: var(--backgrounddarker);
+  background-color: var(--statColor);
   color: var(--light-color);
   font-size: 1.5rem;
   padding: 10px;

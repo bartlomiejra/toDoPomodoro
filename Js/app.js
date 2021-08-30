@@ -235,7 +235,7 @@ aria-hidden="true"></i></button>
     if (mobileWidth.matches) {
         // projectIcon.classList.remove('none');
         centerDiv.classList.remove('none');
-        centerDiv.classList.add('center');
+        // centerDiv.classList.add('center');
         leftDiv.classList.add('leftnone');
     } else {
         // projectIcon.classList.add('none');

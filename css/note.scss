@@ -33,6 +33,8 @@
 		color: var(--hover_color);
 		font-weight: bold;
 		text-align: center;
+
+
 	}
 
 	&__tile:nth-child(2) {
@@ -84,7 +86,8 @@
 	}
 
 	&__addNote {
-		background: var(--backgrounddarker);
+		// background: var(--backgrounddarker);
+		background: var(--task_color);
 		padding: 15px;
 		border-radius: 50px;
 
