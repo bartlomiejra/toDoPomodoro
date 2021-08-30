@@ -314,6 +314,7 @@ body .left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 5px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -1187,13 +1188,13 @@ ol {
     font-size: 0.8rem;
   }
   .container .center_todo-item {
-    font-size: 4vw;
+    font-size: 1rem;
   }
   .container .center_todo-item i {
-    font-size: 4vw;
+    font-size: 3vw;
   }
   .container .time {
-    font-size: 4vw;
+    font-size: 3vw;
   }
   .container .left {
     font-size: 1.2rem;
@@ -1270,7 +1271,7 @@ ol {
 @media screen and (max-width: 480px) {
   .container .left {
     font-size: 1rem;
-    padding: 10px;
+    padding: 4px;
   }
   .container .left_pomodoreProjects {
     max-height: 40vh;

@@ -327,6 +327,7 @@ body {
 		flex-basis: 100px;
 		align-items: stretch;
 		display: flex;
+		padding: 5px;
 		flex-direction: column;
 		flex-shrink: 2;
 		background: var(--left_background);
@@ -1017,14 +1018,14 @@ ol {
 			font-size: 0.8rem;
 		}
 		.center_todo-item{
-			font-size: 4vw;
+			font-size: 1rem;
 			i{
-				font-size: 4vw;
+				font-size: 3vw;
 			}
 
 		}
 		.time{
-		font-size:	4vw;
+		font-size:	3vw;
 		}
 
 
@@ -1104,7 +1105,7 @@ ol {
 	.container {
 		.left {
 			font-size: 1rem;
-			padding: 10px;
+			padding: 4px;
 
 			&_pomodoreProjects {
 				max-height: 40vh;
