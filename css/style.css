@@ -561,6 +561,7 @@ body .center ul {
 
 html .center_divT,
 body .center_divT {
+  overflow: none;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
   height: 50px;
