@@ -49,8 +49,8 @@ closeSettings.forEach((span) => {
 
 let themeselected = settingUser.Theme;
 function openSettings() {
-    noteButton.classList.remove('buttonOn');
-    settingButton.classList.add('buttonOn');
+    // noteButton.classList.remove('buttonOn');
+    // settingButton.classList.add('buttonOn');
 
     // eslint-disable-next-line no-undef
     settingsDiv.classList.add('active');
