@@ -12,7 +12,7 @@
 	border: 0;
 	// position: absolute;
 	display: none;
-	min-height: 89.5vh;
+	// min-height: 89.5vh;
     flex-direction: column;
 
 	// top: 50%;
@@ -22,7 +22,7 @@
 	transition: transform 200ms ease-in-out;
 	border-radius: 10px;
 
-	background-color: var(--task);
+	// background-color: var(--task);
 	backdrop-filter: blur(10px);
 
 	opacity: 0.9;

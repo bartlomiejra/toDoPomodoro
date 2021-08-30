@@ -270,6 +270,7 @@ body {
 
 html .container,
 body .container {
+  min-height: 100%;
   background: var(--left_background);
   padding: 0;
   height: 100%;
@@ -288,7 +289,6 @@ body .container {
 
 html .container > *,
 body .container > * {
-  padding: 10px;
   -webkit-box-flex: 1;
       -ms-flex: 1 100%;
           flex: 1 100%;
