@@ -406,11 +406,6 @@ body .left_Projects {
   background-color: var(--task);
 }
 
-html .none,
-body .none {
-  display: none;
-}
-
 html .center,
 body .center {
   -webkit-box-flex: 4;
@@ -604,6 +599,11 @@ body .center_delete-btn {
   -ms-grid-row-span: 2;
   -ms-grid-column: 8;
   grid-area: delete-btn;
+}
+
+html .none,
+body .none {
+  display: none;
 }
 
 html .center_clocks,

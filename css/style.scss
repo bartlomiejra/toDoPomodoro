@@ -421,9 +421,7 @@ body {
 		}
 	}
 
-	.none {
-		display: none;
-	}
+	
 
 	.center {
 		flex: 4 45%;
@@ -561,6 +559,9 @@ body {
 		}
 	}
 
+.none {
+		display: none;
+	}
 	.center_clocks {
 		display: flex;
 		flex-direction: row;

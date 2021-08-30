@@ -11,7 +11,7 @@
 
 .tiles {
 	row-gap: 15px;
-	display: flex;
+	display: grid;
 	flex-flow: row wrap;
 	justify-content: center;
 	padding: 0;
@@ -84,7 +84,7 @@
 		background: var(--backgrounddarker);
 		padding: 15px;
 		border-radius: 50px;
-		
+
 		position: absolute;
 		bottom: 20px;
 		right: 20px;
@@ -99,19 +99,25 @@
 	}
 
 	&__note {
+
+		display: grid;
 		transform: 200ms ease-in-out;
-		transform: translate(-50%, -50%) scale(1);
-		border-radius: 10px;
-		color: var(--font-color);
+		transform: 200ms ease-in-out;
+
+		/* -webkit-transform: translate(-50%, -50%) scale(1); */
+		transform: translate(0, 0) scale(1);
+
+		/* border-radius: 10px; */
+
+		/* color: var(--font-color); */
 		background-color: var(--header_background);
-		height: 700px;
-		width: 700px;
-		max-height: 80%;
-		max-width: 90%;
-		z-index: 300;
 		position: absolute;
 		top: 50%;
 		left: 50%;
+
+		/* height: 200px; */
+		height: 300px;
+		width: 500px;
 	}
 
 	&__savebtn,
@@ -223,14 +229,14 @@
 @media screen and (max-width: 895px) {
 	.tiles {
 		row-gap: 15px;
-		
+
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
 		padding: 0;
 		margin: 20px;
 		list-style: none;
-		font-size: .7rem;
+		font-size: 0.7rem;
 
 		&__tile {
 			font-size: auto;
@@ -245,12 +251,11 @@
 		}
 	}
 
-
 	&__addNote {
 		background: var(--backgrounddarker);
 		padding: 15px;
 		border-radius: 50px;
-		
+
 		bottom: 10px;
 		right: 10px;
 	}

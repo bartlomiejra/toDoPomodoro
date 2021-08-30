@@ -406,11 +406,6 @@ body .left_Projects {
   background-color: var(--task);
 }
 
-html .none,
-body .none {
-  display: none;
-}
-
 html .center,
 body .center {
   -webkit-box-flex: 4;
@@ -604,6 +599,11 @@ body .center_delete-btn {
   -ms-grid-row-span: 2;
   -ms-grid-column: 8;
   grid-area: delete-btn;
+}
+
+html .none,
+body .none {
+  display: none;
 }
 
 html .center_clocks,
@@ -1403,14 +1403,6 @@ textarea:focus {
   border-radius: 10px;
   color: var(--font-color);
   background-color: var(--header_background);
-  height: 700px;
-  width: 700px;
-  max-height: 80%;
-  max-width: 90%;
-  z-index: 300;
-  position: absolute;
-  top: 50%;
-  left: 50%;
 }
 
 .tiles__savebtn, .tiles__deletebtn {
@@ -1902,11 +1894,6 @@ body .left_Projects {
   background-color: var(--task);
 }
 
-html .none,
-body .none {
-  display: none;
-}
-
 html .center,
 body .center {
   -webkit-box-flex: 4;
@@ -2100,6 +2087,11 @@ body .center_delete-btn {
   -ms-grid-row-span: 2;
   -ms-grid-column: 8;
   grid-area: delete-btn;
+}
+
+html .none,
+body .none {
+  display: none;
 }
 
 html .center_clocks,
@@ -2802,11 +2794,9 @@ textarea:focus {
 .noteCard,
 .todoCard {
   border: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(0);
-          transform: translate(-50%, -50%) scale(0);
+  display: none;
+  -webkit-transform: translate(0, 0) scale(0);
+          transform: translate(0, 0) scale(0);
   -webkit-transition: -webkit-transform 200ms ease-in-out;
   transition: -webkit-transform 200ms ease-in-out;
   transition: transform 200ms ease-in-out;
@@ -2816,11 +2806,6 @@ textarea:focus {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   opacity: 0.9;
-  z-index: 100;
-  width: 95%;
-  height: 95%;
-  max-width: 95%;
-  max-height: 95%;
 }
 
 .modal__header,
@@ -2917,16 +2902,15 @@ textarea:focus {
 .noteCard.active,
 .todoCard.active,
 .tiles__note.active {
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(0%, 0%) scale(1);
+          transform: translate(0%, 0%) scale(1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media screen and (max-width: 895px) {
   .modal {
-    width: 100vw;
-    height: 100vh;
-    max-width: 100%;
-    max-height: 100%;
     border: 0;
   }
 }
