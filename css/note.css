@@ -1107,6 +1107,7 @@ ol {
 }
 
 .nav {
+  padding: 5px;
   bottom: 0;
   width: 100%;
   display: -webkit-box;
@@ -1396,23 +1397,22 @@ textarea:focus {
 }
 
 .tiles__note {
-  display: -ms-grid;
-  display: grid;
+  display: inline;
   -webkit-transform: 200ms ease-in-out;
           transform: 200ms ease-in-out;
-  transform: 200ms ease-in-out;
-  /* -webkit-transform: translate(-50%, -50%) scale(1); */
-  -webkit-transform: translate(0, 0) scale(1);
-          transform: translate(0, 0) scale(1);
-  /* border-radius: 10px; */
-  /* color: var(--font-color); */
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  border-radius: 10px;
+  color: var(--font-color);
   background-color: var(--header_background);
+  height: 700px;
+  width: 700px;
+  max-height: 80%;
+  max-width: 90%;
+  z-index: 300;
   position: absolute;
   top: 50%;
   left: 50%;
-  /* height: 200px; */
-  height: 300px;
-  width: 500px;
 }
 
 .tiles__savebtn, .tiles__deletebtn {
