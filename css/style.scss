@@ -986,7 +986,7 @@ ol {
 }
 
 //mobile version
-@media screen and (min-width: 895px) {
+@media screen and (max-width: 895px) {
 	body {
 		font-size: 16px;
 	}
@@ -1016,14 +1016,14 @@ ol {
 			font-size: 0.8rem;
 		}
 		.center_todo-item{
-			font-size: 1rem;
+			font-size: 4vw;
 			i{
-				font-size: 1rem;
+				font-size: 4vw;
 			}
 
 		}
 		.time{
-		font-size:	1rem;
+		font-size:	4vw;
 		}
 
 
@@ -1098,20 +1098,6 @@ ol {
 		}
 	}
 }
- @media only screen and (max-width: 750px) {
-
-// @media screen and (max-width: 750px) {
-	.center_todo-item{
-				font-size: 6vw;
-				i{
-					font-size: 5vw;
-				}
-	
-			}
-			.time{
-			font-size:	5vw;
-			}
-		}
 
 @media screen and (max-width: 480px) {
 	.container {
