@@ -32,11 +32,18 @@ if (notes == null) {
 }
 function openNoteCard() {
     noteCard.classList.add('active');
-    overlay.classList.add('active');
+    // overlay.classList.add('active');
+    leftDiv.classList.add('none');
+    centerDiv.classList.add('none');
+    settingsDiv.classList.add('none');
+    todoCard.classList.add('none');
+
+    settingsDiv.classList.remove('active');
+    todoCard.classList.remove('active');
 }
 function closeNoteCard() {
     noteCard.classList.remove('active');
-    overlay.classList.remove('active');
+    // overlay.classList.remove('active');
 }
 openNote.addEventListener('click', openNoteCard);
 closeNote.addEventListener('click', closeNoteCard);

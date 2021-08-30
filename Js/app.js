@@ -233,21 +233,21 @@ aria-hidden="true"></i></button>
 
         .join('');
     if (mobileWidth.matches) {
-        projectIcon.classList.remove('none');
+        // projectIcon.classList.remove('none');
         centerDiv.classList.remove('none');
         centerDiv.classList.add('center');
         leftDiv.classList.add('leftnone');
     } else {
-        projectIcon.classList.add('none');
+        // projectIcon.classList.add('none');
     }
     window.onresize = function resizeFun() {
         if (mobileWidth.matches) {
-            projectIcon.classList.remove('none');
+            // projectIcon.classList.remove('none');
             centerDiv.classList.remove('none');
             centerDiv.classList.add('center');
             leftDiv.classList.add('leftnone');
         } else {
-            projectIcon.classList.add('none');
+            // projectIcon.classList.add('none');
         }
     };
 }
@@ -861,6 +861,20 @@ function deleteProject() {
     localStorage.setItem('Project', JSON.stringify(deleteProj));
     renderProjects();
 }
+
+function showToDocard() {
+    noteCard.classList.remove('active');
+    // overlay.classList.add('active');
+    leftDiv.classList.add('active');
+    leftDiv.classList.remove('none');
+    centerDiv.classList.remove('none');
+    // centerDiv.classList.add('active');
+    settingsDiv.classList.add('none');
+    todoCard.classList.add('none');
+
+    settingsDiv.classList.remove('active');
+    todoCard.classList.remove('active');
+}
 function showProjectList() {
     centerDiv.classList.add('none');
     centerDiv.classList.remove('center');
@@ -877,6 +891,7 @@ pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
 showProject.addEventListener('click', ifmobile);
+showProject.addEventListener('click', showToDocard);
 
 /*
   * Importand Information

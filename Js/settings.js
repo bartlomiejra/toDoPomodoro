@@ -4,6 +4,10 @@ const saveButton = document.getElementById('saveSettingUser');
 const pomodoreTime = document.getElementById('quantity');
 const breakTimeValue = document.getElementById('quantitybreak');
 const theme = document.querySelector('.modal__themes');
+const settingsDiv = document.querySelector('.settings');
+// const noteCard = document.querySelector('.noteCard');
+// const leftDiv = document.querySelector('.left');
+
 const overlay = document.getElementById('overlay');
 const container = document.querySelector('.container');
 const settingUser = JSON.parse(
@@ -31,8 +35,9 @@ ${settingUser.Theme === 'Dark' ? 'checked' : ''}
 `;
 function closeModal(modal) {
     if (modal == null) return;
-    modal.classList.remove('active');
-    overlay.classList.remove('active');
+    settingsDiv.classList.remove('active');
+
+    // overlay.classList.remove('active');
 }
 closeSettings.forEach((span) => {
     span.addEventListener('click', () => {
@@ -44,8 +49,18 @@ closeSettings.forEach((span) => {
 let themeselected = settingUser.Theme;
 function openSettings() {
     // eslint-disable-next-line no-undef
-    modal.classList.add('active');
-    overlay.classList.add('active');
+    settingsDiv.classList.add('active');
+    noteCard.classList.remove('active');
+    noteCard.classList.remove('none');
+    // overlay.classList.add('active');
+    leftDiv.classList.add('none');
+    centerDiv.classList.add('none');
+    todoCard.classList.add('none');
+
+    // settingsDiv.classList.remove('active');
+    todoCard.classList.remove('active');
+
+    // overlay.classList.add('active');
 }
 openModalButtons.addEventListener('click', openSettings);
 const themes = document.getElementsByName('theme');

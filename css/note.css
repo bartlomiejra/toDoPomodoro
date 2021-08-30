@@ -406,11 +406,6 @@ body .left_Projects {
   background-color: var(--task);
 }
 
-html .none,
-body .none {
-  display: none;
-}
-
 html .center,
 body .center {
   -webkit-box-flex: 4;
@@ -604,6 +599,11 @@ body .center_delete-btn {
   -ms-grid-row-span: 2;
   -ms-grid-column: 8;
   grid-area: delete-btn;
+}
+
+html .none,
+body .none {
+  display: none;
 }
 
 html .center_clocks,
@@ -1396,21 +1396,23 @@ textarea:focus {
 }
 
 .tiles__note {
+  display: -ms-grid;
+  display: grid;
   -webkit-transform: 200ms ease-in-out;
           transform: 200ms ease-in-out;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1);
-  border-radius: 10px;
-  color: var(--font-color);
+  transform: 200ms ease-in-out;
+  /* -webkit-transform: translate(-50%, -50%) scale(1); */
+  -webkit-transform: translate(0, 0) scale(1);
+          transform: translate(0, 0) scale(1);
+  /* border-radius: 10px; */
+  /* color: var(--font-color); */
   background-color: var(--header_background);
-  height: 700px;
-  width: 700px;
-  max-height: 80%;
-  max-width: 90%;
-  z-index: 300;
   position: absolute;
   top: 50%;
   left: 50%;
+  /* height: 200px; */
+  height: 300px;
+  width: 500px;
 }
 
 .tiles__savebtn, .tiles__deletebtn {
@@ -1536,7 +1538,7 @@ textarea:focus {
     padding: 0;
     margin: 20px;
     list-style: none;
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
   .tiles__tile {
     font-size: auto;
