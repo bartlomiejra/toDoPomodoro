@@ -1,6 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
+const menuLis = document.querySelectorAll('.nav_element');
+
+for (let nav of menuLis) {
+    nav.addEventListener('click', function () {
+        // 1. Remove Class from All Lis
+        for (let nav of menuLis) {
+            nav.classList.remove('selected');
+        }
+        this.classList.add('selected');
+    });
+}
 
 const centerDiv = document.querySelector('.center');
 const leftDiv = document.querySelector('.left');
@@ -247,6 +258,9 @@ aria-hidden="true"></i></button>
             centerDiv.classList.add('center');
             leftDiv.classList.add('leftnone');
         } else {
+            centerDiv.classList.add('active');
+            centerDiv.classList.remove('none');
+
             // projectIcon.classList.add('none');
         }
     };
@@ -790,6 +804,7 @@ function sortingProject(clicked_id) {
     const tasksProject = tasks.filter((item) => item.project == clicked);
     lists(tasksProject, todoList);
     return tasksProject;
+    showToDoCard();
 }
 
 function sortingProjectDays(e) {
@@ -850,6 +865,7 @@ ${todo.focus > 0 ? ` = ${todo.focus} min` : 0}
         default:
             break;
     }
+    showToDoCard();
 }
 document.querySelectorAll('.left_day').forEach((e) => {
     e.addEventListener('click', sortingProjectDays);
@@ -863,15 +879,9 @@ function deleteProject() {
 }
 
 function showToDoCard() {
-    noteCard.classList.remove('active');
-    leftDiv.classList.add('active');
-    leftDiv.classList.remove('none');
     centerDiv.classList.remove('none');
-    settingsDiv.classList.add('none');
-    todoCard.classList.add('none');
-    settingsDiv.classList.remove('active');
-    todoCard.classList.remove('active');
-    ifmobile();
+    centerDiv.classList.add('active');
+    // ifmobile();
 }
 function showProjectList() {
     centerDiv.classList.add('none');
@@ -891,7 +901,7 @@ pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
 showProject.addEventListener('click', ifmobile);
-showProject.addEventListener('click', showToDoCard);
+// showProject.addEventListener('click', showToDoCard);
 
 /*
   * Importand Information
@@ -919,3 +929,60 @@ function repeatTasks() {
 }
 repeatTasks();
 // console.log('elo'.pomodoreDuration);
+
+function openNoteCard(clicked_id) {
+    clicked = clicked_id.getAttribute('name');
+
+    const modals = document.querySelectorAll('.modal');
+    console.log(modals);
+    for (let ele of modals) {
+        // ele.addEventListener(
+        //     'click',
+        //     function () {
+        console.log('ok');
+        // 1. Remove Class from All Lis
+        // for (let el of modals) {
+        //dla każdego elementu z klasy modal jeżeli posiada klase (clicked czyli np note ) dodać do niego klase "Active" a jeśli nie to nic nie robić
+        ele.classList.remove('active');
+        ele.classList.add('none');
+        if (ele.classList.contains(clicked)) {
+            ele.classList.add('active');
+            ele.classList.remove('none');
+            console.log('posiada modal');
+        }
+
+        if (clicked == 'pomodoreCard' && mobileWidth.matches) {
+            // projectIcon.classList.remove('none');
+            centerDiv.classList.add('none');
+            centerDiv.classList.remove('active');
+
+            leftDiv.classList.add('leftnone');
+        }
+        //  else {
+        //     centerDiv.classList.add('active');
+        //     centerDiv.classList.remove('none');
+
+        //     leftDiv.classList.add('leftnone');
+        // }
+        // },
+
+        // 2. Add Class to Relevant Li
+        // this.classList.add('selected');
+        // this.classList.remove('active');
+        // console.log('class added');
+        // }
+        // )
+    }
+
+    console.log(clicked);
+    // openNote.classList.add('buttonOn');
+    // noteCard.classList.add('active');
+    // // overlay.classList.add('active');
+    // leftDiv.classList.add('none');
+    // centerDiv.classList.add('none');
+    // settingsDiv.classList.add('none');
+    // todoCard.classList.add('none');
+
+    // settingsDiv.classList.remove('active');
+    // todoCard.classList.remove('active');
+}

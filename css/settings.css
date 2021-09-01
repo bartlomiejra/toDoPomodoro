@@ -302,9 +302,10 @@ body .container > *__header {
 
 html .left,
 body .left {
+  overflow-y: hidden;
   min-width: 268px;
   margin-bottom: 10px;
-  overflow-y: auto;
+  overflow-x: hidden;
   max-height: calc(100vh - 85px);
   -ms-flex-preferred-size: 100px;
       flex-basis: 100px;
@@ -564,7 +565,7 @@ body .center_divT {
   overflow: none;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
-  height: 50px;
+  height: 60px;
   max-width: 500px;
   margin-bottom: 5px;
   border-radius: 8px;
@@ -575,8 +576,8 @@ body .center_divT {
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1.5fr 1fr;
-      grid-template-rows: 1.5fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
   gap: 0 0;
       grid-template-areas: 'complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn' 'complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn';
 }
@@ -1149,13 +1150,17 @@ ol {
   min-width: 50px;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 13px;
-  color: var(--font-color);
+  font-size: 1rem;
+  color: gray;
   text-decoration: none;
 }
 
 .nav_element:hover {
   cursor: pointer;
+}
+
+.selected {
+  color: var(--font-color);
 }
 
 .fa-coffee {
@@ -1490,7 +1495,7 @@ textarea:focus {
   outline: none;
   resize: none;
   width: 100%;
-  height: 75%;
+  height: 60%;
   color: var(--fonts);
   border-radius: 8px;
   -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -1819,9 +1824,10 @@ body .container > *__header {
 
 html .left,
 body .left {
+  overflow-y: hidden;
   min-width: 268px;
   margin-bottom: 10px;
-  overflow-y: auto;
+  overflow-x: hidden;
   max-height: calc(100vh - 85px);
   -ms-flex-preferred-size: 100px;
       flex-basis: 100px;
@@ -2081,7 +2087,7 @@ body .center_divT {
   overflow: none;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
-  height: 50px;
+  height: 60px;
   max-width: 500px;
   margin-bottom: 5px;
   border-radius: 8px;
@@ -2092,8 +2098,8 @@ body .center_divT {
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1.5fr 1fr;
-      grid-template-rows: 1.5fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
   gap: 0 0;
       grid-template-areas: 'complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn' 'complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn';
 }
@@ -2666,13 +2672,17 @@ ol {
   min-width: 50px;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 13px;
-  color: var(--font-color);
+  font-size: 1rem;
+  color: gray;
   text-decoration: none;
 }
 
 .nav_element:hover {
   cursor: pointer;
+}
+
+.selected {
+  color: var(--font-color);
 }
 
 .fa-coffee {

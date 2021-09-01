@@ -27,27 +27,29 @@ if (notes == null) {
             note: 'sd',
         },
     ];
+
     window.localStorage.setItem('Notes', JSON.stringify(notes));
 } else {
     notes = JSON.parse(localStorage.getItem('Notes'));
 }
-function openNoteCard() {
-    openNote.classList.add('buttonOn');
-    noteCard.classList.add('active');
-    // overlay.classList.add('active');
-    leftDiv.classList.add('none');
-    centerDiv.classList.add('none');
-    settingsDiv.classList.add('none');
-    todoCard.classList.add('none');
+// function openNoteCard() {
+//     console.log('its work');
+//     openNote.classList.add('buttonOn');
+//     noteCard.classList.add('active');
+//     // overlay.classList.add('active');
+//     leftDiv.classList.add('none');
+//     centerDiv.classList.add('none');
+//     settingsDiv.classList.add('none');
+//     todoCard.classList.add('none');
 
-    settingsDiv.classList.remove('active');
-    todoCard.classList.remove('active');
-}
+//     settingsDiv.classList.remove('active');
+//     todoCard.classList.remove('active');
+// }
 function closeNoteCard() {
     noteCard.classList.remove('active');
     // overlay.classList.remove('active');
 }
-openNote.addEventListener('click', openNoteCard);
+// openNote.addEventListener('click', openNoteCard);
 // closeNote.addEventListener('click', closeNoteCard);
 const createNote = document.querySelector('.tiles__add');
 const onenoteCard = document.querySelector('.tiles__note');
@@ -136,6 +138,7 @@ function noteOpen(clicked_id) {
     click = clicked_id;
 }
 function saveEditNote() {
+    console.log(this);
     notes = JSON.parse(localStorage.getItem('Notes')) || [];
     headerN = document.querySelector('.headerNote');
     notetext = document.querySelector('.notetext');

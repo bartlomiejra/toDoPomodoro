@@ -316,13 +316,13 @@ body {
 	}
 
 	.left {
-		// max-height: 50vh;
+		  overflow-y: hidden;
+
 		min-width: 268px;
 		    margin-bottom: 10px;
 
 
-		overflow-y: auto;
-		// overflow-x: hidden;
+		overflow-x: hidden;
 		max-height: calc(100vh - 85px);
 		flex-basis: 100px;
 		align-items: stretch;
@@ -537,7 +537,7 @@ body {
 			animation-duration: 3s;
 
 			// overflow: hidden;
-			height: 50px;
+			height: 60px;
 			max-width: 500px;
 			margin-bottom: 5px;
 			border-radius: 8px;
@@ -545,12 +545,13 @@ body {
 			background-color: var(--task_color);
 			display: grid;
 			grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
-			grid-template-rows: 1.5fr 1fr;
+			grid-template-rows: 1fr 1fr;
 			gap: 0 0;
 			grid-template-areas:
 				'complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn'
 				'complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn';
 		}
+		
 
 		&_complete-btn {
 			grid-area: complete-btn;
@@ -975,16 +976,21 @@ ol {
 		overflow: hidden;
 		white-space: nowrap;
 		// font-family: sans-serif;
-		font-size: 13px;
-		color: var(--font-color);
+		font-size: 1rem;
+		color: gray;
 		text-decoration: none;
 	}
-
+	
 	&_element:hover {
 		cursor: pointer;
 	}
 }
-
+.selected{
+	color: var(--font-color);
+	// font-weight: 900;
+	// background-color:rgb(87, 37, 37)
+	
+}
 .fa-coffee {
 	color: var(--hover_color);
 	font-size: 30px;

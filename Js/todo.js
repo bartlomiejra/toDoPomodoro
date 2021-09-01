@@ -8,7 +8,6 @@ const todoBut = document.getElementById('todoButton');
 function openTodoCard() {
     todoCard.classList.add('active');
     // note.classList.add('none');
-    todoBut.classList.add('buttonOn');
     noteCard.classList.remove('active');
     // overlay.classList.add('active');
     leftDiv.classList.add('none');
@@ -17,4 +16,4 @@ function openTodoCard() {
     settingsDiv.classList.remove('active');
 }
 
-openTodo.addEventListener('click', openTodoCard);
+// openTodo.addEventListener('click', openTodoCard);

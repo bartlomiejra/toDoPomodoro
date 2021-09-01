@@ -1,4 +1,4 @@
-const openModalButtons = document.getElementById('settingsButton');
+// const openModalButtons = document.getElementById('settingsButton');
 const closeSettings = document.querySelectorAll('[data-close-button ]');
 const saveButton = document.getElementById('saveSettingUser');
 const pomodoreTime = document.getElementById('quantity');
@@ -48,25 +48,7 @@ closeSettings.forEach((span) => {
 });
 
 let themeselected = settingUser.Theme;
-function openSettings() {
-    // noteButton.classList.remove('buttonOn');
-    // settingButton.classList.add('buttonOn');
 
-    // eslint-disable-next-line no-undef
-    settingsDiv.classList.add('active');
-    noteCard.classList.remove('active');
-    noteCard.classList.remove('none');
-    // overlay.classList.add('active');
-    leftDiv.classList.add('none');
-    centerDiv.classList.add('none');
-    todoCard.classList.add('none');
-
-    // settingsDiv.classList.remove('active');
-    todoCard.classList.remove('active');
-
-    // overlay.classList.add('active');
-}
-openModalButtons.addEventListener('click', openSettings);
 const themes = document.getElementsByName('theme');
 
 function themesValue() {
