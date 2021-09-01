@@ -1,13 +1,12 @@
 {
     "theme_color": "#14141c",
     "background_color": "#14141c",
-    "display": "standalone",
+    "display": "browser",
     "scope": "/",
     "start_url": "/index.html",
-    "name": "focustodo",
-    "short_name": "focustodo",
-	"description": "App to improve your productivity",
-
+    "name": "toDoPomodoro",
+    "description": "Your Note, todoList and Pomodoro Task in one place.",
+    "short_name": "todoPomodoro",
     "icons": [
         {
             "src": "/icon-192x192.png",
