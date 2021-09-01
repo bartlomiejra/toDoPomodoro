@@ -1047,7 +1047,7 @@ ol {
 			width: 100% !important;
 
 			&_addProjectBtn {
-				// max-width: 50px;
+				max-width: 50px;
 			}
 
 			&_title {
@@ -1085,8 +1085,7 @@ ol {
 
 			&_Project{
 				font-size: 2rem;
-				    min-width: 70vw;
-
+				
 			}
 			}
 
@@ -1123,7 +1122,7 @@ ol {
 			    overflow-x: hidden;
 
 			font-size: 1rem;
-			padding: 4px;
+			// padding: 4px;
 
 			&_pomodoreProjects {
 				max-height: 40vh;

@@ -1208,6 +1208,9 @@ ol {
     height: calc(100% - 85px);
     width: 100% !important;
   }
+  .container .left_addProjectBtn {
+    max-width: 50px;
+  }
   .container .left_title {
     margin: 1px;
     font-size: 2rem;
@@ -1240,7 +1243,6 @@ ol {
   }
   .container .left_Project {
     font-size: 2rem;
-    min-width: 70vw;
   }
   .container .circle {
     display: -webkit-box;
@@ -1279,7 +1281,6 @@ ol {
   .container .left {
     overflow-x: hidden;
     font-size: 1rem;
-    padding: 4px;
   }
   .container .left_pomodoreProjects {
     max-height: 40vh;

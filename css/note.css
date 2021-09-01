@@ -1114,7 +1114,7 @@ ol {
 }
 
 .nav {
-  padding: 5px;
+  margin: 10px;
   bottom: 0;
   width: 100%;
   display: -webkit-box;
@@ -1208,9 +1208,6 @@ ol {
     height: calc(100% - 85px);
     width: 100% !important;
   }
-  .container .left_addProjectBtn {
-    max-width: 50px;
-  }
   .container .left_title {
     margin: 1px;
     font-size: 2rem;
@@ -1229,7 +1226,6 @@ ol {
     background-color: var(--header_background);
   }
   .container .left_addProject {
-    position: absolute;
     width: 100%;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -1242,7 +1238,11 @@ ol {
             align-items: center;
     height: 40px;
   }
-  .container .left .circle {
+  .container .left_Project {
+    font-size: 2rem;
+    min-width: 70vw;
+  }
+  .container .circle {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1256,10 +1256,10 @@ ol {
     width: 15px;
     margin: 0 10px;
   }
-  .container .leftnone {
+  .leftnone {
     display: none;
   }
-  .container .right {
+  .right {
     width: 100vw;
     right: 0;
     -webkit-backdrop-filter: blur(9px);
@@ -1279,7 +1279,6 @@ ol {
   .container .left {
     overflow-x: hidden;
     font-size: 1rem;
-    padding: 4px;
   }
   .container .left_pomodoreProjects {
     max-height: 40vh;
