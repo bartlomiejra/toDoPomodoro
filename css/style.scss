@@ -1085,6 +1085,7 @@ ol {
 
 			&_Project{
 				font-size: 2rem;
+				  min-width: 70vw;
 				
 			}
 			}
@@ -1122,7 +1123,7 @@ ol {
 			    overflow-x: hidden;
 
 			font-size: 1rem;
-			// padding: 4px;
+			padding: 4px;
 
 			&_pomodoreProjects {
 				max-height: 40vh;
