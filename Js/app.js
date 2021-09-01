@@ -250,6 +250,9 @@ aria-hidden="true"></i></button>
         leftDiv.classList.add('leftnone');
     } else {
         // projectIcon.classList.add('none');
+        // centerDiv.classList.add('active');
+        // centerDiv.classList.remove('none');
+        // projectIcon.classList.add('none');
     }
     window.onresize = function resizeFun() {
         if (mobileWidth.matches) {
@@ -258,10 +261,6 @@ aria-hidden="true"></i></button>
             centerDiv.classList.add('center');
             leftDiv.classList.add('leftnone');
         } else {
-            centerDiv.classList.add('active');
-            centerDiv.classList.remove('none');
-
-            // projectIcon.classList.add('none');
         }
     };
 }
@@ -861,9 +860,12 @@ ${todo.focus > 0 ? ` = ${todo.focus} min` : 0}
                 )
 
                 .join('');
+            // lists(taskSomeday, todoList);
+
             break;
         default:
             break;
+            showToDoCard();
     }
     showToDoCard();
 }
@@ -879,6 +881,7 @@ function deleteProject() {
 }
 
 function showToDoCard() {
+    console.log('run');
     centerDiv.classList.remove('none');
     centerDiv.classList.add('active');
     // ifmobile();
@@ -958,20 +961,6 @@ function openNoteCard(clicked_id) {
 
             leftDiv.classList.add('leftnone');
         }
-        //  else {
-        //     centerDiv.classList.add('active');
-        //     centerDiv.classList.remove('none');
-
-        //     leftDiv.classList.add('leftnone');
-        // }
-        // },
-
-        // 2. Add Class to Relevant Li
-        // this.classList.add('selected');
-        // this.classList.remove('active');
-        // console.log('class added');
-        // }
-        // )
     }
 
     console.log(clicked);
