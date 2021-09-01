@@ -10,8 +10,10 @@
 .noteCard,
 .todoCard {
 	border: 0;
-	max-height: calc(100vh - 54px);
+	// max-height: calc(100vh - 54px);
 
+	height: calc(100vh - 150px);
+    max-height: calc(100vh - 150px);
 	// position: absolute;
 	display: none;
 	// min-height: 89.5vh;
