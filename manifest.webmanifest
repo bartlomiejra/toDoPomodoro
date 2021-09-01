@@ -7,7 +7,7 @@
     "name": "toDoPomodoro",
     "description": "Your Note, todoList and Pomodoro Task in one place.",
     "short_name": "todoPomodoro",
-    "icons": [
+	"icons": [
         {
             "src": "/icon-192x192.png",
             "sizes": "192x192",

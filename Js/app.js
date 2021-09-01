@@ -249,10 +249,10 @@ aria-hidden="true"></i></button>
         // centerDiv.classList.add('center');
         leftDiv.classList.add('leftnone');
     } else {
-        projectIcon.classList.add('none');
-        centerDiv.classList.add('active');
-        centerDiv.classList.remove('none');
-        projectIcon.classList.add('none');
+        // projectIcon.classList.add('none');
+        // centerDiv.classList.add('active');
+        // centerDiv.classList.remove('none');
+        // projectIcon.classList.add('none');
     }
     window.onresize = function resizeFun() {
         if (mobileWidth.matches) {
