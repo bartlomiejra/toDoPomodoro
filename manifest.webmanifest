@@ -1,7 +1,7 @@
 {
     "theme_color": "#14141c",
     "background_color": "#14141c",
-    "display": "browser",
+    "display": "standalone",
     "scope": "/",
     "start_url": "/index.html",
     "name": "toDoPomodoro",
