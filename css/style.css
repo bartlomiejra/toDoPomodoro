@@ -1114,7 +1114,6 @@ ol {
 }
 
 .nav {
-  margin-bottom: 70px;
   padding: 5px;
   bottom: 0;
   width: 100%;
@@ -1174,6 +1173,7 @@ ol {
     font-size: 16px;
   }
   .container {
+    overflow-y: auto;
     border-radius: none;
     margin: 0;
     width: 100%;

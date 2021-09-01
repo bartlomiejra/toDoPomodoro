@@ -956,7 +956,7 @@ ol {
 }
 
 .nav {
-	margin-bottom: 70px;
+	// margin-bottom: 70px;
 	padding:5px;
 	bottom: 0;
 	width: 100%;
@@ -1004,6 +1004,7 @@ ol {
 	}
 
 	.container {
+		overflow-y: auto;
 		border-radius: none;
 		margin: 0;
 		width: 100%;
