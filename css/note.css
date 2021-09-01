@@ -1203,6 +1203,7 @@ ol {
     font-size: 3vw;
   }
   .container .left {
+    overflow-x: hidden;
     font-size: 1.2rem;
     height: calc(100% - 85px);
     width: 100% !important;
@@ -1239,7 +1240,7 @@ ol {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 30px;
+    height: 40px;
   }
   .container .left .circle {
     display: -webkit-box;
@@ -1276,6 +1277,7 @@ ol {
 
 @media screen and (max-width: 480px) {
   .container .left {
+    overflow-x: hidden;
     font-size: 1rem;
     padding: 4px;
   }

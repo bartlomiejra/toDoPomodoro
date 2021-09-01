@@ -802,9 +802,9 @@ function sortingProject(clicked_id) {
 
     tasks = JSON.parse(localStorage.getItem('Items')) || [];
     const tasksProject = tasks.filter((item) => item.project == clicked);
+    showToDoCard();
     lists(tasksProject, todoList);
     return tasksProject;
-    showToDoCard();
 }
 
 function sortingProjectDays(e) {

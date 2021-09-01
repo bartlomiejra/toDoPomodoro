@@ -1040,13 +1040,14 @@ ol {
 
 
 		.left {
+    overflow-x: hidden;
 
 			font-size: 1.2rem;
 			height: calc(100% - 85px);
 			width: 100% !important;
 
 			&_addProjectBtn {
-				max-width: 50px;
+				// max-width: 50px;
 			}
 
 			&_title {
@@ -1074,12 +1075,19 @@ ol {
 			}
 
 			&_addProject {
-				position: absolute;
+				// position: absolute;
 				width: 100%;
 				justify-content: center;
 				display: flex;
 				align-items: center;
-				height: 30px;
+				height: 40px;
+			}
+
+			&_Project{
+				font-size: 2rem;
+				    min-width: 70vw;
+
+			}
 			}
 
 			.circle {
@@ -1108,11 +1116,12 @@ ol {
 			transition: transform 0.9s 0.9s ease-in-out;
 		}
 	}
-}
 
 @media screen and (max-width: 480px) {
 	.container {
 		.left {
+			    overflow-x: hidden;
+
 			font-size: 1rem;
 			padding: 4px;
 
