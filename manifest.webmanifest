@@ -4,7 +4,7 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/index.html",
-    "name": "toDoPomodoro",
+    "name": "PomoNote",
     "description": "Your Note, todoList and Pomodoro Task in one place.",
     "short_name": "todoPomodoro",
 	"icons": [
