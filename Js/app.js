@@ -260,6 +260,8 @@ aria-hidden="true"></i></button>
             // centerDiv.classList.remove('none');
             centerDiv.classList.add('center');
             leftDiv.classList.add('leftnone');
+            leftDiv.classList.add('none');
+            leftDiv.classList.remove('active');
         } else {
         }
     };
