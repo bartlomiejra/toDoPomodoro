@@ -196,8 +196,8 @@ function lists(todolist = []) {
 				
 				${
                     todo.focus > [pomodoreDuration]
-                        ? '<i class="fas fa-clock  time" aria-hidden="true"> </i>'
-                        : '<i class="fas fa-clock blur  time" aria-hidden="true"> </i>'
+                        ? '<i class="fas fa-clock  " aria-hidden="true"> </i>'
+                        : '<i class="fas fa-clock blur  " aria-hidden="true"> </i>'
                 }
 				<div class="score"> 
 				${
