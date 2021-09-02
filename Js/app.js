@@ -886,6 +886,10 @@ function showToDoCard() {
     console.log('run');
     centerDiv.classList.remove('none');
     centerDiv.classList.add('active');
+    if (mobileWidth.matches) {
+        leftDiv.classList.add('none');
+        leftDiv.classList.remove('active');
+    }
     // ifmobile();
 }
 function showProjectList() {
