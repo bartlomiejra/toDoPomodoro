@@ -244,8 +244,8 @@ aria-hidden="true"></i></button>
 
         .join('');
     if (mobileWidth.matches) {
-        // projectIcon.classList.remove('none');
-        centerDiv.classList.remove('none');
+        centerDiv.classList.remove('active');
+        centerDiv.classList.add('none');
         // centerDiv.classList.add('center');
         leftDiv.classList.add('leftnone');
     } else {
