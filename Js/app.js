@@ -635,7 +635,8 @@ function showDiv(clickedId) {
         description.innerHTML = `
 <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
 <i class="fas fa-times"
-    aria-hidden="true"></i></button>
+    aria-hidden="true"></i>
+	</button>
     <div class="right_divT ">
     <div  class="center_todo-item" id="item" >
     ${taskDetails.text}</div>
