@@ -250,7 +250,9 @@ aria-hidden="true"></i></button>
         leftDiv.classList.add('leftnone');
     } else {
         // projectIcon.classList.add('none');
-        // centerDiv.classList.add('active');
+        centerDiv.classList.add('active');
+        leftDiv.classList.remove('none');
+        leftDiv.classList.add('active');
         // centerDiv.classList.remove('none');
         // projectIcon.classList.add('none');
     }
