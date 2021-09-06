@@ -175,7 +175,7 @@
 
 	&__noteHeader {
 		resize: none;
-		margin-top: 35px;
+		margin-top: 50px;
 		display: box;
 		display: flexbox;
 		display: flex;
@@ -232,6 +232,9 @@
 	font-size: 1.8rem;
 	padding: 0.3rem;
 }
+
+
+
 
 .fa-times:hover {
 	@include hoverlighter;

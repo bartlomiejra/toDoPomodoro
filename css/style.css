@@ -256,7 +256,7 @@ i {
 
 html,
 body {
-  min-height: 100%;
+  min-height: 100vh;
   height: 100%;
   overflow: hidden;
   font-size: 16px;
@@ -1296,6 +1296,12 @@ ol {
   .container .left_pomodoreProjects {
     max-height: 40vh;
   }
+}
+
+.x-note {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .dss:hover {

@@ -217,7 +217,7 @@ i {
 
 html,
 body {
-	min-height:100%
+	min-height:100vh
 ;
 	height:100%;
 
@@ -1090,6 +1090,12 @@ ol {
 			}
 		}
 	}
+}
+
+.x-note{
+	position: absolute;
+	top: 20px;
+	right: 20px;
 }
 
 .dss:hover {

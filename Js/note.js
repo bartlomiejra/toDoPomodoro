@@ -57,7 +57,7 @@ function addNote() {
     tilesNote.innerHTML = `  
 <button class="tiles__savebtn" onClick="saveNote()"id="saveNote">Save</button>
 <button class="tiles__deletebtn closeNotebtn" onClick="deleteyourNote()" id="deleteNote">Delete Last Note</button>
-<button  id="closethisNote" class="modal__closebutton" onClick='closeonenoteCard()'><i class="fas fa-times"></i></button>
+<button  id="closethisNote" class="modal__closebutton" onClick='closeonenoteCard()'><i class="fas x-note fa-times"></i></button>
 <input class="tiles__noteHeader" id="noteHeader" placeholder="Title" type="text" value=""></input>
 <p class="date" value=dateToday>
 ${dateToday} 
@@ -129,7 +129,7 @@ function noteOpen(clicked_id) {
     onenoteCard.innerHTML = `
       <button class="tiles__savebtn" id="saveNote" onClick='saveEditNote()'>Save</button>
 <button class="tiles__deletebtn closeNotebtn" id="deleteNotes" onClick='removeNote()'>Delete Note</button>
-<button   onclick='closeSingleNote()' class="modal__closebutton "><i class="fas fa-times"></i></button>
+<button   onclick='closeSingleNote()' class="modal__closebutton x-note "><i class="fas fa-times"></i></button>
 <textarea class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"/>${notes[clicked_id].title}</textarea>
 <p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
 <textarea name="message"  id="textarea" placeholder="Type something..." class="tiles__textarea notetext" >${notes[clicked_id].note} </textarea>
