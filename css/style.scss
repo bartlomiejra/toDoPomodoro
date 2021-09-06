@@ -1019,12 +1019,15 @@ ol {
 			}
 
 			&_addProject {
-				// position: absolute;
+				position: absolute;
 				width: 100%;
 				justify-content: center;
 				display: flex;
+				// position:sticky;
+				bottom: 10vh;
 				align-items: center;
 				// height: 40px;
+				// bottom: 10px;
 			}
 
 			&_Projects {
