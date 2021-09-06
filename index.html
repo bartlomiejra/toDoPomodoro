@@ -41,10 +41,12 @@ content="Pomodoro, Notes and Tasks in one app.">
 			<!-- <div class="left_profilphoto">Profil Photo</div> -->
 			</div>
 			<ol class="left_listdays ">
-				<li class=" left_day" tabindex="0" id="today"> <i class="far fa-calendar-alt"></i>Today</li>
-				<li class=" left_day" tabindex="0" id="tomorrow"> <i class="far fa-calendar-alt"></i>Tomorrow</li>
-				<li class=" left_day" tabindex="0" id="someday"> <i class="far fa-calendar-alt"></i>Someday</li>
-				<li class=" left_day" tabindex="0" id="history"> <i class="far fa-check-circle"></i>Completed tasks
+				<li class="sortTask today left_day" name="today" onCLick="activeProject(this)" tabindex="0"> <i class="far fa-calendar-alt" >
+
+				</i>Today</li>
+				<li class="sortTask tomorrow left_day" name="tomorrow"  onCLick="activeProject(this)" tabindex="0" id="tomorrow"> <i class="far fa-calendar-alt"></i>Tomorrow</li>
+				<li class="sortTask someday left_day select" name="someday" onCLick="activeProject(this)" tabindex="0" id="someday"> <i class="far fa-calendar-alt"></i>Someday</li>
+				<li class="sortTask completed left_day  " name="completed" onCLick="activeProject(this)" tabindex="0" id="history"> <i class="far fa-check-circle"></i>Completed tasks
 				</li>
 			</ol>
 				<div class="left_pomodoreProjects">

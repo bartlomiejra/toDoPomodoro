@@ -585,6 +585,7 @@ body {
 
 			.clock_countdown {
 				font-size: 4rem;
+				
 			}
 
 			// #countdown {
@@ -782,7 +783,15 @@ body {
 .blur {
 	opacity: 0.2;
 }
-
+.select{
+	background-color: var(--statColor);
+	margin: 5px 0;
+	padding: 5px;
+	border-radius: 5px;
+	// transform: scale(1.05);
+	background-position: 0 100%;
+	color: var(--hovercolor);
+}
 .projectList {
 	display: flex;
 	color: var(--font-color);
@@ -976,6 +985,9 @@ ol {
 		}
 		.time{
 		font-size:	3vw;
+		}
+		.clock{
+			
 		}
 
 

@@ -776,15 +776,14 @@ function addProject(event) {
     addPr.value = '';
     renderProjects();
 }
-//! napisać funkcje która będzie zliczać ile razy nazwa danego projektu
-//! wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
+
 function renderProjects() {
     const proj = JSON.parse(localStorage.getItem('Project')) || [];
     pomodoreList.innerHTML = proj
         .map(
             (proje) => `
-<li class="left_projectItem" >
- <div class="projectList" tabindex="0" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}">
+<li class=" sortTask ${proje.name} left_projectItem" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}" >
+ <div class="projectList " tabindex="0" onclick="activeProject(this)" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}">
   <span class="circle" style="background-color: ${proje.color};">
   </span>
   ${proje.name} 
@@ -952,6 +951,25 @@ function repeatTasks() {
 repeatTasks();
 // console.log('elo'.pomodoreDuration);
 
+function activeProject(clicked_id) {
+    sell = clicked_id.getAttribute('name');
+    const sorts = document.querySelectorAll('.sortTask');
+    // console.log(sorts);
+    console.log(sell);
+    for (let ele of sorts) {
+        ele.classList.remove('select');
+        if (ele.classList.contains(sell)) {
+            ele.classList.add('select');
+            console.log(sell);
+        } else {
+            console.log(sell);
+            console.log('brak name takiejsamej jak klasa');
+        }
+    }
+
+    // nameofProject =
+    console.log('to dizała');
+}
 function openNoteCard(clicked_id) {
     clicked = clicked_id.getAttribute('name');
 
@@ -962,9 +980,7 @@ function openNoteCard(clicked_id) {
         //     'click',
         //     function () {
         console.log('ok');
-        // 1. Remove Class from All Lis
-        // for (let el of modals) {
-        //dla każdego elementu z klasy modal jeżeli posiada klase (clicked czyli np note ) dodać do niego klase "Active" a jeśli nie to nic nie robić
+
         ele.classList.remove('active');
         ele.classList.add('none');
         if (ele.classList.contains(clicked)) {
@@ -994,3 +1010,5 @@ function openNoteCard(clicked_id) {
     // settingsDiv.classList.remove('active');
     // todoCard.classList.remove('active');
 }
+//! napisać funkcje która będzie zliczać ile razy nazwa danego projektu
+//! wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
