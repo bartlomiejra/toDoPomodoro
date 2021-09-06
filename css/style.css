@@ -546,7 +546,7 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
-  max-height: 64vh;
+  height: 100%;
   overflow: hidden;
   overflow-y: auto;
   scroll-behavior: hidden;
@@ -1336,5 +1336,11 @@ input:focus,
 select:focus,
 textarea:focus {
   border: 0;
+}
+
+.centerclock {
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 /*# sourceMappingURL=style.css.map */

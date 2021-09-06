@@ -459,7 +459,9 @@ body {
 
 		&_todolist {
 			// min-width: 500px;
-			max-height: 64vh;
+			// max-height: 64vh;
+			height: 100%;
+			
 			overflow: hidden;
 			overflow-y: auto;
 			scroll-behavior: hidden;
@@ -1144,3 +1146,6 @@ textarea:focus {
 
 
 // }
+.centerclock{
+left: 50%; transform: translate(-50% , -50%)
+}

@@ -628,8 +628,10 @@ function resizeClock() {
     clockTimer.classList.add('clock_clockVisible');
     if (clockTimer.classList.contains('clock_fullscreen')) {
         clockTimer.classList.remove('clock_fullscreen');
+        clockTimer.classList.add('centerclock');
     } else {
         clockTimer.classList.add('clock_fullscreen');
+        clockTimer.classList.remove('centerclock');
     }
 }
 
