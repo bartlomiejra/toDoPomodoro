@@ -2,7 +2,6 @@
 // @import 'style';
 @import 'virables';
 
-
 *,
 *::after *::before {
 	box-sizing: border-box;
@@ -15,11 +14,11 @@
 	// max-height: calc(100vh - 54px);
 
 	height: calc(100vh - 53px);
-    max-height: calc(100vh - 53px);
+	max-height: calc(100vh - 53px);
 	// position: absolute;
 	display: none;
 	// min-height: 89.5vh;
-    flex-direction: column;
+	flex-direction: column;
 
 	// top: 50%;
 	// left: 50%;
@@ -60,13 +59,13 @@
 
 		&__options {
 			font-size: 1.5rem;
-			
+
 			display: flex;
 			border-radius: 20px;
 			background-color: var(--task_color);
 		}
 	}
-	
+
 	&__header,
 	&__closebutton {
 		cursor: pointer;
@@ -76,21 +75,20 @@
 		font-size: 1.5rem;
 		font-weight: bold;
 	}
-	
+
 	&__savebtn {
-		
+
 		border-radius: 5px;
 		background-color: var(--statColor);
 		color: var(--light-color);
 		font-size: 1.5rem;
 		padding: 10px;
 	}
-	
+
 	&__savebtn:hover {
 		@include hoverlighter;
 	}
 }
-
 
 #overlay {
 	position: absolute;
@@ -130,7 +128,6 @@
 		border: 0;
 	}
 }
-
 
 // .modal{
 // 	display: flex;

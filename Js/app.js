@@ -3,10 +3,10 @@
 /* eslint-disable eqeqeq */
 const menuLis = document.querySelectorAll('.nav_element');
 
-for (let nav of menuLis) {
+for (const nav of menuLis) {
     nav.addEventListener('click', function () {
         // 1. Remove Class from All Lis
-        for (let nav of menuLis) {
+        for (const nav of menuLis) {
             nav.classList.remove('selected');
         }
         this.classList.add('selected');
@@ -265,11 +265,9 @@ window.onresize = function resizeFun() {
             centerDiv.classList.add('none');
         }
         centerDiv.classList.add('center');
-    } else {
-        if (leftDiv.classList.contains('active')) {
-            centerDiv.classList.add('active');
-            centerDiv.classList.remove('none');
-        }
+    } else if (leftDiv.classList.contains('active')) {
+        centerDiv.classList.add('active');
+        centerDiv.classList.remove('none');
     }
 };
 
@@ -951,7 +949,7 @@ function activeProject(clicked_id) {
     const sorts = document.querySelectorAll('.sortTask');
     // console.log(sorts);
     console.log(sell);
-    for (let ele of sorts) {
+    for (const ele of sorts) {
         ele.classList.remove('select');
         if (ele.classList.contains(sell)) {
             ele.classList.add('select');
@@ -970,7 +968,7 @@ function openNoteCard(clicked_id) {
 
     const modals = document.querySelectorAll('.modal');
     console.log(modals);
-    for (let ele of modals) {
+    for (const ele of modals) {
         // ele.addEventListener(
         //     'click',
         //     function () {
