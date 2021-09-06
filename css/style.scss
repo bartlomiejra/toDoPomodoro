@@ -312,6 +312,15 @@ body {
 			flex-wrap: nowrap;
 		}
 
+		&__title {
+			padding: 5px 15px;
+			cursor: pointer;
+			outline: none;
+			background: none;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+
 		@mixin left-addproject {
 			max-height: 40px;
 			text-align: center;
@@ -921,6 +930,7 @@ ol {
 		// font-family: sans-serif;
 		font-size: 1rem;
 		color: gray;
+		// color: var(--task_color);
 		text-decoration: none;
 	}
 
@@ -994,6 +1004,7 @@ ol {
 			&_title {
 				margin: 1px;
 				font-size: 2rem;
+
 				text-align: center;
 			}
 
@@ -1019,15 +1030,14 @@ ol {
 			}
 
 			&_addProject {
-				position: absolute;
 				width: 100%;
 				justify-content: center;
 				display: flex;
-				// position:sticky;
 				bottom: 10vh;
 				align-items: center;
-				// height: 40px;
-				// bottom: 10px;
+				position: sticky;
+				height: 60px;
+				top: 100vh;
 			}
 
 			&_Projects {

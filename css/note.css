@@ -82,7 +82,6 @@
 
 .tiles__addNote {
   max-height: 60px;
-  background: var(--task_color);
   padding: 15px;
   border-radius: 50px;
   z-index: 301;
@@ -104,8 +103,6 @@
 }
 
 .tiles__note {
-  -webkit-transform: 200ms ease-in-out;
-          transform: 200ms ease-in-out;
   -webkit-transform: translate(-50%, -50%) scale(1);
           transform: translate(-50%, -50%) scale(1);
   border-radius: 10px;
@@ -151,8 +148,6 @@
 .tiles__noteHeader {
   resize: none;
   margin-top: 50px;
-  display: box;
-  display: flexbox;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

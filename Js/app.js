@@ -138,7 +138,6 @@ if (settinglocal == null) {
     pomodoreDuration = settinglocal.pomodoreTime;
     pomodorebreakTime = settinglocal.breakTime;
 }
-console.log(pomodoreDuration);
 let countdownTime;
 const countdownTimer = document.getElementById('countdown');
 let taskId = 0;
@@ -187,24 +186,24 @@ function lists(todolist = []) {
                     ? '<li   class="center_divT completed">'
                     : '<li class="center_divT " >'
             }    
-				<div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
+<div  class="center_todo-item" id="item${todo.id}" >${todo.text} ${
                 todo.repeatday != 0 ? "<i class='fas fa-redo'></i>" : ''
             }
 
-				</div>
-				<div  class="center_clocks"> 
-				
-				${
-                    todo.focus > [pomodoreDuration]
-                        ? '<i class="fas fa-clock  " aria-hidden="true"> </i>'
-                        : '<i class="fas fa-clock blur  " aria-hidden="true"> </i>'
-                }
-				<div class="score"> 
-				${
-                    todo.focus / pomodoreDuration > 2
-                        ? ` x ${Math.floor(todo.focus / pomodoreDuration)}`
-                        : ''
-                }
+</div>
+<div  class="center_clocks"> 
+
+${
+    todo.focus > [pomodoreDuration]
+        ? '<i class="fas fa-clock  " aria-hidden="true"> </i>'
+        : '<i class="fas fa-clock blur  " aria-hidden="true"> </i>'
+}
+<div class="score"> 
+${
+    todo.focus / pomodoreDuration > 2
+        ? ` x ${Math.floor(todo.focus / pomodoreDuration)}`
+        : ''
+}
 </div> 
 </div>
 
@@ -334,10 +333,6 @@ function statTask() {
             toBeCompleted += 1;
         }
     }
-
-    console.log(taskToday);
-    console.log(toBeCompleted);
-    console.log(countCompleted);
 
     document.getElementById('completedTasks').innerHTML = countCompleted;
     document.getElementById('taskstobe').innerHTML = toBeCompleted;
@@ -645,9 +640,7 @@ function showDiv(clickedId) {
         description.innerHTML = `
 <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
 <i class="fas fa-times"
-    aria-hidden="true"></i>
-	
-	</button>
+    aria-hidden="true"></i></button>
     <div class="right_divT ">
     <div  class="center_todo-item" id="item" >
     ${taskDetails.text}</div>
@@ -786,8 +779,8 @@ function renderProjects() {
     pomodoreList.innerHTML = proj
         .map(
             (proje) => `
-<li class=" sortTask ${proje.name} left_projectItem" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}" >
- <div class="projectList " tabindex="0" onclick="activeProject(this)" onclick="sortingProject(this)"  value="${proje.name}" name="${proje.name}">
+<li class=" sortTask ${proje.name} left_projectItem"   value="${proje.name}" name="${proje.name}" >
+ <div class="projectList " tabindex="0"  onclick="sortingProject(this); activeProject(this);"   value="${proje.name}" name="${proje.name}">
   <span class="circle" style="background-color: ${proje.color};">
   </span>
   ${proje.name} 
@@ -899,7 +892,6 @@ function deleteProject() {
 }
 
 function showToDoCard() {
-    console.log('run');
     centerDiv.classList.remove('none');
     centerDiv.classList.add('active');
     if (mobileWidth.matches) {
@@ -945,41 +937,31 @@ function repeatTasks() {
 repeatTasks();
 
 function activeProject(clicked_id) {
-    sell = clicked_id.getAttribute('name');
+    const sell = clicked_id.getAttribute('name');
     const sorts = document.querySelectorAll('.sortTask');
-    // console.log(sorts);
-    console.log(sell);
     for (const ele of sorts) {
         ele.classList.remove('select');
         if (ele.classList.contains(sell)) {
             ele.classList.add('select');
-            console.log(sell);
-        } else {
-            console.log(sell);
-            console.log('brak name takiejsamej jak klasa');
         }
     }
 
     // nameofProject =
-    console.log('to dizała');
 }
 function openNoteCard(clicked_id) {
     clicked = clicked_id.getAttribute('name');
 
     const modals = document.querySelectorAll('.modal');
-    console.log(modals);
     for (const ele of modals) {
         // ele.addEventListener(
         //     'click',
         //     function () {
-        console.log('ok');
 
         ele.classList.remove('active');
         ele.classList.add('none');
         if (ele.classList.contains(clicked)) {
             ele.classList.add('active');
             ele.classList.remove('none');
-            console.log('posiada modal');
         }
 
         if (clicked == 'pomodoreCard' && mobileWidth.matches) {
@@ -991,7 +973,6 @@ function openNoteCard(clicked_id) {
         }
     }
 
-    console.log(clicked);
     // openNote.classList.add('buttonOn');
     // noteCard.classList.add('active');
     // // overlay.classList.add('active');

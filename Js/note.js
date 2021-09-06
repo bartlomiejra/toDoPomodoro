@@ -138,7 +138,6 @@ function noteOpen(clicked_id) {
     click = clicked_id;
 }
 function saveEditNote() {
-    console.log(this);
     notes = JSON.parse(localStorage.getItem('Notes')) || [];
     headerN = document.querySelector('.headerNote');
     notetext = document.querySelector('.notetext');

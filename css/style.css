@@ -65,7 +65,7 @@ input::-webkit-color-swatch {
   --center-color: #f7f6f0;
   --right_background: #abada2;
   --timerFinishColor: rgba(255, 255, 255, 0.725);
-  --backgrounddarker: #000000;
+  --backgrounddarker: #000;
   --header_background: #b2bfcc;
   --statColor: #f2f1ea;
   --left_background: #626074;
@@ -73,7 +73,7 @@ input::-webkit-color-swatch {
   --task_color: #9b9a9a;
   --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
   --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
-  --number-color: #000000;
+  --number-color: #000;
   --light-color: #0c0c0c;
   --font-color: black;
   --addProjectbtn: #e0e0e0;
@@ -379,6 +379,16 @@ body .left_addProject {
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+}
+
+html .left__title,
+body .left__title {
+  padding: 5px 15px;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 html .left_color,
@@ -1239,7 +1249,6 @@ ol {
     background-color: var(--header_background);
   }
   .container .left_addProject {
-    position: absolute;
     width: 100%;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -1251,6 +1260,10 @@ ol {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    height: 60px;
+    top: 100vh;
   }
   .container .left_Projects {
     font-size: 1rem;

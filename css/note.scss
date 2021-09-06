@@ -86,7 +86,6 @@
 
 	&__addNote {
 		max-height: 60px;
-		background: var(--task_color);
 		padding: 15px;
 		border-radius: 50px;
 		z-index: 301;
@@ -107,19 +106,6 @@
 	}
 
 	&__note {
-
-		// display: grid;
-		// transform: 200ms ease-in-out;
-		// transform: 200ms ease-in-out;
-
-		// /* -webkit-transform: translate(-50%, -50%) scale(1); */
-		// transform: translate(0, 0) scale(1);
-
-		// /* border-radius: 10px; */
-
-		// /* color: var(--font-color); */
-		// background-color: var(--header_background);
-		// position: absolute;
 		// top: 50%;
 		// left: 50%;
 
@@ -128,7 +114,7 @@
 		// width: 500px;
 		// display: flex;
 
-		transform: 200ms ease-in-out;
+		// transform: 200ms ease-in-out;
 		transform: translate(-50%, -50%) scale(1);
 		border-radius: 10px;
 		color: var(--font-color);
@@ -173,8 +159,6 @@
 	&__noteHeader {
 		resize: none;
 		margin-top: 50px;
-		display: box;
-		display: flexbox;
 		display: flex;
 
 		/* margin-top: 50px; */
