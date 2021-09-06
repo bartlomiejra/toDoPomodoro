@@ -45,7 +45,7 @@ if (history == null) {
             text: 'Meditate',
             done: true,
             focus: 21,
-            project: 'Mindfulness 🧘',
+            project: 'Mindfulness🧘',
             repeatday: '1',
             repeatpartoftime: 'day',
             data: 4,
@@ -75,7 +75,7 @@ if (todos == null) {
             text: 'Meditate',
             done: false,
             focus: 0,
-            project: 'Mindfulness 🧘',
+            project: 'Mindfulness🧘',
             repeatday: '1',
             repeatpartoftime: 'day',
             data: dateToday,
@@ -86,7 +86,7 @@ if (todos == null) {
             text: 'Basic Spanish Words',
             done: false,
             focus: 0,
-            project: 'Spanish Lesson 🇪🇸',
+            project: 'Spanish Lesson🇪🇸',
             repeatday: '1',
             repeatpartoftime: 'day',
             data: dateToday,
@@ -110,12 +110,12 @@ if (todos == null) {
 let project = JSON.parse(localStorage.getItem('Project'));
 if (project == null) {
     project = [
-        { id: 0, name: 'Studies 👨‍🎓', color: '#9ebb11' },
-        { id: 1, name: 'Running 🏃', color: '#11bb44' },
-        { id: 2, name: 'Reading 📚', color: '#bb1111' },
-        { id: 3, name: 'SocialLive 🍹  ', color: '#989f65' },
-        { id: 4, name: 'Mindfulness 🧘', color: '#00459e' },
-        { id: 4, name: 'Spanish Lesson 🇪🇸', color: '#ff459e' },
+        { id: 0, name: 'Studies👨‍🎓', color: '#9ebb11' },
+        { id: 1, name: 'Running🏃', color: '#11bb44' },
+        { id: 2, name: 'Reading📚', color: '#bb1111' },
+        { id: 3, name: 'SocialLive🍹', color: '#989f65' },
+        { id: 4, name: 'Mindfulness🧘', color: '#00459e' },
+        { id: 4, name: 'Spanish Lesson🇪🇸', color: '#ff459e' },
     ];
     window.localStorage.setItem('Project', JSON.stringify(project));
 } else {
@@ -728,6 +728,8 @@ function showDiv(clickedId) {
         });
         function closeDiv() {
             description.classList.add('none');
+            centerDiv.classList.add('active');
+            centerDiv.classList.remove('none');
         }
         function updateDetails() {
             const proj = JSON.parse(localStorage.getItem('Items'));

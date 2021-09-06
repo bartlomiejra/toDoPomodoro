@@ -255,12 +255,11 @@ body {
 	}
 
 	.left {
-		  overflow-y: hidden;
-
+		
 		min-width: 268px;
-		    // margin-bottom: 10px;
-
-
+		// margin-bottom: 10px;
+		
+		
 		overflow-x: hidden;
 		max-height: calc(100vh - 85px);
 		flex-basis: 100px;
@@ -270,6 +269,7 @@ body {
 		flex-direction: column;
 		flex-shrink: 2;
 		background: var(--left_background);
+		overflow-y: hidden;
 
 		&_listdays {
 			margin: 0;
@@ -755,6 +755,7 @@ body {
 		}
 
 		&_detals {
+			overflow: hidden;
 			font-size: 1rem;
 			color: var(--font-color);
 		}

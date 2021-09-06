@@ -302,7 +302,6 @@ body .container > *__header {
 
 html .left,
 body .left {
-  overflow-y: hidden;
   min-width: 268px;
   overflow-x: hidden;
   max-height: calc(100vh - 85px);
@@ -322,6 +321,7 @@ body .left {
   -ms-flex-negative: 2;
       flex-shrink: 2;
   background: var(--left_background);
+  overflow-y: hidden;
 }
 
 html .left_listdays,
@@ -952,6 +952,7 @@ body .right_todo-item {
 
 html .right_detals,
 body .right_detals {
+  overflow: hidden;
   font-size: 1rem;
   color: var(--font-color);
 }

@@ -393,6 +393,7 @@
 .todoCard.active,
 .tiles__note.active {
   overflow: auto;
+  overflow-x: hidden;
   -webkit-transform: translate(0%, 0%) scale(1);
           transform: translate(0%, 0%) scale(1);
   display: -webkit-box;
