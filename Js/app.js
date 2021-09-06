@@ -928,16 +928,6 @@ pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
 showProject.addEventListener('click', ifmobile);
-// showProject.addEventListener('click', showToDoCard);
-
-/*
-  * Importand Information
-    ! Deprecated method, do not user
-    ? should this method be exposad in the public API
-    TODO: zrobić to i tamto
-      * @param myParam The parameter for this method
-
-    */
 
 function repeatTasks() {
     const Items = JSON.parse(localStorage.getItem('Items'));
@@ -955,7 +945,6 @@ function repeatTasks() {
     }
 }
 repeatTasks();
-// console.log('elo'.pomodoreDuration);
 
 function activeProject(clicked_id) {
     sell = clicked_id.getAttribute('name');
@@ -1016,5 +1005,3 @@ function openNoteCard(clicked_id) {
     // settingsDiv.classList.remove('active');
     // todoCard.classList.remove('active');
 }
-//! napisać funkcje która będzie zliczać ile razy nazwa danego projektu
-//! wystopiła w localhost w taskach i na tej podstawie podaje liczbe tesków i przewidywany czas.
