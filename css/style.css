@@ -1238,8 +1238,9 @@ ol {
             align-items: center;
     height: 40px;
   }
-  .container .left_Project {
-    font-size: 2rem;
+  .container .left_Projects {
+    font-size: 1rem;
+    height: 30px;
     min-width: 70vw;
   }
   .container .circle {

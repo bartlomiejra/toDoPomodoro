@@ -258,13 +258,21 @@ aria-hidden="true"></i></button>
     }
     window.onresize = function resizeFun() {
         if (mobileWidth.matches) {
+            if (leftDiv.classList.contains('active')) {
+                centerDiv.classList.remove('active');
+                centerDiv.classList.add('none');
+            }
             // projectIcon.classList.remove('none');
             // centerDiv.classList.remove('none');
             centerDiv.classList.add('center');
-            leftDiv.classList.add('leftnone');
-            leftDiv.classList.add('none');
-            leftDiv.classList.remove('active');
+            // leftDiv.classList.add('leftnone');
+            // leftDiv.classList.add('none');
+            // leftDiv.classList.remove('active');
         } else {
+            if (leftDiv.classList.contains('active')) {
+                centerDiv.classList.add('active');
+                centerDiv.classList.remove('none');
+            }
         }
     };
 }
@@ -636,6 +644,7 @@ function showDiv(clickedId) {
 <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
 <i class="fas fa-times"
     aria-hidden="true"></i>
+	
 	</button>
     <div class="right_divT ">
     <div  class="center_todo-item" id="item" >
@@ -806,11 +815,12 @@ function sortingProject(clicked_id) {
 
     tasks = JSON.parse(localStorage.getItem('Items')) || [];
     const tasksProject = tasks.filter((item) => item.project == clicked);
-    showToDoCard();
+    // showToDoCard();
     lists(tasksProject, todoList);
+    showToDoCard();
     return tasksProject;
 }
-
+//
 function sortingProjectDays(e) {
     taskToday = 0;
     let taskTomorrow = 0;

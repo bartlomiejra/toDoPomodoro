@@ -1,4 +1,5 @@
-@import 'style';
+// @import 'style';
+@import 'virables';
 
 @mixin hoverlighter {
 	filter: brightness(150%);
@@ -86,21 +87,18 @@
 	}
 
 	&__addNote {
-		// background: var(--backgrounddarker);
-		display: inline;
+		max-height: 60px;
 		background: var(--task_color);
 		padding: 15px;
 		border-radius: 50px;
-		// display: inline;
     z-index: 301;
-
-		position: absolute;
-		right: 20px;
+		position:sticky;
 		background: var(--task_color);
-    // position: sticky;
-    bottom: 20px;
     width: 60px;
 	height: 60px;
+	top: 100vh;
+	left: 75vw;
+	
 	}
 
 	&__add {
@@ -226,7 +224,7 @@
 .fa-times {
 	position: absolute;
 	top: 20px;
-	right: 20px;
+	left: 20px;
 	cursor: pointer;
 	outline: 0;
 	// background: transparent;
