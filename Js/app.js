@@ -314,6 +314,9 @@ function addTodo(event) {
     lists(todos, todoList);
     lists(actualList, todoList);
     statTask();
+    centerDiv.classList.add('active');
+    centerDiv.classList.remove('none');
+    // centerDiv.add.classList("active");
 }
 function statTask() {
     let toBeCompleted = 0;
@@ -471,10 +474,14 @@ function btnActtion(e) {
                 todo.remove();
                 resetTimer();
             });
+            centerDiv.classList.add('active');
+            centerDiv.classList.add('center');
+            centerDiv.classList.remove('none');
             actualList = todos;
             statTask();
 
             return;
+            centerDiv.classList.add('active');
         }
     }
     //* timer start function
