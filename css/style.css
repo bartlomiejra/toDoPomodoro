@@ -1247,7 +1247,6 @@ ol {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 40px;
   }
   .container .left_Projects {
     font-size: 1rem;
