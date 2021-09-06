@@ -1016,6 +1016,8 @@ ol {
 				// background: #53536938;
 				background-color: var(--header_background);
 				min-height: 40px;
+				    padding-top: 20px;
+
 			}
 
 			&_day > i {
@@ -1024,6 +1026,8 @@ ol {
 
 			&_projectItem {
 				min-height: 40px;
+				    padding: 10px;
+
 				color: var(--font-color);
 				// background: #53536938;
 

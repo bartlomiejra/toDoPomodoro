@@ -243,40 +243,35 @@ aria-hidden="true"></i></button>
         )
 
         .join('');
-    if (mobileWidth.matches) {
-        centerDiv.classList.remove('active');
-        centerDiv.classList.add('none');
-        // centerDiv.classList.add('center');
-        leftDiv.classList.add('leftnone');
-    } else {
-        // projectIcon.classList.add('none');
-        centerDiv.classList.add('active');
-        leftDiv.classList.remove('none');
-        leftDiv.classList.add('active');
-        // centerDiv.classList.remove('none');
-        // projectIcon.classList.add('none');
-    }
-    window.onresize = function resizeFun() {
-        if (mobileWidth.matches) {
-            if (leftDiv.classList.contains('active')) {
-                centerDiv.classList.remove('active');
-                centerDiv.classList.add('none');
-            }
-            // projectIcon.classList.remove('none');
-            // centerDiv.classList.remove('none');
-            centerDiv.classList.add('center');
-            // leftDiv.classList.add('leftnone');
-            // leftDiv.classList.add('none');
-            // leftDiv.classList.remove('active');
-        } else {
-            if (leftDiv.classList.contains('active')) {
-                centerDiv.classList.add('active');
-                centerDiv.classList.remove('none');
-            }
-        }
-    };
 }
 lists(actualList, todoList);
+if (mobileWidth.matches) {
+    centerDiv.classList.remove('active');
+    centerDiv.classList.add('none');
+    // centerDiv.classList.add('center');
+    leftDiv.classList.add('leftnone');
+} else {
+    // projectIcon.classList.add('none');
+    centerDiv.classList.add('active');
+    leftDiv.classList.remove('none');
+    leftDiv.classList.add('active');
+    // centerDiv.classList.remove('none');
+    // projectIcon.classList.add('none');
+}
+window.onresize = function resizeFun() {
+    if (mobileWidth.matches) {
+        if (leftDiv.classList.contains('active')) {
+            centerDiv.classList.remove('active');
+            centerDiv.classList.add('none');
+        }
+        centerDiv.classList.add('center');
+    } else {
+        if (leftDiv.classList.contains('active')) {
+            centerDiv.classList.add('active');
+            centerDiv.classList.remove('none');
+        }
+    }
+};
 
 function addTodo(event) {
     let currentProject = JSON.parse(localStorage.getItem('Current')) || [];
@@ -501,7 +496,7 @@ function btnActtion(e) {
         item.innerHTML = '<i class="fa fa-clock"></i>';
     }
     // localStorage.setItem('Items', JSON.stringify(todos));
-    lists(actualList, todoList);
+    // lists(actualList, todoList);
 }
 // pomodoreDuration;
 function displayTimeLeft(seconds) {

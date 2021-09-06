@@ -1227,12 +1227,14 @@ ol {
   .container .left_day {
     background-color: var(--header_background);
     min-height: 40px;
+    padding-top: 20px;
   }
   .container .left_day > i {
     padding: 0 15px 0 10px;
   }
   .container .left_projectItem {
     min-height: 40px;
+    padding: 10px;
     color: var(--font-color);
     background-color: var(--header_background);
   }
