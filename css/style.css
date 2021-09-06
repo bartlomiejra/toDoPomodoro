@@ -1263,7 +1263,7 @@ ol {
     position: -webkit-sticky;
     position: sticky;
     height: 60px;
-    top: 90vh;
+    top: 95vh;
   }
   .container .left_Projects {
     font-size: 1rem;
