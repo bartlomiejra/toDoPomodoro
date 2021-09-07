@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
@@ -80,6 +81,7 @@ function saveNote() {
     });
     const person = {
         id: (lastNoteId += 1),
+
         title: `${(noteHeader.value = null
             ? ` Note ${(lastNoteId += 1)} `
             : noteHeader.value)}`,
@@ -148,6 +150,7 @@ function saveEditNote() {
 }
 function removeNote() {
     notes = JSON.parse(localStorage.getItem('Notes')) || [];
+    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < notes.length; i++) {
         if (notes[i].title === notes[click].title) {
             notes.splice(i, 1);

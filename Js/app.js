@@ -1,17 +1,7 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
-const menuLis = document.querySelectorAll('.nav_element');
-
-for (const nav of menuLis) {
-    nav.addEventListener('click', function () {
-        // 1. Remove Class from All Lis
-        for (const nav of menuLis) {
-            nav.classList.remove('selected');
-        }
-        this.classList.add('selected');
-    });
-}
 
 const centerDiv = document.querySelector('.center');
 const leftDiv = document.querySelector('.left');
@@ -953,10 +943,6 @@ function openNoteCard(clicked_id) {
 
     const modals = document.querySelectorAll('.modal');
     for (const ele of modals) {
-        // ele.addEventListener(
-        //     'click',
-        //     function () {
-
         ele.classList.remove('active');
         ele.classList.add('none');
         if (ele.classList.contains(clicked)) {
@@ -965,22 +951,18 @@ function openNoteCard(clicked_id) {
         }
 
         if (clicked == 'pomodoreCard' && mobileWidth.matches) {
-            // projectIcon.classList.remove('none');
             centerDiv.classList.add('none');
             centerDiv.classList.remove('active');
-
             leftDiv.classList.add('leftnone');
         }
     }
-
-    // openNote.classList.add('buttonOn');
-    // noteCard.classList.add('active');
-    // // overlay.classList.add('active');
-    // leftDiv.classList.add('none');
-    // centerDiv.classList.add('none');
-    // settingsDiv.classList.add('none');
-    // todoCard.classList.add('none');
-
-    // settingsDiv.classList.remove('active');
-    // todoCard.classList.remove('active');
+}
+const menuLis = document.querySelectorAll('.nav_element');
+for (const nav of menuLis) {
+    nav.addEventListener('click', function () {
+        for (const nav of menuLis) {
+            nav.classList.remove('selected');
+        }
+        this.classList.add('selected');
+    });
 }

@@ -57,6 +57,7 @@ input::-webkit-color-swatch {
 	--tiles7: #{$tiles7};
 	--tiles8: #{$tiles8};
 	--inputbackground: #{$inputbackground};
+	--btncolor: #{$btncolor};
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -65,7 +66,7 @@ input::-webkit-color-swatch {
 }
 
 .lightTheme {
-	--center-color: #{$centercolorLight};
+	// --center-color: #{$centercolorLight};
 	--right_background: #{$rightbackgroundLight};
 	--timerFinishColor: #{$timerFinishColorLight};
 	--backgrounddarker: #{$backgrounddarkerLight};
@@ -94,6 +95,7 @@ input::-webkit-color-swatch {
 	--tiles7: #{$tiles7Light};
 	--tiles8: #{$tiles8Light};
 	--inputbackground: #{$inputbackgroundLight};
+	--btncolor: #{$btncolorLight};
 }
 
 // Mixins
@@ -929,7 +931,7 @@ ol {
 		white-space: nowrap;
 		// font-family: sans-serif;
 		font-size: 1rem;
-		color: gray;
+		color: var(--btncolor);
 		// color: var(--task_color);
 		text-decoration: none;
 	}
