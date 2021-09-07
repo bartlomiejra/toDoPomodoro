@@ -54,6 +54,7 @@ input::-webkit-color-swatch {
   --tiles7: #3a0505;
   --tiles8: #017514;
   --inputbackground: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  --btncolor: #808080;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -62,7 +63,6 @@ input::-webkit-color-swatch {
 }
 
 .lightTheme {
-  --center-color: #f7f6f0;
   --right_background: #abada2;
   --timerFinishColor: rgba(255, 255, 255, 0.725);
   --backgrounddarker: #000;
@@ -91,6 +91,7 @@ input::-webkit-color-swatch {
   --tiles7: #b16a6a;
   --tiles8: #59aa66;
   --inputbackground: linear-gradient(147.14deg, rgba(226, 180, 180, 0.7) 18.33%, rgba(255, 255, 255, 0.2) 77.77%);
+  --btncolor: #808080;
 }
 
 @-webkit-keyframes scale {
@@ -523,6 +524,12 @@ body .center_foldericon {
 
 html .center_addtaskButton,
 body .center_addtaskButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 5px 15px;
   color: var(--number-color);
   background-color: var(--task);
@@ -1171,7 +1178,7 @@ ol {
   overflow: hidden;
   white-space: nowrap;
   font-size: 1rem;
-  color: gray;
+  color: var(--btncolor);
   text-decoration: none;
 }
 
