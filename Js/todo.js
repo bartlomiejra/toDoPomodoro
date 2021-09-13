@@ -89,17 +89,17 @@ function addCategory(event) {
     ListOfCategory = [
       {
         id: 0,
-        text: 'TO DO',
+        text: 'Todo',
         color: '#780116',
       },
 	   {
         id: 1,
-        text: 'IN PROGRESS',
+        text: 'In Progress',
         color: '#CBA135',
       },
 	   {
         id: 2,
-        text: 'DONES',
+        text: 'Dones',
         color: '#034748',
       },
     ];
@@ -133,8 +133,9 @@ function renderCategory() {
 
   divCategory.innerHTML = ListOfCategory.map(
     (cate) => `
-<div class="categoryTodos categoryBox" value="${cate.text}" draggable="true" id="item0"  style="background-color: ${cate.color};" >  
+<div class="categoryTodos  draggable categoryBox" value="${cate.text}" draggable="true" id="item0"  style="background-color: ${cate.color};" > XXX 
 <div className="tittle">
+
 
 
 ${cate.text}
