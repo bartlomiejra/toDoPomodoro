@@ -152,7 +152,7 @@ ${cate.text}
 renderCategory();
 
 // drag and drop inplement
-const list_items = document.querySelectorAll('.list-item');
+const list_items = document.querySelectorAll('.list-itsem');
 const category = document.querySelectorAll('.categoryTodos');
 
 let draggedItem = null;
