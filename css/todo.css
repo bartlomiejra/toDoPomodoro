@@ -88,4 +88,20 @@
       flex-wrap: no-wrap;
   overflow: auto;
 }
+
+.draggable {
+  width: 25%;
+  min-height: 6.5em;
+  margin: 1rem 0 0 1rem;
+  background-color: #29e;
+  color: white;
+  border-radius: 0.75em;
+  padding: 4%;
+  -ms-touch-action: none;
+      touch-action: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
 /*# sourceMappingURL=todo.css.map */

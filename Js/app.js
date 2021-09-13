@@ -755,7 +755,7 @@ function showDiv(clickedId) {
 function addProject(event) {
   project = JSON.parse(localStorage.getItem('Project')) || [];
 
-//   let lastId = 0;
+  let lastId = 0;
   project.forEach((ele) => {
     if (ele.id > lastId) {
       lastId = ele.id;

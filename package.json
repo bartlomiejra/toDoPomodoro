@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This is a simple todolist app  implements pomodoro time management technique.  :tomato:",
   "main": "app.js",
+  "type" :"module",
   "scripts": {
     "dev": "parcel <your entry file>",
     "build": "parcel build <your entry file>",
@@ -31,6 +32,7 @@
   },
   "dependencies": {
     "eslint-config-prettier": "^8.3.0",
+    "interactjs": "^1.10.11",
     "js-datepicker": "^5.18.0",
     "moment": "^2.29.1",
     "node-sass": "^6.0.0",

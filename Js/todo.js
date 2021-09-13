@@ -89,7 +89,7 @@ function addCategory(event) {
     ListOfCategory = [
       {
         id: 0,
-        text: 'Todo',
+        text: 'ToDo',
         color: '#780116',
       },
 	   {
@@ -133,9 +133,8 @@ function renderCategory() {
 
   divCategory.innerHTML = ListOfCategory.map(
     (cate) => `
-<div class="categoryTodos  draggable categoryBox" value="${cate.text}" draggable="true" id="item0"  style="background-color: ${cate.color};" > XXX 
+<div class="categoryTodos categoryBox" value="${cate.text}" draggable="true" id="item0"  style="background-color: ${cate.color};" >  
 <div className="tittle">
-
 
 
 ${cate.text}
@@ -152,7 +151,7 @@ ${cate.text}
 renderCategory();
 
 // drag and drop inplement
-const list_items = document.querySelectorAll('.list-itsem');
+const list_items = document.querySelectorAll('.list-item');
 const category = document.querySelectorAll('.categoryTodos');
 
 let draggedItem = null;
@@ -198,3 +197,22 @@ for (let i = 0; i < list_items.length; i++) {
     });
   }
 }
+
+
+
+const position = { x: 0, y: 0 }
+
+interact('.draggable').draggable({
+  listeners: {
+    start (event) {
+      console.log(event.type, event.target)
+    },
+    move (event) {
+      position.x += event.dx
+      position.y += event.dy
+
+      event.target.style.transform =
+        `translate(${position.x}px, ${position.y}px)`
+    },
+  }
+})
