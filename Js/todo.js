@@ -69,7 +69,7 @@ function renderTodos() {
   console.log('render');
   DivToDo.innerHTML = ListOfToDo.map(
     (todo) => `
-		<div class="todoslist_inbox list-item" draggable="true" id="item0">
+		<div class="todoslist_inbox list-item" draggable="true" id="item0" ontouchend="drop(event)>
 
 			<input type="checkbox">
 			${todo.text}
@@ -133,7 +133,7 @@ function renderCategory() {
 
   divCategory.innerHTML = ListOfCategory.map(
     (cate) => `
-<div class="categoryTodos categoryBox" value="${cate.text}" draggable="true" id="item0"  style="background-color: ${cate.color};" >  
+<div class="categoryTodos dropzone categoryBox" value="${cate.text}" draggable="true" id="item0"  style="background-color: ${cate.color};" >  
 <div className="tittle">
 
 
@@ -141,7 +141,7 @@ ${cate.text}
 
  <button autofocus="" tabindex="0" class="center_delete-btn" aria-label="Delete">
 <i class="fas fa-minus-circle dltbtn" aria-hidden="true"> </i>
-		</button>
+</button>
 </div>
          
 </div>`,
@@ -159,6 +159,18 @@ let draggedItem = null;
 for (let i = 0; i < list_items.length; i++) {
   const item = list_items[i];
 
+// let mc = new Hammer(item);
+
+// mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) )
+// mc.on("pan", dragstart);
+
+//  item.addEventListener('touchstart',()=>{
+//     draggedItem = item;
+//     setTimeout(() => {
+//       item.style.display = 'none';
+//     }, 0);
+//   });
+
   item.addEventListener('dragstart',()=>{
     draggedItem = item;
     setTimeout(() => {
@@ -166,6 +178,14 @@ for (let i = 0; i < list_items.length; i++) {
     }, 0);
   });
 
+//   item.addEventListener('touchend', () => {
+//     setTimeout(() => {
+//       draggedItem.style.display = 'block';
+//       draggedItem = null;
+//     }, 0);
+//   });
+
+ 
   item.addEventListener('dragend', () => {
     setTimeout(() => {
       draggedItem.style.display = 'block';
@@ -200,19 +220,119 @@ for (let i = 0; i < list_items.length; i++) {
 
 
 
-const position = { x: 0, y: 0 }
 
-interact('.draggable').draggable({
-  listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
+// }
+// target elements with the "draggable" class
+// interact('.draggable')
+//   .draggable({
+//     // enable inertial throwing
+//     inertia: true,
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-})
+//     // enable autoScroll
+//     autoScroll: true,
+
+//     // call this function on every dragmove event
+//     onmove: dragMoveListener,
+//     // call this function on every dragend event
+//     onend: function (event) {
+//     }
+	
+//   });
+
+
+//  function dragMoveListener (event) {
+//     var target = event.target,
+//         // keep the dragged position in the data-x/data-y attributes
+//         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+//         y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+//     // translate the element
+//     target.style.webkitTransform =
+//     target.style.transform =
+//       'translate(' + x + 'px, ' + y + 'px)';
+
+//     // update the posiion attributes
+//     target.setAttribute('data-x', x);
+//     target.setAttribute('data-y', y);
+//   }
+
+
+
+
+
+
+
+// // enable draggables to be dropped into this
+// interact('.dropzone').dropzone({
+//   // only accept elements matching this CSS selector
+//   accept: '#drag-1',
+//   // Require a 75% element overlap for a drop to be possible
+//   overlap: 0.80,
+
+//   // listen for drop related events:
+
+//   ondropactivate: function (event) {
+//     // add active dropzone feedback
+//     event.target.classList.add('drop-active');
+//   },
+//   ondragenter: function (event) {
+//     var draggableElement = event.relatedTarget,
+//         dropzoneElement = event.target;
+
+//     // feedback the possibility of a drop
+//     dropzoneElement.classList.add('drop-target');
+//     draggableElement.classList.add('can-drop');
+//     //draggableElement.textContent = 'le bloc est dedans';
+//   },
+//   ondragleave: function (event) {
+//     // remove the drop feedback style
+//     event.target.classList.remove('drop-target');
+//     event.relatedTarget.classList.remove('can-drop');
+// 		event.relatedTarget.classList.remove('drop-ok');//enlever la class
+//   },
+//   ondrop: function (event) {
+// 		event.relatedTarget.classList.add('drop-ok'); //ajouter la class
+//   },
+//   ondropdeactivate: function (event) {
+//     // remove active dropzone feedback
+//     event.target.classList.remove('drop-active');
+//     event.target.classList.remove('drop-target');
+//   }
+// });
+
+let moving = null;
+
+
+
+function pickup(event) {
+	console.log("pickup");
+    moving = event.target;
+	
+    moving.style.height = moving.clientHeight;
+    moving.style.width = moving.clientWidth;
+    moving.style.position = 'fixed';
+    moving.style.zIndex = '-10';
+}
+
+function drop(event) {
+	if (moving) {
+		console.log("moving");
+        // reset our element
+        moving.style.left = '';
+        moving.style.top = '';
+        moving.style.height = '';
+        moving.style.width = '';
+        moving.style.position = '';
+        moving.style.zIndex = '';
+
+        moving = null;
+    }
+}
+
+
+
+function move(event) {
+    if (moving) {
+        // track movement
+    }
+}

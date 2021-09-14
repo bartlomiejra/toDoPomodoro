@@ -5,7 +5,7 @@
 	   <script src="lib/hammer.min.js"></script>
 	   <script src="lib/interact.min.js"></script>
 	    <script src="lib/moment.min.js"></script>
-
+<script src="https://hammerjs.github.io/dist/hammer.js"></script>
 
     <link rel="manifest" href="manifest.webmanifest" />
     <!-- <link rel="manifest" href="manifest.webmanifest"> -->
@@ -182,32 +182,44 @@
       <div class="modal todoCard todo">
         <div class="modal__header">Todo</div>
         <div class="modal__body">
-			<div class="draggable"> Draggable Element </div>
+			
 
-          <form action="" class="todo_addTodo">
-            <button
-              aria-label="addProject"
-              class="left_addProjectBtn "
+
+		  <p> Inbox</p>
+<div class="todosList categoryTodos ">
+
+
+	
+</div>
+<div class="category">
+
+</div>
+<div class="addElements">
+
+	<form action="" class="todo_addTodo">
+		<button
+		aria-label="addProject"
+		class="left_addProjectBtn "
               type="submit"
               onclick="addNewTodo(this);return false;"
 			  
             >
-              <class class="fas fa-plus" aria-hidden="true"></class>
-            </button>
-            <input type="text" class="todoTitle" placeholder="Add  todo" />
-           
+			<class class="fas fa-plus" aria-hidden="true"></class>
+		</button>
+		<input type="text" class="todoTitle" placeholder="Add  todo" />
+		
           </form>
-		  	 <form action="" class="addcategory">
-          <button
-            class="center_addcategoryBtn"
+		  <form action="" class="addcategory">
+			  <button
+			  class="center_addcategoryBtn"
             type="submit"
 			onclick="addCategory(); return false;"
-          >
+			>
             <i class="fas fa-plus"></i>
-          </button>
+		</button>
           <input
-            class="categoryTitle"
-            type="text"
+		  class="categoryTitle"
+		  type="text"
             name="item"
             placeholder=" Add category"
             onfocus="this.placeholder = 'Item Name'"
@@ -218,25 +230,18 @@
               arial-label="Color"
               id="color"
               value="#000000"
-            />
-        </form>
-		  <p> Inbox</p>
-<div class="todosList categoryTodos ">
-
-
-	
-</div>
-<div class="category">
-
-</div>
-          <button
+			  />
+			</form>
+			<button
             class="tiles__addNote"
             id="addNoteButton"
             aria-label="addNote"
-          >
+			>
             <i class="fas fa-plus tiles__add" aria-hidden="true"></i>
-          </button>
+		</button>
+	</div>
         </div>
+	
       </div>
       <div class="modal settings" id="modal">
         <div class="modal__header">
@@ -412,7 +417,7 @@
     <script src="./Js/settings.js"></script>
     <script src="./Js/note.js"></script>
     <script src="./Js/todo.js"></script>
-    <script src="lib/hammer.min.js"></script>
+    <!-- <script src="lib/hammer.min.js"></script> -->
     <script src="lib/moment.min.js"></script>
     <script
       src="https://kit.fontawesome.com/a712e78954.js"
