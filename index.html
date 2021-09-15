@@ -105,7 +105,7 @@
             class="left_color"
             arial-label="Color"
             id="color"
-            value="#000000"
+            value="#955165"
           />
         </form>
       </div>
@@ -184,66 +184,69 @@
         <div class="modal__body">
 			
 
+			<div class="todo">
+<div class="todo_inbox">
 
-		  <p> Inbox</p>
-<div class="todosList categoryTodos ">
-
-
+	<p> Inbox</p>
+	<div class="todo_List categoryTodos ">
+		
+	</div>
+		
+		
+	</div>
+	<div class="todo_category">
+		
+	</div>
+<div class="todo_addElements">
 	
-</div>
-<div class="category">
-
-</div>
-<div class="addElements">
-
 	<form action="" class="todo_addTodo">
 		<button
-		aria-label="addProject"
-		class="left_addProjectBtn "
+		class="todo_addSubmit"
               type="submit"
               onclick="addNewTodo(this);return false;"
 			  
             >
 			<class class="fas fa-plus" aria-hidden="true"></class>
 		</button>
-		<input type="text" class="todoTitle" placeholder="Add  todo" />
+		<input type="text" class="todo_input" placeholder="Add  todo" />
 		
           </form>
-		  <form action="" class="addcategory">
+		  <form action="" class="todo_addCategory">
 			  <button
-			  class="center_addcategoryBtn"
-            type="submit"
-			onclick="addCategory(); return false;"
+			  class="todo_addSubmit"
+			  type="submit"
+			  onclick="addCategory(); return false;"
 			>
             <i class="fas fa-plus"></i>
 		</button>
-          <input
-		  class="categoryTitle"
+		<input
+		class="category_input"
 		  type="text"
-            name="item"
-            placeholder=" Add category"
-            onfocus="this.placeholder = 'Item Name'"
+		  name="item"
+		  placeholder=" Add category"
+		  onfocus="this.placeholder = 'Item Name'"
           />
-		   <input
-              type="color"
-              class="left_color"
-              arial-label="Color"
-              id="color"
-              value="#000000"
-			  />
-			</form>
-			<button
-            class="tiles__addNote"
+		  <input
+		  type="color"
+		  class="todo_color"
+		  arial-label="Color"
+		  id="color"
+		  value="#292458"
+		  />
+		</form>
+		<!-- <button
+		class="tiles__addNote"
             id="addNoteButton"
             aria-label="addNote"
 			>
             <i class="fas fa-plus tiles__add" aria-hidden="true"></i>
-		</button>
+		</button> -->
 	</div>
-        </div>
-	
-      </div>
-      <div class="modal settings" id="modal">
+</div>
+</div>
+
+</div>
+<div class="modal settings" id="modal">
         <div class="modal__header">
           <div class="modal__title">Settings</div>
         </div>

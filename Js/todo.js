@@ -1,28 +1,9 @@
-// /* eslint-disable no-undef */
-// const openTodo = document.getElementById('todoButton');
-// const closeTodo = document.getElementById('closeTodobtn');
-// const todoCard = document.querySelector('.todoCard');
-// const note = document.querySelector('note');
-// const todoBut = document.getElementById('todoButton');
-// function openTodoCard() {
-//     todoCard.classList.add('active');
-//     // note.classList.add('none');
-//     noteCard.classList.remove('active');
-//     // overlay.classList.add('active');
-//     leftDiv.classList.add('none');
-//     centerDiv.classList.add('none');
-//     settingsDiv.classList.add('none');
-//     settingsDiv.classList.remove('active');
-// }
-
-// openTodo.addEventListener('click', openTodoCard);
 let last = 0;
-// asd
-//    const divT = document.querySelector('.center_divT');
-const DivToDo = document.querySelector('.todosList');
-const divCategory = document.querySelector('.category');
-const todoTitle = document.querySelector('.todoTitle');
-const categoryTitle = document.querySelector('.categoryTitle');
+const DivToDo = document.querySelector('.todo_List');
+const divCategory = document.querySelector('.todo_category');
+const todoTitle = document.querySelector('.todo_input');
+const categoryTitle = document.querySelector('.category_input');
+const colorCategory = document.querySelector('.todo_color');
 
 let ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
 function addNewTodo(event) {
@@ -69,11 +50,11 @@ function renderTodos() {
   console.log('render');
   DivToDo.innerHTML = ListOfToDo.map(
     (todo) => `
-		<div class="todoslist_inbox list-item" draggable="true" id="item0" ontouchend="drop(event)>
+		<div class="todo_item dragitem" draggable="true">
 
-			<input type="checkbox">
-			${todo.text}
-            <button autofocus="" tabindex="0" class="center_delete-btn" aria-label="Delete">
+	<input type="checkbox">
+		${todo.text}
+            <button autofocus="" tabindex="0" class="todo_taskRemove" aria-label="Delete">
 			<i class="fas fa-minus-circle" aria-hidden="true"> </i>
 		</button>
 </div>`,
@@ -113,7 +94,7 @@ function addCategory(event) {
   const NewCategory = {
     id: (last += 1),
     text: categoryTitle.value,
-	        color: '#955165',
+color: colorCategory.value,
 
   };
   //   todoInput.value = '';
@@ -133,13 +114,13 @@ function renderCategory() {
 
   divCategory.innerHTML = ListOfCategory.map(
     (cate) => `
-<div class="categoryTodos dropzone categoryBox" value="${cate.text}" draggable="true" id="item0"  style="background-color: ${cate.color};" >  
-<div className="tittle">
+<div class="  todo_categoryBox dropcategory" value="${cate.text}"  style="background-color: ${cate.color};" >  
+<div class="todo_categoryTittle">
 
 
 ${cate.text}
 
- <button autofocus="" tabindex="0" class="center_delete-btn" aria-label="Delete">
+ <button autofocus="" class="todo_categoryRemove" aria-label="Delete">
 <i class="fas fa-minus-circle dltbtn" aria-hidden="true"> </i>
 </button>
 </div>
@@ -151,13 +132,13 @@ ${cate.text}
 renderCategory();
 
 // drag and drop inplement
-const list_items = document.querySelectorAll('.list-item');
-const category = document.querySelectorAll('.categoryTodos');
+const dragItems = document.querySelectorAll('.dragitem');
+const category = document.querySelectorAll('.dropcategory');
 
 let draggedItem = null;
 
-for (let i = 0; i < list_items.length; i++) {
-  const item = list_items[i];
+for (let i = 0; i < dragItems.length; i++) {
+  const item = dragItems[i];
 
 // let mc = new Hammer(item);
 
@@ -171,7 +152,7 @@ for (let i = 0; i < list_items.length; i++) {
 //     }, 0);
 //   });
 
-  item.addEventListener('dragstart',()=>{
+  item.addEventListener('dragstart', () => {
     draggedItem = item;
     setTimeout(() => {
       item.style.display = 'none';
@@ -185,7 +166,6 @@ for (let i = 0; i < list_items.length; i++) {
 //     }, 0);
 //   });
 
- 
   item.addEventListener('dragend', () => {
     setTimeout(() => {
       draggedItem.style.display = 'block';
@@ -200,26 +180,22 @@ for (let i = 0; i < list_items.length; i++) {
       e.preventDefault();
     });
 
-    list.addEventListener('dragenter', function (e) {
+    list.addEventListener('dragenter', (e) => {
       e.preventDefault();
     });
 
-    list.addEventListener('dragleave', function (e) {
+    list.addEventListener('dragleave', (e) => {
     });
 
     list.addEventListener('drop', function (e) {
       console.log('drop');
       console.log(e);
-      console.log(this.closest("div")
-	  );
+      console.log(this.closest('div'));
       // console.log(e.value);
       this.append(draggedItem);
     });
   }
 }
-
-
-
 
 // }
 // target elements with the "draggable" class
@@ -236,9 +212,8 @@ for (let i = 0; i < list_items.length; i++) {
 //     // call this function on every dragend event
 //     onend: function (event) {
 //     }
-	
-//   });
 
+//   });
 
 //  function dragMoveListener (event) {
 //     var target = event.target,
@@ -255,12 +230,6 @@ for (let i = 0; i < list_items.length; i++) {
 //     target.setAttribute('data-x', x);
 //     target.setAttribute('data-y', y);
 //   }
-
-
-
-
-
-
 
 // // enable draggables to be dropped into this
 // interact('.dropzone').dropzone({
@@ -302,12 +271,10 @@ for (let i = 0; i < list_items.length; i++) {
 
 let moving = null;
 
-
-
 function pickup(event) {
-	console.log("pickup");
+	console.log('pickup');
     moving = event.target;
-	
+
     moving.style.height = moving.clientHeight;
     moving.style.width = moving.clientWidth;
     moving.style.position = 'fixed';
@@ -316,7 +283,7 @@ function pickup(event) {
 
 function drop(event) {
 	if (moving) {
-		console.log("moving");
+		console.log('moving');
         // reset our element
         moving.style.left = '';
         moving.style.top = '';
@@ -328,8 +295,6 @@ function drop(event) {
         moving = null;
     }
 }
-
-
 
 function move(event) {
     if (moving) {
