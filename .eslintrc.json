@@ -5,13 +5,19 @@
     },
     "extends": [
         "airbnb-base"
+
+
       
     ],
   
+	"plugins": ["prettier"],
 "rules": {
-   "indent": "off"
+   "indent": "off",
+   "no-tabs": 0,
+   "prettier/prettier": "error"
 
 
 
 }
+  
 }
