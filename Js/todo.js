@@ -76,6 +76,8 @@ function addNewTodo(event) {
 
 renderTodos();
 function renderTodos() {
+	ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
+
 	console.log('render');
 	DivToDo.innerHTML = ListOfToDo.map(
 		(todo) => `
@@ -97,7 +99,7 @@ function renderTodos() {
           
             Edit
           </button></li>
-          <li><button>
+          <li><button id=${todo.id} onClick="deleteTodo(this)">
           
             Delete
           </button></li>
@@ -249,9 +251,19 @@ function openPopupMenu(clicked_Id){
 }
  
 function deleteTodo(ClickedId){
-	console.log(e.target);
+	// console.log(e.target);
+	console.log(this);
+	console.log(this.id);
+	console.log(ClickedId.id)
+	index = ClickedId.id
+	console.log(ListOfToDo);
+	ListOfToDo.splice(index, 1)
+	
+	localStorage.setItem('Items', JSON.stringify(ListOfToDo));
+	console.log(ListOfToDo);
+	renderTodos();
 	//    const { ...index } = e.target.dataset;
 
-
+//nie odświeża się!
 
 }
