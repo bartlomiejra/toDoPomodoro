@@ -4,6 +4,9 @@ const divCategory = document.querySelector('.todo_category');
 const todoTitle = document.querySelector('.todo_input');
 const categoryTitle = document.querySelector('.category_input');
 const colorCategory = document.querySelector('.todo_color');
+const openPopup = document.querySelector('.openpopup')
+const menugui = document.getElementsByClassName('gui-popup')
+const todoCard = document.querySelector('.todoCard');
 
 //!Empty State
 let ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
@@ -80,9 +83,35 @@ function renderTodos() {
 		
 		<input type="checkbox">
 		${todo.text}
-		<button autofocus="" tabindex="0" class="todo_taskRemove" aria-label="Delete">
-		<i class="fas fa-minus-circle" aria-hidden="true"> </i>
-		</button>
+ <div class="todo_splitBtn fas fa-list-alt openpopup" aria-haspopup="true" aria-expanded="false" title="Open for more actions"
+ id=${todo.id}  
+ onClick="openPopupMenu(this)"
+ >
+ 
+ 
+ 
+ <ul class="gui-popup">
+ <button onclick="event.stopPropagation();closepopUp(this)" class="todo_closePopup "><i class="fas fa-times" aria-hidden="true"></i>
+ </button>
+          <li><button>
+          
+            Edit
+          </button></li>
+          <li><button>
+          
+            Delete
+          </button></li>
+
+
+          <li>
+		 <select name="category" placeholder="Edit Category" id="category-select">
+		 <option value="1">Task</option>
+    <option value="2">Work</option>
+    <option value="3">Home</option>
+		 </select> 
+		 </li>
+        </ul>
+    </div>		
 </div>`,
 )
 .join('');
@@ -158,7 +187,7 @@ function renderCategory() {
 			});
 		item.addEventListener('dragend', () => {
 						setTimeout(() => {
-							draggedItem.style.display = 'block';
+							draggedItem.style.display = 'flex';
 							draggedItem = null;
 						}, 0);
 					});
@@ -187,6 +216,42 @@ function renderCategory() {
   }
 }
 }
-// dragAndDrop();
+dragAndDrop();
 
 
+
+
+
+function openPopupMenu(clicked_Id){
+	// clicked_Id.stopPropagation();
+	console.log(this.id);
+	console.log(clicked_Id);
+	// 	menugui.forEach((ele) =>{
+		// console.log(ele);
+		// 	});
+		for (var i = 0; i < menugui.length; i++) {
+			menugui[i].classList.remove('visable');
+			
+		clicked_Id.firstElementChild.classList.add('visable');
+		
+	//  this.stopPropagation();  
+
+		}
+	}
+	
+	
+	
+	function closepopUp(clickedId){
+		console.log(clickedId);
+	let parentClick = clickedId.closest('.gui-popup')
+	console.log(parentClick)
+	parentClick.classList.remove('visable');
+}
+ 
+function deleteTodo(ClickedId){
+	console.log(e.target);
+	//    const { ...index } = e.target.dataset;
+
+
+
+}

@@ -128,6 +128,10 @@
   right: 0;
 }
 
+.todo_closePopup {
+  z-index: 30;
+}
+
 .todo_item {
   padding: 5px;
   margin: 2px;
@@ -168,6 +172,45 @@
   left: 75vw;
 }
 
+.todo_splitBtn {
+  outline-offset: -5px;
+}
+
+.todo_splitBtn svg {
+  inline-size: 2ch;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+  height: 100%;
+}
+
+.gui-popup {
+  --shadow: 220 70% 15%;
+  --shadow-strength: 1%;
+  z-index: 500;
+  border-radius: 10px;
+  display: none;
+  position: absolute;
+  inset-block-end: 80%;
+  inset-inline-start: -1.5ch;
+  list-style-type: none;
+  background: var(--popupbg);
+  padding-inline: 0;
+  padding-block: 0.5ch;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 0.9em;
+  -webkit-transition: opacity var(--out-speed) ease;
+  transition: opacity var(--out-speed) ease;
+  z-index: 700;
+  background-color: #6c8683;
+}
+
 .draggable {
   position: fixed;
   width: 1%;
@@ -184,5 +227,11 @@
       -ms-user-select: none;
           user-select: none;
   z-index: 300;
+}
+
+.visable {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=todo.css.map */

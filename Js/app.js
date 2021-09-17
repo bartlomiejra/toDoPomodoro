@@ -246,15 +246,11 @@ lists(actualList, todoList);
 if (mobileWidth.matches) {
   centerDiv.classList.remove('active');
   centerDiv.classList.add('none');
-  // centerDiv.classList.add('center');
   leftDiv.classList.add('leftnone');
 } else {
-  // projectIcon.classList.add('none');
   centerDiv.classList.add('active');
   leftDiv.classList.remove('none');
   leftDiv.classList.add('active');
-  // centerDiv.classList.remove('none');
-  // projectIcon.classList.add('none');
 }
 window.onresize = function resizeFun() {
   if (mobileWidth.matches) {
