@@ -377,12 +377,17 @@ function btnActtion(e) {
 
   const item = e.target;
   if (item.classList[0] === 'center_delete-btn') {
+	console.log(item);
     audio = new Audio('Alerts/deleteTask.mp3');
     audio.play();
     const { ...index } = e.target.dataset;
     const todo = item.parentElement;
+	console.log(todo);
     todo.classList.add('fall');
+	console.log(todos)
+	console.log(index);
     todos.splice(index, 1);
+	console.log(todos)
     localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', () => {
       todo.remove();

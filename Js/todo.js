@@ -77,7 +77,7 @@ function addNewTodo(event) {
 renderTodos();
 function renderTodos() {
 	ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
-
+console.log(ListOfToDo)
 	console.log('render');
 	DivToDo.innerHTML = ListOfToDo.map(
 		(todo) => `
@@ -99,7 +99,7 @@ function renderTodos() {
           
             Edit
           </button></li>
-          <li><button id=${todo.id} onClick="deleteTodo(this)">
+          <li><button id=${todo.id} data-index=${index} onClick="deleteTodo(this)">
           
             Delete
           </button></li>
@@ -255,15 +255,18 @@ function deleteTodo(ClickedId){
 	console.log(this);
 	console.log(this.id);
 	console.log(ClickedId.id)
-	index = ClickedId.id
+	// index = ClickedId
 	console.log(ListOfToDo);
-	ListOfToDo.splice(index, 1)
-	
-	localStorage.setItem('Items', JSON.stringify(ListOfToDo));
-	console.log(ListOfToDo);
-	renderTodos();
-	//    const { ...index } = e.target.dataset;
+	console.log(ClickedId);
+	console.log(ClickedId.dataset);
 
-//nie odświeża się!
+	const { ...index } = ClickedId.dataset;
+	console.log(index);
+  let newList = ListOfToDo.splice(index, 1);
+  console.log(ListOfToDo);
+
+
+	localStorage.setItem('ListTodo', JSON.stringify(ListOfToDo));
+	renderTodos();
 
 }
