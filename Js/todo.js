@@ -227,11 +227,11 @@ function renderCategory() {
 						list.addEventListener('dragleave', (e) => {
 							// console.log(e);
 							// console.log(item.id);
-							console.log(draggedItem.id);
 							// console.log(this);
 						});
 						
 						list.addEventListener('drop', function (e) {
+							console.log(draggedItem.id);
 		console.log('drop');
 		// console.log(e);
 		// console.log(this.closest('div'));
