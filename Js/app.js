@@ -384,10 +384,10 @@ function btnActtion(e) {
     const todo = item.parentElement;
 	console.log(todo);
     todo.classList.add('fall');
-	console.log(todos)
-	console.log(index);
+	// console.log(todos)
+	// console.log(index);
     todos.splice(index, 1);
-	console.log(todos)
+	// console.log(todos)
     localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', () => {
       todo.remove();
