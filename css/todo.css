@@ -191,7 +191,6 @@
   --shadow-strength: 1%;
   z-index: 500;
   border-radius: 10px;
-  display: none;
   position: absolute;
   inset-block-end: 80%;
   inset-inline-start: -1.5ch;

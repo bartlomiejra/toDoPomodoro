@@ -11,6 +11,21 @@ const taskCategory = document.querySelector('.taskCategory')
 //!Empty State
 
 var categories = []
+let Position = JSON.parse(localStorage.getItem('Position'));
+if (Position == null) {
+	Position = [
+		{
+	  id: 0,
+	  text: 'First',
+	  done: false,
+	  category: 'inbox',
+	  data: '30.1.21',
+	},
+];
+}
+
+
+
 let ListOfCategory = JSON.parse(localStorage.getItem('ListCategory'));
 	ListOfCategory.forEach((items) => {
 		const {id, color, ...rest} = items
@@ -232,11 +247,31 @@ function renderCategory() {
 						
 						list.addEventListener('drop', function (e) {
 							console.log(draggedItem.id);
-		console.log('drop');
-		// console.log(e);
-		// console.log(this.closest('div'));
+							
+							console.log('drop');
+							// console.log(e);
+							// console.log(this.closest('div'));
+							// console.log(draggedItem.closest('dropcategory'));
 		// console.log(e.value);
+		console.log(this);
+		let thisBox = this;
+		let thisTask = draggedItem;
+
+		console.log(thisTask);
 		this.append(draggedItem);
+
+		const position = [{
+		div: thisBox,
+		task: thisTask
+		}]
+	
+	;
+	//   todoInput.value = '';
+	Position.push(position);
+	console.log(Position);
+	localStorage.setItem('position', JSON.stringify(Position));
+
+
     });
   }
 }
@@ -324,3 +359,4 @@ function renderoptionCategory(){
 					
 
 }
+
