@@ -4,8 +4,10 @@
 	background-color: #122220;
 
 	&_inbox {
-		border-radius: 10px;
-		background-color: #475251;
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		align-items: center;
 	}
 
 	&_List {
@@ -103,12 +105,12 @@
 	}
 
 	&_item {
-		padding: 5px;
-		margin: 2px;
-		min-width: 200px;
+		padding: 10px;
+		margin: 10px;
+		min-width: 300px;
 		overflow: none;
 		animation-duration: 3s;
-		max-width: 200px;
+		max-width: 300px;
 		margin-bottom: 5px;
 		border-radius: 8px;
 		filter: var(--shadow);
@@ -121,7 +123,12 @@
 		color: var(--fonts);
 		text-align: center;
 		background-color: var(--task_color);
+		justify-content: space-between;
+		flex-wrap: nowrap;
+		flex-direction: row;
+		align-content: center;
 	}
+	button { flex: 0; }
 
 	&_addBtn {
 		max-height: 60px;

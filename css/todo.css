@@ -3,8 +3,18 @@
 }
 
 .todo_inbox {
-  border-radius: 10px;
-  background-color: #475251;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .todo_List {
@@ -133,13 +143,13 @@
 }
 
 .todo_item {
-  padding: 5px;
-  margin: 2px;
-  min-width: 200px;
+  padding: 10px;
+  margin: 10px;
+  min-width: 300px;
   overflow: none;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
-  max-width: 200px;
+  max-width: 300px;
   margin-bottom: 5px;
   border-radius: 8px;
   -webkit-filter: var(--shadow);
@@ -156,6 +166,23 @@
   color: var(--fonts);
   text-align: center;
   background-color: var(--task_color);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.todo button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
 }
 
 .todo_addBtn {
