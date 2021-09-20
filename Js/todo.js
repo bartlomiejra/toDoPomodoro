@@ -145,7 +145,7 @@ itemTodos.innerHTML = ListOfToDo.map(
 		
 		
 
-			<div class="todo_item dragitem" id=${todo.id} value=${todo.category} name=${todo.category} draggable="true">
+			<div class="todo_item dragitem" id=${todo.category} value=${todo.category} name=${todo.category} draggable="true">
 			
 			<input type="checkbox">
 			${todo.text}
@@ -322,7 +322,6 @@ function renderCategory() {
 	}
 dragAndDrop();
 let CategoryArray = [];
-
 function setItemInBox(){
 
 	let boxes = document.getElementsByClassName('box');
@@ -343,12 +342,19 @@ divsArr.forEach((item)=>{
 
 console.log(item)
 divsArr.forEach(item => ( 
-	console.log(item.id),
- newParent = item,
-// console.log(item),
-console.log(item),
-console.log(item.childNodes[1].id),
- idTodo = item.childNodes[1].id,
+	console.log(item.childNodes[0]),
+	taskitemnode = item.childNodes,
+	console.log(taskitemnode),
+	boxClass = item.id,
+	console.log(boxClass),
+	newParent = item,
+	// console.log(item),
+	console.log(item),
+	// console.log(item.childNodes[1].id),
+	itemClass = item.childNodes[0].id,
+	console.log(itemClass)
+
+//  idTodo = item.childNodes[1].id
 // PositionList = JSON.parse(localStorage.getItem('Position')),
 // console.log(PositionList),
 //  itemss = PositionList.filter(todo => todo.id != PositionList ),
@@ -364,26 +370,35 @@ console.log(item.childNodes[1].id),
 
 ),);
 
-if(item.childNodes[1].id == 1){
+if(itemClass != boxClass){
 	console.log("okokokoko")
 	let newParent = document.querySelector('.gjghj');
 	console.log(divsArr[3])
 	// ta zmienna odpowiada za to do jakiego boksa trafi task, teraz trzeba sprawdzić żeby pobierało zmienną w value taska 
-	let newss = divsArr[1];
-	newss.appendChild(item.childNodes[1].id);
-
+	//z najdz w array element pasujacy do ItemClass
+	console.log(divsArr[1].id);
+	// let newss = divsArr[1];
+	NewBox =  document.getElementById(divsArr[2].id);
+	// NewBox =  document.getElementById('ll');
+	console.log(NewBox);
+	// console.log(item.childNodes[2]);
+	console.log(taskitemnode);
+	// NewBox.appendChild(item.childNodes[2].id);
+	NewBox.appendChild(taskitemnode);
+	
 	
 }
 })
 
 
 //! dla każdego elementu children sprawdź jego chi.klasa 
+var oldParent = document.querySelector('.box');
 
 	 PositionList = JSON.parse(localStorage.getItem('Position'));
 	 //  console.log(PositionList);
 
-var oldParent = document.querySelector('.box');
 	 var newParent = document.getElementById('ToDo');
+	 console.log(newParent)
 
 console.log(oldParent);
 console.log(newParent);
@@ -394,12 +409,12 @@ var children = oldParent.childNodes;
 
 
 console.log(newParent);
-while (oldParent.childNodes.length > 0) { 
+// while (oldParent.childNodes.length > 0) { 
 	
-	//! jeżeli nazwa kategori rodzica nie równa się kategori z node.value dziecka wtedy dodaj (appen?) dziecko do rodzica którego kategoria jest równa node.value
+// 	//! jeżeli nazwa kategori rodzica nie równa się kategori z node.value dziecka wtedy dodaj (appen?) dziecko do rodzica którego kategoria jest równa node.value
 	
-    newParent.appendChild(oldParent.childNodes[0]);
-}
+//     newParent.appendChild(oldParent.childNodes[0]);
+// }
 
 }
 setItemInBox();
