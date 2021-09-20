@@ -145,7 +145,7 @@ itemTodos.innerHTML = ListOfToDo.map(
 		
 		
 
-			<div class="todo_item dragitem" id=${todo.id} virable=${todo.category} draggable="true">
+			<div class="todo_item dragitem" id=${todo.id} value=${todo.category} name=${todo.category} draggable="true">
 			
 			<input type="checkbox">
 			${todo.text}
@@ -207,7 +207,7 @@ function renderCategory() {
 	
 	divCategory.innerHTML = ListOfCategory.map(
 		(cate) => `
-		<div class="  todo_categoryBox " id="${cate.text}" value="${cate.text}"  style="background-color: ${cate.color};" >  
+		<div class="  todo_categoryBox "  value="${cate.text}"  style="background-color: ${cate.color};" >  
 		<div class="todo_categoryTittle">
 		
 		
@@ -219,7 +219,7 @@ function renderCategory() {
 		
 
 		</div>
-		<div class="box">
+		<div class="box" id="${cate.text}">
 		</div>
 		
 		</div>
@@ -333,7 +333,7 @@ function setItemInBox(){
 // //    let Pushh = item.push(CategoryArray)
 
 // //    let categorynode = boxes.id;
-// console.log(divsArr);
+console.log(boxes);
 
 // }
 const divsArr = Array.from(boxes);
@@ -341,28 +341,56 @@ const divsArr = Array.from(boxes);
 // console.log(divsArr[1].id);
 divsArr.forEach((item)=>{
 
-console.log(item.id)
-item.childNodes.forEach(item => ( console.log(item)
+console.log(item)
+divsArr.forEach(item => ( 
+	console.log(item.id),
+ newParent = item,
+// console.log(item),
+console.log(item),
+console.log(item.childNodes[1].id),
+ idTodo = item.childNodes[1].id,
+// PositionList = JSON.parse(localStorage.getItem('Position')),
+// console.log(PositionList),
+//  itemss = PositionList.filter(todo => todo.id != PositionList ),
+//  console.log(itemss),
 
-));
+// console.log(item.children[1])
+// console.log(newParent.childNodes)
+// if(newParent.childNodes)
 
+// console.log(item.id)
+// if(item.id == )
+
+
+),);
+
+if(item.childNodes[1].id == 1){
+	console.log("okokokoko")
+	let newParent = document.querySelector('.gjghj');
+	console.log(divsArr[3])
+	// ta zmienna odpowiada za to do jakiego boksa trafi task, teraz trzeba sprawdzić żeby pobierało zmienną w value taska 
+	let newss = divsArr[1];
+	newss.appendChild(item.childNodes[1].id);
+
+	
+}
 })
 
 
-	//! dla każdego elementu children sprawdź jego chi.klasa 
-	
+//! dla każdego elementu children sprawdź jego chi.klasa 
+
 	 PositionList = JSON.parse(localStorage.getItem('Position'));
-	 console.log(PositionList);
+	 //  console.log(PositionList);
 
-var oldParent = document.querySelector('.categoryTodos');
-var newParent = document.getElementById('ToDo');
+var oldParent = document.querySelector('.box');
+	 var newParent = document.getElementById('ToDo');
 
 console.log(oldParent);
-console.log(oldParent);
+console.log(newParent);
 
 var children = oldParent.childNodes;
 // var children = Array.prototype.slice.call(children);
-console.log(children);
+// console.log(children.id);
 
 
 console.log(newParent);
