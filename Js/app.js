@@ -8,7 +8,9 @@ for (const nav of menuLis) {
     for (const nav of menuLis) {
       nav.classList.remove('selected');
     }
+
     this.classList.add('selected');
+	description.classList.add('none');
   });
 }
 
