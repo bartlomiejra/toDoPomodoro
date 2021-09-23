@@ -55,6 +55,7 @@
             name="today"
             onCLick="activeProject(this)"
             tabindex="0"
+			id="Today"
           >
             <i class="far fa-calendar-alt"> </i>Today
           </li>
@@ -63,7 +64,7 @@
             name="tomorrow"
             onCLick="activeProject(this)"
             tabindex="0"
-            id="tomorrow"
+            id="Tomorrow"
           >
             <i class="far fa-calendar-alt"></i>Tomorrow
           </li>
@@ -72,16 +73,16 @@
             name="someday"
             onCLick="activeProject(this)"
             tabindex="0"
-            id="someday"
+            id="Someday"
           >
             <i class="far fa-calendar-alt"></i>Someday
           </li>
           <li
-            class="sortTask completed left_day"
+            class="sortTask  left_day"
             name="completed"
             onCLick="activeProject(this)"
             tabindex="0"
-            id="history"
+            id="Completed tasks"
           >
             <i class="far fa-check-circle"></i>Completed tasks
           </li>
@@ -110,6 +111,15 @@
         </form>
       </div>
       <div class="center modal pomodoreCard active">
+		  <div class="topbar">
+
+			  <div class="arrowBack Project selected fas fa-chevron-circle-left" name="pomodoreCard" onclick="openNoteCard(this)" data-link="">
+				<!-- <i class="fas fa-chevron-circle-left"></i> -->
+				 </div>
+				<div class="titlebar">
+					
+				</div>
+			</div>
         <div class="center_tasktable">
           <div class="center_stat">
             <div class="center__number" id="estimated"></div>

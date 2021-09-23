@@ -241,6 +241,10 @@ body {
 		position: relative;
 	}
 
+	.topbar {
+		display: none;
+	}
+
 	.container > * {
 		// padding: 10px;
 		flex: 1 100%;
@@ -290,7 +294,7 @@ body {
 			position: relative;
 			text-align: left;
 			color: var(--font-color);
-			margin: 5px 0;
+			margin: 5px;
 			padding: 5px;
 			border-radius: 5px;
 		}
@@ -299,7 +303,8 @@ body {
 			display: grid;
 			grid-template-columns: 3fr 1fr;
 			// background-color: var(--statColor);
-			margin: 5px 0;
+			margin: 5px;
+
 			padding: 5px;
 			border-radius: 5px;
 		}
@@ -791,7 +796,9 @@ body {
 
 .select {
 	background-color: var(--statColor);
-	margin: 5px 0;
+	// margin: 5px 0;
+	margin: 5px 5px 0;
+
 	padding: 5px;
 	border-radius: 5px;
 	// transform: scale(1.05);
@@ -811,7 +818,6 @@ body {
 .left_day:hover,
 .fa-minus-circle:hover {
 	background-color: var(--statColor);
-	margin: 5px 0;
 	padding: 5px;
 	border-radius: 5px;
 	// transform: scale(1.05);
@@ -966,6 +972,44 @@ ol {
 		margin: 0;
 		width: 100%;
 		display: block;
+
+		.topbar {
+			font-size: 1.5rem;
+			position: relative;
+			display: box;
+			display: flexbox;
+			display: flex;
+			width: 100vw;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 5px;
+			background: var(--tiles1);
+			// border-radius: 0;
+
+			.fa-chevron-circle-left {
+				cursor: pointer;
+				background: transparent;
+				color: var(--font-color);
+				padding: 0.3rem;
+				position: absolute;
+				left: 10px;
+				// top: 0;
+				font-size: 1.5rem;
+				// top: 50%;
+				// transform: translate(-50%, 0);
+			}
+			// display: flex;
+
+			.titlebar {
+				display: flex;
+				// background-color: $addProjectbtn;
+				// padding: 10px 15px;
+				justify-content: space-around;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				padding: 5px;
+			}
+		}
 
 		.center__number {
 			font-size: 1.2rem;

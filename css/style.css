@@ -30,7 +30,7 @@ input::-webkit-color-swatch {
   --timerFinishColor: rgba(49, 63, 124, 0.725);
   --statColor: #22222c;
   --backgrounddarker: #14141c;
-  --header_background: #161624;
+  --header_background: #484869;
   --left_background: #14141c;
   --nav_color: #14141c;
   --task_color: #28222c;
@@ -288,6 +288,11 @@ body .container {
   position: relative;
 }
 
+html .topbar,
+body .topbar {
+  display: none;
+}
+
 html .container > *,
 body .container > * {
   -webkit-box-flex: 1;
@@ -352,7 +357,7 @@ body .left_day {
   position: relative;
   text-align: left;
   color: var(--font-color);
-  margin: 5px 0;
+  margin: 5px;
   padding: 5px;
   border-radius: 5px;
 }
@@ -363,7 +368,7 @@ body .left_projectItem {
   display: grid;
   -ms-grid-columns: 3fr 1fr;
       grid-template-columns: 3fr 1fr;
-  margin: 5px 0;
+  margin: 5px;
   padding: 5px;
   border-radius: 5px;
 }
@@ -1014,7 +1019,7 @@ body .right_list {
 
 .select {
   background-color: var(--statColor);
-  margin: 5px 0;
+  margin: 5px 5px 0;
   padding: 5px;
   border-radius: 5px;
   background-position: 0 100%;
@@ -1037,7 +1042,6 @@ body .right_list {
 .left_day:hover,
 .fa-minus-circle:hover {
   background-color: var(--statColor);
-  margin: 5px 0;
   padding: 5px;
   border-radius: 5px;
   background-position: 0 100%;
@@ -1205,6 +1209,47 @@ ol {
     margin: 0;
     width: 100%;
     display: block;
+  }
+  .container .topbar {
+    font-size: 1.5rem;
+    position: relative;
+    display: box;
+    display: flexbox;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100vw;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 5px;
+    background: var(--tiles1);
+  }
+  .container .topbar .fa-chevron-circle-left {
+    cursor: pointer;
+    background: transparent;
+    color: var(--font-color);
+    padding: 0.3rem;
+    position: absolute;
+    left: 10px;
+    font-size: 1.5rem;
+  }
+  .container .topbar .titlebar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    padding: 5px;
   }
   .container .center__number {
     font-size: 1.2rem;

@@ -33,6 +33,7 @@ const description = document.querySelector('.right');
 const resize = document.querySelector('.fa-window-restore');
 const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
+const title = document.querySelector('.titlebar');
 let dateToday;
 
 let dateTomorrow = 0;
@@ -804,18 +805,19 @@ function sortingProject(clicked_id) {
   if (currentProject == 0) {
     currentProject = [{ id: 0, name: clicked }];
     window.localStorage.setItem('Current', JSON.stringify(currentProject));
-  } else {
+} else {
     project = JSON.parse(localStorage.getItem('Current'));
   }
 
   currentProject = [{ id: 0, name: clicked }];
   window.localStorage.setItem('Current', JSON.stringify(currentProject));
-
+  
   tasks = JSON.parse(localStorage.getItem('Items')) || [];
   const tasksProject = tasks.filter((item) => item.project == clicked);
   // showToDoCard();
   lists(tasksProject, todoList);
   showToDoCard();
+  titleName();
   return tasksProject;
 }
 //
@@ -827,7 +829,9 @@ function sortingProjectDays(e) {
   tasks = JSON.parse(localStorage.getItem('Items')) || [];
   switch (clicked) {
     case 'today':
-      taskToday = tasks.filter((items) => items.data === dateToday);
+		taskToday = tasks.filter((items) => items.data === dateToday);
+
+
       lists(taskToday, todoList);
       break;
     case 'tomorrow':
@@ -877,9 +881,24 @@ ${todo.focus > 0 ? ` = ${todo.focus} min` : 0}
 
       break;
     default:
-      break;
-      showToDoCard();
-  }
+		break;
+		
+		showToDoCard();
+	}
+	
+	// console.log(clicked)
+	// clickedArr = [clicked]
+	// console.log(clickedArr);
+	currentProject[0].name = clicked;
+	console.log(currentProject);
+// currentProject.push(clicked);
+// clicked = currentProject
+    // window.localStorage.setItem('Current', JSON.stringify(clicked));
+	   window.localStorage.setItem('Current', JSON.stringify(currentProject));
+	currentProject = JSON.parse(localStorage.getItem('Current'));
+
+	console.log(currentProject)
+	titleName();
   showToDoCard();
 }
 document.querySelectorAll('.left_day').forEach((e) => {
@@ -969,3 +988,19 @@ function openNoteCard(clicked_id) {
     }
   }
 }
+
+function titleName(){
+console.log("oki");
+ currentProject = JSON.parse(localStorage.getItem('Current'));
+ console.log(currentProject);
+
+	title.innerHTML = currentProject.map(
+		(title) =>` ${title.name}`)
+
+	
+
+	  
+
+        .join('');
+}
+titleName();
