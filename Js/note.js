@@ -130,15 +130,15 @@ function noteOpen(clicked_id) {
     onenoteCard.classList.remove('none');
     onenoteCard.innerHTML = `
       <button class="tiles__savebtn" id="saveNote" onClick='saveEditNote()'>Save</button>
-<button class="tiles__deletebtn closeNotebtn" id="deleteNotes" onClick='removeNote()'>Delete Note</button>
-<button   onclick='closeSingleNote()' class="modal__closebutton x-note "><i class="fas fa-times"></i></button>
-<textarea class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"/>${notes[clicked_id].title}</textarea>
-<p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
-<textarea name="message"  id="textarea" placeholder="Type something..." class="tiles__textarea notetext" >${notes[clicked_id].note} </textarea>
-
-      `;
-    click = clicked_id;
-}
+	  <textarea class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"/>${notes[clicked_id].title}</textarea>
+	  <p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
+	  <textarea name="message"  id="textarea" placeholder="Type something..." class="tiles__textarea notetext" >${notes[clicked_id].note} </textarea>
+	  
+	  click = clicked_id;
+	  <button class="tiles__deletebtn closeNotebtn" id="deleteNotes" onClick='removeNote()'>Delete Note</button>
+	  <button   onclick='closeSingleNote()' class="modal__closebutton x-note "><i class="fas fa-times"></i></button>
+	  `;
+	}
 function saveEditNote() {
     notes = JSON.parse(localStorage.getItem('Notes')) || [];
     headerN = document.querySelector('.headerNote');
