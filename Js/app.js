@@ -2,6 +2,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
 const menuLis = document.querySelectorAll('.nav_element');
 for (const nav of menuLis) {
   nav.addEventListener('click', function () {
