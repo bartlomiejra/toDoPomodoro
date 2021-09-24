@@ -1026,3 +1026,11 @@ function randomNotification() {
   new Notification(notifTitle, options);
   setTimeout(randomNotification, 30000);
 }
+
+function displayNotification() {
+  if (Notification.permission == 'granted') {
+    navigator.serviceWorker.getRegistration().then(function(reg) {
+      reg.showNotification('Hello world!');
+    });
+  }
+}
