@@ -1004,33 +1004,24 @@ console.log("oki");
         .join('');
 }
 titleName();
-const button = document.getElementById('notifications');
-button.addEventListener('click', () => {
-  Notification.requestPermission().then((result) => {
-    if (result === 'granted') {
-      randomNotification();
-    }
-  });
-})
+Notification.requestPermission(function(status) {
+    console.log('Notification permission status:', status);
+	displayNotification();
+});
 
-
-function randomNotification() {
-  const randomItem = Math.floor(Math.random() * games.length);
-  const notifTitle = games[randomItem].name;
-  const notifBody = `Created by ${games[randomItem].author}.`;
-  const notifImg = `data/img/${games[randomItem].slug}.jpg`;
-  const options = {
-    body: notifBody,
-    icon: notifImg,
-  };
-  new Notification(notifTitle, options);
-  setTimeout(randomNotification, 30000);
-}
 
 function displayNotification() {
   if (Notification.permission == 'granted') {
     navigator.serviceWorker.getRegistration().then(function(reg) {
-      reg.showNotification('Hello world!');
+      var options = {
+        body: 'Here is a notification body!',
+        vibrate: [100, 50, 100],
+        data: {
+          dateOfArrival: Date.now(),
+          primaryKey: 1
+        }
+      };
+      reg.showNotification('Hello world!', options);
     });
   }
 }
