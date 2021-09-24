@@ -1287,6 +1287,7 @@ ol {
   }
   .container .left .sortTask {
     max-height: 60px;
+    border-radius: 10px;
   }
   .container .left_title {
     margin: 1px;
