@@ -77,26 +77,46 @@ itemTodos.innerHTML = ListOfToDo.map(
 		(todo) =>`
 		
 
-		
-		
-
-			<div class="todo_item dragitem" id=${todo.category} value=${todo.category} name=${todo.category} draggable="true">
+		${
+  todo.done
+    ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)
+' id=${todo.id} data-index=${todo.id}  >
 			
-			<input type="checkbox">
-			${todo.text}
+	${todo.text}
 
- 
- 
- 
 
-          <button id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
-          
-		  Delete
-          </button>
 
-		  
+
+
+  <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
+  
+  Delete
+  </button>
+
+  
+
+ </div>`
+    : `<div class="todo_item dragitem" onClick='checkFunction(this.id) 	  
+' id=${todo.id} data-index=${todo.id}  >
+			
+	${todo.text}
+
+
+
+
+
+  <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
+  
+  Delete
+  </button>
+
+  
+
+ </div>`
+} 
 		
-		 </div>`,
+
+			`,
 	
 		)
 		.join('');
@@ -113,6 +133,40 @@ const { ...index } = ClickedId.dataset;
 let newListOfToDo = ListOfToDo.filter(todo => todo.id != ClickedId.id);
 	localStorage.setItem('ListTodo', JSON.stringify(newListOfToDo));
 	renderTodos();
+event.stopPropagation()
 
 }
 
+
+
+// const itemsTodoList = document.querySelectorAll('todo-item');
+
+// itemsTodoList.addEventListener('dblclick', function (e) {
+//   console.log("delete");
+// });
+
+
+
+function checkFunction(clicked_id){
+	ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
+	
+	// const { ...index } = clicked_id.dataset;
+	// let newListOfToDo = ListOfToDo.filter(todo => todo.id != clicked_id);
+	objIndex = ListOfToDo.findIndex((obj => obj.id == clicked_id));
+console.log(objIndex);
+// myArray[objIndex].name = "Laila"
+
+if(ListOfToDo[objIndex].done == true){
+	ListOfToDo[objIndex].done = false
+}else {
+	ListOfToDo[objIndex].done = true
+}
+localStorage.setItem('ListTodo', JSON.stringify(ListOfToDo));
+console.log(ListOfToDo)
+
+// this.stopPropagation();
+// clicked_id.stopPropagation();
+event.stopPropagation()
+
+renderTodos();
+}

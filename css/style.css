@@ -371,7 +371,6 @@ body .left_projectItem {
       grid-template-columns: 3fr 1fr;
   margin: 5px;
   padding: 5px;
-  border-radius: 5px;
 }
 
 html .left_addProject,
@@ -1360,7 +1359,8 @@ ol {
   }
   .container .left_addProjectBtn {
     color: red;
-    height: 50px;
+    height: 52px;
+    width: 52px;
   }
   .container .left_Projects {
     font-size: 1rem;
@@ -1409,9 +1409,6 @@ ol {
     overflow-x: hidden;
     font-size: 1rem;
     padding: 4px;
-  }
-  .container .left_pomodoreProjects {
-    max-height: 40vh;
   }
 }
 

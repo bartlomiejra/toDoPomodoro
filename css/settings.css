@@ -74,38 +74,6 @@
   background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
 }
 
-.tiles__tile:nth-child(8n+1) {
-  background: var(--tiles1);
-}
-
-.tiles__tile:nth-child(8n+2) {
-  background: var(--tiles2);
-}
-
-.tiles__tile:nth-child(8n+3) {
-  background: var(--tiles3);
-}
-
-.tiles__tile:nth-child(8n+4) {
-  background: var(--tiles4);
-}
-
-.tiles__tile:nth-child(8n+5) {
-  background: var(--tiles5);
-}
-
-.tiles__tile:nth-child(8n+6) {
-  background: var(--tiles6);
-}
-
-.tiles__tile:nth-child(8n+7) {
-  background: var(--tiles7);
-}
-
-.tiles__tile:nth-child(8n+8) {
-  background: var(--tiles8);
-}
-
 .tiles__date {
   opacity: 0.5;
   font-size: 0.8rem;
@@ -394,10 +362,11 @@
 .noteCard__savebtn,
 .todoCard__savebtn {
   border-radius: 5px;
-  background-color: var(--statColor);
   color: var(--light-color);
   font-size: 1.5rem;
   padding: 10px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#2b3066), to(#1d0758));
+  background: linear-gradient(#2b3066, #1d0758);
 }
 
 .modal__savebtn:hover,
@@ -443,5 +412,36 @@
   .modal {
     border: 0;
   }
+}
+
+.themes {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
+          box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.duration {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
+  -webkit-box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
+          box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  height: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=settings.css.map */

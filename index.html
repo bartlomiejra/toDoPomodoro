@@ -200,7 +200,25 @@
 			<div class="todo">
 <div class="todo_inbox">
 
-	<p> Inbox</p>
+	
+<div class="todo_addElements">
+	
+	<form action="" class="todo_addTodo">
+		<button
+		class="todo_addSubmit"
+			  type="submit"
+			  onclick="addNewTodo(this);return false;"
+			  
+			>
+			<class class="fas fa-plus" aria-hidden="true"></class>
+		</button>
+		<input type="text" class="todo_input" placeholder="Add  todo" />
+
+
+
+		
+	  
+	</div>
 	<div class="todo_List categoryTodos " id="inbox">
 		
 	</div>
@@ -208,26 +226,6 @@
 		
 	</div>	
 		
-	</div>
-	
-<div class="todo_addElements">
-	
-	<form action="" class="todo_addTodo">
-		<button
-		class="todo_addSubmit"
-              type="submit"
-              onclick="addNewTodo(this);return false;"
-			  
-            >
-			<class class="fas fa-plus" aria-hidden="true"></class>
-		</button>
-		<input type="text" class="todo_input" placeholder="Add  todo" />
-
-
-
-		</select>
-		
-      
 	</div>
 </div>
 </div>
@@ -239,7 +237,7 @@
         </div>
         <div class="modal__body">
           <div class="modal__options">
-            <ol class="modal__themes">
+            <ol class="modal__themes themes">
               <li>
                 <input
                   type="radio"
@@ -262,7 +260,7 @@
               </li>
             </ol>
             <ol>
-              <li>
+              <li class="duration" >
                 <label for="quantity">Pomodore duration:</label>
                 <input
                   type="number"
@@ -292,6 +290,9 @@
                   Save Settings
                 </button>
               </li>
+			  <li>
+
+			  </li>
             </ol>
           </div>
         </div>

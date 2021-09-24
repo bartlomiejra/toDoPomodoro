@@ -73,31 +73,13 @@
 		border-radius: 15px;
 	}
 
-	&_categoryBox {
-		position: relative;
-		height: 50vh;
-		min-width: 220px;
-		max-width: 300px;
-		margin: 5px;
-		background-color: $addProjectbtn;
+	&_delete {
+		color: var(--font-color);
+		background: linear-gradient(rgb(43, 48, 102), #1d0758);
+		padding: 10px;
+		// border: none;
 		border-radius: 10px;
-		display: box;
-		flex-direction: column;
-		flex-wrap: no-wrap;
-		overflow: auto;
-	}
-
-	&_categoryTittle {
-		// background-color: black;
-		display: flex;
-		justify-content: flex-start;
-		// color: red;
-	}
-
-	&_categoryRemove {
-		background-color: transparent;
-		position: absolute;
-		right: 0;
+		text-decoration: none;
 	}
 
 	&_closePopup {
@@ -127,6 +109,7 @@
 		flex-wrap: nowrap;
 		flex-direction: row;
 		align-content: center;
+		align-items: center;
 	}
 
 	&_item:nth-child(8n+1) {
@@ -263,4 +246,9 @@
 
 .visable {
 	display: flex;
+}
+
+.completed {
+	opacity: 0.4;
+	text-decoration: line-through;
 }
