@@ -620,15 +620,18 @@ function endpomodoro() {
 
   audio = new Audio('Alerts/taskEnd.mp3');
 
+
   audio.play();
+  
   const itemS = JSON.parse(localStorage.getItem('Items'));
   const filtrr = itemS.filter((p) => p.id == taskId);
   const itemSelement = filtrr[0];
   itemSelement.focus += timeInFocus;
   localStorage.setItem('Items', JSON.stringify(itemS));
-
+  
   lists(todos, todoList);
   pause.addEventListener('click', timerBreak);
+  displayNotification();
   breakTime();
 }
 function resizeClock() {
@@ -1015,9 +1018,13 @@ console.log("oki");
         .join('');
 }
 titleName();
+
+
+
+
+//push notification
 Notification.requestPermission(function(status) {
     console.log('Notification permission status:', status);
-	displayNotification();
 });
 
 
@@ -1032,9 +1039,15 @@ function displayNotification() {
         data: {
           dateOfArrival: Date.now(),
           primaryKey: 1
-        }
+        }, 
+		 actions: [
+          {action: 'explore', title: 'Explore this new world',
+            icon: '../icon-192x192.png'},
+          {action: 'close', title: 'Close notification',
+            icon: '../icon-192x192.png'},
+        ]
       };
-      reg.showNotification('Pomodoro Finished!', options);
+      reg.showNotification('PomodoroApp!', options);
     });
   }
 }
