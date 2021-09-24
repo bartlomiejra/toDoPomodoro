@@ -1025,14 +1025,16 @@ function displayNotification() {
   if (Notification.permission == 'granted') {
     navigator.serviceWorker.getRegistration().then(function(reg) {
       var options = {
-        body: 'Here is a notification body!',
+        body: 'Lets take a break',
         vibrate: [100, 50, 100],
+		          icon: '../icon-192x192.png',
+
         data: {
           dateOfArrival: Date.now(),
           primaryKey: 1
         }
       };
-      reg.showNotification('Hello world!', options);
+      reg.showNotification('Pomodoro Finished!', options);
     });
   }
 }
