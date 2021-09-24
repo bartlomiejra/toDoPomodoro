@@ -15,7 +15,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   padding: 0;
-  margin: 20px;
+  margin: 5px;
   list-style: none;
 }
 
@@ -33,36 +33,45 @@
   text-align: center;
 }
 
-.tiles__tile:nth-child(2) {
-  background: var(--tiles1);
+.tiles__tile:nth-child(8n+1) {
+  background-color: #6b0f1a;
+  background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
 }
 
-.tiles__tile:nth-child(1) {
-  background: var(--tiles2);
+.tiles__tile:nth-child(8n+2) {
+  background-color: #4c4177;
+  background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
+  border-bottom: 7px red;
 }
 
-.tiles__tile:nth-child(3) {
-  background: var(--tiles3);
+.tiles__tile:nth-child(8n+3) {
+  background-color: #2876f9;
+  background-image: linear-gradient(315deg, #2876f9 0%, #6d17cb 74%);
 }
 
-.tiles__tile:nth-child(4) {
-  background: var(--tiles4);
+.tiles__tile:nth-child(8n+4) {
+  background-color: #4c4177;
+  background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
 }
 
-.tiles__tile:nth-child(5) {
-  background: var(--tiles5);
+.tiles__tile:nth-child(8n+5) {
+  background-color: #ffc857;
+  background-image: linear-gradient(316deg, #ffc857 0%, #3e2f5b 74%);
 }
 
-.tiles__tile:nth-child(6) {
-  background: var(--tiles6);
+.tiles__tile:nth-child(8n+6) {
+  background-color: #c73e1d;
+  background-image: linear-gradient(315deg, #c73e1d 0%, #a23b72 37%, #2e86ab 100%);
 }
 
-.tiles__tile:nth-child(7) {
-  background: var(--tiles7);
+.tiles__tile:nth-child(8n+7) {
+  background-color: #972239;
+  background-image: linear-gradient(315deg, #972239 0%, #db6885 74%);
 }
 
-.tiles__tile:nth-child(8) {
-  background: var(--tiles8);
+.tiles__tile:nth-child(8n+8) {
+  background-color: #0cbaba;
+  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
 }
 
 .tiles__date {
@@ -234,17 +243,17 @@
         -ms-flex-pack: center;
             justify-content: center;
     padding: 0;
-    margin: 20px;
+    margin: 5px;
     list-style: none;
     font-size: 0.7rem;
   }
   .tiles__tile {
-    font-size: auto;
+    font-size: 1rem;
     border-radius: 10px;
     background: var(--number-color);
     padding: 10px;
-    width: 105px;
-    height: 75px;
+    width: 205px;
+    height: 100px;
     color: var(--hover_color);
     text-align: center;
   }
