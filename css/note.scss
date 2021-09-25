@@ -123,7 +123,7 @@
 	}
 
 	&__smallNote {
-		font-size: 0.6rem;
+		font-size: 0.8rem;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -166,7 +166,7 @@
 		background-color: var(--header_background);
 		height: 700px;
 		width: 700px;
-		max-height: 80%;
+		max-height: 83%;
 		max-width: 90%;
 		z-index: 300;
 		position: absolute;
@@ -318,5 +318,23 @@
 		background: var(--backgrounddarker);
 		color: var(--number-color);
 		font-size: 1.6rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.tiles__tile {
+		font-size: 0.8rem;
+		border-radius: 10px;
+		background: var(--number-color);
+		// padding: 10px;
+		width: 35vw;
+		height: 100px;
+		color: var(--hover_color);
+		//   font-weight: bold;
+		text-align: center;
+	}
+
+	.tiles_smallNote {
+		font-size: 0.1rem;
 	}
 }

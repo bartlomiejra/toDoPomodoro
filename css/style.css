@@ -1213,7 +1213,6 @@ ol {
     font-size: 1.5rem;
     position: relative;
     display: box;
-    display: flexbox;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
