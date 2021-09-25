@@ -324,6 +324,7 @@ function statTask() {
   let countCompleted = 0;
   let estimated = 0;
   //* counting statiscics
+  const history = JSON.parse(localStorage.getItem('History'))
   let historytaskToday;
   historytaskToday = history.filter((items) => items.data === dateToday);
   for (let i = 0; i < historytaskToday.length; i += 1) {

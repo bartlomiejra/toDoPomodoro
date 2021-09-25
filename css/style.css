@@ -1362,6 +1362,8 @@ ol {
     color: red;
     height: 52px;
     width: 52px;
+    min-height: 52px;
+    min-width: 52px;
   }
   .container .left_Projects {
     font-size: 1rem;
@@ -1370,7 +1372,8 @@ ol {
   }
   .container .left_color {
     padding: 10px;
-    height: 32px;
+    min-height: 32px;
+    min-width: 32px;
   }
   .container .circle {
     display: -webkit-box;

@@ -1165,6 +1165,8 @@ ol {
 				color: red;
 				height: 52px;
 				width: 52px;
+				min-height: 52px;
+				min-width: 52px;
 			}
 
 			&_Projects {
@@ -1176,7 +1178,8 @@ ol {
 
 			&_color {
 				padding: 10px;
-				height: 32px;
+				min-height: 32px;
+				min-width: 32px;
 			}
 		}
 
