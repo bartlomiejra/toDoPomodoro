@@ -1221,6 +1221,12 @@ ol {
 			// max-height: 40vh;
 			// margin-bottom: 100px;
 			// }
+			&_color {
+				background-color: white;
+				padding: 10px;
+				min-height: 32px;
+				min-width: 32px;
+			}
 		}
 	}
 }

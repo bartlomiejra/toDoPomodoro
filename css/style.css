@@ -1413,6 +1413,12 @@ ol {
     font-size: 1rem;
     padding: 4px;
   }
+  .container .left_color {
+    background-color: white;
+    padding: 10px;
+    min-height: 32px;
+    min-width: 32px;
+  }
 }
 
 .x-note {
