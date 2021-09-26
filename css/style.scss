@@ -415,6 +415,8 @@ body {
 			padding: 5px;
 			margin: 10px;
 			color: var(--task);
+			height: 60px;
+
 			// font-size: 2em;
 			overflow: hidden;
 			width: 500px;
@@ -950,9 +952,12 @@ ol {
 }
 
 .selected {
+	// padding: 5px;
 	color: var(--font-color);
 	// font-weight: 900;
-	// background-color:rgb(87, 37, 37)
+	background-color: #2876f9;
+	background-image: linear-gradient(315deg, #2876f9 0%, #3e4397 74%);
+	border-radius: 10px;
 }
 
 .fa-coffee {
@@ -1150,7 +1155,10 @@ ol {
 			}
 
 			&_addProject {
-				width: 100%;
+				// margin: 10px;
+				// width: 90;
+				// left: 50%;
+				// transform: translate(-50%, -50%);
 				justify-content: center;
 				display: flex;
 				bottom: 10vh;
@@ -1171,8 +1179,8 @@ ol {
 			&_Projects {
 				font-size: 1rem;
 				height: 50px;
-				// min-width: 70vw;
 				min-width: 70vw;
+				// min-width: 50vw;
 			}
 
 			&_color {
@@ -1221,11 +1229,19 @@ ol {
 			// max-height: 40vh;
 			// margin-bottom: 100px;
 			// }
-			&_color {
-				background-color: white;
-				padding: 10px;
-				min-height: 32px;
-				min-width: 32px;
+			// &_color {
+			// 	background-color: white;
+			// padding: 10px;
+			height: 32px;
+			width: 32px;
+			min-height: 52px;
+			min-width: 52px;
+
+			&_Projects {
+				font-size: 1rem;
+				height: 50px;
+				// min-width: 70vw;
+				min-width: 50vw;
 			}
 		}
 	}
