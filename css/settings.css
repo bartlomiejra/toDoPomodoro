@@ -294,30 +294,6 @@
           box-sizing: border-box;
 }
 
-@-webkit-keyframes pulse {
-  0% {
-    color: transparent;
-  }
-  50% {
-    color: #868686;
-  }
-  100% {
-    color: #eff1e5;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    color: transparent;
-  }
-  50% {
-    color: #868686;
-  }
-  100% {
-    color: #eff1e5;
-  }
-}
-
 .modal,
 .noteCard,
 .todoCard {
@@ -633,8 +609,6 @@
 }
 
 .mute input[type=checkbox]:checked + .label::before {
-  -webkit-animation: pulse 2s  ease;
-          animation: pulse 2s  ease;
   content: '\f028';
   /* this is your text. You can also use UTF-8 character codes as I do here */
   font-family: FontAwesome;
