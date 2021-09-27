@@ -427,7 +427,7 @@
   display: -ms-flexbox;
   display: flex;
   height: calc(100vh - 70px);
-  max-height: calc(100vh - 70px);
+  max-height: calc(100vh - 80px);
 }
 
 @media screen and (max-width: 895px) {

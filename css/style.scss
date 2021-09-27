@@ -944,6 +944,7 @@ ol {
 		color: var(--btncolor);
 		// color: var(--task_color);
 		text-decoration: none;
+		padding: 5px;
 	}
 
 	&_element:hover {
@@ -954,7 +955,7 @@ ol {
 .selected {
 	// padding: 5px;
 	color: var(--font-color);
-	max-width: 100px;
+	// max-width: 100px;
 	// font-weight: 900;
 	background-color: #2876f9;
 	background-image: linear-gradient(315deg, #2876f9 0%, #3e4397 74%);
@@ -980,7 +981,7 @@ ol {
 		display: block;
 
 		.topbar {
-			font-size: 1.rem;
+			font-size: 1.2rem;
 			position: relative;
 			display: box;
 			display: flex;

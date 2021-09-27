@@ -495,7 +495,7 @@ body .center_addTaskdiv {
   padding: 5px;
   margin: 10px;
   color: var(--task);
-  height: 60px;
+  height: 50px;
   overflow: hidden;
   width: 500px;
   display: -webkit-box;
@@ -1184,6 +1184,7 @@ ol {
   font-size: 1rem;
   color: var(--btncolor);
   text-decoration: none;
+  padding: 5px;
 }
 
 .nav_element:hover {
