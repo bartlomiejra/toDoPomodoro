@@ -449,8 +449,6 @@
       -ms-flex-align: center;
           align-items: center;
   background: linear-gradient(-45deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
-  -webkit-box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
-          box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -610,10 +608,8 @@
 
 .mute input[type=checkbox]:checked + .label::before {
   content: '\f028';
-  /* this is your text. You can also use UTF-8 character codes as I do here */
   font-family: FontAwesome;
   font-weight: 400;
   vertical-align: middle;
-  /* background-image: url("checked.png"); */
 }
 /*# sourceMappingURL=settings.css.map */
