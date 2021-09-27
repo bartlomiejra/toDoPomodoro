@@ -1214,7 +1214,7 @@ ol {
     display: block;
   }
   .container .topbar {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     position: relative;
     display: box;
     display: -webkit-box;
@@ -1289,8 +1289,25 @@ ol {
     width: 100% !important;
   }
   .container .left .sortTask {
+    font-weight: 800;
     max-height: 60px;
     border-radius: 10px;
+  }
+  .container .left .history {
+    background-color: #36096d;
+    background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+  }
+  .container .left .tomorrow {
+    background-color: #2a2a72;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+  }
+  .container .left .someday {
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+  }
+  .container .left .today {
+    background-color: #4d5dfb;
+    background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
   }
   .container .left_title {
     margin: 1px;

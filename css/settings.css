@@ -294,6 +294,30 @@
           box-sizing: border-box;
 }
 
+@-webkit-keyframes pulse {
+  0% {
+    color: transparent;
+  }
+  50% {
+    color: #868686;
+  }
+  100% {
+    color: #eff1e5;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    color: transparent;
+  }
+  50% {
+    color: #868686;
+  }
+  100% {
+    color: #eff1e5;
+  }
+}
+
 .modal,
 .noteCard,
 .todoCard {
@@ -350,15 +374,21 @@
   padding: 10px 15px;
 }
 
-.modal__body__options,
-.noteCard__body__options,
-.todoCard__body__options {
+.modal__options,
+.noteCard__options,
+.todoCard__options {
   font-size: 1.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   border-radius: 20px;
-  background-color: var(--task_color);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .modal__header, .modal__closebutton,
@@ -376,12 +406,13 @@
 .modal__savebtn,
 .noteCard__savebtn,
 .todoCard__savebtn {
+  margin-top: 5px;
   border-radius: 5px;
   color: var(--light-color);
   font-size: 1.5rem;
   padding: 10px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#2b3066), to(#1d0758));
-  background: linear-gradient(#2b3066, #1d0758);
+  background-color: #2876f9;
+  background-image: linear-gradient(315deg, #2876f9 0%, #3e4397 74%);
 }
 
 .modal__savebtn:hover,
@@ -429,23 +460,14 @@
   }
 }
 
-.themes {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
-          box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
+.optionsBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 50px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.duration {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -454,9 +476,170 @@
   -webkit-box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
           box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.25), -4px -4px 6px 0 rgba(255, 255, 255, 0.3);
   border-radius: 10px;
-  height: 50px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: var(--task_color);
+  margin: 10px;
+}
+
+.time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px;
+}
+
+.switch-button {
+  border-radius: 30px;
+  overflow: hidden;
+  width: 100px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  position: relative;
+  padding-right: 120px;
+  background-color: var(--task_color);
+}
+
+.switch-button::before {
+  content: 'Light ';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.switch-button-checkbox {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+}
+
+.switch-button-checkbox:checked + .switch-button-label::before {
+  -webkit-transform: translateX(120px);
+          transform: translateX(120px);
+  -webkit-transition: -webkit-transform 300ms linear;
+  transition: -webkit-transform 300ms linear;
+  transition: transform 300ms linear;
+  transition: transform 300ms linear, -webkit-transform 300ms linear;
+  background-color: #2876f9;
+  background-image: linear-gradient(315deg, #2876f9 0%, #3e4397 74%);
+}
+
+.switch-button-checkbox + .switch-button-label {
+  position: relative;
+  padding: 15px 0;
+  display: block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+.switch-button-checkbox + .switch-button-label::before {
+  content: '';
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: -webkit-transform 300ms;
+  transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  transition: transform 300ms, -webkit-transform 300ms;
+  background-image: linear-gradient(315deg, #2876f9 0%, #3e4397 74%);
+}
+
+.switch-button-checkbox + .switch-button-label .switch-button-label-span {
+  position: relative;
+}
+
+.mute {
+  border-radius: 30px;
+  overflow: hidden;
+  width: 100px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  position: relative;
+  padding-right: 120px;
+  height: 52px;
+}
+
+.mute input[type=checkbox] {
+  height: 50px;
+  width: 100px;
+  display: none;
+}
+
+.mute .label {
+  border-radius: 30px;
+  overflow: hidden;
+  width: 220px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  background-color: var(--task_color);
+  height: 52px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.mute .label::before {
+  content: '\f6a9';
+  font-family: FontAwesome;
+  font-size: 2rem;
+}
+
+.mute input[type=checkbox]:checked + .label::before {
+  -webkit-animation: pulse 2s  ease;
+          animation: pulse 2s  ease;
+  content: '\f028';
+  /* this is your text. You can also use UTF-8 character codes as I do here */
+  font-family: FontAwesome;
+  font-weight: 400;
+  vertical-align: middle;
+  /* background-image: url("checked.png"); */
 }
 /*# sourceMappingURL=settings.css.map */

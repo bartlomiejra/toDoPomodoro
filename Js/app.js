@@ -843,24 +843,25 @@ function sortingProjectDays(e) {
   clicked = e.target.id;
   tasks = JSON.parse(localStorage.getItem('Items')) || [];
   switch (clicked) {
-    case 'today':
+    case 'Today':
 		taskToday = tasks.filter((items) => items.data === dateToday);
 
 
       lists(taskToday, todoList);
       break;
-    case 'tomorrow':
+    case 'Tomorrow':
       taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
       // renderProjects();
+	  console.log(taskTomorrow)
       lists(taskTomorrow, todoList);
       break;
-    case 'someday':
+    case 'Someday':
       taskSomeday = tasks.filter(
         (items) => items.data !== dateTomorrow || dateToday,
       );
       lists(taskSomeday, todoList);
       break;
-    case 'history':
+    case 'Completed':
       // const history = JSON.parse(localStorage.getItem('History'));
       if (history.length == 0) {
         emptyList.classList.remove('none');
@@ -904,6 +905,7 @@ ${todo.focus > 0 ? ` = ${todo.focus} min` : 0}
 	// console.log(clicked)
 	// clickedArr = [clicked]
 	// console.log(clickedArr);
+	// currentProject = JSON.parse(localStorage.getItem('Current'));
 	currentProject[0].name = clicked;
 	console.log(currentProject);
 // currentProject.push(clicked);

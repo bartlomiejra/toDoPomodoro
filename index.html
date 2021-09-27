@@ -81,11 +81,11 @@
             <i class="far fa-calendar-alt"></i>Someday
           </li>
           <li
-            class="sortTask  left_day"
+            class="sortTask history left_day"
             name="completed"
             onCLick="activeProject(this)"
             tabindex="0"
-            id="Completed tasks"
+            id="Completed"
           >
             <i class="far fa-check-circle"></i>Completed tasks
           </li>
@@ -237,8 +237,15 @@
         </div>
         <div class="modal__body">
           <div class="modal__options">
-            <ol class="modal__themes themes">
-              <li>
+			  <p>Theme</p>
+			    <div class="switch-button">
+    <input class="switch-button-checkbox" type="checkbox"></input>
+    <label class="switch-button-label" for=""><span class="switch-button-label-span">Dark</span></label>
+  </div>
+
+            <!-- <ol class="modal__themes optionsBox">
+				
+				<li>
                 <input
                   type="radio"
                   class="radio"
@@ -258,12 +265,15 @@
                 />
                 <label for="Dark">Dark Theme</label>
               </li>
-            </ol>
-            <ol>
-              <li class="duration" >
+            </ol> -->
+            <ol >
+              <li class="duration optionsBox"  >
                 <label for="quantity">Pomodore duration:</label>
+				   <div class="time">
+
                 <input
-                  type="number"
+				 oninput="this.nextElementSibling.value = value"
+                  type="range"
                   class="numberOfTime"
                   id="quantity"
                   value="25"
@@ -271,36 +281,60 @@
                   min="5"
                   max="100"
                 />
+				    <output name="duration" id="duration">24</output>
+				   </div>
               </li>
-              <li>
+              <li class="duration optionsBox">
                 <label for="quantitybreak">Pomodore break:</label>
-                <input
-                  type="number"
-                  class="numberOfTime"
-                  id="quantitybreak"
-                  value="5"
-                  name="quantitybreak"
-                  min="5"
-                  max="100"
-                />
+
+    <div class="time">
+
+		<input
+		oninput="this.nextElementSibling.value = value"
+		
+		type="range"
+		class="numberOfTime"
+		id="quantitybreak"
+		value="5"
+		name="quantitybreak"
+		min="1"
+		max="60"
+		/>
+		<output name="break" id="break">24</output>
+	</div>            
               </li>
-              <li>Mute sounds: <input type="checkbox" /></li>
-              <li>
-                <button class="modal__savebtn" id="saveSettingUser">
+			</ol >
+			  <span>Sound:</span>
+			  <div class="mute">
+				  <label><input type="checkbox" ><span class="label"></span></label>
+				</div>
+				
+				<button class="modal__savebtn" id="saveSettingUser">
+
+
+
+
+					         <!-- <div class="checkbox-custom">
+   <input type="checkbox"/>
+      <div class="checkmark">
+		  <i class="fas fa-volume-mute unchecked"></i>
+          
+		  <i class="fas fa-volume-up checked"></i>
+    </div>
+</div> -->
                   Save Settings
                 </button>
               </li>
 			  <li>
 
 			  </li>
-            </ol>
           </div>
         </div>
       </div>
 
       <nav class="nav">
         <div
-          class="nav_element Project"
+          class="nav_element Project selected"
           name="pomodoreCard"
           onclick="openNoteCard(this)"
           data-link
@@ -323,7 +357,7 @@
           <span>Project</span>
         </div>
         <div
-          class="nav_element"
+          class="nav_element "
           name="note"
           onclick="openNoteCard(this)"
           id="noteButton"
