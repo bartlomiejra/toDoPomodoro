@@ -69,15 +69,16 @@ if (history == null) {
 }
 let statistics = JSON.parse(localStorage.getItem('STat'));
 if (statistics == null) {
-  statistics = [
+	statistics = [
     {
       estimated: '0.00',
       comp: 1,
       elapsed: '0.00',
       complete: 0,
     },
-  ];
-  window.localStorage.setItem('STat', JSON.stringify(statistics));
+];
+window.localStorage.setItem('STat', JSON.stringify(statistics));
+ statistics = JSON.parse(localStorage.getItem('STat'));
 }
 
 let todos = JSON.parse(localStorage.getItem('Items'));
@@ -312,7 +313,7 @@ function addTodo(event) {
   todoInput.value = '';
   todos.push(item);
   localStorage.setItem('Items', JSON.stringify(todos));
-  lists(todos, todoList);
+//   lists(todos, todoList);
   lists(actualList, todoList);
   statTask();
   centerDiv.classList.add('active');
@@ -429,6 +430,7 @@ function btnActtion(e) {
       const todosFiltr = filtr[0];
       const idtego = todosFiltr.id;
       todosFiltr.done = true;
+	
       todosFiltr.id = History.length;
       const historytask = todosFiltr;
       History.push(historytask);
@@ -448,6 +450,7 @@ function btnActtion(e) {
         let lastId = 0;
         todos.forEach((ele) => {
           if (ele.id > lastId) {
+	
             lastId = ele.id;
           }
         });
@@ -681,6 +684,7 @@ function showDiv(clickedId) {
                 <li> <input type="date" class="numberOfTime" id="date" value="${
                   taskDetails.data
                 }" name="trip-start"></li>
+			
 <li>   Project:</li>
              <li>
 <select name="Project" value="${
@@ -1020,7 +1024,7 @@ console.log("oki");
 
         .join('');
 }
-titleName();
+// titleName();
 
 
 

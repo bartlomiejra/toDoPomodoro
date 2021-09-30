@@ -1217,7 +1217,6 @@ ol {
   .container .topbar {
     font-size: 1.2rem;
     position: relative;
-    display: box;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1337,7 +1336,6 @@ ol {
   .container .left_projectItem:nth-child(8n+2) {
     background-color: #4c4177;
     background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
-    border-bottom: 7px red;
   }
   .container .left_projectItem:nth-child(8n+3) {
     background-color: #2876f9;
@@ -1380,7 +1378,6 @@ ol {
     top: 95vh;
   }
   .container .left_addProjectBtn {
-    color: red;
     height: 52px;
     width: 52px;
     min-height: 52px;

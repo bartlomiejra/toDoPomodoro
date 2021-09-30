@@ -983,7 +983,6 @@ ol {
 		.topbar {
 			font-size: 1.2rem;
 			position: relative;
-			display: box;
 			display: flex;
 			width: 100vw;
 			align-items: center;
@@ -1145,7 +1144,6 @@ ol {
 				// border: 2px var(--tiles2);
 				background-color: #4c4177;
 				background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
-				border-bottom: 7px red;
 			}
 
 			&_projectItem:nth-child(8n+3) {
@@ -1195,7 +1193,6 @@ ol {
 			}
 
 			&_addProjectBtn {
-				color: red;
 				height: 52px;
 				width: 52px;
 				min-height: 52px;

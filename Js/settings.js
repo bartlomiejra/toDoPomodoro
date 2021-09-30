@@ -33,6 +33,8 @@ ${settingUser.Theme === 'Dark' ? 'checked' : ''}
 <label for="Dark">Dark Theme</label></li>
 
 
+
+
 `;
 function closeModal(modal) {
     if (modal == null) return;
