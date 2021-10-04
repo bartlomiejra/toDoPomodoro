@@ -231,45 +231,50 @@
 </div>
 
 </div>
+<!-- <ol class="modal__themes optionsBox">
+	
+	<li>
+	<input
+	  type="radio"
+	  class="radio"
+	  id="Light"
+	  name="theme"
+	  value="Light"
+	/>
+	<label for="Light">Light Theme </label>
+  </li>
+  <li>
+	<input
+	  type="radio"
+	  class="radio"
+	  id="Dark"
+	  name="theme"
+	  value="Dark"
+	/>
+	<label for="Dark">Dark Theme</label>
+  </li>
+</ol> -->
 <div class="modal settings" id="modal">
         <div class="modal__header">
           <div class="modal__title">Settings</div>
         </div>
         <div class="modal__body">
           <div class="modal__options">
-			  <p>Theme</p>
-			    <div class="switch-button">
-    <input class="switch-button-checkbox" type="checkbox"></input>
-    <label class="switch-button-label" for=""><span class="switch-button-label-span">Dark</span></label>
-  </div>
+			  <span>Theme</span>
+	<div class="modal__themes">
 
-            <!-- <ol class="modal__themes optionsBox">
-				
-				<li>
-                <input
-                  type="radio"
-                  class="radio"
-                  id="Light"
-                  name="theme"
-                  value="Light"
-                />
-                <label for="Light">Light Theme </label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  class="radio"
-                  id="Dark"
-                  name="theme"
-                  value="Dark"
-                />
-                <label for="Dark">Dark Theme</label>
-              </li>
-            </ol> -->
+
+
+	</div>
+
 			<span>Sound:</span>
+			<div class="sounds">
 			<div class="mute">
-				<label><input type="checkbox" ><span class="label"></span></label>
-			  </div>
+				<label><input type="checkbox" >
+
+						<span class="label" onClick="appSounds(this)"></span></label>
+					</div>
+					</div>
             <ol >
               <li class="duration optionsBox"  >
                 <label for="quantity">Pomodore duration:</label>
@@ -325,10 +330,11 @@
                   Save Settings
                 </button>
               </li>
-			  <li>
-
-			  </li>
           </div>
+		  <div class="quote">
+
+			
+		  </div>
         </div>
       </div>
 
