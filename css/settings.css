@@ -353,18 +353,27 @@
 .modal__options,
 .noteCard__options,
 .todoCard__options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80vh;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   font-size: 1.5rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   border-radius: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .modal__header, .modal__closebutton,
@@ -387,6 +396,7 @@
   color: var(--light-color);
   font-size: 1.5rem;
   padding: 10px;
+  max-height: 50px;
   background-color: #2876f9;
   background-image: linear-gradient(315deg, #2876f9 0%, #3e4397 74%);
 }
@@ -430,13 +440,12 @@
   max-height: calc(100vh - 80px);
 }
 
-@media screen and (max-width: 895px) {
-  .modal {
-    border: 0;
-  }
+output {
+  font-size: 1.3rem;
 }
 
 .optionsBox {
+  width: 50vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -461,6 +470,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -471,7 +481,12 @@
   padding: 5px;
 }
 
+.numberOfTime {
+  width: 100%;
+}
+
 .switch-button {
+  margin-bottom: 10px;
   border-radius: 30px;
   overflow: hidden;
   width: 100px;
@@ -569,6 +584,7 @@
   position: relative;
   padding-right: 120px;
   height: 52px;
+  margin-bottom: 10px;
 }
 
 .mute input[type=checkbox] {
@@ -611,5 +627,14 @@
   font-family: FontAwesome;
   font-weight: 400;
   vertical-align: middle;
+}
+
+@media screen and (max-width: 895px) {
+  .modal {
+    border: 0;
+  }
+  .optionsBox {
+    width: 90vw;
+  }
 }
 /*# sourceMappingURL=settings.css.map */

@@ -19,23 +19,23 @@ const settingUser = JSON.parse(
     },
 );
 
-theme.innerHTML = `
-<li>
-<input type="radio" class="radio" id="Light"   name="theme" value="Light"
-${settingUser.Theme === 'Light' ? 'checked' : ''}
->
-<label for="Light" >Light Theme </label>
-</li>
-<li>
-<input type="radio" class="radio" id="Dark" name="theme" value="Dark"
-${settingUser.Theme === 'Dark' ? 'checked' : ''}
->
-<label for="Dark">Dark Theme</label></li>
+// theme.innerHTML = `
+// <li>
+// <input type="radio" class="radio" id="Light"   name="theme" value="Light"
+// ${settingUser.Theme === 'Light' ? 'checked' : ''}
+// >
+// <label for="Light" >Light Theme </label>
+// </li>
+// <li>
+// <input type="radio" class="radio" id="Dark" name="theme" value="Dark"
+// ${settingUser.Theme === 'Dark' ? 'checked' : ''}
+// >
+// <label for="Dark">Dark Theme</label></li>
 
 
 
 
-`;
+// `;
 function closeModal(modal) {
     if (modal == null) return;
     settingsDiv.classList.remove('active');
@@ -61,7 +61,8 @@ function themesValue() {
     }
 }
 
-function save() {
+function saveOptions() {
+	event.preventDefault();
     let i;
 
     for (i = 0; i < themes.length; i += 1) {
@@ -75,7 +76,24 @@ function save() {
         breakTime: breakTimeValue.value,
     };
     window.localStorage.setItem('settings', JSON.stringify(settings));
-    themesValue();
+    // themesValue();
+	console.log("all rightt");	
 }
-saveButton.addEventListener('click', save);
+saveButton.addEventListener('click', saveOptions);
 themesValue();
+
+// fetch('https://stoicquotesapi.com/v1/api/quotes/random')
+// .then(response => response.text())
+//  document.querySelector('.quote').innerHTML = response;
+
+	// .then(data => console.log(data.body))
+	// .catch(err => console.error(err));
+
+const checkbox = document.querySelector('.switch-button')
+	function themecheck(){
+		console.log("ok")
+	
+		
+	}
+	themecheck();
+	checkbox.addEventListener('change', themecheck)
