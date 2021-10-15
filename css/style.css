@@ -34,8 +34,8 @@ input::-webkit-color-swatch {
   --left_background: #14141c;
   --nav_color: #14141c;
   --task_color: #28222c;
-  --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
-  --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+  --timer: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+  --addProject: #b17676;
   --number-color: #f1998f;
   --light-color: #a9ded8;
   --font-color: #fff;
@@ -63,35 +63,28 @@ input::-webkit-color-swatch {
 }
 
 .lightTheme {
-  --right_background: #abada2;
-  --timerFinishColor: rgba(255, 255, 255, 0.725);
-  --backgrounddarker: #000;
-  --header_background: #b2bfcc;
-  --statColor: #f2f1ea;
-  --left_background: #626074;
+  --center-color: #fff;
+  --right_background: #fff;
+  --timerFinishColor: #aaa;
+  --backgrounddarker: #aaa;
+  --header_background: #797878;
+  --statColor: #fff;
+  --left_background: #ccc;
   --nav_color: #ccc;
-  --task_color: #9b9a9a;
-  --timer: linear-gradient(246.9deg, rgba(206, 76, 76, 0.65) 56.87%, rgba(202, 84, 84, 0.904515) 79.48%, rgba(197, 93, 93, 0.75) 96.13%);
-  --addProject: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.5) 77.77%);
+  --task_color: #9b9797;
+  --timer: #fff;
+  --addProject: #000;
   --number-color: #000;
-  --light-color: #0c0c0c;
+  --light-color: #fff;
   --font-color: black;
   --addProjectbtn: #e0e0e0;
-  --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  --hover_color: #818181;
-  --dark-font: #ccbaba;
+  --shadow: #fff;
+  --hover_color: #fff;
+  --dark-font: #fff;
   --fonts: #080808;
   --task: #fff;
-  --tiles1: #db8dd9;
-  --tiles2: #e489a4;
-  --tiles3: #ecb06c;
-  --tiles4: #7178b8;
-  --tiles5: #995f99;
-  --tiles6: #9fa551;
-  --tiles7: #b16a6a;
-  --tiles8: #59aa66;
-  --inputbackground: linear-gradient(147.14deg, rgba(226, 180, 180, 0.7) 18.33%, rgba(255, 255, 255, 0.2) 77.77%);
-  --btncolor: #808080;
+  --inputbackground: #ccc;
+  --btncolor: #fff;
 }
 
 @-webkit-keyframes scale {
@@ -1229,7 +1222,6 @@ ol {
             justify-content: center;
     padding-bottom: 5px;
     border-radius: 0;
-    /* margin-bottom: 5px; */
     background-color: var(--statColor);
   }
   .container .topbar .fa-chevron-circle-left {
@@ -1318,7 +1310,6 @@ ol {
   .container .left_day {
     min-height: 40px;
     max-height: 60px;
-    background: #5e5eab;
     padding-top: 20px;
   }
   .container .left_day > i {

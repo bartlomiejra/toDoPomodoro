@@ -34,14 +34,11 @@
 }
 
 .tiles__tile:nth-child(8n+1) {
-  background-color: #6b0f1a;
   background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
 }
 
 .tiles__tile:nth-child(8n+2) {
-  background-color: #4c4177;
   background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
-  border-bottom: 7px red;
 }
 
 .tiles__tile:nth-child(8n+3) {
@@ -116,7 +113,7 @@
           transform: translate(-50%, -50%) scale(1);
   border-radius: 10px;
   color: var(--font-color);
-  background-color: var(--header_background);
+  background-color: var(--statColor);
   height: 700px;
   width: 700px;
   max-height: 83%;
@@ -160,9 +157,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /* margin-top: 50px; */
   outline: none;
-  /* padding: 5px; */
   width: 80%;
   color: var(--font-color);
   background-color: transparent;

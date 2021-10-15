@@ -66,7 +66,7 @@ input::-webkit-color-swatch {
 }
 
 .lightTheme {
-	// --center-color: #{$centercolorLight};
+	--center-color: #{$centercolorLight};
 	--right_background: #{$rightbackgroundLight};
 	--timerFinishColor: #{$timerFinishColorLight};
 	--backgrounddarker: #{$backgrounddarkerLight};
@@ -86,14 +86,6 @@ input::-webkit-color-swatch {
 	--dark-font: #{$darkfontLight};
 	--fonts: #{$fontsLight};
 	--task: #{$taskLight};
-	--tiles1: #{$tiles1Light};
-	--tiles2: #{$tiles2Light};
-	--tiles3: #{$tiles3Light};
-	--tiles4: #{$tiles4Light};
-	--tiles5: #{$tiles5Light};
-	--tiles6: #{$tiles6Light};
-	--tiles7: #{$tiles7Light};
-	--tiles8: #{$tiles8Light};
 	--inputbackground: #{$inputbackgroundLight};
 	--btncolor: #{$btncolorLight};
 }
@@ -557,7 +549,6 @@ body {
 		bottom: 100px;
 
 		i {
-			// background-color: red;
 			color: var(--font-color);
 		}
 
@@ -990,10 +981,7 @@ ol {
 			padding-bottom: 5px;
 			border-radius: 0;
 
-			/* margin-bottom: 5px; */
 			background-color: var(--statColor);
-			// background: var(--tiles1);
-			// border-radius: 0;
 
 			.fa-chevron-circle-left {
 				cursor: pointer;
@@ -1002,17 +990,11 @@ ol {
 				padding: 0.3rem;
 				position: absolute;
 				left: 10px;
-				// top: 0;
 				font-size: 1.5rem;
-				// top: 50%;
-				// transform: translate(-50%, 0);
 			}
-			// display: flex;
 
 			.titlebar {
 				display: flex;
-				// background-color: $addProjectbtn;
-				// padding: 10px 15px;
 				justify-content: space-around;
 				flex-direction: row;
 				flex-wrap: nowrap;
@@ -1099,30 +1081,10 @@ ol {
 			}
 
 			&_day {
-				// background: #53536938;
 				min-height: 40px;
 				max-height: 60px;
-				// background-color: var(--header_background);
-				// background: #444555;
-				background: #5e5eab;
 				padding-top: 20px;
 			}
-
-			// &_day:nth-child(4n+1) {
-			// 	background: var(--tiles1);
-			// }
-
-			// &_day:nth-child(4n+2) {
-			// 	background: var(--tiles2);
-			// }
-
-			// &_day:nth-child(4n+3) {
-			// 	background: var(--tiles3);
-			// }
-
-			// &_day:nth-child(4n+4) {
-			// 	background: var(--tiles4);
-			// }
 
 			&_day > i {
 				padding: 0 15px 0 10px;
@@ -1248,13 +1210,6 @@ ol {
 			font-size: 1rem;
 			padding: 4px;
 
-			// &_pomodoreProjects {
-			// max-height: 40vh;
-			// margin-bottom: 100px;
-			// }
-			// &_color {
-			// 	background-color: white;
-			// padding: 10px;
 			height: 32px;
 			width: 32px;
 			min-height: 52px;
@@ -1306,7 +1261,6 @@ input:focus,
 select:focus,
 textarea:focus {
 	border: 0;
-	// background-color: rgb(95, 105, 107);
 }
 
 .centerclock {

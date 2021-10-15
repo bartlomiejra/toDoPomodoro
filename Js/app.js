@@ -886,7 +886,7 @@ function sortingProjectDays(e) {
 <div class="center_clocks">
 <i class="fas fa-clock time"> </i>  
 <div class="scores"> 
-${todo.focus > 0 ? ` = ${todo.focus} min` : 0}
+${todo.focus > 0 ? `  ${todo.focus} min` : 0}
 </div> 
 </div>
 <button class="center_complete-btn" aria-label="Complete>
