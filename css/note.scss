@@ -31,6 +31,10 @@
 		color: var(--hover_color);
 		font-weight: bold;
 		text-align: center;
+
+		h3 {
+			font-size: 0.9rem;
+		}
 	}
 
 	&__tile:nth-child(8n+1) {
@@ -68,7 +72,7 @@
 
 	&__date {
 		opacity: 0.5;
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 		position: absolute;
 		right: 10px;
 		bottom: 0;
