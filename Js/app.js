@@ -1,5 +1,5 @@
-import * as pomodore from './pomodore.js';
-
+// import * as pomodore from './pomodore.js';
+import { displayNotification } from './pomodore.js'
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
@@ -902,6 +902,11 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
 	// clickedArr = [clicked]
 	// console.log(clickedArr);
 	// currentProject = JSON.parse(localStorage.getItem('Current'));
+  if(
+clicked = 0
+    ){
+      clicked ="Today"
+    }
 	currentProject[0].name = clicked;
 	console.log(currentProject);
 // currentProject.push(clicked);
@@ -1003,20 +1008,11 @@ function openNoteCard(clicked_id) {
   }
 }
 
-function titleName(){
- currentProject = JSON.parse(localStorage.getItem('Current'));
- console.log(currentProject);
 
-	title.innerHTML = currentProject.map(
-		(title) =>` ${title.name}`)
+titleName();
 
-	
 
-	  
 
-        .join('');
-}
-// titleName();
 
 
 
@@ -1026,31 +1022,4 @@ Notification.requestPermission(function(status) {
     console.log('Notification permission status:', status);
 	// displayNotification();
 });
-
-
-function displayNotification() {
-  if (Notification.permission == 'granted') {
-    navigator.serviceWorker.getRegistration().then(function(reg) {
-      var options = {
-        body: 'Lets take a break',
-        vibrate: [100, 50, 100],
-		          icon: '../icon-192x192.png',
-
-        data: {
-          dateOfArrival: Date.now(),
-          primaryKey: 1
-        }, 
-		 actions: [
-          {action: 'explore', title: 'Explore this new world',
-            icon: '../icon-192x192.png'},
-          {action: 'close', title: 'Close notification',
-            icon: '../icon-192x192.png'},
-        ]
-      };
-      reg.showNotification('PomodoroApp!', options);
-    });
-  }
-}
-
-
 
