@@ -1,5 +1,30 @@
-// import * as pomodore from './pomodore.js';
-import { displayNotification } from './pomodore.js'
+import { displayNotification } from './notification.js';
+import{
+	showToDoCard,
+	showProjectList,
+	activeProject,
+  centerDiv
+
+} from './showElements.js';
+
+import {
+
+	timer,
+	timerBreak,
+	pausetimer,
+	resetTimer
+} from './timer.js';
+
+window.appSounds=appSounds;
+window.openNoteCard=openNoteCard;
+window.resizeClock=resizeClock;
+window.addNewTodo=addNewTodo;
+
+
+
+// import {
+//    displayNotification
+//   } from './pomodore.js'
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
@@ -17,7 +42,6 @@ for (const nav of menuLis) {
   });
 }
 
-const centerDiv = document.querySelector('.center');
 const leftDiv = document.querySelector('.left');
 const projectIcon = document.querySelector('.Project');
 const mobileWidth = window.matchMedia('(max-width: 895px)');
@@ -133,7 +157,7 @@ let clicked;
 
 let timeInFocus;
 let pomodoreDuration;
-let pomodorebreakTime;
+export let pomodorebreakTime;
 let settings;
 const settinglocal = JSON.parse(localStorage.getItem('settings'));
 if (settinglocal == null) {
@@ -249,7 +273,10 @@ aria-hidden="true"></i></button>
 
     .join('');
 }
+window.showDiv = showDiv;
+
 lists(actualList, todoList);
+
 if (mobileWidth.matches) {
   centerDiv.classList.remove('active');
   centerDiv.classList.add('none');
@@ -514,87 +541,7 @@ function displayTimeLeft(seconds) {
 let secondsLeft;
 let paused = false; // is the clock paused?
 
-function timer(seconds) {
-  pause.firstElementChild.classList.remove('fa-coffee');
-  pause.firstElementChild.classList.add('fa-pause');
-  clearInterval(countdownTime);
-  const now = Date.now();
-  const then = now + seconds * 1000;
-  displayTimeLeft(seconds);
-  countdownTime = setInterval(() => {
-    secondsLeft = Math.round((then - Date.now()) / 1000);
-    timeInFocus = seconds - secondsLeft;
-    if (secondsLeft < 0) {
-      endpomodoro();
-      clearInterval(countdownTime);
-      return;
-    }
 
-    displayTimeLeft(secondsLeft);
-  }, 1000);
-}
-const shortBreak = pomodorebreakTime * 60;
-
-function timerBreak() {
-  pause.firstElementChild.classList.remove(
-    'fa-play',
-    'fa-play-circle',
-    'fa-coffee',
-    'fa-pause-circle',
-    'fa-pause',
-  );
-
-  clearInterval(countdownTime);
-  const now = Date.now();
-  const then = now + shortBreak * 1000;
-  displayTimeLeft(shortBreak);
-  countdownTime = setInterval(() => {
-    secondsLeft = Math.round((then - Date.now()) / 1000);
-    if (secondsLeft < 1) {
-      audio = new Audio('Alerts/pauseEnd.mp3');
-      audio.play();
-      resetTimer();
-      clearInterval(countdownTime);
-      clockTimer.classList.remove('clock_fullscreen');
-
-      return;
-    }
-    displayTimeLeft(secondsLeft);
-  }, 1000);
-}
-
-function pausetimer() {
-  const secsave = secondsLeft;
-  if (!paused) {
-    paused = true;
-    this.firstElementChild.classList.remove('fa-pause');
-    this.firstElementChild.classList.add('fa-play-circle');
-    clearInterval(countdownTime);
-  } else {
-    this.firstElementChild.classList.remove('fa-play-circle');
-    this.firstElementChild.classList.add('fa-pause');
-
-    paused = false;
-    displayTimeLeft(secsave);
-    timer(secsave);
-  }
-}
-
-function resetTimer() {
-  clockTimer.classList.remove(
-    'clock_timerFinish',
-    'clock_timerStart',
-    'clock_clockVisible',
-  );
-  lists(actualList, todoList);
-  buttonscountdown.classList.add('.countdownButtonsNone');
-  clearInterval(countdownTime);
-
-  displayTimeLeft(0);
-  clockTimer.classList.remove('clock_fullscreen');
-
-  // }
-}
 
 //* funkcja lists wczytująca taski z localstore
 function breakTime() {
@@ -788,6 +735,9 @@ function addProject(event) {
   renderProjects();
 }
 
+
+window.sortingProject = sortingProject;
+window.deleteProject = deleteProject;
 function renderProjects() {
   const proj = JSON.parse(localStorage.getItem('Project')) || [];
   pomodoreList.innerHTML = proj
@@ -902,6 +852,8 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
 	// clickedArr = [clicked]
 	// console.log(clickedArr);
 	// currentProject = JSON.parse(localStorage.getItem('Current'));
+  // window.currentProject = currentProject;
+  let     currentProject;
   if(
 clicked = 0
     ){
@@ -930,22 +882,7 @@ function deleteProject() {
   renderProjects();
 }
 
-function showToDoCard() {
-  centerDiv.classList.remove('none');
-  centerDiv.classList.add('active');
-  if (mobileWidth.matches) {
-    leftDiv.classList.add('none');
-    leftDiv.classList.remove('active');
-  }
-  // ifmobile();
-}
-function showProjectList() {
-  centerDiv.classList.add('none');
-  centerDiv.classList.remove('center');
-  leftDiv.classList.remove('leftnone');
-  description.classList.add('none');
-  centerDiv.classList.add('none');
-}
+
 function ifmobile() {
   if (mobileWidth.matches) {
     showProjectList();
@@ -976,18 +913,8 @@ function repeatTasks() {
 }
 repeatTasks();
 
-function activeProject(clicked_id) {
-  const sell = clicked_id.getAttribute('name');
-  const sorts = document.querySelectorAll('.sortTask');
-  for (const ele of sorts) {
-    ele.classList.remove('select');
-    if (ele.classList.contains(sell)) {
-      ele.classList.add('select');
-    }
-  }
 
-  // nameofProject =
-}
+window.activeProject = activeProject;
 function openNoteCard(clicked_id) {
   clicked = clicked_id.getAttribute('name');
 
@@ -1007,8 +934,21 @@ function openNoteCard(clicked_id) {
     }
   }
 }
+window.openNoteCard = openNoteCard;
 
+	function titleName(){
+ let currentProject = JSON.parse(localStorage.getItem('Current'));
+ console.log(currentProject);
 
+	title.innerHTML = currentProject.map(
+		(title) =>` ${title.name}`)
+
+	
+
+	  
+
+        .join('');
+}
 titleName();
 
 

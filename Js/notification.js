@@ -1,18 +1,6 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-use-before-define */
-/* eslint-disable eqeqeq */
-export default function all(){
-console.log("object from pomodore.js file");
-}
-all();
-
-
 
 export {
-
 	displayNotification,
-	titleName
 }
 
 
@@ -42,17 +30,3 @@ function displayNotification() {
 	  }
 	}
 
-
-	function titleName(){
- currentProject = JSON.parse(localStorage.getItem('Current'));
- console.log(currentProject);
-
-	title.innerHTML = currentProject.map(
-		(title) =>` ${title.name}`)
-
-	
-
-	  
-
-        .join('');
-}
