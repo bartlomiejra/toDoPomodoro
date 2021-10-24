@@ -17,6 +17,8 @@ const settingUser = JSON.parse(
         breakTime: '5',
     },
 	);
+window.appSounds=appSounds;
+
 
 theme.innerHTML = `
 <div class="switch-button">
@@ -71,7 +73,7 @@ ${settingUser.Theme == 'Dark' ?
 			  
 			  
 			  
-function closeModal(modal) {
+export function closeModal(modal) {
 	if (modal == null) return;
     settingsDiv.classList.remove('active');
 }
@@ -84,7 +86,7 @@ closeSettings.forEach((span) => {
 
 let themeselected = settingUser.Theme;
 // const themes = document.getElementsByName('theme');
-function themesValue() {
+export function themesValue() {
 	const switchbutton = document.querySelector('.black')
 	console.log(switchbutton);
 	if (switchbutton.checked == true) {
@@ -96,7 +98,7 @@ function themesValue() {
     }
 }
 
-function saveOptions() {
+export function saveOptions() {
 	event.preventDefault();
 	themesValue();
 	const pomodoreTime = document.getElementById('quantity');
@@ -125,7 +127,7 @@ saveButton.addEventListener('click', saveOptions);
 
 // .then(data => console.log(data.body))
 // .catch(err => console.error(err));
-function appSounds(clickedid){
+export function appSounds(clickedid){
 	console.log(this);
 	if(clickedid.classList.contains("mute")){
 		

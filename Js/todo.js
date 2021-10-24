@@ -1,25 +1,25 @@
 
-import {pomodorebreakTime} from './app.js'
+import {pomodorebreakTime, countdownTime} from './app.js'
 
-let last = 0;
+export let last = 0
 
-const DivToDo = document.querySelector('.todo_List');
+export const DivToDo = document.querySelector('.todo_List');
 // const CategoryTo = document.querySelector('.dropcategory');
 
-const divCategory = document.querySelector('.todo_category');
-const todoTitle = document.querySelector('.todo_input');
-const categoryTitle = document.querySelector('.category_input');
-const colorCategory = document.querySelector('.todo_color');
-const openPopup = document.querySelector('.openpopup')
-const menugui = document.getElementsByClassName('gui-popup')
-const todoCard = document.querySelector('.todoCard');
-const taskCategory = document.querySelector('.taskCategory')
-const itemTodos = document.querySelector('.itemTodos')
+export const divCategory = document.querySelector('.todo_category');
+export const todoTitle = document.querySelector('.todo_input');
+export const categoryTitle = document.querySelector('.category_input');
+export const colorCategory = document.querySelector('.todo_color');
+export const openPopup = document.querySelector('.openpopup')
+export const menugui = document.getElementsByClassName('gui-popup')
+export const todoCard = document.querySelector('.todoCard');
+export const taskCategory = document.querySelector('.taskCategory')
+export const itemTodos = document.querySelector('.itemTodos')
 //!Empty State
 	 
 
 		
-let ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
+export let ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
 if (ListOfToDo == null) {
 	ListOfToDo = [
 		{
@@ -31,8 +31,9 @@ if (ListOfToDo == null) {
 ];
 }
 localStorage.setItem('ListTodo', JSON.stringify(ListOfToDo));
+window.addNewTodo=addNewTodo;
 
-function addNewTodo(event) {
+export function addNewTodo(event) {
 	ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
 
 	// find last id number
@@ -58,25 +59,16 @@ function addNewTodo(event) {
 	// return false;
 	renderTodos();
 	const dragItems = document.querySelectorAll('.dragitem');
-	console.log(dragItems);
+
 }
 
 renderTodos();
 
-
-function renderTodos() {
+window.deleteTodo = deleteTodo;
+window.checkFunction = checkFunction;
+export function renderTodos() {
 
 	ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
-console.log(ListOfToDo)
-	console.log('render');
-// divCategory.innerHTML = categories.map(
-// 	(divcat) => `
-// 	<div class="divcat.title></div>
-// 	`
-// )
-// let p = document.createElement("p")
-// divCategory.append(p)
-// CategoryTo
 itemTodos.innerHTML = ListOfToDo.map(
 		(todo) =>`
 		
@@ -132,7 +124,7 @@ itemTodos.innerHTML = ListOfToDo.map(
 
 
  
-function deleteTodo(ClickedId){
+	export function deleteTodo(ClickedId){
 const { ...index } = ClickedId.dataset;
 let newListOfToDo = ListOfToDo.filter(todo => todo.id != ClickedId.id);
 	localStorage.setItem('ListTodo', JSON.stringify(newListOfToDo));
@@ -143,15 +135,7 @@ event.stopPropagation()
 
 
 
-// const itemsTodoList = document.querySelectorAll('todo-item');
-
-// itemsTodoList.addEventListener('dblclick', function (e) {
-//   console.log("delete");
-// });
-
-
-
-function checkFunction(clicked_id){
+export function checkFunction(clicked_id){
 	ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
 	
 	// const { ...index } = clicked_id.dataset;

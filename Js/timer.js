@@ -4,13 +4,35 @@ export {
 	timerBreak,
 	pausetimer,
 	resetTimer,
+	resizeClock,
+	breakTime,
+	displayTimeLeft,
+	pause,
+	countdownAnimation
+	
 }
 import {
+	buttonscountdown,
+	todoList,
+	actualList,
+	lists,
+	clockTimer,
+		mobileWidth,
+		pause,
+		leftDiv,
+pomodorebreakTime,
+countdownTimer
 
-pomodorebreakTime
+
 } from './app.js';
 
-
+let paused
+// timeInFocus
+// countdownTime,
+// secondsLeft,
+let timeInFocus
+let countdownTime;
+let secondsLeft;
 
 function timer(seconds) {
 	pause.firstElementChild.classList.remove('fa-coffee');
@@ -20,7 +42,7 @@ function timer(seconds) {
 	const then = now + seconds * 1000;
 	displayTimeLeft(seconds);
 	countdownTime = setInterval(() => {
-	  secondsLeft = Math.round((then - Date.now()) / 1000);
+	 let  secondsLeft = Math.round((then - Date.now()) / 1000);
 	  timeInFocus = seconds - secondsLeft;
 	  if (secondsLeft < 0) {
 		endpomodoro();
@@ -31,7 +53,6 @@ function timer(seconds) {
 	  displayTimeLeft(secondsLeft);
 	}, 1000);
   }
-  const shortBreak = pomodorebreakTime * 60;
   
   function timerBreak() {
 	pause.firstElementChild.classList.remove(
@@ -92,4 +113,64 @@ function timer(seconds) {
 	clockTimer.classList.remove('clock_fullscreen');
   
 	// }
+  }
+
+  function endpomodoro() {
+	todos = JSON.parse(localStorage.getItem('Items'));
+  
+	audio = new Audio('Alerts/taskEnd.mp3');
+  
+  
+	audio.play();
+	
+	const itemS = JSON.parse(localStorage.getItem('Items'));
+	const filtrr = itemS.filter((p) => p.id == taskId);
+	const itemSelement = filtrr[0];
+	itemSelement.focus += timeInFocus;
+	localStorage.setItem('Items', JSON.stringify(itemS));
+	
+	lists(todos, todoList);
+	pause.addEventListener('click', timerBreak);
+	displayNotification();
+	breakTime();
+  }
+
+  function resizeClock() {
+	clockTimer.classList.add('clock_clockVisible');
+	if (clockTimer.classList.contains('clock_fullscreen')) {
+	  clockTimer.classList.remove('clock_fullscreen');
+	  clockTimer.classList.add('centerclock');
+	} else {
+	  clockTimer.classList.add('clock_fullscreen');
+	  clockTimer.classList.remove('centerclock');
+	}
+  }
+
+  function breakTime() {
+	clearInterval(countdownTime);
+	clockTimer.classList.add('clock_timerFinish');
+  
+	pause.firstElementChild.classList.remove(
+	  'fa-play-circle',
+	  'fa-pause',
+	  'fa-pause-circle',
+	);
+	pause.firstElementChild.classList.add('fa-coffee');
+	clockTimer.classList.remove('clock_timerStart');
+	lists(todos, todoList);
+  }
+
+  function displayTimeLeft(seconds) {
+	const minutes = Math.floor(seconds / 60);
+	const remainderSeconds = seconds % 60;
+	const display = `${minutes}:${
+	  remainderSeconds < 10 ? '0' : ''
+	}${remainderSeconds}`;
+	countdownTimer.textContent = display;
+	document.title = display;
+  }
+
+  function countdownAnimation() {
+	buttonscountdown.classList.remove('.countdownButtonsNone');
+	clockTimer.classList.add('clock_timerStart');
   }

@@ -3,7 +3,8 @@ import{
 	showToDoCard,
 	showProjectList,
 	activeProject,
-  centerDiv
+  centerDiv,
+  showDiv
 
 } from './showElements.js';
 
@@ -12,35 +13,46 @@ import {
 	timer,
 	timerBreak,
 	pausetimer,
-	resetTimer
+	resetTimer,
+  resizeClock,
+  breakTime,
+  countdownAnimation
 } from './timer.js';
+
+export {
+  actualList,
+  lists,
+  paused,
+  mobileWidth,
+  pause,
+  leftDiv,
+  description,
+  countdownTime,
+  secondsLeft,
+  timeInFocus,
+  clockTimer,
+  todoList,
+  buttonscountdown,
+  countdownTimer,
+
+} 
+
+import * as todo from './todo.js' ;
+import * as note from './note.js' ;
+import * as settingsfile from './settings.js' ;
 
 window.appSounds=appSounds;
 window.openNoteCard=openNoteCard;
 window.resizeClock=resizeClock;
-window.addNewTodo=addNewTodo;
 
 
 
-// import {
-//    displayNotification
-//   } from './pomodore.js'
+
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
 
-const menuLis = document.querySelectorAll('.nav_element');
-for (const nav of menuLis) {
-  nav.addEventListener('click', function () {
-    for (const nav of menuLis) {
-      nav.classList.remove('selected');
-    }
-
-    this.classList.add('selected');
-	description.classList.add('none');
-  });
-}
 
 const leftDiv = document.querySelector('.left');
 const projectIcon = document.querySelector('.Project');
@@ -62,11 +74,31 @@ const projectColor = document.getElementById('color');
 const pomodoreList = document.querySelector('.left_pomodoreProjects');
 const title = document.querySelector('.titlebar');
 let dateToday;
-
 let dateTomorrow = 0;
-
 const history = JSON.parse(localStorage.getItem('History'));
+let statistics = JSON.parse(localStorage.getItem('STat'));
+let todos = JSON.parse(localStorage.getItem('Items'));
+let project = JSON.parse(localStorage.getItem('Project'));
+const settinglocal = JSON.parse(localStorage.getItem('settings'));
+const countdownTimer = document.getElementById('countdown');
+let tasks = JSON.parse(localStorage.getItem('Items')) || [];
+let audio;
+let clicked;
+let timeInFocus;
+let pomodoreDuration;
+export let pomodorebreakTime;
+let settings;
+let countdownTime;
+let taskId = 0;
+let taskToday;
+let actualSelect;
+let actualList;
 
+
+
+
+
+//empty state 
 if (history == null) {
   const historylist = [
     {
@@ -83,7 +115,6 @@ if (history == null) {
   ];
   window.localStorage.setItem('History', JSON.stringify(historylist));
 }
-let statistics = JSON.parse(localStorage.getItem('STat'));
 if (statistics == null) {
 	statistics = [
     {
@@ -97,7 +128,7 @@ window.localStorage.setItem('STat', JSON.stringify(statistics));
  statistics = JSON.parse(localStorage.getItem('STat'));
 }
 
-let todos = JSON.parse(localStorage.getItem('Items'));
+
 if (todos == null) {
   todos = [
     {
@@ -137,7 +168,6 @@ if (todos == null) {
   window.localStorage.setItem('Items', JSON.stringify(todos));
 }
 
-let project = JSON.parse(localStorage.getItem('Project'));
 if (project == null) {
   project = [
     { id: 0, name: 'Studies👨‍🎓', color: '#9ebb11' },
@@ -152,14 +182,7 @@ if (project == null) {
   project = JSON.parse(localStorage.getItem('project'));
 }
 
-let audio;
-let clicked;
 
-let timeInFocus;
-let pomodoreDuration;
-export let pomodorebreakTime;
-let settings;
-const settinglocal = JSON.parse(localStorage.getItem('settings'));
 if (settinglocal == null) {
   settings = { Theme: 'Dark', pomodoreTime: 25, breakTime: 5 };
 
@@ -168,12 +191,7 @@ if (settinglocal == null) {
   pomodoreDuration = settinglocal.pomodoreTime;
   pomodorebreakTime = settinglocal.breakTime;
 }
-let countdownTime;
-const countdownTimer = document.getElementById('countdown');
-let taskId = 0;
-let taskToday;
 // let taskToday = 0;
-let tasks = JSON.parse(localStorage.getItem('Items')) || [];
 // const objlines = 0;
 // let actualList;
 function actualDateTime() {
@@ -189,8 +207,6 @@ function actualDateTime() {
 actualDateTime();
 tasks = JSON.parse(localStorage.getItem('Items')) || [];
 taskToday = tasks.filter((items) => items.data === dateToday);
-let actualSelect;
-let actualList;
 actualList = JSON.parse(localStorage.getItem('Actual')) || [];
 if (actualList == 0) {
   actualSelect = [{ id: 0, name: 'Studies 👨‍🎓' }];
@@ -198,7 +214,16 @@ if (actualList == 0) {
 } else {
   project = JSON.parse(localStorage.getItem('project'));
 }
-// todolist = JSON.parse(localStorage.getItem('Items')) || [];
+
+
+
+
+
+
+
+
+
+
 function lists(todolist = []) {
   actualList = todolist;
   window.localStorage.setItem('Actual', JSON.stringify(actualList));
@@ -298,6 +323,8 @@ window.onresize = function resizeFun() {
     centerDiv.classList.remove('none');
   }
 };
+  const shortBreak = pomodorebreakTime * 60;
+
 
 function addTodo(event) {
   let currentProject = JSON.parse(localStorage.getItem('Current')) || [];
@@ -401,10 +428,7 @@ statTask();
 todoButton.addEventListener('click', addTodo);
 lists(actualList, todoList);
 
-function countdownAnimation() {
-  buttonscountdown.classList.remove('.countdownButtonsNone');
-  clockTimer.classList.add('clock_timerStart');
-}
+
 
 // * functions buttons action delate play and completted task
 function btnActtion(e) {
@@ -529,191 +553,19 @@ function btnActtion(e) {
   // lists(actualList, todoList);
 }
 // pomodoreDuration;
-function displayTimeLeft(seconds) {
-  const minutes = Math.floor(seconds / 60);
-  const remainderSeconds = seconds % 60;
-  const display = `${minutes}:${
-    remainderSeconds < 10 ? '0' : ''
-  }${remainderSeconds}`;
-  countdownTimer.textContent = display;
-  document.title = display;
-}
+
 let secondsLeft;
 let paused = false; // is the clock paused?
 
 
 
-//* funkcja lists wczytująca taski z localstore
-function breakTime() {
-  clearInterval(countdownTime);
-  clockTimer.classList.add('clock_timerFinish');
-
-  pause.firstElementChild.classList.remove(
-    'fa-play-circle',
-    'fa-pause',
-    'fa-pause-circle',
-  );
-  pause.firstElementChild.classList.add('fa-coffee');
-  clockTimer.classList.remove('clock_timerStart');
-  lists(todos, todoList);
-}
-
-function endpomodoro() {
-  todos = JSON.parse(localStorage.getItem('Items'));
-
-  audio = new Audio('Alerts/taskEnd.mp3');
 
 
-  audio.play();
-  
-  const itemS = JSON.parse(localStorage.getItem('Items'));
-  const filtrr = itemS.filter((p) => p.id == taskId);
-  const itemSelement = filtrr[0];
-  itemSelement.focus += timeInFocus;
-  localStorage.setItem('Items', JSON.stringify(itemS));
-  
-  lists(todos, todoList);
-  pause.addEventListener('click', timerBreak);
-  displayNotification();
-  breakTime();
-}
-function resizeClock() {
-  clockTimer.classList.add('clock_clockVisible');
-  if (clockTimer.classList.contains('clock_fullscreen')) {
-    clockTimer.classList.remove('clock_fullscreen');
-    clockTimer.classList.add('centerclock');
-  } else {
-    clockTimer.classList.add('clock_fullscreen');
-    clockTimer.classList.remove('centerclock');
-  }
-}
+
+
 
 // eslint-disable-next-line no-unused-vars
-function showDiv(clickedId) {
-  description.classList.remove('none');
-  description.classList.add('right--active');
-  renderdetals();
-  function renderdetals() {
-    const todoss = JSON.parse(localStorage.getItem('Items')) || [];
-    const filter = todoss.filter((p) => p.id == clickedId);
-    const taskDetails = filter[0];
-    description.innerHTML = `
-<button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
-<i class="fas fa-times"
-    aria-hidden="true"></i></button>
-    <div class="right_divT ">
-    <div  class="center_todo-item" id="item" >
-    ${taskDetails.text}</div>
-        </div>
-<div class="right_detals">
-<ul class="right_list">
-                <li class="right_list--item center_clocks">Pomodoro:     ${
-                  taskDetails.focus > pomodoreDuration
-                    ? '<i class="fas fa-clock time " aria-hidden="true"> </i>'
-                    : '<i class="fas fa-clock blur " aria-hidden="true"> </i>'
-                }
-        ${
-          taskDetails.focus / pomodoreDuration > 1
-            ? ` x ${Math.floor(taskDetails.focus / pomodoreDuration)}`
-            : ''
-        }
-    </li>
-                <li>
-                Due date: </li>
-                <li> <input type="date" class="numberOfTime" id="date" value="${
-                  taskDetails.data
-                }" name="trip-start"></li>
-			
-<li>   Project:</li>
-             <li>
-<select name="Project" value="${
-      taskDetails.project
-    }" id="Project"class="projectSelect" placeholder="${
-      taskDetails.project
-    }" value="${taskDetails.project}">
-                <option value="${
-                  taskDetails.project
-                }"  selected disabled hidden>
-            ${taskDetails.project}
-</option>
-        </select></li>
-                <li>Repeat: Every</li> <li> <input type="number" class="repeatDay numberOfTime" value="${
-                  taskDetails.repeatday
-                }"  min="0" max="10" id="days">
-                </input>
-                <select name="partOfTime"
-   class="partOfTime"
-   id="partOfTime"
-   value="${taskDetails.repeatpartoftime}"
-   placeholder=${taskDetails.repeatpartoftime}"
-   id="${taskDetails.repeatpartoftime}"
-   >
-   <option value="${taskDetails.repeatpartoftime}"  selected disabled hidden>
-   ${taskDetails.repeatpartoftime}
-   </option>
-                  // <option value="days">Days</option>
-                  // <option value="weeks">Weeks</option>
-                  // <option value="months">Month</option>
-                </select>
-                </ul>
-                <textarea  placeholder="Note to your task" class="note textareaDetals" id=${clickedId} name="note" >${
-      taskDetails.note !== '' ? taskDetails.note : ''
-    }
-    </textarea>
-</div>
-`;
-    const closeBtn = document.querySelector('.close-btn');
-    const date = document.getElementById('date');
-    const note = document.querySelector('.note');
-    const timePart = document.querySelector('.partOfTime');
-    const repeatDay = document.querySelector('.repeatDay');
-    project = document.querySelector('.projectSelect');
-    date.addEventListener('change', updateDetails);
-    closeBtn.addEventListener('click', closeDiv);
-    note.addEventListener('input', updateDetails);
-    repeatDay.addEventListener('input', updateDetails);
-    const projectSelect = document.getElementById('Project');
-    projectSelect.addEventListener('click', () => {
-      // const options = projectSelect.querySelectorAll('option');
-      projectSelect.addEventListener('change', updateDetails);
-    });
-    const partTimeSelect = document.getElementById('partOfTime');
-    partTimeSelect.addEventListener('click', () => {
-      // const optionsTime = partTimeSelect.querySelectorAll('option');
-      partTimeSelect.addEventListener('change', updateDetails);
-    });
-    function closeDiv() {
-      description.classList.add('none');
-      centerDiv.classList.add('active');
-      centerDiv.classList.remove('none');
-    }
-    function updateDetails() {
-      const proj = JSON.parse(localStorage.getItem('Items'));
-      const filtrPr = proj.filter((p) => p.id == clickedId);
-      const Idtoedit = filtrPr[0];
-      Idtoedit.data = date.value;
-      Idtoedit.project = project.value;
-      Idtoedit.note = note.value;
-      Idtoedit.repeatday = repeatDay.value;
-      Idtoedit.repeatpartoftime = timePart.value;
-      localStorage.setItem('Items', JSON.stringify(proj));
-    }
-    const divT = document.querySelector('.center_divT');
-    divT.addEventListener('click', renderdetals);
-    getSelectOptions();
-    lists(actualList, todoList);
-  }
-  function getSelectOptions() {
-    const projectList = JSON.parse(localStorage.getItem('Project')) || [];
-    const projectt = document.querySelector('.projectSelect');
-    for (let i = 0; i < projectList.length; i++) {
-      const option = document.createElement('option');
-      const txt = document.createTextNode(projectList[i].name);
-      option.appendChild(txt);
-      projectt.insertBefore(option, projectt.lastChild);
-    }
-  }
-}
+
 function addProject(event) {
   project = JSON.parse(localStorage.getItem('Project')) || [];
 
@@ -853,7 +705,8 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
 	// console.log(clickedArr);
 	// currentProject = JSON.parse(localStorage.getItem('Current'));
   // window.currentProject = currentProject;
-  let     currentProject;
+  let currentProject = JSON.parse(localStorage.getItem('Current'));
+
   if(
 clicked = 0
     ){
@@ -916,7 +769,7 @@ repeatTasks();
 
 window.activeProject = activeProject;
 function openNoteCard(clicked_id) {
-  clicked = clicked_id.getAttribute('name');
+  let clicked = clicked_id.getAttribute('name');
 
   const modals = document.querySelectorAll('.modal');
   for (const ele of modals) {

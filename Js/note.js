@@ -2,14 +2,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
-const openNote = document.getElementById('noteButton');
-const closeNote = document.getElementById('closeNotebtn');
-const closeoneNote = document.getElementById('closethisNote');
-const closebtn = document.querySelectorAll('.closeNotebtn');
-const noteCard = document.querySelector('.noteCard');
-const tilesNote = document.querySelector('.tiles__note');
-const tiles = document.querySelector('.tiles');
-const deleteNote = document.getElementById('deleteNote');
+export const openNote = document.getElementById('noteButton');
+export const closeNote = document.getElementById('closeNotebtn');
+export const closeoneNote = document.getElementById('closethisNote');
+export const closebtn = document.querySelectorAll('.closeNotebtn');
+export const noteCard = document.querySelector('.noteCard');
+export const tilesNote = document.querySelector('.tiles__note');
+export const tiles = document.querySelector('.tiles');
+export const deleteNote = document.getElementById('deleteNote');
 // const noteButton = document.getElementById('noteButton');
 
 let notes;
@@ -46,7 +46,7 @@ if (notes == null) {
     notes = JSON.parse(localStorage.getItem('Notes'));
 }
 
-function closeNoteCard() {
+export function closeNoteCard() {
     noteCard.classList.remove('active');
     // overlay.classList.remove('active');
 }
@@ -54,7 +54,7 @@ function closeNoteCard() {
 // closeNote.addEventListener('click', closeNoteCard);
 const createNote = document.querySelector('.tiles__add');
 const onenoteCard = document.querySelector('.tiles__note');
-function addNote() {
+export function addNote() {
     tilesNote.innerHTML = `  
 <button class="tiles__savebtn" onClick="saveNote()"id="saveNote">Save</button>
 <button class="tiles__deletebtn closeNotebtn" onClick="deleteyourNote()" id="deleteNote">Delete Last Note</button>
@@ -70,7 +70,7 @@ ${dateToday}
     noteCard.classList.add('overlayNote');
 }
 
-function saveNote() {
+export function saveNote() {
     const noteHeader = document.getElementById('noteHeader');
     const noteText = document.getElementById('textarea');
     let lastNoteId = 0;
@@ -93,21 +93,27 @@ function saveNote() {
     window.localStorage.setItem('Notes', JSON.stringify(notes));
     notesrender();
 }
-function closeonenoteCard() {
+export function closeonenoteCard() {
     tilesNote.classList.add('none');
     noteCard.classList.remove('overlayNote');
 }
-function closeSingleNote() {
+export function closeSingleNote() {
     onenoteCard.classList.add('none');
     noteCard.classList.remove('overlayNote');
 }
 createNote.addEventListener('click', addNote);
-function deleteyourNote() {
+export function deleteyourNote() {
     notes.pop();
     window.localStorage.setItem('Notes', JSON.stringify(notes));
     notesrender();
 }
-function notesrender() {
+window.noteOpen = noteOpen
+window.saveEditNote = saveEditNote
+window.closeSingleNote = closeSingleNote
+window.removeNote = removeNote
+window.closeonenoteCard = closeonenoteCard
+
+export function notesrender() {
     tiles.innerHTML = notes
 
         .map(
@@ -125,7 +131,7 @@ function notesrender() {
 }
 notesrender();
 let click;
-function noteOpen(clicked_id) {
+export function noteOpen(clicked_id) {
     notes = JSON.parse(localStorage.getItem('Notes')) || [];
 	click = clicked_id;
     onenoteCard.classList.remove('none');
@@ -139,16 +145,16 @@ function noteOpen(clicked_id) {
 	  <button   onclick='closeSingleNote()' class="modal__closebutton x-note "><i class="fas fa-times"></i></button>
 	  `;
 	}
-function saveEditNote() {
+    export function saveEditNote() {
     notes = JSON.parse(localStorage.getItem('Notes')) || [];
-    headerN = document.querySelector('.headerNote');
-    notetext = document.querySelector('.notetext');
+    let headerN = document.querySelector('.headerNote');
+    let notetext = document.querySelector('.notetext');
     notes[click].title = headerN.value;
     notes[click].note = notetext.value;
     localStorage.setItem('Notes', JSON.stringify(notes));
     notesrender();
 }
-function removeNote() {
+export function removeNote() {
     notes = JSON.parse(localStorage.getItem('Notes')) || [];
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < notes.length; i++) {
