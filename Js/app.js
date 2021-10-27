@@ -1,59 +1,31 @@
+/* eslint-disable prettier/prettier */
 import { displayNotification } from './notification.js';
-import{
+import {
 	showToDoCard,
 	showProjectList,
 	activeProject,
   centerDiv,
-  showDiv
-
+  showDiv,
 } from './showElements.js';
-
 import {
-
 	timer,
 	timerBreak,
 	pausetimer,
 	resetTimer,
   resizeClock,
   breakTime,
-  countdownAnimation
+  countdownAnimation,
 } from './timer.js';
-
-export {
-  actualList,
-  lists,
-  paused,
-  mobileWidth,
-  pause,
-  leftDiv,
-  description,
-  countdownTime,
-  secondsLeft,
-  timeInFocus,
-  clockTimer,
-  todoList,
-  buttonscountdown,
-  countdownTimer,
-
-} 
-
-import * as todo from './todo.js' ;
-import * as note from './note.js' ;
-import * as settingsfile from './settings.js' ;
-
-window.appSounds=appSounds;
-window.openNoteCard=openNoteCard;
-window.resizeClock=resizeClock;
-
-
-
+import * as todo from './todo.js';
+import * as note from './note.js';
+import * as settingsfile from './settings.js';
+window.openNoteCard = openNoteCard;
+window.resizeClock = resizeClock;
 
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
-
-
 const leftDiv = document.querySelector('.left');
 const projectIcon = document.querySelector('.Project');
 const mobileWidth = window.matchMedia('(max-width: 895px)');
@@ -93,12 +65,7 @@ let taskId = 0;
 let taskToday;
 let actualSelect;
 let actualList;
-
-
-
-
-
-//empty state 
+// empty state
 if (history == null) {
   const historylist = [
     {
@@ -127,7 +94,6 @@ if (statistics == null) {
 window.localStorage.setItem('STat', JSON.stringify(statistics));
  statistics = JSON.parse(localStorage.getItem('STat'));
 }
-
 
 if (todos == null) {
   todos = [
@@ -182,7 +148,6 @@ if (project == null) {
   project = JSON.parse(localStorage.getItem('project'));
 }
 
-
 if (settinglocal == null) {
   settings = { Theme: 'Dark', pomodoreTime: 25, breakTime: 5 };
 
@@ -214,15 +179,6 @@ if (actualList == 0) {
 } else {
   project = JSON.parse(localStorage.getItem('project'));
 }
-
-
-
-
-
-
-
-
-
 
 function lists(todolist = []) {
   actualList = todolist;
@@ -325,7 +281,6 @@ window.onresize = function resizeFun() {
 };
   const shortBreak = pomodorebreakTime * 60;
 
-
 function addTodo(event) {
   let currentProject = JSON.parse(localStorage.getItem('Current')) || [];
   if (currentProject == 0) {
@@ -371,7 +326,7 @@ function statTask() {
   let countCompleted = 0;
   let estimated = 0;
   //* counting statiscics
-  const history = JSON.parse(localStorage.getItem('History'))
+  const history = JSON.parse(localStorage.getItem('History'));
   let historytaskToday;
   historytaskToday = history.filter((items) => items.data === dateToday);
   for (let i = 0; i < historytaskToday.length; i += 1) {
@@ -428,8 +383,6 @@ statTask();
 todoButton.addEventListener('click', addTodo);
 lists(actualList, todoList);
 
-
-
 // * functions buttons action delate play and completted task
 function btnActtion(e) {
   statTask();
@@ -443,10 +396,7 @@ function btnActtion(e) {
     const todo = item.parentElement;
 	console.log(todo);
     todo.classList.add('fall');
-	// console.log(todos)
-	// console.log(index);
     todos.splice(index, 1);
-	// console.log(todos)
     localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', () => {
       todo.remove();
@@ -473,7 +423,6 @@ function btnActtion(e) {
       const todosFiltr = filtr[0];
       const idtego = todosFiltr.id;
       todosFiltr.done = true;
-	
       todosFiltr.id = History.length;
       const historytask = todosFiltr;
       History.push(historytask);
@@ -493,8 +442,7 @@ function btnActtion(e) {
         let lastId = 0;
         todos.forEach((ele) => {
           if (ele.id > lastId) {
-	
-            lastId = ele.id;
+  lastId = ele.id;
           }
         });
         // eslint-disable-next-line no-plusplus
@@ -555,14 +503,7 @@ function btnActtion(e) {
 // pomodoreDuration;
 
 let secondsLeft;
-let paused = false; // is the clock paused?
-
-
-
-
-
-
-
+const paused = false; // is the clock paused?
 
 // eslint-disable-next-line no-unused-vars
 
@@ -586,7 +527,6 @@ function addProject(event) {
   addPr.value = '';
   renderProjects();
 }
-
 
 window.sortingProject = sortingProject;
 window.deleteProject = deleteProject;
@@ -624,7 +564,7 @@ function sortingProject(clicked_id) {
 
   currentProject = [{ id: 0, name: clicked }];
   window.localStorage.setItem('Current', JSON.stringify(currentProject));
-  
+
   tasks = JSON.parse(localStorage.getItem('Items')) || [];
   const tasksProject = tasks.filter((item) => item.project == clicked);
   // showToDoCard();
@@ -644,13 +584,12 @@ function sortingProjectDays(e) {
     case 'Today':
 		taskToday = tasks.filter((items) => items.data === dateToday);
 
-
       lists(taskToday, todoList);
       break;
     case 'Tomorrow':
       taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
       // renderProjects();
-	  console.log(taskTomorrow)
+	  console.log(taskTomorrow);
       lists(taskTomorrow, todoList);
       break;
     case 'Someday':
@@ -696,10 +635,10 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
       break;
     default:
 		break;
-		
+
 		showToDoCard();
 	}
-	
+
 	// console.log(clicked)
 	// clickedArr = [clicked]
 	// console.log(clickedArr);
@@ -707,10 +646,10 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
   // window.currentProject = currentProject;
   let currentProject = JSON.parse(localStorage.getItem('Current'));
 
-  if(
+  if (
 clicked = 0
-    ){
-      clicked ="Today"
+    ) {
+      clicked = 'Today';
     }
 	currentProject[0].name = clicked;
 	console.log(currentProject);
@@ -720,7 +659,7 @@ clicked = 0
 	   window.localStorage.setItem('Current', JSON.stringify(currentProject));
 	currentProject = JSON.parse(localStorage.getItem('Current'));
 
-	console.log(currentProject)
+	console.log(currentProject);
 	titleName();
   showToDoCard();
 }
@@ -734,43 +673,34 @@ function deleteProject() {
   localStorage.setItem('Project', JSON.stringify(deleteProj));
   renderProjects();
 }
-
-
 function ifmobile() {
   if (mobileWidth.matches) {
     showProjectList();
   }
 }
-
 addProjectbtn.addEventListener('click', addProject);
 pause.addEventListener('click', pausetimer);
 reset.addEventListener('click', resetTimer);
 todoList.addEventListener('click', btnActtion);
 showProject.addEventListener('click', ifmobile);
 
-
 function repeatTasks() {
   const Items = JSON.parse(localStorage.getItem('Items'));
-
   for (let i = 0; i < Items.length; i += 1) {
     const dateString = Items[i].data;
-
     if (dateToday > Items[i].data) {
       Items[i].data = moment(dateString)
         .add(Items[i].repeatday, Items[i].repeatpartoftime)
         .format('YYYY-MM-DD');
-
       localStorage.setItem('Items', JSON.stringify(Items));
     }
   }
 }
 repeatTasks();
 
-
 window.activeProject = activeProject;
 function openNoteCard(clicked_id) {
-  let clicked = clicked_id.getAttribute('name');
-
+  const clicked = clicked_id.getAttribute('name');
   const modals = document.querySelectorAll('.modal');
   for (const ele of modals) {
     ele.classList.remove('active');
@@ -789,30 +719,39 @@ function openNoteCard(clicked_id) {
 }
 window.openNoteCard = openNoteCard;
 
-	function titleName(){
- let currentProject = JSON.parse(localStorage.getItem('Current'));
+	function titleName() {
+ const currentProject = JSON.parse(localStorage.getItem('Current'));
  console.log(currentProject);
 
 	title.innerHTML = currentProject.map(
-		(title) =>` ${title.name}`)
-
-	
-
-	  
+		(title) => ` ${title.name}`,
+)
 
         .join('');
 }
 titleName();
 
-
-
-
-
-
-
-//push notification
-Notification.requestPermission(function(status) {
+// push notification
+Notification.requestPermission((status) => {
     console.log('Notification permission status:', status);
 	// displayNotification();
 });
 
+export {
+  lists,
+  actualList,
+  paused,
+  mobileWidth,
+  pause,
+  leftDiv,
+  description,
+  countdownTime,
+  secondsLeft,
+  timeInFocus,
+  clockTimer,
+  todoList,
+  buttonscountdown,
+  countdownTimer,
+  pomodoreDuration,
+  audio,
+};

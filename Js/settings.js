@@ -1,6 +1,5 @@
 const closeSettings = document.querySelectorAll('[data-close-button ]');
 const saveButton = document.getElementById('saveSettingUser');
-
 const theme = document.querySelector('.modal__themes');
 const settingsDiv = document.querySelector('.settings');
 const settingButton = document.getElementById('settingButton');
@@ -18,13 +17,9 @@ const settingUser = JSON.parse(
     },
 	);
 window.appSounds=appSounds;
-
-
 theme.innerHTML = `
 <div class="switch-button">
 ${settingUser.Theme == 'Dark' ?
-
-
 '<input class="black switch-button-checkbox" type="checkbox"></input>'
 :
 '<input class="black switch-button-checkbox" checked type="checkbox"></input>'
@@ -70,9 +65,6 @@ ${settingUser.Theme == 'Dark' ?
 		</div>            
               </li>
 			  `
-			  
-			  
-			  
 export function closeModal(modal) {
 	if (modal == null) return;
     settingsDiv.classList.remove('active');
@@ -114,36 +106,16 @@ const breakTimeValue = document.getElementById('quantitybreak');
     };
     window.localStorage.setItem('settings', JSON.stringify(settings));
 }
- 
-
-//   document.getElementById('recalledtext').innerHTML =
-//                 localStorage.getItem('mynumber');
-
 saveButton.addEventListener('click', saveOptions);
-
-// fetch('https://stoicquotesapi.com/v1/api/quotes/random')
-// .then(response => response.text())
-//  document.querySelector('.quote').innerHTML = response;
-
-// .then(data => console.log(data.body))
-// .catch(err => console.error(err));
 export function appSounds(clickedid){
 	console.log(this);
 	if(clickedid.classList.contains("mute")){
-		
 		clickedid.classList.add("unmute")
 		clickedid.classList.remove("mute")
 		settingUser.Sound == true;
-		
-		
 	} else {
 		clickedid.classList.remove("unmute")
 		clickedid.classList.add("mute")
 		settingUser.Sound == false;
-		
-
-		// saveOptions();
 	}
-
-
 }

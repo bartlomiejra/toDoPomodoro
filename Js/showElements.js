@@ -7,10 +7,14 @@ export{
 
 }
 import {
+  actualList,
+  todoList,
+  lists,
 mobileWidth,
 pause,
 leftDiv,
-description
+description,
+pomodoreDuration
 } from './app.js'
 const centerDiv = document.querySelector('.center');
 const menuLis = document.querySelectorAll('.nav_element');
@@ -123,7 +127,7 @@ function showDiv(clickedId) {
     const note = document.querySelector('.note');
     const timePart = document.querySelector('.partOfTime');
     const repeatDay = document.querySelector('.repeatDay');
-    project = document.querySelector('.projectSelect');
+  let  project = document.querySelector('.projectSelect');
     date.addEventListener('change', updateDetails);
     closeBtn.addEventListener('click', closeDiv);
     note.addEventListener('input', updateDetails);
