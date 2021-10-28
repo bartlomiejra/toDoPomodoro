@@ -1209,10 +1209,7 @@ ol {
 
 @media screen and (max-width: 480px) {
 
-			#color{
-	min-height:40px !important;
-	min-width:32px !important;
-} 
+
 
 	.container {
 		.left {
@@ -1283,3 +1280,7 @@ textarea:focus {
 
 
 
+			#color{
+	min-height:50px !important;
+	min-width:32px !important;
+} 

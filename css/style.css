@@ -1412,10 +1412,6 @@ ol {
 }
 
 @media screen and (max-width: 480px) {
-  #color {
-    min-height: 40px !important;
-    min-width: 32px !important;
-  }
   .container .left {
     overflow-x: hidden;
     font-size: 1rem;
@@ -1475,5 +1471,10 @@ textarea:focus {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+#color {
+  min-height: 50px !important;
+  min-width: 32px !important;
 }
 /*# sourceMappingURL=style.css.map */
