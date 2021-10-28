@@ -45,14 +45,6 @@ input::-webkit-color-swatch {
   --dark-font: #fff;
   --fonts: #fff;
   --task: #23222d;
-  --tiles1: #4e344d;
-  --tiles2: #955165;
-  --tiles3: #fab261;
-  --tiles4: #083513;
-  --tiles5: #300d30;
-  --tiles6: #383b0f;
-  --tiles7: #3a0505;
-  --tiles8: #017514;
   --inputbackground: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
   --btncolor: #808080;
 }
@@ -1381,8 +1373,8 @@ ol {
   }
   .container .left_color {
     padding: 10px;
-    min-height: 32px;
-    min-width: 32px;
+    min-height: 100px;
+    min-width: 100px;
   }
   .container .circle {
     display: -webkit-box;
@@ -1477,5 +1469,10 @@ textarea:focus {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+#color {
+  height: 100px !important;
+  width: 100px !important;
 }
 /*# sourceMappingURL=style.css.map */

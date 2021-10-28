@@ -48,14 +48,14 @@ input::-webkit-color-swatch {
 	--dark-font: #{$darkfont};
 	--fonts: #{$fonts};
 	--task: #{$task};
-	--tiles1: #{$tiles1};
-	--tiles2: #{$tiles2};
-	--tiles3: #{$tiles3};
-	--tiles4: #{$tiles4};
-	--tiles5: #{$tiles5};
-	--tiles6: #{$tiles6};
-	--tiles7: #{$tiles7};
-	--tiles8: #{$tiles8};
+	// --tiles1: #{$tiles1};
+	// --tiles2: #{$tiles2};
+	// --tiles3: #{$tiles3};
+	// --tiles4: #{$tiles4};
+	// --tiles5: #{$tiles5};
+	// --tiles6: #{$tiles6};
+	// --tiles7: #{$tiles7};
+	// --tiles8: #{$tiles8};
 	--inputbackground: #{$inputbackground};
 	--btncolor: #{$btncolor};
 }
@@ -1222,11 +1222,6 @@ ol {
 				min-width: 50vw;
 			}
 		}
-		&_color {
-				padding: 10px;
-				min-height: 100px;
-				min-width: 100px;
-			}
 	}
 }
 
@@ -1271,4 +1266,12 @@ textarea:focus {
 .centerclock {
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+
+
+#color{
+	height:100px !important;
+	width:100px !important;
+
 }
