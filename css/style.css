@@ -1376,8 +1376,7 @@ ol {
     min-width: 70vw;
   }
   .container .left_color {
-    min-height: 32px !important;
-    min-width: 32px !important;
+    padding: 10px;
   }
   .container .circle {
     display: -webkit-box;

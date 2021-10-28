@@ -1174,9 +1174,9 @@ ol {
 			}
 
 			&_color {
-				// padding: 10px;
-				min-height: 32px !important;
-				min-width: 32px !important;
+				padding: 10px;
+				// min-height: 32px !important;
+				// min-width: 32px !important;
 			}
 		}
 
@@ -1276,7 +1276,8 @@ textarea:focus {
 	transform: translate(-50%, -50%);
 }
 
-
+.fa-palette{
+}
 
 
 
