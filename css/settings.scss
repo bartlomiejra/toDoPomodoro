@@ -51,7 +51,6 @@
 		flex-wrap: nowrap;
 		font-size: 1.5rem;
 		flex-direction: column;
-		display: flex;
 		border-radius: 20px;
 		align-items: center;
 		justify-content: center;
@@ -119,13 +118,8 @@ output {
 	width: 50vw;
 	display: flex;
 	flex-direction: column;
-	background: linear-gradient(135deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
+	background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
 	align-items: center;
-	background: linear-gradient(-45deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
-	// box-shadow:
-	// width: 80vw;
-	// 	6px 6px 8px 0 rgba(0, 0, 0, 0.25),
-	// 	-4px -4px 6px 0 rgba(255, 255, 255, 0.3);
 	border-radius: 10px;
 	justify-content: center;
 	background-color: var(--task_color);
@@ -152,7 +146,6 @@ output {
 	text-align: center;
 	font-size: 18px;
 	letter-spacing: 1px;
-	// color: #155fff;
 	position: relative;
 	padding-right: 120px;
 	background-color: var(--task_color);
@@ -216,7 +209,6 @@ output {
 		}
 	}
 }
-
 .mute {
 	border-radius: 30px;
 	overflow: hidden;
@@ -270,7 +262,6 @@ output {
 	.modal {
 		border: 0;
 	}
-
 	.optionsBox {
 		width: 90vw;
 	}

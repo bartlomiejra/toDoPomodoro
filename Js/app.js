@@ -398,10 +398,13 @@ function btnActtion(e) {
     audio = new Audio('Alerts/deleteTask.mp3');
     audio.play();
     const { ...index } = e.target.dataset;
-    const todo = item.parentElement;
+    console.log(index);
+    let todo = item.parentElement;
+    console.log(todo);
 	console.log(todo);
     todo.classList.add('fall');
     todos.splice(index, 1);
+    
     localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', () => {
       todo.remove();
@@ -502,8 +505,8 @@ function btnActtion(e) {
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
-  // localStorage.setItem('Items', JSON.stringify(todos));
-  // lists(actualList, todoList);
+  localStorage.setItem('Items', JSON.stringify(todos));
+  lists(actualList, todoList);
 }
 // pomodoreDuration;
 
