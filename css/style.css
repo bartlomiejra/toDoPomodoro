@@ -1373,11 +1373,6 @@ ol {
   }
   .container .left_color {
     padding: 10px;
-<<<<<<< HEAD
-=======
-    min-height: 100px;
-    min-width: 100px;
->>>>>>> b124f3ed60ec027c57a4d4334d9fa0aa1f66e5d7
   }
   .container .circle {
     display: -webkit-box;
@@ -1475,13 +1470,6 @@ textarea:focus {
 }
 
 #color {
-<<<<<<< HEAD
-  height: 32px !important;
-  width: 32px !important;
-  border: red 2px;
-=======
-  height: 100px !important;
-  width: 100px !important;
->>>>>>> b124f3ed60ec027c57a4d4334d9fa0aa1f66e5d7
+  height: 50px !important;
 }
 /*# sourceMappingURL=style.css.map */
