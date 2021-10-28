@@ -1363,6 +1363,8 @@ ol {
     position: sticky;
     height: 60px;
     top: 95vh;
+    background-color: var(--task);
+    border-radius: 10px;
   }
   .container .left_addProjectBtn {
     height: 52px;
