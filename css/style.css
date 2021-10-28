@@ -1376,7 +1376,6 @@ ol {
     min-width: 70vw;
   }
   .container .left_color {
-    padding: 10px;
     min-height: 32px !important;
     min-width: 32px !important;
   }
@@ -1473,5 +1472,11 @@ textarea:focus {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.left_color {
+  min-height: 51px !important;
+  padding: 10px;
+  min-width: 51px !important;
 }
 /*# sourceMappingURL=style.css.map */
