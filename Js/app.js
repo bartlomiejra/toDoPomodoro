@@ -18,7 +18,8 @@ import {
 } from './timer.js';
 import * as todo from './todo.js';
 import * as note from './note.js';
-import * as settingsfile from './settings.js';
+import * as notification from './notification.js';
+// import * as settingsfile from './settings.js';
 window.openNoteCard = openNoteCard;
 window.resizeClock = resizeClock;
 
@@ -28,6 +29,7 @@ window.resizeClock = resizeClock;
 /* eslint-disable eqeqeq */
 const leftDiv = document.querySelector('.left');
 const projectIcon = document.querySelector('.Project');
+let currentProject;
 const mobileWidth = window.matchMedia('(max-width: 895px)');
 const todoInput = document.querySelector('.center_todoInput');
 const addProjectbtn = document.querySelector('.left_addProjectBtn');
@@ -181,7 +183,10 @@ if (actualList == 0) {
 }
 
 function lists(todolist = []) {
-  actualList = todolist;
+  console.log("render");
+  console.log(currentProject);
+   actualList = todolist;
+   
   window.localStorage.setItem('Actual', JSON.stringify(actualList));
 
   if (actualList.length == 0) {
@@ -280,9 +285,8 @@ window.onresize = function resizeFun() {
   }
 };
   const shortBreak = pomodorebreakTime * 60;
-
 function addTodo(event) {
-  let currentProject = JSON.parse(localStorage.getItem('Current')) || [];
+   currentProject = JSON.parse(localStorage.getItem('Current')) || [];
   if (currentProject == 0) {
     currentProject = 'No Project';
   } else {
@@ -314,7 +318,7 @@ function addTodo(event) {
   todoInput.value = '';
   todos.push(item);
   localStorage.setItem('Items', JSON.stringify(todos));
-//   lists(todos, todoList);
+  lists(todos, todoList);
   lists(actualList, todoList);
   statTask();
   centerDiv.classList.add('active');

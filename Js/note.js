@@ -12,7 +12,8 @@ export const tiles = document.querySelector('.tiles');
 export const deleteNote = document.getElementById('deleteNote');
 // const noteButton = document.getElementById('noteButton');
 
-let notes;
+let notes = JSON.parse(localStorage.getItem('Notes'));
+
 if (notes == null) {
     notes = [
         {
