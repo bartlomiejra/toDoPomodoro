@@ -1470,6 +1470,7 @@ textarea:focus {
 }
 
 #color {
-  height: 50px !important;
+  min-height: 50px !important;
+  min-width: 50px !important;
 }
 /*# sourceMappingURL=style.css.map */
