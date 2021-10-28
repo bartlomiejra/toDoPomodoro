@@ -960,6 +960,11 @@ ol {
 
 //mobile version
 @media screen and (max-width: 895px) {
+
+		#color{
+	min-height:32px !important;
+	min-width:32px !important;
+} 
 	body {
 		font-size: 16px;
 	}
@@ -1203,6 +1208,8 @@ ol {
 }
 
 @media screen and (max-width: 480px) {
+
+
 	.container {
 		.left {
 			overflow-x: hidden;
@@ -1270,8 +1277,5 @@ textarea:focus {
 
 
 
-#color{
-	min-height:50px !important;
-	min-width:50px !important;
-}
+
 

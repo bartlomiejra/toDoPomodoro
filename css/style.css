@@ -1189,6 +1189,10 @@ ol {
 }
 
 @media screen and (max-width: 895px) {
+  #color {
+    min-height: 32px !important;
+    min-width: 32px !important;
+  }
   body {
     font-size: 16px;
   }
@@ -1467,10 +1471,5 @@ textarea:focus {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-}
-
-#color {
-  min-height: 50px !important;
-  min-width: 50px !important;
 }
 /*# sourceMappingURL=style.css.map */
