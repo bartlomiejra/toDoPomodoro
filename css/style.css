@@ -1474,9 +1474,4 @@ textarea:focus {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
-
-.left_color {
-  min-height: 51px !important;
-  min-width: 51px !important;
-}
 /*# sourceMappingURL=style.css.map */
