@@ -1,4 +1,5 @@
 {
+
     "env": {
         "browser": true,
         "es2021": true
@@ -9,12 +10,14 @@
 
       
     ],
+
   
 	"plugins": ["prettier"],
 "rules": {
    "indent": "off",
-   "no-tabs": 0,
-   "prettier/prettier": "error"
+   "no-tabs": 1,
+   "prettier/prettier": "error",
+    "quotes": [2, "single", { "avoidEscape": true }]
 
 
 
