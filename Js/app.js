@@ -709,7 +709,6 @@ function openNoteCard(clicked_id) {
       ele.classList.add('active');
       ele.classList.remove('none');
     }
-
     if (clicked == 'pomodoreCard' && mobileWidth.matches) {
       centerDiv.classList.add('none');
       centerDiv.classList.remove('active');
@@ -718,7 +717,6 @@ function openNoteCard(clicked_id) {
   }
 }
 window.openNoteCard = openNoteCard;
-
 	function titleName() {
  const currentProject = JSON.parse(localStorage.getItem('Current'));
  console.log(currentProject);
@@ -730,7 +728,6 @@ window.openNoteCard = openNoteCard;
         .join('');
 }
 titleName();
-
 // push notification
 Notification.requestPermission((status) => {
     console.log('Notification permission status:', status);
