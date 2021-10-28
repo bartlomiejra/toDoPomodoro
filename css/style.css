@@ -1473,10 +1473,4 @@ textarea:focus {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
-
-.left_color {
-  min-height: 51px !important;
-  padding: 10px;
-  min-width: 51px !important;
-}
 /*# sourceMappingURL=style.css.map */
