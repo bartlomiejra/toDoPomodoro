@@ -1175,8 +1175,8 @@ ol {
 
 			&_color {
 				padding: 10px;
-				// min-height: 100px;
-				// min-width: 100px;
+				min-height: 32px !important;
+				min-width: 32px !important;
 			}
 		}
 
@@ -1280,7 +1280,7 @@ textarea:focus {
 
 
 
-			#color{
-	min-height:50px !important;
-	min-width:50px !important;
+			.left_color{
+	min-height:53px !important;
+	min-width:53px !important;
 } 

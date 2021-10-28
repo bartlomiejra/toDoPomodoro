@@ -1377,6 +1377,8 @@ ol {
   }
   .container .left_color {
     padding: 10px;
+    min-height: 32px !important;
+    min-width: 32px !important;
   }
   .container .circle {
     display: -webkit-box;
@@ -1473,8 +1475,8 @@ textarea:focus {
           transform: translate(-50%, -50%);
 }
 
-#color {
-  min-height: 50px !important;
-  min-width: 50px !important;
+.left_color {
+  min-height: 53px !important;
+  min-width: 53px !important;
 }
 /*# sourceMappingURL=style.css.map */
