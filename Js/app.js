@@ -19,6 +19,7 @@ import {
 import * as todo from './todo.js';
 import * as note from './note.js';
 import * as notification from './notification.js';
+import * as settingss from './settings.js';
 // import * as settingsfile from './settings.js';
 window.openNoteCard = openNoteCard;
 window.resizeClock = resizeClock;

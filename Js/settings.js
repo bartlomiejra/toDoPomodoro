@@ -16,7 +16,6 @@ const settingUser = JSON.parse(
         breakTime: '5',
     },
 	);
-window.appSounds=appSounds;
 theme.innerHTML = `
 <div class="switch-button">
 ${settingUser.Theme == 'Dark' ?
@@ -119,3 +118,5 @@ export function appSounds(clickedid){
 		settingUser.Sound == false;
 	}
 }
+
+window.appSounds= appSounds;

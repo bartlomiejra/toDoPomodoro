@@ -250,6 +250,9 @@
     color: var(--hover_color);
     text-align: center;
   }
+  .tiles__tile h3 {
+    font-size: 0.7rem;
+  }
   __addNote {
     background: var(--backgrounddarker);
     padding: 15px;
