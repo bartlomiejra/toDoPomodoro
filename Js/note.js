@@ -32,13 +32,14 @@ if (notes == null) {
       id: 3,
       title: "8 morning stretches to help kick-start your day",
       date: "2021-07-03",
-      note: "Seated trapezius stretch\n- Shoulder stretch\n- Triceps stretch\n-Lower back\n-Hip flexor stretch in three planes\n-Hamstring stretch\n-Quadriceps stretch\n- Calf stretch"
+      note: "Seated trapezius stretch\n- Shoulder stretch\n- Triceps stretch\n-Lower back\n-Hip flexor stretch in three planes\n-Hamstring stretch\n-Quadriceps stretch\n- Calf stretch",
     },
     {
       id: 4,
       title: "Marcus Aurelius Quotes",
       date: "2021-09-03",
-      note: "-The happiness of your life depends upon the quality of your thoughts: therefore, guard accordingly, and take care that you entertain no notions unsuitable to virtue and reasonable nature.\n -When you arise in the morning, think of what a precious privilege it is to be alive  to breathe, to think, to enjoy, to love.\n -The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane"    },
+      note: "-The happiness of your life depends upon the quality of your thoughts: therefore, guard accordingly, and take care that you entertain no notions unsuitable to virtue and reasonable nature.\n -When you arise in the morning, think of what a precious privilege it is to be alive  to breathe, to think, to enjoy, to love.\n -The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane",
+    },
   ];
 
   window.localStorage.setItem("Notes", JSON.stringify(notes));
@@ -147,8 +148,8 @@ export function noteOpen(clicked_id) {
 }
 export function saveEditNote() {
   notes = JSON.parse(localStorage.getItem("Notes")) || [];
-  let headerN = document.querySelector(".headerNote");
-  let notetext = document.querySelector(".notetext");
+  const headerN = document.querySelector(".headerNote");
+  const notetext = document.querySelector(".notetext");
   notes[click].title = headerN.value;
   notes[click].note = notetext.value;
   localStorage.setItem("Notes", JSON.stringify(notes));
