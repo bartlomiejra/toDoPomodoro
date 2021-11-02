@@ -16,8 +16,10 @@
 "rules": {
    "indent": "off",
    "no-tabs": 1,
-   "prettier/prettier": "error",
-    "quotes": [2, "single", { "avoidEscape": true }]
+   "prettier/prettier": ["error", {}, {
+  "usePrettierrc": false
+}],
+    "quotes": [2, "double", { "avoidEscape": true }]
 
 
 
