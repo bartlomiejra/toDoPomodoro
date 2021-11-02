@@ -1,5 +1,5 @@
+@import "virables";
 
-@import 'virables';
 //Custom scrollbar
 ::-webkit-scrollbar {
 	background-color: var(--backgrounddarker);
@@ -48,6 +48,7 @@ input::-webkit-color-swatch {
 	--dark-font: #{$darkfont};
 	--fonts: #{$fonts};
 	--task: #{$task};
+
 	// --tiles1: #{$tiles1};
 	// --tiles2: #{$tiles2};
 	// --tiles3: #{$tiles3};
@@ -106,57 +107,59 @@ input::-webkit-color-swatch {
 @keyframes scale {
 	0% {
 
-		opacity: 0;
+		opacity: 0%;
 		transform: scale(0);
 		transform-origin: 50% 50%;
 	}
 
 	50% {
-		opacity: 2;
+		opacity: 200%;
 		transform: scale(1);
 		transform-origin: 50% 50%;
 	}
 
 	100% {
-		opacity: 3;
+		opacity: 300%;
 	}
 }
 
 @keyframes pulse {
 	0% {
 		transform: scale(1);
-		opacity: 0;
+		opacity: 0%;
 	}
 
 	25% {
 		transform: scale(1.1);
-		opacity: 0.1;
+		opacity: 10%;
 	}
 
 	50% {
 		transform: scale(1.2);
-		opacity: 0.2;
+		opacity: 20%;
 	}
 
 	75% {
 		transform: scale(1.3);
-		opacity: 0.3;
+		opacity: 30%;
 	}
 
 	100% {
 		transform: scale(1.4);
-		opacity: 0.4;
+		opacity: 40%;
 	}
 }
 
 @keyframes reducing {
 	from {
 		transform: scaleX(1);
+
 		// transform:  scale(1);
 	}
 
 	to {
 		transform: scaleX(0);
+
 		// transform:  scale(0);
 	}
 }
@@ -178,11 +181,13 @@ input::-webkit-color-swatch {
 @keyframes enlarging {
 	from {
 		transform: scaleX(0);
+
 		// transform:  scale(1);
 	}
 
 	to {
 		transform: scaleX(1);
+
 		// transform:  scale(0);
 	}
 }
@@ -215,8 +220,9 @@ body {
 	display: grid;
 	padding: 0;
 	margin: 0;
+
 	// font-family: 'Roboto', sans-serif;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Montserrat", sans-serif;
 	font-weight: 500;
 
 	color: var(--font-color);
@@ -252,6 +258,7 @@ body {
 	.left {
 
 		min-width: 268px;
+
 		// margin-bottom: 10px;
 
 		overflow-x: hidden;
@@ -296,10 +303,12 @@ body {
 		&_projectItem {
 			display: grid;
 			grid-template-columns: 3fr 1fr;
+
 			// background-color: var(--statColor);
 			margin: 5px;
 
 			padding: 5px;
+
 			// border-radius: 5px;
 		}
 
@@ -360,8 +369,10 @@ body {
 			border: 0;
 			height: 30px;
 			text-align: center;
+
 			// font-size: 15px;
 			background-color: var(--task);
+
 			// border-radius: 8px 0 0 8px;
 			// filter: var(--shadow);
 		}
@@ -398,6 +409,7 @@ body {
 		}
 
 		&__text {
+
 			color: var(--font-color);
 			flex: 2;
 			text-align: center;
@@ -407,7 +419,8 @@ body {
 			padding: 5px;
 			margin: 10px;
 			color: var(--task);
-			height: 50px;
+			height: 60px;
+			max-height: 60px;
 
 			// font-size: 2em;
 			overflow: hidden;
@@ -434,6 +447,7 @@ body {
 			display: flex;
 			align-items: center;
 			padding: 15px;
+
 			// font-size: 1.1rem;
 			color: var(--number-color);
 			background-color: var(--task);
@@ -493,8 +507,8 @@ body {
 			grid-template-rows: 1fr 1fr;
 			gap: 0 0;
 			grid-template-areas:
-				'complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn'
-				'complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn';
+				"complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn"
+				"complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
 		}
 
 		&_complete-btn {
@@ -539,6 +553,7 @@ body {
 		font-size: 2em;
 		backdrop-filter: blur(5px);
 		transform: 0.3s ease-in-out;
+
 		// margin: 0px;
 		width: 6em;
 		border-radius: 20px;
@@ -628,7 +643,7 @@ body {
 	}
 
 	.completed {
-		opacity: 0.6;
+		opacity: 60%;
 		min-width: 300px;
 
 		.center_todo-item {
@@ -705,7 +720,7 @@ body {
 	//animations
 	.fall {
 		transform: translateX(17rem) rotateZ(1deg);
-		opacity: 0;
+		opacity: 0%;
 	}
 
 	//icon
@@ -753,6 +768,7 @@ body {
 		&_todo-item {
 			grid-area: todo-item;
 			text-align: center;
+
 			// overflow: auto;
 		}
 
@@ -784,16 +800,18 @@ body {
 }
 
 .blur {
-	opacity: 0.2;
+	opacity: 20%;
 }
 
 .select {
 	background-color: var(--statColor);
+
 	// margin: 5px 0;
 	margin: 5px 5px 0;
 
 	padding: 5px;
 	border-radius: 5px;
+
 	// transform: scale(1.05);
 	background-position: 0 100%;
 	color: var(--hovercolor);
@@ -813,6 +831,7 @@ body {
 	background-color: var(--statColor);
 	padding: 5px;
 	border-radius: 5px;
+
 	// transform: scale(1.05);
 	background-position: 0 100%;
 	color: var(--hovercolor);
@@ -833,21 +852,24 @@ body {
 	width: 100%;
 	height: 200px;
 	color: var(--fonts);
+
 	// color: white;
 	border-radius: 8px;
+
 	// filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 	// background: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
 	background: var(--inputbackground);
 }
 
 select,
-input [type='number'],
-input [type='date'],
+input [type="number"],
+input [type="date"],
 .numberOfTime,
 .Projects {
 	padding: 10px;
 	color: var(--fonts);
 	border-radius: 8px;
+
 	// filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
 	background: var(--inputbackground);
 
@@ -855,10 +877,10 @@ input [type='date'],
 }
 
 select option {
-	background: rgba(0, 0, 0, 0.9);
+	background: rgba(0 0 0 / 90%);
 	color: var(--fonts);
 
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
 }
 
 ol {
@@ -915,6 +937,7 @@ ol {
 	bottom: 0;
 	width: 100%;
 	display: flex;
+
 	// overflow-x: auto;
 	flex-direction: row;
 	background-color: var(--nav_color);
@@ -930,9 +953,11 @@ ol {
 		min-width: 50px;
 		overflow: hidden;
 		white-space: nowrap;
+
 		// font-family: sans-serif;
 		font-size: 1rem;
 		color: var(--btncolor);
+
 		// color: var(--task_color);
 		text-decoration: none;
 		padding: 5px;
@@ -946,6 +971,7 @@ ol {
 .selected {
 	// padding: 5px;
 	color: var(--font-color);
+
 	// max-width: 100px;
 	// font-weight: 900;
 	background-color: #2876f9;
@@ -960,10 +986,11 @@ ol {
 
 //mobile version
 @media screen and (max-width: 895px) {
-		#color{
-	min-height:32px !important;
-	min-width:32px !important;
-} 
+	#color{
+		min-height: 32px !important;
+		min-width: 32px !important;
+	}
+
 	body {
 		font-size: 16px;
 	}
@@ -1156,8 +1183,8 @@ ol {
 				position: sticky;
 				height: 60px;
 				top: 95vh;
-				    background-color: var(--task);
-					border-radius: 10px;
+				background-color: var(--task);
+				border-radius: 10px;
 
 			}
 
@@ -1172,11 +1199,13 @@ ol {
 				font-size: 1rem;
 				height: 50px;
 				min-width: 70vw;
+
 				// min-width: 50vw;
 			}
 
 			&_color {
 				padding: 10px;
+
 				// min-height: 32px !important;
 				// min-width: 32px !important;
 			}
@@ -1210,9 +1239,6 @@ ol {
 }
 
 @media screen and (max-width: 480px) {
-
-
-
 	.container {
 		.left {
 			overflow-x: hidden;
@@ -1228,6 +1254,7 @@ ol {
 			&_Projects {
 				font-size: 1rem;
 				height: 50px;
+
 				// min-width: 70vw;
 				min-width: 50vw;
 			}
@@ -1249,7 +1276,7 @@ ol {
 ol > li:hover,
 .projectList:hover,
 .fa-minus-circle:hover,
-input[type='date']:hover,
+input[type="date"]:hover,
 .projectSelect:hover,
 .editing-view-port:hover,
 .partOfTime:hover,
@@ -1257,12 +1284,12 @@ textarea:hover,
 ol > li:active,
 >.projectList:active,
 .fa-minus-circle:active,
-input[type='date']:active,
+input[type="date"]:active,
 .projectSelect:active,
 .editing-view-port:active,
 .partOfTime:active,
 textarea:active,
-input[type='number']:hover {
+input[type="number"]:hover {
 	@include hover;
 }
 
@@ -1281,10 +1308,8 @@ textarea:focus {
 .fa-palette{
 }
 
-
-
 // 			.left_color{
 // 	min-height:51px !important;
 // 					padding: 10px;
 // 	min-width:51px !important;
-// } 
+// }

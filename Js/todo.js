@@ -34,8 +34,12 @@ localStorage.setItem('ListTodo', JSON.stringify(ListOfToDo));
 window.addNewTodo = addNewTodo;
 
 export function addNewTodo(event) {
-	ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
+	if(todoTitle.value === ''){
 
+	}else {
+
+		ListOfToDo = JSON.parse(localStorage.getItem('ListTodo'));
+		
 	// find last id number
 	ListOfToDo.forEach((items) => {
 		if (items.id > last) {
@@ -52,13 +56,14 @@ export function addNewTodo(event) {
 	ListOfToDo.push(ToDoNew);
 	// console.log(ListOfToDo);
 	localStorage.setItem('ListTodo', JSON.stringify(ListOfToDo));
-
+	
 	todoTitle.value = '';
 	//     lists(todos, todoList);
 	//     lists(actualList, todoList);
 	// return false;
 	renderTodos();
 	const dragItems = document.querySelectorAll('.dragitem');
+}
 }
 
 renderTodos();

@@ -1,5 +1,5 @@
 // @import 'style';
-@import 'virables';
+@import "virables";
 
 @mixin hoverlighter {
 	filter: brightness(150%);
@@ -71,7 +71,7 @@
 	}
 
 	&__date {
-		opacity: 0.5;
+		opacity: 50%;
 		font-size: 0.7rem;
 		position: absolute;
 		right: 10px;
@@ -127,8 +127,9 @@
 		top: 10px;
 		left: 10px;
 		border-radius: 5px;
-		background-color: var(--task_color);
+		background-color: var(--timerFinishColor);
 		color: var(--light-color);
+		font-weight: 400;
 		font-size: 15px;
 		padding: 10px;
 	}
@@ -174,7 +175,7 @@
 		height: 60%;
 		color: var(--fonts);
 		border-radius: 8px;
-		filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+		filter: drop-shadow(0 0.2rem 0.25rem rgb(0 0 0 / 20%));
 		background: transparent;
 
 		.date {
@@ -204,13 +205,13 @@
 
 .fa-redo {
 	color: var(--font-color);
-	opacity: 0.8;
+	opacity: 80%;
 	font-size: 1rem;
 }
 
 .overlay_Note {
 	pointer-events: none;
-	opacity: 1;
+	opacity: 100%;
 
 	.tiles__note {
 		pointer-events: all;
@@ -238,6 +239,7 @@
 			height: 100px;
 			color: var(--hover_color);
 			text-align: center;
+
 			h3{
 				font-size: 0.7rem;
 			}

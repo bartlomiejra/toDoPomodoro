@@ -127,8 +127,9 @@
   top: 10px;
   left: 10px;
   border-radius: 5px;
-  background-color: var(--task_color);
+  background-color: var(--timerFinishColor);
   color: var(--light-color);
+  font-weight: 400;
   font-size: 15px;
   padding: 10px;
 }

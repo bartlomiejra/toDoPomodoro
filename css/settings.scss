@@ -1,6 +1,7 @@
-@import 'note';
+@import "note";
+
 // @import 'style';
-@import 'virables';
+@import "virables";
 
 *,
 *::after *::before {
@@ -21,7 +22,7 @@
 	border-radius: 10px;
 	backdrop-filter: blur(10px);
 
-	opacity: 0.9;
+	opacity: 90%;
 
 	&__header {
 		padding: 10px 15px;
@@ -59,6 +60,7 @@
 	&__header,
 	&__closebutton {
 		cursor: pointer;
+
 		// border: none;
 		outline: none;
 		background: none;
@@ -84,17 +86,17 @@
 
 #overlay {
 	position: absolute;
-	opacity: 0;
+	opacity: 0%;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgb(0 0 0 / 80%);
 	pointer-events: none;
 }
 
 #overlay.active {
-	opacity: 1;
+	opacity: 100%;
 	pointer-events: all;
 }
 
@@ -118,7 +120,7 @@ output {
 	width: 50vw;
 	display: flex;
 	flex-direction: column;
-	background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+	background: linear-gradient(135deg, rgb(0 0 0 / 10%), rgb(255 255 255 / 10%));
 	align-items: center;
 	border-radius: 10px;
 	justify-content: center;
@@ -151,7 +153,7 @@ output {
 	background-color: var(--task_color);
 
 	&::before {
-		content: 'Light ';
+		content: "Light ";
 		position: absolute;
 		top: 0;
 		bottom: 0;
@@ -172,7 +174,7 @@ output {
 		bottom: 0;
 		width: 100%;
 		height: 100%;
-		opacity: 0;
+		opacity: 0%;
 		z-index: 2;
 
 		&:checked + .switch-button-label::before {
@@ -190,7 +192,7 @@ output {
 			pointer-events: none;
 
 			&::before {
-				content: '';
+				content: "";
 				background: #fff;
 				height: 100%;
 				width: 100%;
@@ -209,6 +211,7 @@ output {
 		}
 	}
 }
+
 .mute {
 	border-radius: 30px;
 	overflow: hidden;
@@ -221,7 +224,7 @@ output {
 	height: 52px;
 	margin-bottom: 10px;
 
-	input[type=checkbox] {
+	input[type="checkbox"] {
 		height: 50px;
 		width: 100px;
 
@@ -245,13 +248,13 @@ output {
 	}
 
 	.label::before {
-		content: '\f6a9';
+		content: "\f6a9";
 		font-family: FontAwesome;
 		font-size: 2rem;
 	}
 
-	input[type=checkbox]:checked + .label::before {
-		content: '\f028';
+	input[type="checkbox"]:checked + .label::before {
+		content: "\f028";
 		font-family: FontAwesome;
 		font-weight: 400;
 		vertical-align: middle;
@@ -262,6 +265,7 @@ output {
 	.modal {
 		border: 0;
 	}
+
 	.optionsBox {
 		width: 90vw;
 	}

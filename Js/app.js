@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { displayNotification } from './notification.js';
+
 import {
 	showToDoCard,
 	showProjectList,
@@ -18,29 +18,32 @@ import {
 } from './timer.js';
 import * as todo from './todo.js';
 import * as note from './note.js';
-import * as notification from './notification.js';
+import { displayNotification } from './notification.js';
 import * as settingss from './settings.js';
 // import * as settingsfile from './settings.js';
 window.openNoteCard = openNoteCard;
 window.resizeClock = resizeClock;
+export let pomodorebreakTime;
 
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
+
 const leftDiv = document.querySelector('.left');
+
 const projectIcon = document.querySelector('.Project');
 let currentProject;
 const mobileWidth = window.matchMedia('(max-width: 895px)');
 const todoInput = document.querySelector('.center_todoInput');
 const addProjectbtn = document.querySelector('.left_addProjectBtn');
+const buttonscountdown = document.querySelector('.countdownButtons');
 const addPr = document.querySelector('.left_Projects');
 const todoButton = document.querySelector('.center_addtaskButton');
 const todoList = document.querySelector('.center_todolist');
 const showProject = document.querySelector('.Project');
 const emptyList = document.querySelector('.center_emptyList');
 const clockTimer = document.querySelector('.clock');
-const buttonscountdown = document.querySelector('.countdownButtons');
 const pause = document.querySelector('.center_pauseButton');
 const reset = document.querySelector('.center_resetButton');
 const description = document.querySelector('.right');
@@ -57,17 +60,17 @@ let project = JSON.parse(localStorage.getItem('Project'));
 const settinglocal = JSON.parse(localStorage.getItem('settings'));
 const countdownTimer = document.getElementById('countdown');
 let tasks = JSON.parse(localStorage.getItem('Items')) || [];
-let audio;
 let clicked;
 let timeInFocus;
 let pomodoreDuration;
-export let pomodorebreakTime;
 let settings;
 let countdownTime;
 let taskId = 0;
 let taskToday;
+let audio;
 let actualSelect;
 let actualList;
+
 // empty state
 if (history == null) {
   const historylist = [
@@ -184,10 +187,10 @@ if (actualList == 0) {
 }
 
 function lists(todolist = []) {
-  console.log("render");
-  console.log(currentProject);
+  console.log('render');
+  // console.log(currentProject);
    actualList = todolist;
-   
+
   window.localStorage.setItem('Actual', JSON.stringify(actualList));
 
   if (actualList.length == 0) {
@@ -399,12 +402,12 @@ function btnActtion(e) {
     audio.play();
     const { ...index } = e.target.dataset;
     console.log(index);
-    let todo = item.parentElement;
+    const todo = item.parentElement;
     console.log(todo);
 	console.log(todo);
     todo.classList.add('fall');
     todos.splice(index, 1);
-    
+
     localStorage.setItem('Items', JSON.stringify(todos));
     todo.addEventListener('transitionend', () => {
       todo.remove();
@@ -727,7 +730,10 @@ function openNoteCard(clicked_id) {
 window.openNoteCard = openNoteCard;
 	function titleName() {
  const currentProject = JSON.parse(localStorage.getItem('Current'));
- console.log(currentProject);
+ if (currentProject == null) {
+   currentProject[0].name = Today;
+ }
+   console.log(currentProject);
 
 	title.innerHTML = currentProject.map(
 		(title) => ` ${title.name}`,
