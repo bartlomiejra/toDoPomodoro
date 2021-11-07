@@ -10,9 +10,9 @@ const sounds = document.querySelector(".sounds");
 // const breakTime = document.querySelector('.breakTime');
 const SetTimes = document.querySelector(".SetTimes");
 const settingUser = JSON.parse(localStorage.getItem("settings")) || {
-  Theme: 'Dark',
+  Theme: "Dark",
   Sound: true,
-  pomodoreTime: '25',
+  pomodoreTime: "25",
   breakTime: "5",
 };
 

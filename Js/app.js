@@ -650,7 +650,6 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
 		showToDoCard();
 	}
 
-
   let currentProject = JSON.parse(localStorage.getItem("Current"));
 
   if (
@@ -738,11 +737,7 @@ window.openNoteCard = openNoteCard;
         .join("");
 }
 titleName();
-// push notification
-Notification.requestPermission((status) => {
-    console.log("Notification permission status:", status);
-	// displayNotification();
-});
+
 
 export {
   lists,
@@ -762,3 +757,4 @@ export {
   pomodoreDuration,
   audio,
 };
+

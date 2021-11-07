@@ -10,7 +10,7 @@ import {
   pomodorebreakTime,
   countdownTimer,
   audio,
-} from './app.js';
+} from "./app.js";
 
 let paused = false;
 let timeInFocus;
@@ -44,7 +44,7 @@ function timerBreak() {
     "fa-play-circle",
     "fa-coffee",
     "fa-pause-circle",
-    "fa-pause"
+    "fa-pause",
   );
   clearInterval(countdownTime);
   const now = Date.now();
@@ -87,7 +87,7 @@ function resetTimer() {
   clockTimer.classList.remove(
     "clock_timerFinish",
     "clock_timerStart",
-    "clock_clockVisible"
+    "clock_clockVisible",
   );
   lists(actualList, todoList);
   buttonscountdown.classList.add(".countdownButtonsNone");
@@ -134,7 +134,7 @@ function breakTime() {
   pause.firstElementChild.classList.remove(
     "fa-play-circle",
     "fa-pause",
-    "fa-pause-circle"
+    "fa-pause-circle",
   );
   pause.firstElementChild.classList.add("fa-coffee");
   clockTimer.classList.remove("clock_timerStart");

@@ -126,7 +126,7 @@ export function notesrender() {
 <div class="tiles__date">${note.date} </div>
 </div>
 </div>
-`
+`,
     )
     .join("");
 }

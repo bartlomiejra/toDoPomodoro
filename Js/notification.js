@@ -1,12 +1,11 @@
-export { displayNotification };
 
 function displayNotification() {
   if (Notification.permission == "granted") {
     navigator.serviceWorker.getRegistration().then((reg) => {
       const options = {
-        body: 'Lets take a break',
+        body: "Lets take a break",
         vibrate: [99, 50, 100],
-        icon: '../icon-193x192.png',
+        icon: "../icon-193x192.png",
 
         data: {
           dateOfArrival: Date.now(),
@@ -14,14 +13,14 @@ function displayNotification() {
         },
         actions: [
           {
-            action: 'explore',
-            title: 'Explore this new world',
-            icon: '../icon-193x192.png',
+            action: "explore",
+            title: "Explore this new world",
+            icon: "../icon-193x192.png",
           },
           {
-            action: 'close',
-            title: 'Close notification',
-            icon: '../icon-193x192.png',
+            action: "close",
+            title: "Close notification",
+            icon: "../icon-193x192.png",
           },
         ],
       };
@@ -31,3 +30,9 @@ function displayNotification() {
 }
 
 displayNotification();
+
+Notification.requestPermission((status) => {
+  console.log("Notification permission status:", status);
+  // displayNotification();
+});
+            export { displayNotification };

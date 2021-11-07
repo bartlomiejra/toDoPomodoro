@@ -1,60 +1,54 @@
-export{
-	showToDoCard,
-	showProjectList,
-	activeProject,
-	centerDiv,
-  showDiv
-
-}
 import {
   actualList,
   todoList,
   lists,
-mobileWidth,
-pause,
-leftDiv,
-description,
-pomodoreDuration
-} from './app.js'
-const centerDiv = document.querySelector('.center');
-const menuLis = document.querySelectorAll('.nav_element');
+  mobileWidth,
+  pause,
+  leftDiv,
+  description,
+  pomodoreDuration,
+} from "./app.js";
 
+export { showToDoCard, showProjectList, activeProject, centerDiv, showDiv };
+
+const centerDiv = document.querySelector(".center");
+const menuLis = document.querySelectorAll(".nav_element");
 
 function showToDoCard() {
-  centerDiv.classList.remove('none');
-  centerDiv.classList.add('active');
+  centerDiv.classList.remove("none");
+  centerDiv.classList.add("active");
   if (mobileWidth.matches) {
-    leftDiv.classList.add('none');
-    leftDiv.classList.remove('active');
+    leftDiv.classList.add("none");
+    leftDiv.classList.remove("active");
   }
   // ifmobile();
 }
 function showProjectList() {
-  centerDiv.classList.add('none');
-  centerDiv.classList.remove('center');
-  leftDiv.classList.remove('leftnone');
-  description.classList.add('none');
-  centerDiv.classList.add('none');
+  centerDiv.classList.add("none");
+  centerDiv.classList.remove("center");
+  leftDiv.classList.remove("leftnone");
+  description.classList.add("none");
+  centerDiv.classList.add("none");
 }
 function activeProject(clicked_id) {
-  const sell = clicked_id.getAttribute('name');
-  const sorts = document.querySelectorAll('.sortTask');
+  const sell = clicked_id.getAttribute("name");
+  const sorts = document.querySelectorAll(".sortTask");
   for (const ele of sorts) {
-    ele.classList.remove('select');
+    ele.classList.remove("select");
     if (ele.classList.contains(sell)) {
-      ele.classList.add('select');
+      ele.classList.add("select");
     }
   }
 
   // nameofProject =
 }
-window.activeProject=activeProject;
+window.activeProject = activeProject;
 function showDiv(clickedId) {
-  description.classList.remove('none');
-  description.classList.add('right--active');
+  description.classList.remove("none");
+  description.classList.add("right--active");
   renderdetals();
   function renderdetals() {
-    const todoss = JSON.parse(localStorage.getItem('Items')) || [];
+    const todoss = JSON.parse(localStorage.getItem("Items")) || [];
     const filter = todoss.filter((p) => p.id == clickedId);
     const taskDetails = filter[0];
     description.innerHTML = `
@@ -75,7 +69,7 @@ function showDiv(clickedId) {
         ${
           taskDetails.focus / pomodoreDuration > 1
             ? ` x ${Math.floor(taskDetails.focus / pomodoreDuration)}`
-            : ''
+            : ""
         }
     </li>
                 <li>
@@ -117,38 +111,38 @@ function showDiv(clickedId) {
                 </select>
                 </ul>
                 <textarea  placeholder="Note to your task" class="note textareaDetals" id=${clickedId} name="note" >${
-      taskDetails.note !== '' ? taskDetails.note : ''
+      taskDetails.note !== "" ? taskDetails.note : ""
     }
     </textarea>
 </div>
 `;
-    const closeBtn = document.querySelector('.close-btn');
-    const date = document.getElementById('date');
-    const note = document.querySelector('.note');
-    const timePart = document.querySelector('.partOfTime');
-    const repeatDay = document.querySelector('.repeatDay');
-  let  project = document.querySelector('.projectSelect');
-    date.addEventListener('change', updateDetails);
-    closeBtn.addEventListener('click', closeDiv);
-    note.addEventListener('input', updateDetails);
-    repeatDay.addEventListener('input', updateDetails);
-    const projectSelect = document.getElementById('Project');
-    projectSelect.addEventListener('click', () => {
+    const closeBtn = document.querySelector(".close-btn");
+    const date = document.getElementById("date");
+    const note = document.querySelector(".note");
+    const timePart = document.querySelector(".partOfTime");
+    const repeatDay = document.querySelector(".repeatDay");
+    const project = document.querySelector(".projectSelect");
+    date.addEventListener("change", updateDetails);
+    closeBtn.addEventListener("click", closeDiv);
+    note.addEventListener("input", updateDetails);
+    repeatDay.addEventListener("input", updateDetails);
+    const projectSelect = document.getElementById("Project");
+    projectSelect.addEventListener("click", () => {
       // const options = projectSelect.querySelectorAll('option');
-      projectSelect.addEventListener('change', updateDetails);
+      projectSelect.addEventListener("change", updateDetails);
     });
-    const partTimeSelect = document.getElementById('partOfTime');
-    partTimeSelect.addEventListener('click', () => {
+    const partTimeSelect = document.getElementById("partOfTime");
+    partTimeSelect.addEventListener("click", () => {
       // const optionsTime = partTimeSelect.querySelectorAll('option');
-      partTimeSelect.addEventListener('change', updateDetails);
+      partTimeSelect.addEventListener("change", updateDetails);
     });
     function closeDiv() {
-      description.classList.add('none');
-      centerDiv.classList.add('active');
-      centerDiv.classList.remove('none');
+      description.classList.add("none");
+      centerDiv.classList.add("active");
+      centerDiv.classList.remove("none");
     }
     function updateDetails() {
-      const proj = JSON.parse(localStorage.getItem('Items'));
+      const proj = JSON.parse(localStorage.getItem("Items"));
       const filtrPr = proj.filter((p) => p.id == clickedId);
       const Idtoedit = filtrPr[0];
       Idtoedit.data = date.value;
@@ -156,18 +150,18 @@ function showDiv(clickedId) {
       Idtoedit.note = note.value;
       Idtoedit.repeatday = repeatDay.value;
       Idtoedit.repeatpartoftime = timePart.value;
-      localStorage.setItem('Items', JSON.stringify(proj));
+      localStorage.setItem("Items", JSON.stringify(proj));
     }
-    const divT = document.querySelector('.center_divT');
-    divT.addEventListener('click', renderdetals);
+    const divT = document.querySelector(".center_divT");
+    divT.addEventListener("click", renderdetals);
     getSelectOptions();
     lists(actualList, todoList);
   }
   function getSelectOptions() {
-    const projectList = JSON.parse(localStorage.getItem('Project')) || [];
-    const projectt = document.querySelector('.projectSelect');
+    const projectList = JSON.parse(localStorage.getItem("Project")) || [];
+    const projectt = document.querySelector(".projectSelect");
     for (let i = 0; i < projectList.length; i++) {
-      const option = document.createElement('option');
+      const option = document.createElement("option");
       const txt = document.createTextNode(projectList[i].name);
       option.appendChild(txt);
       projectt.insertBefore(option, projectt.lastChild);
@@ -176,12 +170,12 @@ function showDiv(clickedId) {
 }
 
 for (const nav of menuLis) {
-  nav.addEventListener('click', function () {
+  nav.addEventListener("click", function () {
     for (const nav of menuLis) {
-      nav.classList.remove('selected');
+      nav.classList.remove("selected");
     }
-    
-    this.classList.add('selected');
-    description.classList.add('none');
+
+    this.classList.add("selected");
+    description.classList.add("none");
   });
 }
