@@ -1,13 +1,11 @@
 const closeSettings = document.querySelectorAll("[data-close-button ]");
 const saveButton = document.getElementById("saveSettingUser");
 const theme = document.querySelector(".modal__themes");
-// const themes = document.querySelector('.modal__themes');
 const settingsDiv = document.querySelector(".settings");
 const settingButton = document.getElementById("settingButton");
 const overlay = document.getElementById("overlay");
 const container = document.querySelector(".container");
 const sounds = document.querySelector(".sounds");
-// const breakTime = document.querySelector('.breakTime');
 const SetTimes = document.querySelector(".SetTimes");
 const settingUser = JSON.parse(localStorage.getItem("settings")) || {
   Theme: "Dark",

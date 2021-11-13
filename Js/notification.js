@@ -1,4 +1,3 @@
-
 function displayNotification() {
   if (Notification.permission == "granted") {
     navigator.serviceWorker.getRegistration().then((reg) => {
@@ -35,4 +34,4 @@ Notification.requestPermission((status) => {
   console.log("Notification permission status:", status);
   // displayNotification();
 });
-            export { displayNotification };
+export { displayNotification };

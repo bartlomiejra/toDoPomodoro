@@ -1,7 +1,3 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-undef */
 export const openNote = document.getElementById("noteButton");
 export const closeNote = document.getElementById("closeNotebtn");
 export const closeoneNote = document.getElementById("closethisNote");
@@ -11,9 +7,23 @@ export const tilesNote = document.querySelector(".tiles__note");
 export const tiles = document.querySelector(".tiles");
 export const deleteNote = document.getElementById("deleteNote");
 // const noteButton = document.getElementById('noteButton');
-
 let notes = JSON.parse(localStorage.getItem("Notes"));
+export function notesrender() {
+  tiles.innerHTML = notes
 
+    .map(
+      (note, i) => `
+ <div class="tiles__tile" value=${note.title}  id="${i}" onClick='noteOpen(this.id)'>
+<h3>${note.title}</h3>
+<div class="tiles__smallNote">${note.note}
+</div>
+<div class="tiles__date">${note.date} </div>
+</div>
+</div>
+`
+    )
+    .join("");
+}
 if (notes == null) {
   notes = [
     {
@@ -113,23 +123,6 @@ window.saveEditNote = saveEditNote;
 window.closeSingleNote = closeSingleNote;
 window.removeNote = removeNote;
 window.closeonenoteCard = closeonenoteCard;
-
-export function notesrender() {
-  tiles.innerHTML = notes
-
-    .map(
-      (note, i) => `
- <div class="tiles__tile" value=${note.title}  id="${i}" onClick='noteOpen(this.id)'>
-<h3>${note.title}</h3>
-<div class="tiles__smallNote">${note.note}
-</div>
-<div class="tiles__date">${note.date} </div>
-</div>
-</div>
-`,
-    )
-    .join("");
-}
 notesrender();
 let click;
 export function noteOpen(clicked_id) {
@@ -137,14 +130,11 @@ export function noteOpen(clicked_id) {
   click = clicked_id;
   onenoteCard.classList.remove("none");
   onenoteCard.innerHTML = `
-	<textarea class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"/>${notes[clicked_id].title}</textarea>
-	<p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
-	<textarea name="message"  id="textarea" placeholder="Type something..." class="tiles__textarea notetext" >${notes[clicked_id].note} </textarea>
-	
-	<button class="tiles__savebtn" id="saveNote" onClick='saveEditNote()'>Save</button>
-	  <button class="tiles__deletebtn closeNotebtn" id="deleteNotes" onClick='removeNote()'>Delete Note</button>
-	  <button   onclick='closeSingleNote()' class="modal__closebutton x-note "><i class="fas fa-times"></i></button>
-	  `;
+
+<textarea class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"/>${notes[clicked_id].title}
+</textarea>
+<p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
+<textarea name="message"  id="textarea" placeholder="Type something..." class="tiles__textarea notetext" >${notes[clicked_id].note} </textarea><button class="tiles__savebtn" id="saveNote" onClick='saveEditNote()'>Save</button><button class="tiles__deletebtn closeNotebtn" id="deleteNotes" onClick='removeNote()'>Delete Note</button><button   onclick='closeSingleNote()' class="modal__closebutton x-note "><i class="fas fa-times"></i></button>`;
 }
 export function saveEditNote() {
   notes = JSON.parse(localStorage.getItem("Notes")) || [];

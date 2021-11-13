@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-
 import { pomodorebreakTime, countdownTime } from "./app.js";
 
 export let last = 0;
@@ -21,48 +19,45 @@ export const itemTodos = document.querySelector(".itemTodos");
 
 export let ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
 if (ListOfToDo == null) {
-	ListOfToDo = [
-		{
- id: 0,
- text: "First",
- done: false,
- data: "30.1.21",
-	},
-];
+  ListOfToDo = [
+    {
+      id: 0,
+      text: "First",
+      done: false,
+      data: "30.1.21",
+    },
+  ];
 }
 localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
 window.addNewTodo = addNewTodo;
 
 export function addNewTodo(event) {
-	if (todoTitle.value === "") {
+  if (todoTitle.value === "") {
+  } else {
+    ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
 
-	} else {
-ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
+    // find last id number
+    ListOfToDo.forEach((items) => {
+      if (items.id > last) {
+        last = items.id;
+      }
+    });
+    const ToDoNew = {
+      id: (last += 1),
+      text: todoTitle.value,
+      done: false,
+      data: "31.1.21",
+    };
+    //   todoInput.value = '';
+    ListOfToDo.push(ToDoNew);
+    // console.log(ListOfToDo);
+    localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
 
-// find last id number
-ListOfToDo.forEach((items) => {
-if (items.id > last) {
-	last = items.id;
-	}
-});
-const ToDoNew = {
-id: (last += 1),
-text: todoTitle.value,
-done: false,
-data: "31.1.21",
-};
-//   todoInput.value = '';
-ListOfToDo.push(ToDoNew);
-// console.log(ListOfToDo);
-localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
+    todoTitle.value = "";
 
-todoTitle.value = "";
-//     lists(todos, todoList);
-//     lists(actualList, todoList);
-// return false;
-renderTodos();
-	const dragItems = document.querySelectorAll(".dragitem");
-}
+    renderTodos();
+    const dragItems = document.querySelectorAll(".dragitem");
+  }
 }
 
 renderTodos();
@@ -70,14 +65,14 @@ renderTodos();
 window.deleteTodo = deleteTodo;
 window.checkFunction = checkFunction;
 export function renderTodos() {
-	ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
-itemTodos.innerHTML = ListOfToDo.map(
-		(todo) => `
+  ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
+  itemTodos.innerHTML = ListOfToDo.map(
+    (todo) => `
 		
 
 		${
-  todo.done
-    ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)
+      todo.done
+        ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)
 ' id=${todo.id} data-index=${todo.id}  >
 			
 	${todo.text}
@@ -94,7 +89,7 @@ itemTodos.innerHTML = ListOfToDo.map(
   
 
  </div>`
-    : `<div class="todo_item dragitem" onClick='checkFunction(this.id) 	  
+        : `<div class="todo_item dragitem" onClick='checkFunction(this.id) 	  
 ' id=${todo.id} data-index=${todo.id}  >
 			
 	${todo.text}
@@ -111,43 +106,41 @@ itemTodos.innerHTML = ListOfToDo.map(
   
 
  </div>`
-} 
+    } 
 		
 
-			`,
+			`
+  ).join("");
+}
 
-		)
-		.join("");
-	}
-
-	export function deleteTodo(ClickedId) {
-const { ...index } = ClickedId.dataset;
-const newListOfToDo = ListOfToDo.filter((todo) => todo.id != ClickedId.id);
-	localStorage.setItem("ListTodo", JSON.stringify(newListOfToDo));
-	renderTodos();
-event.stopPropagation();
+export function deleteTodo(ClickedId) {
+  const { ...index } = ClickedId.dataset;
+  const newListOfToDo = ListOfToDo.filter((todo) => todo.id != ClickedId.id);
+  localStorage.setItem("ListTodo", JSON.stringify(newListOfToDo));
+  renderTodos();
+  event.stopPropagation();
 }
 
 export function checkFunction(clicked_id) {
-	ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
+  ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
 
-	// const { ...index } = clicked_id.dataset;
-	// let newListOfToDo = ListOfToDo.filter(todo => todo.id != clicked_id);
-const	objIndex = ListOfToDo.findIndex(((obj) => obj.id == clicked_id));
-console.log(objIndex);
-// myArray[objIndex].name = "Laila"
+  // const { ...index } = clicked_id.dataset;
+  // let newListOfToDo = ListOfToDo.filter(todo => todo.id != clicked_id);
+  const objIndex = ListOfToDo.findIndex((obj) => obj.id == clicked_id);
+  console.log(objIndex);
+  // myArray[objIndex].name = "Laila"
 
-if (ListOfToDo[objIndex].done == true) {
-	ListOfToDo[objIndex].done = false;
-} else {
-	ListOfToDo[objIndex].done = true;
-}
-localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
-console.log(ListOfToDo);
+  if (ListOfToDo[objIndex].done == true) {
+    ListOfToDo[objIndex].done = false;
+  } else {
+    ListOfToDo[objIndex].done = true;
+  }
+  localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
+  console.log(ListOfToDo);
 
-// this.stopPropagation();
-// clicked_id.stopPropagation();
-event.stopPropagation();
+  // this.stopPropagation();
+  // clicked_id.stopPropagation();
+  event.stopPropagation();
 
-renderTodos();
+  renderTodos();
 }

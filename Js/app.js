@@ -6,7 +6,7 @@ import {
 	activeProject,
   centerDiv,
   showDiv,
-} from "./showElements.js";
+} from "./showElements";
 import {
 	timer,
 	timerBreak,
@@ -669,6 +669,7 @@ clicked = 0
 	titleName();
   showToDoCard();
 }
+
 document.querySelectorAll(".left_day").forEach((e) => {
   e.addEventListener("click", sortingProjectDays);
 });
@@ -738,7 +739,6 @@ window.openNoteCard = openNoteCard;
 }
 titleName();
 
-
 export {
   lists,
   actualList,
@@ -757,4 +757,3 @@ export {
   pomodoreDuration,
   audio,
 };
-
