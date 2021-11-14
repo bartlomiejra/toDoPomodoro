@@ -70,7 +70,7 @@
 }
 
 .tiles__date {
-  opacity: 0.5;
+  opacity: 50%;
   font-size: 0.7rem;
   position: absolute;
   right: 10px;
@@ -124,7 +124,7 @@
 
 .tiles__savebtn, .tiles__deletebtn {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   left: 10px;
   border-radius: 5px;
   background-color: var(--timerFinishColor);
@@ -178,8 +178,6 @@
   height: 60%;
   color: var(--fonts);
   border-radius: 8px;
-  -webkit-filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
   background: transparent;
 }
 
@@ -210,13 +208,13 @@
 
 .fa-redo {
   color: var(--font-color);
-  opacity: 0.8;
+  opacity: 80%;
   font-size: 1rem;
 }
 
 .overlay_Note {
   pointer-events: none;
-  opacity: 1;
+  opacity: 100%;
 }
 
 .overlay_Note .tiles__note {

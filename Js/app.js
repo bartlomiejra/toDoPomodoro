@@ -6,7 +6,8 @@ import {
 	activeProject,
   centerDiv,
   showDiv,
-} from "./showElements";
+} from "./showElements.js";
+
 import {
 	timer,
 	timerBreak,
@@ -397,17 +398,13 @@ function btnActtion(e) {
 
   const item = e.target;
   if (item.classList[0] === "center_delete-btn") {
-	console.log(item);
     audio = new Audio("Alerts/deleteTask.mp3");
     audio.play();
     const { ...index } = e.target.dataset;
-    console.log(index);
     const todo = item.parentElement;
-    console.log(todo);
-	console.log(todo);
     todo.classList.add("fall");
-    todos.splice(index, 1);
-
+    const thisitem = todos.findIndex(char => char.id == index.index);
+    todos.splice(thisitem, 1);
     localStorage.setItem("Items", JSON.stringify(todos));
     todo.addEventListener("transitionend", () => {
       todo.remove();

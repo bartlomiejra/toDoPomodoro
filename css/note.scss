@@ -124,7 +124,8 @@
 	&__savebtn,
 	&__deletebtn {
 		position: absolute;
-		top: 10px;
+
+		bottom: 10px;
 		left: 10px;
 		border-radius: 5px;
 		background-color: var(--timerFinishColor);
@@ -175,7 +176,8 @@
 		height: 60%;
 		color: var(--fonts);
 		border-radius: 8px;
-		filter: drop-shadow(0 0.2rem 0.25rem rgb(0 0 0 / 20%));
+
+		// filter: drop-shadow(0 0.2rem 0.25rem rgb(0 0 0 / 20%));
 		background: transparent;
 
 		.date {
