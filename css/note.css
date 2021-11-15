@@ -123,11 +123,11 @@
 }
 
 .tiles__savebtn, .tiles__deletebtn {
-  left: 15%;
+  left: 30%;
 }
 
 .tiles__savebtn {
-  left: 30px;
+  left: 50px;
 }
 
 .tiles__savebtn:hover, .tiles__deletebtn:hover,

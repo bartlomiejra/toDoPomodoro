@@ -805,14 +805,9 @@ body {
 
 .select {
 	background-color: var(--statColor);
-
-	// margin: 5px 0;
 	margin: 5px 5px 0;
-
 	padding: 5px;
 	border-radius: 5px;
-
-	// transform: scale(1.05);
 	background-position: 0 100%;
 	color: var(--hovercolor);
 }
@@ -877,10 +872,10 @@ input [type="date"],
 }
 
 select option {
-	background: rgba(0 0 0 / 90%);
+	// background: rgba(0 0 0 / 90%);
 	color: var(--fonts);
 
-	text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+	// text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
 }
 
 ol {
@@ -1269,7 +1264,7 @@ ol {
 }
 
 .dss:hover {
-	stroke-dasharray: 2;
+	// stroke-dasharray: 2;
 	color: var(--hover_color);
 }
 
@@ -1313,3 +1308,12 @@ textarea:focus {
 // 					padding: 10px;
 // 	min-width:51px !important;
 // }
+.fas{
+	transition: 0.3s;
+
+}
+
+.fas:hover{
+	filter: brightness(200%);
+
+}

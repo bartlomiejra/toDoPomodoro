@@ -1,4 +1,4 @@
-@import 'virables';
+@import "virables";
 
 .todo {
 	// background-color: #122220;
@@ -66,7 +66,7 @@
 		border: 0;
 		height: 30px;
 		text-align: center;
-		background-color: var(--task);
+		background-color: transparent;
 	}
 
 	&_input {
@@ -75,8 +75,9 @@
 
 	&_delete {
 		color: var(--font-color);
-		background: linear-gradient(rgb(43, 48, 102), #1d0758);
+		background: linear-gradient(rgb(43 48 102), #1d0758);
 		padding: 10px;
+
 		// border: none;
 		border-radius: 10px;
 		text-decoration: none;
@@ -99,8 +100,10 @@
 		display: flex;
 		user-select: none;
 		font-size: 1rem;
+
 		// height: 100%;
 		max-height: 50px;
+
 		// padding: 10px 15px;
 		color: var(--fonts);
 		text-align: center;
@@ -173,7 +176,6 @@
 	}
 
 	&_splitBtn {
-
 		// touch-action: manipulation;
 		// user-select: none;
 		// -webkit-tap-highlight-color: transparent;
@@ -210,6 +212,7 @@
 	--shadow-strength: 1%;
 	z-index: 500;
 	border-radius: 10px;
+
 	// opacity: 0;
 	// display: none;
 	// pointer-events: none;
@@ -221,6 +224,7 @@
 	padding-inline: 0;
 	padding-block: 0.5ch;
 	overflow: hidden;
+
 	// display: flex;
 	flex-direction: column;
 	font-size: 0.9em;
@@ -233,6 +237,7 @@
 	position: fixed;
 	width: 1%;
 	max-height: 20px;
+
 	// min-height: 6.5em;
 	margin: 1rem 0 0 1rem;
 	background-color: #29e;
@@ -249,6 +254,6 @@
 }
 
 .completed {
-	opacity: 0.4;
+	opacity: 40%;
 	text-decoration: line-through;
 }

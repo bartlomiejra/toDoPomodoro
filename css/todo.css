@@ -94,7 +94,7 @@
   border: 0;
   height: 30px;
   text-align: center;
-  background-color: var(--task);
+  background-color: transparent;
 }
 
 .todo_input {
