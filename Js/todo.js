@@ -22,9 +22,27 @@ if (ListOfToDo == null) {
   ListOfToDo = [
     {
       id: 0,
-      text: "First",
+      text: "First 🥇",
       done: false,
       data: "30.1.21",
+    },
+    {
+      id: 1,
+      text: "water the plants 🪴",
+      done: false,
+      data: "30.7.21",
+    },
+    {
+      id: 2,
+      text: "stay focused ✨",
+      done: true,
+      data: "30.2.21",
+    },
+    {
+      id: 3,
+      text: "don't forget to stretch 🧘",
+      done: false,
+      data: "30.2.21",
     },
   ];
 }
