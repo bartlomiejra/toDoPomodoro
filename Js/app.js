@@ -737,6 +737,7 @@ window.openNoteCard = openNoteCard;
 titleName();
 
 export {
+  dateToday,
   lists,
   actualList,
   paused,

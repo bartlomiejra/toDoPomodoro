@@ -6,6 +6,8 @@ export const noteCard = document.querySelector(".noteCard");
 export const tilesNote = document.querySelector(".tiles__note");
 export const tiles = document.querySelector(".tiles");
 export const deleteNote = document.getElementById("deleteNote");
+
+import {dateToday} from "./app.js"
 // const noteButton = document.getElementById('noteButton');
 let notes = JSON.parse(localStorage.getItem("Notes"));
 export function notesrender() {
@@ -118,6 +120,8 @@ export function deleteyourNote() {
   window.localStorage.setItem("Notes", JSON.stringify(notes));
   notesrender();
 }
+window.saveNote = saveNote;
+window.deleteyourNote = deleteyourNote;
 window.noteOpen = noteOpen;
 window.saveEditNote = saveEditNote;
 window.closeSingleNote = closeSingleNote;

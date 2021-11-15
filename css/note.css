@@ -123,7 +123,6 @@
 }
 
 .tiles__savebtn, .tiles__deletebtn {
-  bottom: 10px;
   left: 15%;
 }
 
@@ -157,6 +156,7 @@
   font-size: 1.2rem;
   border: 0;
   border-radius: 0 8px 8px 0;
+  overflow: hidden;
 }
 
 .tiles .date {

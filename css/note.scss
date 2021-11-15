@@ -123,19 +123,7 @@
 
 	&__savebtn,
 	&__deletebtn {
-		// position: absolute;
-
-		bottom: 10px;
-
-		// // left: 10px;
-		// border-radius: 5px;
-		// background-color: var(--timerFinishColor);
-		// color: var(--light-color);
-		// font-weight: 400;
-		// font-size: 15px;
-		// padding: 10px;
-
-		// transform: translate(-50%, -50%);
+		// bottom: 10px;
 
 		left: 15%;
 	}
@@ -167,6 +155,7 @@
 		font-size: 1.2rem;
 		border: 0;
 		border-radius: 0 8px 8px 0;
+		overflow: hidden;
 	}
 
 	.date {
