@@ -27,7 +27,7 @@ input::-webkit-color-swatch {
 :root {
   --center-color: #171721;
   --right_background: #14141c;
-  --timerFinishColor: rgba(49, 63, 124, 0.725);
+  --timerFinishColor: #336;
   --statColor: #22222c;
   --backgrounddarker: #14141c;
   --header_background: #161624;
@@ -40,12 +40,12 @@ input::-webkit-color-swatch {
   --light-color: #a9ded8;
   --font-color: #fff;
   --addProjectbtn: #b17676;
-  --shadow: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
-  --hover_color: #fafafa;
+  --shadow: drop-shadow(0 0.2rem 0.25rem rgb 0 0 0/20%);
+  --hover_color: #fff;
   --dark-font: #fff;
   --fonts: #fff;
   --task: #23222d;
-  --inputbackground: linear-gradient(147.14deg, rgba(0, 0, 0, 0.7) 18.33%, rgba(0, 0, 0, 0.2) 77.77%);
+  --inputbackground: linear-gradient(147.14deg, black 18.33%, black 77.77%);
   --btncolor: #808080;
 }
 
@@ -62,7 +62,7 @@ input::-webkit-color-swatch {
   --header_background: #797878;
   --statColor: #fff;
   --left_background: #ccc;
-  --nav_color: #ccc;
+  --nav_color: #968585;
   --task_color: #9b9797;
   --timer: #fff;
   --addProject: #000;
@@ -76,7 +76,7 @@ input::-webkit-color-swatch {
   --fonts: #080808;
   --task: #fff;
   --inputbackground: #ccc;
-  --btncolor: #fff;
+  --btncolor: #383838;
 }
 
 @-webkit-keyframes scale {
@@ -1065,7 +1065,9 @@ input [type="date"],
 }
 
 select option {
+  background: black;
   color: var(--fonts);
+  text-shadow: 0 1px 0 black;
 }
 
 ol {
@@ -1282,20 +1284,20 @@ ol {
     border-radius: 10px;
   }
   .container .left .history {
-    background-color: #36096d;
-    background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+    background-color: #4062bb;
+    background-image: linear-gradient(316deg, #4062bb 0%, #5200ae 74%);
   }
   .container .left .tomorrow {
-    background-color: #2a2a72;
-    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+    background-color: #000;
+    background-image: linear-gradient(147deg, #000 0%, #04619f 74%);
   }
   .container .left .someday {
-    background-color: #045de9;
-    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    background-color: #29539b;
+    background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
   }
   .container .left .today {
-    background-color: #4d5dfb;
-    background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
+    background-color: #29539b;
+    background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
   }
   .container .left_title {
     margin: 1px;

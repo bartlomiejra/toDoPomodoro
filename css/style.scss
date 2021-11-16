@@ -872,10 +872,10 @@ input [type="date"],
 }
 
 select option {
-	// background: rgba(0 0 0 / 90%);
+	background: rgb(0, 0, 0 / 90%);
 	color: var(--fonts);
 
-	// text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+	text-shadow: 0 1px 0 rgb(0, 0, 0 / 40%);
 }
 
 ol {
@@ -1317,4 +1317,41 @@ textarea:focus {
 .fas:hover{
 	filter: brightness(200%);
 
+}
+
+input[type="date"] {::-webkit-datetime-edit { padding: 1em; }
+input[type="date"] {-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
+input[type="date"] {-webkit-datetime-edit-month-field { color: blue; }
+input[type="date"] {::-webkit-datetime-edit-day-field { color: green; }}
+
+// 	input[type="date"] {-webkit-datetime-edit-year-field { color: purple; }
+
+input[type="date"]::-webkit-inner-spin-button { display: none ;}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper { 
+	background: silver; 
+color: green;}
+input[type="date"] {
+	align-items: center;
+	display: inline-flex;
+	font-family: monospace;
+	overflow: hidden;
+	padding: 0;
+	padding-start: 1px;
+}
+
+input::-webkit-datetime-edit {
+	flex: 1;
+	color: red;
+	-webkit-user-modify: read-only !important;
+	display: inline-block;
+	min-width: 0;
+	overflow: hidden;
+}
+
+input::-webkit-datetime-edit-fields-wrapper {
+	-webkit-user-modify: read-only !important;
+	display: inline-block;
+	padding: 1px 0;
+	white-space: pre;
 }

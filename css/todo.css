@@ -278,7 +278,7 @@
 }
 
 .completed {
-  opacity: 0.4;
+  opacity: 40%;
   text-decoration: line-through;
 }
 /*# sourceMappingURL=todo.css.map */
