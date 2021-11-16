@@ -15,6 +15,9 @@
     ],
     "rules": {
         "block-closing-brace-empty-line-before": null,
+        "color-named": "never",
+        "color-function-notation": "legacy",
+
         "block-closing-brace-newline-after": null,
         "block-closing-brace-newline-before": null,
         "block-closing-brace-space-before": null,
@@ -27,6 +30,8 @@
         "declaration-block-trailing-semicolon": null,
 		"selector-class-pattern": null,
 
+
+
         "selector-no-qualifying-type": [
             true,
             {
@@ -35,6 +40,9 @@
                 ]
             }
         ],
+     
+
+
         "plugin/no-low-performance-animation-properties": [
             true,
             {
@@ -63,7 +71,6 @@
         "declaration-empty-line-before": null,
         "scale-unlimited/declaration-strict-value": [
             [
-                "/color$/",
                 "z-index",
                 "font-size"
             ]
