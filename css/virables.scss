@@ -17,7 +17,7 @@ $darkfont: #1c2426;
 $fontcolor: #fff;
 $addProject: #b17676;
 $addProjectbtn: #b17676;
-$shadow: drop-shadow(0 0.2rem 0.25rem rgb (0 0 0 / 20%));
+$shadow: drop-shadow(0 0.2rem 0.25rem rgb (0, 0, 0 / 20%));
 $hovercolor: #fff;
 $darkfont: #fff;
 $fonts: #fff;
@@ -29,14 +29,7 @@ $gradient5: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
 $gradient6: linear-gradient(316deg, #ffc857 0%, #3e2f5b 74%);
 $gradient7: linear-gradient(315deg, #c73e1d 0%, #a23b72 37%, #2e86ab 100%);
 $gradient8: linear-gradient(315deg, #c73e1d 0%, #a23b72 37%, #2e86ab 100%);
-
-// $inputbackground: linear-gradient(147.14deg, rgb(0 0 0 / 70%) 18.33%, rgb(0 0 0 / 20%) 77.77%);
-
-$inputbackground: linear-gradient(147.14deg, rgb(10, 10, 10 / 70%) 18.33%, rgb(0, 0, 0 / 20%) 77.77%);
-
-// $inputbackground: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
-
-// $inputbackground: linear-gradient(147.14deg, rgb(0 0 0 / 70%) 18.33%, rgb(0 0 0 / 20%) 77.77%);
+$inputbackground: linear-gradient(147.14deg, rgb(0, 0, 0 / 70%) 18.33%, rgb(0, 0, 0 / 20%) 77.77%);
 $btncolor: #808080;
 
 //! Light theme colors
@@ -49,7 +42,7 @@ $statColorLight: #fff;
 $leftbackgroundLight: #ccc;
 $navcolorLight: rgb(150, 133, 133);
 $taskcolorLight: rgb(155, 151, 151);
-$timerLight: #fff;
+$timerLight: #992020;
 $addProjectLight: #000;
 $numbercolorLight: #000;
 $lightcolorLight: #fff;
@@ -57,7 +50,7 @@ $darkfontLight: rgb(0, 0, 0);
 $fontcolorLight: rgb(0, 0, 0);
 $addProjectbtnLight: #e0e0e0;
 $shadowLight: #fff;
-$hovercolorLight: #fff;
+$hovercolorLight: rgb(158, 32, 32);
 $darkfontLight: #fff;
 $fontsLight: rgb(8, 8, 8);
 $taskLight: #fff;

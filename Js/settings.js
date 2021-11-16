@@ -14,6 +14,7 @@ const settingUser = JSON.parse(localStorage.getItem("settings")) || {
   breakTime: "5",
 };
 
+
 theme.innerHTML = `
 <div class="switch-button">
 ${
@@ -118,3 +119,12 @@ export function appSounds(clickedid) {
 }
 
 window.appSounds = appSounds;
+
+
+ if ( settingUser.Theme == "Light") {
+    themeselected = "Light";
+    container.classList.add("lightTheme");
+  } else {
+    themeselected = "Dark";
+    container.classList.remove("lightTheme");
+  }

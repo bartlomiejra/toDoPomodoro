@@ -476,7 +476,8 @@ body {
 		&_todolist {
 			// min-width: 500px;
 			// max-height: 64vh;
-			height: 100%;
+			// height: 100%;
+			min-height: 100%;
 
 			overflow: hidden;
 			overflow-y: auto;
@@ -1316,42 +1317,8 @@ textarea:focus {
 
 .fas:hover{
 	filter: brightness(200%);
-
 }
 
-input[type="date"] {::-webkit-datetime-edit { padding: 1em; }
-input[type="date"] {-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
-input[type="date"] {-webkit-datetime-edit-month-field { color: blue; }
-input[type="date"] {::-webkit-datetime-edit-day-field { color: green; }}
-
-// 	input[type="date"] {-webkit-datetime-edit-year-field { color: purple; }
-
-input[type="date"]::-webkit-inner-spin-button { display: none ;}
-
-input[type="date"]::-webkit-datetime-edit-fields-wrapper { 
-	background: silver; 
-color: green;}
-input[type="date"] {
-	align-items: center;
-	display: inline-flex;
-	font-family: monospace;
-	overflow: hidden;
-	padding: 0;
-	padding-start: 1px;
-}
-
-input::-webkit-datetime-edit {
-	flex: 1;
-	color: red;
-	-webkit-user-modify: read-only !important;
-	display: inline-block;
-	min-width: 0;
-	overflow: hidden;
-}
-
-input::-webkit-datetime-edit-fields-wrapper {
-	-webkit-user-modify: read-only !important;
-	display: inline-block;
-	padding: 1px 0;
-	white-space: pre;
+input::-webkit-calendar-picker-indicator {
+	filter: invert(1);
 }

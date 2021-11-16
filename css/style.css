@@ -40,7 +40,7 @@ input::-webkit-color-swatch {
   --light-color: #a9ded8;
   --font-color: #fff;
   --addProjectbtn: #b17676;
-  --shadow: drop-shadow(0 0.2rem 0.25rem rgb 0 0 0/20%);
+  --shadow: drop-shadow(0 0.2rem 0.25rem rgb 0, 0, 0/20%);
   --hover_color: #fff;
   --dark-font: #fff;
   --fonts: #fff;
@@ -64,14 +64,14 @@ input::-webkit-color-swatch {
   --left_background: #ccc;
   --nav_color: #968585;
   --task_color: #9b9797;
-  --timer: #fff;
+  --timer: #992020;
   --addProject: #000;
   --number-color: #000;
   --light-color: #fff;
   --font-color: black;
   --addProjectbtn: #e0e0e0;
   --shadow: #fff;
-  --hover_color: #fff;
+  --hover_color: #9e2020;
   --dark-font: #fff;
   --fonts: #080808;
   --task: #fff;
@@ -554,7 +554,7 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
-  height: 100%;
+  min-height: 100%;
   overflow: hidden;
   overflow-y: auto;
   scroll-behavior: hidden;
@@ -1483,5 +1483,10 @@ textarea:focus {
 .fas:hover {
   -webkit-filter: brightness(200%);
           filter: brightness(200%);
+}
+
+input::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(1);
+          filter: invert(1);
 }
 /*# sourceMappingURL=style.css.map */
