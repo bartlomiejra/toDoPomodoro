@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         
         <link rel="manifest" href="manifest.webmanifest" />
-        <!-- <script src="lib/hammer.min.js"></script>
+        <script src="lib/hammer.min.js"></script>
         <script src="lib/interact.min.js"></script>
          <script src="lib/moment.min.js"></script>
-   <script src="https://hammerjs.github.io/dist/hammer.js"></script> -->
+   <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="viewport" />
     <title>TodoPomodoro</title>
@@ -468,7 +468,6 @@
         <div id="overlay"></div>
       </nav>
     </div>
- <script src="./Js/app.js"   ></script>
     <!-- <script src="./Js/index.js"   ></script> -->
     <!-- <script src="./Js/settings.js"></script> -->
     <!-- <script src="./Js/note.js"></script> -->
@@ -476,9 +475,9 @@
     <!-- <script src="lib/hammer.min.js"></script> -->
     <script src="lib/moment.min.js"></script>
     <script
-      src="https://kit.fontawesome.com/a712e78954.js"
-      crossorigin="anonymous"
-  ></script>
+    src="https://kit.fontawesome.com/a712e78954.js"
+    crossorigin="anonymous"
+    ></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const loadEl = document.querySelector('#load');
@@ -496,7 +495,7 @@
         // firebase.performance(); // call to activate
         //
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
+        
         try {
           let app = firebase.app();
           let features = [
@@ -516,6 +515,7 @@
           loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
         }
       });
-    </script>
+      </script>
+  <script src="./Js/app.js" type="module"  ></script>
   </body>
-</html>
+  </html>

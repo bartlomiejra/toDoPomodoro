@@ -228,8 +228,6 @@ body {
 	color: var(--font-color);
 
 	.container {
-		min-height: 100%;
-
 		background: var(--left_background);
 
 		padding: 0;
@@ -455,6 +453,8 @@ body {
 		}
 
 		&_todoInput {
+			margin-left: auto;
+			margin-right: auto;
 			outline: none;
 			padding: 5px;
 			color: var(--font-color);
@@ -474,6 +474,9 @@ body {
 		}
 
 		&_todolist {
+			margin-left: auto;
+			margin-right: auto;
+
 			// min-width: 500px;
 			// max-height: 64vh;
 			// height: 100%;
@@ -992,6 +995,7 @@ ol {
 	}
 
 	.container {
+		// min-height: 100%;
 		overflow-y: auto;
 		border-radius: none;
 		margin: 0;
