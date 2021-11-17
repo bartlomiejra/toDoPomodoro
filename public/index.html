@@ -164,6 +164,11 @@
             <div class="center__number" id="completedTasks"></div>
             <div class="center__text">Completed tasks</div>
           </div>
+ <section id="whenSignedOut">
+
+    <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
+
+  </section>
         </div>
         <form action="" class="center_addTaskdiv">
           <button
@@ -474,6 +479,8 @@
     <!-- <script src="./Js/todo.js"></script> -->
     <!-- <script src="lib/hammer.min.js"></script> -->
     <script src="lib/moment.min.js"></script>
+    <script src="/__/firebase/8.10.0/firebase-auth.js"></script>
+    <script src="/__/firebase/8.10.0/firebase-firestore.js"></script>
     <script
     src="https://kit.fontawesome.com/a712e78954.js"
     crossorigin="anonymous"
@@ -484,15 +491,15 @@
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
         //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
+        firebase.auth().onAuthStateChanged(user => { });
+        firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        firebase.firestore().doc('/foo/bar').get().then(() => { });
+        firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        firebase.messaging().requestPermission().then(() => { });
+        firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        firebase.analytics(); // call to activate
+        firebase.analytics().logEvent('tutorial_completed');
+        firebase.performance(); // call to activate
         //
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         
