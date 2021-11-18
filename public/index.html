@@ -53,6 +53,9 @@
     <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script>
+     <script src="lib/moment.min.js"></script>
+    <script src="/__/firebase/8.10.0/firebase-auth.js"></script>
+    <script src="/__/firebase/8.10.0/firebase-firestore.js"></script>
     <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
@@ -164,11 +167,7 @@
             <div class="center__number" id="completedTasks"></div>
             <div class="center__text">Completed tasks</div>
           </div>
- <section id="whenSignedOut">
-
-    <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
-
-  </section>
+ 
         </div>
         <form action="" class="center_addTaskdiv">
           <button
@@ -286,6 +285,19 @@
 <div class="modal settings" id="modal">
         <div class="modal__header">
           <div class="modal__title">Settings</div>
+          <section id="whenSignedOut">
+
+    <button id="signInBtn" class="btn btn-primary">Siign in with Google</button>
+
+  </section>
+
+  <section id="whenSignedIn" hidden="true">
+
+    <div id="userDetails"></div>
+
+    <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
+
+  </section>
         </div>
         <div class="modal__body">
           <div class="modal__options">
@@ -469,6 +481,7 @@
             ></path>
           </svg>
           <span> Settings</span>
+
         </div>
         <div id="overlay"></div>
       </nav>
@@ -478,9 +491,7 @@
     <!-- <script src="./Js/note.js"></script> -->
     <!-- <script src="./Js/todo.js"></script> -->
     <!-- <script src="lib/hammer.min.js"></script> -->
-    <script src="lib/moment.min.js"></script>
-    <script src="/__/firebase/8.10.0/firebase-auth.js"></script>
-    <script src="/__/firebase/8.10.0/firebase-firestore.js"></script>
+   
     <script
     src="https://kit.fontawesome.com/a712e78954.js"
     crossorigin="anonymous"

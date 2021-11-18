@@ -755,3 +755,7 @@ export {
   pomodoreDuration,
   audio,
 };
+
+
+const auth = firebase.auth();
+const whenSuingedIn = document.getElementById('whenSingedIn')
