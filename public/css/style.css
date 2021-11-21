@@ -38,7 +38,7 @@ input::-webkit-color-swatch {
   --addProject: #b17676;
   --number-color: #f1998f;
   --light-color: #a9ded8;
-  --font-color: #fff;
+  --font-color: yellow;
   --addProjectbtn: #b17676;
   --shadow: drop-shadow(0 0.2rem 0.25rem rgb 0, 0, 0/20%);
   --hover_color: #fff;
@@ -257,7 +257,6 @@ body {
 
 html .container,
 body .container {
-  min-height: 100%;
   background: var(--left_background);
   padding: 0;
   height: 100%;
@@ -529,6 +528,8 @@ body .center_addtaskButton {
 
 html .center_todoInput,
 body .center_todoInput {
+  margin-left: auto;
+  margin-right: auto;
   outline: none;
   padding: 5px;
   color: var(--font-color);
@@ -554,6 +555,8 @@ body .center_todolist > div {
 
 html .center_todolist,
 body .center_todolist {
+  margin-left: auto;
+  margin-right: auto;
   min-height: 100%;
   overflow: hidden;
   overflow-y: auto;
