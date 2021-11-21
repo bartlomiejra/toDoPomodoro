@@ -1,7 +1,7 @@
 import {
   actualList,
   todoList,
-  lists,
+  renderPomodoroTasks,
   mobileWidth,
   pause,
   leftDiv,
@@ -155,7 +155,7 @@ function showDiv(clickedId) {
     const divT = document.querySelector(".center_divT");
     divT.addEventListener("click", renderdetals);
     getSelectOptions();
-    lists(actualList, todoList);
+    renderPomodoroTasks(actualList, todoList);
   }
   function getSelectOptions() {
     const projectList = JSON.parse(localStorage.getItem("Project")) || [];

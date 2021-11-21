@@ -1,307 +1,255 @@
 <!DOCTYPE html>
 <html>
-  <head>
-        <meta charset="UTF-8" />
-        
-        <link rel="manifest" href="manifest.webmanifest" />
-        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+<head>
+  <meta charset="UTF-8" />
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
-   <script>
+  <script>
 
   </script>
   <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAJBF5cvsjdeNCS4bWrpktH0CLxgSgEojs",
-    authDomain: "todopomodoro-7384d.firebaseapp.com",
-    databaseURL: "https://todopomodoro-7384d-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "todopomodoro-7384d",
-    storageBucket: "todopomodoro-7384d.appspot.com",
-    messagingSenderId: "1011189311114",
-    appId: "1:1011189311114:web:b6ef686cb2de0b09462f73",
-    measurementId: "G-9RBP818GLZ"
-  };
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAJBF5cvsjdeNCS4bWrpktH0CLxgSgEojs",
+      authDomain: "todopomodoro-7384d.firebaseapp.com",
+      databaseURL: "https://todopomodoro-7384d-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "todopomodoro-7384d",
+      storageBucket: "todopomodoro-7384d.appspot.com",
+      messagingSenderId: "1011189311114",
+      appId: "1:1011189311114:web:b6ef686cb2de0b09462f73",
+      measurementId: "G-9RBP818GLZ"
+    };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-        <script src="lib/hammer.min.js"></script>
-        <script src="lib/interact.min.js"></script>
-         <script src="lib/moment.min.js"></script>
-   <script src="https://hammerjs.github.io/dist/hammer.js"></script>
-    <link rel="manifest" href="manifest.webmanifest">
-    <meta name="viewport" />
-    <title>TodoPomodoro</title>
-    <link rel="shortcut icon" href="#" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <!-- 
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+  <script src="lib/hammer.min.js"></script>
+  <script src="lib/interact.min.js"></script>
+  <script src="lib/moment.min.js"></script>
+  <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="viewport" />
+  <title>TodoPomodoro</title>
+  <link rel="shortcut icon" href="#" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <!-- 
 	<meta name="viewport" content="width=device-width, user-scalable=false;"> -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
-    />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
-    <meta name="theme-color" content="#171721" />
-    <meta name="description" content="Pomodoro, Notes and Tasks in one app." />
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="css/settings.css" />
-    <link rel="stylesheet" type="text/css" href="css/note.css" />
-    <link rel="stylesheet" type="text/css" href="css/todo.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+  <meta name="theme-color" content="#171721" />
+  <meta name="description" content="Pomodoro, Notes and Tasks in one app." />
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="css/settings.css" />
+  <link rel="stylesheet" type="text/css" href="css/note.css" />
+  <link rel="stylesheet" type="text/css" href="css/todo.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap"
+    rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.4.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.4.1/firebase-database-compat.js"></script>
-    <!-- <script defer src="/__/firebase/9.4.1/firebase-firestore-compat.js"></script> -->
-    <script defer src="/__/firebase/9.4.1/firebase-functions-compat.js"></script>
-    <!-- <script defer src="/__/firebase/9.4.1/firebase-messaging-compat.js"></script> -->
-    <script defer src="/__/firebase/9.4.1/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
-    <!-- <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script> -->
-     <script src="lib/moment.min.js"></script>
-    <script src="/__/firebase/8.10.0/firebase-auth.js"></script>
-    <script src="/__/firebase/8.10.0/firebase-firestore.js"></script>
-    <!-- 
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/9.4.1/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/9.4.1/firebase-database-compat.js"></script>
+  <!-- <script defer src="/__/firebase/9.4.1/firebase-firestore-compat.js"></script> -->
+  <script defer src="/__/firebase/9.4.1/firebase-functions-compat.js"></script>
+  <!-- <script defer src="/__/firebase/9.4.1/firebase-messaging-compat.js"></script> -->
+  <script defer src="/__/firebase/9.4.1/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
+  <!-- <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script> -->
+  <script src="lib/moment.min.js"></script>
+  <script src="/__/firebase/8.10.0/firebase-auth.js"></script>
+  <script src="/__/firebase/8.10.0/firebase-firestore.js"></script>
+  <!-- 
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
     -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
- 
-  </head>
-  
-  <body>
-    <div class="container">
-      <!-- <div class="modal active"> -->
 
-      <!-- <header>FocusTODo</header> -->
-      <div class="left leftnone modal pomodoreCard active">
-        <div class="left__title">
-          <!-- <h2> -->
-          Project List
+</head>
 
-          <!-- </h2> -->
-          <!-- <button class="left_loginbtn">Login</button> -->
-          <!-- <div class="left_profilphoto">Profil Photo</div> -->
-        </div>
-        <ol class="left_listdays">
-          <li
-            class="sortTask today left_day"
-            name="today"
-            onCLick="activeProject(this)"
-            tabindex="0"
-			id="Today"
-          >
-            <i class="far fa-calendar-alt"> </i>Today
-          </li>
-          <li
-            class="sortTask tomorrow left_day"
-            name="tomorrow"
-            onCLick="activeProject(this)"
-            tabindex="0"
-            id="Tomorrow"
-          >
-            <i class="far fa-calendar-alt"></i>Tomorrow
-          </li>
-          <li
-            class="sortTask someday left_day select"
-            name="someday"
-            onCLick="activeProject(this)"
-            tabindex="0"
-            id="Someday"
-          >
-            <i class="far fa-calendar-alt"></i>Someday
-          </li>
-          <li
-            class="sortTask history left_day"
-            name="completed"
-            onCLick="activeProject(this)"
-            tabindex="0"
-            id="Completed"
-          >
-            <i class="far fa-check-circle"></i>Completed tasks
-          </li>
-        </ol>
-        <div class="left_pomodoreProjects"></div>
-        <form action="" class="left_addProject">
-          <button
-            aria-label="addProject"
-            class="left_addProjectBtn"
-            type="submit"
-          >
-            <class class="fas fa-plus"></class>
-          </button>
-          <input
-            type="text"
-            class="left_Projects"
-            placeholder="Add  your project name"
-          />
-          <input
-            type="color"
-            class="left_color"
-            arial-label="Color"
-            id="color"
-            value="#955165"
-          ></form>
-        </form>
+<body>
+  <div class="container">
+    <!-- <div class="modal active"> -->
+
+    <!-- <header>FocusTODo</header> -->
+    <div class="left leftnone modal pomodoreCard active">
+      <div class="left__title">
+        <!-- <h2> -->
+        Project List
+
+        <!-- </h2> -->
+        <!-- <button class="left_loginbtn">Login</button> -->
+        <!-- <div class="left_profilphoto">Profil Photo</div> -->
       </div>
-      <div class="center modal pomodoreCard active">
-		  <div class="topbar">
-
-			  <div class="arrowBack Project selected fas fa-chevron-circle-left" name="pomodoreCard" onclick="openNoteCard(this)" data-link="">
-				<!-- <i class="fas fa-chevron-circle-left"></i> -->
-				 </div>
-				<div class="titlebar">
-					
-				</div>
-			</div>
-        <div class="center_tasktable">
-          <div class="center_stat">
-            <div class="center__number" id="estimated"></div>
-            <div class="center__text">Estimated time(h)</div>
-          </div>
-          <div class="center_stat">
-            <div class="center__number" id="taskstobe"></div>
-            <div class="center__text">Task to be complited</div>
-          </div>
-          <div class="center_stat">
-            <div class="center__number" id="elapse"></div>
-            <div class="center__text">Elapsed time(h)</div>
-          </div>
-          <div class="center_stat">
-            <div class="center__number" id="completedTasks"></div>
-            <div class="center__text">Completed tasks</div>
-          </div>
-     <section id="whenSignedOut">
-
-    <button id="signInBtn" class="btn btn-primary">Siign in with Google</button>
-
-  </section>
-
-  <section id="whenSignedIn" hidden="true">
-
-    <div id="userDetails"></div>
-
-    <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
-
-  </section>
-        </div>
-        <form action="" class="center_addTaskdiv">
-          <button
-            aria-label="addtaskBtn"
-            class="center_addtaskButton"
-            type="submit"
-          >
-            <i class="fas fa-plus"></i>
-          </button>
-          <input
-            class="center_todoInput"
-            type="text"
-            name="item"
-            placeholder=" Add a New Item Task"
-            onfocus="this.placeholder = 'Item Name'"
-          />
-        </form>
-
-	
-		
-        <div class="center_emptyList none">
-          <i class="center_foldericon far fa-folder-open"></i>
-          <p>No task, Tap the input box above to add</p>
-        </div>
-        <ol class="center_todolist">
-          <!-- controll  -->
-        </ol>
-        <div class="clock">
-          <i class="fas fa-window-restore" onclick="resizeClock()"></i>
-          <div class="clock_countdown" id="countdown">25:00</div>
-          <div class="countdownButtons">
-            <button class="center_pauseButton" type="submit">
-              <i class="fas fa-pause-circle"></i>
-            </button>
-            <button class="center_resetButton" type="submit">
-              <i class="fas fa-stop-circle"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="right none"></div>
-      <!-- </div> -->
-
-      <div class="modal noteCard note">
-        <div class="modal__header">Notes</div>
-
-        <div class="tiles"></div>
-        <button class="tiles__addNote" id="addNoteButton" aria-label="addNote">
-          <i class="fas fa-plus tiles__add" aria-hidden="true"></i>
+      <ol class="left_listdays">
+        <li class="sortTask today left_day" name="today" onCLick="activeProject(this)" tabindex="0" id="Today">
+          <i class="far fa-calendar-alt"> </i>Today
+        </li>
+        <li class="sortTask tomorrow left_day" name="tomorrow" onCLick="activeProject(this)" tabindex="0" id="Tomorrow">
+          <i class="far fa-calendar-alt"></i>Tomorrow
+        </li>
+        <li class="sortTask someday left_day select" name="someday" onCLick="activeProject(this)" tabindex="0"
+          id="Someday">
+          <i class="far fa-calendar-alt"></i>Someday
+        </li>
+        <li class="sortTask history left_day" name="completed" onCLick="activeProject(this)" tabindex="0"
+          id="Completed">
+          <i class="far fa-check-circle"></i>Completed tasks
+        </li>
+      </ol>
+      <div class="left_pomodoreProjects"></div>
+      <form action="" class="left_addProject">
+        <button aria-label="addProject" class="left_addProjectBtn" type="submit">
+          <class class="fas fa-plus"></class>
         </button>
-        <div class="tiles__note none"></div>
+        <input type="text" class="left_Projects" placeholder="Add  your project name" />
+        <input type="color" class="left_color" arial-label="Color" id="color" value="#955165">
+      </form>
+      </form>
+    </div>
+    <div class="center modal pomodoreCard active">
+      <div class="topbar">
+
+        <div class="arrowBack Project selected fas fa-chevron-circle-left" name="pomodoreCard"
+          onclick="openNoteCard(this)" data-link="">
+          <!-- <i class="fas fa-chevron-circle-left"></i> -->
+        </div>
+        <div class="titlebar">
+
+        </div>
       </div>
-      <div class="modal todoCard todo">
-        <div class="modal__header">Todo</div>
-        <div class="modal__body">
-			
+      <div class="center_tasktable">
+        <div class="center_stat">
+          <div class="center__number" id="estimated"></div>
+          <div class="center__text">Estimated time(h)</div>
+        </div>
+        <div class="center_stat">
+          <div class="center__number" id="taskstobe"></div>
+          <div class="center__text">Task to be complited</div>
+        </div>
+        <div class="center_stat">
+          <div class="center__number" id="elapse"></div>
+          <div class="center__text">Elapsed time(h)</div>
+        </div>
+        <div class="center_stat">
+          <div class="center__number" id="completedTasks"></div>
+          <div class="center__text">Completed tasks</div>
+        </div>
+        <section id="whenSignedOut">
 
-			<div class="todo">
-<div class="todo_inbox">
+          <button id="signInBtn" class="btn btn-primary">Siign in with Google</button>
 
-	
-<div class="todo_addElements">
-	
-	<form action="" class="todo_addTodo">
-		<button
-		class="todo_addSubmit"
-			  type="submit"
-			  onclick="addNewTodo(this);return false;"
-			  
-			>
-			<class class="fas fa-plus" aria-hidden="true"></class>
-		</button>
-		<input type="text" class="todo_input" placeholder="Add  todo" />
+        </section>
+
+        <section id="whenSignedIn" hidden="true">
+
+          <div id="userDetails"></div>
+
+          <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
+
+        </section>
+      </div>
+      <form action="" class="center_addTaskdiv">
+        <button aria-label="addtaskBtn" class="center_addtaskButton" type="submit">
+          <i class="fas fa-plus"></i>
+        </button>
+        <input class="center_todoInput" type="text" name="item" placeholder=" Add a New Item Task"
+          onfocus="this.placeholder = 'Item Name'" />
+      </form>
 
 
 
-		
-	  
-	</div>
-	<div class="todo_List categoryTodos " id="inbox">
-		
-	</div>
-	<div class="itemTodos box">
-		
-	</div>	
-		
-	</div>
-</div>
-</div>
+      <div class="center_emptyList none">
+        <i class="center_foldericon far fa-folder-open"></i>
+        <p>No task, Tap the input box above to add</p>
+      </div>
+      <ol class="center_todolist">
+        <!-- controll  -->
+      </ol>
+      <div class="clock">
+        <i class="fas fa-window-restore" onclick="resizeClock()"></i>
+        <div class="clock_countdown" id="countdown">25:00</div>
+        <div class="countdownButtons">
+          <button class="center_pauseButton" type="submit">
+            <i class="fas fa-pause-circle"></i>
+          </button>
+          <button class="center_resetButton" type="submit">
+            <i class="fas fa-stop-circle"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="right none"></div>
+    <!-- </div> -->
 
-</div>
-<!-- <ol class="modal__themes optionsBox">
+    <div class="modal noteCard note">
+      <div class="modal__header">Notes</div>
+
+      <div class="tiles"></div>
+      <button class="tiles__addNote" id="addNoteButton" aria-label="addNote">
+        <i class="fas fa-plus tiles__add" aria-hidden="true"></i>
+      </button>
+      <div class="tiles__note none"></div>
+    </div>
+    <div class="modal todoCard todo">
+      <div class="modal__header">Todo</div>
+      <div class="modal__body">
+
+
+        <div class="todo">
+          <div class="todo_inbox">
+
+
+            <div class="todo_addElements">
+
+              <form action="" class="todo_addTodo">
+                <button class="todo_addSubmit" type="submit" onclick="addNewTodo(this);return false;">
+                  <class class="fas fa-plus" aria-hidden="true"></class>
+                </button>
+                <input type="text" class="todo_input" placeholder="Add  todo" />
+
+
+
+
+
+            </div>
+            <div class="todo_List categoryTodos " id="inbox">
+
+            </div>
+            <div class="itemTodos box">
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- <ol class="modal__themes optionsBox">
 	
 	<li>
 	<input
@@ -324,31 +272,31 @@
 	<label for="Dark">Dark Theme</label>
   </li>
 </ol> -->
-<div class="modal settings" id="modal">
-        <div class="modal__header">
-          <div class="modal__title">Settings</div>
-
-      
-        </div>
-        <div class="modal__body">
-          <div class="modal__options">
-			  <span>Theme</span>
-	<div class="modal__themes">
+    <div class="modal settings" id="modal">
+      <div class="modal__header">
+        <div class="modal__title">Settings</div>
 
 
+      </div>
+      <div class="modal__body">
+        <div class="modal__options">
+          <span>Theme</span>
+          <div class="modal__themes">
 
-	</div>
 
-			<span>Sound:</span>
-			<div class="sounds">
-			<div class="mute">
-				<label><input type="checkbox" >
 
-						<span class="label" onClick="appSounds(this)"></span></label>
-					</div>
-					</div>
-            <ol class="SetTimes" >
-              <!-- <li class="duration optionsBox"  >
+          </div>
+
+          <span>Sound:</span>
+          <div class="sounds">
+            <div class="mute">
+              <label><input type="checkbox">
+
+                <span class="label" onClick="appSounds(this)"></span></label>
+            </div>
+          </div>
+          <ol class="SetTimes">
+            <!-- <li class="duration optionsBox"  >
                 <label for="quantity">Pomodore duration:</label>
 				   <div class="time">
 
@@ -384,14 +332,14 @@
 		<output name="break" class="breakTime" id="break"></output>
 	</div>            
               </li> -->
-			</ol >
-				
-				<button class="modal__savebtn" id="saveSettingUser">
+          </ol>
+
+          <button class="modal__savebtn" id="saveSettingUser">
 
 
 
 
-					         <!-- <div class="checkbox-custom">
+            <!-- <div class="checkbox-custom">
    <input type="checkbox"/>
       <div class="checkmark">
 		  <i class="fas fa-volume-mute unchecked"></i>
@@ -399,208 +347,150 @@
 		  <i class="fas fa-volume-up checked"></i>
     </div>
 </div> -->
-                  Save Settings
-                </button>
-              </li>
-          </div>
-		  <div class="quote">
+            Save Settings
+          </button>
+          </li>
+        </div>
+        <div class="quote">
 
-			
-		  </div>
+
         </div>
       </div>
-
-      <nav class="nav">
-        <div
-          class="nav_element Project selected"
-          name="pomodoreCard"
-          onclick="openNoteCard(this)"
-          data-link
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="dss feather feather-book-open"
-          >
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-          </svg>
-          <span>Project</span>
-        </div>
-        <div
-          class="nav_element "
-          name="note"
-          onclick="openNoteCard(this)"
-          id="noteButton"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="dss feather feather-calendar"
-          >
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-          <span>Note</span>
-        </div>
-
-        <div
-          class="nav_element"
-          name="todo"
-          onclick="openNoteCard(this)"
-          id="todoButton"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="dss feather feather-list"
-          >
-            <line x1="8" y1="6" x2="21" y2="6"></line>
-            <line x1="8" y1="12" x2="21" y2="12"></line>
-            <line x1="8" y1="18" x2="21" y2="18"></line>
-            <line x1="3" y1="6" x2="3.01" y2="6"></line>
-            <line x1="3" y1="12" x2="3.01" y2="12"></line>
-            <line x1="3" y1="18" x2="3.01" y2="18"></line>
-          </svg>
-          <span>Todo</span>
-        </div>
-
-        <div
-          class="nav_element data-link"
-          name="settings"
-          onclick="openNoteCard(this)"
-          id="settingsButton"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="dss feather feather-settings"
-          >
-            <circle cx="12" cy="12" r="3"></circle>
-            <path
-              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
-            ></path>
-          </svg>
-          <span> Settings</span>
-
-        </div>
-        <div id="overlay"></div>
-      </nav>
     </div>
-    <!-- <script src="./Js/index.js"   ></script> -->
-    <!-- <script src="./Js/settings.js"></script> -->
-    <!-- <script src="./Js/note.js"></script> -->
-    <!-- <script src="./Js/todo.js"></script> -->
-    <!-- <script src="lib/hammer.min.js"></script> -->
-   
-    <script
-    src="https://kit.fontawesome.com/a712e78954.js"
-    crossorigin="anonymous"
-    ></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        firebase.auth().onAuthStateChanged(user => { });
-        firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        firebase.firestore().doc('/foo/bar').get().then(() => { });
-        firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        firebase.analytics(); // call to activate
-        firebase.analytics().logEvent('tutorial_completed');
-        firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-      </script>
-  <script src="./Js/app.js" type="module"  ></script>
+
+    <nav class="nav">
+      <div class="nav_element Project selected" name="pomodoreCard" onclick="openNoteCard(this)" data-link>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="dss feather feather-book-open">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>Project</span>
+      </div>
+      <div class="nav_element " name="note" onclick="openNoteCard(this)" id="noteButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="dss feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Note</span>
+      </div>
+
+      <div class="nav_element" name="todo" onclick="openNoteCard(this)" id="todoButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="dss feather feather-list">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+        <span>Todo</span>
+      </div>
+
+      <div class="nav_element data-link" name="settings" onclick="openNoteCard(this)" id="settingsButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="dss feather feather-settings">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+        <span> Settings</span>
+
+      </div>
+      <div id="overlay"></div>
+    </nav>
+  </div>
+  <!-- <script src="./Js/index.js"   ></script> -->
+  <!-- <script src="./Js/settings.js"></script> -->
+  <!-- <script src="./Js/note.js"></script> -->
+  <!-- <script src="./Js/todo.js"></script> -->
+  <!-- <script src="lib/hammer.min.js"></script> -->
+
+  <script src="https://kit.fontawesome.com/a712e78954.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loadEl = document.querySelector('#load');
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.firestore().doc('/foo/bar').get().then(() => { });
+      // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      // firebase.analytics(); // call to activate
+      // firebase.analytics().logEvent('tutorial_completed');
+      // firebase.performance(); // call to activate
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+        let app = firebase.app();
+        let features = [
+          'auth',
+          'database',
+          'firestore',
+          'functions',
+          'messaging',
+          'storage',
+          'analytics',
+          'remoteConfig',
+          'performance',
+        ].filter(feature => typeof app[feature] === 'function');
+        loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script>
+  <script src="./Js/app.js" type="module"></script>
   <script>
 
-const auth = firebase.auth();
+    const auth = firebase.auth();
 
-const whenSignedIn = document.getElementById('whenSignedIn');
-const whenSignedOut = document.getElementById('whenSignedOut');
+    const whenSignedIn = document.getElementById('whenSignedIn');
+    const whenSignedOut = document.getElementById('whenSignedOut');
 
-const signInBtn = document.getElementById('signInBtn');
-const signOutBtn = document.getElementById('signOutBtn');
+    const signInBtn = document.getElementById('signInBtn');
+    const signOutBtn = document.getElementById('signOutBtn');
 
-const userDetails = document.getElementById('userDetails');
+    const userDetails = document.getElementById('userDetails');
 
 
-const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-/// Sign in event handlers
+    /// Sign in event handlers
 
-signInBtn.onclick = () => auth.signInWithPopup(provider);
+    signInBtn.onclick = () => auth.signInWithPopup(provider);
 
-signOutBtn.onclick = () => auth.signOut();
+    signOutBtn.onclick = () => auth.signOut();
 
-auth.onAuthStateChanged(user => {
-    if (user) {
+    auth.onAuthStateChanged(user => {
+      if (user) {
         // signed in
         whenSignedIn.hidden = false;
         whenSignedOut.hidden = true;
         userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
-    } else {
+      } else {
         // not signed in
         whenSignedIn.hidden = true;
         whenSignedOut.hidden = false;
         userDetails.innerHTML = '';
-    }
-});
+      }
+    });
 
 
   </script>
-  </body>
-  </html>
+</body>
+
+</html>
