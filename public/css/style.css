@@ -38,7 +38,7 @@ input::-webkit-color-swatch {
   --addProject: #b17676;
   --number-color: #f1998f;
   --light-color: #a9ded8;
-  --font-color: yellow;
+  --font-color: #fff;
   --addProjectbtn: #b17676;
   --shadow: drop-shadow(0 0.2rem 0.25rem rgb 0, 0, 0/20%);
   --hover_color: #fff;
