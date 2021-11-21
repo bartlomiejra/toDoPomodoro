@@ -116,6 +116,7 @@ export function appSounds(clickedid) {
     clickedid.classList.add("mute");
     settingUser.Sound == false;
   }
+  window.localStorage.setItem("settings", JSON.stringify(settings));
 }
 
 window.appSounds = appSounds;
