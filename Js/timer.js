@@ -2,7 +2,7 @@ import {
   buttonscountdown,
   todoList,
   actualList,
-  lists,
+  renderPomodoroTasks,
   clockTimer,
   mobileWidth,
   pause,
@@ -89,7 +89,7 @@ function resetTimer() {
     "clock_timerStart",
     "clock_clockVisible",
   );
-  lists(actualList, todoList);
+  renderPomodoroTasks(actualList, todoList);
   buttonscountdown.classList.add(".countdownButtonsNone");
   clearInterval(countdownTime);
 
@@ -109,7 +109,7 @@ function endpomodoro() {
   itemSelement.focus += timeInFocus;
   localStorage.setItem("Items", JSON.stringify(itemS));
 
-  lists(todos, todoList);
+  renderPomodoroTasks(todos, todoList);
   pause.addEventListener("click", timerBreak);
   displayNotification();
   breakTime();
@@ -138,7 +138,7 @@ function breakTime() {
   );
   pause.firstElementChild.classList.add("fa-coffee");
   clockTimer.classList.remove("clock_timerStart");
-  lists(todos, todoList);
+  renderPomodoroTasks(todos, todoList);
 }
 
 function displayTimeLeft(seconds) {

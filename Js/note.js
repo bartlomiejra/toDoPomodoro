@@ -75,7 +75,6 @@ export function addNote() {
 <input class="tiles__noteHeader" id="noteHeader" placeholder="Title" type="text" value=""></input>
 <p class="date" value=dateToday>
 ${dateToday} 
-
 </p>
 <textarea name="message"  type="textarea" id="textarea" placeholder="Type something..." class="tiles__textarea">
 `;
@@ -134,7 +133,6 @@ export function noteOpen(clicked_id) {
   click = clicked_id;
   onenoteCard.classList.remove("none");
   onenoteCard.innerHTML = `
-
 <textarea class="tiles__noteHeader headerNote" id="noteHeader" value=${notes[clicked_id].title} type="text"/>${notes[clicked_id].title}
 </textarea>
 <p class="date" value=${notes[clicked_id].date}>${notes[clicked_id].date}</p>
