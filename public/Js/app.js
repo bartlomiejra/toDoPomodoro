@@ -1,92 +1,5 @@
 /* eslint-disable prettier/prettier */
-   const auth = firebase.auth();
-
-    const whenSignedIn = document.getElementById('whenSignedIn');
-    const whenSignedOut = document.getElementById('whenSignedOut');
-
-    const signInBtn = document.getElementById('signInBtn');
-    const signOutBtn = document.getElementById('signOutBtn');
-
-    const userDetails = document.getElementById('userDetails');
-
-
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    /// Sign in event handlers
-
-    console.log(signInBtn)
-    signInBtn.onclick = () => auth.signInWithPopup(provider);
-
-    signOutBtn.onclick = () => auth.signOut();
-
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        // signed in
-        whenSignedIn.hidden = false;
-        whenSignedOut.hidden = true;
-        userDetails.innerHTML = `<p>Hi ${user.displayName}!</p>`;
-      } else {
-        // not signed in
-        whenSignedIn.hidden = true;
-        whenSignedOut.hidden = false;
-        userDetails.innerHTML = '';
-      }
-    }); 
-    const db = firebase.firestore();
-
-const createThing = document.getElementById('createThing');
-const thingsList = document.getElementById('thingsList');
-
-
-let thingsRef;
-let unsubscribe;
-
-auth.onAuthStateChanged(user => {
-
-    if (user) {
-
-        // Database Reference
-        thingsRef = db.collection('things')
-
-        createThing.onclick = () => {
-          console.log("click buttons");
-
-            const { serverTimestamp } = firebase.firestore.FieldValue;
-
-            thingsRef.add({
-                uid: user.uid,
-                name: faker.commerce.productName(),
-                createdAt: serverTimestamp()
-            });
-        }
-
-
-        // Query
-        unsubscribe = thingsRef
-            .where('uid', '==', user.uid)
-            .orderBy('createdAt') // Requires a query
-            .onSnapshot(querySnapshot => {
-                
-                // Map results to an array of li elements
-
-                const items = querySnapshot.docs.map(doc => {
-
-                    return `<li>${doc.data().name}</li>`
-
-                });
-
-                thingsList.innerHTML = items.join('');
-
-            });
-
-
-
-    } else {
-        // Unsubscribe when the user signs out
-        unsubscribe && unsubscribe();
-    }
-});
-import {
+   import {
   showToDoCard,
   showProjectList,
   activeProject,
@@ -107,6 +20,10 @@ import * as todo from "./todo.js";
 import * as note from "./note.js";
 import { displayNotification } from "./notification.js";
 import * as settingss from "./settings.js";
+
+
+
+
 // import * as settingsfile from './settings.js';
 window.openNoteCard = openNoteCard;
 window.resizeClock = resizeClock;
@@ -279,11 +196,8 @@ if (settinglocal == null) {
 }
 // let taskToday = 0;
 
-
 // const objlines = 0;
 // let actualList;
-
-
 
 function actualDateTime() {
   const date = new Date();
