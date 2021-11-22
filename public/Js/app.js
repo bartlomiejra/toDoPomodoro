@@ -49,6 +49,7 @@ auth.onAuthStateChanged(user => {
         thingsRef = db.collection('things')
 
         createThing.onclick = () => {
+          console.log("click buttons");
 
             const { serverTimestamp } = firebase.firestore.FieldValue;
 

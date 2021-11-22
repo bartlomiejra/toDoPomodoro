@@ -9,12 +9,12 @@
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
   <script>
-if (location.hostname === "localhost") {
-  db.useEmulator("localhost", 8080);
-  auth.useEmulator("localhost", 8999 )
-  firestore.useEmulator("localhost",9000 )
-  functions.useEmulator("localhost", 9001 )
-}
+// if (location.hostname === "localhost") {
+//   // db.useEmulator("localhost", 9000);
+//   auth.useEmulator("localhost", 9099 )
+//   firestore.useEmulator("localhost",8080 )
+//   functions.useEmulator("localhost", 5001 )
+// }
   </script>
   <script>
     // Import the functions you need from the SDKs you need
@@ -156,7 +156,17 @@ console.log(firebase);
 
         </section>
       
-  
+  <section>
+
+    <h2>My Firestore Things</h2>
+
+    <ul id="thingsList">
+
+    </ul>
+
+    <button id="createThing" class="btn btn-success">Create Random Thing</button>
+
+  </section>
       </div>
       <form action="" class="center_addTaskdiv">
         <button aria-label="addtaskBtn" class="center_addtaskButton" type="submit">
@@ -260,17 +270,6 @@ console.log(firebase);
     <div class="modal settings" id="modal">
       <div class="modal__header">
         <div class="modal__title">Settings</div>
-        <section>
-
-    <h2>My Firestore Things</h2>
-
-    <ul id="thingsList">
-
-    </ul>
-
-    <button id="createThing" class="btn btn-success">Create Random Thing</button>
-
-  </section>
 
 
       </div>
