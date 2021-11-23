@@ -20,6 +20,7 @@ import * as todo from "./todo.js";
 import * as note from "./note.js";
 import { displayNotification } from "./notification.js";
 import * as settingss from "./settings.js";
+import * as firebase from "./firebase.js";
 
 
 
