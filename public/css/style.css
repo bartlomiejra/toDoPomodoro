@@ -557,7 +557,6 @@ html .center_todolist,
 body .center_todolist {
   margin-left: auto;
   margin-right: auto;
-  min-height: 100%;
   overflow: hidden;
   overflow-y: auto;
   scroll-behavior: hidden;

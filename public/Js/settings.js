@@ -1,4 +1,4 @@
-import { auth, db} from "./firebase.js"
+import { auth, db } from "./firebase.js";
 
 const closeSettings = document.querySelectorAll("[data-close-button ]");
 // const saveButton = document.getElementById("saveSettingUser");
@@ -145,7 +145,6 @@ auth.onAuthStateChanged((user) => {
 
       thingsRef.doc(user.uid).update({
         settings: {
-
           Sound: false,
           Theme: themeselected,
           pomodoreTime: pomodoreTime.value,
@@ -156,17 +155,16 @@ auth.onAuthStateChanged((user) => {
     };
 
     // Query
-    unsubscribe = thingsRef
-      .onSnapshot((querySnapshot) => {
-        // Map results to an array of li elements
-        console.log("ok");
+    //rozumieć ten fragment kody 
+  //https://firebase.google.com/docs/firestore/query-data/listen
+    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {
+      // Map results to an array of li elements
+      console.log("ok");
 
-        const items = querySnapshot.docs.map(
-          (doc) => `<li>${doc.data()}</li>`,
-        );
+      const items = querySnapshot.docs.map((doc) => `<li>${doc.(user.uid).settings[0].Theme}</li>`);
 
-        thingsList.innerHTML = items.join("");
-      });
+      thingsList.innerHTML = items.join("");
+    });
   } else {
     // Unsubscribe when the user signs out
     unsubscribe && unsubscribe();

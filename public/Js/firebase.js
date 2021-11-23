@@ -1,6 +1,5 @@
 // firebase
 // import {} from "firebase/auth";
-
 // firebase
 const auth = firebase.auth();
 const db = firebase.firestore();
@@ -16,7 +15,7 @@ const userDetails = document.getElementById("userDetails");
 const provider = new firebase.auth.GoogleAuthProvider();
 console.log(provider);
 auth.onAuthStateChanged((user) => {
-//   console.log(user.uid);
+  console.log(user.uid);
   db.collection("users")
     .doc(user.uid)
     .set({
