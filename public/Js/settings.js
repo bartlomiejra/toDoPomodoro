@@ -156,7 +156,7 @@ auth.onAuthStateChanged((user) => {
 
     // Query
     //rozumieć ten fragment kody 
-  //https://firebase.google.com/docs/firestore/query-data/listen
+  //
     unsubscribe = thingsRef.onSnapshot((querySnapshot) => {
       // Map results to an array of li elements
       console.log("ok");
