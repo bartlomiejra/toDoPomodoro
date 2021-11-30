@@ -1,3 +1,15 @@
+// import {
+//  collectionGroup, query, where, getDocs,
+// } from "firebase/firestore";
+import {
+  getFirestore,
+  onSnapshot,
+  doc,
+  getDoc,
+  getDocs,
+  collection,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+
 import { auth, db } from "./firebase.js";
 
 const closeSettings = document.querySelectorAll("[data-close-button ]");
@@ -134,8 +146,16 @@ let thingsRef;
 let unsubscribe;
 auth.onAuthStateChanged((user) => {
   if (user) {
-    // Database Reference
+    db.collection("users")
+      // .where("user", "==", "user")
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          console.log(doc.data());
+        });
+      });
     thingsRef = db.collection("users");
+
     console.log(thingsRef);
 
     saveSettings.onclick = (event) => {
@@ -154,15 +174,19 @@ auth.onAuthStateChanged((user) => {
       console.log(thingsRef);
     };
 
-    // Query
-    //rozumieć ten fragment kody 
-  //
     unsubscribe = thingsRef.onSnapshot((querySnapshot) => {
+      // querySnapshot docs .where("author", "==", user.uid).get()
+
       // Map results to an array of li elements
       console.log("ok");
-
-      const items = querySnapshot.docs.map((doc) => `<li>${doc.(user.uid).settings[0].Theme}</li>`);
-
+      const items = querySnapshot.docs.map(
+        (doc) =>
+          // console.log(doc.data(), doc.id)
+          `<li>${doc.data().setting}</li>`
+      );
+      // console.log(doc.data().settings)
+      // console.log(doc.data().Items)
+      // console.log(doc.data()),
       thingsList.innerHTML = items.join("");
     });
   } else {
