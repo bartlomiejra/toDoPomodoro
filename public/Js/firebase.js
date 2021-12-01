@@ -59,6 +59,7 @@ auth.onAuthStateChanged((user) => {
       settings: [
         {
           Theme: "Dark",
+          Sound: true,
           pomodoreTime: "67",
           breakTime: "5",
         },

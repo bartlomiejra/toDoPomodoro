@@ -7,6 +7,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  where,
   collection,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 
@@ -21,6 +22,7 @@ const overlay = document.getElementById("overlay");
 const container = document.querySelector(".container");
 const sounds = document.querySelector(".sounds");
 const SetTimes = document.querySelector(".SetTimes");
+let firebaseSettings;
 const settingUser = JSON.parse(localStorage.getItem("settings")) || {
   Theme: "Dark",
   Sound: true,
@@ -28,6 +30,69 @@ const settingUser = JSON.parse(localStorage.getItem("settings")) || {
   breakTime: "5",
 };
 
+let thingsRef;
+let unsubscribe;
+auth.onAuthStateChanged((user) => {
+  if (user) {
+   
+    // <------------------------ ---------->
+    //get all data from firebase and console.log it
+    // const alldata = [];
+    // db.collection("users")
+    // .where("user", "==", "DaNPhjYXd5RinBiA4YAzVTA96Jb2")
+    // .get()
+    // .then((snapshot) => {
+    //   snapshot.docs.forEach((doc) => {
+    //     console.log(doc.data());
+    //     alldata.push(doc.data());
+    //   });
+    //   console.log(alldata);
+      
+      
+    //   firebaseSettings = alldata[0].settings;
+    //   console.log(firebaseSettings);
+    // });
+    // <------------------------ ---------->
+
+    thingsRef = db.collection("users");
+    console.log(thingsRef);
+
+    saveSettings.onclick = (event) => {
+      event.preventDefault();
+
+      // const { serverTimestamp } = firebase.firestore.FieldValue;
+
+      thingsRef.doc(user.uid).update({
+        settings: {
+          Sound: true,
+          Theme: themeselected,
+          pomodoreTime: pomodoreTime.value,
+          breakTime: breakTimeValue.value,
+        },
+      });
+      console.log(thingsRef);
+    };
+
+    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {
+      // querySnapshot docs .where("author", "==", user.uid).get()
+
+      // Map results to an array of li elements
+      console.log("ok");
+      const items = querySnapshot.docs.map(
+        (doc) =>
+          // console.log(doc.data(), doc.id)
+          `<li>${doc.data().setting}</li>`
+      );
+      // console.log(doc.data().settings)
+      // console.log(doc.data().Items)
+      // console.log(doc.data()),
+      thingsList.innerHTML = items.join("");
+    });
+  } else {
+    // Unsubscribe when the user signs out
+    unsubscribe && unsubscribe();
+  }
+});
 theme.innerHTML = `
 <div class="switch-button">
 ${
@@ -47,7 +112,6 @@ SetTimes.innerHTML = `
 				 oninput="this.nextElementSibling.value = value"
 				 type="range"
                   class="numberOfTime"
-                  value="25"
                   name="quantity"
                   min="5"
                   max="100"
@@ -67,7 +131,6 @@ SetTimes.innerHTML = `
 		type="range"
 		class="numberOfTime"
 		id="quantitybreak"
-		value="5"
 		name="quantitybreak"
 		min="1"
 		max="60"
@@ -141,56 +204,3 @@ if (settingUser.Theme == "Light") {
   container.classList.remove("lightTheme");
 }
 const thingsList = document.getElementById("thingsList");
-
-let thingsRef;
-let unsubscribe;
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    db.collection("users")
-      // .where("user", "==", "user")
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          console.log(doc.data());
-        });
-      });
-    thingsRef = db.collection("users");
-
-    console.log(thingsRef);
-
-    saveSettings.onclick = (event) => {
-      event.preventDefault();
-
-      // const { serverTimestamp } = firebase.firestore.FieldValue;
-
-      thingsRef.doc(user.uid).update({
-        settings: {
-          Sound: false,
-          Theme: themeselected,
-          pomodoreTime: pomodoreTime.value,
-          breakTime: breakTimeValue.value,
-        },
-      });
-      console.log(thingsRef);
-    };
-
-    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {
-      // querySnapshot docs .where("author", "==", user.uid).get()
-
-      // Map results to an array of li elements
-      console.log("ok");
-      const items = querySnapshot.docs.map(
-        (doc) =>
-          // console.log(doc.data(), doc.id)
-          `<li>${doc.data().setting}</li>`
-      );
-      // console.log(doc.data().settings)
-      // console.log(doc.data().Items)
-      // console.log(doc.data()),
-      thingsList.innerHTML = items.join("");
-    });
-  } else {
-    // Unsubscribe when the user signs out
-    unsubscribe && unsubscribe();
-  }
-});

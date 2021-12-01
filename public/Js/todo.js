@@ -130,7 +130,9 @@ export function renderTodos() {
 			`
   ).join("");
 }
-
+let firebaseListTodo;
+firebaseListTodo = db.collection("ListTodo");
+    console.log(firebaseListTodo);
 export function deleteTodo(ClickedId) {
   const { ...index } = ClickedId.dataset;
   const newListOfToDo = ListOfToDo.filter((todo) => todo.id != ClickedId.id);
