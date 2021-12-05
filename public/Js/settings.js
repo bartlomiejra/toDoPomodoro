@@ -29,70 +29,91 @@ const settingUser = JSON.parse(localStorage.getItem("settings")) || {
   pomodoreTime: "25",
   breakTime: "5",
 };
-
 let thingsRef;
 let unsubscribe;
+let logUserId;
 auth.onAuthStateChanged((user) => {
   if (user) {
-   
-    // <------------------------ ---------->
-    //get all data from firebase and console.log it
+    logUserId = user.uid;
+    // get all data from firebase and console.log it
     // const alldata = [];
-    // db.collection("users")
-    // .where("user", "==", "DaNPhjYXd5RinBiA4YAzVTA96Jb2")
-    // .get()
-    // .then((snapshot) => {
-    //   snapshot.docs.forEach((doc) => {
-    //     console.log(doc.data());
-    //     alldata.push(doc.data());
+    db.collection("users")
+      .where("ListTodo", "array-contains", {
+        id: 0,
+        text: "First 🥇",
+        done: false,
+        data: "30.1.21",
+      })
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          console.log(doc.data());
+          alldata.push(doc.data());
+        });
+        console.log(alldata);
+
+    //     firebaseSettings = alldata[0].ListTodo;
+    //     console.log(firebaseSettings);
     //   });
-    //   console.log(alldata);
-      
-      
-    //   firebaseSettings = alldata[0].settings;
-    //   console.log(firebaseSettings);
-    // });
-    // <------------------------ ---------->
+
+    // db.collection("users")
+    // var messageRef = db.collection('users').doc('roomA')
+    //             .collection('messages').doc('message1');
 
     thingsRef = db.collection("users");
-    console.log(thingsRef);
+    // console.log(thingsRef);
 
     saveSettings.onclick = (event) => {
       event.preventDefault();
 
       // const { serverTimestamp } = firebase.firestore.FieldValue;
 
-      thingsRef.doc(user.uid).update({
-        settings: {
-          Sound: true,
-          Theme: themeselected,
-          pomodoreTime: pomodoreTime.value,
-          breakTime: breakTimeValue.value,
-        },
-      });
+      // thingsRef.doc(user.uid).collection("settings").doc("0").update({
+      //   Sound: true,
+      //   Theme: themeselected,
+      //   pomodoreTime: pomodoreTime.value,
+      //   breakTime: breakTimeValue.value,
+      // });
+
+  // db.collection("users")
+  //   .doc(user.uid)
+  //   .collection("ListTodo")
+  //   .doc("0")
+  //   .update({
+  //     id: 0,
+  //     done: false,
+  //     data: "30.11.21",
+  //     text: "Firs3st s🥇",
+  //   })
+
       console.log(thingsRef);
     };
+    // thingsRef.doc(user.uid).update({
+    //           collection: 'settings'}, {
+    //             Sound: true,
+    //             Theme: themeselected,
+    //             pomodoreTime: pomodoreTime.value,
+    //             breakTime: breakTimeValue.value,
+    //           },
+    // unsubscribe = thingsRef.onSnapshot((querySnapshot) => {
+    //   // querySnapshot docs .where("author", "==", user.uid).get()
 
-    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {
-      // querySnapshot docs .where("author", "==", user.uid).get()
+    //   // Map results to an array of li elements
+    //   console.log("ok");
+    //   const items = querySnapshot.docs.map(
+    //     (doc) =>
+    //     // console.log(doc.data(), doc.id)
+    //     `<li>${doc.data().setting}</li>`,
+    //     );
 
-      // Map results to an array of li elements
-      console.log("ok");
-      const items = querySnapshot.docs.map(
-        (doc) =>
-          // console.log(doc.data(), doc.id)
-          `<li>${doc.data().setting}</li>`
-      );
-      // console.log(doc.data().settings)
-      // console.log(doc.data().Items)
-      // console.log(doc.data()),
-      thingsList.innerHTML = items.join("");
-    });
+    //     thingsList.innerHTML = items.join("");
+    //   });
   } else {
     // Unsubscribe when the user signs out
     unsubscribe && unsubscribe();
   }
 });
+console.log(logUserId);
 theme.innerHTML = `
 <div class="switch-button">
 ${
@@ -204,3 +225,5 @@ if (settingUser.Theme == "Light") {
   container.classList.remove("lightTheme");
 }
 const thingsList = document.getElementById("thingsList");
+
+export { logUserId };

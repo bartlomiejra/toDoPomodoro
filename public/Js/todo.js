@@ -1,5 +1,27 @@
+import {
+  getFirestore,
+  onSnapshot,
+  doc,
+  getDoc,
+  getDocs,
+  where,
+  collection,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 import { pomodorebreakTime, countdownTime } from "./app.js";
+import { auth, db } from "./firebase.js";
+import { logUserId } from "./settings.js";
 
+let firebaseListTodo;
+
+// function update{
+
+firebaseListTodo = db.collection("users");
+console.log(firebaseListTodo);
+
+//  //where update clicked firebase todo item if id = clicked id
+//   firebaseListTodo.onSnapshot(function(querySnapshot) {
+
+// }
 export let last = 0;
 
 export const DivToDo = document.querySelector(".todo_List");
@@ -52,6 +74,10 @@ window.addNewTodo = addNewTodo;
 export function addNewTodo(event) {
   if (todoTitle.value === "") {
   } else {
+//  let lasts = db.collection("users").doc(logUserId).collection("ListTodo").limitToLast(1);
+   
+//             console.log(lasts);
+
     ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
 
     // find last id number
@@ -60,6 +86,13 @@ export function addNewTodo(event) {
         last = items.id;
       }
     });
+    db.collection("users").doc(logUserId).collection("ListTodo").doc("43").set( {
+      id: last +=1,
+      text: todoTitle.value,
+      done: false,
+      data: "31.1.21",
+    });
+
     const ToDoNew = {
       id: (last += 1),
       text: todoTitle.value,
@@ -127,12 +160,9 @@ export function renderTodos() {
     } 
 		
 
-			`
+			`,
   ).join("");
 }
-let firebaseListTodo;
-firebaseListTodo = db.collection("ListTodo");
-    console.log(firebaseListTodo);
 export function deleteTodo(ClickedId) {
   const { ...index } = ClickedId.dataset;
   const newListOfToDo = ListOfToDo.filter((todo) => todo.id != ClickedId.id);
@@ -142,12 +172,29 @@ export function deleteTodo(ClickedId) {
 }
 
 export function checkFunction(clicked_id) {
-  ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
+  db.collection("users")
+    .doc(logUserId)
+    .collection("ListTodo")
+    .doc(clicked_id)
+    .update({
+      done: false,
+    })
+    .then(() => {
+      console.log("Document successfully updated!");
+    })
+    .catch((error) => {
+      console.error("Error updating document: ", error);
+    });
+  const lasts = db.collection("users").doc(logUserId).collection("ListTodo");
+  console.log(lasts);
 
+  // console.log(ListOfToDo);
+  // ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
   // const { ...index } = clicked_id.dataset;
   // let newListOfToDo = ListOfToDo.filter(todo => todo.id != clicked_id);
+  console.log(clicked_id);
   const objIndex = ListOfToDo.findIndex((obj) => obj.id == clicked_id);
-  console.log(objIndex);
+  // console.log(objIndex);
   // myArray[objIndex].name = "Laila"
 
   if (ListOfToDo[objIndex].done == true) {
@@ -156,7 +203,6 @@ export function checkFunction(clicked_id) {
     ListOfToDo[objIndex].done = true;
   }
   localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
-  console.log(ListOfToDo);
 
   // this.stopPropagation();
   // clicked_id.stopPropagation();

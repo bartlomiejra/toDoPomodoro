@@ -99,7 +99,7 @@ if (statistics == null) {
       estimated: "0.00",
       comp: 1,
       elapsed: "0.00",
-      complete: 0,
+      // complete: 0,
     },
   ];
   window.localStorage.setItem("STat", JSON.stringify(statistics));
@@ -227,7 +227,7 @@ if (actualList == 0) {
 }
 
 function renderPomodoroTasks(todolist = []) {
-  console.log("render");
+  // console.log("render");
   // console.log(currentProject);
   actualList = todolist;
 
@@ -637,7 +637,7 @@ function sortingProjectDays(e) {
     case "Tomorrow":
       taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
       // renderProjects();
-      console.log(taskTomorrow);
+      // console.log(taskTomorrow);
       renderPomodoroTasks(taskTomorrow, todoList);
       break;
     case "Someday":
@@ -691,14 +691,14 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
     clicked = "Today";
   }
   currentProject[0].name = clicked;
-  console.log(currentProject);
+  // console.log(currentProject);
   // currentProject.push(clicked);
   // clicked = currentProject
   // window.localStorage.setItem('Current', JSON.stringify(clicked));
   window.localStorage.setItem("Current", JSON.stringify(currentProject));
   currentProject = JSON.parse(localStorage.getItem("Current"));
 
-  console.log(currentProject);
+  // console.log(currentProject);
   titleName();
   showToDoCard();
 }
@@ -766,7 +766,7 @@ function titleName() {
   if (currentProject == null) {
     currentProject[0].name = Today;
   }
-  console.log(currentProject);
+  // console.log(currentProject);
 
   title.innerHTML = currentProject
     .map((title) => ` ${title.name}`)

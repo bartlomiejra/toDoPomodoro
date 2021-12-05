@@ -248,7 +248,7 @@ console.log(firebase);
     <div class="modal settings" id="modal">
       <div class="modal__header">
         <div class="modal__title">Settings</div>
-         <section>
+         <!-- <section>
 
     <h2>My Firestore Things</h2>
 
@@ -258,24 +258,24 @@ console.log(firebase);
 
     <button id="createThing" class="btn btn-success">Create Random Thing</button>
 
+  </section> -->
+
+
+  <section id="whenSignedOut">
+    
+    <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
+    
   </section>
-
-
-      </div>
-      <div class="modal__body">
-         <section id="whenSignedOut">
-
-          <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
-
-        </section>
-
-        <section id="whenSignedIn" hidden="true">
-
-          <div id="userDetails"></div>
-
-          <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
-
-        </section>
+  
+  <section id="whenSignedIn" hidden="true">
+    
+    <div id="userDetails"></div>
+    
+    <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
+    
+  </section>
+</div>
+<div class="modal__body">
         <div class="modal__options">
           <span>Theme</span>
           <div class="modal__themes">
