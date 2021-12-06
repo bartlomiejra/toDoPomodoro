@@ -32,12 +32,15 @@ const settingUser = JSON.parse(localStorage.getItem("settings")) || {
 let thingsRef;
 let unsubscribe;
 let logUserId;
+const thingsList = document.getElementById("thingsList");
+const saveSettings = document.getElementById("saveSettingUser");
+
+thingsRef = db.collection("users");
 auth.onAuthStateChanged((user) => {
   if (user) {
     logUserId = user.uid;
     // get all data from firebase and console.log it
     // const alldata = [];
-    thingsRef = db.collection("users");
     // thingsRef.doc(user.uid).collection("settings").doc("0")
     //   .get()
     //   .then((doc) => {
@@ -59,51 +62,54 @@ auth.onAuthStateChanged((user) => {
     //             .collection('messages').doc('message1');
 
     // console.log(thingsRef);
-    let unsubscribe;
     saveSettings.onclick = (event) => {
+      console.log("ok");
       event.preventDefault();
 
       // const { serverTimestamp } = firebase.firestore.FieldValue;
-
       thingsRef.doc(user.uid).collection("settings").doc("0").update({
-        Sound: true,
+        Sound,
         Theme: themeselected,
         pomodoreTime: pomodoreTime.value,
         breakTime: breakTimeValue.value,
       });
-
-      console.log(thingsRef);
     };
-    const thingsList = document.getElementById("thingsList");
-
+let myArray;
     // Query
-    unsubscribe = thingsRef.doc(user.uid).collection("settings").doc("0")
-.onSnapshot((querySnapshot) => {
-      // Map results to an array of li elements
+    // .where("uid", "!=", user.uid)
+    unsubscribe = thingsRef
+      .doc(logUserId)
+      .collection("settings")
+      .onSnapshot((querySnapshot) => {
+        // Map results to an array of li elements
 
-      const items = querySnapshot.docs.map((doc) => {
-        console.log(doc.data().Theme);
-        return `<li>${doc.data().Theme}</li>`;
+        const items = querySnapshot.docs.map((doc) => {
+          
+          console.log(doc);
+          return `<li>${doc.data().Sound},${doc.data().Theme},${doc.data().breakTime},</li>`;
+          console.log(sounds)
+        });
+        console.log(items);
+        console.log(myArray);
+        // console.log(doc.data().pomodoreTime);
+
+        thingsList.innerHTML = items.join("");
       });
-
-      thingsList.innerHTML = items.join("");
-    });
+    theme.innerHTML = `
+<div class="switch-button">
+  <!-- doc.data.Theme == "Dark" ? mo ze taja jibstryjcha  -->
+  settingUser.Theme} == "Dark"
+      ? '<input class="black switch-button-checkbox" type="checkbox"></input>'
+      : '<input class="black switch-button-checkbox" checked type="checkbox"></input>'
+  }
+<label class="switch-button-label" for=""><span class="switch-button-label-span">Dark</span></label>
+</div>
+`;
   } else {
     unsubscribe && unsubscribe();
   }
 });
-console.log(logUserId);
-theme.innerHTML = `
-<div class="switch-button">
-${
-  settingUser.Theme == "Dark"
-    ? '<input class="black switch-button-checkbox" type="checkbox"></input>'
-    : '<input class="black switch-button-checkbox" checked type="checkbox"></input>'
-}
-<label class="switch-button-label" for=""><span class="switch-button-label-span">Dark</span></label>
-</div>
-`;
-SetTimes.innerHTML = `
+    SetTimes.innerHTML = `
   <li class="duration optionsBox"  >
                 <label for="quantity">Pomodore duration:</label>
 				<div class="time">
@@ -139,6 +145,8 @@ SetTimes.innerHTML = `
 		</div>            
               </li>
 			  `;
+
+console.log(logUserId);
 export function closeModal(modal) {
   if (modal == null) return;
   settingsDiv.classList.remove("active");
@@ -177,7 +185,6 @@ export function saveOptions() {
   };
   window.localStorage.setItem("settings", JSON.stringify(settings));
 }
-const saveSettings = document.getElementById("saveSettingUser");
 saveSettings.addEventListener("click", saveOptions);
 let Sound = true;
 export function appSounds(clickedid) {
@@ -203,6 +210,6 @@ if (settingUser.Theme == "Light") {
   themeselected = "Dark";
   container.classList.remove("lightTheme");
 }
-const thingsList = document.getElementById("thingsList");
+// const thingsList = document.getElementById("thingsList");
 
 export { logUserId };
