@@ -37,20 +37,18 @@ auth.onAuthStateChanged((user) => {
     logUserId = user.uid;
     // get all data from firebase and console.log it
     // const alldata = [];
-    db.collection("users")
-      .where("ListTodo", "array-contains", {
-        id: 0,
-        text: "First 🥇",
-        done: false,
-        data: "30.1.21",
-      })
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          console.log(doc.data());
-          alldata.push(doc.data());
-        });
-        console.log(alldata);
+    thingsRef = db.collection("users");
+  // thingsRef.doc(user.uid).collection("settings").doc("0")
+  //   .get()
+  //   .then((doc) => {
+  //             console.log("Document data:", doc.data());
+  //           });
+
+    //   snapshot.docs.forEach((docs) => {
+    //     console.log(docs.data());
+    // //     alldata.push(doc.data());
+    //   });
+    // console.log(alldata);
 
     //     firebaseSettings = alldata[0].ListTodo;
     //     console.log(firebaseSettings);
@@ -60,7 +58,6 @@ auth.onAuthStateChanged((user) => {
     // var messageRef = db.collection('users').doc('roomA')
     //             .collection('messages').doc('message1');
 
-    thingsRef = db.collection("users");
     // console.log(thingsRef);
 
     saveSettings.onclick = (event) => {
@@ -68,48 +65,17 @@ auth.onAuthStateChanged((user) => {
 
       // const { serverTimestamp } = firebase.firestore.FieldValue;
 
-      // thingsRef.doc(user.uid).collection("settings").doc("0").update({
-      //   Sound: true,
-      //   Theme: themeselected,
-      //   pomodoreTime: pomodoreTime.value,
-      //   breakTime: breakTimeValue.value,
-      // });
-
-  // db.collection("users")
-  //   .doc(user.uid)
-  //   .collection("ListTodo")
-  //   .doc("0")
-  //   .update({
-  //     id: 0,
-  //     done: false,
-  //     data: "30.11.21",
-  //     text: "Firs3st s🥇",
-  //   })
+      thingsRef.doc(user.uid).collection("settings").doc("0").update({
+        Sound: true,
+        Theme: themeselected,
+        pomodoreTime: pomodoreTime.value,
+        breakTime: breakTimeValue.value,
+      });
 
       console.log(thingsRef);
     };
-    // thingsRef.doc(user.uid).update({
-    //           collection: 'settings'}, {
-    //             Sound: true,
-    //             Theme: themeselected,
-    //             pomodoreTime: pomodoreTime.value,
-    //             breakTime: breakTimeValue.value,
-    //           },
-    // unsubscribe = thingsRef.onSnapshot((querySnapshot) => {
-    //   // querySnapshot docs .where("author", "==", user.uid).get()
-
-    //   // Map results to an array of li elements
-    //   console.log("ok");
-    //   const items = querySnapshot.docs.map(
-    //     (doc) =>
-    //     // console.log(doc.data(), doc.id)
-    //     `<li>${doc.data().setting}</li>`,
-    //     );
-
-    //     thingsList.innerHTML = items.join("");
-    //   });
+    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
   } else {
-    // Unsubscribe when the user signs out
     unsubscribe && unsubscribe();
   }
 });

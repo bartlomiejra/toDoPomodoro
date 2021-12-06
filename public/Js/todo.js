@@ -71,98 +71,89 @@ if (ListOfToDo == null) {
 localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
 window.addNewTodo = addNewTodo;
 
-export function addNewTodo(event) {
-  if (todoTitle.value === "") {
-  } else {
-//  let lasts = db.collection("users").doc(logUserId).collection("ListTodo").limitToLast(1);
-   
-//             console.log(lasts);
-
-    ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
-
-    // find last id number
-    ListOfToDo.forEach((items) => {
-      if (items.id > last) {
-        last = items.id;
-      }
-    });
-    db.collection("users").doc(logUserId).collection("ListTodo").doc("43").set( {
-      id: last +=1,
-      text: todoTitle.value,
-      done: false,
-      data: "31.1.21",
-    });
-
-    const ToDoNew = {
-      id: (last += 1),
-      text: todoTitle.value,
-      done: false,
-      data: "31.1.21",
-    };
-    //   todoInput.value = '';
-    ListOfToDo.push(ToDoNew);
-    // console.log(ListOfToDo);
-    localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
-
-    todoTitle.value = "";
-
-    renderTodos();
-    const dragItems = document.querySelectorAll(".dragitem");
-  }
-}
-
-renderTodos();
+// renderTodos();
 
 window.deleteTodo = deleteTodo;
 window.checkFunction = checkFunction;
+let Lista;
+const arrList = [];
 export function renderTodos() {
-  ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
-  itemTodos.innerHTML = ListOfToDo.map(
-    (todo) => `
+  auth.onAuthStateChanged((user) => {
+
+   db.collection("users")
+    .doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2")
+    .collection("ListTodo")
+    .orderBy("id", "asc")
+
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        Lista = doc.data();
+        arrList.push(Lista);
+
+        console.log(Lista);
+      });
+      console.log(arrList);
+    })
+    .then(
+      // ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
+
+      (itemTodos.innerHTML = arrList
+        .map(
+          (todo) => `
 		
-
+    
 		${
-      todo.done
+      todo.done 
         ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)
-' id=${todo.id} data-index=${todo.id}  >
+        ' id=${todo.id} data-index=${todo.id}  >
 			
-	${todo.text}
+        ${todo.text}
+        
 
+        
 
-
-
-
-  <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
+        
+        <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
   
-  Delete
+        Delete
   </button>
-
+  
   
 
  </div>`
         : `<div class="todo_item dragitem" onClick='checkFunction(this.id) 	  
-' id=${todo.id} data-index=${todo.id}  >
-			
-	${todo.text}
+        ' id=${todo.id} data-index=${todo.id}  >
+        
+        ${todo.text}
 
 
+        
+        
 
-
-
-  <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
-  
+        <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
+        
   Delete
   </button>
-
   
-
- </div>`
+  
+  
+  </div>`
     } 
-		
 
-			`,
-  ).join("");
+
+    `
+        )
+        .join("")),
+    );
+    // rebuild thi lines
+//    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
+
+  })
 }
+;
+renderTodos();
 export function deleteTodo(ClickedId) {
   const { ...index } = ClickedId.dataset;
   const newListOfToDo = ListOfToDo.filter((todo) => todo.id != ClickedId.id);
@@ -177,7 +168,7 @@ export function checkFunction(clicked_id) {
     .collection("ListTodo")
     .doc(clicked_id)
     .update({
-      done: false,
+      done: true,
     })
     .then(() => {
       console.log("Document successfully updated!");
@@ -208,5 +199,72 @@ export function checkFunction(clicked_id) {
   // clicked_id.stopPropagation();
   event.stopPropagation();
 
-  renderTodos();
+  // renderTodos();
+}
+export function addNewTodo(event) {
+  if (todoTitle.value === "") {
+  } else {
+    // get last index
+    let lastId;
+    let nextId;
+    db.collection("users")
+      .doc(logUserId)
+      .collection("ListTodo")
+      .orderBy("id", "asc")
+      .limitToLast(1)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          lastId = doc.data().id;
+          console.log(lastId);
+          lastId++;
+          console.log(typeof lastId);
+          // toString(lastId);
+          nextId = lastId.toString();
+          console.log(typeof nextId);
+        });
+
+        db.collection("users")
+          .doc(logUserId)
+          .collection("ListTodo")
+          .doc(nextId)
+          .set({
+            id: lastId,
+            text: todoTitle.value,
+            done: false,
+            data: "31.1.21",
+          });
+      });
+
+    // console.log(lastId);
+    //  event.stopPropagation();
+
+    // firebase - add new todo item
+
+    ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
+
+    // find last id number
+    ListOfToDo.forEach((items) => {
+      if (items.id > last) {
+        last = items.id;
+      }
+    });
+
+    const ToDoNew = {
+      id: (lastId += 1),
+      text: todoTitle.value,
+      done: false,
+      data: "31.1.21",
+    };
+    //   todoInput.value = '';
+    ListOfToDo.push(ToDoNew);
+    // console.log(ListOfToDo);
+    localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
+
+    // todoTitle.value = "";
+
+    renderTodos();
+    const dragItems = document.querySelectorAll(".dragitem");
+  }
 }
