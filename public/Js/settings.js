@@ -38,11 +38,11 @@ auth.onAuthStateChanged((user) => {
     // get all data from firebase and console.log it
     // const alldata = [];
     thingsRef = db.collection("users");
-  // thingsRef.doc(user.uid).collection("settings").doc("0")
-  //   .get()
-  //   .then((doc) => {
-  //             console.log("Document data:", doc.data());
-  //           });
+    // thingsRef.doc(user.uid).collection("settings").doc("0")
+    //   .get()
+    //   .then((doc) => {
+    //             console.log("Document data:", doc.data());
+    //           });
 
     //   snapshot.docs.forEach((docs) => {
     //     console.log(docs.data());
@@ -59,7 +59,7 @@ auth.onAuthStateChanged((user) => {
     //             .collection('messages').doc('message1');
 
     // console.log(thingsRef);
-
+    let unsubscribe;
     saveSettings.onclick = (event) => {
       event.preventDefault();
 
@@ -74,7 +74,20 @@ auth.onAuthStateChanged((user) => {
 
       console.log(thingsRef);
     };
-    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
+    const thingsList = document.getElementById("thingsList");
+
+    // Query
+    unsubscribe = thingsRef.doc(user.uid).collection("settings").doc("0")
+.onSnapshot((querySnapshot) => {
+      // Map results to an array of li elements
+
+      const items = querySnapshot.docs.map((doc) => {
+        console.log(doc.data().Theme);
+        return `<li>${doc.data().Theme}</li>`;
+      });
+
+      thingsList.innerHTML = items.join("");
+    });
   } else {
     unsubscribe && unsubscribe();
   }

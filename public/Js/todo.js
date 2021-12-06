@@ -36,6 +36,7 @@ export const menugui = document.getElementsByClassName("gui-popup");
 export const todoCard = document.querySelector(".todoCard");
 export const taskCategory = document.querySelector(".taskCategory");
 export const itemTodos = document.querySelector(".itemTodos");
+  let  thingsRef = db.collection("users");
 
 //! Empty State
 
@@ -77,8 +78,10 @@ window.deleteTodo = deleteTodo;
 window.checkFunction = checkFunction;
 let Lista;
 const arrList = [];
+
 export function renderTodos() {
   auth.onAuthStateChanged((user) => {
+      if (user) {
 
    db.collection("users")
     .doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2")
@@ -148,11 +151,15 @@ export function renderTodos() {
         .join("")),
     );
     // rebuild thi lines
-//    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
-
-  })
+    
+    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
+  } else {
+    unsubscribe && unsubscribe();
+  }
+})
 }
 ;
+renderTodos();
 renderTodos();
 export function deleteTodo(ClickedId) {
   const { ...index } = ClickedId.dataset;
