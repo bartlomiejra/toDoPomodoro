@@ -26,6 +26,7 @@ export let last = 0;
 
 export const DivToDo = document.querySelector(".todo_List");
 // const CategoryTo = document.querySelector('.dropcategory');
+let unsubscribe;
 
 export const divCategory = document.querySelector(".todo_category");
 export const todoTitle = document.querySelector(".todo_input");
@@ -36,7 +37,7 @@ export const menugui = document.getElementsByClassName("gui-popup");
 export const todoCard = document.querySelector(".todoCard");
 export const taskCategory = document.querySelector(".taskCategory");
 export const itemTodos = document.querySelector(".itemTodos");
-  let  thingsRef = db.collection("users");
+const thingsRef = db.collection("users");
 
 //! Empty State
 
@@ -81,84 +82,61 @@ const arrList = [];
 
 export function renderTodos() {
   auth.onAuthStateChanged((user) => {
-      if (user) {
+    if (user) {
+      db.collection("users")
+        .doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2")
+        .collection("ListTodo")
+        .orderBy("id", "asc")
 
-   db.collection("users")
-    .doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2")
-    .collection("ListTodo")
-    .orderBy("id", "asc")
-
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        Lista = doc.data();
-        arrList.push(Lista);
-
-        console.log(Lista);
-      });
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            Lista = doc.data();
+            arrList.push(Lista);
+            itemTodos.innerHTML = arrList.map(
+              (todo) => `  
+      ${
+        todo.done
+          ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)
+          ' id=${todo.id} data-index=${todo.id}  >    
+          ${todo.text}      
+          <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
+          Delete
+    </button>
+    </div>`
+          : `<div class="todo_item dragitem" onClick='checkFunction(this.id) 	  
+          ' id=${todo.id} data-index=${todo.id}  >     
+          ${todo.text}
+          <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
+          
+    Delete
+    </button>
+    
+    
+    
+    </div>`
+      } 
+    
+    
+      `,
+            );
+            // )
+          });
+        });
+      // .join("");
       console.log(arrList);
-    })
-    .then(
+      // .then(
       // ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
 
-      (itemTodos.innerHTML = arrList
-        .map(
-          (todo) => `
-		
-    
-		${
-      todo.done 
-        ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)
-        ' id=${todo.id} data-index=${todo.id}  >
-			
-        ${todo.text}
-        
+      // rebuild thi lines
 
-        
-
-        
-        <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
-  
-        Delete
-  </button>
-  
-  
-
- </div>`
-        : `<div class="todo_item dragitem" onClick='checkFunction(this.id) 	  
-        ' id=${todo.id} data-index=${todo.id}  >
-        
-        ${todo.text}
-
-
-        
-        
-
-        <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
-        
-  Delete
-  </button>
-  
-  
-  
-  </div>`
-    } 
-
-
-    `
-        )
-        .join("")),
-    );
-    // rebuild thi lines
-    
-    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
-  } else {
-    unsubscribe && unsubscribe();
-  }
-})
+      unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
+    } else {
+      unsubscribe && unsubscribe();
+    }
+  });
 }
-;
+
 renderTodos();
 renderTodos();
 export function deleteTodo(ClickedId) {

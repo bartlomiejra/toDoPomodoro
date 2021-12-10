@@ -36,11 +36,17 @@ const thingsList = document.getElementById("thingsList");
 const saveSettings = document.getElementById("saveSettingUser");
 
 thingsRef = db.collection("users");
+let firestoreTheme;
+let firestorepomodoreTime;
+let firestoreBreakTime;
+let firestoreSound;
 auth.onAuthStateChanged((user) => {
   if (user) {
     logUserId = user.uid;
-   
+
     saveSettings.onclick = (event) => {
+      const pomodoreTime = document.getElementById("quantity");
+      const breakTimeValue = document.getElementById("quantitybreak");
       console.log("ok");
       event.preventDefault();
       thingsRef.doc(user.uid).collection("settings").doc("0").update({
@@ -50,12 +56,7 @@ auth.onAuthStateChanged((user) => {
         breakTime: breakTimeValue.value,
       });
     };
-let firestoreTheme;
-let firestorepomodoreTime;
-let firestoreBreakTime;
-let firestoreSound;
     // Query
- 
     unsubscribe = thingsRef
       .doc(logUserId)
       .collection("settings")
@@ -63,22 +64,21 @@ let firestoreSound;
         // Map results to an array of li elements
         const elements = querySnapshot.docs;
         const items = querySnapshot.docs.map((doc) => {
-
-          
           firestoreTheme = doc.data().Theme;
           firestorepomodoreTime = doc.data().pomodoreTime;
           firestoreBreakTime = doc.data().breakTime;
           firestoreSound = doc.data().Sound;
-                  });
-        
-        thingsList.innerHTML = items.join("");
+        });
+
+        // thingsList.innerHTML = items.join("");
+        console.log(firestoreTheme);
         theme.innerHTML = `
 <div class="switch-button">
   
   ${
-    firestoreTheme == "Dark"    
-    ? '<input class="black switch-button-checkbox" type="checkbox"></input>'
-    : '<input class="black switch-button-checkbox" checked type="checkbox"></input>'
+    firestoreTheme == "Dark"
+      ? '<input class="black switch-button-checkbox" type="checkbox"></input>'
+      : '<input class="black switch-button-checkbox" checked type="checkbox"></input>'
   }
 
 <label class="switch-button-label" for=""><span class="switch-button-label-span">Dark</span></label>
@@ -86,14 +86,14 @@ let firestoreSound;
 </div>
 `;
 
-    SetTimes.innerHTML = `
+        SetTimes.innerHTML = `
   <li class="duration optionsBox"  >
                 <label for="quantity">Pomodore duration:</label>
-				<div class="time">
+<div class="time">
 
                 <input
-				 oninput="this.nextElementSibling.value = value"
-				 type="range"
+oninput="this.nextElementSibling.value = value"
+type="range"
                   class="numberOfTime"
                   name="quantity"
                   min="5"
@@ -122,7 +122,7 @@ let firestoreSound;
 		</div>            
               </li>
 			  `;
-});
+      });
   } else {
     unsubscribe && unsubscribe();
   }
@@ -139,8 +139,8 @@ closeSettings.forEach((span) => {
   });
 });
 
-let themeselected = settingUser.Theme;
-// const themes = document.getElementsByName('theme');
+let themeselected = firestoreTheme;
+console.log(firestoreTheme);
 export function themesValue() {
   const switchbutton = document.querySelector(".black");
   console.log(switchbutton);
@@ -152,22 +152,6 @@ export function themesValue() {
     container.classList.remove("lightTheme");
   }
 }
-
-const pomodoreTime = document.getElementById("quantity");
-const breakTimeValue = document.getElementById("quantitybreak");
-export function saveOptions() {
-  event.preventDefault();
-  themesValue();
-  // const settings = {
-  //   Theme: themeselected,
-  //   Sound: settingUser.Sound,
-  //   pomodoreTime: pomodoreTime.value,
-  //   breakTime: breakTimeValue.value,
-  // };
-  // window.localStorage.setItem("settings", JSON.stringify(settings));
-}
-saveSettings.addEventListener("click", saveOptions);
-let Sound = true;
 export function appSounds(clickedid) {
   console.log(this);
   if (clickedid.classList.contains("mute")) {
@@ -179,12 +163,17 @@ export function appSounds(clickedid) {
     clickedid.classList.add("mute");
     Sound = false;
   }
-  console.log(Sound);
-  // window.localStorage.setItem("settings", JSON.stringify(settings));
+  firestoreSound = Sound;
 }
+export function saveOptions() {
+  event.preventDefault();
+  themesValue();
+}
+saveSettings.addEventListener("click", saveOptions);
+let Sound = true;
 
 window.appSounds = appSounds;
-if (settingUser.Theme == "Light") {
+if (firestoreTheme == "Light") {
   themeselected = "Light";
   container.classList.add("lightTheme");
 } else {

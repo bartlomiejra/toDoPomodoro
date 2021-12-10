@@ -6,6 +6,7 @@ const db = firebase.firestore();
 
 const whenSignedIn = document.getElementById("whenSignedIn");
 const whenSignedOut = document.getElementById("whenSignedOut");
+// const whenSignedOut = document.getElementById("whenSignedOut");
 
 const signInBtn = document.getElementById("signInBtn");
 const signOutBtn = document.getElementById("signOutBtn");
@@ -207,11 +208,16 @@ auth.onAuthStateChanged((user) => {
     // signed in
     whenSignedIn.hidden = false;
     whenSignedOut.hidden = true;
+    
+    whenSignedOut.setAttribute('display','none');
     userDetails.innerHTML = `<p>Hi ${user.displayName}!</p>`;
   } else {
     // not signed in
+    whenSignedOut.setAttribute('display','block');
+    
     whenSignedIn.hidden = true;
     whenSignedOut.hidden = false;
+    
     userDetails.innerHTML = "";
   }
 });

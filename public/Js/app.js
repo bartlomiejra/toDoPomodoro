@@ -22,9 +22,6 @@ import { displayNotification } from "./notification.js";
 import * as settingss from "./settings.js";
 import * as firebase from "./firebase.js";
 
-
-
-
 // import * as settingsfile from './settings.js';
 window.openNoteCard = openNoteCard;
 window.resizeClock = resizeClock;
@@ -676,7 +673,6 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
         )
 
         .join("");
-      // renderPomodoroTasks(taskSomeday, todoList);
 
       break;
     default:
@@ -691,14 +687,9 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
     clicked = "Today";
   }
   currentProject[0].name = clicked;
-  // console.log(currentProject);
-  // currentProject.push(clicked);
-  // clicked = currentProject
-  // window.localStorage.setItem('Current', JSON.stringify(clicked));
+
   window.localStorage.setItem("Current", JSON.stringify(currentProject));
   currentProject = JSON.parse(localStorage.getItem("Current"));
-
-  // console.log(currentProject);
   titleName();
   showToDoCard();
 }
