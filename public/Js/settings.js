@@ -49,7 +49,7 @@ auth.onAuthStateChanged((user) => {
       const breakTimeValue = document.getElementById("quantitybreak");
       console.log("ok");
       event.preventDefault();
-      thingsRef.doc(user.uid).collection("settings").doc("0").update({
+      thingsRef.doc(user.uid).collection("settings").doc(logUserId).update({
         Sound: true,
         Theme: themeselected,
         pomodoreTime: pomodoreTime.value,
@@ -182,4 +182,4 @@ if (firestoreTheme == "Light") {
 }
 // const thingsList = document.getElementById("thingsList");
 
-export { logUserId };
+export{ logUserId, unsubscribe, thingsRef};

@@ -6,12 +6,36 @@ export const noteCard = document.querySelector(".noteCard");
 export const tilesNote = document.querySelector(".tiles__note");
 export const tiles = document.querySelector(".tiles");
 export const deleteNote = document.getElementById("deleteNote");
-
-import {dateToday} from "./app.js"
+import { auth, db } from "./firebase.js";
+import { logUserId,  thingsRef } from "./settings.js";
+let unsubscribe;
+let Lista;
 // const noteButton = document.getElementById('noteButton');
 let notes = JSON.parse(localStorage.getItem("Notes"));
-export function notesrender() {
-  tiles.innerHTML = notes
+let noteid, notenote, noteTitle, notedate;
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    unsubscribe = thingsRef
+    .doc(logUserId)
+    .collection("Notes")
+    .onSnapshot((querySnapshot) => {
+        let allnotelist = []
+        querySnapshot.docs.map((doc) => {
+           Lista = doc.data();
+           allnotelist.push(Lista)
+        noteid = doc.data().id;
+        noteTitle = doc.data().title;
+        notedate = doc.data().date;
+        notenote = doc.data().note;
+
+        console.log(doc.data());
+        });
+
+
+
+        
+        
+  tiles.innerHTML = allnotelist
 
     .map(
       (note, i) => `
@@ -25,7 +49,12 @@ export function notesrender() {
 `
     )
     .join("");
-}
+    
+  })
+ } else {
+    unsubscribe && unsubscribe();
+  }
+});
 if (notes == null) {
   notes = [
     {
@@ -118,7 +147,7 @@ createNote.addEventListener("click", addNote);
 export function deleteyourNote() {
   notes.pop();
   window.localStorage.setItem("Notes", JSON.stringify(notes));
-  notesrender();
+  // notesrender();
 }
 window.saveNote = saveNote;
 window.deleteyourNote = deleteyourNote;
@@ -127,7 +156,7 @@ window.saveEditNote = saveEditNote;
 window.closeSingleNote = closeSingleNote;
 window.removeNote = removeNote;
 window.closeonenoteCard = closeonenoteCard;
-notesrender();
+// notesrender();
 let click;
 export function noteOpen(clicked_id) {
   notes = JSON.parse(localStorage.getItem("Notes")) || [];
