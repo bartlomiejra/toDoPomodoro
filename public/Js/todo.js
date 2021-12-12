@@ -70,7 +70,9 @@ if (ListOfToDo == null) {
     },
   ];
 }
-localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
+//  thingsRef = db.collection("users");
+
+// localStorage.setItem("ListTodo", JSON.stringify(ListOfToDo));
 window.addNewTodo = addNewTodo;
 
 // renderTodos();
@@ -80,70 +82,75 @@ window.checkFunction = checkFunction;
 let Lista;
 const arrList = [];
 
-export function renderTodos() {
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      db.collection("users")
-        .doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2")
-        .collection("ListTodo")
-        .orderBy("id", "asc")
+// export function renderTodos() {
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    unsubscribe = thingsRef
+      .doc(logUserId)
+      .collection("ListTodo")
+      .orderBy("id", "asc")
 
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            Lista = doc.data();
-            arrList.push(Lista);
-            itemTodos.innerHTML = arrList.map(
-              (todo) => `  
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.docs.map((doc) => {
+          Lista = doc.data();
+          arrList.push(Lista);
+          let id = doc.data().id;
+          let done = doc.data().done;
+          let data = doc.data().data;
+          let text = doc.data().text;
+          console.log(id);
+          // console.log(doc.data());
+          console.log(arrList);
+          itemTodos.innerHTML = (arrList)
+          .map(
+            (todo) =>
+              // console.log(todo)
+              `  
       ${
         todo.done
           ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)
-          ' id=${todo.id} data-index=${todo.id}  >    
+           id=${todo.id} data-index=${todo.id}>    
           ${todo.text}      
           <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
           Delete
     </button>
     </div>`
           : `<div class="todo_item dragitem" onClick='checkFunction(this.id) 	  
-          ' id=${todo.id} data-index=${todo.id}  >     
+           id=${todo.id} data-index=${todo.id}  >     
           ${todo.text}
           <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
-          
     Delete
     </button>
-    
-    
-    
     </div>`
-      } 
-    
-    
-      `,
-            );
-            // )
-          });
-        });
-      // .join("");
-      console.log(arrList);
-      // .then(
-      // ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
+      }`,
+          )
+          .join("");
+        })
 
-      // rebuild thi lines
 
-      unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
-    } else {
-      unsubscribe && unsubscribe();
-    }
-  });
-}
+        // )
+      });
+    // .join("");
+    console.log(arrList);
+    // .then(
+    // ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
 
-renderTodos();
-renderTodos();
+    // rebuild thi lines
+
+    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
+  } else {
+    unsubscribe && unsubscribe();
+  }
+});
+// }
+
+// renderTodos();
+// renderTodos();
 export function deleteTodo(ClickedId) {
   const { ...index } = ClickedId.dataset;
   const newListOfToDo = ListOfToDo.filter((todo) => todo.id != ClickedId.id);
   localStorage.setItem("ListTodo", JSON.stringify(newListOfToDo));
-  renderTodos();
+  // renderTodos();
   event.stopPropagation();
 }
 
