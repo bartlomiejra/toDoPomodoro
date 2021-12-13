@@ -206,8 +206,8 @@ function actualDateTime() {
   dateToday = `${yyyy}-${mm}-${dd}`;
   dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
 }
-
 actualDateTime();
+
 tasks = JSON.parse(localStorage.getItem("Items")) || [];
 taskToday = tasks.filter((items) => items.data === dateToday);
 actualList = JSON.parse(localStorage.getItem("Actual")) || [];
@@ -767,6 +767,7 @@ function titleName() {
 titleName();
 
 export {
+actualDateTime,
   dateToday,
   renderPomodoroTasks,
   actualList,

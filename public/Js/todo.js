@@ -28,35 +28,7 @@ export const todoCard = document.querySelector(".todoCard");
 export const taskCategory = document.querySelector(".taskCategory");
 export const itemTodos = document.querySelector(".itemTodos");
 const thingsRef = db.collection("users");
-export let ListOfToDo = JSON.parse(localStorage.getItem("ListTodo"));
-if (ListOfToDo == null) {
-  ListOfToDo = [
-    {
-      id: 0,
-      text: "First 🥇",
-      done: false,
-      data: "30.1.21",
-    },
-    {
-      id: 1,
-      text: "water the plants 🪴",
-      done: false,
-      data: "30.7.21",
-    },
-    {
-      id: 2,
-      text: "stay focused ✨",
-      done: true,
-      data: "30.2.21",
-    },
-    {
-      id: 3,
-      text: "don't forget to stretch 🧘",
-      done: false,
-      data: "30.2.21",
-    },
-  ];
-}
+
 window.deleteTodo = deleteTodo;
 let Lista;
 auth.onAuthStateChanged((user) => {
@@ -99,7 +71,7 @@ auth.onAuthStateChanged((user) => {
                   });
               });
             const dragItems = document.querySelectorAll(".dragitem");
-           }
+          }
         };
 
         querySnapshot.docs.map((doc) => {
@@ -130,15 +102,14 @@ auth.onAuthStateChanged((user) => {
     Delete
     </button>
     </div>`
-      }`
+      }`,
           )
           .join("");
       });
     //
 
     unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
-               todoTitle.value = "";
-
+    todoTitle.value = "";
   } else {
     unsubscribe && unsubscribe();
   }
@@ -154,18 +125,25 @@ function deleteTodo(ClickedId) {
 }
 
 function checkFunction(clicked_id) {
-  console.log("esss")
+  console.log("esss");
   db.collection("users")
-  .doc(logUserId)
-  .collection("ListTodo")
-  .doc(clicked_id)
-  .update({
-    done: !db.collection("users").doc(logUserId).collection("ListTodo").doc(clicked_id).done,
-  })
-  .then(() => {})
-  .catch((error) => {});
+    .doc(logUserId)
+    .collection("ListTodo")
+    .doc(clicked_id)
+    .update({
+      done: !db
+        .collection("users")
+        .doc(logUserId)
+        .collection("ListTodo")
+        .doc(clicked_id).done,
+    })
+    .then(() => {})
+    .catch((error) => {});
   const lasts = db.collection("users").doc(logUserId).collection("ListTodo");
   const objIndex = ListOfToDo.findIndex((obj) => obj.id == clicked_id);
   event.stopPropagation();
-  console.log(db.collection("users").doc(logUserId).collection("ListTodo").doc(clicked_id).id);
+  console.log(
+    db.collection("users").doc(logUserId).collection("ListTodo").doc(clicked_id)
+      .id
+  );
 }

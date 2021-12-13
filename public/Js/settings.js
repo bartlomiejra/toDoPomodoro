@@ -85,12 +85,10 @@ auth.onAuthStateChanged((user) => {
 
 </div>
 `;
-
         SetTimes.innerHTML = `
   <li class="duration optionsBox"  >
                 <label for="quantity">Pomodore duration:</label>
 <div class="time">
-
                 <input
 oninput="this.nextElementSibling.value = value"
 type="range"
@@ -104,11 +102,8 @@ type="range"
 				  </li>
 				  <li class="duration optionsBox">
 				  <label for="quantitybreak">Pomodore break:</label>
-				  
-				  <div class="time">
-				  
+				  				  <div class="time">
 				  <input
-                 
 		oninput="this.nextElementSibling.value = value"
 		
 		type="range"
@@ -127,7 +122,6 @@ type="range"
     unsubscribe && unsubscribe();
   }
 });
-console.log(logUserId);
 export function closeModal(modal) {
   if (modal == null) return;
   settingsDiv.classList.remove("active");
@@ -182,4 +176,4 @@ if (firestoreTheme == "Light") {
 }
 // const thingsList = document.getElementById("thingsList");
 
-export{ logUserId, unsubscribe, thingsRef};
+export { logUserId, unsubscribe, thingsRef };
