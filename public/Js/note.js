@@ -36,7 +36,7 @@ function actualDateTime() {
 actualDateTime();
 auth.onAuthStateChanged((user) => {
   if (user) {
-    db.collection("users").doc(logUserId).collection("Notes");;
+    db.collection("users").doc(logUserId).collection("Notes");
     unsubscribe = thingsRef
       .doc(logUserId)
       .collection("Notes")

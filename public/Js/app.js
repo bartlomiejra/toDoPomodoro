@@ -1,4 +1,13 @@
 /* eslint-disable prettier/prettier */
+import {
+  getFirestore,
+  onSnapshot,
+  doc,
+  getDoc,
+  getDocs,
+  where,
+  collection,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
    import {
   showToDoCard,
   showProjectList,
@@ -6,6 +15,7 @@
   centerDiv,
   showDiv,
 } from "./showElements.js";
+import { logUserId, thingsRef } from "./settings.js";
 
 import {
   timer,
@@ -21,6 +31,8 @@ import * as note from "./note.js";
 import { displayNotification } from "./notification.js";
 import * as settingss from "./settings.js";
 import * as firebase from "./firebase.js";
+
+import { auth, db } from "./firebase.js";
 
 // import * as settingsfile from './settings.js';
 window.openNoteCard = openNoteCard;
@@ -222,8 +234,27 @@ if (actualList == 0) {
 } else {
   project = JSON.parse(localStorage.getItem("project"));
 }
-
+let unsubscribe;
+let Lista;
 function renderPomodoroTasks(todolist = []) {
+  auth.onAuthStateChanged((user) => {
+  if (user) {
+    db.collection("users").doc(logUserId).collection("Items");
+    unsubscribe = thingsRef
+      .doc(logUserId)
+      .collection("Items")
+      .onSnapshot((querySnapshot) => {
+        const allnotelist = [];
+        querySnapshot.docs.map((doc) => {
+          Lista = doc.data();
+          allnotelist.push(Lista);
+          // noteid = doc.data().id;
+          // noteTitle = doc.data().title;
+          // notedate = doc.data().date;
+          // notenote = doc.data().note;
+        });
+        console.log(Lista);
+
   // console.log("render");
   // console.log(currentProject);
   actualList = todolist;
@@ -236,7 +267,7 @@ function renderPomodoroTasks(todolist = []) {
   if (actualList.length > 0) {
     emptyList.classList.add("none");
   }
-  todoList.innerHTML = actualList
+  todoList.innerHTML = allnotelist
     .map(
       (todo) => `${todo.done
           ? '<li   class="center_divT completed">'
@@ -287,6 +318,11 @@ aria-hidden="true"></i></button>
     )
 
     .join("");
+     });
+      } else {
+    unsubscribe && unsubscribe();
+  }
+});
 }
 window.showDiv = showDiv;
 
@@ -316,47 +352,69 @@ window.onresize = function resizeFun() {
 const shortBreak = pomodorebreakTime * 60;
 
 function addTodo(event) {
-  currentProject = JSON.parse(localStorage.getItem("Current")) || [];
-  if (currentProject == 0) {
-    currentProject = "No Project";
-  } else {
-    currentProject = currentProject[0].name;
-  }
+   let lastId;
+   const todoInput = document.querySelector(".center_todoInput");
 
-  todos = JSON.parse(localStorage.getItem("Items"));
+            let nextId;
+   db.collection("users")
+              .doc(logUserId)
+              .collection("Items")
+              .orderBy("id", "asc")
+              .limitToLast(1)
+              .get()
+              .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                  lastId = doc.data().id;
+                  console.log(lastId);
+                  lastId++;
+                  nextId = lastId.toString();
+                  console.log(nextId);
+                });
 
-  // find last id number
-  let last = 0;
-  todos.forEach((task) => {
-    if (task.id > last) {
-      last = task.id;
-    }
-  });
-  event.preventDefault();
-  const item = {
-    id: (last += 1),
+                db.collection("users")
+                  .doc(logUserId)
+                  .collection("Items")
+                  .doc(nextId)
+                  .set({
+                   id: lastId,
     text: todoInput.value,
     done: false,
     focus: 0,
-    project: currentProject,
+    // project: currentProject,
     repeatday: "1",
     repeatpartoftime: "day",
     data: dateToday,
-
     note: "",
-  };
-  todoInput.value = "";
-  todos.push(item);
-  localStorage.setItem("Items", JSON.stringify(todos));
+                  });
+              });
+
+  event.preventDefault();
+
   renderPomodoroTasks(todos, todoList);
   renderPomodoroTasks(actualList, todoList);
   statTask();
   centerDiv.classList.add("active");
   centerDiv.classList.remove("none");
   // centerDiv.add.classList("active");
+  // todoInput.value = "";
 }
-
 function statTask() {
+db.collection("users").doc(logUserId).collection("STat").onSnapshot((querySnapshot) => {
+
+         const elements = querySnapshot.docs;
+
+    // const dbhistory = querySnapshot.docs.map((doc) => {
+    //     //   firestoreTheme = doc.data().Theme;
+    //     //   firestorepomodoreTime = doc.data().pomodoreTime;
+    //     //   firestoreBreakTime = doc.data().breakTime;
+    //     //   firestoreSound = doc.data().Sound;
+        // });
+        console.log(querySnapshot.docs());
+        // console.log("dbhistory");
+// console.log(dbhistory);
+      });
+      console.log(elements);
+
   let toBeCompleted = 0;
   let countCompleted = 0;
   let estimated = 0;
@@ -429,6 +487,7 @@ function btnActtion(e) {
     const { ...index } = e.target.dataset;
     const todo = item.parentElement;
     todo.classList.add("fall");
+
     const thisitem = todos.findIndex((char) => char.id == index.index);
     todos.splice(thisitem, 1);
     localStorage.setItem("Items", JSON.stringify(todos));
