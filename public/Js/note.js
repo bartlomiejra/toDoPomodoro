@@ -44,7 +44,7 @@ auth.onAuthStateChanged((user) => {
         const allnotelist = [];
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
-          allnotelist.push(Lista);;
+          allnotelist.push(Lista);
           noteid = doc.data().id;
           noteTitle = doc.data().title;
           notedate = doc.data().date;

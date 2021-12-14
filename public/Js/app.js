@@ -322,6 +322,9 @@ aria-hidden="true"></i></button>
       } else {
     unsubscribe && unsubscribe();
   }
+
+
+  
 });
 }
 window.showDiv = showDiv;
@@ -398,80 +401,154 @@ function addTodo(event) {
   // centerDiv.add.classList("active");
   // todoInput.value = "";
 }
+let dbtoBeCompleted;
+let dbcountCompleted;
+let dbestimated;
+let dbelapsed;
+
+//funkcja odpowiadająca za wyliczanie i aktualizacje statystyk 
 function statTask() {
-db.collection("users").doc(logUserId).collection("STat").onSnapshot((querySnapshot) => {
+
+db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("STat").onSnapshot((querySnapshot) => {
 
          const elements = querySnapshot.docs;
 
-    // const dbhistory = querySnapshot.docs.map((doc) => {
-    //     //   firestoreTheme = doc.data().Theme;
-    //     //   firestorepomodoreTime = doc.data().pomodoreTime;
-    //     //   firestoreBreakTime = doc.data().breakTime;
-    //     //   firestoreSound = doc.data().Sound;
-        // });
-        console.log(querySnapshot.docs());
-        // console.log("dbhistory");
+    const db = querySnapshot.docs.map((doc) => {
+          dbtoBeCompleted = doc.data().comp;
+          dbcountCompleted = doc.data().complete;
+          dbestimated = doc.data().estimated;
+          dbelapsed = doc.data().elapsed;
+        });
+        // console.log(querySnapshot.docs());
+                console.log(dbtoBeCompleted);
 // console.log(dbhistory);
-      });
-      console.log(elements);
+console.log(dateToday);
+});
+let historyTasks;
+let  Lista;
+db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("History")
+.onSnapshot((querySnapshot) => {
+       const historylist = [];
 
-  let toBeCompleted = 0;
-  let countCompleted = 0;
-  let estimated = 0;
-  //* counting statiscics
-  const history = JSON.parse(localStorage.getItem("History"));
-  let historytaskToday;
-  historytaskToday = history.filter((items) => items.data === dateToday);
-  for (let i = 0; i < historytaskToday.length; i += 1) {
-    if (historytaskToday[i].done === true) {
-      countCompleted += 1;
-    } else {
-      toBeCompleted += 1;
-    }
+  querySnapshot.docs.map((doc) => {
+  Lista = doc.data();
+          historylist.push(Lista);
+    historyTasks = doc.data();
+  
+  });
+  
+  
+  for (let i = 0; i < historylist.length; i += 1) {
+    if (historylist[i].data == dateToday) {
+      dbcountCompleted += 1;
+    } 
+    
   }
 
-  taskToday = todos.filter((items) => items.data === dateToday);
-  for (let i = 0; i < taskToday.length; i += 1) {
-    if (taskToday[i].done === true) {
-      countCompleted += 1;
-    } else {
-      toBeCompleted += 1;
-    }
-  }
+  
+  
+//querysnapchot from collection Items 
+db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
+.onSnapshot((querySnapshot) => {
+       const todoList = [];
 
-  document.getElementById("completedTasks").innerHTML = countCompleted;
-  document.getElementById("taskstobe").innerHTML = toBeCompleted;
-  const totalfocustime = JSON.parse(localStorage.getItem("Items"));
+  querySnapshot.docs.map((doc) => {
+  Lista = doc.data();
+          todoList.push(Lista);
+   
+  });
+  
+  
+  for (let i = 0; i < todoList.length; i += 1) {
+    if (todoList[i].done == true) {
+      dbcountCompleted += 1;
+    } else{
+      dbtoBeCompleted += 1;
+    }
+    
+  }
   let focuscount = 0;
-  if (totalfocustime != null) {
-    totalfocustime.forEach((element) => {
-      const ast = element.focus;
-      focuscount += ast;
-    });
-  }
 
-  estimated = toBeCompleted * pomodoreDuration;
-  const minutesEs = estimated % 60;
-  const hours = Math.floor(estimated / 60);
-  const estimatedHM = `${hours}.${minutesEs < 10 ? "0" : ""}${minutesEs}`;
-  document.getElementById("estimated").innerHTML = estimatedHM;
-  const elapsed = Math.floor(focuscount / 60);
-  const hoursel = Math.floor(elapsed / 60);
-  const minutes = elapsed % 60;
-  const elapsedHM = `${hoursel}.${minutes < 10 ? "0" : ""}${minutes}`;
-  document.getElementById("elapse").innerHTML = elapsedHM;
+   for (let i = 0; i < todoList.length; i += 1) {
+     let ast = todoList[i].focus;
+      focuscount += ast;
+    }
+    console.log(focuscount);
+    
+  
+    
+    dbestimated = dbtoBeCompleted * pomodoreDuration;
+    const minutesEs = dbestimated % 60;
+    const hours = Math.floor(dbestimated / 60);
+    const estimatedHM = `${hours}.${minutesEs < 10 ? "0" : ""}${minutesEs}`;
+    document.getElementById("estimated").innerHTML = estimatedHM;
+    const dbelapsed = Math.floor(focuscount / 60);
+    const hoursel = Math.floor(dbelapsed / 60);
+    const minutes = dbelapsed % 60;
+    const elapsedHM = `${hoursel}.${minutes < 10 ? "0" : ""}${minutes}`;
+    document.getElementById("elapse").innerHTML = elapsedHM;
+    document.getElementById("completedTasks").innerHTML = dbcountCompleted;
+    document.getElementById("taskstobe").innerHTML = dbtoBeCompleted;
+  });
+});
+
+
+
+  // let toBeCompleted = 0;
+  // let countCompleted = 0;
+  // let estimated = 0;
+
+  // //* counting statiscics
+
+  
+
+  // taskToday = todos.filter((items) => items.data === dateToday);
+  // for (let i = 0; i < taskToday.length; i += 1) {
+  //   if (taskToday[i].done === true) {
+  //     countCompleted += 1;
+  //   } else {
+  //     toBeCompleted += 1;
+  //   }
+  // }
+
+  // const totalfocustime = JSON.parse(localStorage.getItem("Items"));
+  // let focuscount = 0;
+  // if (totalfocustime != null) {
+  //   totalfocustime.forEach((element) => {
+  //     const ast = element.focus;
+  //     focuscount += ast;
+  //   });
+  // }
+
+  // estimated = toBeCompleted * pomodoreDuration;
+  // const minutesEs = estimated % 60;
+  // const hours = Math.floor(estimated / 60);
+  // const estimatedHM = `${hours}.${minutesEs < 10 ? "0" : ""}${minutesEs}`;
+  // document.getElementById("estimated").innerHTML = estimatedHM;
+  // const elapsed = Math.floor(focuscount / 60);
+  // const hoursel = Math.floor(elapsed / 60);
+  // const minutes = elapsed % 60;
+  // const elapsedHM = `${hoursel}.${minutes < 10 ? "0" : ""}${minutes}`;
   //* creating item class to store stats, i want to add this number to localstore.
-  const statistics = JSON.parse(localStorage.getItem("STat")) || [];
-  const stat = {
-    estimated: estimatedHM,
-    comp: toBeCompleted,
-    elapsed,
-    complete: countCompleted,
-  };
-  statistics.splice(0, 5);
-  statistics.push(stat);
-  localStorage.setItem("STat", JSON.stringify(statistics));
+  // const statistics = JSON.parse(localStorage.getItem("STat")) || [];
+  // const stat = {
+  //   estimated: estimatedHM,
+  //   comp: toBeCompleted,
+  //   elapsed: elapsed,
+  //   complete: countCompleted,
+  // };
+  // statistics.splice(0, 5);
+  // statistics.push(stat);
+  // localStorage.setItem("STat", JSON.stringify(statistics));
 }
+
+
+
+
+
+
+
+
 statTask();
 todoButton.addEventListener("click", addTodo);
 renderPomodoroTasks(actualList, todoList);
