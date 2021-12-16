@@ -236,6 +236,7 @@ if (actualList == 0) {
 }
 let unsubscribe;
 let Lista;
+const allnotelist = [];
 function renderPomodoroTasks(todolist = []) {
   auth.onAuthStateChanged((user) => {
   if (user) {
@@ -244,7 +245,6 @@ function renderPomodoroTasks(todolist = []) {
       .doc(logUserId)
       .collection("Items")
       .onSnapshot((querySnapshot) => {
-        const allnotelist = [];
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
           allnotelist.push(Lista);
@@ -253,11 +253,12 @@ function renderPomodoroTasks(todolist = []) {
           // notedate = doc.data().date;
           // notenote = doc.data().note;
         });
+      
         console.log(Lista);
 
   // console.log("render");
   // console.log(currentProject);
-  actualList = todolist;
+  actualList = allnotelist;
 
   window.localStorage.setItem("Actual", JSON.stringify(actualList));
 
@@ -322,9 +323,6 @@ aria-hidden="true"></i></button>
       } else {
     unsubscribe && unsubscribe();
   }
-
-
-  
 });
 }
 window.showDiv = showDiv;
@@ -401,31 +399,29 @@ function addTodo(event) {
   // centerDiv.add.classList("active");
   // todoInput.value = "";
 }
-let dbtoBeCompleted;
-let dbcountCompleted;
-let dbestimated;
-let dbelapsed;
 
-//funkcja odpowiadająca za wyliczanie i aktualizacje statystyk 
+// funkcja odpowiadająca za wyliczanie i aktualizacje statystyk
 function statTask() {
-
+  let dbtoBeCompleted = 0;
+  let dbestimated = 0
+  let dbelapsed =0 ;
+  let dbcountCompleted = 0;
 db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("STat").onSnapshot((querySnapshot) => {
-
-         const elements = querySnapshot.docs;
-
-    const db = querySnapshot.docs.map((doc) => {
+  const elements = querySnapshot.docs;
+  
+  const db = querySnapshot.docs.map((doc) => {
           dbtoBeCompleted = doc.data().comp;
           dbcountCompleted = doc.data().complete;
           dbestimated = doc.data().estimated;
           dbelapsed = doc.data().elapsed;
         });
         // console.log(querySnapshot.docs());
-                console.log(dbtoBeCompleted);
+                // console.log(dbtoBeCompleted);
 // console.log(dbhistory);
-console.log(dateToday);
+// console.log(dateToday);
 });
 let historyTasks;
-let  Lista;
+let Lista;
 db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("History")
 .onSnapshot((querySnapshot) => {
        const historylist = [];
@@ -434,20 +430,15 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("History")
   Lista = doc.data();
           historylist.push(Lista);
     historyTasks = doc.data();
-  
   });
-  
-  
+
   for (let i = 0; i < historylist.length; i += 1) {
     if (historylist[i].data == dateToday) {
       dbcountCompleted += 1;
-    } 
-    
+    }
   }
 
-  
-  
-//querysnapchot from collection Items 
+// querysnapchot from collection Items
 db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
 .onSnapshot((querySnapshot) => {
        const todoList = [];
@@ -455,28 +446,23 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
   querySnapshot.docs.map((doc) => {
   Lista = doc.data();
           todoList.push(Lista);
-   
   });
-  
-  
+
   for (let i = 0; i < todoList.length; i += 1) {
     if (todoList[i].done == true) {
       dbcountCompleted += 1;
-    } else{
+    } else {
       dbtoBeCompleted += 1;
     }
-    
   }
   let focuscount = 0;
 
    for (let i = 0; i < todoList.length; i += 1) {
-     let ast = todoList[i].focus;
+     const ast = todoList[i].focus;
       focuscount += ast;
     }
-    console.log(focuscount);
-    
-  
-    
+    // console.log(focuscount);
+
     dbestimated = dbtoBeCompleted * pomodoreDuration;
     const minutesEs = dbestimated % 60;
     const hours = Math.floor(dbestimated / 60);
@@ -484,23 +470,22 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
     document.getElementById("estimated").innerHTML = estimatedHM;
     const dbelapsed = Math.floor(focuscount / 60);
     const hoursel = Math.floor(dbelapsed / 60);
+    console.log(hoursel);
     const minutes = dbelapsed % 60;
+    console.log(minutes);
     const elapsedHM = `${hoursel}.${minutes < 10 ? "0" : ""}${minutes}`;
+    console.log(elapsedHM);
     document.getElementById("elapse").innerHTML = elapsedHM;
     document.getElementById("completedTasks").innerHTML = dbcountCompleted;
     document.getElementById("taskstobe").innerHTML = dbtoBeCompleted;
   });
 });
 
-
-
   // let toBeCompleted = 0;
   // let countCompleted = 0;
   // let estimated = 0;
 
   // //* counting statiscics
-
-  
 
   // taskToday = todos.filter((items) => items.data === dateToday);
   // for (let i = 0; i < taskToday.length; i += 1) {
@@ -542,13 +527,6 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
   // localStorage.setItem("STat", JSON.stringify(statistics));
 }
 
-
-
-
-
-
-
-
 statTask();
 todoButton.addEventListener("click", addTodo);
 renderPomodoroTasks(actualList, todoList);
@@ -564,6 +542,23 @@ function btnActtion(e) {
     const { ...index } = e.target.dataset;
     const todo = item.parentElement;
     todo.classList.add("fall");
+console.log(index.index);
+
+let thisItem = []
+allnotelist.forEach((ele) => {
+  if (ele.id == index.index) {
+    thisItem = ele.id
+  }
+});
+// });
+toString(thisItem);
+console.log(thisItem);
+db.collection("users").doc(logUserId).collection("Items");
+unsubscribe = thingsRef
+.doc(logUserId)
+.collection("Items").doc(thisItem).delete();
+// console.log(allnotelist);
+
 
     const thisitem = todos.findIndex((char) => char.id == index.index);
     todos.splice(thisitem, 1);
