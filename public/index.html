@@ -84,6 +84,9 @@ console.log(firebase);
 <body>
   <div class="container">
      <div  id="whenSignedOut">
+
+
+      
        <form  class="formlog" action="">
   <h1>SignIn.</h1>
 
@@ -94,7 +97,11 @@ console.log(firebase);
   <input class="formlog_input" type="email" id="email" placeholder="Email">
   <input class="formlog_input" type="password" id="password" placeholder="Password">
   <button  class="formlog_sign" id="signInEmail" class="btn btn-primary" disabled>Sign up with Email</button>
-  <p>Dont hava an account? <a href="">Create Account</a>
+  <p>Dont hava an account? 
+    <Button
+
+
+  id="createAccound">Create Account</Button>
     <br>
 
     <a href="">Forgot Password?</a>
@@ -107,6 +114,16 @@ console.log(firebase);
 
   <p>Created by <a href="https://github.com/bartlomiejra">bartlomiejra</a></p>
 </div>
+
+      <div class="modal-signup" class="modal">
+        <h1</h1>
+        <form id="signup-Form" class="formlog" >
+           <input class="formlog_input" ="text" id="signup-email" name="mail" placeholder="E-mail">
+          <input type="password" class="formlog_input"  id="signup-password" name="pwd" placeholder="Password">
+          <button type="submit" class="formlog_sign" name="signup-submit">Signup</button>
+        </form>
+      </div>
+ 
 </div>
   
   

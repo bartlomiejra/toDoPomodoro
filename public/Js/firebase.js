@@ -13,83 +13,56 @@ const signInFacebook = document.getElementById("signInFacebook");
 const signInGithub = document.getElementById("signInGithub");
 const signOutBtn = document.getElementById("signOutBtn");
 const signInEmail = document.getElementById("signInEmail");
+const createAccound = document.getElementById("createAccound");
 
 const userDetails = document.getElementById("userDetails");
 
 const provider = new firebase.auth.GoogleAuthProvider();
-var providerFb = new firebase.auth.FacebookAuthProvider();
-var providerGh = new firebase.auth.GithubAuthProvider();
+const providerFb = new firebase.auth.FacebookAuthProvider();
+const providerGh = new firebase.auth.GithubAuthProvider();
+// const providerMial = new firebase.auth.createUserWithEmailAndPassword();
 
 const providerEmail = new firebase.auth.EmailAuthProvider();
-
 console.log(provider);
 
-
-signInEmail.onclick = (event) => {
-
-  auth.signInWithPopup(providerEmail);
+createAccound.onClick = (event) => {
+  auth.signInWithPopup(providerGh);
   event.preventDefault();
+  // whenSignedIn.hidden = false;
+  whenSignedOut.hidden = true;
 };
-signInGithub.onclick = (event) => {
 
+signInGithub.onclick = (event) => {
   auth.signInWithPopup(providerGh);
   event.preventDefault();
 };
 
+const signupForm = document.querySelector("#signup-Form");
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // getu user info
+  const email = signupForm["signup-email"].value;
+  const password = signupForm["signup-password"].value;
 
-// Confirm the link is a sign-in with email link.
-if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
-  // Additional state parameters can also be passed via URL.
-  // This can be used to continue the user's intended action before triggering
-  // the sign-in operation.
-  // Get the email if available. This should be available if the user completes
-  // the flow on the same device where they started it.
-  var email = window.localStorage.getItem('emailForSignIn');
-  if (!email) {
-    // User opened the link on a different device. To prevent session fixation
-    // attacks, ask the user to provide the associated email again. For example:
-    email = window.prompt('Please provide your email for confirmation');
-  }
-  // The client SDK will parse the code from the link for you.
-  firebase.auth().signInWithEmailLink(email, window.location.href)
-    .then((result) => {
-      // Clear email from storage.
-      window.localStorage.removeItem('emailForSignIn');
-      // You can access the new user via result.user
-      // Additional user info profile not available via:
-      // result.additionalUserInfo.profile == null
-      // You can check if the user is new or existing:
-      // result.additionalUserInfo.isNewUser
-    })
-    .catch((error) => {
-      // Some error occurred, you can inspect the code: error.code
-      // Common errors could be invalid email and invalid or expired OTPs.
-    });
-}
+  console.log(email, password);
 
-// auth.onAuthStateChanged((user) => {
+  // signup to user
 
+  auth.createUserWithEmailAndPassword(email, password).then((cred) => {
+    console.log(cred.user);
+  });
+});
+auth.onAuthStateChanged((user) => {
+  console.log(user.uid);
+  db.collection("users")
+  .set(
+    doc(user.uid)
+    )
+    
 
-
-//   console.log(user.uid);
-//   db.collection("users")
-//     .doc(user.uid).collection("ListTodo").doc("0")
-//     .set({
-//       data: "30.1.21",
-//       title: "tisssst",
-//       id: 0,
-//       done: false
-//     }).doc("1").set(
-
-//       {
-//         data: "30.1.21",
-//         title: "tesst",
-//         id: 1,
-//         done: false
-        
-//       }
-//       )
-//   });
+  
+   
+});
 
 // auth.onAuthStateChanged((user) => {
 //   console.log(user.uid);
@@ -246,16 +219,11 @@ if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
 // })
 /// Sign in event handlers
 
-
-
-
 signInFacebook.onclick = (event) => {
-
   auth.signInWithPopup(providerFb);
   event.preventDefault();
 };
 
-console.log(signInGoogle);
 signInGoogle.onclick = (event) => {
   auth.signInWithPopup(provider);
   event.preventDefault();
@@ -271,16 +239,16 @@ auth.onAuthStateChanged((user) => {
     // signed in
     whenSignedIn.hidden = false;
     whenSignedOut.hidden = true;
-    
-    whenSignedOut.setAttribute('display','none');
+
+    whenSignedOut.setAttribute("display", "none");
     userDetails.innerHTML = `<p>Hi ${user.displayName}!</p>`;
   } else {
     // not signed in
-    whenSignedOut.setAttribute('display','block');
-    
+    whenSignedOut.setAttribute("display", "block");
+
     whenSignedIn.hidden = true;
     whenSignedOut.hidden = false;
-    
+
     userDetails.innerHTML = "";
   }
 });
