@@ -1459,3 +1459,27 @@ color: filter(brightness(150%));
 	}
 	
 }
+
+#createAccound{
+background-color: transparent;
+    //   color: #b4adad;
+	     color: #5a5858;
+		 font-size: 1rem;
+		 font-weight: 700;
+    text-decoration: none;
+    font-size: 1.2rem;
+	&:hover{
+			color: var(--hover_color);
+		}
+
+
+
+
+
+}
+// .modal-signin{
+// display: block;
+// }
+// .modal-signup{
+// display: none;
+// }
