@@ -7,42 +7,36 @@ const signInFacebook = document.getElementById("signInFacebook");
 const signInGithub = document.getElementById("signInGithub");
 const signOutBtn = document.getElementById("signOutBtn");
 const signInEmail = document.getElementById("signInEmail");
-const createAccound = document.getElementById("createAccound");
 const userDetails = document.getElementById("userDetails");
 const provider = new firebase.auth.GoogleAuthProvider();
+const showSignIn = document.getElementById("showSignIn");
 const providerFb = new firebase.auth.FacebookAuthProvider();
 const providerGh = new firebase.auth.GithubAuthProvider();
 const signupForm = document.querySelector("#signup-Form");
 // const createAccound = document.querySelector("#createAccound");
 
-const signInForm = document.getElementsByClassName("modal-signin");
-const signUpForm = document.getElementsByClassName("modal-signup");
-
-createAccound.onClick = (event) => {
-  console.log("działam");
-  // event.preventDefault();
-  signInForm.ClassList.add("none");
-  signUpForm.ClassList.remove("none");
-
-
+const createAccound = document.getElementById("createAccound");
+const signInForm = document.getElementById("signin");
+const signUpForm = document.getElementById("signup");
+createAccound.onclick = (event) => {
+  event.preventDefault();
+  signUpForm.classList.remove("none");
+  signInForm.classList.add("none");
+};
+showSignIn.onclick = (event) => {
+  event.preventDefault();
+  signUpForm.classList.add("none");
+  signInForm.classList.remove("none");
 };
 const providerEmail = new firebase.auth.EmailAuthProvider();
-// console.log(provider);
-
-createAccound.onClick = (event) => {
-  auth.signInWithPopup(providerGh);
-  event.preventDefault();
-  whenSignedOut.hidden = true;
-};
-
 signInGithub.onclick = (event) => {
   auth.signInWithPopup(providerGh);
   event.preventDefault();
 };
 
-
 signInFacebook.onclick = (event) => {
   auth.signInWithPopup(providerFb);
+  console.log("działamfb");
   event.preventDefault();
 };
 
@@ -56,42 +50,35 @@ signOutBtn.onclick = (event) => {
   event.preventDefault();
 };
 
-
-//Create account 
+// Create account
 signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const email = signupForm["signup-email"].value;
   const password = signupForm["signup-password"].value;
 
-
   // signup to user
 
-  auth.createUserWithEmailAndPassword(email, password).then((cred) => {
-    console.log(cred.user);
-
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorCode, errorMessage);
-  });
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then((cred) => {
+      console.log(cred.user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    });
 });
 
-
-
-
 auth.onAuthStateChanged((user) => {
-
   if (user) {
-
-    //add user document and first Todo to firestore 
+    // add user document and first Todo to firestore
     db.collection("users").doc(user.uid).collection("ListTodo").doc("0").set({
       id: 0,
       text: "First Todo",
       done: false,
       data: "31.1.21",
     });
-
 
     // signed in
     whenSignedIn.hidden = false;
@@ -111,5 +98,3 @@ auth.onAuthStateChanged((user) => {
 });
 
 export { auth, db };
-
-
