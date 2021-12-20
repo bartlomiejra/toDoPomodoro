@@ -96,9 +96,10 @@ auth.onAuthStateChanged((user) => {
       id: 0,
       done: false,
       focus: 0,
+      data: "31/11/21",
       note: "Note text..",
       project: "Mindfulness",
-      repeatday: "1",
+      repeatDay: "1",
       repeatpartoftime: "day",
       text: "Meditate🧘",
     });
@@ -108,7 +109,7 @@ auth.onAuthStateChanged((user) => {
       focus: 0,
       note: "Note text..",
       project: "Mindfulness",
-      repeatday: "1",
+      repeatDay: "1",
       repeatpartoftime: "day",
       text: "Log in to the app",
     });

@@ -1,4 +1,14 @@
 import {
+  getFirestore,
+  onSnapshot,
+  doc,
+  getDoc,
+  getDocs,
+  where,
+  collection,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { auth, db } from "./firebase.js";
+import {
   actualList,
   todoList,
   renderPomodoroTasks,
@@ -7,9 +17,11 @@ import {
   leftDiv,
   description,
   pomodoreDuration,
+  allnotelist,
 } from "./app.js";
 
 export { showToDoCard, showProjectList, activeProject, centerDiv, showDiv };
+let  unsubscribe;
 
 const centerDiv = document.querySelector(".center");
 const menuLis = document.querySelectorAll(".nav_element");
@@ -43,14 +55,42 @@ function activeProject(clicked_id) {
   // nameofProject =
 }
 window.activeProject = activeProject;
+
+const todox = [];
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    db.collection("users")
+      .doc(user.uid)
+      .collection("Project")
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.docs.map((doc) => {
+          const Lista = doc.data();
+          todox.push(Lista);
+        });
+          });
+  }  else {
+    unsubscribe && unsubscribe();
+  }
+});
+
 function showDiv(clickedId) {
   description.classList.remove("none");
   description.classList.add("right--active");
+  // renderdetals();
+
+  let taskDetails = [];
+  console.log(allnotelist);
+  allnotelist.forEach((ele) => {
+    if (ele.id == clickedId) {
+      taskDetails = ele;
+    }
+  });
+  console.log(taskDetails);
   renderdetals();
   function renderdetals() {
-    const todoss = JSON.parse(localStorage.getItem("Items")) || [];
-    const filter = todoss.filter((p) => p.id == clickedId);
-    const taskDetails = filter[0];
+    // const todoss = JSON.parse(localStorage.getItem("Items")) || [];
+    // const filter = todoss.filter((p) => p.id == clickedId);
+    // const taskDetails = filter;
     description.innerHTML = `
 <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
 <i class="fas fa-times"
@@ -141,28 +181,53 @@ function showDiv(clickedId) {
       centerDiv.classList.add("active");
       centerDiv.classList.remove("none");
     }
-    function updateDetails() {
-      const proj = JSON.parse(localStorage.getItem("Items"));
-      const filtrPr = proj.filter((p) => p.id == clickedId);
-      const Idtoedit = filtrPr[0];
-      Idtoedit.data = date.value;
-      Idtoedit.project = project.value;
-      Idtoedit.note = note.value;
-      Idtoedit.repeatday = repeatDay.value;
-      Idtoedit.repeatpartoftime = timePart.value;
-      localStorage.setItem("Items", JSON.stringify(proj));
-    }
+function updateDetails() {
+      // const proj = JSON.parse(localStorage.getItem("Items"));
+      // const filtrPr = proj.filter((p) => p.id == clickedId);
+      // const Idtoedit = filtrPr[0];
+      taskDetails.data = date.value;
+      taskDetails.project = project.value;
+      taskDetails.note = note.value;
+      taskDetails.repeatday = repeatDay.value;
+      taskDetails.repeatpartoftime = timePart.value;
+      // localStorage.setItem("Items", JSON.stringify(proj));
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          let ClickedTaskId = JSON.stringify(clickedId);
+
+          console.log(ClickedTaskId);
+          // console.log(ajdi);
+          db.collection("users")
+            .doc(user.uid)
+            .collection("Items")
+            .doc(ClickedTaskId)
+            
+.update({
+              data: date.value,
+              project: project.value,
+              note: note.value,
+              repeatDay: repeatDay.value,
+              repeatpartoftime: timePart.value,
+            });
+          } 
+      });
+    }  
+
     const divT = document.querySelector(".center_divT");
     divT.addEventListener("click", renderdetals);
     getSelectOptions();
+
     renderPomodoroTasks(actualList, todoList);
   }
+
   function getSelectOptions() {
     const projectList = JSON.parse(localStorage.getItem("Project")) || [];
     const projectt = document.querySelector(".projectSelect");
-    for (let i = 0; i < projectList.length; i++) {
+
+    for (let i = 0; i < todox.length; i++) {
+      console.log(todox);
       const option = document.createElement("option");
-      const txt = document.createTextNode(projectList[i].name);
+      const txt = document.createTextNode(todox[i].name);
       option.appendChild(txt);
       projectt.insertBefore(option, projectt.lastChild);
     }

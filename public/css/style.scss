@@ -1433,8 +1433,9 @@ color: filter(brightness(150%));
 
 #whenSignedIn{
 	display:flex;
+	align-items: center;
 	flex-direction: row;
-	// align-items: center;
+	align-items: center;
 	padding: 10px;
 	margin: 10px;
 	height: 48px;
@@ -1442,7 +1443,7 @@ color: filter(brightness(150%));
 		font-size: 1rem;
 		text-align: center;
 		margin-right: 5px;
-		margin-bottom: 20px;
+		margin-bottom: 16px;
 		max-height: 35px;
 	}
 	#signOutBtn{

@@ -237,6 +237,7 @@ if (actualList == 0) {
 let unsubscribe;
 let Lista;
 const allnotelist = [];
+
 function renderPomodoroTasks(todolist = []) {
   auth.onAuthStateChanged((user) => {
   if (user) {
@@ -247,6 +248,7 @@ function renderPomodoroTasks(todolist = []) {
       .onSnapshot((querySnapshot) => {
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
+          allnotelist = 0;
           allnotelist.push(Lista);
           // noteid = doc.data().id;
           // noteTitle = doc.data().title;
@@ -259,6 +261,7 @@ function renderPomodoroTasks(todolist = []) {
   // console.log("render");
   // console.log(currentProject);
   actualList = allnotelist;
+  console.log(allnotelist);
 
   window.localStorage.setItem("Actual", JSON.stringify(actualList));
 
@@ -536,6 +539,7 @@ function btnActtion(e) {
   statTask();
 
   const item = e.target;
+   let StrThisItem
   if (item.classList[0] === "center_delete-btn") {
     audio = new Audio("Alerts/deleteTask.mp3");
     audio.play();
@@ -549,15 +553,17 @@ allnotelist.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
   }
+            StrThisItem = JSON.stringify(thisItem);
+
 });
 // });
-toString(thisItem);
-console.log(thisItem);
+toString(StrThisItem);
+console.log(StrThisItem);
 db.collection("users").doc(logUserId).collection("Items");
 unsubscribe = thingsRef
 .doc(logUserId)
-.collection("Items").doc("0").delete();
-// console.log(allnotelist);
+.collection("Items").doc(StrThisItem).delete();
+console.log(allnotelist);
 
     const thisitem = todos.findIndex((char) => char.id == index.index);
     todos.splice(thisitem, 1);
@@ -915,4 +921,5 @@ actualDateTime,
   countdownTimer,
   pomodoreDuration,
   audio,
+  allnotelist
 };
