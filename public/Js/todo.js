@@ -140,7 +140,7 @@ function checkFunction(clicked_id) {
     .then(() => {})
     .catch((error) => {});
   const lasts = db.collection("users").doc(logUserId).collection("ListTodo");
-  const objIndex = ListOfToDo.findIndex((obj) => obj.id == clicked_id);
+  // const objIndex = ListOfToDo.findIndex((obj) => obj.id == clicked_id);
   event.stopPropagation();
   console.log(
     db.collection("users").doc(logUserId).collection("ListTodo").doc(clicked_id)

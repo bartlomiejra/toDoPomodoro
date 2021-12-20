@@ -49,7 +49,7 @@ auth.onAuthStateChanged((user) => {
       const breakTimeValue = document.getElementById("quantitybreak");
       console.log("ok");
       event.preventDefault();
-      thingsRef.doc(user.uid).collection("settings").doc(logUserId).update({
+      thingsRef.doc(user.uid).collection("settings").doc("0").update({
         Sound: true,
         Theme: themeselected,
         pomodoreTime: pomodoreTime.value,

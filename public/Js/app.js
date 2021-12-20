@@ -253,7 +253,7 @@ function renderPomodoroTasks(todolist = []) {
           // notedate = doc.data().date;
           // notenote = doc.data().note;
         });
-      
+
         console.log(Lista);
 
   // console.log("render");
@@ -403,12 +403,12 @@ function addTodo(event) {
 // funkcja odpowiadająca za wyliczanie i aktualizacje statystyk
 function statTask() {
   let dbtoBeCompleted = 0;
-  let dbestimated = 0
-  let dbelapsed =0 ;
+  let dbestimated = 0;
+  let dbelapsed = 0;
   let dbcountCompleted = 0;
 db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("STat").onSnapshot((querySnapshot) => {
   const elements = querySnapshot.docs;
-  
+
   const db = querySnapshot.docs.map((doc) => {
           dbtoBeCompleted = doc.data().comp;
           dbcountCompleted = doc.data().complete;
@@ -544,10 +544,10 @@ function btnActtion(e) {
     todo.classList.add("fall");
 console.log(index.index);
 
-let thisItem = []
+let thisItem = [];
 allnotelist.forEach((ele) => {
   if (ele.id == index.index) {
-    thisItem = ele.id
+    thisItem = ele.id;
   }
 });
 // });
@@ -556,9 +556,8 @@ console.log(thisItem);
 db.collection("users").doc(logUserId).collection("Items");
 unsubscribe = thingsRef
 .doc(logUserId)
-.collection("Items").doc(thisItem).delete();
+.collection("Items").doc("0").delete();
 // console.log(allnotelist);
-
 
     const thisitem = todos.findIndex((char) => char.id == index.index);
     todos.splice(thisitem, 1);
@@ -917,5 +916,3 @@ actualDateTime,
   pomodoreDuration,
   audio,
 };
-
-
