@@ -237,8 +237,8 @@ if (actualList == 0) {
 let unsubscribe;
 let Lista;
 const allnotelist = [];
-
-function renderPomodoroTasks(todolist = []) {
+renderPomodoroTasks();
+function renderPomodoroTasks() {
   auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
@@ -246,9 +246,9 @@ function renderPomodoroTasks(todolist = []) {
       .doc(logUserId)
       .collection("Items")
       .onSnapshot((querySnapshot) => {
+        // allnotelist = 0;
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
-          allnotelist = 0;
           allnotelist.push(Lista);
           // noteid = doc.data().id;
           // noteTitle = doc.data().title;
