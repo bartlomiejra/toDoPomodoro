@@ -123,6 +123,7 @@
 }
 
 .tiles__savebtn, .tiles__deletebtn {
+  bottom: 0px;
   left: 30%;
 }
 

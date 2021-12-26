@@ -394,8 +394,8 @@ function addTodo(event) {
 
   event.preventDefault();
 
-  renderPomodoroTasks(todos, todoList);
-  renderPomodoroTasks(actualList, todoList);
+  // renderPomodoroTasks(todos, todoList);
+  // renderPomodoroTasks(actualList, todoList);
   statTask();
   centerDiv.classList.add("active");
   centerDiv.classList.remove("none");
@@ -443,10 +443,10 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("History")
 
 // querysnapchot from collection Items
 db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
-.onSnapshot((querySnapshot) => {
+.onSnapshot((querysSnapshot) => {
        const todoList = [];
 
-  querySnapshot.docs.map((doc) => {
+  querysSnapshot.docs.map((doc) => {
   Lista = doc.data();
           todoList.push(Lista);
   });
