@@ -123,7 +123,6 @@
 }
 
 .tiles__savebtn, .tiles__deletebtn {
-  bottom: 0px;
   left: 30%;
 }
 
@@ -275,5 +274,18 @@
   .tiles_smallNote {
     font-size: 0.1rem;
   }
+}
+
+.tiles__savebtn, .tiles__deletebtn {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  /* margin-bottom: 20px; */
+}
+
+.tiles__deletebtn {
+  left: 30%;
 }
 /*# sourceMappingURL=note.css.map */

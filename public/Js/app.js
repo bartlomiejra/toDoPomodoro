@@ -115,44 +115,44 @@ if (statistics == null) {
   statistics = JSON.parse(localStorage.getItem("STat"));
 }
 
-if (todos == null) {
-  todos = [
-    {
-      id: 0,
-      text: "Meditate",
-      done: false,
-      focus: 0,
-      project: "Mindfulness🧘",
-      repeatday: "1",
-      repeatpartoftime: "day",
-      data: dateToday,
-      note: " 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ",
-    },
-    {
-      id: 1,
-      text: "Basic Spanish Words",
-      done: false,
-      focus: 0,
-      project: "Spanish Lesson🇪🇸",
-      repeatday: "1",
-      repeatpartoftime: "day",
-      data: dateToday,
-      note: " Spanish Vocabulary lists Organized by Topic\n Basic Spanish vocabulary: Greetings\n Basic Spanish vocabulary: Manners\n Basic Spanish vocabulary: Your first conversation\n Basic Spanish vocabulary: Family members\n Basic Spanish vocabulary: Food and drinks\n Intermediate Spanish vocabulary: Clothing\n Intermediate Spanish vocabulary: Dates and times\n",
-    },
-    {
-      id: 4,
-      text: " Call grandma",
-      data: dateToday,
-      done: false,
-      focus: 0,
-      note: "don't forget your grandma!👵 ",
-      project: "SocialLive 🍹  ",
-      repeatday: "1",
-      repeatpartoftime: "day",
-    },
-  ];
-  window.localStorage.setItem("Items", JSON.stringify(todos));
-}
+// if (todos == null) {
+//   todos = [
+//     {
+//       id: 0,
+//       text: "Meditate",
+//       done: false,
+//       focus: 0,
+//       project: "Mindfulness🧘",
+//       repeatday: "1",
+//       repeatpartoftime: "day",
+//       data: dateToday,
+//       note: " 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ",
+//     },
+//     {
+//       id: 1,
+//       text: "Basic Spanish Words",
+//       done: false,
+//       focus: 0,
+//       project: "Spanish Lesson🇪🇸",
+//       repeatday: "1",
+//       repeatpartoftime: "day",
+//       data: dateToday,
+//       note: " Spanish Vocabulary lists Organized by Topic\n Basic Spanish vocabulary: Greetings\n Basic Spanish vocabulary: Manners\n Basic Spanish vocabulary: Your first conversation\n Basic Spanish vocabulary: Family members\n Basic Spanish vocabulary: Food and drinks\n Intermediate Spanish vocabulary: Clothing\n Intermediate Spanish vocabulary: Dates and times\n",
+//     },
+//     {
+//       id: 4,
+//       text: " Call grandma",
+//       data: dateToday,
+//       done: false,
+//       focus: 0,
+//       note: "don't forget your grandma!👵 ",
+//       project: "SocialLive 🍹  ",
+//       repeatday: "1",
+//       repeatpartoftime: "day",
+//     },
+//   ];
+//   window.localStorage.setItem("Items", JSON.stringify(todos));
+// }
 
 if (project == null) {
   project = [
@@ -236,32 +236,41 @@ if (actualList == 0) {
 }
 let unsubscribe;
 let Lista;
-const allnotelist = [];
+renderPomodoroTasks();
+
+  const allnotelist = [];
+  allnotelist.length = 0;
+
 renderPomodoroTasks();
 function renderPomodoroTasks() {
+//  allnotelist = [];
+  // allnotelist.length = 0;
   auth.onAuthStateChanged((user) => {
+    console.log(allnotelist);
+    console.log(Lista);
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
     unsubscribe = thingsRef
       .doc(logUserId)
       .collection("Items")
       .onSnapshot((querySnapshot) => {
-        // allnotelist = 0;
+        allnotelist.length = 0;
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
+          // allnotelist = Lista;
           allnotelist.push(Lista);
           // noteid = doc.data().id;
           // noteTitle = doc.data().title;
           // notedate = doc.data().date;
           // notenote = doc.data().note;
+          actualList = allnotelist;
         });
 
         console.log(Lista);
 
+        console.log(allnotelist);
   // console.log("render");
   // console.log(currentProject);
-  actualList = allnotelist;
-  console.log(allnotelist);
 
   window.localStorage.setItem("Actual", JSON.stringify(actualList));
 
@@ -384,7 +393,7 @@ function addTodo(event) {
     text: todoInput.value,
     done: false,
     focus: 0,
-    // project: currentProject,
+    project: "currentProject",
     repeatday: "1",
     repeatpartoftime: "day",
     data: dateToday,
@@ -401,6 +410,7 @@ function addTodo(event) {
   centerDiv.classList.remove("none");
   // centerDiv.add.classList("active");
   // todoInput.value = "";
+  statTask();
 }
 
 // funkcja odpowiadająca za wyliczanie i aktualizacje statystyk
@@ -424,10 +434,11 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("STat").on
 // console.log(dateToday);
 });
 let historyTasks;
-let Lista;
+let Lista = 0;
 db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("History")
 .onSnapshot((querySnapshot) => {
        const historylist = [];
+       historylist.length = 0;
 
   querySnapshot.docs.map((doc) => {
   Lista = doc.data();
@@ -444,11 +455,13 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("History")
 // querysnapchot from collection Items
 db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
 .onSnapshot((querysSnapshot) => {
-       const todoList = [];
-
+  Lista = 0;
+  const todoList = [];
+  todoList.length = 0;
+  console.log(todoList);
   querysSnapshot.docs.map((doc) => {
-  Lista = doc.data();
-          todoList.push(Lista);
+    Lista = doc.data();
+    todoList.push(Lista);
   });
 
   for (let i = 0; i < todoList.length; i += 1) {
@@ -457,6 +470,7 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
     } else {
       dbtoBeCompleted += 1;
     }
+    console.log("ok");
   }
   let focuscount = 0;
 
@@ -464,14 +478,13 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
      const ast = todoList[i].focus;
       focuscount += ast;
     }
-    // console.log(focuscount);
 
     dbestimated = dbtoBeCompleted * pomodoreDuration;
     const minutesEs = dbestimated % 60;
     const hours = Math.floor(dbestimated / 60);
     const estimatedHM = `${hours}.${minutesEs < 10 ? "0" : ""}${minutesEs}`;
     document.getElementById("estimated").innerHTML = estimatedHM;
-    const dbelapsed = Math.floor(focuscount / 60);
+     dbelapsed = Math.floor(focuscount / 60);
     const hoursel = Math.floor(dbelapsed / 60);
     console.log(hoursel);
     const minutes = dbelapsed % 60;
@@ -481,53 +494,9 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
     document.getElementById("elapse").innerHTML = elapsedHM;
     document.getElementById("completedTasks").innerHTML = dbcountCompleted;
     document.getElementById("taskstobe").innerHTML = dbtoBeCompleted;
+    console.log(dbtoBeCompleted);
   });
 });
-
-  // let toBeCompleted = 0;
-  // let countCompleted = 0;
-  // let estimated = 0;
-
-  // //* counting statiscics
-
-  // taskToday = todos.filter((items) => items.data === dateToday);
-  // for (let i = 0; i < taskToday.length; i += 1) {
-  //   if (taskToday[i].done === true) {
-  //     countCompleted += 1;
-  //   } else {
-  //     toBeCompleted += 1;
-  //   }
-  // }
-
-  // const totalfocustime = JSON.parse(localStorage.getItem("Items"));
-  // let focuscount = 0;
-  // if (totalfocustime != null) {
-  //   totalfocustime.forEach((element) => {
-  //     const ast = element.focus;
-  //     focuscount += ast;
-  //   });
-  // }
-
-  // estimated = toBeCompleted * pomodoreDuration;
-  // const minutesEs = estimated % 60;
-  // const hours = Math.floor(estimated / 60);
-  // const estimatedHM = `${hours}.${minutesEs < 10 ? "0" : ""}${minutesEs}`;
-  // document.getElementById("estimated").innerHTML = estimatedHM;
-  // const elapsed = Math.floor(focuscount / 60);
-  // const hoursel = Math.floor(elapsed / 60);
-  // const minutes = elapsed % 60;
-  // const elapsedHM = `${hoursel}.${minutes < 10 ? "0" : ""}${minutes}`;
-  //* creating item class to store stats, i want to add this number to localstore.
-  // const statistics = JSON.parse(localStorage.getItem("STat")) || [];
-  // const stat = {
-  //   estimated: estimatedHM,
-  //   comp: toBeCompleted,
-  //   elapsed: elapsed,
-  //   complete: countCompleted,
-  // };
-  // statistics.splice(0, 5);
-  // statistics.push(stat);
-  // localStorage.setItem("STat", JSON.stringify(statistics));
 }
 
 statTask();
@@ -535,11 +504,12 @@ todoButton.addEventListener("click", addTodo);
 renderPomodoroTasks(actualList, todoList);
 
 // * functions buttons action delate play and completted task
+
 function btnActtion(e) {
   statTask();
 
   const item = e.target;
-   let StrThisItem
+   let StrThisItem;
   if (item.classList[0] === "center_delete-btn") {
     audio = new Audio("Alerts/deleteTask.mp3");
     audio.play();
@@ -554,7 +524,6 @@ allnotelist.forEach((ele) => {
     thisItem = ele.id;
   }
             StrThisItem = JSON.stringify(thisItem);
-
 });
 // });
 toString(StrThisItem);
@@ -581,14 +550,72 @@ console.log(allnotelist);
 
   //* completed function
   if (item.classList[0] === "center_complete-btn") {
+
+
+
     const todoText = item.parentElement;
     const el = e.target;
-    const { index } = el.dataset;
+    // const { index } = el.dataset;
+       const { ...index } = e.target.dataset;
+
+let thisItem = [];
+let clickedTodo;
+allnotelist.forEach((ele) => {
+  if (ele.id == index.index) {
+    thisItem = ele.id;
+    clickedTodo = ele;
+  }
+            StrThisItem = JSON.stringify(thisItem);
+            toString(StrThisItem);
+});
+let lastIdHistory;
+let nextIdHistory;
+// get last id
+           db.collection("users")
+
+.doc(logUserId)
+
+              .collection("History")
+              .orderBy("id", "asc")
+              .limitToLast(1)
+              .get()
+              // oblicz ostatnie id z historii
+.then((querySnapshot) => {
+                querySnapshot.forEach((docs) => {
+                  lastIdHistory = doc.data().id;
+                  console.log(lastIdHistory);
+                  lastIdHistory++;
+                  nextIdHistory = lastIdHistory.toString();
+                  db.collection("users")
+                  .doc(logUserId)
+                  .collection("History")
+                  .doc(nextIdHistory)
+                  .set(clickedTodo);
+                });
+                
+
+                         // add to history
+
+                         db.collection("users")
+                         .doc(logUserId)
+.collection("History").doc(nextIdHistory)
+.update({
+  done: true,
+});
+
+});
+// unsubscribe = thingsRef
+// .doc(logUserId)
+// .collection("Items").doc(clickedTodo).delete();
+
+
+console.log(allnotelist);
 
     if (!todoText.classList.contains("completed")) {
       todos = JSON.parse(localStorage.getItem("Items"));
 
       const History = JSON.parse(localStorage.getItem("History"));
+
       const filtr = todos.filter((p) => p.id == index);
       const todosFiltr = filtr[0];
       const idtego = todosFiltr.id;
@@ -602,6 +629,7 @@ console.log(allnotelist);
       item.innerHTML = '<i class="fas fa-check-circle"></i>';
       todoText.classList.add("animation");
       const ten = todos.find((element) => element == todosFiltr);
+
       if (todosFiltr.repeatday != 0) {
         const isLargeNumber = (element) => element == todosFiltr;
         // const newtodos = [...todos];
@@ -670,6 +698,7 @@ console.log(allnotelist);
   localStorage.setItem("Items", JSON.stringify(todos));
   renderPomodoroTasks(actualList, todoList);
 }
+
 // pomodoreDuration;
 
 let secondsLeft;
@@ -921,5 +950,5 @@ actualDateTime,
   countdownTimer,
   pomodoreDuration,
   audio,
-  allnotelist
+  allnotelist,
 };

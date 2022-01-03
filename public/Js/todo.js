@@ -126,6 +126,25 @@ function deleteTodo(ClickedId) {
 
 function checkFunction(clicked_id) {
   console.log("esss");
+  let thisId;
+  
+  db.collection("users")
+  .doc(logUserId)
+  .collection("ListTodo")
+  .doc(clicked_id)
+  // .onSnapshot((querySnapshot) => {
+  // // .get()
+  // // .then((querySnapshot) => {
+
+  //       .then(querySnapshot.forEach((doc) => {
+  //                 thisId = doc.data();
+                 
+  //               }));
+  //               console.log(thisId);
+  //             // }
+  // // })
+  // // })
+  //             });
   db.collection("users")
     .doc(logUserId)
     .collection("ListTodo")

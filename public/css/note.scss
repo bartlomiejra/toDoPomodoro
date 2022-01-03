@@ -123,7 +123,7 @@
 
 	&__savebtn,
 	&__deletebtn {
-		bottom: 0px;
+		// bottom: 0px;
 		// bottom: 10px;
 
 		left: 30%;
@@ -277,11 +277,16 @@
 	}
 }
 
-// .tiles__savebtn, .tiles__deletebtn {
+.tiles__savebtn, .tiles__deletebtn {
     
-//    margin-left: auto;
-// margin-right: auto;
-// left: 0;
-// right: 0;
-// text-align: center; /* margin-bottom: 20px; */
-// }
+
+   margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center; /* margin-bottom: 20px; */
+}
+
+.tiles__deletebtn{
+	left: 30%;
+}
