@@ -604,6 +604,7 @@ let nextIdHistory;
 });
 
 });
+//usuń startego taska z listy
 // unsubscribe = thingsRef
 // .doc(logUserId)
 // .collection("Items").doc(clickedTodo).delete();
@@ -612,25 +613,60 @@ let nextIdHistory;
 console.log(allnotelist);
 
     if (!todoText.classList.contains("completed")) {
-      todos = JSON.parse(localStorage.getItem("Items"));
-
-      const History = JSON.parse(localStorage.getItem("History"));
-
-      const filtr = todos.filter((p) => p.id == index);
-      const todosFiltr = filtr[0];
-      const idtego = todosFiltr.id;
-      todosFiltr.done = true;
-      todosFiltr.id = History.length;
-      const historytask = todosFiltr;
-      History.push(historytask);
-      localStorage.setItem("History", JSON.stringify(History));
-      localStorage.setItem("Items", JSON.stringify(todos));
+     
       todoText.classList.add("completed");
       item.innerHTML = '<i class="fas fa-check-circle"></i>';
       todoText.classList.add("animation");
-      const ten = todos.find((element) => element == todosFiltr);
+      // const ten = todos.find((element) => element == todosFiltr);
 
-      if (todosFiltr.repeatday != 0) {
+      if (clickedTodo.repeatday != 0) {
+
+
+//          let lastId;
+
+            let nextId;
+  //  db.collection("users")
+  //             .doc(logUserId)
+  //             .collection("Items")
+  //             .orderBy("id", "asc")
+  //             .limitToLast(1)
+  //             .get()
+  //             .then((querySnapshot) => {
+  //               querySnapshot.forEach((doc) => {
+  //                 lastId = doc.data().id;
+  //                 console.log(lastId);
+  //                 lastId++;
+  //                 nextId = lastId.toString();
+  //                 console.log(nextId);
+  //               });
+
+                db.collection("users")
+                  .doc(logUserId)
+                  .collection("Items")
+                  .doc("124")
+                  .set(clickedTodo);
+
+
+                   db.collection("users")
+                  .doc(logUserId)
+                  .collection("Items")
+                  .doc("124")
+                  .update({
+project: "edutowano",
+
+                  });
+//               });
+
+
+
+        //dodaj nowy task do listy z nowym id (nowe id ostatnieid+1) oraz zmień done na false
+
+        // oraz dodaj nową datę
+
+
+
+
+        console.log("ok");
         const isLargeNumber = (element) => element == todosFiltr;
         // const newtodos = [...todos];
         const newtodos = JSON.parse(JSON.stringify(todos));
