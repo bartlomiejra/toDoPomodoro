@@ -69,7 +69,7 @@ let dateToday;
 let dateTomorrow = 0;
 const history = JSON.parse(localStorage.getItem("History"));
 let statistics = JSON.parse(localStorage.getItem("STat"));
-const todos = JSON.parse(localStorage.getItem("Items"));
+let todos = JSON.parse(localStorage.getItem("Items"));
 let project = JSON.parse(localStorage.getItem("Project"));
 const settinglocal = JSON.parse(localStorage.getItem("settings"));
 const countdownTimer = document.getElementById("countdown");
@@ -550,6 +550,9 @@ console.log(allnotelist);
 
   //* completed function
   if (item.classList[0] === "center_complete-btn") {
+
+
+
     const todoText = item.parentElement;
     const el = e.target;
     // const { index } = el.dataset;
@@ -589,6 +592,7 @@ let nextIdHistory;
                   .doc(nextIdHistory)
                   .set(clickedTodo);
                 });
+                
 
                          // add to history
 
@@ -598,28 +602,34 @@ let nextIdHistory;
 .update({
   done: true,
 });
+
 });
-// usuń startego taska z listy
-// unsubscribe = thingsRef
-// .doc(logUserId)
-// .collection("Items").doc(StrThisItem).delete();
+//usuń startego taska z listy
+unsubscribe = thingsRef
+.doc(logUserId)
+.collection("Items").doc(StrThisItem).delete();
+
 
 console.log(allnotelist);
 
     if (!todoText.classList.contains("completed")) {
+     
       todoText.classList.add("completed");
       item.innerHTML = '<i class="fas fa-check-circle"></i>';
       todoText.classList.add("animation");
-      // const ten = todos.find((element) => element == todosFiltr);
 
       if (clickedTodo.repeatday != 0) {
-        const dateString = newIndex.data;
-      newIndex.data = moment(dateString)
-      .add(newIndex.repeatday, newIndex.repeatpartoftime)
-      .format("YYYY-MM-DD");
-  //        let lastId;
 
-  //           let nextId;
+
+        //  let lastId;
+
+        //     let nextId;
+      //    unsubscribe = thingsRef
+      // .doc(logUserId)
+      // .collection("Items")
+      // .orderBy("id", "asc")
+      //         .onSnapshot((querySnapshot) => {
+
   //  db.collection("users")
   //             .doc(logUserId)
   //             .collection("Items")
@@ -634,65 +644,42 @@ console.log(allnotelist);
   //                 nextId = lastId.toString();
   //                 console.log(nextId);
   //               });
+              // })
 
-              // });
-              db.collection("users")
-                .doc(logUserId)
-                .collection("Items")
-                .doc("567")
-                .set(clickedTodo);
-
+              let rep = clickedTodo.repeatday
+              let repTime = clickedTodo.repeatpartoftime;
+              
+              let newData = moment(clickedTodo.data).add(rep, repTime).format("YYYY-MM-DD");
 
 
-                 db.collection("users")
-                .doc(logUserId)
-                .collection("Items")
-                .doc("567")
-                .update({
-project: "edutowano",
+
+                db.collection("users")
+                  .doc(logUserId)
+                  .collection("Items")
+                  .doc("127")
+                  .set(clickedTodo);
+
+
+                   db.collection("users")
+                  .doc(logUserId)
+                  .collection("Items")
+                  .doc("127")
+                  .update({
+data: newData,
 done: false,
 
-                });
+                  });
+              // });
+                // }
 
-        // dodaj nowy task do listy z nowym id (nowe id ostatnieid+1) oraz zmień done na false
 
-        // oraz dodaj nową datę
-
-        console.log("ok");
-        const isLargeNumber = (element) => element == todosFiltr;
-        // const newtodos = [...todos];
-        const newtodos = JSON.parse(JSON.stringify(todos));
-        const idcurrent = todos.findIndex(isLargeNumber);
-        const idtesku = idcurrent;
-        const newIndex = newtodos[idtesku];
-        let lastId = 0;
-        todos.forEach((ele) => {
-          if (ele.id > lastId) {
-            lastId = ele.id;
-          }
-        });
-        // eslint-disable-next-line no-plusplus
-        // newIndex.id = ++lastId;
-        // newIndex.done = false;
-        // newIndex.completiondate = dateToday;
-
-        // const dateString = newIndex.data;
-        // newIndex.data = moment(dateString)
-        //   .add(newIndex.repeatday, newIndex.repeatpartoftime)
-        //   .format("YYYY-MM-DD");
-        // eslint-disable-next-line no-undef
-        todos.push(newIndex);
       }
-      const newtodos = JSON.parse(JSON.stringify(todos));
-      const isLargeNumber = (element) => element == todosFiltr;
-      const idcurrent = todos.findIndex(isLargeNumber);
+
       audio = new Audio("Alerts/deleteTask.mp3");
       audio.play();
       const todo = item.parentElement;
       todo.classList.add("fall");
-      todos.splice(idcurrent, 1);
 
-      localStorage.setItem("Items", JSON.stringify(todos));
       todo.addEventListener("transitionend", () => {
         todo.remove();
         resetTimer();
@@ -723,7 +710,7 @@ done: false,
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
-  localStorage.setItem("Items", JSON.stringify(todos));
+  // localStorage.setItem("Items", JSON.stringify(todos));
   renderPomodoroTasks(actualList, todoList);
 }
 
@@ -733,6 +720,30 @@ let secondsLeft;
 const paused = false; // is the clock paused?
 
 // eslint-disable-next-line no-unused-vars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Dodawanie i renderowanie projektów
+
+
+
 
 function addProject(event) {
   project = JSON.parse(localStorage.getItem("Project")) || [];
