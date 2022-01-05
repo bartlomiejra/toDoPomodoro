@@ -69,7 +69,7 @@ let dateToday;
 let dateTomorrow = 0;
 const history = JSON.parse(localStorage.getItem("History"));
 let statistics = JSON.parse(localStorage.getItem("STat"));
-let todos = JSON.parse(localStorage.getItem("Items"));
+const todos = JSON.parse(localStorage.getItem("Items"));
 let project = JSON.parse(localStorage.getItem("Project"));
 const settinglocal = JSON.parse(localStorage.getItem("settings"));
 const countdownTimer = document.getElementById("countdown");
@@ -550,9 +550,6 @@ console.log(allnotelist);
 
   //* completed function
   if (item.classList[0] === "center_complete-btn") {
-
-
-
     const todoText = item.parentElement;
     const el = e.target;
     // const { index } = el.dataset;
@@ -592,7 +589,6 @@ let nextIdHistory;
                   .doc(nextIdHistory)
                   .set(clickedTodo);
                 });
-                
 
                          // add to history
 
@@ -602,29 +598,28 @@ let nextIdHistory;
 .update({
   done: true,
 });
-
 });
-//usuń startego taska z listy
+// usuń startego taska z listy
 // unsubscribe = thingsRef
 // .doc(logUserId)
-// .collection("Items").doc(clickedTodo).delete();
-
+// .collection("Items").doc(StrThisItem).delete();
 
 console.log(allnotelist);
 
     if (!todoText.classList.contains("completed")) {
-     
       todoText.classList.add("completed");
       item.innerHTML = '<i class="fas fa-check-circle"></i>';
       todoText.classList.add("animation");
       // const ten = todos.find((element) => element == todosFiltr);
 
       if (clickedTodo.repeatday != 0) {
+        const dateString = newIndex.data;
+      newIndex.data = moment(dateString)
+      .add(newIndex.repeatday, newIndex.repeatpartoftime)
+      .format("YYYY-MM-DD");
+  //        let lastId;
 
-
-//          let lastId;
-
-            let nextId;
+  //           let nextId;
   //  db.collection("users")
   //             .doc(logUserId)
   //             .collection("Items")
@@ -640,31 +635,28 @@ console.log(allnotelist);
   //                 console.log(nextId);
   //               });
 
-                db.collection("users")
-                  .doc(logUserId)
-                  .collection("Items")
-                  .doc("124")
-                  .set(clickedTodo);
+              // });
+              db.collection("users")
+                .doc(logUserId)
+                .collection("Items")
+                .doc("567")
+                .set(clickedTodo);
 
 
-                   db.collection("users")
-                  .doc(logUserId)
-                  .collection("Items")
-                  .doc("124")
-                  .update({
+
+                 db.collection("users")
+                .doc(logUserId)
+                .collection("Items")
+                .doc("567")
+                .update({
 project: "edutowano",
+done: false,
 
-                  });
-//               });
+                });
 
-
-
-        //dodaj nowy task do listy z nowym id (nowe id ostatnieid+1) oraz zmień done na false
+        // dodaj nowy task do listy z nowym id (nowe id ostatnieid+1) oraz zmień done na false
 
         // oraz dodaj nową datę
-
-
-
 
         console.log("ok");
         const isLargeNumber = (element) => element == todosFiltr;
@@ -680,15 +672,15 @@ project: "edutowano",
           }
         });
         // eslint-disable-next-line no-plusplus
-        newIndex.id = ++lastId;
-        newIndex.done = false;
+        // newIndex.id = ++lastId;
+        // newIndex.done = false;
         // newIndex.completiondate = dateToday;
 
-        const dateString = newIndex.data;
+        // const dateString = newIndex.data;
+        // newIndex.data = moment(dateString)
+        //   .add(newIndex.repeatday, newIndex.repeatpartoftime)
+        //   .format("YYYY-MM-DD");
         // eslint-disable-next-line no-undef
-        newIndex.data = moment(dateString)
-          .add(newIndex.repeatday, newIndex.repeatpartoftime)
-          .format("YYYY-MM-DD");
         todos.push(newIndex);
       }
       const newtodos = JSON.parse(JSON.stringify(todos));
