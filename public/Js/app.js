@@ -67,7 +67,7 @@ const pomodoreList = document.querySelector(".left_pomodoreProjects");
 const title = document.querySelector(".titlebar");
 let dateToday;
 let dateTomorrow = 0;
-const history = JSON.parse(localStorage.getItem("History"));
+// const history = JSON.parse(localStorage.getItem("History"));
 let statistics = JSON.parse(localStorage.getItem("STat"));
 const todos = JSON.parse(localStorage.getItem("Items"));
 let project = JSON.parse(localStorage.getItem("Project"));
@@ -115,44 +115,7 @@ if (statistics == null) {
   statistics = JSON.parse(localStorage.getItem("STat"));
 }
 
-// if (todos == null) {
-//   todos = [
-//     {
-//       id: 0,
-//       text: "Meditate",
-//       done: false,
-//       focus: 0,
-//       project: "Mindfulness🧘",
-//       repeatday: "1",
-//       repeatpartoftime: "day",
-//       data: dateToday,
-//       note: " 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ",
-//     },
-//     {
-//       id: 1,
-//       text: "Basic Spanish Words",
-//       done: false,
-//       focus: 0,
-//       project: "Spanish Lesson🇪🇸",
-//       repeatday: "1",
-//       repeatpartoftime: "day",
-//       data: dateToday,
-//       note: " Spanish Vocabulary lists Organized by Topic\n Basic Spanish vocabulary: Greetings\n Basic Spanish vocabulary: Manners\n Basic Spanish vocabulary: Your first conversation\n Basic Spanish vocabulary: Family members\n Basic Spanish vocabulary: Food and drinks\n Intermediate Spanish vocabulary: Clothing\n Intermediate Spanish vocabulary: Dates and times\n",
-//     },
-//     {
-//       id: 4,
-//       text: " Call grandma",
-//       data: dateToday,
-//       done: false,
-//       focus: 0,
-//       note: "don't forget your grandma!👵 ",
-//       project: "SocialLive 🍹  ",
-//       repeatday: "1",
-//       repeatpartoftime: "day",
-//     },
-//   ];
-//   window.localStorage.setItem("Items", JSON.stringify(todos));
-// }
+
 
 if (project == null) {
   project = [
@@ -246,8 +209,8 @@ function renderPomodoroTasks() {
 //  allnotelist = [];
   // allnotelist.length = 0;
   auth.onAuthStateChanged((user) => {
-    console.log(allnotelist);
-    console.log(Lista);
+    // console.log(allnotelist);
+    // console.log(Lista);
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
     unsubscribe = thingsRef
@@ -266,9 +229,9 @@ function renderPomodoroTasks() {
           actualList = allnotelist;
         });
 
-        console.log(Lista);
+        // console.log(Lista);
 
-        console.log(allnotelist);
+        // console.log(allnotelist);
   // console.log("render");
   // console.log(currentProject);
 
@@ -486,15 +449,15 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
     document.getElementById("estimated").innerHTML = estimatedHM;
      dbelapsed = Math.floor(focuscount / 60);
     const hoursel = Math.floor(dbelapsed / 60);
-    console.log(hoursel);
+    // console.log(hoursel);
     const minutes = dbelapsed % 60;
-    console.log(minutes);
+    // console.log(minutes);
     const elapsedHM = `${hoursel}.${minutes < 10 ? "0" : ""}${minutes}`;
-    console.log(elapsedHM);
+    // console.log(elapsedHM);
     document.getElementById("elapse").innerHTML = elapsedHM;
     document.getElementById("completedTasks").innerHTML = dbcountCompleted;
     document.getElementById("taskstobe").innerHTML = dbtoBeCompleted;
-    console.log(dbtoBeCompleted);
+    // console.log(dbtoBeCompleted);
   });
 });
 }
@@ -771,16 +734,25 @@ function addProject(event) {
                   lastIdProject++;
                 });
                 nextIdProject = lastIdProject.toString();
-          
+                console.log(nextIdProject);
+                // project = JSON.parse(localStorage.getItem("Project")) || [];
+
+                // let lastId = 0;
+                // project.forEach((ele) => {
+                  //   if (ele.id > lastId) {
+                    //     lastId = ele.id;
+                    //   }
+                    // });
                     db.collection("users").doc(logUserId).collection("Project").doc(nextIdProject)
                     .set({
-                      
+
                       id: nextIdProject,
                       name: addPr.value,
                       color: projectColor.value,
                       // project.push(Project);
                     });
                     addPr.value = "";
+                    // localStorage.setItem("Project", JSON.stringify(project));
                   });
                   event.preventDefault();
 }
@@ -789,77 +761,130 @@ window.sortingProject = sortingProject;
 window.deleteProject = deleteProject;
 
 // eslint-disable-next-line no-unused-vars
+let allProject;
 function sortingProject(clicked_id) {
   clicked = clicked_id.getAttribute("name");
   let currentProject;
-  currentProject = JSON.parse(localStorage.getItem("Current")) || [];
-  if (currentProject == 0) {
-    currentProject = [
-      {
-        id: 0,
-        name: clicked,
-      },
-    ];
-    window.localStorage.setItem("Current", JSON.stringify(currentProject));
-  } else {
-    project = JSON.parse(localStorage.getItem("Current"));
-  }
 
-  currentProject = [
-    {
-      id: 0,
-      name: clicked,
-    },
-  ];
-  window.localStorage.setItem("Current", JSON.stringify(currentProject));
+    db.collection("users")
+    .doc(logUserId)
+    .collection("Current")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        currentProject = doc.data();
+      });
 
-  tasks = JSON.parse(localStorage.getItem("Items")) || [];
-  const tasksProject = tasks.filter((item) => item.project == clicked);
+      // get value from firebase database Curren project
+    // currentProject = JSON.parse(localStorage.getItem("Current")) || [];
+    // if (currentProject == 0) {
+      console.log(clicked);
+      console.log(currentProject);
+      console.log("ok");
+      
+      // }
+      
+      tasks = JSON.parse(localStorage.getItem("Items")) || [];
+      // const tasksProject = tasks.filter((item) => item.project == clicked);
+    });
+    db.collection("users").doc(logUserId).collection("Current").doc("0")
+.set({
+
+    id: 0,
+    name: clicked,
+
+  });
   // showToDoCard();
-  renderPomodoroTasks(tasksProject, todoList);
+  // renderPomodoroTasks(tasksProject, todoList);
   showToDoCard();
   titleName();
-  return tasksProject;
+  // return tasksProject;
 }
 //
 function sortingProjectDays(e) {
+  let history = [];
+  let historyTodo;
   taskToday = 0;
   let taskTomorrow = 0;
   let taskSomeday = 0;
+  let allProjectList = [];
+  let taskone;
   clicked = e.target.id;
-  tasks = JSON.parse(localStorage.getItem("Items")) || [];
+  // tasks = JSON.parse(localStorage.getItem("Items")) || [];
+  //get all element from firebase Items 
+   db.collection("users")
+    .doc(logUserId)
+    .collection("Items")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        taskone = doc.data();
+allProjectList.push(taskone);
+      });
+      // console.log(allProjectList);
   switch (clicked) {
     case "Today":
-      taskToday = tasks.filter((items) => items.data === dateToday);
-
+      taskToday = allProjectList.filter((items) => items.data === dateToday);
+      console.log(dateToday);
+console.log(taskToday);
+ db.collection("users")
+                 .doc(logUserId)
+                 .collection("Current")
+                 .doc("0")
+                 .set({
+   name: "Today",
+                 });
       renderPomodoroTasks(taskToday, todoList);
       break;
     case "Tomorrow":
-      taskTomorrow = tasks.filter((items) => items.data === dateTomorrow);
+      taskTomorrow = allProjectList.filter((items) => items.data === dateTomorrow);
       // renderProjects();
-      // console.log(taskTomorrow);
+      console.log(taskTomorrow);
+       db.collection("users")
+                 .doc(logUserId)
+                 .collection("Current")
+                 .doc("0")
+                 .set({
+   name: "Tomorrow",
+                 });
       renderPomodoroTasks(taskTomorrow, todoList);
+      // renderPomodoroTasks(taskTomorrow);
       break;
     case "Someday":
-      taskSomeday = tasks.filter(
+      taskSomeday = allProjectList.filter(
         (items) => items.data !== dateTomorrow || dateToday,
       );
+      console.log(taskSomeday);
+       db.collection("users")
+                 .doc(logUserId)
+                 .collection("Current")
+                 .doc("0")
+                 .set({
+   name: "Someday",
+                 });
+
       renderPomodoroTasks(taskSomeday, todoList);
       break;
     case "Completed":
-      // const history = JSON.parse(localStorage.getItem('History'));
+      db.collection("users").doc(logUserId).collection("History").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+  historyTodo = doc.data();
+history.push(historyTodo);
+      });
+      console.log(history)
       if (history.length == 0) {
+        
         emptyList.classList.remove("none");
       }
       if (history.length > 0) {
         emptyList.classList.add("none");
       }
       todoList.innerHTML = history
-        .map(
-          (
+      .map(
+        (
             todo,
           ) => `<li class="center_divT completed"><div  class="center_todo-item" id="item${todo.id
-            }" >${todo.text} ${todo.repeatday != 0 ? "<i class='fas fa-redo'></i>" : ""
+          }" >${todo.text} ${todo.repeatday != 0 ? "<i class='fas fa-redo'></i>" : ""
             }
 </div>
 <div class="center_clocks">
@@ -873,40 +898,60 @@ ${todo.focus > 0 ? `  ${todo.focus} min` : 0}
 </button>
 </li>
 `,
-        )
+)
 
-        .join("");
+.join("");
+});
 
-      break;
-    default:
-      break;
+break;
+default:
+  break;
 
       showToDoCard();
   }
 
-  let currentProject = JSON.parse(localStorage.getItem("Current"));
-
-  if ((clicked = 0)) {
-    clicked = "Today";
-  }
-  currentProject[0].name = clicked;
-
-  window.localStorage.setItem("Current", JSON.stringify(currentProject));
-  currentProject = JSON.parse(localStorage.getItem("Current"));
-  titleName();
-  showToDoCard();
+titleName();
+showToDoCard();
+});
 }
+if ((clicked = null)) {
+  clicked = "Today";
+
+
+  db.collection("users")
+                 .doc(logUserId)
+                 .collection("Current")
+                 .doc("0")
+                 .set({
+   name: clicked,
+                 });
+                 console.log(clicked);
+}
+
+// currentProject[0].name = clicked;
+// sortingProjectDays();
 
 document.querySelectorAll(".left_day").forEach((e) => {
   e.addEventListener("click", sortingProjectDays);
 });
 
+
+
+
+
+
+// 
+
 function deleteProject() {
   const click = event.currentTarget.id;
-  project = JSON.parse(localStorage.getItem("Project")) || [];
-  const deleteProj = project.filter((item) => item.id != click);
-  localStorage.setItem("Project", JSON.stringify(deleteProj));
-  renderProjects();
+ db.collection("users")
+    .doc(logUserId)
+    .collection("Project")
+    .doc(click)
+    .delete();
+
+
+
 }
 
 function ifmobile() {
@@ -921,6 +966,7 @@ showProject.addEventListener("click", ifmobile);
 
 function repeatTasks() {
   const Items = JSON.parse(localStorage.getItem("Items"));
+
   for (let i = 0; i < Items.length; i += 1) {
     const dateString = Items[i].data;
     if (dateToday > Items[i].data) {
@@ -955,17 +1001,31 @@ function openNoteCard(clicked_id) {
 window.openNoteCard = openNoteCard;
 
 function titleName() {
-  const currentProject = JSON.parse(localStorage.getItem("Current"));
+   let itemOne;
+  let itemAll = [];
+  db.collection("users").doc(logUserId).collection("Project").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      itemOne = doc.data();
+      itemAll.push(itemOne);
+
+    });
+console.log(itemAll);
+
+
+});
+    
+  let currentProject = itemAll;
   if (currentProject == null) {
-    currentProject[0].name = Today;
+    currentProject.name = "Today";
   }
-  // console.log(currentProject);
+
 
   title.innerHTML = currentProject
     .map((title) => ` ${title.name}`)
 
     .join("");
 }
+
 titleName();
 
 export {
