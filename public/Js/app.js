@@ -69,7 +69,7 @@ let dateToday;
 let dateTomorrow = 0;
 const history = JSON.parse(localStorage.getItem("History"));
 let statistics = JSON.parse(localStorage.getItem("STat"));
-let todos = JSON.parse(localStorage.getItem("Items"));
+const todos = JSON.parse(localStorage.getItem("Items"));
 let project = JSON.parse(localStorage.getItem("Project"));
 const settinglocal = JSON.parse(localStorage.getItem("settings"));
 const countdownTimer = document.getElementById("countdown");
@@ -550,9 +550,6 @@ console.log(allnotelist);
 
   //* completed function
   if (item.classList[0] === "center_complete-btn") {
-
-
-
     const todoText = item.parentElement;
     const el = e.target;
     // const { index } = el.dataset;
@@ -581,9 +578,8 @@ let nextIdHistory;
               .get()
               // oblicz ostatnie id z historii
 .then((querySnapshot) => {
-                querySnapshot.forEach((docs) => {
+                querySnapshot.forEach((doc) => {
                   lastIdHistory = doc.data().id;
-                  console.log(lastIdHistory);
                   lastIdHistory++;
                   nextIdHistory = lastIdHistory.toString();
                   db.collection("users")
@@ -592,7 +588,13 @@ let nextIdHistory;
                   .doc(nextIdHistory)
                   .set(clickedTodo);
                 });
-                
+                db.collection("users")
+               .doc(logUserId)
+               .collection("History")
+               .doc(nextIdHistory)
+               .update({ id: nextIdHistory });
+                console.log(lastIdHistory);
+                console.log(nextIdHistory);
 
                          // add to history
 
@@ -602,77 +604,66 @@ let nextIdHistory;
 .update({
   done: true,
 });
-
 });
-//usuń startego taska z listy
+// usuń startego taska z listy
 unsubscribe = thingsRef
 .doc(logUserId)
 .collection("Items").doc(StrThisItem).delete();
 
-
-console.log(allnotelist);
+// console.log(allnotelist);
 
     if (!todoText.classList.contains("completed")) {
-     
       todoText.classList.add("completed");
       item.innerHTML = '<i class="fas fa-check-circle"></i>';
       todoText.classList.add("animation");
 
       if (clickedTodo.repeatday != 0) {
+         let lastId;
 
-
-        //  let lastId;
-
-        //     let nextId;
+            let nextId;
       //    unsubscribe = thingsRef
       // .doc(logUserId)
       // .collection("Items")
       // .orderBy("id", "asc")
       //         .onSnapshot((querySnapshot) => {
 
-  //  db.collection("users")
-  //             .doc(logUserId)
-  //             .collection("Items")
-  //             .orderBy("id", "asc")
-  //             .limitToLast(1)
-  //             .get()
-  //             .then((querySnapshot) => {
-  //               querySnapshot.forEach((doc) => {
-  //                 lastId = doc.data().id;
-  //                 console.log(lastId);
-  //                 lastId++;
-  //                 nextId = lastId.toString();
-  //                 console.log(nextId);
-  //               });
-              // })
+   db.collection("users")
+              .doc(logUserId)
+              .collection("Items")
+              .orderBy("id", "asc")
+              .limitToLast(1)
+              .get()
+              .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                  lastId = doc.data().id;
+                  console.log(lastId);
+                  lastId++;
+                  nextId = lastId.toString();
+                  console.log(nextId);
+                });
 
-              let rep = clickedTodo.repeatday
-              let repTime = clickedTodo.repeatpartoftime;
-              
-              let newData = moment(clickedTodo.data).add(rep, repTime).format("YYYY-MM-DD");
+                const rep = clickedTodo.repeatday;
+                const repTime = clickedTodo.repeatpartoftime;
 
-
+              const newData = moment(clickedTodo.data).add(rep, repTime).format("YYYY-MM-DD");
 
                 db.collection("users")
-                  .doc(logUserId)
+                .doc(logUserId)
                   .collection("Items")
-                  .doc("127")
+                  .doc(nextId)
                   .set(clickedTodo);
-
+                  console.log(clickedTodo);
 
                    db.collection("users")
                   .doc(logUserId)
                   .collection("Items")
-                  .doc("127")
+                  .doc(nextId)
                   .update({
 data: newData,
 done: false,
 
                   });
-              // });
-                // }
-
-
+                });
       }
 
       audio = new Audio("Alerts/deleteTask.mp3");
@@ -721,57 +712,29 @@ const paused = false; // is the clock paused?
 
 // eslint-disable-next-line no-unused-vars
 
+// Dodawanie i renderowanie projektów
+let projectList;
+let titleProject;
+let id;
+let color;
 
+auth.onAuthStateChanged((user) => {
+  if (user) {
+       db.collection("users").doc(logUserId).collection("Project");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Dodawanie i renderowanie projektów
-
-
-
-
-function addProject(event) {
-  project = JSON.parse(localStorage.getItem("Project")) || [];
-
-  let lastId = 0;
-  project.forEach((ele) => {
-    if (ele.id > lastId) {
-      lastId = ele.id;
-    }
-  });
-  event.preventDefault();
-  const Project = {
-    id: ++lastId,
-    name: addPr.value,
-    color: projectColor.value,
-  };
-  project.push(Project);
-  localStorage.setItem("Project", JSON.stringify(project));
-  addPr.value = "";
-  renderProjects();
-}
-
-window.sortingProject = sortingProject;
-window.deleteProject = deleteProject;
-
-function renderProjects() {
-  const proj = JSON.parse(localStorage.getItem("Project")) || [];
-  pomodoreList.innerHTML = proj
+unsubscribe = thingsRef.doc(logUserId).collection("Project").onSnapshot((querySnapshot) => {
+  const allprojects = [];
+  querySnapshot.docs.map((doc) => {
+    projectList = doc.data();
+    allprojects.push(projectList);
+    titleProject = doc.data().name;
+    id = doc.data().id;
+    color = doc.data().color;
+    console.log(allprojects);
+    console.log(projectList);
+});
+ const proj = JSON.parse(localStorage.getItem("Project")) || [];
+  pomodoreList.innerHTML = allprojects
     .map(
       (proje) => `
 <li class=" sortTask ${proje.name} left_projectItem"   value="${proje.name}" name="${proje.name}" >
@@ -786,8 +749,44 @@ function renderProjects() {
 `,
     )
     .join("");
+  });
+       } else {
+      unsubscribe && unsubscribe();
+    }
+});
+addProjectbtn.addEventListener("click", addProject);
+
+function addProject(event) {
+ let lastIdProject;
+            let nextIdProject;
+            db.collection("users")
+              .doc(logUserId)
+              .collection("Project")
+              .orderBy("id", "asc")
+              .limitToLast(1)
+              .get()
+              .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                  lastIdProject = doc.data().id;
+                  lastIdProject++;
+                });
+                nextIdProject = lastIdProject.toString();
+          
+                    db.collection("users").doc(logUserId).collection("Project").doc(nextIdProject)
+                    .set({
+                      
+                      id: nextIdProject,
+                      name: addPr.value,
+                      color: projectColor.value,
+                      // project.push(Project);
+                    });
+                    addPr.value = "";
+                  });
+                  event.preventDefault();
 }
-renderProjects();
+
+window.sortingProject = sortingProject;
+window.deleteProject = deleteProject;
 
 // eslint-disable-next-line no-unused-vars
 function sortingProject(clicked_id) {
@@ -915,7 +914,6 @@ function ifmobile() {
     showProjectList();
   }
 }
-addProjectbtn.addEventListener("click", addProject);
 pause.addEventListener("click", pausetimer);
 reset.addEventListener("click", resetTimer);
 todoList.addEventListener("click", btnActtion);
