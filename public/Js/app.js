@@ -848,7 +848,6 @@ console.log(taskToday);
    name: "Tomorrow",
                  });
       renderPomodoroTasks(taskTomorrow, todoList);
-      // renderPomodoroTasks(taskTomorrow);
       break;
     case "Someday":
       taskSomeday = allProjectList.filter(
