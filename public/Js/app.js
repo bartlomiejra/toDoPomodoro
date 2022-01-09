@@ -205,7 +205,9 @@ renderPomodoroTasks();
   allnotelist.length = 0;
 
 renderPomodoroTasks();
-function renderPomodoroTasks() {
+function renderPomodoroTasks(todolist = []) {
+
+  
 //  allnotelist = [];
   // allnotelist.length = 0;
   auth.onAuthStateChanged((user) => {
@@ -222,18 +224,9 @@ function renderPomodoroTasks() {
           Lista = doc.data();
           // allnotelist = Lista;
           allnotelist.push(Lista);
-          // noteid = doc.data().id;
-          // noteTitle = doc.data().title;
-          // notedate = doc.data().date;
-          // notenote = doc.data().note;
           actualList = allnotelist;
         });
 
-        // console.log(Lista);
-
-        // console.log(allnotelist);
-  // console.log("render");
-  // console.log(currentProject);
 
   window.localStorage.setItem("Actual", JSON.stringify(actualList));
 

@@ -66,6 +66,8 @@ signupForm.addEventListener("submit", (e) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+                  window.alert("Login Failed!", error);
+
       console.log(errorCode, errorMessage);
     });
 });
@@ -117,6 +119,16 @@ auth.onAuthStateChanged((user) => {
       id: 0,
       color: "#666666",
       name: "Studies🧱 ",
+    });
+    db.collection("users").doc(user.uid).collection("Project").doc("1").set({
+      id: 0,
+      color: "#111666",
+      name: "Running🏃 ",
+    });
+    db.collection("users").doc(user.uid).collection("Project").doc("2").set({
+      id: 0,
+      color: "#fff666",
+      name: "Reading📚 ",
     });
     db.collection("users").doc(user.uid).collection("Current").doc("0").set({
       id: 0,
