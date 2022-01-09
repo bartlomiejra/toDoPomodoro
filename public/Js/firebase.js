@@ -98,7 +98,7 @@ auth.onAuthStateChanged((user) => {
       id: 0,
       done: false,
       focus: 0,
-      data: "31/11/21",
+      data: "2022-01-08",
       note: "Note text..",
       project: "Mindfulness",
       repeatDay: "1",

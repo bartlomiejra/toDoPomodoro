@@ -199,15 +199,15 @@ if (actualList == 0) {
 }
 let unsubscribe;
 let Lista;
-renderPomodoroTasks();
 
-  const allnotelist = [];
+   const allnotelist = [];
   allnotelist.length = 0;
 
 renderPomodoroTasks();
 function renderPomodoroTasks(todolist = []) {
-
-  
+// console.log(taskSomeday);
+  let ast = todoList;
+  console.log(ast);
 //  allnotelist = [];
   // allnotelist.length = 0;
   auth.onAuthStateChanged((user) => {
@@ -285,7 +285,9 @@ aria-hidden="true"></i></button>
 </li>
 `,
     )
-
+    
+    // console.log("logUserId")
+    // console.log(logUserId)
     .join("");
      });
       } else {
@@ -293,6 +295,7 @@ aria-hidden="true"></i></button>
   }
 });
 }
+//! creat new if item and login to connect from database and make virable logUserId 
 window.showDiv = showDiv;
 
 renderPomodoroTasks(actualList, todoList);
@@ -321,12 +324,16 @@ window.onresize = function resizeFun() {
 const shortBreak = pomodorebreakTime * 60;
 
 function addTodo(event) {
+   auth.onAuthStateChanged((user) => {
+     if (user) {
+    // console.log(allnotelist);
+    // console.log(Lista);
    let lastId;
    const todoInput = document.querySelector(".center_todoInput");
 
             let nextId;
    db.collection("users")
-              .doc(logUserId)
+              .doc(user.uid)
               .collection("Items")
               .orderBy("id", "asc")
               .limitToLast(1)
@@ -366,16 +373,22 @@ function addTodo(event) {
   centerDiv.classList.remove("none");
   // centerDiv.add.classList("active");
   // todoInput.value = "";
-  statTask();
+} else {
+  unsubscribe && unsubscribe();
 }
-
+});
+statTask();
+}
+// statTask();
 // funkcja odpowiadająca za wyliczanie i aktualizacje statystyk
 function statTask() {
+    auth.onAuthStateChanged((user) => {
+     if (user) {
   let dbtoBeCompleted = 0;
   let dbestimated = 0;
   let dbelapsed = 0;
   let dbcountCompleted = 0;
-db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("STat").onSnapshot((querySnapshot) => {
+db.collection("users").doc(logUserId).collection("STat").onSnapshot((querySnapshot) => {
   const elements = querySnapshot.docs;
 
   const db = querySnapshot.docs.map((doc) => {
@@ -384,44 +397,45 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("STat").on
           dbestimated = doc.data().estimated;
           dbelapsed = doc.data().elapsed;
         });
-        // console.log(querySnapshot.docs());
-                // console.log(dbtoBeCompleted);
-// console.log(dbhistory);
-// console.log(dateToday);
 });
 let historyTasks;
-let Lista = 0;
-db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("History")
+let ListaStat = 0;
+db.collection("users").doc(user.uid).collection("History")
 .onSnapshot((querySnapshot) => {
        const historylist = [];
        historylist.length = 0;
 
   querySnapshot.docs.map((doc) => {
-  Lista = doc.data();
-          historylist.push(Lista);
+  ListaStat = doc.data();
+          historylist.push(ListaStat);
     historyTasks = doc.data();
   });
 
+  dbcountCompleted = 0;
   for (let i = 0; i < historylist.length; i += 1) {
     if (historylist[i].data == dateToday) {
       dbcountCompleted += 1;
     }
   }
-
-// querysnapchot from collection Items
-db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
-.onSnapshot((querysSnapshot) => {
-  Lista = 0;
-  const todoList = [];
-  todoList.length = 0;
-  console.log(todoList);
-  querysSnapshot.docs.map((doc) => {
-    Lista = doc.data();
-    todoList.push(Lista);
+  // querysnapchot from collection Items
+  db.collection("users").doc(user.uid).collection("Items")
+  .onSnapshot((querySnapshot) => {
+    
+      const todoListst = [];
+      todoListst.length = 0;
+  dbtoBeCompleted = 0;
+  // Lista = 0;
+  querySnapshot.docs.map((doc) => {
+    ListaStat = doc.data();
+    todoListst.push(ListaStat);
   });
+  console.log("todoListst");
+  console.log(todoListst);
+  console.log(ListaStat);
 
-  for (let i = 0; i < todoList.length; i += 1) {
-    if (todoList[i].done == true) {
+
+  for (let i = 0; i < todoListst.length; i += 1) {
+    if (todoListst[i].done == true) {
       dbcountCompleted += 1;
     } else {
       dbtoBeCompleted += 1;
@@ -430,8 +444,8 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
   }
   let focuscount = 0;
 
-   for (let i = 0; i < todoList.length; i += 1) {
-     const ast = todoList[i].focus;
+   for (let i = 0; i < todoListst.length; i += 1) {
+     const ast = todoListst[i].focus;
       focuscount += ast;
     }
 
@@ -440,8 +454,8 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
     const hours = Math.floor(dbestimated / 60);
     const estimatedHM = `${hours}.${minutesEs < 10 ? "0" : ""}${minutesEs}`;
     document.getElementById("estimated").innerHTML = estimatedHM;
-     dbelapsed = Math.floor(focuscount / 60);
-    const hoursel = Math.floor(dbelapsed / 60);
+     dbelapsed = focuscount
+    const hoursel =  dbelapsed
     // console.log(hoursel);
     const minutes = dbelapsed % 60;
     // console.log(minutes);
@@ -450,8 +464,13 @@ db.collection("users").doc("DaNPhjYXd5RinBiA4YAzVTA96Jb2").collection("Items")
     document.getElementById("elapse").innerHTML = elapsedHM;
     document.getElementById("completedTasks").innerHTML = dbcountCompleted;
     document.getElementById("taskstobe").innerHTML = dbtoBeCompleted;
-    // console.log(dbtoBeCompleted);
-  });
+    console.log(dbtoBeCompleted);
+    // console.log(elapsedHM);
+    });
+});
+     } else {
+    unsubscribe && unsubscribe();
+  }
 });
 }
 

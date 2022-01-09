@@ -88,14 +88,14 @@ auth.onAuthStateChanged((user) => {
             (todo) => `  
       ${
         todo.done
-          ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)'
+          ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)' onclick="event.stopPropagation()"
            id=${todo.id} data-index=${todo.id}>    
           ${todo.text}      
           <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this.id)">
           Delete
     </button>
     </div>`
-          : `<div class="todo_item dragitem" onClick='checkFunction(this.id)' 	  
+          : `<div class="todo_item dragitem" onClick='checkFunction(this.id)' onclick="event.stopPropagation()"  	  
            id=${todo.id} data-index=${todo.id}  >     
           ${todo.text}
           <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
@@ -127,11 +127,12 @@ function deleteTodo(ClickedId) {
 function checkFunction(clicked_id) {
   console.log("esss");
   let thisId;
+  event.stopPropagation();
   
-  db.collection("users")
-  .doc(logUserId)
-  .collection("ListTodo")
-  .doc(clicked_id)
+  // db.collection("users")
+  // .doc(logUserId)
+  // .collection("ListTodo")
+  // .doc(clicked_id)
   // .onSnapshot((querySnapshot) => {
   // // .get()
   // // .then((querySnapshot) => {
@@ -140,6 +141,7 @@ function checkFunction(clicked_id) {
   //                 thisId = doc.data();
                  
   //               }));
+  //               console.log(test);
   //               console.log(thisId);
   //             // }
   // // })
@@ -160,7 +162,6 @@ function checkFunction(clicked_id) {
     .catch((error) => {});
   const lasts = db.collection("users").doc(logUserId).collection("ListTodo");
   // const objIndex = ListOfToDo.findIndex((obj) => obj.id == clicked_id);
-  event.stopPropagation();
   // console.log(
   //   db.collection("users").doc(logUserId).collection("ListTodo").doc(clicked_id)
   //     .id

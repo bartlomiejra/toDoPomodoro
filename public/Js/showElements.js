@@ -20,8 +20,10 @@ import {
   allnotelist,
 } from "./app.js";
 
-export { showToDoCard, showProjectList, activeProject, centerDiv, showDiv };
-let  unsubscribe;
+export {
+ showToDoCard, showProjectList, activeProject, centerDiv, showDiv 
+};
+let unsubscribe;
 
 const centerDiv = document.querySelector(".center");
 const menuLis = document.querySelectorAll(".nav_element");
@@ -56,7 +58,10 @@ function activeProject(clicked_id) {
 }
 window.activeProject = activeProject;
 
+
 const todox = [];
+todox.length = 0;
+console.log(todox);
 auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users")
@@ -67,8 +72,8 @@ auth.onAuthStateChanged((user) => {
           const Lista = doc.data();
           todox.push(Lista);
         });
-          });
-  }  else {
+      });
+  } else {
     unsubscribe && unsubscribe();
   }
 });
@@ -181,7 +186,7 @@ function showDiv(clickedId) {
       centerDiv.classList.add("active");
       centerDiv.classList.remove("none");
     }
-function updateDetails() {
+    function updateDetails() {
       // const proj = JSON.parse(localStorage.getItem("Items"));
       // const filtrPr = proj.filter((p) => p.id == clickedId);
       // const Idtoedit = filtrPr[0];
@@ -193,25 +198,23 @@ function updateDetails() {
       // localStorage.setItem("Items", JSON.stringify(proj));
       auth.onAuthStateChanged((user) => {
         if (user) {
-          let ClickedTaskId = JSON.stringify(clickedId);
-
+          const ClickedTaskId = JSON.stringify(clickedId);
           console.log(ClickedTaskId);
           // console.log(ajdi);
           db.collection("users")
             .doc(user.uid)
             .collection("Items")
             .doc(ClickedTaskId)
-            
-.update({
+            .update({
               data: date.value,
               project: project.value,
               note: note.value,
               repeatDay: repeatDay.value,
               repeatpartoftime: timePart.value,
             });
-          } 
+        }
       });
-    }  
+    }
 
     const divT = document.querySelector(".center_divT");
     divT.addEventListener("click", renderdetals);
@@ -219,9 +222,24 @@ function updateDetails() {
 
     renderPomodoroTasks(actualList, todoList);
   }
-
+// let option;
+// let optionList = [];
   function getSelectOptions() {
+
+    // db.collection("users").doc(user.uid).collection("Project").onSnapshot((snapshot) => {
+// db.collection("users").doc("logUserId").collection("Items")
+// .onSnapshot((querySnapshot) => {
+//   Lista = 0;
+//   const todoList = [];
+//   todoList.length = 0;
+//   console.log(todoList);
+//   querysSnapshot.docs.map((doc) => {
+//     option = doc.data();
+//     OptionList.push(Lista);
+//   });
+// });
     const projectList = JSON.parse(localStorage.getItem("Project")) || [];
+    console.log("elo");
     const projectt = document.querySelector(".projectSelect");
 
     for (let i = 0; i < todox.length; i++) {
