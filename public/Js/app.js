@@ -86,8 +86,6 @@ let actualList;
 
 // empty state
 
-
-
 let setting ;
 let Sound;
 let pomodoreDuration;
@@ -132,66 +130,66 @@ function actualDateTime() {
 }
 actualDateTime();
 
+const  allnotelist = [];
 if (currentProject = null) {
   // currentProject =
+  
+  //   db.collection("users").doc(logUserId).collection("Current").doc("0")
+// .set({
+  
+  //     id: 0,
+//     name: "Today",
 
-  db.collection("users").doc(logUserId).collection("Current").doc("0")
-.set({
-
-    id: 0,
-    name: "Today",
-
-  });
+//   });
 
 }
-let tasksAll;
 let oneTask;
 tasks = JSON.parse(localStorage.getItem("Items")) || [];
 actualList = JSON.parse(localStorage.getItem("Actual")) || [];
-if (actualList = 0) {
+// if (actualList = 0) {
   auth.onAuthStateChanged((user) => {
+    let tasksAll = [];
     // console.log(allnotelist);
     // console.log(Lista);
     if (user) {
-      db.collection("users").doc(logUserId).collection("Items");
-      unsubscribe = thingsRef
+        db.collection("users")
       .doc(logUserId)
       .collection("Items")
       .onSnapshot((querySnapshot) => {
-        allnotelist.length = 0;
+          // allnotelist.length = 0;
         querySnapshot.docs.map((doc) => {
-          oneTask  = doc.data();
-          // allnotelist = Lista;
+            oneTask = doc.data();
+            // allnotelist = Lista;
+            // actualList = allnotelist;
           tasksAll.push(oneTask);
-          // actualList = allnotelist;
         });
-        taskToday = tasksAll.filter((items) => items.data === dateToday);
-        console.log(taskToday)
+  
+        taskToday = tasksAll.filter((items) => items.data == dateToday);
+        console.log(dateToday)
+        console.log(tasksAll);
+        console.log(taskToday);
+        
       });
+    } else {
+      unsubscribe && unsubscribe();
     }
-  });
+  })
+  // };
 
-  //! jako actual list ustaw wszystkie taski z dzisiejszą datą 
+  // ! jako actual list ustaw wszystkie taski z dzisiejszą datą 
+  
 
-  // actualSelect = [
-  //   {
-  //     id: 0,
-  //     name: "Studies 👨‍🎓",
-  //   },
-  // ];
-} 
 let unsubscribe;
 let Lista;
 
-    allnotelist = [];
-  allnotelist.length = 0;
 
+allnotelist.length = 0;
 renderPomodoroTasks();
 function renderPomodoroTasks(todolist = []) {
 // console.log(taskSomeday);
   const ast = todoList;
-  console.log(ast);
-//  allnotelist = [];
+  // console.log(ast);
+  //  allnotelist = [];
   // allnotelist.length = 0;
   auth.onAuthStateChanged((user) => {
     // console.log(allnotelist);
@@ -199,8 +197,8 @@ function renderPomodoroTasks(todolist = []) {
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
     unsubscribe = thingsRef
-      .doc(logUserId)
-      .collection("Items")
+    .doc(logUserId)
+    .collection("Items")
       .onSnapshot((querySnapshot) => {
         allnotelist.length = 0;
         querySnapshot.docs.map((doc) => {

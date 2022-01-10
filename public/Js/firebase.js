@@ -13,14 +13,13 @@ const showSignIn = document.getElementById("showSignIn");
 const providerFb = new firebase.auth.FacebookAuthProvider();
 const providerGh = new firebase.auth.GithubAuthProvider();
 const signupForm = document.querySelector("#signup-Form");
-// const createAccound = document.querySelector("#createAccound");
 
 const createAccound = document.getElementById("createAccound");
 const signInForm = document.getElementById("signin");
 const signUpForm = document.getElementById("signup");
 createAccound.onclick = (event) => {
   event.preventDefault();
-  signUpForm.classList.remove("none");
+  signUpForm.classLisfxt.remove("none");
   signInForm.classList.add("none");
 };
 showSignIn.onclick = (event) => {
@@ -123,7 +122,7 @@ auth.onAuthStateChanged((user) => {
     db.collection("users").doc(user.uid).collection("Project").doc("1").set({
       id: 0,
       color: "#111666",
-      name: "Running",
+      name: "Running 🏃 ",
     });
     db.collection("users").doc(user.uid).collection("Project").doc("2").set({
       id: 0,
