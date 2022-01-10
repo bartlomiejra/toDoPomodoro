@@ -83,12 +83,12 @@ auth.onAuthStateChanged((user) => {
       data: "31.1.21",
     });
 
-    db.collection("users").doc(user.uid).collection("settings").doc("0").set({
-      Sound: true,
-      Theme: "Dark",
-      breakTime: "5",
-      pomodoreTime: "25",
-    });
+    // db.collection("users").doc(user.uid).collection("settings").doc("0").set({
+    //   Sound: true,
+    //   Theme: "Dark",
+    //   breakTime: "5",
+    //   pomodoreTime: "25",
+    // });
 
     db.collection("users").doc(user.uid).collection("Actual").doc("0").set({
       id: 0,
@@ -123,7 +123,7 @@ auth.onAuthStateChanged((user) => {
     db.collection("users").doc(user.uid).collection("Project").doc("1").set({
       id: 0,
       color: "#111666",
-      name: "Running🏃 ",
+      name: "Running",
     });
     db.collection("users").doc(user.uid).collection("Project").doc("2").set({
       id: 0,

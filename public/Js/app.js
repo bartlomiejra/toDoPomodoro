@@ -76,7 +76,6 @@ const countdownTimer = document.getElementById("countdown");
 let tasks = JSON.parse(localStorage.getItem("Items")) || [];
 let clicked;
 let timeInFocus;
-let pomodoreDuration;
 let settings;
 let countdownTime;
 let taskId = 0;
@@ -86,89 +85,41 @@ let actualSelect;
 let actualList;
 
 // empty state
-if (history == null) {
-  const historylist = [
-    {
-      id: 0,
-      text: "Meditate",
-      done: true,
-      focus: 21,
-      project: "Mindfulness🧘",
-      repeatday: "1",
-      repeatpartoftime: "day",
-      data: 4,
-      note: " 4-7-8 Breathing\n\nClose your mouth and inhale quietly through your nose to a mental count of four.\nHold your breath for a count of seven.\nExhale completely through your mouth, making a whoosh sound to a count of eight.\nNow inhale again and repeat the cycle three more times for a total of four breaths.\n\n      \n      ",
-    },
-  ];
-  window.localStorage.setItem("History", JSON.stringify(historylist));
-}
-if (statistics == null) {
-  statistics = [
-    {
-      estimated: "0.00",
-      comp: 1,
-      elapsed: "0.00",
-      // complete: 0,
-    },
-  ];
-  window.localStorage.setItem("STat", JSON.stringify(statistics));
-  statistics = JSON.parse(localStorage.getItem("STat"));
-}
 
-if (project == null) {
-  project = [
-    {
-      id: 0,
-      name: "Studies👨‍🎓",
-      color: "#9ebb11",
-    },
-    {
-      id: 1,
-      name: "Running🏃",
-      color: "#11bb44",
-    },
-    {
-      id: 2,
-      name: "Reading📚",
-      color: "#bb1111",
-    },
-    {
-      id: 3,
-      name: "SocialLive🍹",
-      color: "#989f65",
-    },
-    {
-      id: 4,
-      name: "Mindfulness🧘",
-      color: "#00459e",
-    },
-    {
-      id: 4,
-      name: "Spanish Lesson🇪🇸",
-      color: "#ff459e",
-    },
-  ];
-  window.localStorage.setItem("Project", JSON.stringify(project));
-} else {
-  project = JSON.parse(localStorage.getItem("project"));
-}
 
-if (settinglocal == null) {
-  settings = {
-    Theme: "Dark",
-    pomodoreTime: 25,
-    breakTime: 5,
-  };
 
-  window.localStorage.setItem("settings", JSON.stringify(settings));
-} else {
-  pomodoreDuration = settinglocal.pomodoreTime;
-  pomodorebreakTime = settinglocal.breakTime;
-}
-// let taskToday = 0;
+let setting ;
+let Sound;
+let pomodoreDuration;
+let Theme;
+let breakTimes;
+let pomodoreTime ;
+auth.onAuthStateChanged((user) => {
+    // console.log(allnotelist);
+    // console.log(Lista);
+  if (user) {
+    db.collection("users").doc(logUserId).collection("Items");
+    unsubscribe = thingsRef
+      .doc(logUserId)
+      .collection("settings")
+      .onSnapshot((querySnapshot) => {
+        allnotelist.length = 0;
+        querySnapshot.docs.map((doc) => {
+          Sound = doc.data().Sound;
+          Theme = doc.data().Theme;
+          breakTimes = doc.data().breakTime;
+          pomodoreDuration = doc.data().pomodoreTime;
+          console.log(pomodoreDuration);
+          setting = doc.data();
+          // allnotelist = Lista;
+          // pomodoreDuration.push(setting);
 
-// const objlines = 0;
-// let actualList;
+          
+        });
+      })
+      console.log(pomodoreDuration);
+    }
+  });
 
 function actualDateTime() {
   const date = new Date();
@@ -191,26 +142,48 @@ if (currentProject = null) {
     name: "Today",
 
   });
-}
 
-tasks = JSON.parse(localStorage.getItem("Items")) || [];
-taskToday = tasks.filter((items) => items.data === dateToday);
-actualList = JSON.parse(localStorage.getItem("Actual")) || [];
-if (actualList == 0) {
-  actualSelect = [
-    {
-      id: 0,
-      name: "Studies 👨‍🎓",
-    },
-  ];
-  window.localStorage.setItem("Actual", JSON.stringify(actualSelect));
-} else {
-  project = JSON.parse(localStorage.getItem("project"));
 }
+let tasksAll;
+let oneTask;
+tasks = JSON.parse(localStorage.getItem("Items")) || [];
+actualList = JSON.parse(localStorage.getItem("Actual")) || [];
+if (actualList = 0) {
+  auth.onAuthStateChanged((user) => {
+    // console.log(allnotelist);
+    // console.log(Lista);
+    if (user) {
+      db.collection("users").doc(logUserId).collection("Items");
+      unsubscribe = thingsRef
+      .doc(logUserId)
+      .collection("Items")
+      .onSnapshot((querySnapshot) => {
+        allnotelist.length = 0;
+        querySnapshot.docs.map((doc) => {
+          oneTask  = doc.data();
+          // allnotelist = Lista;
+          tasksAll.push(oneTask);
+          // actualList = allnotelist;
+        });
+        taskToday = tasksAll.filter((items) => items.data === dateToday);
+        console.log(taskToday)
+      });
+    }
+  });
+
+  //! jako actual list ustaw wszystkie taski z dzisiejszą datą 
+
+  // actualSelect = [
+  //   {
+  //     id: 0,
+  //     name: "Studies 👨‍🎓",
+  //   },
+  // ];
+} 
 let unsubscribe;
 let Lista;
 
-   const allnotelist = [];
+    allnotelist = [];
   allnotelist.length = 0;
 
 renderPomodoroTasks();
@@ -330,7 +303,7 @@ window.onresize = function resizeFun() {
     centerDiv.classList.remove("none");
   }
 };
-const shortBreak = pomodorebreakTime * 60;
+const shortBreak = pomodoreTime * 60;
 
 function addTodo(event) {
    auth.onAuthStateChanged((user) => {
@@ -365,31 +338,33 @@ function addTodo(event) {
     text: todoInput.value,
     done: false,
     focus: 0,
-    project: "NoName",
+    project: currentProject,
     repeatday: "1",
     repeatpartoftime: "day",
     data: dateToday,
     note: "",
                   });
               });
+              console.log(currentProject);
 
   event.preventDefault();
 
   // renderPomodoroTasks(todos, todoList);
   // renderPomodoroTasks(actualList, todoList);
-  statTask();
+  // statTask();
   centerDiv.classList.add("active");
   centerDiv.classList.remove("none");
   // centerDiv.add.classList("active");
   // todoInput.value = "";
+  // statTask();
 } else {
   unsubscribe && unsubscribe();
 }
 });
-statTask();
 }
 // statTask();
 // funkcja odpowiadająca za wyliczanie i aktualizacje statystyk
+statTask();
 function statTask() {
     auth.onAuthStateChanged((user) => {
      if (user) {
@@ -411,6 +386,8 @@ let historyTasks;
 let ListaStat = 0;
 db.collection("users").doc(user.uid).collection("History")
 .onSnapshot((querySnapshot) => {
+  dbcountCompleted = 0;
+  
        const historylist = [];
        historylist.length = 0;
 
@@ -419,56 +396,55 @@ db.collection("users").doc(user.uid).collection("History")
           historylist.push(ListaStat);
     // historyTasks = doc.data();
   });
-  // console.log(historyTasks);
+   for (let i = 0; i < historylist.length; i += 1) {
+    if (historylist[i].done == true && historylist[i].data == dateToday) {
+      dbcountCompleted += 1;
+    }
+  }
+  console.log(dbcountCompleted);
   console.log(historylist);
-
-
-
-  dbcountCompleted = 0;
+  
+  
+  
   //! get all task from Item and count Task to
+  dbtoBeCompleted = 0;
   db.collection("users").doc(user.uid).collection("Items")
   .onSnapshot((querySnapshot) => {
       const todoListst = [];
       todoListst.length = 0;
-  dbtoBeCompleted = 0;
   // Lista = 0;
   querySnapshot.docs.map((doc) => {
     ListaStat = doc.data();
     todoListst.push(ListaStat);
   });
-  // console.log("todoListst");
-  // console.log(todoListst);
-  // console.log(ListaStat);
+
 console.log(dateToday)
+dbtoBeCompleted = 0;
   for (let i = 0; i < todoListst.length; i += 1) {
+
     if (todoListst[i].done == false && todoListst[i].data == dateToday) {
       dbtoBeCompleted += 1;
     }
-    //  else {
-    //   dbcountCompleted += 1;
-    // }
-    console.log("ok");
+   
   }
+  console.log(todoListst);
   console.log(dbtoBeCompleted);
   let focuscount = 0;
-
+//! counting task from history where data is today or not??
    for (let i = 0; i < todoListst.length; i += 1) {
      const ast = todoListst[i].focus;
       focuscount += ast;
     }
-
+console.log(focuscount);
     dbestimated = dbtoBeCompleted * pomodoreDuration;
     const minutesEs = dbestimated % 60;
     const hours = Math.floor(dbestimated / 60);
     const estimatedHM = `${hours}.${minutesEs < 10 ? "0" : ""}${minutesEs}`;
     document.getElementById("estimated").innerHTML = estimatedHM;
         dbelapsed = Math.floor(focuscount / 60);
-    const hoursel = Math.floor(dbelapsed / 60);
-    // console.log(hoursel);
     const minutes = dbelapsed % 60;
-    // console.log(minutes);
-    const elapsedHM = `${hoursel}.${minutes < 10 ? "0" : ""}${minutes}`;
-    // console.log(elapsedHM);
+    const elapsedHM = `${dbelapsed}.${minutes < 10 ? "0" : ""}${minutes}`;
+    console.log(elapsedHM);
     document.getElementById("elapse").innerHTML = elapsedHM;
     document.getElementById("completedTasks").innerHTML = dbcountCompleted;
     document.getElementById("taskstobe").innerHTML = dbtoBeCompleted;
@@ -482,7 +458,6 @@ estimated: dbestimated,
 elapsed: dbelapsed,
                      
                     });
-    // console.log(elapsedHM);
     });
 });
      } else {
@@ -688,6 +663,7 @@ done: false,
     timer();
     clearInterval(countdownTime);
     const seconds = pomodoreDuration * 60;
+    console.log(pomodoreDuration);
     timer(seconds);
     clockTimer.classList.remove("clock_timerFinish");
     countdownAnimation(item);
@@ -792,31 +768,34 @@ window.deleteProject = deleteProject;
 // eslint-disable-next-line no-unused-vars
 let allProject;
 // sortingProject();
+let prospor = [];
 function sortingProject(clicked_id) {
   clicked = clicked_id.getAttribute("name");
   // let currentProject;
+ currentProject = clicked;
+    // db.collection("users")
+    // .doc(logUserId)
+    // .collection("Current")
+    // .get()
+    // .then((querySnapshot) => {
+    //   querySnapshot.forEach((doc) => {
+    //     currentProject = doc.data();
+    //     prospor =  currentProject[0]
+    //   });
 
-    db.collection("users")
-    .doc(logUserId)
-    .collection("Current")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        currentProject = doc.data();
-      });
-
-      // get value from firebase database Curren project
-    // currentProject = JSON.parse(localStorage.getItem("Current")) || [];
-    // if (currentProject == 0) {
-      console.log(clicked);
-      console.log(currentProject);
-      console.log("ok");
-
-      // }
-
-      tasks = JSON.parse(localStorage.getItem("Items")) || [];
-      // const tasksProject = tasks.filter((item) => item.project == clicked);
-    });
+    //   // get value from firebase database Curren project
+    // // currentProject = JSON.parse(localStorage.getItem("Current")) || [];
+    // // if (currentProject == 0) {
+      
+    //   // }
+      
+    //   tasks = JSON.parse(localStorage.getItem("Items")) || [];
+    //   // const tasksProject = tasks.filter((item) => item.project == clicked);
+    // });
+    console.log(prospor);
+    console.log(clicked);
+    console.log(currentProject);
+    console.log("ok");
     db.collection("users").doc(logUserId).collection("Current").doc("0")
 .set({
 
@@ -1065,4 +1044,5 @@ actualDateTime,
   pomodoreDuration,
   audio,
   allnotelist,
+  shortBreak
 };

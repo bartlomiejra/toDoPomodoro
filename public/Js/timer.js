@@ -10,6 +10,7 @@ import {
   pomodorebreakTime,
   countdownTimer,
   audio,
+  shortBreak,
 } from "./app.js";
 
 let paused = false;
@@ -33,7 +34,6 @@ function timer(seconds) {
       clearInterval(countdownTime);
       return;
     }
-
     displayTimeLeft(secondsLeft);
   }, 1000);
 }
@@ -44,7 +44,7 @@ function timerBreak() {
     "fa-play-circle",
     "fa-coffee",
     "fa-pause-circle",
-    "fa-pause",
+    "fa-pause"
   );
   clearInterval(countdownTime);
   const now = Date.now();
@@ -82,12 +82,11 @@ function pausetimer() {
     timer(secsave);
   }
 }
-
 function resetTimer() {
   clockTimer.classList.remove(
     "clock_timerFinish",
     "clock_timerStart",
-    "clock_clockVisible",
+    "clock_clockVisible"
   );
   renderPomodoroTasks(actualList, todoList);
   buttonscountdown.classList.add(".countdownButtonsNone");
@@ -100,18 +99,18 @@ function resetTimer() {
 }
 
 function endpomodoro() {
-  todos = JSON.parse(localStorage.getItem("Items"));
-  audio = new Audio("Alerts/taskEnd.mp3");
-  audio.play();
-  const itemS = JSON.parse(localStorage.getItem("Items"));
-  const filtrr = itemS.filter((p) => p.id == taskId);
-  const itemSelement = filtrr[0];
-  itemSelement.focus += timeInFocus;
-  localStorage.setItem("Items", JSON.stringify(itemS));
+  // todos = JSON.parse(localStorage.getItem("Items"));
+  // audio = new Audio("Alerts/taskEnd.mp3");
+  // audio.play();
+  // const itemS = JSON.parse(localStorage.getItem("Items"));
+  // const filtrr = itemS.filter((p) => p.id == taskId);
+  // const itemSelement = filtrr[0];
+  // itemSelement.focus += timeInFocus;
+  // localStorage.setItem("Items", JSON.stringify(itemS));
 
-  renderPomodoroTasks(todos, todoList);
+  // renderPomodoroTasks(todos, todoList);
   pause.addEventListener("click", timerBreak);
-  displayNotification();
+  // displayNotification();
   breakTime();
 }
 
@@ -130,15 +129,14 @@ function breakTime() {
   clearInterval(countdownTime);
   console.log(countdownTime);
   clockTimer.classList.add("clock_timerFinish");
-
   pause.firstElementChild.classList.remove(
     "fa-play-circle",
     "fa-pause",
-    "fa-pause-circle",
+    "fa-pause-circle"
   );
   pause.firstElementChild.classList.add("fa-coffee");
   clockTimer.classList.remove("clock_timerStart");
-  renderPomodoroTasks(todos, todoList);
+  // renderPomodoroTasks(todos, todoList);
 }
 
 function displayTimeLeft(seconds) {
