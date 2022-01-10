@@ -130,10 +130,10 @@ auth.onAuthStateChanged((user) => {
       color: "#fff666",
       name: "Reading📚 ",
     });
-    db.collection("users").doc(user.uid).collection("Current").doc("0").set({
-      id: 0,
-      name: "No Current :(",
-    });
+    // db.collection("users").doc(user.uid).collection("Current").doc("0").set({
+    //   id: 0,
+    //   name: "No Current :(",
+    // });
     db.collection("users").doc(user.uid).collection("Notes").doc("0").set({
       id: 0,
       note: "Butter chicken is a modern Indian dish, originating—according to Madhur Jaffrey (and we always defer to her!)—at the Moti Mahal restaurant in Delhi in the 1950s. But in just a few decades, it has fast become a globally beloved dish. After one bite of the generously spiced, savory tomato-cream sauce and the tender chicken that’s cooked in it, it’s not hard to understand why butter chicken has had such a stratospheric rise from kitchen experiment to absolute staple. We’re crazy for this dish. We’ve even adapted the recipe to be made in a slow-cooker. But today, we’re focused on an equally simple way of making this dish—say hello to your beloved butter chicken, cooked quickly and easily in a skillet on the stovetop! The whole thing takes under 30 minutes to make, and (of course) only requires you to dirty one pan.",

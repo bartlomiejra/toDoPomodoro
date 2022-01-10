@@ -115,8 +115,6 @@ if (statistics == null) {
   statistics = JSON.parse(localStorage.getItem("STat"));
 }
 
-
-
 if (project == null) {
   project = [
     {
@@ -183,6 +181,18 @@ function actualDateTime() {
 }
 actualDateTime();
 
+if (currentProject = null) {
+  // currentProject =
+
+  db.collection("users").doc(logUserId).collection("Current").doc("0")
+.set({
+
+    id: 0,
+    name: "Today",
+
+  });
+}
+
 tasks = JSON.parse(localStorage.getItem("Items")) || [];
 taskToday = tasks.filter((items) => items.data === dateToday);
 actualList = JSON.parse(localStorage.getItem("Actual")) || [];
@@ -206,7 +216,7 @@ let Lista;
 renderPomodoroTasks();
 function renderPomodoroTasks(todolist = []) {
 // console.log(taskSomeday);
-  let ast = todoList;
+  const ast = todoList;
   console.log(ast);
 //  allnotelist = [];
   // allnotelist.length = 0;
@@ -226,7 +236,6 @@ function renderPomodoroTasks(todolist = []) {
           allnotelist.push(Lista);
           actualList = allnotelist;
         });
-
 
   window.localStorage.setItem("Actual", JSON.stringify(actualList));
 
@@ -285,7 +294,7 @@ aria-hidden="true"></i></button>
 </li>
 `,
     )
-    
+
     // console.log("logUserId")
     // console.log(logUserId)
     .join("");
@@ -295,7 +304,7 @@ aria-hidden="true"></i></button>
   }
 });
 }
-//! creat new if item and login to connect from database and make virable logUserId 
+//! creat new if item and login to connect from database and make virable logUserId
 window.showDiv = showDiv;
 
 renderPomodoroTasks(actualList, todoList);
@@ -356,7 +365,7 @@ function addTodo(event) {
     text: todoInput.value,
     done: false,
     focus: 0,
-    project: "currentProject",
+    project: "NoName",
     repeatday: "1",
     repeatpartoftime: "day",
     data: dateToday,
@@ -392,10 +401,10 @@ db.collection("users").doc(logUserId).collection("STat").onSnapshot((querySnapsh
   const elements = querySnapshot.docs;
 
   const db = querySnapshot.docs.map((doc) => {
-          dbtoBeCompleted = doc.data().comp;
-          dbcountCompleted = doc.data().complete;
-          dbestimated = doc.data().estimated;
-          dbelapsed = doc.data().elapsed;
+          // dbtoBeCompleted = doc.data().comp;
+          // dbcountCompleted = doc.data().complete;
+          // dbestimated = doc.data().estimated;
+          // dbelapsed = doc.data().elapsed;
         });
 });
 let historyTasks;
@@ -408,19 +417,17 @@ db.collection("users").doc(user.uid).collection("History")
   querySnapshot.docs.map((doc) => {
   ListaStat = doc.data();
           historylist.push(ListaStat);
-    historyTasks = doc.data();
+    // historyTasks = doc.data();
   });
+  // console.log(historyTasks);
+  console.log(historylist);
+
+
 
   dbcountCompleted = 0;
-  for (let i = 0; i < historylist.length; i += 1) {
-    if (historylist[i].data == dateToday) {
-      dbcountCompleted += 1;
-    }
-  }
-  // querysnapchot from collection Items
+  //! get all task from Item and count Task to
   db.collection("users").doc(user.uid).collection("Items")
   .onSnapshot((querySnapshot) => {
-    
       const todoListst = [];
       todoListst.length = 0;
   dbtoBeCompleted = 0;
@@ -429,19 +436,20 @@ db.collection("users").doc(user.uid).collection("History")
     ListaStat = doc.data();
     todoListst.push(ListaStat);
   });
-  console.log("todoListst");
-  console.log(todoListst);
-  console.log(ListaStat);
-
-
+  // console.log("todoListst");
+  // console.log(todoListst);
+  // console.log(ListaStat);
+console.log(dateToday)
   for (let i = 0; i < todoListst.length; i += 1) {
-    if (todoListst[i].done == true) {
-      dbcountCompleted += 1;
-    } else {
+    if (todoListst[i].done == false && todoListst[i].data == dateToday) {
       dbtoBeCompleted += 1;
     }
+    //  else {
+    //   dbcountCompleted += 1;
+    // }
     console.log("ok");
   }
+  console.log(dbtoBeCompleted);
   let focuscount = 0;
 
    for (let i = 0; i < todoListst.length; i += 1) {
@@ -454,8 +462,8 @@ db.collection("users").doc(user.uid).collection("History")
     const hours = Math.floor(dbestimated / 60);
     const estimatedHM = `${hours}.${minutesEs < 10 ? "0" : ""}${minutesEs}`;
     document.getElementById("estimated").innerHTML = estimatedHM;
-     dbelapsed = focuscount
-    const hoursel =  dbelapsed
+        dbelapsed = Math.floor(focuscount / 60);
+    const hoursel = Math.floor(dbelapsed / 60);
     // console.log(hoursel);
     const minutes = dbelapsed % 60;
     // console.log(minutes);
@@ -465,6 +473,15 @@ db.collection("users").doc(user.uid).collection("History")
     document.getElementById("completedTasks").innerHTML = dbcountCompleted;
     document.getElementById("taskstobe").innerHTML = dbtoBeCompleted;
     console.log(dbtoBeCompleted);
+    console.log(dbcountCompleted);
+db.collection("users").doc(logUserId).collection("STat").doc("0")
+                    .set({
+comp: dbtoBeCompleted,
+complete: dbcountCompleted,
+estimated: dbestimated,
+elapsed: dbelapsed,
+                     
+                    });
     // console.log(elapsedHM);
     });
 });
@@ -705,8 +722,8 @@ unsubscribe = thingsRef.doc(logUserId).collection("Project").onSnapshot((querySn
     titleProject = doc.data().name;
     id = doc.data().id;
     color = doc.data().color;
-    console.log(allprojects);
-    console.log(projectList);
+    // console.log(allprojects);
+    // console.log(projectList);
 });
  const proj = JSON.parse(localStorage.getItem("Project")) || [];
   pomodoreList.innerHTML = allprojects
@@ -774,9 +791,10 @@ window.deleteProject = deleteProject;
 
 // eslint-disable-next-line no-unused-vars
 let allProject;
+// sortingProject();
 function sortingProject(clicked_id) {
   clicked = clicked_id.getAttribute("name");
-  let currentProject;
+  // let currentProject;
 
     db.collection("users")
     .doc(logUserId)
@@ -793,9 +811,9 @@ function sortingProject(clicked_id) {
       console.log(clicked);
       console.log(currentProject);
       console.log("ok");
-      
+
       // }
-      
+
       tasks = JSON.parse(localStorage.getItem("Items")) || [];
       // const tasksProject = tasks.filter((item) => item.project == clicked);
     });
@@ -814,16 +832,16 @@ function sortingProject(clicked_id) {
 }
 //
 function sortingProjectDays(e) {
-  let history = [];
+  const history = [];
   let historyTodo;
   taskToday = 0;
   let taskTomorrow = 0;
   let taskSomeday = 0;
-  let allProjectList = [];
+  const allProjectList = [];
   let taskone;
   clicked = e.target.id;
   // tasks = JSON.parse(localStorage.getItem("Items")) || [];
-  //get all element from firebase Items 
+  // get all element from firebase Items
    db.collection("users")
     .doc(logUserId)
     .collection("Items")
@@ -877,14 +895,14 @@ console.log(taskToday);
       renderPomodoroTasks(taskSomeday, todoList);
       break;
     case "Completed":
-      db.collection("users").doc(logUserId).collection("History").get().then((querySnapshot) => {
+      db.collection("users").doc(logUserId).collection("History").get()
+.then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
   historyTodo = doc.data();
 history.push(historyTodo);
       });
-      console.log(history)
+      console.log(history);
       if (history.length == 0) {
-        
         emptyList.classList.remove("none");
       }
       if (history.length > 0) {
@@ -928,7 +946,6 @@ showToDoCard();
 if ((clicked = null)) {
   clicked = "Today";
 
-
   db.collection("users")
                  .doc(logUserId)
                  .collection("Current")
@@ -946,12 +963,7 @@ document.querySelectorAll(".left_day").forEach((e) => {
   e.addEventListener("click", sortingProjectDays);
 });
 
-
-
-
-
-
-// 
+//
 
 function deleteProject() {
   const click = event.currentTarget.id;
@@ -960,9 +972,6 @@ function deleteProject() {
     .collection("Project")
     .doc(click)
     .delete();
-
-
-
 }
 
 function ifmobile() {
@@ -1013,23 +1022,20 @@ window.openNoteCard = openNoteCard;
 
 function titleName() {
    let itemOne;
-  let itemAll = [];
-  db.collection("users").doc(logUserId).collection("Project").get().then((querySnapshot) => {
+  const itemAll = [];
+  db.collection("users").doc(logUserId).collection("Project").get()
+.then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       itemOne = doc.data();
       itemAll.push(itemOne);
-
     });
 console.log(itemAll);
-
-
 });
-    
-  let currentProject = itemAll;
+
+  const currentProject = itemAll;
   if (currentProject == null) {
     currentProject.name = "Today";
   }
-
 
   title.innerHTML = currentProject
     .map((title) => ` ${title.name}`)

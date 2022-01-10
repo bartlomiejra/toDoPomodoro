@@ -88,14 +88,14 @@ auth.onAuthStateChanged((user) => {
             (todo) => `  
       ${
         todo.done
-          ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)' onclick="event.stopPropagation()"
+          ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)' onClick='event.stopPropagation()'
            id=${todo.id} data-index=${todo.id}>    
           ${todo.text}      
-          <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this.id)">
+          <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick='deleteTodo(this.id)' >
           Delete
     </button>
     </div>`
-          : `<div class="todo_item dragitem" onClick='checkFunction(this.id)' onclick="event.stopPropagation()"  	  
+          : `<div class="todo_item dragitem" onClick='checkFunction(this.id)'  onClick='event.stopPropagation()'  	  
            id=${todo.id} data-index=${todo.id}  >     
           ${todo.text}
           <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
@@ -115,19 +115,19 @@ auth.onAuthStateChanged((user) => {
   }
 });
 function deleteTodo(ClickedId) {
+
   db.collection("users")
     .doc(logUserId)
     .collection("ListTodo")
     .doc(ClickedId)
     .delete();
 
-  event.stopPropagation();
 }
 
 function checkFunction(clicked_id) {
   console.log("esss");
+
   let thisId;
-  event.stopPropagation();
   
   // db.collection("users")
   // .doc(logUserId)
