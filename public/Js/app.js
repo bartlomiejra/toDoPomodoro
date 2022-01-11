@@ -68,9 +68,9 @@ const title = document.querySelector(".titlebar");
 let dateToday;
 let dateTomorrow = 0;
 // const history = JSON.parse(localStorage.getItem("History"));
-let statistics = JSON.parse(localStorage.getItem("STat"));
+const statistics = JSON.parse(localStorage.getItem("STat"));
 const todos = JSON.parse(localStorage.getItem("Items"));
-let project = JSON.parse(localStorage.getItem("Project"));
+const project = JSON.parse(localStorage.getItem("Project"));
 const settinglocal = JSON.parse(localStorage.getItem("settings"));
 const countdownTimer = document.getElementById("countdown");
 let tasks = JSON.parse(localStorage.getItem("Items")) || [];
@@ -86,12 +86,12 @@ let actualList;
 
 // empty state
 
-let setting ;
+let setting;
 let Sound;
 let pomodoreDuration;
 let Theme;
 let breakTimes;
-let pomodoreTime ;
+let pomodoreTime;
 auth.onAuthStateChanged((user) => {
     // console.log(allnotelist);
     // console.log(Lista);
@@ -111,10 +111,8 @@ auth.onAuthStateChanged((user) => {
           setting = doc.data();
           // allnotelist = Lista;
           // pomodoreDuration.push(setting);
-
-          
         });
-      })
+      });
       console.log(pomodoreDuration);
     }
   });
@@ -130,25 +128,14 @@ function actualDateTime() {
 }
 actualDateTime();
 
-const  allnotelist = [];
+const allnotelist = [];
 if (currentProject = null) {
-  // currentProject =
-  
-  //   db.collection("users").doc(logUserId).collection("Current").doc("0")
-// .set({
-  
-  //     id: 0,
-//     name: "Today",
-
-//   });
-
-}
 let oneTask;
 tasks = JSON.parse(localStorage.getItem("Items")) || [];
 actualList = JSON.parse(localStorage.getItem("Actual")) || [];
 // if (actualList = 0) {
   auth.onAuthStateChanged((user) => {
-    let tasksAll = [];
+    const tasksAll = [];
     // console.log(allnotelist);
     // console.log(Lista);
     if (user) {
@@ -163,29 +150,27 @@ actualList = JSON.parse(localStorage.getItem("Actual")) || [];
             // actualList = allnotelist;
           tasksAll.push(oneTask);
         });
-  
-        taskToday = tasksAll.filter((items) => items.data == dateToday);
-        console.log(dateToday)
-        console.log(tasksAll);
+        taskToday = tasksAll.filter((items) => items.data === dateToday);
         console.log(taskToday);
-        
       });
     } else {
       unsubscribe && unsubscribe();
     }
-  })
+  });
+}
   // };
 
-  // ! jako actual list ustaw wszystkie taski z dzisiejszą datą 
-  
+  // ! jako actual list ustaw wszystkie taski z dzisiejszą datą
 
 let unsubscribe;
 let Lista;
 
-
 allnotelist.length = 0;
 renderPomodoroTasks();
 function renderPomodoroTasks(todolist = []) {
+
+  actualList = todolist;
+  console.log(actualList);
 // console.log(taskSomeday);
   const ast = todoList;
   // console.log(ast);
@@ -204,8 +189,8 @@ function renderPomodoroTasks(todolist = []) {
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
           // allnotelist = Lista;
-          allnotelist.push(Lista);
-          actualList = allnotelist;
+          // allnotelist.push(Lista);
+          // actualList = allnotelist;
         });
 
   window.localStorage.setItem("Actual", JSON.stringify(actualList));
@@ -216,7 +201,7 @@ function renderPomodoroTasks(todolist = []) {
   if (actualList.length > 0) {
     emptyList.classList.add("none");
   }
-  todoList.innerHTML = allnotelist
+  todoList.innerHTML = actualList
     .map(
       (todo) => `${todo.done
           ? '<li   class="center_divT completed">'
@@ -385,7 +370,7 @@ let ListaStat = 0;
 db.collection("users").doc(user.uid).collection("History")
 .onSnapshot((querySnapshot) => {
   dbcountCompleted = 0;
-  
+
        const historylist = [];
        historylist.length = 0;
 
@@ -401,9 +386,7 @@ db.collection("users").doc(user.uid).collection("History")
   }
   console.log(dbcountCompleted);
   console.log(historylist);
-  
-  
-  
+
   //! get all task from Item and count Task to
   dbtoBeCompleted = 0;
   db.collection("users").doc(user.uid).collection("Items")
@@ -416,14 +399,12 @@ db.collection("users").doc(user.uid).collection("History")
     todoListst.push(ListaStat);
   });
 
-console.log(dateToday)
+console.log(dateToday);
 dbtoBeCompleted = 0;
   for (let i = 0; i < todoListst.length; i += 1) {
-
     if (todoListst[i].done == false && todoListst[i].data == dateToday) {
       dbtoBeCompleted += 1;
     }
-   
   }
   console.log(todoListst);
   console.log(dbtoBeCompleted);
@@ -454,7 +435,7 @@ comp: dbtoBeCompleted,
 complete: dbcountCompleted,
 estimated: dbestimated,
 elapsed: dbelapsed,
-                     
+
                     });
     });
 });
@@ -765,12 +746,52 @@ window.deleteProject = deleteProject;
 
 // eslint-disable-next-line no-unused-vars
 let allProject;
+let tasksProject;
 // sortingProject();
-let prospor = [];
+const prospor = [];
 function sortingProject(clicked_id) {
   clicked = clicked_id.getAttribute("name");
+  currentProject = clicked;
+  db.collection("users").doc(logUserId).collection("Current").doc("0")
+  .set({
+    
+    id: 0,
+    name: clicked,
+    
+  });
+let allTasklist = [];
+   auth.onAuthStateChanged((user) => {
+    // console.log(allnotelist);
+    // console.log(Lista);
+  if (user) {
+    db.collection("users").doc(logUserId).collection("Items");
+    unsubscribe = thingsRef
+    .doc(logUserId)
+    .collection("Items")
+      .onSnapshot((querySnapshot) => {
+        allnotelist.length = 0;
+        querySnapshot.docs.map((doc) => {
+          Lista = doc.data();
+          // allTasklist = Lista;
+          allTasklist.push(Lista);
+          actualList = allTasklist;
+        });
+console.log(allnotelist);
+console.log(clicked);
+ tasksProject = allnotelist.filter((item) => item.project === clicked);
+  // tasks = JSON.parse(localStorage.getItem("Items")) || [];
+  console.log(tasksProject);
+
+
+      });
+      
+            } else {
+    unsubscribe && unsubscribe();
+  }
+
+});
+
   // let currentProject;
- currentProject = clicked;
     // db.collection("users")
     // .doc(logUserId)
     // .collection("Current")
@@ -780,29 +801,20 @@ function sortingProject(clicked_id) {
     //     currentProject = doc.data();
     //     prospor =  currentProject[0]
     //   });
-
+console.log(tasks)
     //   // get value from firebase database Curren project
     // // currentProject = JSON.parse(localStorage.getItem("Current")) || [];
     // // if (currentProject == 0) {
-      
+
     //   // }
-      
-    //   tasks = JSON.parse(localStorage.getItem("Items")) || [];
-    //   // const tasksProject = tasks.filter((item) => item.project == clicked);
+
     // });
     console.log(prospor);
     console.log(clicked);
     console.log(currentProject);
     console.log("ok");
-    db.collection("users").doc(logUserId).collection("Current").doc("0")
-.set({
-
-    id: 0,
-    name: clicked,
-
-  });
   // showToDoCard();
-  // renderPomodoroTasks(tasksProject, todoList);
+  renderPomodoroTasks(tasksProject, todoList);
   showToDoCard();
   titleName();
   // return tasksProject;
@@ -1042,5 +1054,5 @@ actualDateTime,
   pomodoreDuration,
   audio,
   allnotelist,
-  shortBreak
+  shortBreak,
 };
