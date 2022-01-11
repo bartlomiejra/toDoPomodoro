@@ -21,9 +21,7 @@ import {
 } from "./app.js";
 import { logUserId } from "./settings.js";
 
-export {
- showToDoCard, showProjectList, activeProject, centerDiv, showDiv 
-};
+export { showToDoCard, showProjectList, activeProject, centerDiv, showDiv };
 let unsubscribe;
 
 const centerDiv = document.querySelector(".center");
@@ -54,8 +52,6 @@ function activeProject(clicked_id) {
       ele.classList.add("select");
     }
   }
-
-  // nameofProject =
 }
 window.activeProject = activeProject;
 const todox = [];
@@ -81,8 +77,6 @@ function showDiv(clickedId) {
   let oneTask;
   description.classList.remove("none");
   description.classList.add("right--active");
-  // renderdetals();
-
   let taskDetails = [];
   console.log(allnotelist);
   allnotelist.forEach((ele) => {
@@ -96,27 +90,19 @@ function showDiv(clickedId) {
     //! render detals get data from firebase Items
     auth.onAuthStateChanged((user) => {
       const tasksAll = [];
-      // console.log(allnotelist);
-      // console.log(Lista);
+
       if (user) {
         db.collection("users")
           .doc(logUserId)
           .collection("Items")
           .onSnapshot((querySnapshot) => {
-            // allnotelist.length = 0;
             querySnapshot.docs.map((doc) => {
               oneTask = doc.data();
-              // allnotelist = Lista;
-              // actualList = allnotelist;
+
               tasksAll.push(oneTask);
             });
             const filter = tasksAll.filter((p) => p.id == clickedId);
-
-            console.log(filter);
-
-            // const todoss = JSON.parse(localStorage.getItem("Items")) || [];
             taskDetails = filter[0];
-
             description.innerHTML = `
 <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
 <i class="fas fa-times"
@@ -194,12 +180,10 @@ function showDiv(clickedId) {
             repeatDay.addEventListener("input", updateDetails);
             const projectSelect = document.getElementById("Project");
             projectSelect.addEventListener("click", () => {
-              // const options = projectSelect.querySelectorAll('option');
               projectSelect.addEventListener("change", updateDetails);
             });
             const partTimeSelect = document.getElementById("partOfTime");
             partTimeSelect.addEventListener("click", () => {
-              // const optionsTime = partTimeSelect.querySelectorAll('option');
               partTimeSelect.addEventListener("change", updateDetails);
             });
 
@@ -249,28 +233,22 @@ function showDiv(clickedId) {
       }
     });
   }
-  // let option;
-  // let optionList = [];
+
   function getSelectOptions() {
-    // db.collection("users").doc(user.uid).collection("Project").onSnapshot((snapshot) => {
-    // db.collection("users").doc("logUserId").collection("Items")
-    // .onSnapshot((querySnapshot) => {
-    //   Lista = 0;
-    //   const todoList = [];
-    //   todoList.length = 0;
-    //   console.log(todoList);
-    //   querysSnapshot.docs.map((doc) => {
-    //     option = doc.data();
-    //     OptionList.push(Lista);
-    //   });
-    // });
     const projectList = JSON.parse(localStorage.getItem("Project")) || [];
     const projectt = document.querySelector(".projectSelect");
 
-    for (let i = 0; i < todox.length; i++) {
-      console.log(todox);
+    const uniqueChars = [];
+    todox.forEach((c) => {
+      if (!uniqueChars.includes(c.name)) {
+        uniqueChars.push(c.name);
+      }
+    });
+
+    for (let i = 0; i < uniqueChars.length; i++) {
+      console.log(uniqueChars);
       const option = document.createElement("option");
-      const txt = document.createTextNode(todox[i].name);
+      const txt = document.createTextNode(uniqueChars[i]);
       option.appendChild(txt);
       projectt.insertBefore(option, projectt.lastChild);
     }
