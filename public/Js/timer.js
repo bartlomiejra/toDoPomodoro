@@ -17,7 +17,15 @@ let paused = false;
 let timeInFocus;
 let countdownTime;
 let secondsLeft;
-
+function displayTimeLeft(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainderSeconds = seconds % 60;
+  const display = `${minutes}:${
+    remainderSeconds < 10 ? "0" : ""
+  }${remainderSeconds}`;
+  countdownTimer.textContent = display;
+  document.title = display;
+} 
 function timer(seconds) {
   pause.firstElementChild.classList.remove("fa-coffee");
   pause.firstElementChild.classList.add("fa-pause");
@@ -47,6 +55,8 @@ function timerBreak() {
     "fa-pause"
   );
   clearInterval(countdownTime);
+  console.log("im hire");
+  console.log(shortBreak);
   const now = Date.now();
   const then = now + shortBreak * 1000;
   displayTimeLeft(shortBreak);
@@ -139,15 +149,7 @@ function breakTime() {
   // renderPomodoroTasks(todos, todoList);
 }
 
-function displayTimeLeft(seconds) {
-  const minutes = Math.floor(seconds / 60);
-  const remainderSeconds = seconds % 60;
-  const display = `${minutes}:${
-    remainderSeconds < 10 ? "0" : ""
-  }${remainderSeconds}`;
-  countdownTimer.textContent = display;
-  document.title = display;
-}
+
 function countdownAnimation() {
   buttonscountdown.classList.remove(".countdownButtonsNone");
   clockTimer.classList.add("clock_timerStart");

@@ -193,7 +193,6 @@ function showDiv(clickedId) {
               centerDiv.classList.remove("none");
             }
             function updateDetails() {
-              // const proj = JSON.parse(localStorage.getItem("Items"));
               // const filtrPr = proj.filter((p) => p.id == clickedId);
               // const Idtoedit = filtrPr[0];
               taskDetails.data = date.value;
@@ -201,7 +200,6 @@ function showDiv(clickedId) {
               taskDetails.note = note.value;
               taskDetails.repeatday = repeatDay.value;
               taskDetails.repeatpartoftime = timePart.value;
-              // localStorage.setItem("Items", JSON.stringify(proj));
               auth.onAuthStateChanged((user) => {
                 if (user) {
                   const ClickedTaskId = JSON.stringify(clickedId);
@@ -235,7 +233,6 @@ function showDiv(clickedId) {
   }
 
   function getSelectOptions() {
-    const projectList = JSON.parse(localStorage.getItem("Project")) || [];
     const projectt = document.querySelector(".projectSelect");
 
     const uniqueChars = [];

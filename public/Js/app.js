@@ -67,13 +67,13 @@ const pomodoreList = document.querySelector(".left_pomodoreProjects");
 const title = document.querySelector(".titlebar");
 let dateToday;
 let dateTomorrow = 0;
-// const history = JSON.parse(localStorage.getItem("History"));
-const statistics = JSON.parse(localStorage.getItem("STat"));
-const todos = JSON.parse(localStorage.getItem("Items"));
-const project = JSON.parse(localStorage.getItem("Project"));
-const settinglocal = JSON.parse(localStorage.getItem("settings"));
+// const history 
+// const statistics = JSON.parse(localStorage.getItem("STat"));
+// const todos = JSON.parse(localStorage.getItem("Items"));
+// const project = JSON.parse(localStorage.getItem("Project"));
+// const settinglocal = JSON.parse(localStorage.getItem("settings"));
 const countdownTimer = document.getElementById("countdown");
-let tasks = JSON.parse(localStorage.getItem("Items")) || [];
+// let tasks = JSON.parse(localStorage.getItem("Items")) || [];
 let clicked;
 let timeInFocus;
 let settings;
@@ -93,8 +93,7 @@ let Theme;
 let breakTimes;
 let pomodoreTime;
 auth.onAuthStateChanged((user) => {
-    // console.log(allnotelist);
-    // console.log(Lista);
+  
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
     unsubscribe = thingsRef
@@ -108,14 +107,18 @@ auth.onAuthStateChanged((user) => {
           breakTimes = doc.data().breakTime;
           pomodoreDuration = doc.data().pomodoreTime;
           console.log(pomodoreDuration);
+          console.log(breakTimes)
           setting = doc.data();
           // allnotelist = Lista;
           // pomodoreDuration.push(setting);
         });
+        console.log(pomodoreDuration);
       });
-      console.log(pomodoreDuration);
     }
+   
   });
+  const shortBreak = breakTimes * 60;
+  console.log(shortBreak);
 
 function actualDateTime() {
   const date = new Date();
@@ -129,11 +132,11 @@ function actualDateTime() {
 actualDateTime();
 
 const allnotelist = [];
-if (currentProject = null) {
 let oneTask;
-tasks = JSON.parse(localStorage.getItem("Items")) || [];
-actualList = JSON.parse(localStorage.getItem("Actual")) || [];
+// tasks = JSON.parse(localStorage.getItem("Items")) || [];
+// actualList = JSON.parse(localStorage.getItem("Actual")) || [];
 // if (actualList = 0) {
+  // ! jako actual list ustaw wszystkie taski z dzisiejszą datą
   auth.onAuthStateChanged((user) => {
     const tasksAll = [];
     // console.log(allnotelist);
@@ -148,19 +151,28 @@ actualList = JSON.parse(localStorage.getItem("Actual")) || [];
             oneTask = doc.data();
             // allnotelist = Lista;
             // actualList = allnotelist;
-          tasksAll.push(oneTask);
+            tasksAll.push(oneTask);
+            actualList = tasksAll.filter((items) => items.data == dateToday);
+            
+            
+            // for (let i = 0; i < actualList.length; i += 1) {
+            //   db.collection("users").doc(logUserId).collection("Actual").doc([i]).set(oneTask);
+            // }
+            console.log(actualList);
+          });
+          
+          
+          console.log(actualList);
+          
         });
-        taskToday = tasksAll.filter((items) => items.data === dateToday);
-        console.log(taskToday);
-      });
     } else {
       unsubscribe && unsubscribe();
     }
   });
+  if (currentProject = null) {
 }
   // };
 
-  // ! jako actual list ustaw wszystkie taski z dzisiejszą datą
 
 let unsubscribe;
 let Lista;
@@ -192,7 +204,7 @@ function renderPomodoroTasks(todolist = []) {
           // actualList = allnotelist;
         });
 
-  window.localStorage.setItem("Actual", JSON.stringify(actualList));
+  // window.localStorage.setItem("Actual", JSON.stringify(actualList));
 
   if (actualList.length == 0) {
     emptyList.classList.remove("none");
@@ -285,7 +297,6 @@ window.onresize = function resizeFun() {
     centerDiv.classList.remove("none");
   }
 };
-const shortBreak = pomodoreTime * 60;
 
 function addTodo(event) {
    auth.onAuthStateChanged((user) => {
@@ -332,7 +343,7 @@ function addTodo(event) {
   event.preventDefault();
 
   // renderPomodoroTasks(todos, todoList);
-  // renderPomodoroTasks(actualList, todoList);
+  renderPomodoroTasks(actualList, todoList);
   // statTask();
   centerDiv.classList.add("active");
   centerDiv.classList.remove("none");
@@ -481,7 +492,7 @@ console.log(allnotelist);
 
     const thisitem = todos.findIndex((char) => char.id == index.index);
     todos.splice(thisitem, 1);
-    localStorage.setItem("Items", JSON.stringify(todos));
+    // localStorage.setItem("Items", JSON.stringify(todos));
     todo.addEventListener("transitionend", () => {
       todo.remove();
       resetTimer();
@@ -647,7 +658,6 @@ done: false,
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
-  // localStorage.setItem("Items", JSON.stringify(todos));
   renderPomodoroTasks(actualList, todoList);
 }
 
@@ -679,7 +689,6 @@ unsubscribe = thingsRef.doc(logUserId).collection("Project").onSnapshot((querySn
     // console.log(allprojects);
     // console.log(projectList);
 });
- const proj = JSON.parse(localStorage.getItem("Project")) || [];
   pomodoreList.innerHTML = allprojects
     .map(
       (proje) => `
@@ -718,7 +727,6 @@ function addProject(event) {
                 });
                 nextIdProject = lastIdProject.toString();
                 console.log(nextIdProject);
-                // project = JSON.parse(localStorage.getItem("Project")) || [];
 
                 // let lastId = 0;
                 // project.forEach((ele) => {
@@ -735,9 +743,10 @@ function addProject(event) {
                       // project.push(Project);
                     });
                     addPr.value = "";
-                    // localStorage.setItem("Project", JSON.stringify(project));
                   });
                   event.preventDefault();
+                  // getSelectOptions();
+
 }
 
 window.sortingProject = sortingProject;
@@ -776,7 +785,6 @@ const allTasklist = [];
           actualList = allTasklist;
         });
  tasksProject = actualList.filter((item) => item.project == clicked);
-  // tasks = JSON.parse(localStorage.getItem("Items")) || [];
   renderPomodoroTasks(tasksProject, todoList);
       });
             } else {
@@ -796,7 +804,6 @@ const allTasklist = [];
     //   });
 console.log(tasks);
     //   // get value from firebase database Curren project
-    // // currentProject = JSON.parse(localStorage.getItem("Current")) || [];
     // // if (currentProject == 0) {
 
     //   // }
@@ -821,7 +828,6 @@ function sortingProjectDays(e) {
   const allProjectList = [];
   let taskone;
   clicked = e.target.id;
-  // tasks = JSON.parse(localStorage.getItem("Items")) || [];
   // get all element from firebase Items
    db.collection("users")
     .doc(logUserId)
@@ -966,7 +972,6 @@ todoList.addEventListener("click", btnActtion);
 showProject.addEventListener("click", ifmobile);
 
 function repeatTasks() {
-  const Items = JSON.parse(localStorage.getItem("Items"));
 
   for (let i = 0; i < Items.length; i += 1) {
     const dateString = Items[i].data;
@@ -974,7 +979,6 @@ function repeatTasks() {
       Items[i].data = moment(dateString)
         .add(Items[i].repeatday, Items[i].repeatpartoftime)
         .format("YYYY-MM-DD");
-      localStorage.setItem("Items", JSON.stringify(Items));
     }
   }
 }
