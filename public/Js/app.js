@@ -168,7 +168,6 @@ let Lista;
 allnotelist.length = 0;
 renderPomodoroTasks();
 function renderPomodoroTasks(todolist = []) {
-
   actualList = todolist;
   console.log(actualList);
 // console.log(taskSomeday);
@@ -754,12 +753,12 @@ function sortingProject(clicked_id) {
   currentProject = clicked;
   db.collection("users").doc(logUserId).collection("Current").doc("0")
   .set({
-    
+
     id: 0,
     name: clicked,
-    
+
   });
-let allTasklist = [];
+const allTasklist = [];
    auth.onAuthStateChanged((user) => {
     // console.log(allnotelist);
     // console.log(Lista);
@@ -776,19 +775,13 @@ let allTasklist = [];
           allTasklist.push(Lista);
           actualList = allTasklist;
         });
-console.log(allnotelist);
-console.log(clicked);
- tasksProject = allnotelist.filter((item) => item.project === clicked);
+ tasksProject = actualList.filter((item) => item.project == clicked);
   // tasks = JSON.parse(localStorage.getItem("Items")) || [];
-  console.log(tasksProject);
-
-
+  renderPomodoroTasks(tasksProject, todoList);
       });
-      
             } else {
     unsubscribe && unsubscribe();
   }
-
 });
 
   // let currentProject;
@@ -801,7 +794,7 @@ console.log(clicked);
     //     currentProject = doc.data();
     //     prospor =  currentProject[0]
     //   });
-console.log(tasks)
+console.log(tasks);
     //   // get value from firebase database Curren project
     // // currentProject = JSON.parse(localStorage.getItem("Current")) || [];
     // // if (currentProject == 0) {
@@ -814,7 +807,6 @@ console.log(tasks)
     console.log(currentProject);
     console.log("ok");
   // showToDoCard();
-  renderPomodoroTasks(tasksProject, todoList);
   showToDoCard();
   titleName();
   // return tasksProject;

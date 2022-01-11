@@ -19,6 +19,7 @@ import {
   pomodoreDuration,
   allnotelist,
 } from "./app.js";
+import { logUserId } from "./settings.js";
 
 export {
  showToDoCard, showProjectList, activeProject, centerDiv, showDiv 
@@ -57,8 +58,6 @@ function activeProject(clicked_id) {
   // nameofProject =
 }
 window.activeProject = activeProject;
-
-
 const todox = [];
 todox.length = 0;
 console.log(todox);
@@ -79,6 +78,7 @@ auth.onAuthStateChanged((user) => {
 });
 
 function showDiv(clickedId) {
+  let oneTask;
   description.classList.remove("none");
   description.classList.add("right--active");
   // renderdetals();
@@ -93,10 +93,31 @@ function showDiv(clickedId) {
   console.log(taskDetails);
   renderdetals();
   function renderdetals() {
-    // const todoss = JSON.parse(localStorage.getItem("Items")) || [];
-    // const filter = todoss.filter((p) => p.id == clickedId);
-    // const taskDetails = filter;
-    description.innerHTML = `
+    //! render detals get data from firebase Items
+    auth.onAuthStateChanged((user) => {
+      const tasksAll = [];
+      // console.log(allnotelist);
+      // console.log(Lista);
+      if (user) {
+        db.collection("users")
+          .doc(logUserId)
+          .collection("Items")
+          .onSnapshot((querySnapshot) => {
+            // allnotelist.length = 0;
+            querySnapshot.docs.map((doc) => {
+              oneTask = doc.data();
+              // allnotelist = Lista;
+              // actualList = allnotelist;
+              tasksAll.push(oneTask);
+            });
+            const filter = tasksAll.filter((p) => p.id == clickedId);
+
+            console.log(filter);
+
+            // const todoss = JSON.parse(localStorage.getItem("Items")) || [];
+            taskDetails = filter[0];
+
+            description.innerHTML = `
 <button class="close-btn"  data-index=${clickedId} id="${clickedId}" >
 <i class="fas fa-times"
     aria-hidden="true"></i></button>
@@ -126,10 +147,10 @@ function showDiv(clickedId) {
 <li>   Project:</li>
              <li>
 <select name="Project" value="${
-      taskDetails.project
-    }" id="Project"class="projectSelect" placeholder="${
-      taskDetails.project
-    }" value="${taskDetails.project}">
+              taskDetails.project
+            }" id="Project"class="projectSelect" placeholder="${
+              taskDetails.project
+            }" value="${taskDetails.project}">
                 <option value="${
                   taskDetails.project
                 }"  selected disabled hidden>
@@ -156,90 +177,94 @@ function showDiv(clickedId) {
                 </select>
                 </ul>
                 <textarea  placeholder="Note to your task" class="note textareaDetals" id=${clickedId} name="note" >${
-      taskDetails.note !== "" ? taskDetails.note : ""
-    }
+              taskDetails.note !== "" ? taskDetails.note : ""
+            }
     </textarea>
 </div>
 `;
-    const closeBtn = document.querySelector(".close-btn");
-    const date = document.getElementById("date");
-    const note = document.querySelector(".note");
-    const timePart = document.querySelector(".partOfTime");
-    const repeatDay = document.querySelector(".repeatDay");
-    const project = document.querySelector(".projectSelect");
-    date.addEventListener("change", updateDetails);
-    closeBtn.addEventListener("click", closeDiv);
-    note.addEventListener("input", updateDetails);
-    repeatDay.addEventListener("input", updateDetails);
-    const projectSelect = document.getElementById("Project");
-    projectSelect.addEventListener("click", () => {
-      // const options = projectSelect.querySelectorAll('option');
-      projectSelect.addEventListener("change", updateDetails);
-    });
-    const partTimeSelect = document.getElementById("partOfTime");
-    partTimeSelect.addEventListener("click", () => {
-      // const optionsTime = partTimeSelect.querySelectorAll('option');
-      partTimeSelect.addEventListener("change", updateDetails);
-    });
-    function closeDiv() {
-      description.classList.add("none");
-      centerDiv.classList.add("active");
-      centerDiv.classList.remove("none");
-    }
-    function updateDetails() {
-      // const proj = JSON.parse(localStorage.getItem("Items"));
-      // const filtrPr = proj.filter((p) => p.id == clickedId);
-      // const Idtoedit = filtrPr[0];
-      taskDetails.data = date.value;
-      taskDetails.project = project.value;
-      taskDetails.note = note.value;
-      taskDetails.repeatday = repeatDay.value;
-      taskDetails.repeatpartoftime = timePart.value;
-      // localStorage.setItem("Items", JSON.stringify(proj));
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          const ClickedTaskId = JSON.stringify(clickedId);
-          console.log(ClickedTaskId);
-          // console.log(ajdi);
-          db.collection("users")
-            .doc(user.uid)
-            .collection("Items")
-            .doc(ClickedTaskId)
-            .update({
-              data: date.value,
-              project: project.value,
-              note: note.value,
-              repeatDay: repeatDay.value,
-              repeatpartoftime: timePart.value,
+            const closeBtn = document.querySelector(".close-btn");
+            const date = document.getElementById("date");
+            const note = document.querySelector(".note");
+            const timePart = document.querySelector(".partOfTime");
+            const repeatDay = document.querySelector(".repeatDay");
+            const project = document.querySelector(".projectSelect");
+            date.addEventListener("change", updateDetails);
+            closeBtn.addEventListener("click", closeDiv);
+            note.addEventListener("input", updateDetails);
+            repeatDay.addEventListener("input", updateDetails);
+            const projectSelect = document.getElementById("Project");
+            projectSelect.addEventListener("click", () => {
+              // const options = projectSelect.querySelectorAll('option');
+              projectSelect.addEventListener("change", updateDetails);
             });
-        }
-      });
-    }
+            const partTimeSelect = document.getElementById("partOfTime");
+            partTimeSelect.addEventListener("click", () => {
+              // const optionsTime = partTimeSelect.querySelectorAll('option');
+              partTimeSelect.addEventListener("change", updateDetails);
+            });
 
-    const divT = document.querySelector(".center_divT");
-    divT.addEventListener("click", renderdetals);
-    getSelectOptions();
+            function closeDiv() {
+              description.classList.add("none");
+              centerDiv.classList.add("active");
+              centerDiv.classList.remove("none");
+            }
+            function updateDetails() {
+              // const proj = JSON.parse(localStorage.getItem("Items"));
+              // const filtrPr = proj.filter((p) => p.id == clickedId);
+              // const Idtoedit = filtrPr[0];
+              taskDetails.data = date.value;
+              taskDetails.project = project.value;
+              taskDetails.note = note.value;
+              taskDetails.repeatday = repeatDay.value;
+              taskDetails.repeatpartoftime = timePart.value;
+              // localStorage.setItem("Items", JSON.stringify(proj));
+              auth.onAuthStateChanged((user) => {
+                if (user) {
+                  const ClickedTaskId = JSON.stringify(clickedId);
+                  console.log(ClickedTaskId);
+                  // console.log(ajdi);
+                  db.collection("users")
+                    .doc(user.uid)
+                    .collection("Items")
+                    .doc(ClickedTaskId)
+                    .update({
+                      data: date.value,
+                      project: project.value,
+                      note: note.value,
+                      repeatDay: repeatDay.value,
+                      repeatpartoftime: timePart.value,
+                    });
+                }
+              });
+            }
 
-    renderPomodoroTasks(actualList, todoList);
+            const divT = document.querySelector(".center_divT");
+            divT.addEventListener("click", renderdetals);
+            getSelectOptions();
+
+            renderPomodoroTasks(actualList, todoList);
+          });
+      } else {
+        unsubscribe && unsubscribe();
+      }
+    });
   }
-// let option;
-// let optionList = [];
+  // let option;
+  // let optionList = [];
   function getSelectOptions() {
-
     // db.collection("users").doc(user.uid).collection("Project").onSnapshot((snapshot) => {
-// db.collection("users").doc("logUserId").collection("Items")
-// .onSnapshot((querySnapshot) => {
-//   Lista = 0;
-//   const todoList = [];
-//   todoList.length = 0;
-//   console.log(todoList);
-//   querysSnapshot.docs.map((doc) => {
-//     option = doc.data();
-//     OptionList.push(Lista);
-//   });
-// });
+    // db.collection("users").doc("logUserId").collection("Items")
+    // .onSnapshot((querySnapshot) => {
+    //   Lista = 0;
+    //   const todoList = [];
+    //   todoList.length = 0;
+    //   console.log(todoList);
+    //   querysSnapshot.docs.map((doc) => {
+    //     option = doc.data();
+    //     OptionList.push(Lista);
+    //   });
+    // });
     const projectList = JSON.parse(localStorage.getItem("Project")) || [];
-    console.log("elo");
     const projectt = document.querySelector(".projectSelect");
 
     for (let i = 0; i < todox.length; i++) {

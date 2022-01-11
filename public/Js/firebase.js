@@ -19,7 +19,7 @@ const signInForm = document.getElementById("signin");
 const signUpForm = document.getElementById("signup");
 createAccound.onclick = (event) => {
   event.preventDefault();
-  signUpForm.classLisfxt.remove("none");
+  signUpForm.classList.remove("none");
   signInForm.classList.add("none");
 };
 showSignIn.onclick = (event) => {
