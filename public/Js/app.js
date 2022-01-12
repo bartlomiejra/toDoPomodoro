@@ -69,7 +69,7 @@ let dateToday;
 let dateTomorrow = 0;
 // const history 
 // const statistics = JSON.parse(localStorage.getItem("STat"));
-// const todos = JSON.parse(localStorage.getItem("Items"));
+const todos = JSON.parse(localStorage.getItem("Items"));
 // const project = JSON.parse(localStorage.getItem("Project"));
 // const settinglocal = JSON.parse(localStorage.getItem("settings"));
 const countdownTimer = document.getElementById("countdown");
@@ -488,9 +488,8 @@ toString(StrThisItem);
 db.collection("users").doc(logUserId).collection("Items");
 unsubscribe = thingsRef
 .doc(logUserId)
-.collection("Items").doc(StrThisItem).delete();
+.collection("Items").doc("30").delete();
 // console.log(allnotelist);
-
     const thisitem = todos.findIndex((char) => char.id == index.index);
     todos.splice(thisitem, 1);
     // localStorage.setItem("Items", JSON.stringify(todos));
