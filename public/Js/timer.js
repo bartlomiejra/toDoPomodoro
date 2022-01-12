@@ -13,6 +13,34 @@ import {
   shortBreak,
 } from "./app.js";
 
+// let breakTimes;
+// auth.onAuthStateChanged((user) => {
+  
+//   if (user) {
+//     db.collection("users").doc(logUserId).collection("Items");
+//     unsubscribe = thingsRef
+//       .doc(logUserId)
+//       .collection("settings")
+//       .onSnapshot((querySnapshot) => {
+//         allnotelist.length = 0;
+//         querySnapshot.docs.map((doc) => {
+//           Sound = doc.data().Sound;
+//           Theme = doc.data().Theme;
+//           breakTimes = doc.data().breakTime;
+//           pomodoreDuration = doc.data().pomodoreTime;
+//           console.log(pomodoreDuration);
+//           console.log(breakTimes)
+//           setting = doc.data();
+//           // allnotelist = Lista;
+//           // pomodoreDuration.push(setting);
+//         });
+//         console.log(breakTimes);
+//       });
+//     }
+   
+//   });
+
+
 let paused = false;
 let timeInFocus;
 let countdownTime;

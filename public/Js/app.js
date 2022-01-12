@@ -106,19 +106,19 @@ auth.onAuthStateChanged((user) => {
           Theme = doc.data().Theme;
           breakTimes = doc.data().breakTime;
           pomodoreDuration = doc.data().pomodoreTime;
-          console.log(pomodoreDuration);
-          console.log(breakTimes)
           setting = doc.data();
           // allnotelist = Lista;
           // pomodoreDuration.push(setting);
         });
         console.log(pomodoreDuration);
+        // console.log(breakTimes)
+        // console.log(pomodoreDuration);
       });
     }
    
   });
   const shortBreak = breakTimes * 60;
-  console.log(shortBreak);
+  // console.log(shortBreak);
 
 function actualDateTime() {
   const date = new Date();
@@ -212,6 +212,7 @@ function renderPomodoroTasks(todolist = []) {
   if (actualList.length > 0) {
     emptyList.classList.add("none");
   }
+  console.log(actualList)
   todoList.innerHTML = actualList
     .map(
       (todo) => `${todo.done
@@ -316,7 +317,7 @@ function addTodo(event) {
               .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                   lastId = doc.data().id;
-                  console.log(lastId);
+                  // console.log(lastId);
                   lastId++;
                   nextId = lastId.toString();
                   console.log(nextId);
@@ -338,7 +339,7 @@ function addTodo(event) {
     note: "",
                   });
               });
-              console.log(currentProject);
+              // console.log(currentProject);
 
   event.preventDefault();
 
@@ -394,8 +395,8 @@ db.collection("users").doc(user.uid).collection("History")
       dbcountCompleted += 1;
     }
   }
-  console.log(dbcountCompleted);
-  console.log(historylist);
+  // console.log(dbcountCompleted);
+  // console.log(historylist);
 
   //! get all task from Item and count Task to
   dbtoBeCompleted = 0;
@@ -409,22 +410,22 @@ db.collection("users").doc(user.uid).collection("History")
     todoListst.push(ListaStat);
   });
 
-console.log(dateToday);
+// console.log(dateToday);
 dbtoBeCompleted = 0;
   for (let i = 0; i < todoListst.length; i += 1) {
     if (todoListst[i].done == false && todoListst[i].data == dateToday) {
       dbtoBeCompleted += 1;
     }
   }
-  console.log(todoListst);
-  console.log(dbtoBeCompleted);
+  // console.log(todoListst);
+  // console.log(dbtoBeCompleted);
   let focuscount = 0;
 //! counting task from history where data is today or not??
    for (let i = 0; i < todoListst.length; i += 1) {
      const ast = todoListst[i].focus;
       focuscount += ast;
     }
-console.log(focuscount);
+// console.log(focuscount);
     dbestimated = dbtoBeCompleted * pomodoreDuration;
     const minutesEs = dbestimated % 60;
     const hours = Math.floor(dbestimated / 60);
@@ -433,12 +434,12 @@ console.log(focuscount);
         dbelapsed = Math.floor(focuscount / 60);
     const minutes = dbelapsed % 60;
     const elapsedHM = `${dbelapsed}.${minutes < 10 ? "0" : ""}${minutes}`;
-    console.log(elapsedHM);
+    // console.log(elapsedHM);
     document.getElementById("elapse").innerHTML = elapsedHM;
     document.getElementById("completedTasks").innerHTML = dbcountCompleted;
     document.getElementById("taskstobe").innerHTML = dbtoBeCompleted;
-    console.log(dbtoBeCompleted);
-    console.log(dbcountCompleted);
+    // console.log(dbtoBeCompleted);
+    // console.log(dbcountCompleted);
 db.collection("users").doc(logUserId).collection("STat").doc("0")
                     .set({
 comp: dbtoBeCompleted,
@@ -472,7 +473,7 @@ function btnActtion(e) {
     const { ...index } = e.target.dataset;
     const todo = item.parentElement;
     todo.classList.add("fall");
-console.log(index.index);
+// console.log(index.index);
 
 let thisItem = [];
 allnotelist.forEach((ele) => {
@@ -483,12 +484,12 @@ allnotelist.forEach((ele) => {
 });
 // });
 toString(StrThisItem);
-console.log(StrThisItem);
+// console.log(StrThisItem);
 db.collection("users").doc(logUserId).collection("Items");
 unsubscribe = thingsRef
 .doc(logUserId)
 .collection("Items").doc(StrThisItem).delete();
-console.log(allnotelist);
+// console.log(allnotelist);
 
     const thisitem = todos.findIndex((char) => char.id == index.index);
     todos.splice(thisitem, 1);
@@ -549,8 +550,8 @@ let nextIdHistory;
                .collection("History")
                .doc(nextIdHistory)
                .update({ id: nextIdHistory });
-                console.log(lastIdHistory);
-                console.log(nextIdHistory);
+                // console.log(lastIdHistory);
+                // console.log(nextIdHistory);
 
                          // add to history
 
@@ -592,10 +593,10 @@ unsubscribe = thingsRef
               .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                   lastId = doc.data().id;
-                  console.log(lastId);
+                  // console.log(lastId);
                   lastId++;
                   nextId = lastId.toString();
-                  console.log(nextId);
+                  // console.log(nextId);
                 });
 
                 const rep = clickedTodo.repeatday;
@@ -608,7 +609,7 @@ unsubscribe = thingsRef
                   .collection("Items")
                   .doc(nextId)
                   .set(clickedTodo);
-                  console.log(clickedTodo);
+                  // console.log(clickedTodo);
 
                    db.collection("users")
                   .doc(logUserId)
@@ -652,7 +653,7 @@ done: false,
     timer();
     clearInterval(countdownTime);
     const seconds = pomodoreDuration * 60;
-    console.log(pomodoreDuration);
+    // console.log(pomodoreDuration);
     timer(seconds);
     clockTimer.classList.remove("clock_timerFinish");
     countdownAnimation(item);
@@ -726,7 +727,7 @@ function addProject(event) {
                   lastIdProject++;
                 });
                 nextIdProject = lastIdProject.toString();
-                console.log(nextIdProject);
+                // console.log(nextIdProject);
 
                 // let lastId = 0;
                 // project.forEach((ele) => {
@@ -802,17 +803,17 @@ const allTasklist = [];
     //     currentProject = doc.data();
     //     prospor =  currentProject[0]
     //   });
-console.log(tasks);
+// console.log(tasks);
     //   // get value from firebase database Curren project
     // // if (currentProject == 0) {
 
     //   // }
 
     // });
-    console.log(prospor);
-    console.log(clicked);
-    console.log(currentProject);
-    console.log("ok");
+    // console.log(prospor);
+    // console.log(clicked);
+    // console.log(currentProject);
+    // console.log("ok");
   // showToDoCard();
   showToDoCard();
   titleName();
@@ -842,8 +843,8 @@ allProjectList.push(taskone);
   switch (clicked) {
     case "Today":
       taskToday = allProjectList.filter((items) => items.data === dateToday);
-      console.log(dateToday);
-console.log(taskToday);
+      // console.log(dateToday);
+// console.log(taskToday);
  db.collection("users")
                  .doc(logUserId)
                  .collection("Current")
@@ -856,7 +857,7 @@ console.log(taskToday);
     case "Tomorrow":
       taskTomorrow = allProjectList.filter((items) => items.data === dateTomorrow);
       // renderProjects();
-      console.log(taskTomorrow);
+      // console.log(taskTomorrow);
        db.collection("users")
                  .doc(logUserId)
                  .collection("Current")
@@ -870,7 +871,7 @@ console.log(taskToday);
       taskSomeday = allProjectList.filter(
         (items) => items.data !== dateTomorrow || dateToday,
       );
-      console.log(taskSomeday);
+      // console.log(taskSomeday);
        db.collection("users")
                  .doc(logUserId)
                  .collection("Current")
@@ -888,7 +889,7 @@ console.log(taskToday);
   historyTodo = doc.data();
 history.push(historyTodo);
       });
-      console.log(history);
+      // console.log(history);
       if (history.length == 0) {
         emptyList.classList.remove("none");
       }
@@ -940,7 +941,7 @@ if ((clicked = null)) {
                  .set({
    name: clicked,
                  });
-                 console.log(clicked);
+                //  console.log(clicked);
 }
 
 // currentProject[0].name = clicked;
@@ -1014,7 +1015,7 @@ function titleName() {
       itemOne = doc.data();
       itemAll.push(itemOne);
     });
-console.log(itemAll);
+// console.log(itemAll);
 });
 
   const currentProject = itemAll;
