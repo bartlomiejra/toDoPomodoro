@@ -145,8 +145,8 @@ let oneTask;
       .doc(logUserId)
       .collection("Items")
       .onSnapshot((querySnapshot) => {
+        // allnotelist.length = 0;
         actualList.length = 0;
-          // allnotelist.length = 0;
         querySnapshot.docs.map((doc) => {
             oneTask = doc.data();
             // allnotelist = Lista;
@@ -154,15 +154,12 @@ let oneTask;
             tasksAll.push(oneTask);
             actualList = tasksAll.filter((items) => items.data == dateToday);
             
-            
-            // for (let i = 0; i < actualList.length; i += 1) {
-            //   db.collection("users").doc(logUserId).collection("Actual").doc([i]).set(oneTask);
             // }
-            console.log(actualList);
           });
-          
+          // console.log(actualList);
           
           console.log(actualList);
+        
           
         });
     } else {
@@ -180,6 +177,10 @@ let Lista;
 allnotelist.length = 0;
 renderPomodoroTasks();
 function renderPomodoroTasks(todolist = []) {
+  actualList = 0;
+
+  console.log(actualList);
+  console.log(todolist);
   actualList = todolist;
   console.log(actualList);
 // console.log(taskSomeday);
@@ -197,6 +198,7 @@ function renderPomodoroTasks(todolist = []) {
     .collection("Items")
       .onSnapshot((querySnapshot) => {
         allnotelist.length = 0;
+        // actualList.length = 0;
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
           // allnotelist = Lista;
@@ -212,7 +214,7 @@ function renderPomodoroTasks(todolist = []) {
   if (actualList.length > 0) {
     emptyList.classList.add("none");
   }
-  console.log(actualList)
+  // console.log(actualList)
   todoList.innerHTML = actualList
     .map(
       (todo) => `${todo.done
@@ -344,7 +346,7 @@ function addTodo(event) {
   event.preventDefault();
 
   // renderPomodoroTasks(todos, todoList);
-  renderPomodoroTasks(actualList, todoList);
+  // renderPomodoroTasks(actualList, todoList);
   // statTask();
   centerDiv.classList.add("active");
   centerDiv.classList.remove("none");
@@ -473,6 +475,7 @@ function btnActtion(e) {
       .collection("Items")
         .onSnapshot((querySnapshot) => {
           allnotelist.length = 0;
+          allTasklist.length = 0;
           querySnapshot.docs.map((doc) => {
             Lista = doc.data();
             // allTasklist = Lista;
@@ -501,7 +504,7 @@ function btnActtion(e) {
 
 let thisItem = [];
 console.log(allTasklist);
-console.log(allnotelist)
+console.log(allnotelist);
 console.log("all note list powyżej ma wszystkie taski wprintować!")
 allnotelist.forEach((ele) => {
   if (ele.id == index.index) {
@@ -812,6 +815,7 @@ const allTasklist = [];
           allTasklist.push(Lista);
           actualList = allTasklist;
         });
+        console.log(actualList);
  tasksProject = actualList.filter((item) => item.project == clicked);
   renderPomodoroTasks(tasksProject, todoList);
       });

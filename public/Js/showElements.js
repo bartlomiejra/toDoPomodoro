@@ -75,6 +75,7 @@ auth.onAuthStateChanged((user) => {
 
 function showDiv(clickedId) {
   let oneTask;
+  console.log(clickedId)
   description.classList.remove("none");
   description.classList.add("right--active");
   let taskDetails = [];
@@ -243,12 +244,12 @@ function showDiv(clickedId) {
     });
 
     for (let i = 0; i < uniqueChars.length; i++) {
-      console.log(uniqueChars);
       const option = document.createElement("option");
       const txt = document.createTextNode(uniqueChars[i]);
       option.appendChild(txt);
       projectt.insertBefore(option, projectt.lastChild);
     }
+    console.log(uniqueChars);
   }
 }
 

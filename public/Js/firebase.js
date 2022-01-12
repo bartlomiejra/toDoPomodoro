@@ -82,12 +82,12 @@ auth.onAuthStateChanged((user) => {
       data: "31.1.21",
     });
 
-    // db.collection("users").doc(user.uid).collection("settings").doc("0").set({
-    //   Sound: true,
-    //   Theme: "Dark",
-    //   breakTime: "5",
-    //   pomodoreTime: "25",
-    // });
+    db.collection("users").doc(user.uid).collection("settings").doc("0").set({
+      Sound: true,
+      Theme: "Dark",
+      breakTime: "5",
+      pomodoreTime: "25",
+    });
 
     db.collection("users").doc(user.uid).collection("Actual").doc("0").set({
       id: 0,
@@ -121,13 +121,18 @@ auth.onAuthStateChanged((user) => {
     });
     db.collection("users").doc(user.uid).collection("Project").doc("1").set({
       id: 0,
-      color: "#111666",
+      color: "#f54242",
       name: "Running 🏃 ",
     });
     db.collection("users").doc(user.uid).collection("Project").doc("2").set({
       id: 0,
       color: "#fff666",
       name: "Reading📚 ",
+    });
+    db.collection("users").doc(user.uid).collection("Project").doc("3").set({
+      id: 0,
+      color: "#111666",
+      name: " Daily routine ☕ 🕓",
     });
     // db.collection("users").doc(user.uid).collection("Current").doc("0").set({
     //   id: 0,
@@ -137,6 +142,18 @@ auth.onAuthStateChanged((user) => {
       id: 0,
       note: "Butter chicken is a modern Indian dish, originating—according to Madhur Jaffrey (and we always defer to her!)—at the Moti Mahal restaurant in Delhi in the 1950s. But in just a few decades, it has fast become a globally beloved dish. After one bite of the generously spiced, savory tomato-cream sauce and the tender chicken that’s cooked in it, it’s not hard to understand why butter chicken has had such a stratospheric rise from kitchen experiment to absolute staple. We’re crazy for this dish. We’ve even adapted the recipe to be made in a slow-cooker. But today, we’re focused on an equally simple way of making this dish—say hello to your beloved butter chicken, cooked quickly and easily in a skillet on the stovetop! The whole thing takes under 30 minutes to make, and (of course) only requires you to dirty one pan.",
       title: "Butter chicken🍗",
+      date: "31.1.21",
+    });
+    db.collection("users").doc(user.uid).collection("Notes").doc("1").set({
+      id: 1,
+      note: "Bakery and Bread Meat and SeafoodPasta and RiceOils, Sauces, Salad Dressingsand Condiments.Cereals and Breakfast FoodsSoups and Canned Goods.Frozen Foods.Dairy Cheese, and Eggs",
+      title: "Grocery Shopping",
+      date: "31.1.21",
+    });
+    db.collection("users").doc(user.uid).collection("Notes").doc("2").set({
+      id: 1,
+      note: "    Neck roll. Stand up straight with the feet shoulder-width apart and the arms loose. ...Shoulder roll. Stand up straight with the arms loose. ...Behind-head tricep stretch. ...Standing hip rotation. ...Standing hamstring stretch. ...Quadriceps stretch. ...Ankle roll. ...Child's Pose.",
+      title: "Full body daily stretching routine",
       date: "31.1.21",
     });
     db.collection("users").doc(user.uid).collection("STat").doc("0").set({

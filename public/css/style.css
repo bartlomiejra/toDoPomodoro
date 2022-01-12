@@ -476,6 +476,7 @@ body .center__text {
 
 html .center_addTaskdiv,
 body .center_addTaskdiv {
+  min-height: 35px;
   padding: 5px;
   margin: 10px;
   color: var(--task);
