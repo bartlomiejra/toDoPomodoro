@@ -34,7 +34,6 @@ import * as firebase from "./firebase.js";
 
 import { auth, db } from "./firebase.js";
 
-// import * as settingsfile from './settings.js';
 window.openNoteCard = openNoteCard;
 window.resizeClock = resizeClock;
 export let pomodorebreakTime;
@@ -142,10 +141,11 @@ let oneTask;
     // console.log(allnotelist);
     // console.log(Lista);
     if (user) {
-        db.collection("users")
+      db.collection("users")
       .doc(logUserId)
       .collection("Items")
       .onSnapshot((querySnapshot) => {
+        actualList.length = 0;
           // allnotelist.length = 0;
         querySnapshot.docs.map((doc) => {
             oneTask = doc.data();
@@ -459,10 +459,34 @@ elapsed: dbelapsed,
 statTask();
 todoButton.addEventListener("click", addTodo);
 renderPomodoroTasks(actualList, todoList);
-
 // * functions buttons action delate play and completted task
-
+// ! allTasklist w tej zmiennej zbieraj wszystkie taski z bazy danych i na jej podstawie ustawaj i zaznaczaj taski wykonane owrapuj wszystkie ify tą funkcją żeby była ona dostępna
 function btnActtion(e) {
+  let allTasklist = [];
+  auth.onAuthStateChanged((user) => {
+    // console.log(allnotelist);
+    // console.log(Lista);
+    if (user) {
+      db.collection("users").doc(logUserId).collection("Items");
+      unsubscribe = thingsRef
+      .doc(logUserId)
+      .collection("Items")
+        .onSnapshot((querySnapshot) => {
+          allnotelist.length = 0;
+          querySnapshot.docs.map((doc) => {
+            Lista = doc.data();
+            // allTasklist = Lista;
+            allTasklist.push(Lista);
+          });
+          console.log(allTasklist);
+        });
+        console.log(allTasklist);
+      } else {
+        unsubscribe && unsubscribe();
+      }
+    });
+
+  
   statTask();
 
   const item = e.target;
@@ -476,6 +500,9 @@ function btnActtion(e) {
 // console.log(index.index);
 
 let thisItem = [];
+console.log(allTasklist);
+console.log(allnotelist)
+console.log("all note list powyżej ma wszystkie taski wprintować!")
 allnotelist.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
@@ -488,7 +515,7 @@ toString(StrThisItem);
 db.collection("users").doc(logUserId).collection("Items");
 unsubscribe = thingsRef
 .doc(logUserId)
-.collection("Items").doc("30").delete();
+.collection("Items").doc(StrThisItem).delete();
 // console.log(allnotelist);
     const thisitem = todos.findIndex((char) => char.id == index.index);
     todos.splice(thisitem, 1);
@@ -513,6 +540,7 @@ unsubscribe = thingsRef
 
 let thisItem = [];
 let clickedTodo;
+
 allnotelist.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
@@ -1029,7 +1057,7 @@ function titleName() {
 }
 
 titleName();
-
+console.log(actualList);
 export {
 actualDateTime,
   dateToday,
