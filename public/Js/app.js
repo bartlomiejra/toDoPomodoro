@@ -66,7 +66,7 @@ const pomodoreList = document.querySelector(".left_pomodoreProjects");
 const title = document.querySelector(".titlebar");
 let dateToday;
 let dateTomorrow = 0;
-// const history 
+// const history
 // const statistics = JSON.parse(localStorage.getItem("STat"));
 const todos = JSON.parse(localStorage.getItem("Items"));
 // const project = JSON.parse(localStorage.getItem("Project"));
@@ -92,7 +92,6 @@ let Theme;
 let breakTimes;
 let pomodoreTime;
 auth.onAuthStateChanged((user) => {
-  
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
     unsubscribe = thingsRef
@@ -114,7 +113,6 @@ auth.onAuthStateChanged((user) => {
         // console.log(pomodoreDuration);
       });
     }
-   
   });
   const shortBreak = breakTimes * 60;
   // console.log(shortBreak);
@@ -153,14 +151,12 @@ let oneTask;
             // actualList = allnotelist;
             tasksAll.push(oneTask);
             actualList = tasksAll.filter((items) => items.data == dateToday);
-            
+
             // }
           });
           // console.log(actualList);
-          
+
           console.log(actualList);
-        
-          
         });
     } else {
       unsubscribe && unsubscribe();
@@ -169,7 +165,6 @@ let oneTask;
   if (currentProject = null) {
 }
   // };
-
 
 let unsubscribe;
 let Lista;
@@ -464,7 +459,7 @@ renderPomodoroTasks(actualList, todoList);
 // * functions buttons action delate play and completted task
 // ! allTasklist w tej zmiennej zbieraj wszystkie taski z bazy danych i na jej podstawie ustawaj i zaznaczaj taski wykonane owrapuj wszystkie ify tą funkcją żeby była ona dostępna
 function btnActtion(e) {
-  let allTasklist = [];
+  const allTasklist = [];
   auth.onAuthStateChanged((user) => {
     // console.log(allnotelist);
     // console.log(Lista);
@@ -489,7 +484,6 @@ function btnActtion(e) {
       }
     });
 
-  
   statTask();
 
   const item = e.target;
@@ -505,7 +499,7 @@ function btnActtion(e) {
 let thisItem = [];
 console.log(allTasklist);
 console.log(allnotelist);
-console.log("all note list powyżej ma wszystkie taski wprintować!")
+console.log("all note list powyżej ma wszystkie taski wprintować!");
 allnotelist.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
@@ -777,7 +771,6 @@ function addProject(event) {
                   });
                   event.preventDefault();
                   // getSelectOptions();
-
 }
 
 window.sortingProject = sortingProject;
@@ -1004,12 +997,11 @@ todoList.addEventListener("click", btnActtion);
 showProject.addEventListener("click", ifmobile);
 
 function repeatTasks() {
-
-  for (let i = 0; i < Items.length; i += 1) {
-    const dateString = Items[i].data;
-    if (dateToday > Items[i].data) {
-      Items[i].data = moment(dateString)
-        .add(Items[i].repeatday, Items[i].repeatpartoftime)
+  for (let i = 0; i < actualList.length; i += 1) {
+    const dateString = actualList[i].data;
+    if (dateToday > actualList[i].data) {
+      actualList[i].data = moment(dateString)
+        .add(actualList[i].repeatday, actualList[i].repeatpartoftime)
         .format("YYYY-MM-DD");
     }
   }
