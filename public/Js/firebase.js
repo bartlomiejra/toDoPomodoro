@@ -82,7 +82,7 @@ signInFacebook.onclick = (event) => {
           color: "#ffffff",
           name: " Fb user add 2",
         })
-    )
+    ),
   );
 
   console.log("działamfb");
@@ -535,7 +535,7 @@ signInGoogle.onclick = (event) => {
           elapsed: 0,
           estimated: "0.28",
         })
-    )
+    ),
   );
   event.preventDefault();
 };
@@ -827,7 +827,7 @@ signupForm.addEventListener("submit", (e) => {
             project: "Studies 🖊️ ",
             repeatDay: "10",
             repeatpartoftime: "day",
-            text: "Logging to app ", 
+            text: "Logging to app ",
           }),
         //! Project list
         db
@@ -981,7 +981,7 @@ signupForm.addEventListener("submit", (e) => {
             elapsed: 0,
             estimated: "0.28",
           })
-      ),
+      )
     )
     .catch((error) => {
       const errorCode = error.code;
