@@ -136,19 +136,14 @@ let oneTask;
   // ! jako actual list ustaw wszystkie taski z dzisiejszą datą
   auth.onAuthStateChanged((user) => {
     const tasksAll = [];
-    // console.log(allnotelist);
-    // console.log(Lista);
     if (user) {
       db.collection("users")
       .doc(logUserId)
       .collection("Items")
       .onSnapshot((querySnapshot) => {
-        // allnotelist.length = 0;
         actualList.length = 0;
         querySnapshot.docs.map((doc) => {
             oneTask = doc.data();
-            // allnotelist = Lista;
-            // actualList = allnotelist;
             tasksAll.push(oneTask);
             actualList = tasksAll.filter((items) => items.data == dateToday);
 
