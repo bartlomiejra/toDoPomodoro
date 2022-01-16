@@ -72,7 +72,7 @@ let taskId = 0;
 let taskToday;
 let audio;
 let actualSelect;
-let actualList;
+let actualList = [];
 let setting;
 let Sound;
 let pomodoreDuration;
@@ -115,7 +115,27 @@ let Lista;
 
 allnotelist.length = 0;
 renderPomodoroTasks();
-// let actualList = [];
+  auth.onAuthStateChanged((user) => {
+  if (user) {
+    db.collection("users").doc(logUserId).collection("Items");
+    unsubscribe = thingsRef
+    .doc(logUserId)
+    .collection("Items")
+      .onSnapshot((querySnapshot) => {
+        allnotelist.length = 0;
+        querySnapshot.docs.map((doc) => {
+          Lista = doc.data();
+          actualList.push(Lista);
+        });
+        console.log(actualList);
+
+     });
+      } else {
+    unsubscribe && unsubscribe();
+  }
+});
+
+
 function renderPomodoroTasks(todolist = []) {
   const actualList = [];
 
@@ -130,7 +150,8 @@ function renderPomodoroTasks(todolist = []) {
       .onSnapshot((querySnapshot) => {
         allnotelist.length = 0;
         querySnapshot.docs.map((doc) => {
-          Lista = doc.data();
+        let  Listas = doc.data();
+          actualList.push(Listas);
         });
  db.collection("users").doc(logUserId).collection("Items");
     unsubscribe = thingsRef
@@ -404,10 +425,13 @@ function btnActtion(e) {
     todo.classList.add("fall");
 
 let thisItem = [];
-allnotelist.forEach((ele) => {
+console.log(actualList);
+//! zmieniłem tutaj na actualList i usuwanie wciąż nie działa,
+actualList.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
   }
+  console.log(thisItem);
             StrThisItem = JSON.stringify(thisItem);
 });
 toString(StrThisItem);
@@ -422,8 +446,8 @@ unsubscribe = thingsRef
       resetTimer();
     });
     statTask();
-    actualList = todos;
-    renderPomodoroTasks(actualList, todoList);
+    // actualList = todos;
+    renderPomodoroTasks();
 
     return;
   }
@@ -436,8 +460,9 @@ unsubscribe = thingsRef
 
 let thisItem = [];
 let clickedTodo;
-
-allnotelist.forEach((ele) => {
+console.log(allnotelist)
+console.log(actualList)
+actualList.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
     clickedTodo = ele;
@@ -466,7 +491,6 @@ let nextIdHistory;
                   .doc(logUserId)
                   .collection("History")
                   .doc(nextIdHistory)
-                  
                   .set(clickedTodo);
                 });
                 db.collection("users")
