@@ -875,7 +875,7 @@ db.collection("users")
    name: "Today",
                  });
 
-      renderPomodoroTasks(taskToday, todoList);
+      renderPomodoroTasks();
       break;
 
     case "Tomorrow":
@@ -954,7 +954,7 @@ db.collection("users")
    name: "Someday",
                  });
 
-      renderPomodoroTasks(taskSomeday, todoList);
+      renderPomodoroTasks();
       break;
     case "Completed":
       db.collection("users").doc(logUserId).collection("History").get()
