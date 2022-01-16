@@ -72,13 +72,17 @@ let taskId = 0;
 let taskToday;
 let audio;
 let actualSelect;
-let actualList = [];
+let actualList;
 let setting;
 let Sound;
 let pomodoreDuration;
 let Theme;
 let breakTimes;
 let pomodoreTime;
+
+//! niepisz funkcje która będzie pobierała wszystkie taski i zapisywała je w allnotelist za kożdym razem 
+
+
 auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
@@ -115,27 +119,7 @@ let Lista;
 
 allnotelist.length = 0;
 renderPomodoroTasks();
-  auth.onAuthStateChanged((user) => {
-  if (user) {
-    db.collection("users").doc(logUserId).collection("Items");
-    unsubscribe = thingsRef
-    .doc(logUserId)
-    .collection("Items")
-      .onSnapshot((querySnapshot) => {
-        allnotelist.length = 0;
-        querySnapshot.docs.map((doc) => {
-          Lista = doc.data();
-          actualList.push(Lista);
-        });
-        console.log(actualList);
-
-     });
-      } else {
-    unsubscribe && unsubscribe();
-  }
-});
-
-
+// let actualList = [];
 function renderPomodoroTasks(todolist = []) {
   const actualList = [];
 
@@ -150,8 +134,7 @@ function renderPomodoroTasks(todolist = []) {
       .onSnapshot((querySnapshot) => {
         allnotelist.length = 0;
         querySnapshot.docs.map((doc) => {
-        let  Listas = doc.data();
-          actualList.push(Listas);
+          Lista = doc.data();
         });
  db.collection("users").doc(logUserId).collection("Items");
     unsubscribe = thingsRef
@@ -259,7 +242,8 @@ window.onresize = function resizeFun() {
 function addTodo(event) {
    auth.onAuthStateChanged((user) => {
      if (user) {
-   let lastId;
+   let lastId
+    
    const todoInput = document.querySelector(".center_todoInput");
 
             let nextId;
@@ -275,7 +259,8 @@ function addTodo(event) {
                   lastId++;
                   nextId = lastId.toString();
                 });
-
+console.log(nextId);
+console.log(currentProject);
                 db.collection("users")
                   .doc(logUserId)
                   .collection("Items")
@@ -285,7 +270,7 @@ function addTodo(event) {
     text: todoInput.value,
     done: false,
     focus: 0,
-    project: currentProject,
+    project: "Today",
     repeatday: "1",
     repeatpartoftime: "day",
     data: dateToday,
@@ -302,6 +287,7 @@ function addTodo(event) {
   unsubscribe && unsubscribe();
 }
 });
+renderPomodoroTasks();
 }
 statTask();
 function statTask() {
@@ -388,7 +374,7 @@ elapsed: dbelapsed,
 
 statTask();
 todoButton.addEventListener("click", addTodo);
-renderPomodoroTasks(actualList, todoList);
+renderPomodoroTasks();
 // * functions buttons action delate play and completted task
 // ! allTasklist w tej zmiennej zbieraj wszystkie taski z bazy danych i na jej podstawie ustawaj i zaznaczaj taski wykonane owrapuj wszystkie ify tą funkcją żeby była ona dostępna
 function btnActtion(e) {
@@ -425,13 +411,10 @@ function btnActtion(e) {
     todo.classList.add("fall");
 
 let thisItem = [];
-console.log(actualList);
-//! zmieniłem tutaj na actualList i usuwanie wciąż nie działa,
-actualList.forEach((ele) => {
+allnotelist.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
   }
-  console.log(thisItem);
             StrThisItem = JSON.stringify(thisItem);
 });
 toString(StrThisItem);
@@ -446,7 +429,7 @@ unsubscribe = thingsRef
       resetTimer();
     });
     statTask();
-    // actualList = todos;
+    actualList = todos;
     renderPomodoroTasks();
 
     return;
@@ -460,9 +443,8 @@ unsubscribe = thingsRef
 
 let thisItem = [];
 let clickedTodo;
-console.log(allnotelist)
-console.log(actualList)
-actualList.forEach((ele) => {
+
+allnotelist.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
     clickedTodo = ele;
@@ -491,6 +473,7 @@ let nextIdHistory;
                   .doc(logUserId)
                   .collection("History")
                   .doc(nextIdHistory)
+                  
                   .set(clickedTodo);
                 });
                 db.collection("users")
@@ -591,7 +574,7 @@ done: false,
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
-  renderPomodoroTasks(actualList, todoList);
+  renderPomodoroTasks();
 }
 
 // pomodoreDuration;
@@ -718,7 +701,7 @@ const allTasklist = [];
     .set(tasksProject[i]);
     }
   });
-  renderPomodoroTasks(tasksProject, todoList);
+  renderPomodoroTasks();
       });
             } else {
     unsubscribe && unsubscribe();
@@ -811,7 +794,7 @@ db.collection("users")
                  .set({
    name: "Tomorrow",
                  });
-      renderPomodoroTasks(taskTomorrow, todoList);
+      renderPomodoroTasks();
       break;
     case "Someday":
       taskSomeday = allProjectList.filter(
@@ -986,6 +969,7 @@ function titleName() {
 
     .join("");
 }
+console.log(currentProject)
 titleName();
 export {
 actualDateTime,
