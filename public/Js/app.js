@@ -805,6 +805,29 @@ const allTasklist = [];
         });
         console.log(actualList);
  tasksProject = actualList.filter((item) => item.project == clicked);
+ db.collection("users")
+.doc(logUserId)
+.collection("Actual")
+  .get()
+  .then(res => {
+    res.forEach(element => {
+      element.ref.delete();
+    });
+
+
+    for (let i = 0; i < tasksProject.length; i++) {
+      console.log(tasksProject[1]);
+      let temporaryId = tasksProject[i].id;
+      let stringtemporaryId = temporaryId.toString();  
+    db.collection("users")
+    .doc(logUserId)
+    .collection("Actual")
+    .doc(stringtemporaryId)
+    .set(tasksProject[i]);
+    // console.log([i]);
+    
+    }
+  })
   renderPomodoroTasks(tasksProject, todoList);
       });
             } else {
@@ -863,7 +886,31 @@ allProjectList.push(taskone);
     case "Today":
       taskToday = allProjectList.filter((items) => items.data === dateToday);
       // console.log(dateToday);
-// console.log(taskToday);
+//! add all selected task to list with actual tasks 
+db.collection("users")
+.doc(logUserId)
+.collection("Actual")
+  .get()
+  .then(res => {
+    res.forEach(element => {
+      element.ref.delete();
+    });
+
+
+    for (let i = 0; i < taskToday.length; i++) {
+      console.log(taskToday[1]);
+      let temporaryId = taskToday[i].id;
+      let stringtemporaryId = temporaryId.toString();  
+    db.collection("users")
+    .doc(logUserId)
+    .collection("Actual")
+    .doc(stringtemporaryId)
+    .set(taskToday[i]);
+    // console.log([i]);
+    
+    }
+  })
+
  db.collection("users")
                  .doc(logUserId)
                  .collection("Current")
@@ -871,10 +918,51 @@ allProjectList.push(taskone);
                  .set({
    name: "Today",
                  });
+
+               
+
       renderPomodoroTasks(taskToday, todoList);
       break;
+
+
+
+
     case "Tomorrow":
+
+
+
+
       taskTomorrow = allProjectList.filter((items) => items.data === dateTomorrow);
+//! save selectet data to Actual list in the database
+db.collection("users")
+.doc(logUserId)
+.collection("Actual")
+  .get()
+  .then(res => {
+    res.forEach(element => {
+      element.ref.delete();
+    });
+
+
+    for (let i = 0; i < taskTomorrow.length; i++) {
+      console.log(taskTomorrow[1]);
+      let temporaryId = taskTomorrow[i].id;
+      let stringtemporaryId = temporaryId.toString();  
+    db.collection("users")
+    .doc(logUserId)
+    .collection("Actual")
+    .doc(stringtemporaryId)
+    .set(taskTomorrow[i]);
+    console.log(taskTomorrow[i]);
+    
+    }
+  })
+  
+
+      //! add all selected task to list with actual tasks 
+// db.collection("users")
+// .doc(logUserId)
+// .collection("Actual").delete;
       // renderProjects();
       // console.log(taskTomorrow);
        db.collection("users")
@@ -890,6 +978,30 @@ allProjectList.push(taskone);
       taskSomeday = allProjectList.filter(
         (items) => items.data !== dateTomorrow || dateToday,
       );
+
+      db.collection("users")
+.doc(logUserId)
+.collection("Actual")
+  .get()
+  .then(res => {
+    res.forEach(element => {
+      element.ref.delete();
+    });
+
+
+    for (let i = 0; i < taskSomeday.length; i++) {
+      console.log(taskSomeday[1]);
+      let temporaryId = taskSomeday[i].id;
+      let stringtemporaryId = temporaryId.toString();  
+    db.collection("users")
+    .doc(logUserId)
+    .collection("Actual")
+    .doc(stringtemporaryId)
+    .set(taskSomeday[i]);
+    console.log(taskSomeday[i]);
+    
+    }
+  })
       // console.log(taskSomeday);
        db.collection("users")
                  .doc(logUserId)
