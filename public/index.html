@@ -93,6 +93,8 @@ if (location.hostname === "localhost") {
          <input class="formlog_input" type="email" id="email" placeholder="Email">
          <input class="formlog_input" type="password" id="password" placeholder="Password">
          <button  class="formlog_sign" id="signInEmail" class="btn btn-primary" >Sign in </button>
+             <p id ="signin_info"></p>
+
          <p>Dont hava an account? 
            <Button class="buttonForm"
            
@@ -109,11 +111,13 @@ if (location.hostname === "localhost") {
         </div>
         
         <div class="modal-signup none" id="signup" >
+
           <form id="signup-Form" class="formlog" >
             <h1>Sign Up.</h1>
     <input class="formlog_input" ="text" id="signup-email" name="mail" placeholder="E-mail">
     <input type="password" class="formlog_input"  id="signup-password" name="pwd" placeholder="Password">
     <button type="submit" class="formlog_sign" name="signup-submit">Sign up with Email</button>
+    <p id ="signup_info"></p>
   </form>
 
   <p>Already a member?

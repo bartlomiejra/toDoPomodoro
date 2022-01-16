@@ -30,7 +30,6 @@ function displayNotification() {
 displayNotification();
 
 Notification.requestPermission((status) => {
-  console.log('Notification permission status:', status);
   // displayNotification();
 });
 export {

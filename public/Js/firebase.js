@@ -1,5 +1,7 @@
 const auth = firebase.auth();
 const db = firebase.firestore();
+const signupInfo = document.getElementById("signin_info");
+const signinMail = document.getElementById("signup_info");
 const whenSignedIn = document.getElementById("whenSignedIn");
 const whenSignedOut = document.getElementById("whenSignedOut");
 const signInGoogle = document.getElementById("signInGoogle");
@@ -49,6 +51,7 @@ signInGithub.onclick = (event) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      signupInfo.innerHTML = `${errorCode}: ${errorMessage}`;
       // window.alert("Login Failed!", error);
     });
   event.preventDefault();
@@ -514,14 +517,18 @@ signInGoogle.onclick = (event) => {
           elapsed: 0,
           estimated: "0.28",
         })
+      ),
     )
-  );
+  
+    
+  // );
   event.preventDefault();
 };
 
 signOutBtn.onclick = (event) => {
   auth.signOut();
   event.preventDefault();
+  
 };
 
 // Create account
@@ -962,8 +969,14 @@ signupForm.addEventListener("submit", (e) => {
       ),
     )
     .catch((error) => {
+
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorMessage);
+       signupInfo.innerHTML = errorMessage;
+      //  signinInfo.innerHTML = errorMessage;
+
+
     });
 });
 
@@ -987,7 +1000,16 @@ auth.onAuthStateChanged((user) => {
     whenSignedOut.hidden = false;
 
     userDetails.innerHTML = "";
+
+    
   }
+ 
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+       signupInfo.innerHTML = errorMessage;
+
+
 });
 
 export { auth, db };
