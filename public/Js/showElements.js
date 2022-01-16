@@ -21,7 +21,9 @@ import {
 } from "./app.js";
 import { logUserId } from "./settings.js";
 
-export { showToDoCard, showProjectList, activeProject, centerDiv, showDiv };
+export {
+ showToDoCard, showProjectList, activeProject, centerDiv, showDiv 
+};
 let unsubscribe;
 
 const centerDiv = document.querySelector(".center");
@@ -56,7 +58,6 @@ function activeProject(clicked_id) {
 window.activeProject = activeProject;
 const todox = [];
 todox.length = 0;
-console.log(todox);
 auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users")
@@ -75,17 +76,14 @@ auth.onAuthStateChanged((user) => {
 
 function showDiv(clickedId) {
   let oneTask;
-  console.log(clickedId)
   description.classList.remove("none");
   description.classList.add("right--active");
   let taskDetails = [];
-  console.log(allnotelist);
   allnotelist.forEach((ele) => {
     if (ele.id == clickedId) {
       taskDetails = ele;
     }
   });
-  console.log(taskDetails);
   renderdetals();
   function renderdetals() {
     //! render detals get data from firebase Items
@@ -204,8 +202,6 @@ function showDiv(clickedId) {
               auth.onAuthStateChanged((user) => {
                 if (user) {
                   const ClickedTaskId = JSON.stringify(clickedId);
-                  console.log(ClickedTaskId);
-                  // console.log(ajdi);
                   db.collection("users")
                     .doc(user.uid)
                     .collection("Items")
@@ -249,7 +245,6 @@ function showDiv(clickedId) {
       option.appendChild(txt);
       projectt.insertBefore(option, projectt.lastChild);
     }
-    console.log(uniqueChars);
   }
 }
 

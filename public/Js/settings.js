@@ -47,7 +47,6 @@ auth.onAuthStateChanged((user) => {
     saveSettings.onclick = (event) => {
       const pomodoreTime = document.getElementById("quantity");
       const breakTimeValue = document.getElementById("quantitybreak");
-      console.log("ok");
       event.preventDefault();
       thingsRef.doc(user.uid).collection("settings").doc("0").update({
         Sound: true,
@@ -71,7 +70,6 @@ auth.onAuthStateChanged((user) => {
         });
 
         // thingsList.innerHTML = items.join("");
-        console.log(firestoreTheme);
         theme.innerHTML = `
 <div class="switch-button">
   
@@ -134,10 +132,8 @@ closeSettings.forEach((span) => {
 });
 
 let themeselected = firestoreTheme;
-console.log(firestoreTheme);
 export function themesValue() {
   const switchbutton = document.querySelector(".black");
-  console.log(switchbutton);
   if (switchbutton.checked == true) {
     themeselected = "Light";
     container.classList.add("lightTheme");
@@ -147,7 +143,6 @@ export function themesValue() {
   }
 }
 export function appSounds(clickedid) {
-  console.log(this);
   if (clickedid.classList.contains("mute")) {
     clickedid.classList.add("unmute");
     clickedid.classList.remove("mute");

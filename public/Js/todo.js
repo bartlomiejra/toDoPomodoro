@@ -102,7 +102,7 @@ auth.onAuthStateChanged((user) => {
     Delete
     </button>
     </div>`
-      }`,
+      }`
           )
           .join("");
       });
@@ -115,38 +115,16 @@ auth.onAuthStateChanged((user) => {
   }
 });
 function deleteTodo(ClickedId) {
-
   db.collection("users")
     .doc(logUserId)
     .collection("ListTodo")
     .doc(ClickedId)
     .delete();
-
 }
 
 function checkFunction(clicked_id) {
-  console.log("esss");
-
   let thisId;
-  
-  // db.collection("users")
-  // .doc(logUserId)
-  // .collection("ListTodo")
-  // .doc(clicked_id)
-  // .onSnapshot((querySnapshot) => {
-  // // .get()
-  // // .then((querySnapshot) => {
 
-  //       .then(querySnapshot.forEach((doc) => {
-  //                 thisId = doc.data();
-                 
-  //               }));
-  //               console.log(test);
-  //               console.log(thisId);
-  //             // }
-  // // })
-  // // })
-  //             });
   db.collection("users")
     .doc(logUserId)
     .collection("ListTodo")
@@ -161,9 +139,4 @@ function checkFunction(clicked_id) {
     .then(() => {})
     .catch((error) => {});
   const lasts = db.collection("users").doc(logUserId).collection("ListTodo");
-  // const objIndex = ListOfToDo.findIndex((obj) => obj.id == clicked_id);
-  // console.log(
-  //   db.collection("users").doc(logUserId).collection("ListTodo").doc(clicked_id)
-  //     .id
-  // );
 }

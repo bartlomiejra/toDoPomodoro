@@ -30,7 +30,6 @@ function actualDate() {
   TomorrowTime = `${yyyy}-${mm}-${ddTomorrow}`;
 }
 actualDate();
-console.log(TodayTime);
 
 createAccound.onclick = (event) => {
   event.preventDefault();
@@ -46,15 +45,11 @@ const providerEmail = new firebase.auth.EmailAuthProvider();
 signInGithub.onclick = (event) => {
   auth
     .signInWithPopup(providerGh)
-    .then((cred) => {
-      console.log(cred.user);
-    })
+    .then((cred) => {})
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       // window.alert("Login Failed!", error);
-
-      console.log(errorCode, errorMessage);
     });
   event.preventDefault();
 };
@@ -82,30 +77,14 @@ signInFacebook.onclick = (event) => {
           color: "#ffffff",
           name: " Fb user add 2",
         })
-    ),
+    )
   );
 
-  console.log("działamfb");
   event.preventDefault();
 };
 
 signInGoogle.onclick = (event) => {
   auth.signInWithPopup(provider).then(
-    // function (result) {
-    //       var token = result.credential.accessToken;
-    //       var user = result.user;
-
-    //       //this is what you need
-    //       var isNewUser = result.additionalUserInfo.isNewUser;
-    //       if (isNewUser) {
-    //            //delete the created user
-    //            result.user.delete();
-    //       } else {
-    //            // your sign in flow
-    //            console.log('user ' + user.email + ' does exist!');
-    //       }
-    //     }
-
     (cred) => (
       db
         .collection("users")
@@ -535,7 +514,7 @@ signInGoogle.onclick = (event) => {
           elapsed: 0,
           estimated: "0.28",
         })
-    ),
+    )
   );
   event.preventDefault();
 };
@@ -557,7 +536,6 @@ signupForm.addEventListener("submit", (e) => {
     .createUserWithEmailAndPassword(email, password)
     .then(
       (cred) => (
-        // console.log(cred.user);
         //! todoList task
         db
           .collection("users")
@@ -981,13 +959,11 @@ signupForm.addEventListener("submit", (e) => {
             elapsed: 0,
             estimated: "0.28",
           })
-      )
+      ),
     )
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-
-      console.log(errorCode, errorMessage);
     });
 });
 

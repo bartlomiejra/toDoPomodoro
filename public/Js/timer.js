@@ -13,34 +13,6 @@ import {
   shortBreak,
 } from "./app.js";
 
-// let breakTimes;
-// auth.onAuthStateChanged((user) => {
-  
-//   if (user) {
-//     db.collection("users").doc(logUserId).collection("Items");
-//     unsubscribe = thingsRef
-//       .doc(logUserId)
-//       .collection("settings")
-//       .onSnapshot((querySnapshot) => {
-//         allnotelist.length = 0;
-//         querySnapshot.docs.map((doc) => {
-//           Sound = doc.data().Sound;
-//           Theme = doc.data().Theme;
-//           breakTimes = doc.data().breakTime;
-//           pomodoreDuration = doc.data().pomodoreTime;
-//           console.log(pomodoreDuration);
-//           console.log(breakTimes)
-//           setting = doc.data();
-//           // allnotelist = Lista;
-//           // pomodoreDuration.push(setting);
-//         });
-//         console.log(breakTimes);
-//       });
-//     }
-   
-//   });
-
-
 let paused = false;
 let timeInFocus;
 let countdownTime;
@@ -53,7 +25,7 @@ function displayTimeLeft(seconds) {
   }${remainderSeconds}`;
   countdownTimer.textContent = display;
   document.title = display;
-} 
+}
 function timer(seconds) {
   pause.firstElementChild.classList.remove("fa-coffee");
   pause.firstElementChild.classList.add("fa-pause");
@@ -64,7 +36,6 @@ function timer(seconds) {
   countdownTime = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     timeInFocus = seconds - secondsLeft;
-    console.log(secondsLeft);
     if (secondsLeft < 0) {
       endpomodoro();
       clearInterval(countdownTime);
@@ -80,11 +51,9 @@ function timerBreak() {
     "fa-play-circle",
     "fa-coffee",
     "fa-pause-circle",
-    "fa-pause"
+    "fa-pause",
   );
   clearInterval(countdownTime);
-  console.log("im hire");
-  console.log(shortBreak);
   const now = Date.now();
   const then = now + shortBreak * 1000;
   displayTimeLeft(shortBreak);
@@ -116,7 +85,6 @@ function pausetimer() {
 
     paused = false;
     displayTimeLeft(secsave);
-    console.log(secsave);
     timer(secsave);
   }
 }
@@ -124,7 +92,7 @@ function resetTimer() {
   clockTimer.classList.remove(
     "clock_timerFinish",
     "clock_timerStart",
-    "clock_clockVisible"
+    "clock_clockVisible",
   );
   renderPomodoroTasks(actualList, todoList);
   buttonscountdown.classList.add(".countdownButtonsNone");
@@ -165,19 +133,16 @@ function resizeClock() {
 
 function breakTime() {
   clearInterval(countdownTime);
-  console.log(countdownTime);
   clockTimer.classList.add("clock_timerFinish");
   pause.firstElementChild.classList.remove(
     "fa-play-circle",
     "fa-pause",
-    "fa-pause-circle"
+    "fa-pause-circle",
   );
   pause.firstElementChild.classList.add("fa-coffee");
   clockTimer.classList.remove("clock_timerStart");
   // renderPomodoroTasks(todos, todoList);
 }
-
-
 function countdownAnimation() {
   buttonscountdown.classList.remove(".countdownButtonsNone");
   clockTimer.classList.add("clock_timerStart");
