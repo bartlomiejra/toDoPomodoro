@@ -42,9 +42,7 @@ export let pomodorebreakTime;
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable eqeqeq */
-
 const leftDiv = document.querySelector(".left");
-
 const projectIcon = document.querySelector(".Project");
 let currentProject;
 const mobileWidth = window.matchMedia("(max-width: 895px)");
@@ -66,13 +64,8 @@ const pomodoreList = document.querySelector(".left_pomodoreProjects");
 const title = document.querySelector(".titlebar");
 let dateToday;
 let dateTomorrow = 0;
-// const history
-// const statistics = JSON.parse(localStorage.getItem("STat"));
 const todos = JSON.parse(localStorage.getItem("Items"));
-// const project = JSON.parse(localStorage.getItem("Project"));
-// const settinglocal = JSON.parse(localStorage.getItem("settings"));
 const countdownTimer = document.getElementById("countdown");
-// let tasks = JSON.parse(localStorage.getItem("Items")) || [];
 let clicked;
 let timeInFocus;
 let settings;
@@ -82,9 +75,6 @@ let taskToday;
 let audio;
 let actualSelect;
 let actualList;
-
-// empty state
-
 let setting;
 let Sound;
 let pomodoreDuration;
@@ -105,18 +95,12 @@ auth.onAuthStateChanged((user) => {
           breakTimes = doc.data().breakTime;
           pomodoreDuration = doc.data().pomodoreTime;
           setting = doc.data();
-          // allnotelist = Lista;
-          // pomodoreDuration.push(setting);
         });
         console.log(pomodoreDuration);
-        // console.log(breakTimes)
-        // console.log(pomodoreDuration);
       });
     }
   });
   const shortBreak = breakTimes * 60;
-  // console.log(shortBreak);
-
 function actualDateTime() {
   const date = new Date();
   const yyyy = date.getFullYear();
@@ -127,60 +111,21 @@ function actualDateTime() {
   dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
 }
 actualDateTime();
-
-const allnotelist = [];
+let allnotelist = [];
 let oneTask;
-// tasks = JSON.parse(localStorage.getItem("Items")) || [];
-// actualList = JSON.parse(localStorage.getItem("Actual")) || [];
-// if (actualList = 0) {
-  // ! jako actual list ustaw wszystkie taski z dzisiejszą datą
-  auth.onAuthStateChanged((user) => {
-    const tasksAll = [];
-    if (user) {
-      db.collection("users")
-      .doc(logUserId)
-      .collection("Items")
-      .onSnapshot((querySnapshot) => {
-        actualList.length = 0;
-        querySnapshot.docs.map((doc) => {
-            oneTask = doc.data();
-            tasksAll.push(oneTask);
-            actualList = tasksAll.filter((items) => items.data == dateToday);
-
-            // }
-          });
-          // console.log(actualList);
-
-          console.log(actualList);
-        });
-    } else {
-      unsubscribe && unsubscribe();
-    }
-  });
-  if (currentProject = null) {
-}
-  // };
-
 let unsubscribe;
 let Lista;
 
 allnotelist.length = 0;
 renderPomodoroTasks();
+// let actualList = [];
 function renderPomodoroTasks(todolist = []) {
-  actualList = 0;
+  const actualList = [];
 
-  console.log(actualList);
-  console.log(todolist);
-  actualList = todolist;
-  console.log(actualList);
-// console.log(taskSomeday);
   const ast = todoList;
-  // console.log(ast);
-  //  allnotelist = [];
-  // allnotelist.length = 0;
+  
   auth.onAuthStateChanged((user) => {
-    // console.log(allnotelist);
-    // console.log(Lista);
+    
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
     unsubscribe = thingsRef
@@ -197,6 +142,19 @@ function renderPomodoroTasks(todolist = []) {
         });
 
   // window.localStorage.setItem("Actual", JSON.stringify(actualList));
+ db.collection("users").doc(logUserId).collection("Items");
+    unsubscribe = thingsRef
+    .doc(logUserId)
+    .collection("Actual")
+      .onSnapshot((querySnapshot) => {
+        allnotelist.length = 0;
+        actualList.length = 0;
+        querySnapshot.docs.map((doc) => {
+      Lista = doc.data();
+          allnotelist = Lista;
+          actualList.push(allnotelist);
+          console.log(actualList);
+          // actualList = allnotelist;
 
   if (actualList.length == 0) {
     emptyList.classList.remove("none");
@@ -258,6 +216,8 @@ aria-hidden="true"></i></button>
     // console.log("logUserId")
     // console.log(logUserId)
     .join("");
+  });
+      });
      });
       } else {
     unsubscribe && unsubscribe();
@@ -809,25 +769,23 @@ const allTasklist = [];
 .doc(logUserId)
 .collection("Actual")
   .get()
-  .then(res => {
-    res.forEach(element => {
+  .then((res) => {
+    res.forEach((element) => {
       element.ref.delete();
     });
 
-
     for (let i = 0; i < tasksProject.length; i++) {
       console.log(tasksProject[1]);
-      let temporaryId = tasksProject[i].id;
-      let stringtemporaryId = temporaryId.toString();  
+      const temporaryId = tasksProject[i].id;
+      const stringtemporaryId = temporaryId.toString();
     db.collection("users")
     .doc(logUserId)
     .collection("Actual")
     .doc(stringtemporaryId)
     .set(tasksProject[i]);
     // console.log([i]);
-    
     }
-  })
+  });
   renderPomodoroTasks(tasksProject, todoList);
       });
             } else {
@@ -886,30 +844,28 @@ allProjectList.push(taskone);
     case "Today":
       taskToday = allProjectList.filter((items) => items.data === dateToday);
       // console.log(dateToday);
-//! add all selected task to list with actual tasks 
+//! add all selected task to list with actual tasks
 db.collection("users")
 .doc(logUserId)
 .collection("Actual")
   .get()
-  .then(res => {
-    res.forEach(element => {
+  .then((res) => {
+    res.forEach((element) => {
       element.ref.delete();
     });
 
-
     for (let i = 0; i < taskToday.length; i++) {
       console.log(taskToday[1]);
-      let temporaryId = taskToday[i].id;
-      let stringtemporaryId = temporaryId.toString();  
+      const temporaryId = taskToday[i].id;
+      const stringtemporaryId = temporaryId.toString();
     db.collection("users")
     .doc(logUserId)
     .collection("Actual")
     .doc(stringtemporaryId)
     .set(taskToday[i]);
     // console.log([i]);
-    
     }
-  })
+  });
 
  db.collection("users")
                  .doc(logUserId)
@@ -919,18 +875,10 @@ db.collection("users")
    name: "Today",
                  });
 
-               
-
       renderPomodoroTasks(taskToday, todoList);
       break;
 
-
-
-
     case "Tomorrow":
-
-
-
 
       taskTomorrow = allProjectList.filter((items) => items.data === dateTomorrow);
 //! save selectet data to Actual list in the database
@@ -938,28 +886,25 @@ db.collection("users")
 .doc(logUserId)
 .collection("Actual")
   .get()
-  .then(res => {
-    res.forEach(element => {
+  .then((res) => {
+    res.forEach((element) => {
       element.ref.delete();
     });
 
-
     for (let i = 0; i < taskTomorrow.length; i++) {
       console.log(taskTomorrow[1]);
-      let temporaryId = taskTomorrow[i].id;
-      let stringtemporaryId = temporaryId.toString();  
+      const temporaryId = taskTomorrow[i].id;
+      const stringtemporaryId = temporaryId.toString();
     db.collection("users")
     .doc(logUserId)
     .collection("Actual")
     .doc(stringtemporaryId)
     .set(taskTomorrow[i]);
     console.log(taskTomorrow[i]);
-    
     }
-  })
-  
+  });
 
-      //! add all selected task to list with actual tasks 
+      //! add all selected task to list with actual tasks
 // db.collection("users")
 // .doc(logUserId)
 // .collection("Actual").delete;
@@ -983,25 +928,23 @@ db.collection("users")
 .doc(logUserId)
 .collection("Actual")
   .get()
-  .then(res => {
-    res.forEach(element => {
+  .then((res) => {
+    res.forEach((element) => {
       element.ref.delete();
     });
 
-
     for (let i = 0; i < taskSomeday.length; i++) {
       console.log(taskSomeday[1]);
-      let temporaryId = taskSomeday[i].id;
-      let stringtemporaryId = temporaryId.toString();  
+      const temporaryId = taskSomeday[i].id;
+      const stringtemporaryId = temporaryId.toString();
     db.collection("users")
     .doc(logUserId)
     .collection("Actual")
     .doc(stringtemporaryId)
     .set(taskSomeday[i]);
     console.log(taskSomeday[i]);
-    
     }
-  })
+  });
       // console.log(taskSomeday);
        db.collection("users")
                  .doc(logUserId)
@@ -1072,12 +1015,7 @@ if ((clicked = null)) {
                  .set({
    name: clicked,
                  });
-                //  console.log(clicked);
 }
-
-// currentProject[0].name = clicked;
-// sortingProjectDays();
-
 document.querySelectorAll(".left_day").forEach((e) => {
   e.addEventListener("click", sortingProjectDays);
 });
