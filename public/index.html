@@ -84,7 +84,7 @@ if (location.hostname === "localhost") {
       
        <div class="modal-signin" id="signin" >
         
-       <form  class="formlog" action="">
+       <form  class="formlog" id="signin-form" action="">
         <h1>SignIn.</h1> 
          <button id="signInGoogle" class=" formlog_button btn btn-primary">Sign in with Google</button>
          <button id="signInFacebook" class="formlog_button btn btn-primary">Sign in with Facebook</button>
@@ -92,7 +92,7 @@ if (location.hostname === "localhost") {
          <p>or</p>
          <input class="formlog_input" type="email" id="email" placeholder="Email">
          <input class="formlog_input" type="password" id="password" placeholder="Password">
-         <button  class="formlog_sign" id="signInEmail" class="btn btn-primary" >Sign in </button>
+         <button type="submit"  class="formlog_sign btn btn-primary" id="signInEmail"  >Sign in </button>
              <p id ="signin_info"></p>
 
          <p>Dont hava an account? 

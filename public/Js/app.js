@@ -245,7 +245,7 @@ aria-hidden="true"></i></button>
 //! creat new if item and login to connect from database and make virable logUserId
 window.showDiv = showDiv;
 
-renderPomodoroTasks(actualList, todoList);
+renderPomodoroTasks();
 
 if (mobileWidth.matches) {
   centerDiv.classList.remove("active");
@@ -307,7 +307,7 @@ function addTodo(event) {
     note: "",
                   });
               });
-              // console.log(currentProject);
+              console.log(currentProject);
 
   event.preventDefault();
   centerDiv.classList.add("active");
@@ -910,23 +910,22 @@ window.openNoteCard = openNoteCard;
 function titleName() {
    let itemOne;
   const itemAll = [];
-  db.collection("users").doc(logUserId).collection("Project").get()
+  db.collection("users").doc(logUserId).collection("Current").get()
 .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       itemOne = doc.data();
       itemAll.push(itemOne);
     });
-});
-
-  const currentProject = itemAll;
+    
+    const currentProject = itemAll[0].name;
+  console.log(currentProject);
   if (currentProject == null) {
     currentProject.name = "Today";
   }
 
-  title.innerHTML = currentProject
-    .map((title) => ` ${title.name}`)
-
-    .join("");
+  title.innerHTML = currentProject;
+   
+  });
 }
 titleName();
 console.log(actualList);

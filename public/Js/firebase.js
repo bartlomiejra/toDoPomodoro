@@ -1,6 +1,10 @@
 const auth = firebase.auth();
 const db = firebase.firestore();
-const signupInfo = document.getElementById("signin_info");
+const signupInfo = document.getElementById("signup_info");
+const signinInfo = document.getElementById("signin_info");
+// const email = document.getElementById("email");
+// const password = document.getElementById("password");
+const formlog = document.getElementById("signin-form");
 const signinMail = document.getElementById("signup_info");
 const whenSignedIn = document.getElementById("whenSignedIn");
 const whenSignedOut = document.getElementById("whenSignedOut");
@@ -11,6 +15,7 @@ const signOutBtn = document.getElementById("signOutBtn");
 const signInEmail = document.getElementById("signInEmail");
 const userDetails = document.getElementById("userDetails");
 const provider = new firebase.auth.GoogleAuthProvider();
+// const providerEmailPassword = new firebase.auth.signInWithEmailAndPasswordProvider();
 const showSignIn = document.getElementById("showSignIn");
 const providerFb = new firebase.auth.FacebookAuthProvider();
 const providerGh = new firebase.auth.GithubAuthProvider();
@@ -20,6 +25,7 @@ const signInForm = document.getElementById("signin");
 const signUpForm = document.getElementById("signup");
 let TodayTime;
 let TomorrowTime;
+const providerEmail = new firebase.auth.EmailAuthProvider();
 
 function actualDate() {
   const date = new Date();
@@ -43,7 +49,6 @@ showSignIn.onclick = (event) => {
   signUpForm.classList.add("none");
   signInForm.classList.remove("none");
 };
-const providerEmail = new firebase.auth.EmailAuthProvider();
 signInGithub.onclick = (event) => {
   auth
     .signInWithPopup(providerGh)
@@ -88,6 +93,10 @@ signInFacebook.onclick = (event) => {
 
 signInGoogle.onclick = (event) => {
   auth.signInWithPopup(provider).then(
+    // if(result.additionalUserInfo.isNewUser = null){
+    // // console.log(  result.additionalUserInfo.isNewUser )
+    //   console.log("elo")
+    // }
     (cred) => (
       db
         .collection("users")
@@ -517,18 +526,40 @@ signInGoogle.onclick = (event) => {
           elapsed: 0,
           estimated: "0.28",
         })
-      ),
-    )
-  
-    
+    ),
+  );
+
   // );
   event.preventDefault();
+  
 };
+
+formlog.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("elo");
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  console.log(email);
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then((cred) => {})
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      signinInfo.innerHTML = errorMessage;
+    });
+
+  //  let vemail = email.value;
+  //  let vpassword = password.value;
+  // const auth = firebase.auth();
+  // const promise = auth.signInWithEmailAndPassword(vemail, vpassword);
+  // promise.catch((e) => console.log(e.message));
+});
 
 signOutBtn.onclick = (event) => {
   auth.signOut();
   event.preventDefault();
-  
 };
 
 // Create account
@@ -969,14 +1000,10 @@ signupForm.addEventListener("submit", (e) => {
       ),
     )
     .catch((error) => {
-
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorMessage);
-       signupInfo.innerHTML = errorMessage;
-      //  signinInfo.innerHTML = errorMessage;
-
-
+      signupInfo.innerHTML = errorMessage;
     });
 });
 
@@ -1000,16 +1027,12 @@ auth.onAuthStateChanged((user) => {
     whenSignedOut.hidden = false;
 
     userDetails.innerHTML = "";
-
-    
   }
- 
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-       signupInfo.innerHTML = errorMessage;
 
-
+  // const errorCode = error.code;
+  // const errorMessage = error.message;
+  // console.log(errorMessage);
+  //  signupInfo.innerHTML = errorMessage;
 });
 
 export { auth, db };

@@ -124,12 +124,12 @@
 	&__savebtn,
 	&__deletebtn {
 		// bottom: 0px;
-		// bottom: 10px;
-
+		bottom: 10px;
 		left: 30%;
 	}
 
 	&__savebtn {
+		margin-right: auto;
 		left: 50px;
 	}
 
@@ -261,6 +261,7 @@
 	}
 }
 
+
 @media screen and (max-width: 480px) {
 	.tiles__tile {
 		font-size: 0.8rem;
@@ -278,15 +279,16 @@
 }
 
 .tiles__savebtn, .tiles__deletebtn {
-    
-
-   margin-left: auto;
-margin-right: auto;
-left: 0;
-right: 0;
+   background: linear-gradient(#2b3066, #1d0758); 
+border-radius: 5px;
+color: var(--light-color);
+position:absolute;
+padding: 10px;
+max-height: 50px;
+//    margin-left: auto;
+// margin-right: auto;
+// left: 0;
+// right: 0;
 text-align: center; /* margin-bottom: 20px; */
 }
 
-.tiles__deletebtn{
-	left: 30%;
-}

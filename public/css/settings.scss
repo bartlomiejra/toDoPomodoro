@@ -91,7 +91,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgb(0 0 0 / 80%);
+	// background-color: rgb(0 0 0 / 80%);
 	pointer-events: none;
 }
 
@@ -120,7 +120,7 @@ output {
 	width: 50vw;
 	display: flex;
 	flex-direction: column;
-	background: linear-gradient(135deg, rgb(0 0 0 / 10%), rgb(255 255 255 / 10%));
+	// background: linear-gradient(135deg, rgb(0 0 0 / 10%), rgb(255 255 255 / 10%));
 	align-items: center;
 	border-radius: 10px;
 	justify-content: center;
@@ -190,6 +190,7 @@ output {
 			display: block;
 			user-select: none;
 			pointer-events: none;
+
 
 			&::before {
 				content: "";
