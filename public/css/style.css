@@ -639,13 +639,13 @@ body .center_clocks {
           justify-content: flex-start;
   -ms-flex-line-pack: stretch;
       align-content: stretch;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   -ms-grid-column-span: 6;
   grid-area: clocks;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 html .center_des-btn,
