@@ -102,6 +102,7 @@ auth.onAuthStateChanged((user) => {
     }
   });
   const shortBreak = breakTimes * 60;
+  console.log(shortBreak);
 function actualDateTime() {
   const date = new Date();
   const yyyy = date.getFullYear();
@@ -952,4 +953,5 @@ actualDateTime,
   audio,
   allnotelist,
   shortBreak,
+  taskId
 };

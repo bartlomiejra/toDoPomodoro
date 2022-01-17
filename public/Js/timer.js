@@ -11,7 +11,23 @@ import {
   countdownTimer,
   audio,
   shortBreak,
+  taskId,
 } from "./app.js";
+import { auth, db } from "./firebase.js";
+
+// import { logUserId} from "./settings.js";
+
+export {
+  timer,
+  timerBreak,
+  pausetimer,
+  resetTimer,
+  resizeClock,
+  breakTime,
+  displayTimeLeft,
+  pause,
+  countdownAnimation,
+};
 
 let paused = false;
 let timeInFocus;
@@ -26,7 +42,28 @@ function displayTimeLeft(seconds) {
   countdownTimer.textContent = display;
   document.title = display;
 }
+
+let setting;
+let Sound;
+let pomodoreDuration;
+let Theme;
+let breakTimes;
+let pomodoreTime;
+// auth.onAuthStateChanged((user) => {
+//  if (user) {
+//    db.collection("users").doc(user.uid)
+//      .collection("settings")
+//      .onSnapshot((querySnapshot) => {
+//        querySnapshot.docs.map((doc) => {
+//          Sound = doc.data().Sound;
+//          Theme = doc.data().Theme;
+//          breakTimes = doc.data().breakTime;
+//          pomodoreDuration = doc.data().pomodoreTime;
+//          setting = doc.data();
+//        });
+
 function timer(seconds) {
+  console.log(taskId);
   pause.firstElementChild.classList.remove("fa-coffee");
   pause.firstElementChild.classList.add("fa-pause");
   clearInterval(countdownTime);
@@ -37,6 +74,7 @@ function timer(seconds) {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     timeInFocus = seconds - secondsLeft;
     if (secondsLeft < 0) {
+      console.log(secondsLeft);
       endpomodoro();
       clearInterval(countdownTime);
       return;
@@ -44,24 +82,40 @@ function timer(seconds) {
     displayTimeLeft(secondsLeft);
   }, 1000);
 }
-
 function timerBreak() {
   pause.firstElementChild.classList.remove(
     "fa-play",
     "fa-play-circle",
     "fa-coffee",
     "fa-pause-circle",
-    "fa-pause",
+    "fa-pause"
   );
   clearInterval(countdownTime);
-  const now = Date.now();
-  const then = now + shortBreak * 1000;
-  displayTimeLeft(shortBreak);
+  let then;
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      db.collection("users")
+        .doc(user.uid)
+        .collection("settings")
+        .onSnapshot((querySnapshot) => {
+          querySnapshot.docs.map((doc) => {
+            breakTimes = doc.data().breakTime;
+            setting = doc.data();
+          });
+          const now = Date.now();
+
+          then = now + breakTimes * 1000;
+          displayTimeLeft(breakTimes);
+          console.log(pomodoreDuration);
+        });
+    }
+  });
+
   countdownTime = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     if (secondsLeft < 1) {
-      audio = new Audio("Alerts/pauseEnd.mp3");
-      audio.play();
+      // audio = new Audio("Alerts/pauseEnd.mp3");
+      // audio.play();
       resetTimer();
       clearInterval(countdownTime);
       clockTimer.classList.remove("clock_fullscreen");
@@ -92,7 +146,7 @@ function resetTimer() {
   clockTimer.classList.remove(
     "clock_timerFinish",
     "clock_timerStart",
-    "clock_clockVisible",
+    "clock_clockVisible"
   );
   renderPomodoroTasks(actualList, todoList);
   buttonscountdown.classList.add(".countdownButtonsNone");
@@ -105,16 +159,33 @@ function resetTimer() {
 }
 
 function endpomodoro() {
-  // todos = JSON.parse(localStorage.getItem("Items"));
-  // audio = new Audio("Alerts/taskEnd.mp3");
-  // audio.play();
-  // const itemS = JSON.parse(localStorage.getItem("Items"));
-  // const filtrr = itemS.filter((p) => p.id == taskId);
-  // const itemSelement = filtrr[0];
-  // itemSelement.focus += timeInFocus;
-  // localStorage.setItem("Items", JSON.stringify(itemS));
-
-  // renderPomodoroTasks(todos, todoList);
+  let focusTaskTime; 
+  let itemOne;
+  let itemAll = [];
+  let thisTask = [];
+  db.collection("users")
+    .doc(auth.currentUser.uid)
+    .collection("Items")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        itemOne = doc.data();
+        itemAll.push(itemOne);
+      });
+      thisTask = itemAll.filter((item) => item.id == taskId);
+    let  focusTaskTime = thisTask[0].focus;
+  let numberfocusTaskTime = focusTaskTime 
+  let numbertimeInFocus = timeInFocus 
+   numberfocusTaskTime += numbertimeInFocus;
+  db.collection("users")
+  .doc(auth.currentUser.uid)
+  .collection("Items")
+  .doc(taskId)
+  
+  .update({
+      focus: numberfocusTaskTime
+    });
+});
   pause.addEventListener("click", timerBreak);
   // displayNotification();
   breakTime();
@@ -137,7 +208,7 @@ function breakTime() {
   pause.firstElementChild.classList.remove(
     "fa-play-circle",
     "fa-pause",
-    "fa-pause-circle",
+    "fa-pause-circle"
   );
   pause.firstElementChild.classList.add("fa-coffee");
   clockTimer.classList.remove("clock_timerStart");
@@ -147,14 +218,3 @@ function countdownAnimation() {
   buttonscountdown.classList.remove(".countdownButtonsNone");
   clockTimer.classList.add("clock_timerStart");
 }
-export {
-  timer,
-  timerBreak,
-  pausetimer,
-  resetTimer,
-  resizeClock,
-  breakTime,
-  displayTimeLeft,
-  pause,
-  countdownAnimation,
-};
