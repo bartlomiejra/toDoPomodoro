@@ -308,8 +308,8 @@ function addTodo(event) {
     data: dateToday,
     note: "",
                   });
+                  console.log(currentProject);
               });
-              console.log(currentProject);
 
   event.preventDefault();
   centerDiv.classList.add("active");
@@ -318,7 +318,7 @@ function addTodo(event) {
   unsubscribe && unsubscribe();
 }
 });
-renderPomodoroTasks();
+// renderPomodoroTasks();
 // todoInput.value = "";
 }
 statTask();
@@ -403,7 +403,7 @@ elapsed: dbelapsed,
 
 statTask();
 todoButton.addEventListener("click", addTodo);
-renderPomodoroTasks(actualList, todoList);
+// renderPomodoroTasks(actualList, todoList);
 // * functions buttons action delate play and completted task
 // ! allTasklist w tej zmiennej zbieraj wszystkie taski z bazy danych i na jej podstawie ustawaj i zaznaczaj taski wykonane owrapuj wszystkie ify tą funkcją żeby była ona dostępna
 function btnActtion(e) {
@@ -727,7 +727,8 @@ const allTasklist = [];
         console.log(actualList);
         
  tasksProject = actualList.filter((item) => item.project == clicked);
-  renderPomodoroTasks();
+//  console.log(tasksProject);
+  renderPomodoroTasks(tasksProject);
       });
             } else {
     unsubscribe && unsubscribe();
