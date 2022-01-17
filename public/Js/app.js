@@ -137,7 +137,7 @@ let oneTask;
 
           });
 
-          console.log(actualList);
+          // console.log(actualList);
         });
     } else {
       unsubscribe && unsubscribe();
@@ -171,12 +171,7 @@ function renderPomodoroTasks(todolist = []) {
           Lista = doc.data();
           // allnotelist.push(Lista);
         });
-  if (actualList.length == 0) {
-    emptyList.classList.remove("none");
-  }
-  if (actualList.length > 0) {
-    emptyList.classList.add("none");
-  }
+ 
           actualList = actualList.filter((value, index) => {
   const _value = JSON.stringify(value);
   return index === actualList.findIndex(obj => {
@@ -184,7 +179,7 @@ function renderPomodoroTasks(todolist = []) {
   });
 });
 
-console.log(actualList);
+// console.log(actualList);
 
   todoList.innerHTML = actualList
     .map(
@@ -236,6 +231,12 @@ aria-hidden="true"></i></button>
 `,
     )
     .join("");
+     if (actualList.length == 0) {
+    emptyList.classList.remove("none");
+  }
+  if (actualList.length > 0) {
+    emptyList.classList.add("none");
+  }
      });
       } else {
     unsubscribe && unsubscribe();
@@ -716,6 +717,7 @@ const allTasklist = [];
       .onSnapshot((querySnapshot) => {
         allnotelist.length = 0;
         actualList.length = 0;
+        // allTasklist.length = 0;
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
           allTasklist.push(Lista);
@@ -724,7 +726,7 @@ const allTasklist = [];
         console.log(actualList);
         
  tasksProject = actualList.filter((item) => item.project == clicked);
-  renderPomodoroTasks(tasksProject, todoList);
+  renderPomodoroTasks();
       });
             } else {
     unsubscribe && unsubscribe();
