@@ -97,12 +97,12 @@ auth.onAuthStateChanged((user) => {
           pomodoreDuration = doc.data().pomodoreTime;
           setting = doc.data();
         });
-        console.log(pomodoreDuration);
+        // console.log(pomodoreDuration);
       });
     }
   });
   const shortBreak = breakTimes * 60;
-  console.log(shortBreak);
+  // console.log(shortBreak);
 function actualDateTime() {
   const date = new Date();
   const yyyy = date.getFullYear();
@@ -113,29 +113,28 @@ function actualDateTime() {
   dateTomorrow = `${yyyy}-${mm}-${ddTomorrow}`;
 }
 actualDateTime();
-const allnotelist = [];
+let allnotelist = [];
 let oneTask;
   // ! jako actual list ustaw wszystkie taski z dzisiejszą datą
   auth.onAuthStateChanged((user) => {
-    const tasksAll = [];
+    let tasksAll = [];
     if (user) {
       db.collection("users")
       .doc(logUserId)
       .collection("Items")
       .onSnapshot((querySnapshot) => {
         actualList.length = 0;
+        actualList = [];
+        tasksAll = [];
+        tasksAll.length = 0;
         querySnapshot.docs.map((doc) => {
             oneTask = doc.data();
             tasksAll.push(oneTask);
-            const uniqueArray = tasksAll.filter((value, index) => {
-  const _value = JSON.stringify(value);
-  return index === tasksAll.findIndex((obj) => JSON.stringify(obj) === _value);
-});
+         
+            });
+            actualList = tasksAll.filter((items) => items.data == dateToday);
+            // console.log(tasksAll);
 
-            actualList = uniqueArray.filter((items) => items.data == dateToday);
-          });
-
-          // console.log(actualList);
         });
     } else {
       unsubscribe && unsubscribe();
@@ -156,9 +155,9 @@ function renderPomodoroTasks(todolist = []) {
 
   actualList = todolist;
 
-  console.log(actualList);
+  // console.log(actualList);
   const ast = todoList;
-  console.log(actualList);
+  // console.log(actualList);
   auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
@@ -167,6 +166,7 @@ function renderPomodoroTasks(todolist = []) {
     .collection("Items")
       .onSnapshot((querySnapshot) => {
         allnotelist.length = 0;
+        allnotelist = [];
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
           // allnotelist.push(Lista);
@@ -180,7 +180,7 @@ function renderPomodoroTasks(todolist = []) {
 //   console.log(actualList);
 // });
 
-console.log(actualList);
+// console.log(actualList);
 
   todoList.innerHTML = actualList
     .map(
@@ -308,7 +308,7 @@ function addTodo(event) {
     data: dateToday,
     note: "",
                   });
-                  console.log(actualList);
+                  // console.log(actualList);
               });
 
   event.preventDefault();
@@ -408,7 +408,7 @@ todoButton.addEventListener("click", addTodo);
 // * functions buttons action delate play and completted task
 // ! allTasklist w tej zmiennej zbieraj wszystkie taski z bazy danych i na jej podstawie ustawaj i zaznaczaj taski wykonane owrapuj wszystkie ify tą funkcją żeby była ona dostępna
 function btnActtion(e) {
-  const allTasklist = [];
+  let allTasklist = [];
 
   statTask();
 
@@ -480,7 +480,7 @@ allProjectList.push(taskone);
        const { ...index } = e.target.dataset;
 let thisItem = [];
 let clickedTodo;
-console.log(allProjectList);
+// console.log(allProjectList);
 allProjectList.forEach((ele) => {
   if (ele.id == index.index) {
     thisItem = ele.id;
@@ -558,7 +558,7 @@ unsubscribe = thingsRef
                 const repTime = clickedTodo.repeatpartoftime;
 
               const newData = moment(clickedTodo.data).add(rep, repTime).format("YYYY-MM-DD");
-              console.log(newData);
+              // console.log(newData);
 
                 db.collection("users")
                 .doc(logUserId)
@@ -580,11 +580,11 @@ done: false,
 
       audio = new Audio("Alerts/deleteTask.mp3");
       audio.play();
-      const todo = item.parentElement;
-      todo.classList.add("fall");
+      const todoss = item.parentElement;
+      todoss.classList.add("fall");
 
-      todo.addEventListener("transitionend", () => {
-        todo.remove();
+      todoss.addEventListener("transitionend", () => {
+        todoss.remove();
         resetTimer();
       });
       centerDiv.classList.add("active");
@@ -616,7 +616,7 @@ done: false,
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
-  renderPomodoroTasks(actualList, todoList);
+  renderPomodoroTasks();
 }
 
 // pomodoreDuration;
@@ -728,11 +728,10 @@ function sortingProject(clicked_id) {
         querySnapshot.docs.map((doc) => {
           
           Lista = doc.data();
-          console.log(allTasklist);
+          // console.log(allTasklist);
           allTasklist.push(Lista);
           actualList = allTasklist;
         });
-        console.log(actualList);
 
  tasksProject = actualList.filter((item) => item.project == clicked);
 //  console.log(tasksProject);
@@ -774,8 +773,10 @@ allProjectList.push(taskone);
                  .collection("Current")
                  .doc("0")
                  .set({
+                   id: 0,
    name: "Today",
                  });
+                //  console.log(taskToday);
       renderPomodoroTasks(taskToday, todoList);
       break;
     case "Tomorrow":
@@ -938,7 +939,6 @@ function titleName() {
   title.innerHTML = currentProject;
   });
 
-  actualList.length = 0;
 }
 titleName();
 console.log(actualList);

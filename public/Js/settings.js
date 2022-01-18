@@ -92,7 +92,7 @@ oninput="this.nextElementSibling.value = value"
 type="range"
                   class="numberOfTime"
                   name="quantity"
-                  min="5"
+                  min="1"
                   max="100"
 				  />
 				  <output name="duration"  class="durationTime" id="quantity">${firestorepomodoreTime}</output>

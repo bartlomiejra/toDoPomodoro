@@ -69,7 +69,7 @@ function timer(seconds) {
   clearInterval(countdownTime);
   const now = Date.now();
   const then = now + seconds * 1000;
-  displayTimeLeft(seconds);
+  displayTimeLeft(secondsLeft);
   countdownTime = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     timeInFocus = seconds - secondsLeft;

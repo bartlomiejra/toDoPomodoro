@@ -123,20 +123,23 @@ function deleteTodo(ClickedId) {
 }
 
 function checkFunction(clicked_id) {
-  let thisId;
+db.collection("users")
+.doc(logUserId)
+.collection("ListTodo")
+.doc(clicked_id).get().then((doc) => {
 
-  db.collection("users")
-    .doc(logUserId)
-    .collection("ListTodo")
-    .doc(clicked_id)
-    .update({
-      done: !db
-        .collection("users")
-        .doc(logUserId)
-        .collection("ListTodo")
-        .doc(clicked_id).done,
-    })
-    .then(() => {})
-    .catch((error) => {});
+
+  let thisId;
+db.collection("users")
+.doc(logUserId)
+.collection("ListTodo")
+.doc(clicked_id)
+.update({
+  done: !doc.data().done,
+})
+.then(() => {})
+.catch((error) => {});
   const lasts = db.collection("users").doc(logUserId).collection("ListTodo");
+
+});
 }

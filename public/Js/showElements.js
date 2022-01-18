@@ -21,9 +21,7 @@ import {
 } from "./app.js";
 import { logUserId } from "./settings.js";
 
-export {
- showToDoCard, showProjectList, activeProject, centerDiv, showDiv 
-};
+export { showToDoCard, showProjectList, activeProject, centerDiv, showDiv };
 let unsubscribe;
 
 const centerDiv = document.querySelector(".center");
@@ -175,7 +173,7 @@ function showDiv(clickedId) {
             const project = document.querySelector(".projectSelect");
             date.addEventListener("change", updateDetails);
             closeBtn.addEventListener("click", closeDiv);
-            note.addEventListener("input", updateDetails);
+            note.addEventListener("change", updateDetails);
             repeatDay.addEventListener("input", updateDetails);
             const projectSelect = document.getElementById("Project");
             projectSelect.addEventListener("click", () => {
@@ -213,7 +211,7 @@ function showDiv(clickedId) {
                       repeatDay: repeatDay.value,
                       repeatpartoftime: timePart.value,
                     });
-                    console.log(ClickedTaskId);
+                  // console.log(ClickedTaskId);
                 }
               });
             }
@@ -222,7 +220,7 @@ function showDiv(clickedId) {
             divT.addEventListener("click", renderdetals);
             getSelectOptions();
 
-            // renderPomodoroTasks(actualList);
+            renderPomodoroTasks();
           });
       } else {
         unsubscribe && unsubscribe();
