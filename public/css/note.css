@@ -123,10 +123,12 @@
 }
 
 .tiles__savebtn, .tiles__deletebtn {
+  bottom: 10px;
   left: 30%;
 }
 
 .tiles__savebtn {
+  margin-right: auto;
   left: 50px;
 }
 
@@ -274,5 +276,17 @@
   .tiles_smallNote {
     font-size: 0.1rem;
   }
+}
+
+.tiles__savebtn, .tiles__deletebtn {
+  background: -webkit-gradient(linear, left top, left bottom, from(#2b3066), to(#1d0758));
+  background: linear-gradient(#2b3066, #1d0758);
+  border-radius: 5px;
+  color: var(--light-color);
+  position: absolute;
+  padding: 10px;
+  max-height: 50px;
+  text-align: center;
+  /* margin-bottom: 20px; */
 }
 /*# sourceMappingURL=note.css.map */

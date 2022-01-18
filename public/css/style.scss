@@ -414,6 +414,7 @@ body {
 		}
 
 		&_addTaskdiv {
+			min-height: 35px;
 			padding: 5px;
 			margin: 10px;
 			color: var(--task);
@@ -480,7 +481,7 @@ body {
 			// min-width: 500px;
 			// max-height: 64vh;
 			// height: 100%;
-			min-height: 100%;
+			// min-height: 100%;
 
 			overflow: hidden;
 			overflow-y: auto;
@@ -513,6 +514,8 @@ body {
 			grid-template-areas:
 				"complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn"
 				"complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
+				    font-size: 1rem;
+
 		}
 
 		&_complete-btn {
@@ -540,8 +543,10 @@ body {
 		flex-wrap: nowrap;
 		justify-content: flex-start;
 		align-content: stretch;
-		align-items: flex-start;
+		// align-items: flex-start;
 		grid-area: clocks;
+		    align-items: center;
+
 	}
 
 	.center_des-btn {
@@ -1306,9 +1311,6 @@ textarea:focus {
 	transform: translate(-50%, -50%);
 }
 
-.fa-palette{
-}
-
 // 			.left_color{
 // 	min-height:51px !important;
 // 					padding: 10px;
@@ -1325,4 +1327,169 @@ textarea:focus {
 
 input::-webkit-calendar-picker-indicator {
 	filter: invert(1);
+}
+
+#whenSignedOut{
+	color: silver;
+	z-index: 30;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+			// background: var(--left_background);
+
+			background: rgb(22,22,36);
+background: -moz-linear-gradient(108deg, rgba(22,22,36,1) 4%, rgba(20,20,28,1) 44%, rgba(20,20,28,1) 66%, rgba(34,34,44,1) 100%);
+background: -webkit-linear-gradient(108deg, rgba(22,22,36,1) 4%, rgba(20,20,28,1) 44%, rgba(20,20,28,1) 66%, rgba(34,34,44,1) 100%);
+background: linear-gradient(108deg, rgba(22,22,36,1) 4%, rgba(20,20,28,1) 44%, rgba(20,20,28,1) 66%, rgba(34,34,44,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161624",endColorstr="#22222c",GradientType=1);
+
+
+
+	// background-color: rgba(0,0,0,0.5);
+	// background-color: red;
+	// display: flex;
+	// align-items: center;
+	// justify-content: center;
+	text-align: center;
+
+}
+
+
+
+.formlog{
+	// margin: auto;
+	    // margin: 0 auto;
+		margin-top:15vh;
+		
+
+	display: flex;
+	flex-direction: column;
+	color: white;
+	align-items: center;
+
+	&_button{
+		cursor: pointer;
+	}
+	&_button, &_input, &_sign{
+		
+		width: 300px;
+		margin: 5px;
+		font-size: 1.1rem;
+		background-color: transparent;
+		color: rgb(180, 173, 173);
+		padding: 10px;
+		border: 1.3px solid rgb(90, 88, 88);
+		border-radius: 10px;
+		transition: 0.3s;
+
+		&:hover{
+color: filter(brightness(150%));
+		} 
+
+	}
+
+	&_sign{
+		background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+		background-color: var(--task);
+		color: white;
+		border: 1.3px solid var(--task);
+		cursor: pointer;
+		width:300px;
+		// border: 2px solid black;
+	}
+
+	p{
+		color:rgb(90, 88, 88);
+		
+		a{
+			color:rgb(90, 88, 88);
+		font-weight: 700;
+		text-decoration: none;
+		font-size: 1rem;
+		&:hover{
+			color: var(--hover_color);
+		}
+	}
+	}
+}
+
+.credits{
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+
+
+	p{
+		color:rgb(90, 88, 88);
+		
+		a{
+			color:rgb(90, 88, 88);
+		font-weight: 700;
+		text-decoration: none;
+		font-size: 1rem;
+		&:hover{
+			color: var(--hover_color);
+		}
+	}
+	}
+}
+
+#whenSignedIn{
+	display:flex;
+	align-items: center;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px;
+	margin: 10px;
+	height: 48px;
+	#userDetails{
+		font-size: 1rem;
+		text-align: center;
+		margin-right: 5px;
+		margin-bottom: 16px;
+		max-height: 35px;
+	}
+	#signOutBtn{
+		width: 100px;
+    border-radius: 5px;
+    color: var(--light-color);
+    padding: 5px;
+	min-width: 50px;
+	max-height: 35px;
+    background-color: #2876f9;
+    background-image: linear-gradient(
+		315deg
+		, #2876f9 0%, #3e4397 74%);
+	}
+	
+}
+
+.buttonForm{
+background-color: transparent;
+    //   color: #b4adad;
+	     color: #5a5858;
+		 font-size: 1rem;
+		 font-weight: 700;
+    text-decoration: none;
+    font-size: 1.2rem;
+	&:hover{
+			color: var(--hover_color);
+		}
+
+
+
+
+
+}
+// .modal-signin{
+// display: block;
+// }
+// .modal-signup{
+// display: none;
+// }
+
+#signInGithub, #signInFacebook{
+	display: none;
 }

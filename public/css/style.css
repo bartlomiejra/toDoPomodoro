@@ -71,7 +71,7 @@ input::-webkit-color-swatch {
   --font-color: black;
   --addProjectbtn: #e0e0e0;
   --shadow: #fff;
-  --hover_color: #9e2020;
+  --hover_color: #2660b6;
   --dark-font: #fff;
   --fonts: #080808;
   --task: #fff;
@@ -476,6 +476,7 @@ body .center__text {
 
 html .center_addTaskdiv,
 body .center_addTaskdiv {
+  min-height: 35px;
   padding: 5px;
   margin: 10px;
   color: var(--task);
@@ -557,7 +558,6 @@ html .center_todolist,
 body .center_todolist {
   margin-left: auto;
   margin-right: auto;
-  min-height: 100%;
   overflow: hidden;
   overflow-y: auto;
   scroll-behavior: hidden;
@@ -591,6 +591,7 @@ body .center_divT {
       grid-template-rows: 1fr 1fr;
   gap: 0 0;
       grid-template-areas: "complete-btn todo-item todo-item todo-item todo-item todo-item todo-item delete-btn play-btn des-btn" "complete-btn clocks clocks clocks clocks clocks clocks delete-btn play-btn des-btn";
+  font-size: 1rem;
 }
 
 html .center_complete-btn,
@@ -638,13 +639,13 @@ body .center_clocks {
           justify-content: flex-start;
   -ms-flex-line-pack: stretch;
       align-content: stretch;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   -ms-grid-column-span: 6;
   grid-area: clocks;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 html .center_des-btn,
@@ -1491,5 +1492,157 @@ textarea:focus {
 input::-webkit-calendar-picker-indicator {
   -webkit-filter: invert(1);
           filter: invert(1);
+}
+
+#whenSignedOut {
+  color: silver;
+  z-index: 30;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #161624;
+  background: linear-gradient(108deg, #161624 4%, #14141c 44%, #14141c 66%, #22222c 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161624",endColorstr="#22222c",GradientType=1);
+  text-align: center;
+}
+
+.formlog {
+  margin-top: 15vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.formlog_button {
+  cursor: pointer;
+}
+
+.formlog_button, .formlog_input, .formlog_sign {
+  width: 300px;
+  margin: 5px;
+  font-size: 1.1rem;
+  background-color: transparent;
+  color: #b4adad;
+  padding: 10px;
+  border: 1.3px solid #5a5858;
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.formlog_button:hover, .formlog_input:hover, .formlog_sign:hover {
+  color: filter(brightness(150%));
+}
+
+.formlog_sign {
+  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+  background-color: var(--task);
+  color: white;
+  border: 1.3px solid var(--task);
+  cursor: pointer;
+  width: 300px;
+}
+
+.formlog p {
+  color: #5a5858;
+}
+
+.formlog p a {
+  color: #5a5858;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.formlog p a:hover {
+  color: var(--hover_color);
+}
+
+.credits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 10px;
+}
+
+.credits p {
+  color: #5a5858;
+}
+
+.credits p a {
+  color: #5a5858;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.credits p a:hover {
+  color: var(--hover_color);
+}
+
+#whenSignedIn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  height: 48px;
+}
+
+#whenSignedIn #userDetails {
+  font-size: 1rem;
+  text-align: center;
+  margin-right: 5px;
+  margin-bottom: 16px;
+  max-height: 35px;
+}
+
+#whenSignedIn #signOutBtn {
+  width: 100px;
+  border-radius: 5px;
+  color: var(--light-color);
+  padding: 5px;
+  min-width: 50px;
+  max-height: 35px;
+  background-color: #2876f9;
+  background-image: linear-gradient(315deg, #2876f9 0%, #3e4397 74%);
+}
+
+.buttonForm {
+  background-color: transparent;
+  color: #5a5858;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.buttonForm:hover {
+  color: var(--hover_color);
+}
+
+#signInGithub, #signInFacebook {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

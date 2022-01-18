@@ -3,7 +3,7 @@
     "background_color": "#14141c",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/index.html",
+    "start_url": "index.html",
     "name": "PomoNote",
     "description": "Your Note, todoList and Pomodoro Task in one place.",
     "short_name": "todoPomodoro",
