@@ -617,6 +617,8 @@ done: false,
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
   renderPomodoroTasks();
+  //  renderPomodoroTasks(actualList, todoList);
+
 }
 
 // pomodoreDuration;
