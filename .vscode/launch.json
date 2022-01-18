@@ -8,11 +8,15 @@
 			"type": "firefox",
 			"request": "launch",
 			"name": "Launch Chrome against localhost",
-			"url": "http://localhost:5500",
+			"url": "http://localhost:5002",
 			"webRoot": "${workspaceFolder}",
 			"pathMappings": [
 				{
-					"url": "http://localhost:5500",
+					"url": "http://localhost:5002",
+					"path": "${workspaceFolder}/public/"
+				},
+				{
+					"url": "http://localhost:5002",
 					"path": "${workspaceFolder}"
 				}
 			]

@@ -127,15 +127,12 @@ let oneTask;
         querySnapshot.docs.map((doc) => {
             oneTask = doc.data();
             tasksAll.push(oneTask);
-            let uniqueArray = tasksAll.filter((value, index) => {
+            const uniqueArray = tasksAll.filter((value, index) => {
   const _value = JSON.stringify(value);
-  return index === tasksAll.findIndex(obj => {
-    return JSON.stringify(obj) === _value;
-  });
+  return index === tasksAll.findIndex((obj) => JSON.stringify(obj) === _value);
 });
 
             actualList = uniqueArray.filter((items) => items.data == dateToday);
-
           });
 
           // console.log(actualList);
@@ -155,11 +152,13 @@ allnotelist.length = 0;
 renderPomodoroTasks();
 function renderPomodoroTasks(todolist = []) {
   actualList = 0;
+  console.log(actualList);
 
   actualList = todolist;
 
+  console.log(actualList);
   const ast = todoList;
-
+  console.log(actualList);
   auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
@@ -172,15 +171,16 @@ function renderPomodoroTasks(todolist = []) {
           Lista = doc.data();
           // allnotelist.push(Lista);
         });
- 
-          actualList = actualList.filter((value, index) => {
-  const _value = JSON.stringify(value);
-  return index === actualList.findIndex(obj => {
-    return JSON.stringify(obj) === _value;
-  });
-});
 
-// console.log(actualList);
+//           actualList = actualList.filter((value, index) => {
+//   const _value = JSON.stringify(value);
+//   return index === actualList.findIndex(obj => {
+//     return JSON.stringify(obj) === _value;
+//   });
+//   console.log(actualList);
+// });
+
+console.log(actualList);
 
   todoList.innerHTML = actualList
     .map(
@@ -308,7 +308,7 @@ function addTodo(event) {
     data: dateToday,
     note: "",
                   });
-                  console.log(currentProject);
+                  console.log(actualList);
               });
 
   event.preventDefault();
@@ -400,6 +400,7 @@ elapsed: dbelapsed,
   }
 });
 }
+                  console.log(actualList);
 
 statTask();
 todoButton.addEventListener("click", addTodo);
@@ -457,7 +458,7 @@ unsubscribe = thingsRef
     statTask();
 });
 
-    renderPomodoroTasks(actualList, todoList);
+    renderPomodoroTasks(actualList);
 
     return;
   }
@@ -699,6 +700,10 @@ let tasksProject;
 // sortingProject();
 const prospor = [];
 function sortingProject(clicked_id) {
+  allnotelist.length = 0;
+  actualList.length = 0;
+  let allTasklist = [];
+  allTasklist.length = 0;
   clicked = clicked_id.getAttribute("name");
   currentProject = clicked;
   db.collection("users").doc(logUserId).collection("Current").doc("0")
@@ -708,7 +713,7 @@ function sortingProject(clicked_id) {
     name: clicked,
 
   });
-const allTasklist = [];
+
    auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
@@ -718,14 +723,17 @@ const allTasklist = [];
       .onSnapshot((querySnapshot) => {
         allnotelist.length = 0;
         actualList.length = 0;
-        // allTasklist.length = 0;
+        // allTasklist = 0;
+        allTasklist.length = 0;
         querySnapshot.docs.map((doc) => {
+          
           Lista = doc.data();
+          console.log(allTasklist);
           allTasklist.push(Lista);
           actualList = allTasklist;
         });
         console.log(actualList);
-        
+
  tasksProject = actualList.filter((item) => item.project == clicked);
 //  console.log(tasksProject);
   renderPomodoroTasks(tasksProject);
@@ -920,7 +928,7 @@ function titleName() {
       itemOne = doc.data();
       itemAll.push(itemOne);
     });
-    
+
     const currentProject = itemAll[0].name;
   console.log(currentProject);
   if (currentProject == null) {
@@ -928,8 +936,9 @@ function titleName() {
   }
 
   title.innerHTML = currentProject;
-   
   });
+
+  actualList.length = 0;
 }
 titleName();
 console.log(actualList);
@@ -954,5 +963,5 @@ actualDateTime,
   audio,
   allnotelist,
   shortBreak,
-  taskId
+  taskId,
 };

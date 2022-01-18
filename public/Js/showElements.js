@@ -213,6 +213,7 @@ function showDiv(clickedId) {
                       repeatDay: repeatDay.value,
                       repeatpartoftime: timePart.value,
                     });
+                    console.log(ClickedTaskId);
                 }
               });
             }
@@ -221,7 +222,7 @@ function showDiv(clickedId) {
             divT.addEventListener("click", renderdetals);
             getSelectOptions();
 
-            renderPomodoroTasks(actualList, todoList);
+            // renderPomodoroTasks(actualList);
           });
       } else {
         unsubscribe && unsubscribe();
