@@ -1,0 +1,83 @@
+{
+    
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-sass-guidelines",
+          "stylelint-config-standard-scss"
+
+    ],
+      "customSyntax": "sugarss",
+
+    "plugins": [
+        "stylelint-high-performance-animation",
+        "stylelint-order",
+		"stylelint-selector-bem-pattern"
+
+    ],
+    "rules": {
+        "block-closing-brace-empty-line-before": null,
+        "color-named": "never",
+        "color-function-notation": "legacy",
+
+        "block-closing-brace-newline-after": null,
+        "block-closing-brace-newline-before": null,
+        "block-closing-brace-space-before": null,
+        "block-opening-brace-newline-after": null,
+        "block-opening-brace-space-after": null,
+        "block-opening-brace-space-before": null,
+        "declaration-block-semicolon-newline-after": null,
+        "declaration-block-semicolon-space-after": null,
+        "declaration-block-semicolon-space-before": null,
+        "declaration-block-trailing-semicolon": null,
+		"selector-class-pattern": null,
+
+
+
+        "selector-no-qualifying-type": [
+            true,
+            {
+                "ignore": [
+                    "attribute"
+                ]
+            }
+        ],
+     
+
+
+        "plugin/no-low-performance-animation-properties": [
+            true,
+            {
+                "ignoreProperties": [
+                    "color",
+                    "background-color",
+                    "box-shadow"
+                ]
+            }
+        ],
+		"plugin/selector-bem-pattern": {
+			"componentName": "[A-Z]+",
+			"componentSelectors": {
+			"initial": "^\\.{componentName}(?:-[a-z]+)?$",
+			"combined": "^\\.combined-{componentName}-[a-z]+$"
+			},
+			"utilitySelectors": "^\\.util-[a-z]+$"
+		},
+        "indentation": "tab",
+        "order/order": [
+            "custom-properties",
+            "declarations"
+        ],
+        "order/properties-alphabetical-order": null,
+        "declaration-block-no-duplicate-custom-properties": true,
+        "declaration-empty-line-before": null,
+        "scale-unlimited/declaration-strict-value": [
+            [
+                "z-index",
+                "font-size"
+            ]
+        ],
+        "scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9]+$",
+        "max-nesting-depth": 3,
+        "selector-pseudo-class-no-unknown": null
+    }
+}

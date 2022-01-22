@@ -57,13 +57,6 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <!-- <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li> -->
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <!-- <li><a href="#contributing">Contributing</a></li>
@@ -97,12 +90,10 @@ This is a simple todolist app  implements pomodoro time management technique, pr
 <!-- ROADMAP -->
 ## Roadmap
 This is a simple application that will help you be productive. You will be able to create recurring pomodoro tasks broken down into projects, create notes and simple todolists.- [ ] the ability to add repetitive tasks
-  - [ ] find lib for it
-- [ ]  divide the project into smaller js files modules
-- [ ] improve a Orthogonality
-- [ ] Animations
-- [ ] classic todo (cyclical ) 
-- [ ] bookmark with notes
+[] memory leak
+[] firebase log improvment
+[] animation
+[] gui bugs fix  
 
 
 

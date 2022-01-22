@@ -21,7 +21,9 @@ import {
 } from "./app.js";
 import { logUserId } from "./settings.js";
 
-export { showToDoCard, showProjectList, activeProject, centerDiv, showDiv };
+export {
+ showToDoCard, showProjectList, activeProject, centerDiv, showDiv 
+};
 let unsubscribe;
 
 const centerDiv = document.querySelector(".center");
@@ -182,6 +184,7 @@ function showDiv(clickedId) {
             const partTimeSelect = document.getElementById("partOfTime");
             partTimeSelect.addEventListener("click", () => {
               partTimeSelect.addEventListener("change", updateDetails);
+              // renderPomodoroTasks(actualList);
             });
 
             function closeDiv() {
@@ -220,7 +223,7 @@ function showDiv(clickedId) {
             divT.addEventListener("click", renderdetals);
             getSelectOptions();
 
-            renderPomodoroTasks();
+            renderPomodoroTasks(actualList);
           });
       } else {
         unsubscribe && unsubscribe();

@@ -41,6 +41,7 @@
     "js-datepicker": "^5.18.0",
     "moment": "^2.29.1",
     "node-sass": "^6.0.0",
+    "postcss-scss": "^4.0.3",
     "roving-index": "^1.0.4",
     "stylelint-config-primer": "^11.0.1",
     "stylelint-scss": "^3.20.1",
