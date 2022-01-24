@@ -61,23 +61,9 @@ Functionality
 -  subpage for adding notes
 -  PWA version app, notification
 -  sound after finish task
-
-
-
-
-
-
-
-
 ### Built With
 * [Firebase](https://firebase.google.com/)
 * [JS](https://www.javascript.com/)
-* [SCSS](https://sass-lang.com/)
-
-
-
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -96,10 +82,5 @@ Functionality
 - [ ]  subpage todolist category
 - [ ]  better notification
 
-
-
-
 ## Contact
-
 Bart - [@rachanski_b](https://twitter.com/rachanski_b) 
-

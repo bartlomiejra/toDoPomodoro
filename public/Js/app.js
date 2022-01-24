@@ -617,7 +617,7 @@ done: false,
     countdownAnimation(item);
     item.innerHTML = '<i class="fa fa-clock"></i>';
   }
-  renderPomodoroTasks();
+  // renderPomodoroTasks();
   //  renderPomodoroTasks(actualList, todoList);
 
 }
@@ -805,7 +805,7 @@ allProjectList.push(taskone);
    name: "Someday",
                  });
 
-      renderPomodoroTasks(taskSomeday, todoList);
+      // renderPomodoroTasks(taskSomeday, todoList);
       break;
     case "Completed":
       db.collection("users").doc(logUserId).collection("History").get()
