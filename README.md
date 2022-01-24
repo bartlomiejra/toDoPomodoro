@@ -6,11 +6,11 @@
 
 
 <!-- PROJECT LOGO -->
-![icon-384x384](https://user-images.githubusercontent.com/25589535/150767123-5ff0766b-2d19-4afe-b2f5-038020ad997b.png)
+
+![icon-192x192](https://user-images.githubusercontent.com/25589535/150767524-5aaf5bc7-14fa-4af1-9975-0e61698e22e6.png)
 
 <br />
 <p align="center">
-  <a href="https://github.com/bartlomiejra/toDoPomodoro">
   </a>
 
   <h3 align="center">toDoPomodoro</h3>
