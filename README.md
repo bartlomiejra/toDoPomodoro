@@ -32,14 +32,11 @@ toDoPomodore app to increase your productivity. TodoList, Pomodore, Project, Not
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
+      <a href="#about-the-project">About The Project</a></li>
         <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#license">License</a></li> -->
+    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -49,7 +46,7 @@ toDoPomodore app to increase your productivity. TodoList, Pomodore, Project, Not
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This app is inspired by the Pomodoro Technique, which is a time management method developed by Francesco Cirillo. At the same time, it is an application for managing notes and todo lists.
+This app is inspired by the Pomodoro Technique , which is a time management method developed by Francesco Cirillo. At the same time, it is an application for managing notes and todo lists.
 
 Functionality 
 - Add Projects
@@ -69,11 +66,9 @@ Functionality
 
 
 
-[![Product Name Screen Shot][product-screenshot]]
 
 
-   :tomato:
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+
 
 
 ### Built With
@@ -87,20 +82,21 @@ Functionality
 
 <!-- ROADMAP -->
 ## Roadmap
-This is a simple application that will help you be productive. You will be able to create recurring pomodoro tasks broken down into projects, create notes and simple todolists.- [ ] the ability to add repetitive tasks
-[] bugs fix 
-[] memory leak
-[] javascript best practices code refactoring before add now features
-[] accessibility
-[] firebase log improvment
-[] linters 
-[] gui bugs fix 
-[] animation
-[] Light Theme
 
-[] vizualization of statistics (D3.js)
-[] subpage todolist category
-[] better notification
+ 
+- [ ]  the ability to add repetitive tasks
+- [ ]  bugs fix 
+- [ ]  memory leak
+- [ ]  javascript best practices code refactoring before add now features
+- [ ]  accessibility
+- [ ]  firebase log improvment
+- [ ]  linters 
+- [ ]  gui bugs fix 
+- [ ]  animation
+- [ ]  Light Theme 
+- [ ]  vizualization of statistics (D3.js)
+- [ ]  subpage todolist category
+- [ ]  better notification
 
 
 
