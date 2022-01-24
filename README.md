@@ -7,10 +7,11 @@
 
 <!-- PROJECT LOGO -->
 
-![icon-192x192](https://user-images.githubusercontent.com/25589535/150767524-5aaf5bc7-14fa-4af1-9975-0e61698e22e6.png)
 
 <br />
 <p align="center">
+  ![icon-192x192](https://user-images.githubusercontent.com/25589535/150767524-5aaf5bc7-14fa-4af1-9975-0e61698e22e6.png)
+<p/>
   </a>
 
   <h3 align="center">toDoPomodoro</h3>
