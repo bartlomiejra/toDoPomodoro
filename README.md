@@ -10,11 +10,9 @@
 
 <br />
 <p align="center">
-    (https://user-images.githubusercontent.com/25589535/150767524-5aaf5bc7-14fa-4af1-9975-0e61698e22e6.png)
 
   ![icon-192x192](https://user-images.githubusercontent.com/25589535/150767524-5aaf5bc7-14fa-4af1-9975-0e61698e22e6.png)
 <p/>
-    ![icon-192x192](https://user-images.githubusercontent.com/25589535/150767524-5aaf5bc7-14fa-4af1-9975-0e61698e22e6.png)
 
 
   <h3 align="center">toDoPomodoro</h3>
