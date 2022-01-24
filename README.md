@@ -8,8 +8,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="/toDoPomodoro.png" alt="Logo" >
+  <a href="https://github.com/bartlomiejra/toDoPomodoro">
+![icon-384x384](https://user-images.githubusercontent.com/25589535/150767123-5ff0766b-2d19-4afe-b2f5-038020ad997b.png)
   </a>
 
   <h3 align="center">toDoPomodoro</h3>
