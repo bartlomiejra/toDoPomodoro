@@ -6,13 +6,24 @@
     },
     "extends": [
         "airbnb-base"
+        
+       
+
 
 
       
     ],
 
   
-	"plugins": ["prettier"],
+	"plugins":
+    // [
+
+
+    //         "jsx-a11y"
+
+    // ],
+    
+     ["prettier"],
 "rules": {
    "indent": "off",
    "no-tabs": 1,
@@ -23,6 +34,7 @@
 
 
 
-}
+},
+
   
 }

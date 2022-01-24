@@ -1436,9 +1436,9 @@ color: filter(brightness(150%));
 	}
 }
 
+
 #whenSignedIn{
 	display:flex;
-	align-items: center;
 	flex-direction: row;
 	align-items: center;
 	padding: 10px;
@@ -1489,6 +1489,7 @@ background-color: transparent;
 // .modal-signup{
 // display: none;
 // }
+
 
 #signInGithub, #signInFacebook{
 	display: none;
