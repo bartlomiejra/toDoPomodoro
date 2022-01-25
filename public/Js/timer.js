@@ -49,18 +49,7 @@ let pomodoreDuration;
 let Theme;
 let breakTimes;
 let pomodoreTime;
-// auth.onAuthStateChanged((user) => {
-//  if (user) {
-//    db.collection("users").doc(user.uid)
-//      .collection("settings")
-//      .onSnapshot((querySnapshot) => {
-//        querySnapshot.docs.map((doc) => {
-//          Sound = doc.data().Sound;
-//          Theme = doc.data().Theme;
-//          breakTimes = doc.data().breakTime;
-//          pomodoreDuration = doc.data().pomodoreTime;
-//          setting = doc.data();
-//        });
+
 
 function timer(seconds) {
   pause.firstElementChild.classList.remove("fa-coffee");
@@ -68,7 +57,7 @@ function timer(seconds) {
   clearInterval(countdownTime);
   const now = Date.now();
   const then = now + seconds * 1000;
-  displayTimeLeft(secondsLeft);
+  // displayTimeLeft(secondsLeft);
   countdownTime = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     timeInFocus = seconds - secondsLeft;

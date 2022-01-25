@@ -22,6 +22,7 @@ function displayNotification() {
           },
         ],
       };
+      console.log("Not");
       reg.showNotification('PomodoroApp!', options);
     });
   }
