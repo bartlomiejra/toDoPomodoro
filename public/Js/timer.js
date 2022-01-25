@@ -63,7 +63,6 @@ let pomodoreTime;
 //        });
 
 function timer(seconds) {
-  console.log(taskId);
   pause.firstElementChild.classList.remove("fa-coffee");
   pause.firstElementChild.classList.add("fa-pause");
   clearInterval(countdownTime);
@@ -74,8 +73,9 @@ function timer(seconds) {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     timeInFocus = seconds - secondsLeft;
     if (secondsLeft < 0) {
-      console.log(secondsLeft);
       endpomodoro();
+      let audio = new Audio("Alerts/taskEnd.mp3");
+      audio.play();
       clearInterval(countdownTime);
       return;
     }
@@ -106,7 +106,6 @@ function timerBreak() {
 
           then = now + breakTimes * 1000;
           displayTimeLeft(breakTimes);
-          console.log(pomodoreDuration);
         });
     }
   });
@@ -114,8 +113,8 @@ function timerBreak() {
   countdownTime = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     if (secondsLeft < 1) {
-      // audio = new Audio("Alerts/pauseEnd.mp3");
-      // audio.play();
+      let audio = new Audio("Alerts/pauseEnd.mp3");
+      audio.play();
       resetTimer();
       clearInterval(countdownTime);
       clockTimer.classList.remove("clock_fullscreen");
@@ -187,7 +186,7 @@ function endpomodoro() {
     });
 });
   pause.addEventListener("click", timerBreak);
-  displayNotification();
+  // displayNotification();
   breakTime();
 }
 
