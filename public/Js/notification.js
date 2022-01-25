@@ -1,6 +1,8 @@
 function displayNotification() {
   if (Notification.permission == 'granted') {
+    console.log("Not");
     navigator.serviceWorker.getRegistration().then((reg) => {
+      console.log("isReg");
       const options = {
         body: 'Lets take a break',
         vibrate: [99, 50, 100],
@@ -22,7 +24,6 @@ function displayNotification() {
           },
         ],
       };
-      console.log("Not");
       reg.showNotification('PomodoroApp!', options);
     });
   }

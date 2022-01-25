@@ -15,6 +15,9 @@ import {
 } from "./app.js";
 import { auth, db } from "./firebase.js";
 
+
+import {displayNotification} from './notification.js'
+
 // import { logUserId} from "./settings.js";
 
 export {
@@ -50,7 +53,6 @@ let Theme;
 let breakTimes;
 let pomodoreTime;
 
-
 function timer(seconds) {
   pause.firstElementChild.classList.remove("fa-coffee");
   pause.firstElementChild.classList.add("fa-pause");
@@ -65,6 +67,10 @@ function timer(seconds) {
       endpomodoro();
       let audio = new Audio("Alerts/taskEnd.mp3");
       audio.play();
+       displayNotification();
+         document.title = "Pomodoro End";
+
+
       clearInterval(countdownTime);
       return;
     }
@@ -175,7 +181,7 @@ function endpomodoro() {
     });
 });
   pause.addEventListener("click", timerBreak);
-  // displayNotification();
+  displayNotification();
   breakTime();
 }
 
