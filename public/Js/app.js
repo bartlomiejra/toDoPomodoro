@@ -932,8 +932,11 @@ function titleName() {
       itemOne = doc.data();
       itemAll.push(itemOne);
     });
-
+    
+    console.log(itemAll);
+    console.log("itemAll");
     const currentProject = itemAll[0].name;
+    console.log(currentProject)
   console.log(currentProject);
   if (currentProject == null) {
     currentProject.name = "Today";

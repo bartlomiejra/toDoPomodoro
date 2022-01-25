@@ -187,7 +187,7 @@ function endpomodoro() {
     });
 });
   pause.addEventListener("click", timerBreak);
-  // displayNotification();
+  displayNotification();
   breakTime();
 }
 
