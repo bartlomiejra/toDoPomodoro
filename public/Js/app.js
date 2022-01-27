@@ -82,6 +82,7 @@ let pomodoreDuration;
 let Theme;
 let breakTimes;
 let pomodoreTime;
+const clock_taskname = document.getElementById("clock_taskname");
 auth.onAuthStateChanged((user) => {
   if (user) {
     db.collection("users").doc(logUserId).collection("Items");
@@ -610,6 +611,8 @@ done: false,
     const { index } = e.target.id;
     taskId = e.target.id;
     timer();
+    
+    clock_taskname.innerHTML = e.target.id;
     clearInterval(countdownTime);
     const seconds = pomodoreDuration * 60;
     timer(seconds);
