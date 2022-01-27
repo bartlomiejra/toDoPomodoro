@@ -24,7 +24,7 @@ function displayNotification() {
           },
         ],
       };
-      reg.showNotification('PomodoroApp!', options);
+      // reg.showNotification('PomodoroApp!', options);
     });
   }
 }
@@ -32,7 +32,6 @@ function displayNotification() {
 displayNotification();
 
 Notification.requestPermission((status) => {
-  // displayNotification();
 });
 export {
   displayNotification
