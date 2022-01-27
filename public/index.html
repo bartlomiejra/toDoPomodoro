@@ -424,14 +424,24 @@ if (location.hostname === "localhost") {
   <!-- <script src="./Js/todo.js"></script> -->
   <!-- <script src="lib/hammer.min.js"></script> -->
 
-  <script defer src="/__/firebase/init.js"></script>
-  <script src="https://kit.fontawesome.com/a712e78954.js" crossorigin="anonymous"></script>
-  <script src="./Js/app.js" type="module"></script>
   <script>
+    
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          // Registration was successful
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+} 
 
-   
-
-  </script>
+</script>
+<script defer src="/__/firebase/init.js"></script>
+<script src="https://kit.fontawesome.com/a712e78954.js" crossorigin="anonymous"></script>
+<script src="./Js/app.js" type="module"></script>
 </body>
 
 </html>

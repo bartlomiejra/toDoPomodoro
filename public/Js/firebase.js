@@ -92,11 +92,19 @@ signInFacebook.onclick = (event) => {
 };
 
 signInGoogle.onclick = (event) => {
+let isNewUser;
+  function user (result) {
+        var token = result.credential.accessToken;
+        console.log(token);
+        var user = result.user;
+console.log(user);
+        //this is what you need
+         isNewUser = result.additionalUserInfo.isNewUser;
+  }
+
+  if (isNewUser) {
   auth.signInWithPopup(provider).then(
-    // if(result.additionalUserInfo.isNewUser = null){
-    // // console.log(  result.additionalUserInfo.isNewUser )
-    //   console.log("elo")
-    // }
+
     (cred) => (
       db
         .collection("users")
@@ -527,13 +535,27 @@ signInGoogle.onclick = (event) => {
           estimated: "0.28",
         })
     ),
-  );
-
+      )    
+    //delete the created user
+              //  result.user.delete();
+              // event.preventDefault();
+              }
+               else {
+                  //  your sign in flow
+                   console.log('user ' + user.email + ' does exist!');
+              }
+    //  ).catch(function (error) {
+     // Handle Errors here.
+  console.log(auth.currentUser);
+  //  if(0 == 0){
+  //   console.log(UserCredential);
+  // // // console.log(  result.additionalUserInfo.isNewUser )
+  //   console.log("elo")
+  // }
   // );
-  event.preventDefault();
-  
-};
-
+  // }
+  // );
+            }
 formlog.addEventListener("submit", (e) => {
   e.preventDefault();
   console.log("elo");
@@ -550,11 +572,6 @@ formlog.addEventListener("submit", (e) => {
       signinInfo.innerHTML = errorMessage;
     });
 
-  //  let vemail = email.value;
-  //  let vpassword = password.value;
-  // const auth = firebase.auth();
-  // const promise = auth.signInWithEmailAndPassword(vemail, vpassword);
-  // promise.catch((e) => console.log(e.message));
 });
 
 signOutBtn.onclick = (event) => {

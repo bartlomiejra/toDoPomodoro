@@ -54,6 +54,8 @@ let breakTimes;
 let pomodoreTime;
 
 function timer(seconds) {
+  //  displayNotification();
+
   pause.firstElementChild.classList.remove("fa-coffee");
   pause.firstElementChild.classList.add("fa-pause");
   clearInterval(countdownTime);
@@ -153,7 +155,7 @@ function resetTimer() {
 }
 
 function endpomodoro() {
-  let focusTaskTime; 
+   let focusTaskTime; 
   let itemOne;
   let itemAll = [];
   let thisTask = [];
@@ -181,7 +183,6 @@ function endpomodoro() {
     });
 });
   pause.addEventListener("click", timerBreak);
-  displayNotification();
   breakTime();
 }
 
