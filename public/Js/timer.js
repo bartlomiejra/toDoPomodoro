@@ -54,7 +54,7 @@ let breakTimes;
 let pomodoreTime;
 
 function timer(seconds) {
-  //  displayNotification();
+   displayNotification();
 
   pause.firstElementChild.classList.remove("fa-coffee");
   pause.firstElementChild.classList.add("fa-pause");
