@@ -1,14 +1,5 @@
 import { auth, db } from "./firebase.js";
 
-import {
-  getFirestore,
-  onSnapshot,
-  doc,
-  getDoc,
-  getDocs,
-  where,
-  collection,
-} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 import { logUserId,  thingsRef } from "./settings.js";
 export const openNote = document.getElementById("noteButton");
 export const closeNote = document.getElementById("closeNotebtn");

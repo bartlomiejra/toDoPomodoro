@@ -1,20 +1,13 @@
-import {
-  getFirestore,
-  onSnapshot,
-  doc,
-  getDoc,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
-import { pomodorebreakTime, countdownTime } from "./app.js";
+/* eslint-disable array-callback-return */
+/* eslint-disable camelcase */
+/* eslint-disable no-plusplus */
 import { auth, db } from "./firebase.js";
 import { logUserId } from "./settings.js";
 
-let firebaseListTodo;
-firebaseListTodo = db.collection("users");
 export const last = 0;
 export const DivToDo = document.querySelector(".todo_List");
 let unsubscribe;
-window.checkFunction = checkFunction;
+
 const addNewTodo = document.getElementById("addNewTodo");
 export const divCategory = document.querySelector(".todo_category");
 export const todoTitle = document.querySelector(".todo_input");
@@ -27,7 +20,6 @@ export const taskCategory = document.querySelector(".taskCategory");
 export const itemTodos = document.querySelector(".itemTodos");
 const thingsRef = db.collection("users");
 
-window.deleteTodo = deleteTodo;
 let Lista;
 auth.onAuthStateChanged((user) => {
   if (user) {
@@ -40,7 +32,6 @@ auth.onAuthStateChanged((user) => {
         addNewTodo.onclick = (event) => {
           event.preventDefault();
           if (todoTitle.value === "") {
-          } else {
             // get last index
             let lastId;
             let nextId;
@@ -50,7 +41,7 @@ auth.onAuthStateChanged((user) => {
               .orderBy("id", "asc")
               .limitToLast(1)
               .get()
-              .then((querySnapshot) => {
+              .then(() => {
                 querySnapshot.forEach((doc) => {
                   lastId = doc.data().id;
                   lastId++;
@@ -68,17 +59,12 @@ auth.onAuthStateChanged((user) => {
                     data: "31.1.21",
                   });
               });
-            const dragItems = document.querySelectorAll(".dragitem");
           }
         };
 
         querySnapshot.docs.map((doc) => {
           Lista = doc.data();
           arrList.push(Lista);
-          const { id } = doc.data();
-          const { done } = doc.data();
-          const { data } = doc.data();
-          const { text } = doc.data();
         });
 
         itemTodos.innerHTML = arrList
@@ -93,7 +79,7 @@ auth.onAuthStateChanged((user) => {
           Delete
     </button>
     </div>`
-          : `<div class="todo_item dragitem" onClick='checkFunction(this.id)'  onClick='event.stopPropagation()'  	  
+          : `<div class="todo_item dragitem" onClick='checkFunction(this.id)'  onClick='event.stopPropagation()' 
            id=${todo.id} data-index=${todo.id}  >     
           ${todo.text}
           <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
@@ -106,10 +92,10 @@ auth.onAuthStateChanged((user) => {
       });
     //
 
-    unsubscribe = thingsRef.onSnapshot((querySnapshot) => {});
+    unsubscribe = thingsRef.onSnapshot(() => {});
     todoTitle.value = "";
   } else {
-    unsubscribe && unsubscribe();
+    unsubscribe();
   }
 });
 function deleteTodo(ClickedId) {
@@ -128,7 +114,6 @@ function checkFunction(clicked_id) {
     .get()
 
     .then((doc) => {
-      let thisId;
       db.collection("users")
         .doc(logUserId)
         .collection("ListTodo")
@@ -136,11 +121,8 @@ function checkFunction(clicked_id) {
         .update({
           done: !doc.data().done,
         })
-        .then(() => {})
-        .catch((error) => {});
-      const lasts = db
-        .collection("users")
-        .doc(logUserId)
-        .collection("ListTodo");
+        .then(() => {});
     });
 }
+window.deleteTodo = deleteTodo;
+window.checkFunction = checkFunction;

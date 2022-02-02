@@ -1,34 +1,22 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-use-before-define */
+/* eslint-disable array-callback-return */
+/* eslint-disable import/no-cycle */
 import {
   buttonscountdown,
   todoList,
   actualList,
   renderPomodoroTasks,
   clockTimer,
-  mobileWidth,
   pause,
-  leftDiv,
-  pomodorebreakTime,
   countdownTimer,
-  audio,
-  shortBreak,
   taskId,
 } from "./app.js";
 import { auth, db } from "./firebase.js";
-import { displayNotification } from "./notification.js";;
+import { displayNotification } from "./notification.js";
 
 // import { logUserId} from "./settings.js";
-
-export {
-  timer,
-  timerBreak,
-  pausetimer,
-  resetTimer,
-  resizeClock,
-  breakTime,
-  displayTimeLeft,
-  pause,
-  countdownAnimation,
-};
 
 let paused = false;
 let timeInFocus;
@@ -43,14 +31,7 @@ function displayTimeLeft(seconds) {
   countdownTimer.textContent = display;
   document.title = display;
 }
-
-let setting;
-let Sound;
-let pomodoreDuration;
-let Theme;
 let breakTimes;
-let pomodoreTime;
-
 function timer(seconds) {
   displayNotification();
 
@@ -81,7 +62,7 @@ function timerBreak() {
     "fa-play-circle",
     "fa-coffee",
     "fa-pause-circle",
-    "fa-pause",
+    "fa-pause"
   );
   clearInterval(countdownTime);
   let then;
@@ -138,7 +119,7 @@ function resetTimer() {
   clockTimer.classList.remove(
     "clock_timerFinish",
     "clock_timerStart",
-    "clock_clockVisible",
+    "clock_clockVisible"
   );
   renderPomodoroTasks(actualList, todoList);
   buttonscountdown.classList.add(".countdownButtonsNone");
@@ -151,7 +132,6 @@ function resetTimer() {
 }
 
 function endpomodoro() {
-  let focusTaskTime;
   let itemOne;
   const itemAll = [];
   let thisTask = [];
@@ -165,17 +145,17 @@ function endpomodoro() {
         itemAll.push(itemOne);
       });
       thisTask = itemAll.filter((item) => item.id == taskId);
-      let focusTaskTime = thisTask[0].focus;
+      const focusTaskTime = thisTask[0].focus;
       let numberfocusTaskTime = focusTaskTime;
-  const numbertimeInFocus = timeInFocus;
-   numberfocusTaskTime += numbertimeInFocus;
+      const numbertimeInFocus = timeInFocus;
+      numberfocusTaskTime += numbertimeInFocus;
       db.collection("users")
         .doc(auth.currentUser.uid)
         .collection("Items")
         .doc(taskId)
 
-      .update({
-          focus: numberfocusTaskTime,,
+        .update({
+          focus: numberfocusTaskTime,
         });
     });
   pause.addEventListener("click", timerBreak);
@@ -199,7 +179,7 @@ function breakTime() {
   pause.firstElementChild.classList.remove(
     "fa-play-circle",
     "fa-pause",
-    "fa-pause-circle",
+    "fa-pause-circle"
   );
   pause.firstElementChild.classList.add("fa-coffee");
   clockTimer.classList.remove("clock_timerStart");
@@ -209,3 +189,15 @@ function countdownAnimation() {
   buttonscountdown.classList.remove(".countdownButtonsNone");
   clockTimer.classList.add("clock_timerStart");
 }
+
+export {
+  timer,
+  timerBreak,
+  pausetimer,
+  resetTimer,
+  resizeClock,
+  breakTime,
+  displayTimeLeft,
+  pause,
+  countdownAnimation,
+};

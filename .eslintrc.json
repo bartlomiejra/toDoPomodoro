@@ -25,7 +25,22 @@
     
      ["prettier"],
 "rules": {
+    // "import/extensions": [<severity>, "never" | "always" | "ignorePackages"],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "always"
+        
+      }
+   ],
+   
+   // "import/no-cycle": false,
    "indent": "off",
+//    "allowImplicit": false,
+//    "checkForEach": false,
+// "allowImplicit": true,
+// {"checkForEach": true},
    "no-tabs": 1,
    "prettier/prettier": ["error", {}, {
   "usePrettierrc": false

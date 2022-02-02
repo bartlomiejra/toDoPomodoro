@@ -23,7 +23,7 @@ function displayNotification() {
           },
         ],
       };
-      // reg.showNotification('PomodoroApp!', options);
+      // reg.showNotification("PomodoroApp!", options);
     });
   }
 }

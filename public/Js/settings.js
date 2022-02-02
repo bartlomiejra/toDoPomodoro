@@ -1,6 +1,3 @@
-// import {
-//  collectionGroup, query, where, getDocs,
-// } from "firebase/firestore";
 import {
   getFirestore,
   onSnapshot,
@@ -94,23 +91,23 @@ type="range"
                   name="quantity"
                   min="1"
                   max="100"
-				  />
-				  <output name="duration"  class="durationTime" id="quantity">${firestorepomodoreTime}</output>
-				  </div>
-				  </li>
-				  <li class="duration optionsBox">
-				  <label for="quantitybreak">Pomodore break:</label>
-				  				  <div class="time">
-				  <input
+ />
+ <output name="duration"  class="durationTime" id="quantity">${firestorepomodoreTime}</output>
+ </div>
+ </li>
+ <li class="duration optionsBox">
+ <label for="quantitybreak">Pomodore break:</label>
+ 				  <div class="time">
+ <input
 		oninput="this.nextElementSibling.value = value"
-		
-		type="range"
-		class="numberOfTime"
-		id="quantitybreak"
-		name="quantitybreak"
-		min="1"
-		max="60"
-		/>
+
+type="range"
+class="numberOfTime"
+id="quantitybreak"
+name="quantitybreak"
+min="1"
+max="60"
+/>
 		<output name="break"  id="quantitybreak" class="breakTime" >${firestoreBreakTime} </output>
 		</div>            
               </li>
