@@ -131,7 +131,8 @@ let oneTask;
   });
 
   // };
-
+ if (currentProject = null) {
+}
 let unsubscribe;
 let Lista;
 
@@ -183,7 +184,7 @@ ${todo.done
           : `<li class="fas fa-circle" id="item${todo.id}" aria-hidden="true">`
         } 
 </button>
-<button autofocus tabindex="0" class="center_delete-btn" aria-label="Delete" data-index=${todo.id
+<button  tabindex="0" class="center_delete-btn" aria-label="Delete" data-index=${todo.id
         } id="item${todo.id
         }">   <i class="fas fa-minus-circle" aria-hidden="true"> </i>
 </button>
