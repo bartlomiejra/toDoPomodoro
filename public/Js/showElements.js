@@ -21,9 +21,7 @@ import {
 } from "./app.js";
 import { logUserId } from "./settings.js";
 
-export {
- showToDoCard, showProjectList, activeProject, centerDiv, showDiv 
-};
+export { showToDoCard, showProjectList, activeProject, centerDiv, showDiv };
 let unsubscribe;
 
 const centerDiv = document.querySelector(".center");

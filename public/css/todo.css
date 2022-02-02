@@ -14,7 +14,6 @@
 }
 
 .todo_List {
-  display: box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,7 +231,6 @@
 .gui-popup {
   --shadow: 220 70% 15%;
   --shadow-strength: 1%;
-  z-index: 500;
   border-radius: 10px;
   position: absolute;
   inset-block-end: 80%;

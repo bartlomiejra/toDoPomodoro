@@ -150,7 +150,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  outline: none;
   width: 80%;
   color: var(--font-color);
   background-color: transparent;
@@ -167,7 +166,6 @@
 }
 
 .tiles__textarea {
-  outline: none;
   resize: none;
   width: 100%;
   height: 60%;
@@ -189,7 +187,6 @@
 
 .fa-times {
   cursor: pointer;
-  outline: 0;
   color: var(--number-color);
   font-size: 1.8rem;
   padding: 0.3rem;

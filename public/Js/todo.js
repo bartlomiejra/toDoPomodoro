@@ -4,8 +4,6 @@ import {
   doc,
   getDoc,
   getDocs,
-  where,
-  collection,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 import { pomodorebreakTime, countdownTime } from "./app.js";
 import { auth, db } from "./firebase.js";
@@ -102,7 +100,7 @@ auth.onAuthStateChanged((user) => {
     Delete
     </button>
     </div>`
-      }`
+      }`,
           )
           .join("");
       });
@@ -123,23 +121,26 @@ function deleteTodo(ClickedId) {
 }
 
 function checkFunction(clicked_id) {
-db.collection("users")
-.doc(logUserId)
-.collection("ListTodo")
-.doc(clicked_id).get().then((doc) => {
+  db.collection("users")
+    .doc(logUserId)
+    .collection("ListTodo")
+    .doc(clicked_id)
+    .get()
 
-
-  let thisId;
-db.collection("users")
-.doc(logUserId)
-.collection("ListTodo")
-.doc(clicked_id)
-.update({
-  done: !doc.data().done,
-})
-.then(() => {})
-.catch((error) => {});
-  const lasts = db.collection("users").doc(logUserId).collection("ListTodo");
-
-});
+    .then((doc) => {
+      let thisId;
+      db.collection("users")
+        .doc(logUserId)
+        .collection("ListTodo")
+        .doc(clicked_id)
+        .update({
+          done: !doc.data().done,
+        })
+        .then(() => {})
+        .catch((error) => {});
+      const lasts = db
+        .collection("users")
+        .doc(logUserId)
+        .collection("ListTodo");
+    });
 }

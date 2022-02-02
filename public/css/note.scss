@@ -149,7 +149,7 @@
 		resize: none;
 		margin-top: 50px;
 		display: flex;
-		outline: none;
+		// outline: none;
 		width: 80%;
 		color: var(--font-color);
 		background-color: transparent;
@@ -166,7 +166,7 @@
 	}
 
 	&__textarea {
-		outline: none;
+		// outline: none;
 		resize: none;
 		width: 100%;
 		height: 60%;
@@ -191,7 +191,7 @@
 
 .fa-times {
 	cursor: pointer;
-	outline: 0;
+	// outline: 0;
 	color: var(--number-color);
 	font-size: 1.8rem;
 	padding: 0.3rem;
