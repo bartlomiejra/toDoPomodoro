@@ -534,6 +534,9 @@ done: false,
       actualList = todos;
 
       statTask();
+      // return;
+            centerDiv.classList.add("active");
+
     }
   });
   }
