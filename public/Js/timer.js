@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-use-before-define */
@@ -20,6 +21,7 @@ import { displayNotification } from "./notification.js";
 
 let paused = false;
 let timeInFocus;
+let setting;
 let countdownTime;
 let secondsLeft;
 function displayTimeLeft(seconds) {

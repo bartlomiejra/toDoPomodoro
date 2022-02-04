@@ -72,14 +72,14 @@ auth.onAuthStateChanged((user) => {
             (todo) => `  
       ${
         todo.done
-          ? `<div class="todo_item completed dragitem" onClick='checkFunction(this.id)' onClick='event.stopPropagation()'
+          ? `<div class="todo_item completed " tabindex="0" onClick='checkFunction(this.id)' onClick='event.stopPropagation()'
            id=${todo.id} data-index=${todo.id}>    
           ${todo.text}      
           <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick='deleteTodo(this.id)' >
           Delete
     </button>
     </div>`
-          : `<div class="todo_item dragitem" onClick='checkFunction(this.id)'  onClick='event.stopPropagation()' 
+          : `<div class="todo_item" tabindex="0" onClick='checkFunction(this.id)'  onClick='event.stopPropagation()' 
            id=${todo.id} data-index=${todo.id}  >     
           ${todo.text}
           <button class="todo_delete" id=${todo.id} data-index=${todo.id} onClick="deleteTodo(this)">
