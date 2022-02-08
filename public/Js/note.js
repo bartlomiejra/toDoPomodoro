@@ -42,12 +42,10 @@ auth.onAuthStateChanged((user) => {
           notenote = doc.data().note;
 
         });
-
   tiles.innerHTML = allnotelist
-
           .map(
             (note, i) => `
- <div class="tiles__tile" tabindex="0" value=${note.title}  id="${note.id}" onClick='noteOpen(this.id)'>
+ <div class="tiles__tile" tabindex="0" value=${note.title}  id="${note.id}"  onClick='noteOpen(this.id)'>
 <h3>${note.title}</h3>
 <div class="tiles__smallNote">${note.note}
 </div>

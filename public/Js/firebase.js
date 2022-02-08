@@ -44,17 +44,18 @@ showSignIn.onclick = (event) => {
   signInForm.classList.remove("none");
 };
 
-
+let token;
 signInGoogle.onclick = (event) => {
   let isNewUser;
   function user(result) {
-    const token = result.credential.accessToken;
+     token = result.credential.accessToken;
     console.log(token);
-    const {user} = result;
+    const { user } = result;
     isNewUser = result.additionalUserInfo.isNewUser;
-                   }
+  }
+  // user(result);
 
-  if (isNewUser) {
+  // if (isNewUser) {
     auth.signInWithPopup(provider).then(
       (cred) => (
         db
@@ -487,10 +488,10 @@ signInGoogle.onclick = (event) => {
           })
       )
     );
-  } else {
-    auth.signInWithPopup(provider).then();;
-    console.log("user " + user.email + " does exist!");
-  }
+  // } else {
+    auth.signInWithPopup(provider).then();
+    console.log(`user ${user.email} does exist!`);
+  // }
 };
 
 formlog.addEventListener("submit", (e) => {

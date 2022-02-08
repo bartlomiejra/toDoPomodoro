@@ -4,6 +4,8 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="description" content="todoPomodoro">
+
 <lang="en">
   <link rel="manifest" href="manifest.webmanifest" />
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
@@ -14,14 +16,7 @@ if (location.hostname === "localhost") {
 }
   </script>
   <script>
-    // Import the functions you need from the SDKs you need
-  
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
        initializeFirebase(); 
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     function initializeFirebase(){    
 
     var firebaseConfig = {
@@ -87,7 +82,7 @@ if (location.hostname === "localhost") {
        <div class="modal-signin" id="signin" >
         
          <form  class="formlog" id="signin-form" action="">
-           <h1>SignIn.</h1> 
+           <h2>SignIn.</h2> 
            <button id="signInGoogle" type="button"class=" formlog_button btn btn-primary">Sign in with Google</button>
          <button id="signInFacebook" class="formlog_button btn btn-primary">Sign in with Facebook</button>
          <button id="signInGithub" class="formlog_button btn btn-primary">Sign in with Github</button>
@@ -115,7 +110,7 @@ if (location.hostname === "localhost") {
         <div class="modal-signup none" id="signup" >
 
           <form id="signup-Form" class="formlog" >
-            <h1>Sign Up.</h1>
+            <h2>Sign Up.</h2>
     <input class="formlog_input" ="text" id="signup-email" name="mail" placeholder="E-mail">
     <input type="password" class="formlog_input"  id="signup-password" name="pwd" placeholder="Password">
     <button type="submit" class="formlog_sign" name="signup-submit">Sign up with Email</button>

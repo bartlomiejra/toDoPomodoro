@@ -18,7 +18,9 @@
 } from "./showElements.js";
 
 import { logUserId, thingsRef } from "./settings.js";
-
+import { displayNotification } from "./notification.js";
+import * as settingss from "./settings.js";
+import * as firebase from "./firebase.js";
 import {
   timer,
   timerBreak,
@@ -126,7 +128,8 @@ let oneTask;
             actualList = tasksAll.filter((items) => items.data == dateToday);
         });
     } else {
- unsubscribe();
+         unsubscribe && unsubscribe();
+
     }
   });
 
@@ -207,7 +210,8 @@ aria-hidden="true"></i></button>
   }
      });
       } else {
-     unsubscribe();
+          unsubscribe && unsubscribe();
+
   }
 });
 }
@@ -275,7 +279,8 @@ function addTodo(event) {
   centerDiv.classList.add("active");
   centerDiv.classList.remove("none");
 } else {
-   unsubscribe();
+        unsubscribe && unsubscribe();
+
 }
 });
 // todoInput.value = "";
@@ -350,7 +355,8 @@ elapsed: dbelapsed,
     });
 });
      } else {
-     unsubscribe();
+          unsubscribe && unsubscribe();
+
   }
 });
 }
@@ -596,7 +602,8 @@ unsubscribe = thingsRef.doc(logUserId).collection("Project").onSnapshot((querySn
     .join("");
   });
        } else {
-       unsubscribe();
+            unsubscribe && unsubscribe();
+
     }
 });
 addProjectbtn.addEventListener("click", addProject);
@@ -671,7 +678,8 @@ function sortingProject(clicked_id) {
   renderPomodoroTasks(tasksProject);
       });
             } else {
-     unsubscribe();
+          unsubscribe && unsubscribe();
+
   }
 });
 
