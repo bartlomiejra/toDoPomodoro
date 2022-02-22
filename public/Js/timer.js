@@ -13,9 +13,9 @@ import {
   pause,
   countdownTimer,
   taskId,
-} from "./app.js";
-import { auth, db } from "./firebase.js";
-import { displayNotification } from "./notification.js";
+} from './app.js';
+import { auth, db } from './firebase.js';
+import { displayNotification } from './notification.js';
 
 // import { logUserId} from "./settings.js";
 
@@ -28,7 +28,7 @@ function displayTimeLeft(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainderSeconds = seconds % 60;
   const display = `${minutes}:${
-    remainderSeconds < 10 ? "0" : ""
+    remainderSeconds < 10 ? '0' : ''
   }${remainderSeconds}`;
   countdownTimer.textContent = display;
   document.title = display;
@@ -37,8 +37,8 @@ let breakTimes;
 function timer(seconds) {
   displayNotification();
 
-  pause.firstElementChild.classList.remove("fa-coffee");
-  pause.firstElementChild.classList.add("fa-pause");
+  pause.firstElementChild.classList.remove('fa-coffee');
+  pause.firstElementChild.classList.add('fa-pause');
   clearInterval(countdownTime);
   const now = Date.now();
   const then = now + seconds * 1000;
@@ -48,10 +48,10 @@ function timer(seconds) {
     timeInFocus = seconds - secondsLeft;
     if (secondsLeft < 0) {
       endpomodoro();
-      const audio = new Audio("Alerts/taskEnd.mp3");
+      const audio = new Audio('Alerts/taskEnd.mp3');
       audio.play();
       displayNotification();
-      document.title = "Pomodoro End";
+      document.title = 'Pomodoro End';
       clearInterval(countdownTime);
       return;
     }
@@ -60,19 +60,19 @@ function timer(seconds) {
 }
 function timerBreak() {
   pause.firstElementChild.classList.remove(
-    "fa-play",
-    "fa-play-circle",
-    "fa-coffee",
-    "fa-pause-circle",
-    "fa-pause"
+    'fa-play',
+    'fa-play-circle',
+    'fa-coffee',
+    'fa-pause-circle',
+    'fa-pause',
   );
   clearInterval(countdownTime);
   let then;
   auth.onAuthStateChanged((user) => {
     if (user) {
-      db.collection("users")
+      db.collection('users')
         .doc(user.uid)
-        .collection("settings")
+        .collection('settings')
         .onSnapshot((querySnapshot) => {
           querySnapshot.docs.map((doc) => {
             breakTimes = doc.data().breakTime;
@@ -89,11 +89,11 @@ function timerBreak() {
   countdownTime = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     if (secondsLeft < 1) {
-      const audio = new Audio("Alerts/pauseEnd.mp3");
+      const audio = new Audio('Alerts/pauseEnd.mp3');
       audio.play();
       resetTimer();
       clearInterval(countdownTime);
-      clockTimer.classList.remove("clock_fullscreen");
+      clockTimer.classList.remove('clock_fullscreen');
 
       return;
     }
@@ -105,12 +105,12 @@ function pausetimer() {
   const secsave = secondsLeft;
   if (!paused) {
     paused = true;
-    this.firstElementChild.classList.remove("fa-pause");
-    this.firstElementChild.classList.add("fa-play-circle");
+    this.firstElementChild.classList.remove('fa-pause');
+    this.firstElementChild.classList.add('fa-play-circle');
     clearInterval(countdownTime);
   } else {
-    this.firstElementChild.classList.remove("fa-play-circle");
-    this.firstElementChild.classList.add("fa-pause");
+    this.firstElementChild.classList.remove('fa-play-circle');
+    this.firstElementChild.classList.add('fa-pause');
 
     paused = false;
     displayTimeLeft(secsave);
@@ -119,16 +119,16 @@ function pausetimer() {
 }
 function resetTimer() {
   clockTimer.classList.remove(
-    "clock_timerFinish",
-    "clock_timerStart",
-    "clock_clockVisible"
+    'clock_timerFinish',
+    'clock_timerStart',
+    'clock_clockVisible',
   );
   renderPomodoroTasks(actualList, todoList);
-  buttonscountdown.classList.add(".countdownButtonsNone");
+  buttonscountdown.classList.add('.countdownButtonsNone');
   clearInterval(countdownTime);
 
   displayTimeLeft(0);
-  clockTimer.classList.remove("clock_fullscreen");
+  clockTimer.classList.remove('clock_fullscreen');
 
   // }
 }
@@ -137,9 +137,9 @@ function endpomodoro() {
   let itemOne;
   const itemAll = [];
   let thisTask = [];
-  db.collection("users")
+  db.collection('users')
     .doc(auth.currentUser.uid)
-    .collection("Items")
+    .collection('Items')
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -151,45 +151,45 @@ function endpomodoro() {
       let numberfocusTaskTime = focusTaskTime;
       const numbertimeInFocus = timeInFocus;
       numberfocusTaskTime += numbertimeInFocus;
-      db.collection("users")
+      db.collection('users')
         .doc(auth.currentUser.uid)
-        .collection("Items")
+        .collection('Items')
         .doc(taskId)
 
         .update({
           focus: numberfocusTaskTime,
         });
     });
-  pause.addEventListener("click", timerBreak);
+  pause.addEventListener('click', timerBreak);
   breakTime();
 }
 
 function resizeClock() {
-  clockTimer.classList.add("clock_clockVisible");
-  if (clockTimer.classList.contains("clock_fullscreen")) {
-    clockTimer.classList.remove("clock_fullscreen");
-    clockTimer.classList.add("centerclock");
+  clockTimer.classList.add('clock_clockVisible');
+  if (clockTimer.classList.contains('clock_fullscreen')) {
+    clockTimer.classList.remove('clock_fullscreen');
+    clockTimer.classList.add('centerclock');
   } else {
-    clockTimer.classList.add("clock_fullscreen");
-    clockTimer.classList.remove("centerclock");
+    clockTimer.classList.add('clock_fullscreen');
+    clockTimer.classList.remove('centerclock');
   }
 }
 
 function breakTime() {
   clearInterval(countdownTime);
-  clockTimer.classList.add("clock_timerFinish");
+  clockTimer.classList.add('clock_timerFinish');
   pause.firstElementChild.classList.remove(
-    "fa-play-circle",
-    "fa-pause",
-    "fa-pause-circle"
+    'fa-play-circle',
+    'fa-pause',
+    'fa-pause-circle',
   );
-  pause.firstElementChild.classList.add("fa-coffee");
-  clockTimer.classList.remove("clock_timerStart");
+  pause.firstElementChild.classList.add('fa-coffee');
+  clockTimer.classList.remove('clock_timerStart');
   // renderPomodoroTasks(todos, todoList);
 }
 function countdownAnimation() {
-  buttonscountdown.classList.remove(".countdownButtonsNone");
-  clockTimer.classList.add("clock_timerStart");
+  buttonscountdown.classList.remove('.countdownButtonsNone');
+  clockTimer.classList.add('clock_timerStart');
 }
 
 export {

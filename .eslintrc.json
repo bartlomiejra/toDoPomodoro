@@ -15,15 +15,7 @@
     ],
 
   
-	"plugins":
-    // [
 
-
-    //         "jsx-a11y"
-
-    // ],
-    
-     ["prettier"],
 "rules": {
     // "import/extensions": [<severity>, "never" | "always" | "ignorePackages"],
     "import/extensions": [
@@ -45,7 +37,7 @@
    "prettier/prettier": ["error", {}, {
   "usePrettierrc": false
 }],
-    "quotes": [2, "double", { "avoidEscape": true }]
+    "quotes": [2, "single", { "avoidEscape": false }]
 
 
 

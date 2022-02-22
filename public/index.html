@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="description" content="todoPomodoro">
+   <meta name="viewport">
 
 <lang="en">
   <link rel="manifest" href="manifest.webmanifest" />
@@ -51,7 +52,6 @@ if (location.hostname === "localhost") {
   <link rel="stylesheet" type="text/css" href="css/settings.css" />
   <link rel="stylesheet" type="text/css" href="css/note.css" />
   <link rel="stylesheet" type="text/css" href="css/todo.css" />
-  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700;1,900&display=swap"
     rel="stylesheet" />
@@ -169,7 +169,7 @@ if (location.hostname === "localhost") {
           <class class="fas fa-plus"></class>
         </button>
         <input type="text" class="left_Projects" placeholder="Add  your project name" />
-        <input type="color" class="left_color" arial-label="Color" id="color" value="#955165">
+        <input type="color" class="left_color" label="colorpeaker" arial-label="Color" id="color" value="#955165">
       </form>
       </form>
     </div>
@@ -223,7 +223,7 @@ if (location.hostname === "localhost") {
         <!-- controll  -->
       </ol>
       <div class="clock">
-        <i class="fas fa-window-restore" onclick="resizeClock()"></i>
+        <i class="fas fa-window-restore" tabindex="0"  onclick="resizeClock()"></i>
         <!-- <div class="clock_taskname">
           <p id="clock_taskname">
 <li class="center_divT ">    
@@ -256,10 +256,10 @@ if (location.hostname === "localhost") {
         </div> -->
         <div class="clock_countdown" id="countdown">25:00</div>
         <div class="countdownButtons">
-          <button class="center_pauseButton" type="submit">
+          <button class="center_pauseButton" tabindex="0" type="submit">
             <i class="fas fa-pause-circle"></i>
           </button>
-          <button class="center_resetButton" type="submit">
+          <button class="center_resetButton" tabindex="0" type="submit">
             <i class="fas fa-stop-circle"></i>
           </button>
         </div>
@@ -394,53 +394,89 @@ if (location.hostname === "localhost") {
     </div>
 
     <nav class="nav">
-      <div class="nav_element Project selected" name="pomodoreCard" onclick="openNoteCard(this)" data-link>
+      <div class="nav_element Project selected" tabindex="0" name="pomodoreCard" onclick="openNoteCard(this)" data-link>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="dss feather feather-book-open">
-          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path id="left" d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
           <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
         </svg>
         <span>Project</span>
       </div>
-      <div class="nav_element " name="note" onclick="openNoteCard(this)" id="noteButton">
+    
+      <div class="nav_element " name="note" tabindex="0" onclick="openNoteCard(this)" id="noteButton">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="dss feather feather-calendar">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
           <line x1="16" y1="2" x2="16" y2="6"></line>
           <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
+          <line id="noteSvg" x1="3" y1="15" x2="21" y2="15"></line>
         </svg>
         <span>Note</span>
       </div>
-
-      <div class="nav_element" name="todo" onclick="openNoteCard(this)" id="todoButton">
+ 
+      <div class="nav_element" name="todo" tabindex="0" onclick="openNoteCard(this)" id="todoButton">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="dss feather feather-list">
-          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line id="todoLine1" x1="8" y1="6" x2="21" y2="6"></line>
           <line x1="8" y1="12" x2="21" y2="12"></line>
-          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line id="todoLine3" x1="8" y1="18" x2="21" y2="18"></line>
           <line x1="3" y1="6" x2="3.01" y2="6"></line>
-          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line  id="todoLine6"x1="3" y1="12" x2="3.01" y2="12"></line>
           <line x1="3" y1="18" x2="3.01" y2="18"></line>
         </svg>
         <span>Todo</span>
       </div>
+ <style>
+        svg{
+          cursor: pointer;
+        }
 
-      <div class="nav_element data-link" name="settings" onclick="openNoteCard(this)" id="settingsButton">
+        #left, #settingsSvg, #noteSvg, #todoLine1, #todoLine3, #todoLine6{
+          transition: all 0.1s ease;
+        }
+        svg:hover #todoLine1, svg:hover #todoLine3, svg:hover #todoLine6{
+transform: translateX(10%);
+
+
+                
+        }
+
+         svg:hover #noteSvg{
+transform: translateY(20%);
+
+
+                
+        }
+        svg:hover #settingsSvg{
+
+          transform: rotate(360deg);
+  transform-box: fill-box;
+  transform-origin: center;
+
+                
+        }
+
+        svg:hover #left{
+transform: translateX(20%);
+        }
+
+      </style>
+      <div class="nav_element data-link" tabindex="0" name="settings" onclick="openNoteCard(this)" id="settingsButton">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="dss feather feather-settings">
           <circle cx="12" cy="12" r="3"></circle>
-          <path
+          <path id="settingsSvg"
             d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
           </path>
         </svg>
         <span> Settings</span>
 
       </div>
+      
       <div id="overlay"></div>
     </nav>
   </div>

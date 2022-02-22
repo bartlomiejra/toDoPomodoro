@@ -6,33 +6,33 @@ import {
   getDocs,
   where,
   collection,
-} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
-import { auth, db } from "./firebase.js";
+import { auth, db } from './firebase.js';
 
-const closeSettings = document.querySelectorAll("[data-close-button ]");
+const closeSettings = document.querySelectorAll('[data-close-button ]');
 // const saveButton = document.getElementById("saveSettingUser");
-const theme = document.querySelector(".modal__themes");
-const settingsDiv = document.querySelector(".settings");
-const settingButton = document.getElementById("settingButton");
-const overlay = document.getElementById("overlay");
-const container = document.querySelector(".container");
-const sounds = document.querySelector(".sounds");
-const SetTimes = document.querySelector(".SetTimes");
+const theme = document.querySelector('.modal__themes');
+const settingsDiv = document.querySelector('.settings');
+const settingButton = document.getElementById('settingButton');
+const overlay = document.getElementById('overlay');
+const container = document.querySelector('.container');
+const sounds = document.querySelector('.sounds');
+const SetTimes = document.querySelector('.SetTimes');
 let firebaseSettings;
-const settingUser = JSON.parse(localStorage.getItem("settings")) || {
-  Theme: "Dark",
+const settingUser = JSON.parse(localStorage.getItem('settings')) || {
+  Theme: 'Dark',
   Sound: true,
-  pomodoreTime: "25",
-  breakTime: "5",
+  pomodoreTime: '25',
+  breakTime: '5',
 };
 let thingsRef;
 let unsubscribe;
 let logUserId;
-const thingsList = document.getElementById("thingsList");
-const saveSettings = document.getElementById("saveSettingUser");
+const thingsList = document.getElementById('thingsList');
+const saveSettings = document.getElementById('saveSettingUser');
 
-thingsRef = db.collection("users");
+thingsRef = db.collection('users');
 let firestoreTheme;
 let firestorepomodoreTime;
 let firestoreBreakTime;
@@ -42,10 +42,10 @@ auth.onAuthStateChanged((user) => {
     logUserId = user.uid;
 
     saveSettings.onclick = (event) => {
-      const pomodoreTime = document.getElementById("quantity");
-      const breakTimeValue = document.getElementById("quantitybreak");
+      const pomodoreTime = document.getElementById('quantity');
+      const breakTimeValue = document.getElementById('quantitybreak');
       event.preventDefault();
-      thingsRef.doc(user.uid).collection("settings").doc("0").update({
+      thingsRef.doc(user.uid).collection('settings').doc('0').update({
         Sound: true,
         Theme: themeselected,
         pomodoreTime: pomodoreTime.value,
@@ -55,7 +55,7 @@ auth.onAuthStateChanged((user) => {
     // Query
     unsubscribe = thingsRef
       .doc(logUserId)
-      .collection("settings")
+      .collection('settings')
       .onSnapshot((querySnapshot) => {
         // Map results to an array of li elements
         const elements = querySnapshot.docs;
@@ -71,7 +71,7 @@ auth.onAuthStateChanged((user) => {
 <div class="switch-button">
   
   ${
-    firestoreTheme == "Dark"
+    firestoreTheme == 'Dark'
       ? '<input class="black switch-button-checkbox" type="checkbox"></input>'
       : '<input class="black switch-button-checkbox" checked type="checkbox"></input>'
   }
@@ -119,34 +119,34 @@ max="60"
 });
 export function closeModal(modal) {
   if (modal == null) return;
-  settingsDiv.classList.remove("active");
+  settingsDiv.classList.remove('active');
 }
 closeSettings.forEach((span) => {
-  span.addEventListener("click", () => {
-    const modal = span.closest(".modal");
+  span.addEventListener('click', () => {
+    const modal = span.closest('.modal');
     closeModal(modal);
   });
 });
 
 let themeselected = firestoreTheme;
 export function themesValue() {
-  const switchbutton = document.querySelector(".black");
+  const switchbutton = document.querySelector('.black');
   if (switchbutton.checked == true) {
-    themeselected = "Light";
-    container.classList.add("lightTheme");
+    themeselected = 'Light';
+    container.classList.add('lightTheme');
   } else {
-    themeselected = "Dark";
-    container.classList.remove("lightTheme");
+    themeselected = 'Dark';
+    container.classList.remove('lightTheme');
   }
 }
 export function appSounds(clickedid) {
-  if (clickedid.classList.contains("mute")) {
-    clickedid.classList.add("unmute");
-    clickedid.classList.remove("mute");
+  if (clickedid.classList.contains('mute')) {
+    clickedid.classList.add('unmute');
+    clickedid.classList.remove('mute');
     Sound = true;
   } else {
-    clickedid.classList.remove("unmute");
-    clickedid.classList.add("mute");
+    clickedid.classList.remove('unmute');
+    clickedid.classList.add('mute');
     Sound = false;
   }
   firestoreSound = Sound;
@@ -155,16 +155,16 @@ export function saveOptions() {
   event.preventDefault();
   themesValue();
 }
-saveSettings.addEventListener("click", saveOptions);
+saveSettings.addEventListener('click', saveOptions);
 let Sound = true;
 
 window.appSounds = appSounds;
-if (firestoreTheme == "Light") {
-  themeselected = "Light";
-  container.classList.add("lightTheme");
+if (firestoreTheme == 'Light') {
+  themeselected = 'Light';
+  container.classList.add('lightTheme');
 } else {
-  themeselected = "Dark";
-  container.classList.remove("lightTheme");
+  themeselected = 'Dark';
+  container.classList.remove('lightTheme');
 }
 // const thingsList = document.getElementById("thingsList");
 

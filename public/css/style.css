@@ -676,7 +676,7 @@ body .clock {
   text-align: center;
   display: none;
   position: absolute;
-  bottom: 100px;
+  top: 50%;
 }
 
 html .clock i,
@@ -712,8 +712,8 @@ body .clock_fullscreen {
   bottom: 0;
   width: 100%;
   height: 100%;
-  -webkit-animation: scale 0.3s ease-in-out 1;
-          animation: scale 0.3s ease-in-out 1;
+  -webkit-animation: scale 0.7s ease-in-out 1;
+          animation: scale 0.7s ease-in-out 1;
   margin-left: auto;
   margin-right: auto;
   z-index: 10;
@@ -1466,12 +1466,6 @@ input:focus,
 select:focus,
 textarea:focus {
   border: 0;
-}
-
-.centerclock {
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
 }
 
 .fas {
