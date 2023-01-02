@@ -908,7 +908,6 @@ function titleName() {
         itemOne = doc.data();
         itemAll.push(itemOne);
       });
-
       const currentProject = itemAll[0].name;
       if (currentProject == null) {
         currentProject.name = 'Today';
