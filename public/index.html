@@ -20,12 +20,14 @@
 if (location.hostname === "localhost") {
 }
   </script>
+  <script src="config.js"></script>
+
   <script>
        initializeFirebase(); 
     function initializeFirebase(){    
 
     var firebaseConfig = {
-      apiKey: "AIzaSyAJBF5cvsjdeNCS4bWrpktH0CLxgSgEojs",
+      apiKey: config.API_KEY,  // Użycie klucza API z config.js
       authDomain: "todopomodoro-7384d.firebaseapp.com",
       databaseURL: "https://todopomodoro-7384d-default-rtdb.europe-west1.firebasedatabase.app",
       projectId: "todopomodoro-7384d",
