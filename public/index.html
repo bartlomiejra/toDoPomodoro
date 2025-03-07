@@ -20,14 +20,14 @@
 if (location.hostname === "localhost") {
 }
   </script>
-  <script src="config.js"></script>
-
+ 
   <script>
        initializeFirebase(); 
     function initializeFirebase(){    
 
     var firebaseConfig = {
-      apiKey: config.API_KEY,  // Użycie klucza API z config.js
+      // apiKey: apiKey,
+      apiKey: apiKey,
       authDomain: "todopomodoro-7384d.firebaseapp.com",
       databaseURL: "https://todopomodoro-7384d-default-rtdb.europe-west1.firebasedatabase.app",
       projectId: "todopomodoro-7384d",
@@ -41,8 +41,26 @@ if (location.hostname === "localhost") {
     // Initialize Firebase
     
   }
- 
+   initializeFirebase();
+
 </script>
+
+ <script>
+const functionUrl = 'https://us-central1-todopomodoro-7384d.cloudfunctions.net/getApiKey';
+
+ // Pobierz klucz API z funkcji Firebase
+    fetch(functionUrl)
+      .then(response => response.json()) // Odbierz odpowiedź w formacie JSON
+      .then(data => {
+        const apiKey = data.apiKey; // Pobierz klucz API z odpowiedzi
+        console.log("Pobrany klucz API:", apiKey); // Możesz wykorzystać klucz API dalej w projekcie
+        document.getElementById("apiKey").textContent = `Twój klucz API: ${apiKey}`; // Wyświetl na stronie
+      })
+      .catch(error => {
+        console.error('Błąd pobierania klucza API:', error);
+        document.getElementById("apiKey").textContent = 'Błąd pobierania klucza API.';
+      });
+  </script>
   <script src="lib/hammer.min.js"></script>
   <script src="lib/interact.min.js"></script>
 <script src="lib/moment.min.js"></script>
